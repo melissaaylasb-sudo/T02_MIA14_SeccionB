@@ -17,6 +17,11 @@ from zipfile import BadZipFile
 
 import pandas as pd
 
+if __package__:
+    from .importar_matlab import load_matlab_samples
+else:
+    from importar_matlab import load_matlab_samples
+
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = ROOT / "data" / "raw"
@@ -49,10 +54,11 @@ def validate_columns(columns) -> list[str]:
 
 
 def load_table(path: Path, *, sheet: str | int = 0) -> pd.DataFrame:
-    """Lee CSV UTF-8 o XLSX conservando texto; solo celdas vacías son faltantes.
+    """Lee CSV, XLSX o la tabla ``samples`` del script MATLAB documentado.
 
     No recupera ceros iniciales que Excel conserve únicamente como formato visual.
-    No ejecuta fórmulas ni interpreta archivos MATLAB o PDF.
+    No ejecuta fórmulas, código MATLAB ni contenido PDF. Para ``.m`` solo
+    extrae la tabla literal ``samples`` con el analizador restringido del proyecto.
     """
     if not path.is_file():
         raise FileNotFoundError(f"No existe el archivo: {path.name}")
@@ -78,8 +84,10 @@ def load_table(path: Path, *, sheet: str | int = 0) -> pd.DataFrame:
         validate_columns(table.iloc[0].tolist())
         df = table.iloc[1:].reset_index(drop=True)
         df.columns = table.iloc[0].tolist()
+    elif suffix == ".m":
+        df = load_matlab_samples(path)
     else:
-        raise ValueError(f"Formato no soportado: {suffix}. Use CSV o XLSX.")
+        raise ValueError(f"Formato no soportado: {suffix}. Use CSV, XLSX o el script MATLAB esperado.")
     validate_columns(df.columns)
     if df.empty:
         raise ValueError("La tabla no contiene registros.")
@@ -162,6 +170,22 @@ def ingest(input_path: Path, *, sheet: str | int = 0) -> tuple[pd.DataFrame, dic
     run_dir = new_run_directory(INTERIM_DIR)
     table_path = run_dir / "dataset_interim.csv"
     df.to_csv(table_path, index=False, encoding="utf-8", mode="x")
+    suffix = input_path.suffix.lower()
+    if suffix == ".m":
+        reader = {
+            "format": suffix,
+            "parser": "src.importar_matlab.load_matlab_samples",
+            "extraction": "tabla samples; asignaciones numéricas literales sin ejecutar MATLAB",
+            "missing_values": ["NaN"],
+            "dtype": "numeric",
+        }
+    else:
+        reader = {
+            "format": suffix,
+            "sheet": sheet if suffix == ".xlsx" else None,
+            "missing_values": [""],
+            "dtype": "string",
+        }
     manifest = {
         "manifest_version": 1,
         "run_id": run_dir.name,
@@ -174,12 +198,7 @@ def ingest(input_path: Path, *, sheet: str | int = 0) -> tuple[pd.DataFrame, dic
         "rows": int(df.shape[0]),
         "columns": int(df.shape[1]),
         "column_names": df.columns.astype(str).tolist(),
-        "reader": {
-            "format": input_path.suffix.lower(),
-            "sheet": sheet if input_path.suffix.lower() == ".xlsx" else None,
-            "missing_values": [""],
-            "dtype": "string",
-        },
+        "reader": reader,
         "interim_file": table_path.relative_to(ROOT).as_posix(),
         "interim_sha256": sha256_file(table_path),
         "execution": execution_context(),

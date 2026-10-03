@@ -13,6 +13,7 @@ from sklearn.model_selection import GridSearchCV
 
 from src.experimento import inspect_plan, load_model_data, read_config, run_experiment
 from src.ingesta import sha256_file
+from src.importar_matlab import load_matlab_samples
 from src.modelos import build_pipeline, candidate_specs
 from src.particiones import make_splits, nested_plan
 from src.validacion import serializable_plan
@@ -50,6 +51,8 @@ class WorkflowTests(unittest.TestCase):
             self.assertIn("scale", pipeline.named_steps)
             self.assertIn("model", pipeline.named_steps)
         self.assertNotIn("neural_network", candidate_specs(self.config))
+        self.assertEqual(len(candidate_specs(self.config)), 6)
+        self.assertIn("support_vector", candidate_specs(self.config))
         self.assertEqual(build_pipeline("neural_network", 42).named_steps["model"].hidden_layer_sizes, (16,))
 
     def test_unknown_family_and_parameters_rejected(self):
@@ -145,6 +148,24 @@ class WorkflowTests(unittest.TestCase):
                 table.write_text(table.read_text(encoding="utf-8") + "changed\n", encoding="utf-8")
                 with self.assertRaisesRegex(ValueError, "hash"):
                     load_model_data(config)
+
+    def test_matlab_samples_parser_reads_only_declared_numeric_table(self):
+        source = """
+        Case_n = (1:3)';
+        geometry = [1.5; 2.5; 3.5];
+        response = [10; NaN; 30];
+        constant = repmat(0.5,3,1);
+        ignored = system('echo this must never run');
+        samples = table(Case_n, geometry, response, constant);
+        """
+        with tempfile.TemporaryDirectory(prefix="pantographic-matlab-") as temp:
+            path = Path(temp) / "fixture.m"
+            path.write_text(source, encoding="utf-8")
+            frame = load_matlab_samples(path)
+        self.assertEqual(frame.columns.tolist(), ["Case_n", "geometry", "response", "constant"])
+        self.assertEqual(frame["Case_n"].tolist(), [1, 2, 3])
+        self.assertTrue(np.isnan(frame.loc[1, "response"]))
+        self.assertEqual(frame["constant"].tolist(), [0.5, 0.5, 0.5])
 
 
 if __name__ == "__main__":

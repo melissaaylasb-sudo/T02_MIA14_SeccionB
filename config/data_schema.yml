@@ -1,20 +1,38 @@
-# Esquema PRELIMINAR. Completar únicamente contra el archivo real consolidado.
-# Los nombres de columns deben coincidir con la fuente tras retirar espacios
-# extremos de sus encabezados. Declararlos exige revisar su significado físico.
+# Esquema verificado contra dati_campagna_venditti.m.
 project:
   task: regression
   target_concept: carga_primera_falla
-  target_unit: null  # N cuando se confirme en la fuente incorporada
+  target_unit: N
 
 columns:
-  target: null
-  identifiers: []    # Al menos un identificador de caso; nunca usar en X
-  predictors: []     # Solo geometría/estructura disponible ANTES del ensayo
-  groups: []         # Si hay réplicas: columnas adicionales para agrupar el split
+  target: First_Failure_Load_N
+  identifiers:
+    - Case_n
+  predictors:
+    - n_cells_Y
+    - Fiber_height
+    - Fiber_total_length
+    - Fiber_total_volume
+    - Pivot_height
+    - Pivot_radius
+    - Pivot_total_number
+    - Pivot_total_volume
+    - Sample_total_volume
+  groups: []  # La fuente no declara réplicas o grupos adicionales.
 
 # Una entrada por predictor real; usar 'conteo' para cantidades discretas.
 # No se convierten unidades automáticamente.
-predictor_units: {}
+predictor_units:
+  n_cells_Y: conteo
+  Fiber_height: mm
+  Fiber_base: mm
+  Fiber_total_length: mm
+  Fiber_total_volume: mm^3
+  Pivot_height: mm
+  Pivot_radius: mm
+  Pivot_total_number: conteo
+  Pivot_total_volume: mm^3
+  Sample_total_volume: mm^3
 
 # Conceptos documentados en Venditti; NO son columnas detectadas ni una selección.
 candidate_concepts:

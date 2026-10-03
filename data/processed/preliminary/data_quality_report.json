@@ -1,0 +1,275 @@
+{
+  "before": {
+    "rows": 27,
+    "columns": 20,
+    "dtypes": {
+      "Case_n": "string",
+      "n_cells_Y": "string",
+      "Fiber_height": "string",
+      "Fiber_base": "string",
+      "Fiber_total_length": "string",
+      "Fiber_total_volume": "string",
+      "Pivot_height": "string",
+      "Pivot_radius": "string",
+      "Pivot_total_number": "string",
+      "Pivot_total_volume": "string",
+      "Sample_total_volume": "string",
+      "First_Failure_Load_N": "string",
+      "Ultimate_Load": "string",
+      "Maximum_Displacement": "string",
+      "residual_Displacement_1cycle_10mm": "string",
+      "residual_Displacement_2cycle_20mm": "string",
+      "residual_Displacement_3cycle_30mm": "string",
+      "residual_Displacement_4cycle_40mm": "string",
+      "residual_Displacement_5cycle_50mm": "string",
+      "residual_Displacement_6cycle_60mm": "string"
+    },
+    "duplicated_rows": 0,
+    "missing_by_column": {
+      "Case_n": 0,
+      "n_cells_Y": 0,
+      "Fiber_height": 0,
+      "Fiber_base": 0,
+      "Fiber_total_length": 0,
+      "Fiber_total_volume": 0,
+      "Pivot_height": 0,
+      "Pivot_radius": 0,
+      "Pivot_total_number": 0,
+      "Pivot_total_volume": 0,
+      "Sample_total_volume": 0,
+      "First_Failure_Load_N": 1,
+      "Ultimate_Load": 1,
+      "Maximum_Displacement": 1,
+      "residual_Displacement_1cycle_10mm": 1,
+      "residual_Displacement_2cycle_20mm": 1,
+      "residual_Displacement_3cycle_30mm": 1,
+      "residual_Displacement_4cycle_40mm": 1,
+      "residual_Displacement_5cycle_50mm": 1,
+      "residual_Displacement_6cycle_60mm": 7
+    },
+    "constant_columns": [
+      "Pivot_radius"
+    ]
+  },
+  "after": {
+    "rows": 26,
+    "columns": 12,
+    "dtypes": {
+      "Case_n": "string",
+      "n_cells_Y": "Float64",
+      "Fiber_height": "Float64",
+      "Fiber_base": "Float64",
+      "Fiber_total_length": "Float64",
+      "Fiber_total_volume": "Float64",
+      "Pivot_height": "Float64",
+      "Pivot_radius": "Float64",
+      "Pivot_total_number": "Float64",
+      "Pivot_total_volume": "Float64",
+      "Sample_total_volume": "Float64",
+      "First_Failure_Load_N": "Float64"
+    },
+    "duplicated_rows": 0,
+    "missing_by_column": {
+      "Case_n": 0,
+      "n_cells_Y": 0,
+      "Fiber_height": 0,
+      "Fiber_base": 0,
+      "Fiber_total_length": 0,
+      "Fiber_total_volume": 0,
+      "Pivot_height": 0,
+      "Pivot_radius": 0,
+      "Pivot_total_number": 0,
+      "Pivot_total_volume": 0,
+      "Sample_total_volume": 0,
+      "First_Failure_Load_N": 0
+    },
+    "constant_columns": [
+      "Pivot_radius"
+    ]
+  },
+  "excluded_records": [
+    {
+      "source_record": 2,
+      "reason": "missing_target"
+    }
+  ],
+  "unselected_columns": [
+    "Ultimate_Load",
+    "Maximum_Displacement",
+    "residual_Displacement_1cycle_10mm",
+    "residual_Displacement_2cycle_20mm",
+    "residual_Displacement_3cycle_30mm",
+    "residual_Displacement_4cycle_40mm",
+    "residual_Displacement_5cycle_50mm",
+    "residual_Displacement_6cycle_60mm"
+  ],
+  "rows_with_repeated_identifiers": 0,
+  "roles": {
+    "target": "First_Failure_Load_N",
+    "identifiers": [
+      "Case_n"
+    ],
+    "predictors": [
+      "n_cells_Y",
+      "Fiber_height",
+      "Fiber_base",
+      "Fiber_total_length",
+      "Fiber_total_volume",
+      "Pivot_height",
+      "Pivot_radius",
+      "Pivot_total_number",
+      "Pivot_total_volume",
+      "Sample_total_volume"
+    ],
+    "groups": []
+  },
+  "source_record_definition": "Ordinal de registro desde 1 en dataset_interim.csv; no predictor",
+  "pending_review": [
+    "Unidades, rangos físicos y definición operacional del primer evento de falla",
+    "Discrepancias entre tablas y fichas; correspondencia con el archivo original",
+    "Réplicas, grupos, dependencia y redundancia; protocolo de partición",
+    "Confirmar que todos los predictores estarán disponibles antes del ensayo"
+  ],
+  "report_version": 1,
+  "run_id": "20261003T015928287717Z",
+  "curated_at_utc": "2026-10-03T01:59:28.289427+00:00",
+  "input_file": "data/interim/20261003T015928118917Z/dataset_interim.csv",
+  "input_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
+  "ingestion_manifest": {
+    "manifest_version": 1,
+    "run_id": "20261003T015928118917Z",
+    "source_file": "data/raw/dati_campagna_venditti.m",
+    "sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+    "source_modified_at_utc": "2026-07-07T03:10:09.424381+00:00",
+    "ingested_at_utc": "2026-10-03T01:59:28.128495+00:00",
+    "rows": 27,
+    "columns": 20,
+    "column_names": [
+      "Case_n",
+      "n_cells_Y",
+      "Fiber_height",
+      "Fiber_base",
+      "Fiber_total_length",
+      "Fiber_total_volume",
+      "Pivot_height",
+      "Pivot_radius",
+      "Pivot_total_number",
+      "Pivot_total_volume",
+      "Sample_total_volume",
+      "First_Failure_Load_N",
+      "Ultimate_Load",
+      "Maximum_Displacement",
+      "residual_Displacement_1cycle_10mm",
+      "residual_Displacement_2cycle_20mm",
+      "residual_Displacement_3cycle_30mm",
+      "residual_Displacement_4cycle_40mm",
+      "residual_Displacement_5cycle_50mm",
+      "residual_Displacement_6cycle_60mm"
+    ],
+    "reader": {
+      "format": ".m",
+      "parser": "src.importar_matlab.load_matlab_samples",
+      "extraction": "tabla samples; asignaciones numéricas literales sin ejecutar MATLAB",
+      "missing_values": [
+        "NaN"
+      ],
+      "dtype": "numeric"
+    },
+    "interim_file": "data/interim/20261003T015928118917Z/dataset_interim.csv",
+    "interim_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
+    "execution": {
+      "python": "3.13.5",
+      "dependencies": {
+        "pandas": "2.3.0",
+        "numpy": "2.5.2",
+        "scipy": "1.16.0",
+        "scikit-learn": "1.7.0",
+        "openpyxl": "3.1.5",
+        "PyYAML": "6.0.2",
+        "joblib": "1.5.1"
+      },
+      "git": {
+        "commit": "b3669002616ba5f3569e9cbbe99439939ef2e254",
+        "dirty": true
+      }
+    }
+  },
+  "schema": {
+    "project": {
+      "task": "regression",
+      "target_concept": "carga_primera_falla",
+      "target_unit": "N"
+    },
+    "columns": {
+      "target": "First_Failure_Load_N",
+      "identifiers": [
+        "Case_n"
+      ],
+      "predictors": [
+        "n_cells_Y",
+        "Fiber_height",
+        "Fiber_base",
+        "Fiber_total_length",
+        "Fiber_total_volume",
+        "Pivot_height",
+        "Pivot_radius",
+        "Pivot_total_number",
+        "Pivot_total_volume",
+        "Sample_total_volume"
+      ],
+      "groups": []
+    },
+    "predictor_units": {
+      "n_cells_Y": "conteo",
+      "Fiber_height": "mm",
+      "Fiber_base": "mm",
+      "Fiber_total_length": "mm",
+      "Fiber_total_volume": "mm^3",
+      "Pivot_height": "mm",
+      "Pivot_radius": "mm",
+      "Pivot_total_number": "conteo",
+      "Pivot_total_volume": "mm^3",
+      "Sample_total_volume": "mm^3"
+    },
+    "candidate_concepts": [
+      "numero_celdas_direccion_y",
+      "altura_fibra",
+      "base_fibra",
+      "altura_pivote",
+      "radio_pivote",
+      "longitud_total_fibras",
+      "volumen_total_fibras",
+      "numero_total_pivotes",
+      "volumen_total_pivotes",
+      "volumen_total_especimen"
+    ],
+    "curation": {
+      "drop_exact_duplicates": false,
+      "missing_values": {}
+    },
+    "rules": {
+      "target_imputation": false,
+      "identifier_as_predictor": false,
+      "fit_statistical_preprocessing_before_split": false
+    }
+  },
+  "schema_sha256": "2dfaa653155b8cfbb250979417a70c990c73c7830019e6f6bb022f4d185019c7",
+  "output_file": "data/processed/20261003T015928287717Z/model_table.csv",
+  "output_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+  "execution": {
+    "python": "3.13.5",
+    "dependencies": {
+      "pandas": "2.3.0",
+      "numpy": "2.5.2",
+      "scipy": "1.16.0",
+      "scikit-learn": "1.7.0",
+      "openpyxl": "3.1.5",
+      "PyYAML": "6.0.2",
+      "joblib": "1.5.1"
+    },
+    "git": {
+      "commit": "b3669002616ba5f3569e9cbbe99439939ef2e254",
+      "dirty": true
+    }
+  }
+}

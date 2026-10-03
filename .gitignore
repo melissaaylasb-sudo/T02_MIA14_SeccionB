@@ -4,13 +4,18 @@ __pycache__/
 .venv/
 .ipynb_checkpoints/
 
-# Data: conservar estructura, no publicar datos por defecto
+# Data: publicar solo la versión preliminar autorizada y conservar ejecuciones fuera de Git
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/dati_campagna_venditti.m
 data/interim/*
 !data/interim/.gitkeep
+!data/interim/preliminary/
+!data/interim/preliminary/**
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/preliminary/
+!data/processed/preliminary/**
 
 # Logs
 logs/*

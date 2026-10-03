@@ -12,6 +12,7 @@ from sklearn.model_selection import ParameterGrid
 from sklearn.neural_network import MLPRegressor
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVR
 from sklearn.tree import DecisionTreeRegressor
 
 
@@ -20,6 +21,7 @@ def build_pipeline(name: str, seed: int) -> Pipeline:
     models = {
         "ridge": Ridge(),
         "elastic_net": ElasticNet(max_iter=20000, random_state=seed),
+        "support_vector": SVR(kernel="rbf"),
         "decision_tree": DecisionTreeRegressor(random_state=seed),
         "random_forest": RandomForestRegressor(n_estimators=200, random_state=seed, n_jobs=1),
         "gaussian_process": GaussianProcessRegressor(
