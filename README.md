@@ -4,12 +4,10 @@ Una estructura pantográfica es una red de barras delgadas o **fibras**, conecta
 
 En el ensayo se tira de la estructura y se registra la fuerza que resiste mientras se alarga. La tesis busca predecir **cuánta fuerza actúa cuando se rompe por primera vez una fibra o un pivote**: esa fuerza se llama **carga de primera falla**. Se utilizarán medidas geométricas y estructurales conocidas antes del ensayo. Es un problema de **regresión supervisada**: aprender de ejemplos con una fuerza medida para estimar un valor numérico en otros casos.
 
-**Estado: PRELIMINAR — Proyecto de Investigación II.** Hay código y notebooks para el ciclo de ML, desde ingesta hasta ajuste, validación e interpretación. Todavía no hay una tabla experimental consolidada en el repositorio, modelos entrenados ni resultados predictivos. La primera falla puede dejar parte de la red funcionando: no equivale necesariamente a la fuerza máxima alcanzada, la falla total ni el colapso global.
 
 ## Autora
 
 **Melissa Dessire Aylas Barranca**
-
 Maestría en Ciencias con mención en Inteligencia Artificial
 
 Universidad Nacional de Ingeniería (UNI)
