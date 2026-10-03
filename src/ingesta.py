@@ -110,7 +110,7 @@ def configure_logging(name: str = "pipeline") -> logging.Logger:
 def execution_context() -> dict:
     """Registra versiones y estado Git; ausencia de Git no bloquea la ingesta."""
     packages = {}
-    for package in ("pandas", "numpy", "scipy", "scikit-learn", "openpyxl", "PyYAML"):
+    for package in ("pandas", "numpy", "scipy", "scikit-learn", "openpyxl", "PyYAML", "joblib"):
         try:
             packages[package] = version(package)
         except PackageNotFoundError:

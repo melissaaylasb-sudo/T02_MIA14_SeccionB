@@ -1,0 +1,51 @@
+# Protocolo PRELIMINAR. No activa entrenamiento al abrir scripts o notebooks.
+data:
+  model_table: null  # data/processed/VERSION/model_table.csv
+
+protocol:
+  reviewed: false
+  rationale: null    # Justificar unidad independiente y dominio de generalización
+  strategy: null     # group_kfold si hay dependencia; kfold solo si se justifica independencia
+  group_columns: []  # Nombres reales en identifiers/groups del reporte de curaduría
+  outer_splits: null # Definir según registros y grupos reales, no por costumbre
+  inner_splits: null
+  seed: 42
+
+execution:
+  allow_training: false
+  n_jobs: 1
+
+# Rejillas de partida, no hiperparámetros optimizados ni protocolo definitivo.
+# Toda selección de familia e hiperparámetros ocurre en CV interna.
+models:
+  ridge:
+    enabled: true
+    grid:
+      model__alpha: [0.1, 1.0, 10.0, 100.0]
+  elastic_net:
+    enabled: true
+    grid:
+      model__alpha: [0.01, 0.1, 1.0]
+      model__l1_ratio: [0.1, 0.5, 0.9]
+  decision_tree:
+    enabled: true
+    grid:
+      model__max_depth: [2, 3, null]
+      model__min_samples_leaf: [2, 4]
+  random_forest:
+    enabled: true
+    grid:
+      model__max_depth: [2, 4, null]
+      model__min_samples_leaf: [2, 4]
+  gaussian_process:
+    enabled: true
+    grid:
+      model__alpha: [0.000001, 0.001, 0.1]
+  neural_network:
+    enabled: false  # Habilitar solo con justificación sobre datos y complejidad
+    grid:
+      model__alpha: [0.001, 0.1, 1.0]
+
+interpretation:
+  permutation_enabled: false # Activar tras definir el análisis; diagnóstica, no selección
+  permutation_repeats: 10

@@ -1,10 +1,10 @@
 # Análisis predictivo e interpretable de la respuesta mecánica de estructuras pantográficas
 
-Las estructuras pantográficas son metamateriales mecánicos reticulares: redes de fibras esbeltas interconectadas mediante pivotes. Su geometría permite mecanismos de deformación asociados con la flexión y extensión de las fibras y la deformación de los pivotes. Los especímenes de interés se fabrican en **poliamida (nylon) mediante sinterización láser selectiva (SLS)** y se estudian mediante ensayos de tracción.
+Una estructura pantográfica es una red de barras delgadas o **fibras**, conectadas mediante pequeñas uniones llamadas **pivotes**. Sus espacios repetidos forman **celdas**. Se estudia como metamaterial mecánico porque la forma y organización de esa red contribuyen a su respuesta, además del material con el que se fabrica. Los especímenes de interés están hechos de **poliamida o nylon**, un polímero, mediante impresión 3D por **sinterización láser selectiva (SLS)**: un láser une selectivamente polvo del material, capa por capa.
 
-Esta investigación plantea una **regresión supervisada**: utilizar características geométricas y estructurales disponibles antes del ensayo para predecir la **carga de primera falla**. Es la fuerza asociada con el primer evento localizado de rotura o pérdida de integridad registrado; no equivale necesariamente a la carga máxima, la falla total ni el colapso global. La estructura puede continuar soportando carga después de ese evento. El material es contexto experimental, no la variable a predecir.
+En el ensayo se tira de la estructura y se registra la fuerza que resiste mientras se alarga. La tesis busca predecir **cuánta fuerza actúa cuando se rompe por primera vez una fibra o un pivote**: esa fuerza se llama **carga de primera falla**. Se utilizarán medidas geométricas y estructurales conocidas antes del ensayo. Es un problema de **regresión supervisada**: aprender de ejemplos con una fuerza medida para estimar un valor numérico en otros casos.
 
-**Estado: PRELIMINAR**, correspondiente al curso Proyecto de Investigación II. El repositorio prepara la ingesta, la curaduría y la referencia de regresión; todavía no contiene un dataset experimental consolidado ni modelos entrenados o resultados predictivos.
+**Estado: PRELIMINAR — Proyecto de Investigación II.** Hay código y notebooks para el ciclo de ML, desde ingesta hasta ajuste, validación e interpretación. Todavía no hay una tabla experimental consolidada en el repositorio, modelos entrenados ni resultados predictivos. La primera falla puede dejar parte de la red funcionando: no equivale necesariamente a la fuerza máxima alcanzada, la falla total ni el colapso global.
 
 ## Autora
 
@@ -16,35 +16,73 @@ Universidad Nacional de Ingeniería (UNI)
 
 ## Resumen del proyecto
 
-| Elemento | Definición |
+| Elemento | Explicación para el lector |
 |---|---|
-| Objeto de estudio | Estructuras pantográficas de fibras y pivotes |
-| Material | Poliamida / nylon; contexto experimental |
-| Tipo de ensayo | Tracción |
-| Tipo de datos | Tabulares, cuantitativos, procedentes de ensayos físicos |
-| Problema de ML | Regresión supervisada |
-| Variable objetivo | Carga de primera falla |
-| Unidad de salida | Newton (N), previa comprobación de la fuente incorporada |
-| Finalidad predictiva | Estimar la primera falla de configuraciones dentro del dominio experimental representado y complementar el análisis mecánico |
+| Objeto de estudio | Una red de fibras delgadas conectadas por pivotes; se analiza cómo su geometría influye en el inicio de la rotura |
+| Material | Poliamida, también llamada nylon; constituye las fibras y uniones y se mantiene como contexto del experimento |
+| Fabricación | Impresión 3D SLS: construcción de la pieza por capas a partir de polvo de polímero unido mediante láser |
+| Tipo de ensayo | Tracción: una máquina sujeta la pieza y separa sus extremos para estirarla, registrando fuerza y desplazamiento |
+| Tipo de datos | Una tabla: cada fila representa un caso ensayado y las columnas contienen sus medidas y la fuerza de primera rotura |
+| Entradas del modelo | Geometría disponible antes del ensayo: celdas, dimensiones de fibras y pivotes y otros descriptores verificados |
+| Problema de ML | Regresión supervisada: aprender una relación entre esas medidas y una fuerza observada, y estimar la fuerza en casos no usados para aprender |
+| Variable objetivo | **Carga de primera falla: fuerza registrada cuando ocurre el primer daño localizado de rotura de una fibra o un pivote** |
+| Unidad de salida | Newton (N), unidad de fuerza; no es una masa en kilogramos ni un esfuerzo por unidad de área |
+| Finalidad predictiva | Estimar el inicio del daño de configuraciones comparables a las ensayadas y estudiar qué características ayudan a esa estimación |
+| Cómo se comprobará | Comparar predicciones con fuerzas reales de casos reservados para evaluación, frente a una referencia simple |
+
+## Qué fuerzas y aspectos físicos intervienen
+
+La **solicitación externa** de interés es la tracción: tirar de la pieza para alargarla. Dentro de la red, esa acción produce varios **mecanismos de deformación**. No deben confundirse las fuerzas aplicadas por la máquina con lo que sucede localmente en cada fibra o unión.
+
+| Concepto | Qué significa físicamente | Papel en esta tesis |
+|---|---|---|
+| Fuerza de tracción | Acción que estira el espécimen; la máquina registra la fuerza transmitida | La fuerza en el primer evento de rotura es la respuesta a predecir |
+| Desplazamiento | Cambio de posición impuesto a un extremo de la pieza, normalmente expresado en mm | Permite interpretar el ensayo; no es una entrada disponible antes de ensayar |
+| Extensión de fibras | Alargamiento de sus elementos delgados | Mecanismo que ayuda a relacionar geometría y respuesta |
+| Flexión de fibras | Curvatura de las fibras al deformarse la red | Explica por qué importan las dimensiones de su sección |
+| Rotación y torsión de pivotes | Cambio relativo de orientación entre fibras; puede torcer las uniones | Sustenta estudiar la geometría de los pivotes |
+| Cambio de ángulos de las celdas | Reorganización de la red; se describe también mediante deformación de corte o cizallamiento | Aspecto de la cinemática interna; no implica que se haya aplicado un ensayo externo independiente de corte |
+| Carga y descarga | Aumento y reducción programados del desplazamiento durante el ensayo | Ayudan a observar deformación residual y disipación de energía; una descarga no debe etiquetarse automáticamente como rotura |
+| Daño localizado y fallas sucesivas | Rotura de un elemento, seguida eventualmente de otras roturas | El target corresponde al **primer** evento; los posteriores no son nuevas muestras independientes |
+
+Los mecanismos de extensión, flexión y deformación de pivotes están estudiados en los trabajos de [Turco y colaboradores](https://doi.org/10.1007/s00161-018-0678-y). La documentación experimental de Venditti describe tracción con ciclos de carga y descarga. El alcance actual no incluye predecir compresión, impacto, fatiga ni respuesta sísmica a partir de estos ensayos.
+
+Para construir el target se deberá vincular el primer evento de rotura con su registro de fuerza. No basta con escoger el máximo de toda la curva fuerza–desplazamiento ni cualquier descenso de fuerza: puede haber máximos posteriores y descargas programadas. Los valores, unidades y criterio de identificación deberán quedar trazados a la fuente.
 
 ## Dataset
 
-El plan de tesis identifica como fuente prevista una campaña experimental de Enrico Venditti, proporcionada por Emilio Turco para uso académico, y un archivo MATLAB aún no incorporado al repositorio. La documentación de Venditti describe fabricación SLS, ensayos de tracción, registros fuerza–desplazamiento y eventos de rotura. Estos documentos sustentan el contexto; sus resultados no son resultados de esta tesis.
+**Procedencia e investigador.** Enrico Venditti es el autor de la investigación doctoral sobre daño y resiliencia de materiales y estructuras complejas desarrollada en la **Università degli Studi di Sassari (Universidad de Sassari), Italia**, en el Departamento de Arquitectura, Diseño y Urbanismo y el programa de Arquitectura y Ambiente. Su trayectoria y línea de investigación se describen en su [perfil institucional](https://www.architettura.uniss.it/en/department/people/phd-student/enrico-venditti). El [repositorio de Sassari](https://iris.uniss.it/handle/11388/379270) registra la tesis doctoral y su discusión el 18 de febrero de 2026; la copia consultada indica curso académico 2024/2025.
 
-Una **campaña experimental** es el conjunto organizado de especímenes y ensayos realizados bajo un protocolo definido. El **dataset** será la tabla derivada de esa campaña mediante extracción y curaduría documentadas. La campaña puede ampliarse durante la investigación.
+El plan de tesis de Melissa identifica como fuente prevista la campaña experimental de Venditti y un archivo MATLAB proporcionado por Emilio Turco para fines académicos. Ese archivo aún no está incorporado al repositorio. La relación de entrega procede del plan de tesis; no se presume una colaboración institucional formal ni se atribuyen a Melissa los ensayos o resultados originales.
+
+Una **campaña experimental** reúne especímenes y ensayos bajo un protocolo. El **dataset** será la tabla que se construya a partir de sus registros mediante extracción, revisión y decisiones documentadas. La campaña puede ampliarse durante la investigación.
 
 | Aspecto | Descripción |
 |---|---|
-| Fuente | Ensayos mecánicos experimentales y documentación de procedencia |
-| Material / fabricación / ensayo | Poliamida o nylon / SLS / tracción |
+| Fuente | Registros de ensayos físicos de estructuras pantográficas y documentación de procedencia |
+| Material, fabricación y ensayo | Poliamida/nylon, impresión SLS y tracción con seguimiento de fuerza y desplazamiento |
 | Unidad de análisis | Un caso asociado con un espécimen ensayado; verificar correspondencia, réplicas y configuraciones relacionadas |
-| Predictores | Geometría y descriptores estructurales verificados, disponibles antes del ensayo |
-| Target / tipo | Carga de primera falla / numérico continuo |
+| Predictores | Medidas de la geometría y estructura que se conocerían antes de ensayar una pieza nueva |
+| Target | Fuerza correspondiente al primer evento localizado de rotura, con unidad confirmada |
+| Tipo de target | Número continuo: se estima una fuerza, no una categoría |
 | Tamaño del conjunto | Se determinará a partir de la versión consolidada de los datos |
 | Versionado | La ingesta registra observaciones, columnas, fecha UTC, SHA-256 y opciones de lectura por ejecución |
 | Metadatos actuales | Se completarán automáticamente al ejecutar la ingesta sobre la versión consolidada |
 
-No se extraen automáticamente tablas de los PDF ni se ejecutan archivos MATLAB. El adaptador de la fuente original queda pendiente de disponer del archivo y verificar su estructura. El lector preliminar admite CSV y XLSX; cualquier exportación deberá conservar la relación con el original y documentar sus decisiones.
+El adaptador MATLAB queda pendiente de disponer del archivo y verificar su estructura. Actualmente se leen CSV y XLSX; cualquier exportación deberá conservar su relación con el original. Los PDF sirven para consulta: no se convierten automáticamente en un dataset ni se distribuyen con el proyecto.
+
+### Pertinencia del material y de la investigación para Perú
+
+La poliamida permite estudiar una arquitectura compleja producida por fabricación aditiva. Para el contexto peruano, el interés se apoya en capacidades y antecedentes de investigación locales: la PUCP registra un [trabajo sobre impresión de materiales de ingeniería, incluido nylon](https://tesis.pucp.edu.pe/items/211025b0-40d0-4eb5-b5e5-4fd5674eaf27), y su laboratorio [LIBRA](https://departamento-ingenieria.pucp.edu.pe/laboratorio/laboratorio-de-ingenieria-biomecanica-y-robotica-aplicada-libra/) estudia propiedades mecánicas de piezas impresas en 3D y desarrolla investigación en biomecánica y robótica.
+
+| Nivel de pertinencia | Qué puede sostenerse |
+|---|---|
+| Material | El nylon es objeto de trabajo académico sobre impresión 3D en Perú; su estudio no está limitado al país de origen de los ensayos |
+| Arquitectura | Como posibilidad de investigación, redes deformables podrían estudiarse para componentes ligeros y flexibles; esta tesis no demuestra una aplicación específica |
+| Método | La ingesta, curaduría, regresión y validación pueden reutilizarse para futuras campañas locales de estructuras comparables |
+| Transferencia experimental | Fabricar y ensayar especímenes en Perú permitiría comprobar si la respuesta y las predicciones se mantienen bajo las condiciones locales |
+
+**La pertinencia local es una justificación de investigación, no una validación industrial.** El antecedente peruano citado sobre nylon se refiere a impresión por filamento, que no equivale a SLS. Para transferir resultados se deberán verificar grado de poliamida, proceso y orientación de fabricación, geometría, acondicionamiento del material y protocolo de ensayo. La tesis no presupone disponibilidad local de una máquina SLS específica ni certifica un producto médico o estructural.
 
 ## Variables del estudio
 
@@ -69,21 +107,35 @@ La carga última, los desplazamientos y las energías medidos durante el ensayo 
 ```text
 T02_MIA14_SeccionB/
 ├── data/
-│   ├── raw/                     # originales inmutables
-│   ├── interim/                 # ingestas versionadas y manifiestos
-│   └── processed/               # tablas analíticas y reportes versionados
+│   ├── raw/                         # originales inmutables
+│   ├── interim/                     # ingestas versionadas y manifiestos
+│   └── processed/                   # tablas analíticas y reportes de curaduría
 ├── notebooks/
-│   ├── EDA_basico.ipynb
-│   └── Baseline_basico.ipynb
+│   ├── 01_Ingesta_y_curaduria.ipynb
+│   ├── EDA_basico.ipynb              # etapa 2; nombre existente conservado
+│   ├── 03_Particiones_y_preprocesamiento.ipynb
+│   ├── Baseline_basico.ipynb         # etapa 4; nombre existente conservado
+│   ├── 05_Ajuste_y_validacion.ipynb
+│   └── 06_Evaluacion_e_interpretabilidad.ipynb
 ├── src/
 │   ├── __init__.py
 │   ├── ingesta.py
-│   ├── preprocesamiento.py
-│   └── modelo_baseline.py
-├── logs/                        # registros locales de ejecución
-├── slides/                      # reservado para presentaciones
+│   ├── preprocesamiento.py          # curaduría determinística
+│   ├── modelo_baseline.py
+│   ├── modelos.py                   # pipelines y familias candidatas
+│   ├── particiones.py               # folds, grupos y controles de viabilidad
+│   ├── ajuste.py                    # búsqueda interna de hiperparámetros
+│   ├── validacion.py                # evaluación externa y predicciones OOF
+│   ├── interpretabilidad.py         # coeficientes e importancia por permutación
+│   └── experimento.py               # inspección y ejecución explícita
 ├── config/
-│   └── data_schema.yml
+│   ├── data_schema.yml              # columnas, roles, unidades y curaduría
+│   └── model_config.yml             # protocolo, familias, rejillas y ejecución
+├── tests/
+│   └── test_workflow.py             # contratos y aislamiento, sin entrenar
+├── results/                         # experimentos locales versionados; vacío
+├── logs/                            # registros locales de ejecución
+├── slides/                          # reservado para presentaciones
 ├── README.md
 ├── requirements.txt
 ├── pyproject.toml
@@ -95,22 +147,47 @@ T02_MIA14_SeccionB/
 |---|---|
 | `data/raw/` | Datos originales: nunca editar ni sobrescribir; incorporar ampliaciones como archivos nuevos |
 | `data/interim/` | Copias tabulares por ingesta; lectura y trazabilidad sin transformaciones aprendidas |
-| `data/processed/` | Tabla analítica con roles explícitos y curaduría determinística; entrada al futuro proceso de modelamiento |
+| `data/processed/` | Tabla analítica con roles explícitos y curaduría determinística; conserva valores faltantes de predictores |
+| `results/` | Futuras predicciones, métricas, búsquedas, particiones y modelos; cada experimento tiene una versión propia |
 
-La imputación estadística, el escalamiento y la selección que aprende parámetros **no se aplican globalmente en `processed`**. Se ajustarán dentro de cada conjunto de entrenamiento. Los datos y las salidas de ejecución están excluidos de Git por defecto.
+La imputación, eliminación estadística de constantes y escalamiento ocurren en los pipelines de `modelos.py`, dentro de cada entrenamiento. No se aplican globalmente a `processed`. Datos, referencias privadas y artefactos de ejecución están excluidos de Git.
+
+Los notebooks explican las decisiones y llaman a los módulos; la lógica reutilizable reside en `src/`. Esta separación evita que la tesis dependa de celdas ejecutadas en un orden desconocido.
 
 ## Flujo reproducible
 
-| Etapa | Entrada | Proceso | Salida / estado |
+```mermaid
+flowchart TD
+    A[Fuente experimental original] --> B[Ingesta: hash y manifiesto]
+    B --> C[Curaduría: roles, unidades y trazabilidad]
+    C --> D[EDA y definición del protocolo]
+    D --> E[Partición externa por casos o grupos]
+    E --> F[Entrenamiento externo]
+    E --> G[Evaluación externa reservada]
+    F --> H[CV interna: preprocesamiento, familia e hiperparámetros]
+    H --> I[Reajuste en entrenamiento externo]
+    I --> J[Predicciones sobre evaluación externa]
+    G --> J
+    F --> K[Baseline de mediana del entrenamiento]
+    K --> L[Comparación fuera de muestra]
+    J --> L
+    L --> M[Errores, interpretabilidad y artefactos]
+```
+
+| Etapa | Entrada | Proceso | Salida y estado |
 |---|---|---|---|
-| Ingesta | Original en `raw` | Lectura, hash, dimensiones y esquema observado | Versión en `interim`; implementada |
-| Curaduría | `interim` + esquema revisado | Roles, tipos, faltantes y duplicados; revisión física complementaria | Versión en `processed`; controles preliminares implementados |
-| EDA | Tabla curada | Descripción, faltantes y distribuciones | Notebook preparado, sin resultados |
-| Partición | Tabla y grupos revisados | Train/validation/test o validación cruzada | Pendiente de protocolo |
-| Preprocesamiento | Entrenamiento de cada partición | Ajustar imputación, escalamiento y selección | Pendiente; se integrará en el pipeline de ML |
-| Baseline | Entrenamiento | Mediana del target | Constructor implementado; sin ajuste |
-| Modelamiento | Entrenamiento | Familias candidatas y ajuste interno | Pendiente |
-| Evaluación | Observaciones fuera del ajuste | MAE, RMSE, R² y MedAE | Función de métricas disponible; sin evaluación ejecutada |
+| Ingesta | Original en `raw` | Lectura, hashes, dimensiones y esquema observado | `interim`; implementada, pendiente de datos reales |
+| Curaduría | Ingesta + esquema revisado | Trazabilidad, tipos, faltantes, duplicados y revisión física | `processed`; controles preliminares implementados |
+| EDA | Tabla curada | Distribuciones, faltantes, correlaciones y revisión de redundancia | Notebook preparado, sin resultados |
+| Partición | Tabla, grupos y protocolo | CV externa e interna sin solapamiento | Índices y ordinales de origen; implementación preparada |
+| Preprocesamiento | Entrenamiento de cada fold | Medianas, constantes y escalamiento según modelo | Transformadores ajustados dentro del pipeline; sin ejecutar |
+| Baseline | Target del entrenamiento externo | Mediana | Referencia en las mismas particiones; sin ajustar |
+| Ajuste o tuneo | Solo entrenamiento externo | `GridSearchCV` con MAE interno; selección de familia e hiperparámetros | Búsquedas y mejores configuraciones internas; sin ejecutar |
+| Validación | Fold externo excluido del ajuste | Predicciones, errores y comparación contra baseline | Métricas por fold y OOF; sin resultados |
+| Interpretación | Pipeline ajustado y observaciones externas | Coeficientes y permutación opcional | Diagnósticos previstos por fold; sin ejecutar |
+| Reajuste final | Toda la tabla, tras evaluación | Nueva selección interna y ajuste para reutilización | Modelo opcional; no produce una evaluación independiente nueva |
+
+**Fold** significa partición de validación cruzada; **OOF** significa predicciones obtenidas cuando cada observación estuvo fuera del entrenamiento. Ninguna de las etapas de entrenamiento se ha ejecutado en este avance.
 
 ## Curaduría y control de calidad de datos experimentales
 
@@ -147,16 +224,31 @@ Las réplicas y registros relacionados deben permanecer en el mismo grupo de par
 
 ## Baseline y modelos candidatos
 
-La referencia inicial es `DummyRegressor(strategy="median")`, cuya mediana se calculará **solo con el target de entrenamiento**. Debe compararse con todos los modelos usando las mismas particiones fuera de muestra.
+El **baseline** es una referencia mínima: predecir para todos los casos externos la mediana de la carga observada **solo en entrenamiento**. Si un método complejo no mejora esa referencia fuera de muestra, su complejidad no queda justificada por el error predictivo.
 
-| Familia | Condición de estudio |
-|---|---|
-| Regresiones regularizadas | Evaluar representaciones parsimoniosas y colinealidad |
-| Árboles y ensambles de regresión | Controlar complejidad y sobreajuste |
-| Procesos gaussianos | Evaluar relaciones no lineales e incertidumbre |
-| Redes neuronales de regresión | Familia candidata condicionada a la cantidad y representación final de los datos |
+| Familia | Qué representa | Estado de la implementación |
+|---|---|---|
+| Ridge | Relación lineal con penalización para controlar coeficientes | Pipeline y rejilla preliminar |
+| Elastic Net | Relación lineal con regularización combinada; puede reducir contribuciones redundantes | Pipeline y rejilla preliminar |
+| Árbol de regresión | Reglas sucesivas que dividen el espacio geométrico | Pipeline con control de profundidad y tamaño de hojas |
+| Bosque aleatorio | Promedio de varios árboles de regresión | Pipeline y rejilla preliminar |
+| Proceso gaussiano | Relación no lineal definida mediante un kernel de similitud | Pipeline y búsqueda preliminar; intervalos calibrados pendientes |
+| Red neuronal de regresión | Combinación no lineal de entradas mediante capas | Constructor disponible; deshabilitado por defecto hasta justificar su complejidad |
 
-No existe modelo ganador ni se presupone que deep learning será superior. La validación cruzada anidada o un esquema equivalente deberá separar selección y evaluación, con agrupación cuando corresponda. El número de particiones queda pendiente.
+Los rangos en `config/model_config.yml` son puntos de partida revisables, no valores óptimos. Cada pipeline incluye imputación de medianas, eliminación de constantes y escalamiento cuando corresponde. Los árboles conservan la escala original. Si una columna está completamente ausente en algún entrenamiento, se detiene el protocolo para revisar esa representación.
+
+No hay modelo ganador ni se presupone que una red neuronal será superior. Agregar familias o ampliar rejillas después de ver los errores externos modifica el experimento y exige una nueva evaluación.
+
+### Cómo se separan ajuste y validación
+
+1. Reservar un fold externo, manteniendo juntos los registros dependientes.
+2. Dividir únicamente el entrenamiento externo en folds internos.
+3. Ajustar cada pipeline y sus hiperparámetros en esos folds; seleccionar por MAE interno.
+4. Elegir la familia por ese criterio interno y reajustarla en todo el entrenamiento externo.
+5. Predecir el fold externo una sola vez para evaluación y comparar contra la mediana del mismo entrenamiento.
+6. Repetir y conservar todas las predicciones externas, configuraciones y advertencias.
+
+La salida `selected` evalúa este procedimiento completo. Los errores externos por familia se conservan para diagnóstico; elegir una familia utilizando esos errores y reportar el mismo error como evaluación final produciría una estimación optimista. Este diseño sigue la separación descrita en la [documentación de validación cruzada anidada de scikit-learn](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
 
 ## Evaluación
 
@@ -171,31 +263,39 @@ La comparación contra el baseline será siempre **fuera de muestra**, considera
 
 ## Interpretabilidad
 
-La interpretabilidad intrínseca de modelos lineales permite estudiar coeficientes y su estabilidad, teniendo en cuenta escalas y colinealidad. Para otros modelos se considerarán explicaciones post hoc: importancia por permutación, SHAP y PDP/ALE cuando sean compatibles con la dependencia entre predictores y el dominio experimental.
+| Enfoque | Qué permite examinar | Alcance actual |
+|---|---|---|
+| Intrínseco: coeficientes lineales | Dirección y magnitud de asociaciones, considerando escalas y colinealidad | Extracción por fold para el modelo seleccionado cuando es lineal |
+| Post hoc: permutación | Cuánto aumenta el MAE al perturbar una entrada externa | Disponible de forma opcional; deshabilitada por defecto |
+| SHAP | Contribuciones a predicciones bajo un método de referencia | Extensión pendiente, condicionada al modelo y a la dependencia entre entradas |
+| PDP/ALE | Forma de la relación estimada entre una entrada y la respuesta | Extensión pendiente; requiere comprobar combinaciones físicamente plausibles |
 
-**Importancia predictiva no implica causalidad física.** Las explicaciones se contrastarán con conocimiento mecánico y su estabilidad entre particiones. No todos los modelos son interpretables por construcción.
+No todos los modelos son interpretables por construcción. La importancia por permutación puede alterarse por predictores correlacionados o crear combinaciones incompatibles con relaciones geométricas. Se revisarán estabilidad entre folds y coherencia con extensión/flexión de fibras y deformación de pivotes; no se utilizarán estas explicaciones externas para retunear el mismo experimento.
+
+**Importancia predictiva no implica causalidad física.** Las explicaciones deben contrastarse con conocimiento mecánico y sus limitaciones. Los coeficientes guardados corresponden a entradas estandarizadas en su entrenamiento; no se presentan como leyes constitutivas ni parámetros materiales identificados.
 
 ## Reproducibilidad
 
-| Artefacto | Qué se registra |
+| Artefacto | Registro previsto por el código |
 |---|---|
-| Dataset | Fecha UTC, dimensiones, hash de fuente y salidas, versión de ingesta |
-| Código | Commit Git y estado de cambios locales en manifiestos; conservar el commit definitivo al reportar resultados |
-| Entorno | Python y versiones instaladas de dependencias del pipeline; rangos de instalación en `requirements.txt` |
-| Esquema | Contenido y hash del YAML en cada reporte de curaduría |
-| Split | Índices y grupos: pendiente de implementación |
-| Preprocesamiento | Parámetros ajustados por entrenamiento: pendiente |
-| Modelo | Clase e hiperparámetros: pendiente de ejecución |
-| Aleatoriedad | Seeds y configuración de particiones: pendiente |
-| Predicciones | Fuera de muestra, vinculadas a identificadores: pendiente |
-| Métricas | MAE, RMSE, R² y MedAE: sin resultados disponibles |
-| Logs | `pipeline.log` y `data_quality.log`, con advertencias y errores |
+| Dataset | Fecha UTC, dimensiones y hash de fuente, tabla intermedia y tabla curada |
+| Código y entorno | Commit Git, cambios locales, Python y dependencias instaladas |
+| Curaduría | Contenido/hash del esquema, columnas, ordinales y exclusiones |
+| Protocolo | Configuración completa, justificación, seed, estrategia y rejillas |
+| Particiones | Índices externos/internos y vínculo con ordinales de origen |
+| Preprocesamiento y modelo | Pipeline ajustado de cada familia/fold, con parámetros aprendidos, en formato joblib |
+| Búsqueda interna | Combinaciones evaluadas, puntuaciones internas y configuración seleccionada |
+| Predicciones y errores | OOF por caso, procedimiento, fold y familia; residuos observada − predicha |
+| Métricas | MAE, RMSE, R² y MedAE por fold y agregadas; comparación pareada con baseline |
+| Interpretación | Coeficientes y, si se activa, importancia por permutación por fold |
+| Integridad | Manifiesto de experimento y hashes de sus artefactos |
+| Logs | `pipeline.log`, `data_quality.log`, `modeling.log`; advertencias y fallos |
 
-Cada ingesta y curaduría crea un directorio nuevo; las ejecuciones anteriores se conservan. Registrar versiones no sustituye congelar el entorno y el código antes de comparar experimentos. No se garantiza reproducibilidad exacta con cambios locales sin conservar.
+Las versiones anteriores no se sobrescriben. Una ejecución interrumpida conserva salidas parciales con `failure.json` y no se considera completa sin `experiment_manifest.json`. El modelo final opcional se etiqueta como reajuste sobre todos los datos. Guardar versiones no sustituye congelar el entorno y conservar el commit definitivo antes de reportar resultados.
 
 ## Cómo ejecutar el pipeline
 
-Desde la raíz del repositorio, con Python 3.11 o superior:
+Desde la raíz, con Python 3.11 o superior:
 
 ```bash
 python -m venv .venv
@@ -207,35 +307,69 @@ Activar con `.venv\Scripts\Activate.ps1` en PowerShell, `.venv\Scripts\activate.
 python -m pip install -r requirements.txt
 ```
 
-1. Colocar una versión original en `data/raw/`. Se admiten CSV UTF-8 separado por comas y XLSX (primera hoja por defecto, seleccionable con `--sheet NOMBRE`). Los datos numéricos deben usar punto decimal; no se interpretan automáticamente otras convenciones.
-2. Ejecutar la ingesta sustituyendo el nombre del archivo:
+### Datos y curaduría
+
+1. Incorporar un original autorizado en `data/raw/`; CSV UTF-8 separado por comas o XLSX. Para una hoja específica usar `--sheet NOMBRE`. Los números deben usar punto decimal. Se preserva texto como `NA`; Excel no permite recuperar ceros iniciales guardados únicamente como formato visual.
+2. Sustituir el nombre del archivo y ejecutar:
 
    ```bash
    python src/ingesta.py --input data/raw/NOMBRE_ARCHIVO.csv
    ```
 
-   La salida indica `data/interim/VERSION/dataset_interim.csv` y `dataset_manifest.json`. Registra filas, columnas, hash y fecha sin modificar el original. La lectura conserva texto e identificadores; no interpreta `NA` como faltante automáticamente. En XLSX no recupera ceros iniciales guardados solo como formato visual.
-
-3. Completar `config/data_schema.yml` con los nombres reales de target, identificadores, predictores, grupos si existen y unidades verificadas. Luego sustituir `VERSION` por el directorio informado:
+3. Completar `config/data_schema.yml` con columnas reales, roles, unidades y marcadores de ausencia. Sustituir `VERSION` por la ingesta informada:
 
    ```bash
    python src/preprocesamiento.py --input data/interim/VERSION/dataset_interim.csv
    ```
 
-   Genera una versión en `data/processed/` con `model_table.csv` y `data_quality_report.json`. El esquema sin completar, un manifiesto inconsistente o valores numéricos inválidos detienen la etapa con un mensaje. No imputa ni escala.
+4. Revisar el reporte y seguir los notebooks en este orden:
 
-4. Abrir `notebooks/EDA_basico.ipynb`, indicar la ruta de la tabla generada y revisar su calidad. El notebook permanece sin ejecutar mientras no haya datos reales.
-5. Definir y revisar el protocolo de partición antes de ajustar cualquier baseline. `notebooks/Baseline_basico.ipynb` solo construye el estimador. El comando existente:
+| Orden | Notebook | Decisión o producto |
+|---|---|---|
+| 1 | `01_Ingesta_y_curaduria.ipynb` | Procedencia, target, unidades, exclusiones y tabla curada |
+| 2 | `EDA_basico.ipynb` | Distribuciones, faltantes, relaciones y anomalías |
+| 3 | `03_Particiones_y_preprocesamiento.ipynb` | Justificación de grupos, folds y transformaciones internas |
+| 4 | `Baseline_basico.ipynb` | Referencia de mediana sobre los mismos folds |
+| 5 | `05_Ajuste_y_validacion.ipynb` | Búsquedas internas, selección y evaluación externa |
+| 6 | `06_Evaluacion_e_interpretabilidad.ipynb` | Métricas reales, residuos, importancia y limitaciones |
 
-   ```bash
-   python src/modelo_baseline.py
-   ```
+### Inspección sin entrenamiento
 
-   muestra un aviso de preparación; **no entrena ni evalúa**. El flujo de entrenamiento y partición aún no está implementado.
+El comando siguiente existe y puede ejecutarse ahora. Con la configuración distribuida informa que faltan datos y protocolo; no produce métricas:
+
+```bash
+python -m src.experimento --check
+```
+
+Las pruebas del avance validan contratos, construcción sin ajuste, separación de grupos e índices de CV; no entrenan estimadores:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+### Ejecución futura con datos y protocolo revisados
+
+En `config/model_config.yml`, indicar `data.model_table`, justificar la estrategia, definir folds/grupos, revisar rejillas y marcar `protocol.reviewed: true`. El entrenamiento permanece desactivado mientras `execution.allow_training` sea `false`.
+
+Solo después de completar esa revisión y habilitar explícitamente el entrenamiento:
+
+```bash
+python -m src.experimento --run
+```
+
+Para añadir un reajuste final después de la evaluación, sin atribuirle una nueva métrica independiente:
+
+```bash
+python -m src.experimento --run --fit-final
+```
+
+Estos comandos de entrenamiento están implementados, pero **no se han ejecutado**. El comando histórico `python src/modelo_baseline.py` solo muestra un aviso; el baseline se integra en la validación común para asegurar comparabilidad.
 
 ## Resultados esperados del avance
 
-Están disponibles la ingesta con hashes y manifiesto, la curaduría preliminar condicionada al esquema, logs separados, notebooks sin resultados y funciones de baseline y métricas. Las tablas y reportes experimentales se generarán al incorporar datos reales. No hay métricas obtenidas, predicciones ni conclusiones sobre capacidad predictiva.
+El avance entrega una estructura de investigación completa a nivel de flujo: documentación física, procedencia, curaduría, seis notebooks y módulos para particiones, pipelines, ajuste, validación e interpretación. Los contratos e índices se verifican con pruebas de software que no representan datos experimentales.
+
+Permanecen pendientes la fuente original, la conciliación científica, el diccionario definitivo, la elección justificada de grupos/folds y la ejecución real. Las extensiones de incertidumbre calibrada, SHAP/PDP/ALE y análisis estadístico de estabilidad requieren desarrollo y validación adicionales. No hay valores de desempeño, predicciones, modelos ganadores ni conclusiones experimentales en este avance.
 
 ## Roadmap
 
@@ -253,9 +387,13 @@ Están disponibles la ingesta con hashes y manifiesto, la curaduría preliminar 
 Referencias verificadas en los documentos consultados; los documentos fuente no se distribuyen con el proyecto.
 
 - Aylas Barranca, M. D. (2026). *Análisis predictivo e interpretable de la respuesta mecánica de estructuras pantográficas mediante aprendizaje automático supervisado aplicado a datos experimentales*. Plan de tesis, Universidad Nacional de Ingeniería.
-- Venditti, E. (curso académico 2024/2025). *Analisi strutturale per lo studio del danneggiamento in materiali e strutture complesse*. Tesis doctoral, Università degli Studi di Sassari. Contexto experimental, tabla geométrica y fichas de ensayo del apéndice A.
+- Venditti, E. (2026; copia consultada: curso académico 2024/2025). *Analisi strutturale per lo studio del danneggiamento in materiali e strutture complesse*. Tesis doctoral, Università degli Studi di Sassari. [Registro institucional](https://iris.uniss.it/handle/11388/379270).
 - Turco, E., Golaszewski, M., Giorgio, I. y Placidi, L. (2017). *Can a Hencky-Type Model Predict the Mechanical Behaviour of Pantographic Lattices?* En *Mathematical Modelling in Solid Mechanics*, pp. 285–311. [DOI: 10.1007/978-981-10-3764-1_18](https://doi.org/10.1007/978-981-10-3764-1_18).
 - Turco, E., Misra, A., Sarikaya, R. y Lekszycki, T. (2019; publicación en línea en 2018). *Quantitative analysis of deformation mechanisms in pantographic substructures: experiments and modeling*. *Continuum Mechanics and Thermodynamics*, 31, 209–223. [DOI: 10.1007/s00161-018-0678-y](https://doi.org/10.1007/s00161-018-0678-y).
+
+- Toyama Higa, P. M. (2022). *Diseño mecatrónico de un sistema de calefacción cerrado y deshumedecedor de materiales de ingeniería para impresoras 3D de escritorio de código libre*. PUCP. [Repositorio institucional](https://tesis.pucp.edu.pe/items/211025b0-40d0-4eb5-b5e5-4fd5674eaf27).
+- PUCP. *Laboratorio de Ingeniería Biomecánica y Robótica Aplicada (LIBRA)*. [Descripción institucional](https://departamento-ingenieria.pucp.edu.pe/laboratorio/laboratorio-de-ingenieria-biomecanica-y-robotica-aplicada-libra/).
+- Scikit-learn. *Nested versus non-nested cross-validation*. [Documentación oficial](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
 
 ## Licencia
 

@@ -29,3 +29,8 @@ references_private/
 references_private/**
 *.pdf
 *.[pP][dD][fF]
+
+# Artefactos de experimentos: pueden incluir datos experimentales privados
+results/*
+!results/.gitkeep
+*.joblib
