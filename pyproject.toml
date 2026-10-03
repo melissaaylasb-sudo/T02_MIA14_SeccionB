@@ -1,0 +1,9 @@
+[project]
+name = "pantographic-first-failure"
+version = "0.1.0"
+description = "Pipeline reproducible para datos experimentales de estructuras pantograficas"
+requires-python = ">=3.11"
+authors = [{name = "Melissa Dessire Aylas Barranca"}]
+
+[tool.ruff]
+line-length = 100

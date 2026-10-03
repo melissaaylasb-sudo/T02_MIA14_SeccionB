@@ -1,0 +1,24 @@
+project:
+  task: regression
+  target_concept: carga_primera_falla
+  target_unit: N
+
+roles:
+  identifier:
+    - identificador_caso
+  candidate_predictors:
+    - numero_celdas
+    - altura_fibra
+    - base_fibra
+    - altura_pivote
+    - radio_pivote
+    - longitud_total_fibras
+    - volumen_total_fibras
+    - numero_total_pivotes
+    - volumen_total_pivotes
+    - volumen_total_especimen
+
+rules:
+  target_imputation: false
+  identifier_as_predictor: false
+  fit_statistical_preprocessing_before_split: false
