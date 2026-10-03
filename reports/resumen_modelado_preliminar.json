@@ -1,0 +1,98 @@
+{
+  "status": "preliminary_completed",
+  "run_id": "20261003T021921587329Z",
+  "configuration_sha256": "332211a7851106c23f6ad4aa55236f84099168aff708daa12b200d1735973eff",
+  "dataset_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+  "quality_report_sha256": "86ba074a872a95e75ca05cb8b96425bd05d8936998f5a390ce7182260080188e",
+  "completed_at_utc": "2026-10-03T02:19:47.251299+00:00",
+  "protocol": {
+    "reviewed": true,
+    "rationale": "Evaluación exploratoria de casos de la misma campaña. La tabla curada contiene identificadores únicos y no declara lotes o réplicas. Se asume provisionalmente independencia entre registros; esa condición no se deduce de un identificador único. KFold barajado permite evaluar cada caso una vez y conserva suficientes observaciones en las particiones internas. La selección por MAE usa solo CV interna. No estima transferencia a otra campaña ni a familias geométricas inéditas; si se confirman dependencias debe repetirse con partición agrupada.",
+    "strategy": "kfold",
+    "group_columns": [],
+    "outer_splits": 5,
+    "inner_splits": 3,
+    "seed": 42
+  },
+  "pooled_oof_metrics": {
+    "baseline": {
+      "mae": 51.55846153846154,
+      "rmse": 66.8027806163555,
+      "medae": 38.77000000000001,
+      "r2": -0.2929955123224477
+    },
+    "ridge": {
+      "mae": 12.036331929557697,
+      "rmse": 15.547030597283921,
+      "medae": 9.111531619065651,
+      "r2": 0.9299669817089354
+    },
+    "elastic_net": {
+      "mae": 11.489767907874779,
+      "rmse": 15.048257807082804,
+      "medae": 6.945853424721918,
+      "r2": 0.9343884370425098
+    },
+    "support_vector": {
+      "mae": 16.183060708785394,
+      "rmse": 20.975192792636594,
+      "medae": 11.356250531916324,
+      "r2": 0.8725265147194101
+    },
+    "decision_tree": {
+      "mae": 11.419948717948724,
+      "rmse": 15.279842432848799,
+      "medae": 8.607500000000016,
+      "r2": 0.9323534442809982
+    },
+    "random_forest": {
+      "mae": 15.729609634622866,
+      "rmse": 20.51710779722918,
+      "medae": 12.054296921897603,
+      "r2": 0.8780335964211723
+    },
+    "gaussian_process": {
+      "mae": 18.50032955321632,
+      "rmse": 21.853520400417302,
+      "medae": 16.53954815406808,
+      "r2": 0.8616271923650378
+    },
+    "selected": {
+      "mae": 9.670800754902674,
+      "rmse": 12.98192278347122,
+      "medae": 7.0474594239620245,
+      "r2": 0.9511700836039854
+    }
+  },
+  "selection_by_fold": [
+    {
+      "fold": 1,
+      "family": "elastic_net"
+    },
+    {
+      "fold": 2,
+      "family": "decision_tree"
+    },
+    {
+      "fold": 3,
+      "family": "decision_tree"
+    },
+    {
+      "fold": 4,
+      "family": "decision_tree"
+    },
+    {
+      "fold": 5,
+      "family": "elastic_net"
+    }
+  ],
+  "refitted_family": "decision_tree",
+  "refit_note": "Reajuste con todos los datos; no tiene una nueva evaluación independiente",
+  "interpretation": [
+    "selected evalúa selección de familia e hiperparámetros dentro de CV interna",
+    "Las métricas agregadas ponderan observaciones; los folds comparten entrenamientos",
+    "La dispersión entre folds no es un intervalo de confianza de muestras independientes",
+    "Las métricas por familia son diagnósticas; elegir con ellas requiere nueva evaluación",
+    "Importancia predictiva no implica causalidad física"
+  ]
+}

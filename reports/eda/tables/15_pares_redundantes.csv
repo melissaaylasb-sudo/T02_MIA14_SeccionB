@@ -1,0 +1,14 @@
+variable_A,variable_B,rho
+n_cells_Y,Fiber_total_length,1.0
+n_cells_Y,Fiber_total_volume,-0.9488474727161108
+n_cells_Y,Pivot_total_number,1.0
+n_cells_Y,Pivot_total_volume,0.9488474727161108
+n_cells_Y,Sample_total_volume,0.9042988876028176
+Fiber_total_length,Fiber_total_volume,-0.9488474727161108
+Fiber_total_length,Pivot_total_number,1.0
+Fiber_total_length,Pivot_total_volume,0.9488474727161108
+Fiber_total_length,Sample_total_volume,0.9042988876028176
+Fiber_total_volume,Pivot_total_number,-0.9488474727161108
+Fiber_total_volume,Pivot_total_volume,-1.0
+Pivot_total_number,Pivot_total_volume,0.9488474727161108
+Pivot_total_number,Sample_total_volume,0.9042988876028176

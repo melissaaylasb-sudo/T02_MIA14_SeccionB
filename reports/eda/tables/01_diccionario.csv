@@ -1,0 +1,17 @@
+variable,interpretación,unidad,disponibilidad,rol
+n_cells_Y,Celdas en Y,conteo,antes del ensayo,candidata a predictor
+Fiber_height,Altura de fibra,mm,antes del ensayo,candidata a predictor
+Fiber_base,Base de fibra,mm,antes del ensayo,candidata a predictor
+Fiber_total_length,Longitud total de fibras,mm,antes del ensayo,candidata a predictor
+Fiber_total_volume,Volumen de fibras,mm^3,antes del ensayo,candidata a predictor
+Pivot_height,Altura de pivote,mm,antes del ensayo,candidata a predictor
+Pivot_radius,Radio de pivote,mm,antes del ensayo,candidata a predictor
+Pivot_total_number,Número de pivotes,conteo,antes del ensayo,candidata a predictor
+Pivot_total_volume,Volumen de pivotes,mm^3,antes del ensayo,candidata a predictor
+Sample_total_volume,Volumen del espécimen,mm^3,antes del ensayo,candidata a predictor
+First_Failure_Load_N,Fuerza al primer evento de falla,N,durante el ensayo,objetivo
+Ultimate_Load,Carga posterior según denominación fuente,N,posensayo,respuesta secundaria
+Maximum_Displacement,Desplazamiento máximo,mm,posensayo,respuesta secundaria
+residual_Displacement_*,Desplazamiento residual por ciclo,mm,posensayo,trayectoria secundaria
+Energy_Dissipated,Energía disipada por ciclo,unidad no especificada,posensayo,respuesta secundaria
+Energy_Fracture,Energía por evento de fractura,unidad no especificada,posensayo,respuesta secundaria

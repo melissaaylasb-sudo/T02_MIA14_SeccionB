@@ -1,9 +1,9 @@
 """
 Baseline preliminar para regresión.
 
-Este archivo deja implementada la referencia metodológica sin ejecutar
-entrenamiento automáticamente. El protocolo definitivo de partición deberá
-definirse después de verificar tamaño, réplicas y estructura del dataset.
+Implementa la referencia usada en la corrida preliminar de validación anidada.
+Importar este módulo no ajusta estimadores; el experimento aprende una mediana
+por entrenamiento externo con el protocolo de config/model_config.yml.
 """
 
 from __future__ import annotations
@@ -53,6 +53,6 @@ def evaluate_regression(y_true, y_pred) -> RegressionMetrics:
 
 if __name__ == "__main__":
     print(
-        "Baseline preparado. Defina primero el protocolo de partición y el nombre "
-        "canónico del target antes de ejecutar entrenamiento."
+        "Para ejecutar baseline y modelos en las mismas particiones: "
+        "python -m src.experimento --run --fit-final"
     )

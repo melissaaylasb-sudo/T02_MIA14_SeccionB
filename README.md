@@ -1,14 +1,15 @@
 # Predicción de la primera falla en estructuras pantográficas
 
 <div align="center">
-  <strong>PIPELINE REPRODUCIBLE</strong> · <strong>DATA PRELIMINAR VERSIONADA</strong> · <strong>EDA EJECUTADO</strong> · <strong>DEMOSTRADOR HTML</strong>
+  <strong>PIPELINE REPRODUCIBLE</strong> · <strong>EDA EJECUTADO</strong> · <strong>6 MODELOS EVALUADOS</strong> · <strong>DEMOSTRADOR HTML</strong>
 </div>
 
 <p align="center">
   <a href="demo/index.html"><strong>Abrir demostrador</strong></a> ·
   <a href="notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb">Ver ingesta y calidad</a> ·
-  <a href="notebooks/02_EDA_Avanzado.ipynb">Ver EDA avanzado</a> ·
+  <a href="notebooks/02_EDA_Avanzado.ipynb">Ver EDA integral</a> ·
   <a href="reports/02_EDA_Avanzado.html">Abrir reporte EDA</a> ·
+  <a href="reports/06_Evaluacion_Final_e_Interpretabilidad.html"><strong>Ver resultados de modelos</strong></a> ·
   <a href="data/README.md">Ver datos</a>
 </p>
 
@@ -43,7 +44,7 @@ Maestría en Ciencias con mención en Inteligencia Artificial — Universidad Na
 | Referencia | Baseline que predice un valor central del entrenamiento |
 | Métrica principal | MAE fuera de muestra, expresado en N |
 | Validación | Validación cruzada anidada; tuneo interno y evaluación externa |
-| Estado | Ingesta, curaduría y EDA ejecutados; entrenamiento final pendiente de aprobar el protocolo de partición |
+| Estado | Ingesta, curaduría, EDA y comparación de seis modelos ejecutados; pipeline reajustado disponible para inferencia preliminar |
 
 ### Alcance
 
@@ -111,7 +112,7 @@ El modelo devuelve una estimación de `First_Failure_Load_N` en newtons. Cada ej
 
 ## Modelos
 
-Los seis candidatos se compararán en las mismas particiones. El preprocesamiento y el tuneo se ajustan exclusivamente con entrenamiento.
+Los seis candidatos ya se compararon en las mismas particiones de una corrida preliminar. El preprocesamiento y el tuneo se ajustan exclusivamente con entrenamiento.
 
 | Rol | Modelo | Propósito |
 |---:|---|---|
@@ -140,6 +141,17 @@ Las métricas se calculan con predicciones fuera de muestra. Sea \(y_i\) la fuer
 | **Mejora sobre baseline** | \(MAE_{baseline}-MAE_{modelo}\) | N | Un valor positivo indica reducción del error respecto de la mediana |
 
 El MAE selecciona hiperparámetros en la validación interna. La evaluación externa informa todas las métricas, su variación entre folds y los residuos. Accuracy, precision, recall y F1 no corresponden porque el target es continuo.
+
+### Resultados preliminares ejecutados
+
+| Procedimiento | MAE [N] | RMSE [N] | MedAE [N] | R² OOF |
+|---|---:|---:|---:|---:|
+| Baseline de mediana | 51,56 | 66,80 | 38,77 | −0,293 |
+| **Selección de modelo mediante CV interna** | **9,67** | **12,98** | **7,05** | **0,951** |
+
+La segunda fila evalúa el procedimiento completo `selected`, que puede elegir una familia distinta en cada fold. La [comparación por familia](reports/metricas_modelos_preliminares.csv) y el [reporte de evaluación](reports/06_Evaluacion_Final_e_Interpretabilidad.html) incluyen los seis candidatos, residuos e interpretación. El pipeline reajustado con todos los datos pertenece a la familia árbol de regresión; ese reajuste no cuenta con una evaluación independiente adicional.
+
+El alcance es preliminar: casos comparables de la misma campaña, bajo independencia provisional. El EDA previo y las dependencias geométricas requieren una evaluación posterior con datos nuevos o grupos confirmados.
 
 ## Flujo reproducible
 
@@ -192,6 +204,8 @@ La evaluación separa selección y medición para evitar resultados optimistas:
 5. Se predice una sola vez el fold externo.
 6. Las predicciones OOF se reúnen para calcular métricas y residuos.
 
+**Configuración ejecutada:** KFold barajado, 5 folds externos, 3 internos y semilla reproducible. La fuente no declara lotes o réplicas; se asume independencia entre registros para esta corrida exploratoria. Si se confirman grupos dependientes, se repetirá con partición agrupada. El campo `reviewed` registra revisión técnica de viabilidad, no aprobación académica ni independencia demostrada.
+
 | Riesgo | Control aplicado |
 |---|---|
 | Fuga por variables posensayo | Carga última, desplazamientos y energías quedan fuera del input |
@@ -206,24 +220,33 @@ La evaluación separa selección y medición para evitar resultados optimistas:
 | Etapa | Evidencia visible | Estado |
 |---:|---|---|
 | 1. Ingesta, curaduría y calidad | [Notebook](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) · [Reporte HTML](reports/01_Ingesta_Curaduria_y_Calidad.html) | Ejecutado; verifica hash, esquema, tipos, faltantes, duplicados, constantes, exclusiones y salidas |
-| 2. EDA avanzado | [Notebook](notebooks/02_EDA_Avanzado.ipynb) · [Reporte HTML](reports/02_EDA_Avanzado.html) | Ejecutado; contiene análisis univariado, bivariado, multivariado y detección de atípicos |
+| 2. EDA integral | [Notebook](notebooks/02_EDA_Avanzado.ipynb) · [Reporte HTML](reports/02_EDA_Avanzado.html) | Ejecutado; distribuciones, familias, asociaciones condicionadas, interacciones, atípicos, robustez, geometría, ciclos y energías |
+| 3. Particiones y preprocesamiento | [Notebook](notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb) · [Reporte HTML](reports/03_Diseno_de_Particiones_y_Preprocesamiento.html) | Ejecutado; verifica aislamiento de train, validación interna y evaluación externa |
+| 4. Baseline | [Notebook](notebooks/04_Baseline_de_Referencia.ipynb) · [Reporte HTML](reports/04_Baseline_de_Referencia.html) | Ejecutado; mediana aprendida en cada entrenamiento y métricas externas |
+| 5. Entrenamiento y ajuste | [Notebook](notebooks/05_Entrenamiento_Ajuste_y_Validacion.ipynb) · [Reporte HTML](reports/05_Entrenamiento_Ajuste_y_Validacion.html) | Seis familias entrenadas; tuneo interno, predicciones externas y pipeline reajustado |
+| 6. Evaluación e interpretabilidad | [Notebook](notebooks/06_Evaluacion_Final_e_Interpretabilidad.ipynb) · [Reporte HTML](reports/06_Evaluacion_Final_e_Interpretabilidad.html) | Métricas, residuos, estabilidad por fold, permutación e inferencia de comprobación |
 
 La fuente cruda está en [data/raw](data/raw/), la extracción revisable en [data/interim/preliminary](data/interim/preliminary/) y la tabla analítica en [data/processed/preliminary](data/processed/preliminary/). La explicación de cada nivel está en [data/README.md](data/README.md).
 
-## EDA avanzado
+El lector MATLAB está implementado y probado con el archivo recibido: extrae `samples` sin ejecutar el script original.
 
-El [notebook ejecutado](notebooks/02_EDA_Avanzado.ipynb) y su [reporte HTML](reports/02_EDA_Avanzado.html) separan cuatro niveles de análisis:
+## EDA integral
 
-| Nivel | Análisis realizados | Insight esperado |
+El [notebook ejecutado](notebooks/02_EDA_Avanzado.ipynb) y su [reporte HTML](reports/02_EDA_Avanzado.html) desarrollan la exploración de geometría, arquitectura y respuestas mecánicas con una interpretación por apartado. La [síntesis de hallazgos](reports/eda/hallazgos.md) reúne evidencia, límites y decisiones.
+
+| Eje | Análisis realizados | Pregunta que resuelve |
 |---|---|---|
-| Univariado | rango, cuartiles, dispersión, CV, asimetría, histogramas, ECDF y cajas | escala del target, variables constantes, niveles discretos y extremos |
-| Atípicos | cercas IQR, puntuación robusta MAD y revisión por identificador | casos que requieren contraste con la fuente; no se eliminan automáticamente |
-| Bivariado | Pearson, Spearman, intervalos bootstrap, dispersión predictor–target y comparación por celdas | forma y estabilidad de asociaciones geométricas con la carga |
-| Multivariado | matriz de correlación, pares con alta redundancia, VIF, PCA y distancia de Mahalanobis | colinealidad, dimensión efectiva del diseño y combinaciones geométricas inusuales |
+| Distribución y diseño | Cuantiles, asimetría, ECDF, Q–Q, distribuciones geométricas y mapas de combinaciones | ¿Cómo varía la respuesta y dónde hay soporte experimental? |
+| Familias estructurales | Descomposición de variación, contrastes de medianas, delta de Cliff y perfiles de interacción | ¿Qué diferencias corresponden a la arquitectura y cuáles aparecen dentro de familia? |
+| Asociación y estabilidad | Pearson, Spearman, Kendall, correlación de distancias, permutaciones, bootstrap y ajustes BH/BY | ¿Qué relaciones persisten al controlar la familia y las comparaciones múltiples? |
+| Geometría y coherencia | Identidades de volumen, idealizaciones de fibras/pivotes y descriptores derivados | ¿Qué magnitudes son redundantes y qué definiciones requieren revisión? |
+| Multivariado | VIF, espectro singular, PCA, sensibilidad de representación, clusters y vecinos geométricos | ¿Cómo está organizado el espacio de diseño? |
+| Atípicos e influencia | IQR/MAD global y por familia, Mahalanobis, Cook, leverage y omisión de cada caso | ¿Qué observaciones influyen en las conclusiones? |
+| Respuestas posensayo | Carga posterior, desplazamientos residuales, energías por ciclo y evento | ¿Qué información describe la evolución del daño sin filtrarse al predictor previo? |
 
-La **calidad de datos** se resuelve primero en el cuaderno 01: procedencia, esquema, faltantes, duplicados, constantes y exclusiones. El EDA usa la tabla ya curada y añade controles físicos y temporales para comprobar que ninguna respuesta posensayo entre como predictor.
+**Hallazgos principales:** el volumen del espécimen pasa de una asociación global positiva con la primera falla (ρ = 0,799) a una asociación condicionada negativa (ρ = −0,265). Esta inversión es descriptiva: su intervalo condicionado incluye cero y ninguna asociación condicionada supera FDR BH del 5 %. La suma de los volúmenes declarados de fibras y pivotes es constante en 6524,01 mm³; su correlación inversa responde a una restricción observada en la geometría. La energía del primer evento presenta asociación elevada con la fuerza de primera falla, pero se mide durante el ensayo y queda excluida de los predictores previos.
 
-El análisis detecta un radio de pivote constante y relaciones fuertes entre medidas derivadas de la misma geometría. Estas asociaciones orientan la selección y regularización dentro de cada fold, pero no demuestran causalidad ni desempeño fuera de muestra.
+La calidad formal permanece en el cuaderno 01. Las nuevas incidencias físicas se registran para contrastar con la fuente, sin corregir o eliminar automáticamente observaciones. Las relaciones exploratorias no equivalen a causalidad ni a desempeño predictivo.
 
 ## Propuesta de artefacto
 
@@ -250,9 +273,9 @@ flowchart LR
 |---|---|---|
 | Interfaz HTML | Preliminar disponible | Captura geometría, valida dominio y presenta el flujo |
 | Pipeline Python | Implementado | Preprocesamiento, modelos, evaluación y serialización |
-| Modelo validado | Pendiente | Inferencia de primera falla con procedimiento seleccionado |
+| Pipeline reajustado | Disponible localmente; evaluación preliminar completada | Inferencia de primera falla; la demo aún requiere conexión con este artefacto |
 | Servicio de inferencia | Propuesto | Conectar el pipeline versionado con la interfaz |
-| Explicación | Implementación parcial | Coeficientes o permutación según el modelo ganador |
+| Interpretación | Ejecutada por fold | Coeficientes cuando existen e importancia por permutación del modelo seleccionado |
 
 ## Estructura del proyecto
 
@@ -279,9 +302,23 @@ T02_MIA14_SeccionB/
 │   └── 06_Evaluacion_Final_e_Interpretabilidad.ipynb
 ├── reports/
 │   ├── 01_Ingesta_Curaduria_y_Calidad.html
-│   └── 02_EDA_Avanzado.html
+│   ├── 02_EDA_Avanzado.html
+│   ├── 03_Diseno_de_Particiones_y_Preprocesamiento.html
+│   ├── 04_Baseline_de_Referencia.html
+│   ├── 05_Entrenamiento_Ajuste_y_Validacion.html
+│   ├── 06_Evaluacion_Final_e_Interpretabilidad.html
+│   ├── metricas_modelos_preliminares.csv
+│   ├── resumen_modelado_preliminar.json
+│   └── eda/
+│       ├── figures/                # figuras científicas exportables
+│       ├── tables/                 # resultados exploratorios en CSV
+│       ├── hallazgos.md            # evidencia, límites y decisiones
+│       └── manifest.json          # hashes y parámetros de cálculo
 ├── src/
 │   ├── importar_matlab.py
+│   ├── eda.py
+│   ├── eda_energia.py
+│   ├── reporte_eda.py
 │   ├── ingesta.py
 │   ├── preprocesamiento.py
 │   ├── particiones.py
@@ -293,7 +330,16 @@ T02_MIA14_SeccionB/
 │   └── experimento.py
 ├── tests/
 │   └── test_workflow.py
-├── results/
+├── results/                         # ejecuciones locales fechadas
+│   └── VERSION/
+│       ├── fold_01/ ... fold_05/    # búsquedas, pipelines e interpretación
+│       ├── oof_predictions.csv
+│       ├── fold_metrics.csv
+│       ├── evaluation.json
+│       ├── splits.json
+│       ├── final_model.joblib
+│       ├── final_model_info.json
+│       └── experiment_manifest.json
 ├── logs/
 ├── slides/
 ├── requirements.txt
@@ -309,6 +355,7 @@ T02_MIA14_SeccionB/
 | `data/interim/preliminary/` | Tabla extraída, hash y manifiesto | Etapa intermedia visible antes de seleccionar variables |
 | `data/processed/preliminary/` | Tabla analítica y reporte de calidad | Versión preliminar para revisión, todavía no definitiva |
 | `results/` | Predicciones, métricas, modelos e interpretación | Una carpeta nueva por experimento |
+| `reports/` | HTML de notebooks, métricas CSV y resumen JSON | Evidencia visible de la corrida preliminar |
 | `logs/` | Eventos, advertencias y fallos | Complementan los manifiestos |
 
 ### Demostrador
@@ -321,20 +368,23 @@ T02_MIA14_SeccionB/
 
 **Interim** significa etapa intermedia: traduce la fuente MATLAB a una tabla verificable, pero todavía no es la entrada definitiva del modelo. Las ejecuciones fechadas permanecen fuera de Git; las carpetas `preliminary/` son copias estables para que el profesor pueda revisar la evidencia.
 
-La ampliación hacia un conjunto del orden de cientos o aproximadamente mil observaciones se presenta como **meta de adquisición**, condicionada a nuevos ensayos o simulaciones físicamente validadas. No se declara como volumen actual ni se crearán filas duplicadas o sintéticas solo para alcanzar una cifra.
+La ampliación del conjunto depende de nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.
 
 ### Configuración
 
 | Archivo | Responsabilidad |
 |---|---|
 | `config/data_schema.yml` | Target, identificadores, predictores, unidades y reglas de curaduría |
-| `config/model_config.yml` | Particiones, seed, modelos, rejillas y autorización de entrenamiento |
+| `config/model_config.yml` | Ruta real de datos, protocolo preliminar, modelos y rejillas; listo para ejecutar |
 
 ### Código científico
 
 | Módulo | Responsabilidad |
 |---|---|
 | `importar_matlab.py` | Extrae la tabla `samples` sin ejecutar código MATLAB |
+| `eda.py` | Asociaciones globales/condicionadas, permutaciones, bootstrap, FDR y diagnósticos de influencia |
+| `eda_energia.py` | Extrae de forma restringida matrices energéticas para interpretación posensayo |
+| `reporte_eda.py` | Reejecuta el EDA y exporta HTML con navegación y figuras accesibles |
 | `ingesta.py` | Valida la fuente, calcula SHA-256 y crea la versión intermedia |
 | `preprocesamiento.py` | Construye la tabla analítica y registra exclusiones y calidad |
 | `particiones.py` | Genera folds externos e internos y protege grupos relacionados |
@@ -350,7 +400,7 @@ La ampliación hacia un conjunto del orden de cientos o aproximadamente mil obse
 | Orden | Notebook | Función |
 |---:|---|---|
 | 1 | `01_Ingesta_Curaduria_y_Calidad.ipynb` | Procedencia, esquema, calidad, exclusiones y tabla analítica |
-| 2 | `02_EDA_Avanzado.ipynb` | Análisis univariado, bivariado, multivariado y atípicos |
+| 2 | `02_EDA_Avanzado.ipynb` | EDA integral: familias, interacciones, robustez, geometría, ciclos y energías |
 | 3 | `03_Diseno_de_Particiones_y_Preprocesamiento.ipynb` | Grupos, folds y transformaciones dentro de train |
 | 4 | `04_Baseline_de_Referencia.ipynb` | Referencia de valor central en los folds externos |
 | 5 | `05_Entrenamiento_Ajuste_y_Validacion.ipynb` | Tuneo interno y predicción externa |
@@ -393,16 +443,18 @@ La fuente es la campaña experimental documentada por Enrico Venditti y el archi
 | Ingesta y curaduría | Ejecutada | Conciliar definiciones experimentales pendientes |
 | EDA | Ejecutado | Formalizar tratamiento de redundancia geométrica |
 | Datos preliminares | Publicados en el repositorio | Confirmar condiciones para publicación abierta |
-| Protocolo de partición | Pendiente de aprobación | Confirmar grupos, réplicas y número de folds |
-| Comparación de modelos | Preparada | Ejecutar validación anidada después de aprobar el protocolo |
+| Protocolo de partición | Ejecutado como preliminar (5 × 3) | Confirmar independencia o repetir con grupos documentados |
+| Comparación de modelos | Seis familias y baseline evaluados | Contrastar estabilidad y validar con nueva evidencia |
+| Pipeline reajustado | Guardado localmente | Conectar inferencia y ampliar validación |
 | Demostrador HTML | Preliminar disponible | Conectar el modelo validado mediante servicio de inferencia |
 
 ## Ejecución
 
 Desde la raíz del proyecto:
 
-```bash
+```powershell
 python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 python -m pip install -r requirements.txt
 ```
 
@@ -420,11 +472,19 @@ python -m src.experimento --check
 python -m pytest -q
 ```
 
-El entrenamiento solo se habilita después de revisar grupos, folds y rejillas en `config/model_config.yml`:
+Recalcular el EDA integral, sus tablas, figuras y el reporte HTML:
 
 ```bash
-python -m src.experimento --run
+python -m src.reporte_eda --execute
 ```
+
+La configuración ya apunta a los datos curados y permite repetir el entrenamiento, ajuste, evaluación y reajuste:
+
+```bash
+python -m src.experimento --run --fit-final
+```
+
+Cada ejecución crea `results/VERSION/` y muestra su ruta. Para trabajar desde Jupyter, ejecutar todas las celdas del **notebook 05**; reutiliza una corrida completa si sus hashes coinciden y entrena si no existe. `FORZAR_NUEVA_EJECUCION = True` genera otra corrida. Después, ejecutar el **notebook 06** para actualizar gráficos y métricas CSV/JSON. Los HTML incluidos permiten revisar los resultados ya ejecutados sin instalar Jupyter.
 
 ## Referencias
 

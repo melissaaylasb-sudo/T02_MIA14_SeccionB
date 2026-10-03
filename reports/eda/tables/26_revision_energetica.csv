@@ -1,0 +1,12 @@
+caso,ciclo,valor_original,bandera_extremo,valor_negativo
+3,cycle_1,-0.2101,False,True
+5,cycle_1,-0.2604,False,True
+9,cycle_1,-0.1245,False,True
+11,cycle_1,-0.2921,False,True
+13,cycle_1,-0.4113,False,True
+15,cycle_1,-0.273,False,True
+16,cycle_1,-0.1929,False,True
+17,cycle_1,-0.3015,False,True
+18,cycle_1,-0.1717,False,True
+26,cycle_1,-0.0663,False,True
+5,cycle_5,363.8487,True,False

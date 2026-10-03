@@ -14,4 +14,4 @@ Las carpetas con identificadores de fecha corresponden a ejecuciones reproducibl
 
 La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) o abrirse directamente como [reporte HTML](../reports/01_Ingesta_Curaduria_y_Calidad.html). El análisis posterior está en [02_EDA_Avanzado.ipynb](../notebooks/02_EDA_Avanzado.ipynb) y en su [reporte HTML](../reports/02_EDA_Avanzado.html).
 
-El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas. Una meta cercana al orden de mil observaciones debe entenderse como una **proyección de adquisición**, condicionada a una fuente y un protocolo aprobados; no describe el volumen disponible actualmente.
+El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.

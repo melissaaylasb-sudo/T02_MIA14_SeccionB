@@ -514,7 +514,7 @@
       </div>
       <div class="status-box">
         <strong><span class="status-dot"></span>Prototipo preliminar</strong>
-        <span>Interfaz funcional · modelo final pendiente de validación</span>
+        <span>Seis modelos evaluados · conexión de inferencia pendiente</span>
       </div>
     </div>
   </header>
@@ -571,8 +571,12 @@
             <span class="check-value ok">Ejecutado</span>
           </div>
           <div class="check-row">
-            <span>Modelo predictivo</span>
-            <span class="check-value pending">Pendiente</span>
+            <span>Evaluación de modelos</span>
+            <span class="check-value ok">Preliminar ejecutada</span>
+          </div>
+          <div class="check-row">
+            <span>Inferencia en esta interfaz</span>
+            <span class="check-value pending">Por conectar</span>
           </div>
           <div class="check-row">
             <span>Salida final prevista</span>
@@ -652,6 +656,8 @@
         <a class="data-link" href="../notebooks/02_EDA_Avanzado.ipynb">Notebook 02 · EDA avanzado</a>
         <a class="data-link" href="../reports/01_Ingesta_Curaduria_y_Calidad.html">Reporte 01 · HTML</a>
         <a class="data-link" href="../reports/02_EDA_Avanzado.html">Reporte 02 · HTML</a>
+        <a class="data-link" href="../reports/06_Evaluacion_Final_e_Interpretabilidad.html">Reporte 06 · evaluación de modelos</a>
+        <a class="data-link" href="../reports/metricas_modelos_preliminares.csv">Métricas · comparación preliminar</a>
       </div>
     </section>
   </main>
@@ -743,7 +749,7 @@
       if (outside.length === 0) {
         status.textContent = "Dentro del rango";
         status.className = "check-value ok";
-        message.textContent = "La configuración se encuentra dentro de los rangos preliminares. La predicción se habilitará al conectar el modelo validado.";
+        message.textContent = "La configuración se encuentra dentro de los rangos preliminares. La inferencia se habilitará al conectar el pipeline ajustado; los resultados de evaluación están disponibles en el reporte 06.";
         message.style.background = "#e5f5f2";
         message.style.color = "#145e5f";
       } else {
