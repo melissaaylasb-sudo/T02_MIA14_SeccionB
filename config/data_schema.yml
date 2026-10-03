@@ -1,23 +1,42 @@
+# Esquema PRELIMINAR. Completar únicamente contra el archivo real consolidado.
+# Los nombres de columns deben coincidir con la fuente tras retirar espacios
+# extremos de sus encabezados. Declararlos exige revisar su significado físico.
 project:
   task: regression
   target_concept: carga_primera_falla
-  target_unit: N
+  target_unit: null  # N cuando se confirme en la fuente incorporada
 
-roles:
-  identifier:
-    - identificador_caso
-  candidate_predictors:
-    - numero_celdas
-    - altura_fibra
-    - base_fibra
-    - altura_pivote
-    - radio_pivote
-    - longitud_total_fibras
-    - volumen_total_fibras
-    - numero_total_pivotes
-    - volumen_total_pivotes
-    - volumen_total_especimen
+columns:
+  target: null
+  identifiers: []    # Al menos un identificador de caso; nunca usar en X
+  predictors: []     # Solo geometría/estructura disponible ANTES del ensayo
+  groups: []         # Si hay réplicas: columnas adicionales para agrupar el split
 
+# Una entrada por predictor real; usar 'conteo' para cantidades discretas.
+# No se convierten unidades automáticamente.
+predictor_units: {}
+
+# Conceptos documentados en Venditti; NO son columnas detectadas ni una selección.
+candidate_concepts:
+  - numero_celdas_direccion_y
+  - altura_fibra
+  - base_fibra
+  - altura_pivote
+  - radio_pivote
+  - longitud_total_fibras
+  - volumen_total_fibras
+  - numero_total_pivotes
+  - volumen_total_pivotes
+  - volumen_total_especimen
+
+curation:
+  # Solo activar si se verifica que las filas idénticas son copias, no réplicas.
+  drop_exact_duplicates: false
+  # Marcadores adicionales confirmados por columna, p. ej. {columna_real: ['-']}.
+  # No se asume que NA, cero u otro texto signifique ausencia.
+  missing_values: {}
+
+# Restricciones metodológicas obligatorias; el script rechaza su desactivación.
 rules:
   target_imputation: false
   identifier_as_predictor: false

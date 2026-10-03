@@ -1,68 +1,89 @@
 # Análisis predictivo e interpretable de la respuesta mecánica de estructuras pantográficas
 
-Proyecto de investigación de la **Maestría en Ciencias con mención en Inteligencia Artificial de la Universidad Nacional de Ingeniería (UNI)** orientado al desarrollo de un flujo reproducible de ciencia de datos para estudiar y predecir la respuesta mecánica de estructuras pantográficas a partir de información experimental.
+Las estructuras pantográficas son metamateriales mecánicos reticulares: redes de fibras esbeltas interconectadas mediante pivotes. Su geometría permite mecanismos de deformación asociados con la flexión y extensión de las fibras y la deformación de los pivotes. Los especímenes de interés se fabrican en **poliamida (nylon) mediante sinterización láser selectiva (SLS)** y se estudian mediante ensayos de tracción.
 
-Las estructuras pantográficas son metamateriales mecánicos reticulares formados por familias de elementos esbeltos interconectados mediante pivotes. Su comportamiento global no depende únicamente del material constitutivo, sino también de la geometría y organización de su arquitectura interna. En este proyecto se trabaja con especímenes fabricados en poliamida (nylon) mediante sinterización láser selectiva y sometidos a ensayos mecánicos de tracción.
+Esta investigación plantea una **regresión supervisada**: utilizar características geométricas y estructurales disponibles antes del ensayo para predecir la **carga de primera falla**. Es la fuerza asociada con el primer evento localizado de rotura o pérdida de integridad registrado; no equivale necesariamente a la carga máxima, la falla total ni el colapso global. La estructura puede continuar soportando carga después de ese evento. El material es contexto experimental, no la variable a predecir.
 
-El problema se formula como **regresión supervisada**. El modelo no busca identificar el material del espécimen. A partir de características geométricas y estructurales de una configuración pantográfica, se busca estimar su **carga de primera falla**, entendida como la fuerza asociada con el primer evento localizado de rotura o pérdida de integridad registrado durante el ensayo. Este evento no equivale necesariamente al colapso total, ya que la estructura puede continuar soportando carga después del primer daño.
-
-Este repositorio forma parte del curso **Proyecto de Investigación II**.
-
----
+**Estado: PRELIMINAR**, correspondiente al curso Proyecto de Investigación II. El repositorio prepara la ingesta, la curaduría y la referencia de regresión; todavía no contiene un dataset experimental consolidado ni modelos entrenados o resultados predictivos.
 
 ## Autora
 
-- Melissa Dessire Aylas Barranca  
-  Maestría en Ciencias con mención en Inteligencia Artificial – Universidad Nacional de Ingeniería
+**Melissa Dessire Aylas Barranca**
 
----
+Maestría en Ciencias con mención en Inteligencia Artificial
+
+Universidad Nacional de Ingeniería (UNI)
+
+## Resumen del proyecto
+
+| Elemento | Definición |
+|---|---|
+| Objeto de estudio | Estructuras pantográficas de fibras y pivotes |
+| Material | Poliamida / nylon; contexto experimental |
+| Tipo de ensayo | Tracción |
+| Tipo de datos | Tabulares, cuantitativos, procedentes de ensayos físicos |
+| Problema de ML | Regresión supervisada |
+| Variable objetivo | Carga de primera falla |
+| Unidad de salida | Newton (N), previa comprobación de la fuente incorporada |
+| Finalidad predictiva | Estimar la primera falla de configuraciones dentro del dominio experimental representado y complementar el análisis mecánico |
 
 ## Dataset
 
-- **Fuente**: datos experimentales obtenidos mediante ensayos mecánicos de tracción sobre estructuras pantográficas fabricadas en poliamida/nylon mediante sinterización láser selectiva.
-- **Naturaleza de los datos**: datos tabulares cuantitativos provenientes de ensayos físicos; no corresponden a datos sintéticos ni a simulaciones generadas específicamente para este avance.
-- **Unidad de análisis**: caso experimental asociado con un espécimen o configuración pantográfica sometida a ensayo. La correspondencia entre casos, posibles réplicas y configuraciones repetidas se verificará durante la curaduría.
-- **Variable objetivo principal**: carga de primera falla, expresada en newtons cuando la fuente experimental tenga la unidad confirmada.
-- **Tipo de problema**: regresión supervisada.
-- **Variables principales de entrada**: características geométricas y estructurales verificadas, entre ellas número de celdas, dimensiones de fibras, dimensiones de pivotes y descriptores derivados físicamente justificables.
-- **Otras respuestas disponibles**: carga última, desplazamientos, variables energéticas y eventos sucesivos de falla. Estas variables se conservarán para análisis descriptivos o secundarios y no se utilizarán como predictores cuando correspondan a información generada después del inicio del ensayo.
-- **Registros**: el repositorio no fija un tamaño final de muestra. Cada versión de datos registrará automáticamente el número de observaciones disponibles después de la ingesta y curaduría.
-- **Versión usada**: se identifica mediante fecha de ejecución, nombre de archivo y manifiesto de versión.
-- **Hash SHA-256**: se calcula automáticamente durante la ingesta y se almacena en `data/interim/dataset_manifest.json`.
+El plan de tesis identifica como fuente prevista una campaña experimental de Enrico Venditti, proporcionada por Emilio Turco para uso académico, y un archivo MATLAB aún no incorporado al repositorio. La documentación de Venditti describe fabricación SLS, ensayos de tracción, registros fuerza–desplazamiento y eventos de rotura. Estos documentos sustentan el contexto; sus resultados no son resultados de esta tesis.
 
-Los archivos originales se consideran inmutables. Cualquier ampliación de la base experimental debe incorporarse como una nueva versión, sin sobrescribir silenciosamente los datos utilizados en ejecuciones anteriores.
+Una **campaña experimental** es el conjunto organizado de especímenes y ensayos realizados bajo un protocolo definido. El **dataset** será la tabla derivada de esa campaña mediante extracción y curaduría documentadas. La campaña puede ampliarse durante la investigación.
 
----
+| Aspecto | Descripción |
+|---|---|
+| Fuente | Ensayos mecánicos experimentales y documentación de procedencia |
+| Material / fabricación / ensayo | Poliamida o nylon / SLS / tracción |
+| Unidad de análisis | Un caso asociado con un espécimen ensayado; verificar correspondencia, réplicas y configuraciones relacionadas |
+| Predictores | Geometría y descriptores estructurales verificados, disponibles antes del ensayo |
+| Target / tipo | Carga de primera falla / numérico continuo |
+| Tamaño del conjunto | Se determinará a partir de la versión consolidada de los datos |
+| Versionado | La ingesta registra observaciones, columnas, fecha UTC, SHA-256 y opciones de lectura por ejecución |
+| Metadatos actuales | Se completarán automáticamente al ejecutar la ingesta sobre la versión consolidada |
+
+No se extraen automáticamente tablas de los PDF ni se ejecutan archivos MATLAB. El adaptador de la fuente original queda pendiente de disponer del archivo y verificar su estructura. El lector preliminar admite CSV y XLSX; cualquier exportación deberá conservar la relación con el original y documentar sus decisiones.
+
+## Variables del estudio
+
+Estas variables están documentadas conceptualmente en la fuente de Venditti. Su presencia, nombre y unidad en la tabla consolidada deben verificarse antes de activarlas en `config/data_schema.yml`.
+
+| Grupo | Variable conceptual | Tipo | Uso |
+|---|---|---|---|
+| Identificación | Identificador de caso | ID | Trazabilidad; nunca predictor |
+| Geometría | Número de celdas en la dirección Y | Numérica discreta | Predictor candidato |
+| Geometría | Altura y base de las fibras | Numérica continua | Predictores candidatos |
+| Geometría | Altura y radio de los pivotes | Numérica continua | Candidatos; revisar constantes |
+| Estructural | Longitud total de fibras y número de pivotes | Continua / discreta | Candidatos; revisar dependencia geométrica |
+| Estructural | Volúmenes de fibras, pivotes y espécimen | Numérica continua | Candidatos; verificar fórmulas y redundancia |
+| Respuesta | Carga de primera falla | Numérica continua | Target |
+
+Las tablas de referencia rotulan longitudes en mm, volúmenes en mm³ y primera falla en N. Esto no verifica por sí solo las unidades de un archivo aún no recibido. Hay diferencias entre la tabla geométrica general y algunas fichas individuales que deben conciliarse contra la fuente original antes de consolidar datos.
+
+La carga última, los desplazamientos y las energías medidos durante el ensayo no son entradas del modelo principal. Los eventos sucesivos de un mismo ensayo tampoco constituyen observaciones independientes. Los nombres conceptuales del YAML no se presentan como columnas reales detectadas.
 
 ## Estructura del repositorio
 
 ```text
-pantographic-first-failure/
-│
+T02_MIA14_SeccionB/
 ├── data/
-│   ├── raw/                     # datos experimentales originales, sin modificar
-│   ├── interim/                 # datos después de ingesta y curaduría inicial
-│   └── processed/               # tabla analítica lista para modelamiento
-│
+│   ├── raw/                     # originales inmutables
+│   ├── interim/                 # ingestas versionadas y manifiestos
+│   └── processed/               # tablas analíticas y reportes versionados
 ├── notebooks/
-│   ├── EDA_basico.ipynb         # análisis exploratorio inicial
-│   └── Baseline_basico.ipynb    # evaluación inicial del baseline de regresión
-│
+│   ├── EDA_basico.ipynb
+│   └── Baseline_basico.ipynb
 ├── src/
 │   ├── __init__.py
-│   ├── ingesta.py               # lectura, trazabilidad, hash y manifiesto
-│   ├── preprocesamiento.py      # curaduría y construcción de tabla analítica
-│   └── modelo_baseline.py       # baseline preliminar de regresión
-│
-├── logs/
-│   └── .gitkeep                 # logs automáticos de ejecución y métricas
-│
-├── slides/
-│   └── .gitkeep                 # presentaciones del avance
-│
+│   ├── ingesta.py
+│   ├── preprocesamiento.py
+│   └── modelo_baseline.py
+├── logs/                        # registros locales de ejecución
+├── slides/                      # reservado para presentaciones
 ├── config/
-│   └── data_schema.yml          # nombres canónicos y roles de variables
-│
+│   └── data_schema.yml
 ├── README.md
 ├── requirements.txt
 ├── pyproject.toml
@@ -70,303 +91,172 @@ pantographic-first-failure/
 └── LICENSE
 ```
 
-### `data/raw`
+| Directorio | Contenido y regla |
+|---|---|
+| `data/raw/` | Datos originales: nunca editar ni sobrescribir; incorporar ampliaciones como archivos nuevos |
+| `data/interim/` | Copias tabulares por ingesta; lectura y trazabilidad sin transformaciones aprendidas |
+| `data/processed/` | Tabla analítica con roles explícitos y curaduría determinística; entrada al futuro proceso de modelamiento |
 
-Contiene exclusivamente los archivos originales recibidos de la fuente experimental. No se editan ni sobrescriben desde el código. Su función es preservar una referencia reproducible de la información de origen.
+La imputación estadística, el escalamiento y la selección que aprende parámetros **no se aplican globalmente en `processed`**. Se ajustarán dentro de cada conjunto de entrenamiento. Los datos y las salidas de ejecución están excluidos de Git por defecto.
 
-### `data/interim`
+## Flujo reproducible
 
-Contiene datos intermedios después de operaciones determinísticas de ingesta y curaduría inicial, por ejemplo normalización de nombres de columnas, revisión de tipos, identificación de duplicados y generación de variables auxiliares de trazabilidad.
+| Etapa | Entrada | Proceso | Salida / estado |
+|---|---|---|---|
+| Ingesta | Original en `raw` | Lectura, hash, dimensiones y esquema observado | Versión en `interim`; implementada |
+| Curaduría | `interim` + esquema revisado | Roles, tipos, faltantes y duplicados; revisión física complementaria | Versión en `processed`; controles preliminares implementados |
+| EDA | Tabla curada | Descripción, faltantes y distribuciones | Notebook preparado, sin resultados |
+| Partición | Tabla y grupos revisados | Train/validation/test o validación cruzada | Pendiente de protocolo |
+| Preprocesamiento | Entrenamiento de cada partición | Ajustar imputación, escalamiento y selección | Pendiente; se integrará en el pipeline de ML |
+| Baseline | Entrenamiento | Mediana del target | Constructor implementado; sin ajuste |
+| Modelamiento | Entrenamiento | Familias candidatas y ajuste interno | Pendiente |
+| Evaluación | Observaciones fuera del ajuste | MAE, RMSE, R² y MedAE | Función de métricas disponible; sin evaluación ejecutada |
 
-Esta carpeta **no debe contener transformaciones estadísticas aprendidas con todo el dataset**, como escalamiento global, imputación basada en la distribución completa o selección de variables basada en el target.
+## Curaduría y control de calidad de datos experimentales
 
-### `data/processed`
+**Curaduría** significa construir y documentar el dataset válido. **Preprocesamiento del modelo** significa ajustar transformaciones sobre entrenamiento. Son etapas distintas.
 
-Contiene la tabla analítica curada utilizada como entrada del modelamiento. La tabla debe conservar únicamente variables con definición, unidad y procedencia verificables, además del identificador necesario para trazabilidad.
+| Control | Alcance actual |
+|---|---|
+| Trazabilidad | Hash de fuente y tabla, versión de ingesta, configuración, índice de registro y exclusiones |
+| Esquema | Encabezados no vacíos ni repetidos; columnas y roles explícitos antes de producir la tabla analítica |
+| Faltantes y tipos | Reporte por columna; target numérico finito, nunca imputado; exclusión registrada del target ausente |
+| Duplicados | Se reportan y conservan por defecto; eliminación exacta solo si se confirma que son duplicaciones de registro |
+| Constantes | Se identifican para revisión; no se seleccionan variables automáticamente con todo el dataset |
+| Unidades y anomalías físicas | Verificación manual de unidades, convenciones de signo y rangos; no se inventan umbrales ni conversiones |
+| Réplicas y dependencia | Revisar identificadores repetidos y grupos; no confundir réplicas con duplicados |
+| Redundancia | Revisar relaciones determinísticas y colinealidad; selección estadística posterior dentro de entrenamiento |
+| Definición del target | Confirmar evento, criterio de detección y correspondencia con el registro de fuerza |
 
-La imputación estadística, escalamiento y selección dependiente de los datos se ajustarán posteriormente dentro de cada conjunto de entrenamiento para evitar fuga de información.
+Solo se incluyen las columnas declaradas como target, predictores, identificadores o grupos. El script impide roles superpuestos, pero la revisión científica debe confirmar que ningún predictor procede de una respuesta del ensayo. Los marcadores de ausencia distintos de celdas vacías deben declararse en el YAML.
 
----
+## Prevención de fuga de información
 
-## Requisitos
+| Operación | Puede hacerse antes del split | Debe ajustarse solo con train |
+|---|---:|---:|
+| Renombrar columnas | Sí | No |
+| Convertir unidades con regla fija y documentada | Sí | No |
+| Eliminar duplicados exactos confirmados | Sí | No |
+| Derivar variables con fórmulas físicas predefinidas | Sí | No |
+| Imputación estadística | No | Sí |
+| Escalamiento | No | Sí |
+| Selección supervisada o basada en la distribución | No | Sí |
+| Ajuste de hiperparámetros | No | Sí, con validación interna |
 
-Se recomienda Python 3.11 o superior.
+Las réplicas y registros relacionados deben permanecer en el mismo grupo de partición. El EDA previo puede describir calidad; las decisiones de selección, transformación y ajuste guiadas por datos deben quedar dentro del entrenamiento. El test o los pliegues externos no se usan para elegir modelos ni hiperparámetros.
 
-Instalación mediante `pip`:
+## Baseline y modelos candidatos
+
+La referencia inicial es `DummyRegressor(strategy="median")`, cuya mediana se calculará **solo con el target de entrenamiento**. Debe compararse con todos los modelos usando las mismas particiones fuera de muestra.
+
+| Familia | Condición de estudio |
+|---|---|
+| Regresiones regularizadas | Evaluar representaciones parsimoniosas y colinealidad |
+| Árboles y ensambles de regresión | Controlar complejidad y sobreajuste |
+| Procesos gaussianos | Evaluar relaciones no lineales e incertidumbre |
+| Redes neuronales de regresión | Familia candidata condicionada a la cantidad y representación final de los datos |
+
+No existe modelo ganador ni se presupone que deep learning será superior. La validación cruzada anidada o un esquema equivalente deberá separar selección y evaluación, con agrupación cuando corresponda. El número de particiones queda pendiente.
+
+## Evaluación
+
+| Métrica | Rol | Interpretación |
+|---|---|---|
+| MAE | Principal | Error absoluto medio en unidades de carga |
+| RMSE | Complementaria | Error en unidades de carga; penaliza más los errores grandes |
+| R² | Complementaria | Proporción de variación explicada fuera de muestra; puede ser negativa; indefinida con target constante o menos de dos observaciones |
+| MedAE | Complementaria | Mediana del error absoluto; medida robusta en unidades de carga |
+
+La comparación contra el baseline será siempre **fuera de muestra**, considerando variabilidad entre particiones. No se usan matriz de confusión, accuracy, precision, recall ni F1 para el problema principal: el target es continuo y la tarea es regresión.
+
+## Interpretabilidad
+
+La interpretabilidad intrínseca de modelos lineales permite estudiar coeficientes y su estabilidad, teniendo en cuenta escalas y colinealidad. Para otros modelos se considerarán explicaciones post hoc: importancia por permutación, SHAP y PDP/ALE cuando sean compatibles con la dependencia entre predictores y el dominio experimental.
+
+**Importancia predictiva no implica causalidad física.** Las explicaciones se contrastarán con conocimiento mecánico y su estabilidad entre particiones. No todos los modelos son interpretables por construcción.
+
+## Reproducibilidad
+
+| Artefacto | Qué se registra |
+|---|---|
+| Dataset | Fecha UTC, dimensiones, hash de fuente y salidas, versión de ingesta |
+| Código | Commit Git y estado de cambios locales en manifiestos; conservar el commit definitivo al reportar resultados |
+| Entorno | Python y versiones instaladas de dependencias del pipeline; rangos de instalación en `requirements.txt` |
+| Esquema | Contenido y hash del YAML en cada reporte de curaduría |
+| Split | Índices y grupos: pendiente de implementación |
+| Preprocesamiento | Parámetros ajustados por entrenamiento: pendiente |
+| Modelo | Clase e hiperparámetros: pendiente de ejecución |
+| Aleatoriedad | Seeds y configuración de particiones: pendiente |
+| Predicciones | Fuera de muestra, vinculadas a identificadores: pendiente |
+| Métricas | MAE, RMSE, R² y MedAE: sin resultados disponibles |
+| Logs | `pipeline.log` y `data_quality.log`, con advertencias y errores |
+
+Cada ingesta y curaduría crea un directorio nuevo; las ejecuciones anteriores se conservan. Registrar versiones no sustituye congelar el entorno y el código antes de comparar experimentos. No se garantiza reproducibilidad exacta con cambios locales sin conservar.
+
+## Cómo ejecutar el pipeline
+
+Desde la raíz del repositorio, con Python 3.11 o superior:
 
 ```bash
 python -m venv .venv
 ```
 
-En Windows:
+Activar con `.venv\Scripts\Activate.ps1` en PowerShell, `.venv\Scripts\activate.bat` en CMD o `source .venv/bin/activate` en Linux/macOS. Después:
 
 ```bash
-.venv\Scripts\activate
+python -m pip install -r requirements.txt
 ```
 
-En Linux/macOS:
+1. Colocar una versión original en `data/raw/`. Se admiten CSV UTF-8 separado por comas y XLSX (primera hoja por defecto, seleccionable con `--sheet NOMBRE`). Los datos numéricos deben usar punto decimal; no se interpretan automáticamente otras convenciones.
+2. Ejecutar la ingesta sustituyendo el nombre del archivo:
 
-```bash
-source .venv/bin/activate
-```
+   ```bash
+   python src/ingesta.py --input data/raw/NOMBRE_ARCHIVO.csv
+   ```
 
-Instalar dependencias:
+   La salida indica `data/interim/VERSION/dataset_interim.csv` y `dataset_manifest.json`. Registra filas, columnas, hash y fecha sin modificar el original. La lectura conserva texto e identificadores; no interpreta `NA` como faltante automáticamente. En XLSX no recupera ceros iniciales guardados solo como formato visual.
 
-```bash
-pip install -r requirements.txt
-```
+3. Completar `config/data_schema.yml` con los nombres reales de target, identificadores, predictores, grupos si existen y unidades verificadas. Luego sustituir `VERSION` por el directorio informado:
 
-Dependencias iniciales:
+   ```bash
+   python src/preprocesamiento.py --input data/interim/VERSION/dataset_interim.csv
+   ```
 
-- pandas
-- numpy
-- scipy
-- scikit-learn
-- matplotlib
-- openpyxl
-- PyYAML
-- jupyter
+   Genera una versión en `data/processed/` con `model_table.csv` y `data_quality_report.json`. El esquema sin completar, un manifiesto inconsistente o valores numéricos inválidos detienen la etapa con un mensaje. No imputa ni escala.
 
-Las versiones efectivamente utilizadas deberán quedar fijadas antes de reportar resultados comparables.
+4. Abrir `notebooks/EDA_basico.ipynb`, indicar la ruta de la tabla generada y revisar su calidad. El notebook permanece sin ejecutar mientras no haya datos reales.
+5. Definir y revisar el protocolo de partición antes de ajustar cualquier baseline. `notebooks/Baseline_basico.ipynb` solo construye el estimador. El comando existente:
 
----
+   ```bash
+   python src/modelo_baseline.py
+   ```
 
-## Cómo ejecutar el pipeline
-
-### 1. Ingesta de datos
-
-Colocar el archivo original en:
-
-```text
-data/raw/
-```
-
-Ejecutar:
-
-```bash
-python src/ingesta.py --input data/raw/NOMBRE_ARCHIVO.csv
-```
-
-La ingesta:
-
-- carga el archivo sin modificarlo;
-- registra dimensiones y nombres de columnas;
-- calcula el hash SHA-256;
-- genera un manifiesto de versión;
-- guarda una copia tabular intermedia para las etapas siguientes;
-- registra la ejecución en `logs/pipeline.log`.
-
-Salidas esperadas:
-
-```text
-data/interim/dataset_interim.csv
-data/interim/dataset_manifest.json
-logs/pipeline.log
-```
-
-Si la fuente se encuentra en Excel, puede utilizarse `.xlsx`. La incorporación de otros formatos requerirá un adaptador explícito en `src/ingesta.py`.
-
-### 2. Curaduría y preprocesamiento determinístico
-
-Ejecutar:
-
-```bash
-python src/preprocesamiento.py
-```
-
-Esta etapa revisa:
-
-- existencia de la variable objetivo;
-- tipos de datos;
-- valores faltantes;
-- duplicados;
-- variables constantes;
-- identificadores no predictivos;
-- consistencia de nombres y unidades;
-- posibles variables redundantes;
-- disponibilidad de predictores geométricos y estructurales.
-
-La carga de primera falla no será imputada para entrenar el modelo. Los registros sin target verificable se documentarán antes de cualquier exclusión del conjunto de modelamiento.
-
-Salidas esperadas:
-
-```text
-data/processed/model_table.csv
-logs/data_quality.log
-```
-
-### 3. Exploración inicial
-
-Abrir y ejecutar:
-
-```text
-notebooks/EDA_basico.ipynb
-```
-
-El EDA se utilizará para estudiar la distribución de las variables, rangos, valores faltantes, relaciones entre predictores, posibles dependencias y comportamiento de la variable objetivo. Los gráficos exploratorios no se interpretarán como evidencia de capacidad predictiva.
-
-### 4. Baseline preliminar
-
-El baseline sirve como referencia mínima para determinar si un modelo más complejo aporta una mejora real.
-
-La primera referencia propuesta para este problema de regresión es un `DummyRegressor` que predice la **mediana de la variable objetivo calculada únicamente con los datos de entrenamiento**.
-
-El código se encuentra preparado en:
-
-```text
-src/modelo_baseline.py
-```
-
-y podrá ejecutarse cuando la tabla analítica y el protocolo de partición hayan sido revisados:
-
-```bash
-python src/modelo_baseline.py
-```
-
-El script no forma parte de la ingesta ni se ejecuta automáticamente.
-
-Las métricas previstas son:
-
-- **MAE** como métrica principal;
-- **RMSE** como medida complementaria sensible a errores grandes;
-- **R²** calculado sobre predicciones fuera de muestra;
-- **MedAE** como medida robusta complementaria cuando resulte útil.
-
-Al tratarse de un problema de regresión, no se utilizarán matriz de confusión, accuracy, precision, recall o F1 como métricas principales.
-
----
-
-## Curaduría y control de calidad
-
-La curaduría tiene como finalidad construir un conjunto analítico trazable a partir de datos experimentales previamente obtenidos. No se limita a detectar errores; documenta las decisiones mediante las cuales un registro o variable puede incorporarse al modelamiento.
-
-Se verificará la procedencia de cada caso, la correspondencia entre identificador y ensayo, la definición de las variables, las unidades físicas, los valores faltantes, duplicados, constantes, rangos físicamente plausibles y relaciones determinísticas entre predictores. También se revisará la existencia de posibles réplicas o configuraciones relacionadas, debido a que esta información condicionará el protocolo de validación.
-
-Los identificadores administrativos o secuenciales se conservarán para trazabilidad, pero no se utilizarán como predictores.
-
-Las variables de respuesta generadas durante o después del ensayo no se incorporarán como entradas del modelo principal si no estarían disponibles al momento en que se pretende realizar la predicción.
-
----
-
-## Prevención de fuga de información
-
-La separación entre curaduría del dataset y transformaciones aprendidas por el modelo es deliberada.
-
-Pueden ejecutarse antes de la partición operaciones determinísticas que no utilizan información estadística de otros registros, por ejemplo:
-
-- renombrar columnas;
-- verificar unidades;
-- convertir tipos;
-- eliminar duplicados exactamente identificados;
-- marcar variables constantes;
-- documentar registros sin target;
-- construir variables derivadas mediante fórmulas físicas previamente definidas.
-
-En cambio, las siguientes operaciones deberán ajustarse únicamente con los datos de entrenamiento de cada partición:
-
-- imputación estadística de predictores;
-- estandarización o normalización;
-- selección estadística de variables;
-- transformaciones basadas en la distribución;
-- ajuste de hiperparámetros;
-- entrenamiento del modelo.
-
-Esta separación evita que información del conjunto de validación influya indirectamente en el modelo.
-
----
-
-## Modelamiento previsto
-
-El repositorio no fija todavía un modelo final. La comparación se realizará de forma progresiva, comenzando por un baseline y aumentando la complejidad únicamente si la evidencia fuera de muestra lo justifica.
-
-Entre las familias candidatas se consideran:
-
-- regresiones regularizadas;
-- árboles y ensambles de regresión;
-- procesos gaussianos;
-- modelos neuronales de regresión, condicionados al tamaño y representación final de los datos.
-
-La selección de hiperparámetros y la estimación del desempeño deberán permanecer separadas. Si el tamaño y estructura final del conjunto lo permiten, se utilizará validación cruzada anidada o una estrategia equivalente que evite utilizar la evaluación externa para seleccionar el modelo.
-
-Si se identifican réplicas o configuraciones dependientes, la partición deberá conservarlas dentro del mismo grupo.
-
----
-
-## Interpretación de los modelos
-
-La interpretabilidad se tratará de acuerdo con la familia de modelamiento seleccionada y no como una propiedad automática de cualquier algoritmo.
-
-En modelos lineales podrán analizarse coeficientes estandarizados. Para modelos no lineales se considerarán herramientas post hoc como importancia por permutación, SHAP o gráficos de dependencia/efectos cuando su uso sea metodológicamente compatible con el modelo y la dependencia entre variables.
-
-Las explicaciones se contrastarán con conocimiento de mecánica estructural. Una característica importante para la predicción no se interpretará por sí sola como causa física de la primera falla.
-
----
-
-## Logging y reproducibilidad
-
-Las ejecuciones deben dejar evidencia suficiente para reconstruir el estado del experimento.
-
-Los logs registrarán, según la etapa:
-
-- fecha y hora;
-- archivo de entrada;
-- hash SHA-256;
-- número de filas y columnas;
-- columnas detectadas;
-- advertencias de calidad;
-- registros descartados y motivo;
-- archivos de salida generados;
-- configuración utilizada;
-- métricas cuando corresponda.
-
-El manifiesto de datos permite distinguir versiones de la campaña experimental. La incorporación de nuevas observaciones generará una nueva versión y no reemplazará silenciosamente una versión ya utilizada.
-
-Cuando se inicie el modelamiento también se registrarán particiones, hiperparámetros, seeds cuando correspondan, versión de dependencias, predicciones fuera de muestra y artefactos entrenados.
-
----
+   muestra un aviso de preparación; **no entrena ni evalúa**. El flujo de entrenamiento y partición aún no está implementado.
 
 ## Resultados esperados del avance
 
-En esta etapa se espera disponer de:
-
-- estructura reproducible del repositorio;
-- datos originales separados de las versiones intermedias y procesadas;
-- script de ingesta;
-- hash y manifiesto de versión de datos;
-- procedimiento inicial de curaduría y control de calidad;
-- logs automáticos;
-- notebook de EDA preparado;
-- baseline de regresión implementado pero no ejecutado automáticamente;
-- definición explícita de la variable objetivo y de las métricas previstas.
-
-No se reportan en este repositorio valores de MAE, RMSE, R², rankings de modelos ni conclusiones predictivas mientras esos experimentos no hayan sido ejecutados bajo el protocolo de validación definido.
-
----
+Están disponibles la ingesta con hashes y manifiesto, la curaduría preliminar condicionada al esquema, logs separados, notebooks sin resultados y funciones de baseline y métricas. Las tablas y reportes experimentales se generarán al incorporar datos reales. No hay métricas obtenidas, predicciones ni conclusiones sobre capacidad predictiva.
 
 ## Roadmap
 
-- **Etapa 1 — Ingesta y trazabilidad**  
-  Incorporación de los archivos originales, cálculo de hashes, manifiesto y logging.
+| Fase | Actividad |
+|---|---|
+| 1 | Recibir fuente original, verificar exportación, ingesta y versionado |
+| 2 | Conciliar discrepancias, completar diccionario, curaduría y EDA |
+| 3 | Definir particiones y ejecutar baseline |
+| 4 | Comparar modelos candidatos y ajuste interno |
+| 5 | Validar fuera de muestra e interpretar estabilidad y coherencia física |
+| 6 | Consolidar código, entorno, datos autorizados y artefactos reproducibles |
 
-- **Etapa 2 — Curaduría y preprocesamiento**  
-  Verificación de calidad, definición de la tabla analítica y documentación de criterios de inclusión/exclusión.
+## Referencias
 
-- **Etapa 3 — Análisis exploratorio y baseline**  
-  EDA reproducible y establecimiento de una referencia mínima de desempeño.
+Referencias verificadas en los documentos consultados; los documentos fuente no se distribuyen con el proyecto.
 
-- **Etapa 4 — Modelos candidatos y ajuste**  
-  Evaluación progresiva de familias de regresión, ajuste de hiperparámetros y control de complejidad.
-
-- **Etapa 5 — Evaluación e interpretación**  
-  Predicciones fuera de muestra, métricas, estabilidad e interpretación compatible con el modelo seleccionado.
-
-- **Etapa 6 — Consolidación reproducible**  
-  Versionado de datos, modelos, transformadores, resultados y documentación final del experimento.
-
----
+- Aylas Barranca, M. D. (2026). *Análisis predictivo e interpretable de la respuesta mecánica de estructuras pantográficas mediante aprendizaje automático supervisado aplicado a datos experimentales*. Plan de tesis, Universidad Nacional de Ingeniería.
+- Venditti, E. (curso académico 2024/2025). *Analisi strutturale per lo studio del danneggiamento in materiali e strutture complesse*. Tesis doctoral, Università degli Studi di Sassari. Contexto experimental, tabla geométrica y fichas de ensayo del apéndice A.
+- Turco, E., Golaszewski, M., Giorgio, I. y Placidi, L. (2017). *Can a Hencky-Type Model Predict the Mechanical Behaviour of Pantographic Lattices?* En *Mathematical Modelling in Solid Mechanics*, pp. 285–311. [DOI: 10.1007/978-981-10-3764-1_18](https://doi.org/10.1007/978-981-10-3764-1_18).
+- Turco, E., Misra, A., Sarikaya, R. y Lekszycki, T. (2019; publicación en línea en 2018). *Quantitative analysis of deformation mechanisms in pantographic substructures: experiments and modeling*. *Continuum Mechanics and Thermodynamics*, 31, 209–223. [DOI: 10.1007/s00161-018-0678-y](https://doi.org/10.1007/s00161-018-0678-y).
 
 ## Licencia
 
-Uso académico en el marco de la **Universidad Nacional de Ingeniería (UNI)**.
-
-Los datos experimentales originales no deben redistribuirse públicamente hasta verificar expresamente sus condiciones de uso y autorización. La publicación del código no implica autorización para publicar las fuentes experimentales.
+El **código** se distribuye para uso académico y de investigación en el marco de la UNI, según `LICENSE`. Los **datos experimentales** conservan las condiciones de sus titulares; su publicación o redistribución requiere autorización expresa. La disponibilidad del código no otorga derechos sobre los datos o documentos consultados. `.gitignore` excluye los PDF, las referencias privadas y los datos de ejecución.

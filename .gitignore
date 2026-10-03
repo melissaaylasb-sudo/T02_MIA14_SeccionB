@@ -21,3 +21,11 @@ logs/*
 Thumbs.db
 .vscode/
 .idea/
+
+# Referencias bibliográficas y documentos fuente privados
+references/_private/
+references/_private/**
+references_private/
+references_private/**
+*.pdf
+*.[pP][dD][fF]
