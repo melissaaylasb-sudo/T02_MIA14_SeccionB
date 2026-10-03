@@ -27,6 +27,135 @@ Universidad Nacional de Ingeniería (UNI)
 | Unidad de salida | Newton (N), unidad de fuerza; no es una masa en kilogramos ni un esfuerzo por unidad de área |
 | Finalidad predictiva | Estimar el inicio del daño de configuraciones comparables a las ensayadas y estudiar qué características ayudan a esa estimación |
 | Cómo se comprobará | Comparar predicciones con fuerzas reales de casos reservados para evaluación, frente a una referencia simple |
+| Métrica principal | MAE fuera de muestra: error absoluto medio expresado en la misma unidad que la carga |
+
+## Estructura del repositorio
+
+> **Esta estructura es parte central de la metodología de tesis.** Separa evidencia experimental, decisiones de curaduría, código de modelamiento y resultados para que cada predicción pueda rastrearse hasta su archivo de origen.
+
+### Mapa rápido de responsabilidades
+
+| Componente | Rol principal | Responde a la pregunta |
+|---|---|---|
+| `data/` | Custodia y versiona la evidencia experimental | ¿De qué datos proviene el análisis? |
+| `config/` | Declara las decisiones metodológicas sin ocultarlas en el código | ¿Qué columnas, unidades, modelos y particiones se autorizaron? |
+| `src/` | Contiene la implementación reutilizable y verificable | ¿Cómo se procesa, entrena y evalúa? |
+| `notebooks/` | Explica y revisa cada etapa de la investigación | ¿Cómo puede el investigador inspeccionar el proceso? |
+| `tests/` | Comprueba reglas críticas del flujo | ¿Cómo se verifica que no se mezclen grupos ni se produzca leakage? |
+| `results/` | Conserva las salidas de cada experimento | ¿Qué predicciones, métricas y modelos produjo una ejecución? |
+| `logs/` | Registra eventos, advertencias y fallos | ¿Qué ocurrió durante la ejecución? |
+| `README.md` | Integra el problema físico, el método de ML y el uso del proyecto | ¿Qué hace el repositorio y cómo debe utilizarse? |
+
+En términos simples: **`data/` contiene la evidencia, `config/` las decisiones, `src/` el procedimiento, `notebooks/` la explicación y `results/` los resultados reproducibles.**
+
+La organización completa es la siguiente:
+
+```text
+T02_MIA14_SeccionB/
+├── config/
+│   ├── data_schema.yml
+│   └── model_config.yml
+├── data/
+│   ├── raw/
+│   │   └── .gitkeep
+│   ├── interim/
+│   │   └── .gitkeep
+│   └── processed/
+│       └── .gitkeep
+├── notebooks/
+│   ├── 01_Ingesta_y_curaduria.ipynb
+│   ├── EDA_basico.ipynb
+│   ├── 03_Particiones_y_preprocesamiento.ipynb
+│   ├── Baseline_basico.ipynb
+│   ├── 05_Ajuste_y_validacion.ipynb
+│   └── 06_Evaluacion_e_interpretabilidad.ipynb
+├── src/
+│   ├── __init__.py
+│   ├── ingesta.py
+│   ├── preprocesamiento.py
+│   ├── modelo_baseline.py
+│   ├── modelos.py
+│   ├── particiones.py
+│   ├── ajuste.py
+│   ├── validacion.py
+│   ├── interpretabilidad.py
+│   └── experimento.py
+├── tests/
+│   └── test_workflow.py
+├── results/
+│   └── .gitkeep
+├── logs/
+│   └── .gitkeep
+├── slides/
+│   └── .gitkeep
+├── .gitattributes
+├── .gitignore
+├── LICENSE
+├── pyproject.toml
+├── README.md
+└── requirements.txt
+```
+
+### Directorios de datos y resultados
+
+| Ruta | Contenido | Regla metodológica |
+|---|---|---|
+| `data/raw/` | Archivos experimentales recibidos de la fuente autorizada | Son originales inmutables: el código no los modifica ni sobrescribe |
+| `data/interim/` | Una carpeta por ejecución de ingesta, con tabla tabular, hash y manifiesto | Conserva la trazabilidad respecto del original; todavía no es la tabla de modelamiento |
+| `data/processed/` | Tabla analítica curada y reporte de calidad, ambos versionados | Contiene únicamente columnas con roles explícitos; puede conservar faltantes de predictores |
+| `results/` | Futuros folds, búsquedas internas, pipelines, predicciones OOF, métricas e interpretaciones | Se genera solo al ejecutar un experimento autorizado; no contiene resultados en este avance |
+| `logs/` | Reservado para registros de ingesta, calidad y modelamiento | Actualmente está vacío; cuando se ejecuta el flujo documenta advertencias y fallos sin sustituir los manifiestos |
+| `slides/` | Reservado para presentaciones del proyecto | Actualmente está vacío y se mantiene separado del código, los datos y los resultados |
+
+El recorrido de los datos es:
+
+```text
+data/raw/  →  data/interim/VERSION/  →  data/processed/VERSION/  →  results/VERSION/
+ original        ingesta trazable             tabla curada              evaluación ML
+```
+
+La imputación estadística, el escalamiento y la eliminación de constantes no se aplican globalmente en `data/processed/`. Se ajustan dentro del entrenamiento de cada fold mediante los pipelines definidos en `src/modelos.py`, lo cual evita que la información del conjunto de evaluación influya en el modelo.
+
+### Notebooks de la investigación
+
+| Orden | Notebook | Propósito |
+|---:|---|---|
+| 1 | `01_Ingesta_y_curaduria.ipynb` | Revisar procedencia, target, unidades, exclusiones y construcción de la tabla válida |
+| 2 | `EDA_basico.ipynb` | Examinar distribuciones, faltantes, constantes, correlaciones y posibles anomalías |
+| 3 | `03_Particiones_y_preprocesamiento.ipynb` | Justificar grupos, folds y transformaciones ajustadas exclusivamente con entrenamiento |
+| 4 | `Baseline_basico.ipynb` | Definir la referencia de mediana sobre las mismas particiones externas |
+| 5 | `05_Ajuste_y_validacion.ipynb` | Ejecutar búsqueda interna de hiperparámetros y evaluación externa cuando existan datos reales |
+| 6 | `06_Evaluacion_e_interpretabilidad.ipynb` | Analizar métricas, residuos, estabilidad e interpretabilidad de una ejecución completa |
+
+Los notebooks explican y documentan las decisiones de tesis. La lógica reutilizable se mantiene en `src/` para que el resultado no dependa de ejecutar celdas manualmente en un orden desconocido.
+
+### Módulos de código científico
+
+| Archivo | Responsabilidad |
+|---|---|
+| `src/ingesta.py` | Lee CSV/XLSX, valida encabezados, calcula SHA-256 y crea una versión intermedia sin alterar el original |
+| `src/preprocesamiento.py` | Aplica curaduría determinística, valida roles y tipos y registra exclusiones; no imputa ni escala |
+| `src/modelo_baseline.py` | Construye el `DummyRegressor` de mediana y calcula métricas de regresión |
+| `src/modelos.py` | Define pipelines y familias candidatas con el preprocesamiento dentro de cada ajuste |
+| `src/particiones.py` | Construye validación cruzada externa e interna y mantiene juntos los grupos dependientes |
+| `src/ajuste.py` | Realiza el tuneo de hiperparámetros únicamente con los folds internos de entrenamiento |
+| `src/validacion.py` | Compara candidatos y baseline en folds externos y conserva predicciones fuera de muestra |
+| `src/interpretabilidad.py` | Extrae coeficientes e importancia por permutación sin atribuir causalidad física |
+| `src/experimento.py` | Orquesta inspección, ejecución, manifiestos y artefactos; no entrena por defecto |
+
+### Configuración, pruebas y archivos raíz
+
+| Ruta | Función |
+|---|---|
+| `config/data_schema.yml` | Contrato de columnas, identificadores, predictores, target, unidades y reglas de curaduría |
+| `config/model_config.yml` | Protocolo de validación, grupos, seed, familias candidatas, rejillas y autorización de ejecución |
+| `tests/test_workflow.py` | Comprueba aislamiento de folds, protección contra leakage y construcción sin entrenamiento |
+| `requirements.txt` | Dependencias necesarias para reproducir el flujo |
+| `pyproject.toml` | Metadatos del proyecto y versión mínima de Python |
+| `.gitignore` | Evita versionar datos, PDF privados, logs, modelos y resultados experimentales |
+| `.gitattributes` | Normaliza archivos de texto en Git |
+| `LICENSE` | Condiciones académicas del código y separación respecto de los derechos sobre los datos |
+| `README.md` | Documento central del problema científico, metodología y uso del repositorio |
 
 ## Qué fuerzas y aspectos físicos intervienen
 
@@ -100,58 +229,6 @@ Las tablas de referencia rotulan longitudes en mm, volúmenes en mm³ y primera 
 
 La carga última, los desplazamientos y las energías medidos durante el ensayo no son entradas del modelo principal. Los eventos sucesivos de un mismo ensayo tampoco constituyen observaciones independientes. Los nombres conceptuales del YAML no se presentan como columnas reales detectadas.
 
-## Estructura del repositorio
-
-```text
-T02_MIA14_SeccionB/
-├── data/
-│   ├── raw/                         # originales inmutables
-│   ├── interim/                     # ingestas versionadas y manifiestos
-│   └── processed/                   # tablas analíticas y reportes de curaduría
-├── notebooks/
-│   ├── 01_Ingesta_y_curaduria.ipynb
-│   ├── EDA_basico.ipynb              # etapa 2; nombre existente conservado
-│   ├── 03_Particiones_y_preprocesamiento.ipynb
-│   ├── Baseline_basico.ipynb         # etapa 4; nombre existente conservado
-│   ├── 05_Ajuste_y_validacion.ipynb
-│   └── 06_Evaluacion_e_interpretabilidad.ipynb
-├── src/
-│   ├── __init__.py
-│   ├── ingesta.py
-│   ├── preprocesamiento.py          # curaduría determinística
-│   ├── modelo_baseline.py
-│   ├── modelos.py                   # pipelines y familias candidatas
-│   ├── particiones.py               # folds, grupos y controles de viabilidad
-│   ├── ajuste.py                    # búsqueda interna de hiperparámetros
-│   ├── validacion.py                # evaluación externa y predicciones OOF
-│   ├── interpretabilidad.py         # coeficientes e importancia por permutación
-│   └── experimento.py               # inspección y ejecución explícita
-├── config/
-│   ├── data_schema.yml              # columnas, roles, unidades y curaduría
-│   └── model_config.yml             # protocolo, familias, rejillas y ejecución
-├── tests/
-│   └── test_workflow.py             # contratos y aislamiento, sin entrenar
-├── results/                         # experimentos locales versionados; vacío
-├── logs/                            # registros locales de ejecución
-├── slides/                          # reservado para presentaciones
-├── README.md
-├── requirements.txt
-├── pyproject.toml
-├── .gitignore
-└── LICENSE
-```
-
-| Directorio | Contenido y regla |
-|---|---|
-| `data/raw/` | Datos originales: nunca editar ni sobrescribir; incorporar ampliaciones como archivos nuevos |
-| `data/interim/` | Copias tabulares por ingesta; lectura y trazabilidad sin transformaciones aprendidas |
-| `data/processed/` | Tabla analítica con roles explícitos y curaduría determinística; conserva valores faltantes de predictores |
-| `results/` | Futuras predicciones, métricas, búsquedas, particiones y modelos; cada experimento tiene una versión propia |
-
-La imputación, eliminación estadística de constantes y escalamiento ocurren en los pipelines de `modelos.py`, dentro de cada entrenamiento. No se aplican globalmente a `processed`. Datos, referencias privadas y artefactos de ejecución están excluidos de Git.
-
-Los notebooks explican las decisiones y llaman a los módulos; la lógica reutilizable reside en `src/`. Esta separación evita que la tesis dependa de celdas ejecutadas en un orden desconocido.
-
 ## Flujo reproducible
 
 ```mermaid
@@ -174,18 +251,18 @@ flowchart TD
 
 | Etapa | Entrada | Proceso | Salida y estado |
 |---|---|---|---|
-| Ingesta | Original en `raw` | Lectura, hashes, dimensiones y esquema observado | `interim`; implementada, pendiente de datos reales |
-| Curaduría | Ingesta + esquema revisado | Trazabilidad, tipos, faltantes, duplicados y revisión física | `processed`; controles preliminares implementados |
-| EDA | Tabla curada | Distribuciones, faltantes, correlaciones y revisión de redundancia | Notebook preparado, sin resultados |
-| Partición | Tabla, grupos y protocolo | CV externa e interna sin solapamiento | Índices y ordinales de origen; implementación preparada |
-| Preprocesamiento | Entrenamiento de cada fold | Medianas, constantes y escalamiento según modelo | Transformadores ajustados dentro del pipeline; sin ejecutar |
-| Baseline | Target del entrenamiento externo | Mediana | Referencia en las mismas particiones; sin ajustar |
-| Ajuste o tuneo | Solo entrenamiento externo | `GridSearchCV` con MAE interno; selección de familia e hiperparámetros | Búsquedas y mejores configuraciones internas; sin ejecutar |
-| Validación | Fold externo excluido del ajuste | Predicciones, errores y comparación contra baseline | Métricas por fold y OOF; sin resultados |
-| Interpretación | Pipeline ajustado y observaciones externas | Coeficientes y permutación opcional | Diagnósticos previstos por fold; sin ejecutar |
-| Reajuste final | Toda la tabla, tras evaluación | Nueva selección interna y ajuste para reutilización | Modelo opcional; no produce una evaluación independiente nueva |
+| Ingesta | Original en `raw` | Lectura, hashes, dimensiones y esquema observado | Versión trazable en `interim` |
+| Curaduría | Ingesta + esquema revisado | Tipos, faltantes, duplicados, roles y revisión física | Tabla y reporte en `processed` |
+| EDA | Tabla curada | Distribuciones, correlaciones, anomalías y redundancia | Diagnóstico descriptivo |
+| Partición | Tabla, grupos y protocolo | CV externa e interna sin solapamiento | Índices y ordinales de origen |
+| Preprocesamiento | Entrenamiento de cada fold | Medianas, constantes y escalamiento según modelo | Pipeline ajustado solo con entrenamiento |
+| Baseline | Target del entrenamiento externo | Mediana | Referencia para la comparación |
+| Ajuste o tuneo | Entrenamiento externo | `GridSearchCV` con MAE interno | Familia e hiperparámetros seleccionados |
+| Validación | Fold externo | Predicciones y errores | Métricas y predicciones OOF |
+| Interpretación | Pipeline ajustado + fold externo | Coeficientes y permutación opcional | Diagnósticos por fold |
+| Reajuste final | Toda la tabla, después de evaluar | Selección interna y ajuste para reutilización | Modelo opcional sin una evaluación nueva |
 
-**Fold** significa partición de validación cruzada; **OOF** significa predicciones obtenidas cuando cada observación estuvo fuera del entrenamiento. Ninguna de las etapas de entrenamiento se ha ejecutado en este avance.
+**Fold** significa partición de validación cruzada; **OOF** identifica predicciones obtenidas cuando cada observación estuvo fuera del entrenamiento. El código está preparado, pero el modelamiento requiere incorporar y revisar primero los datos reales.
 
 ## Curaduría y control de calidad de datos experimentales
 
@@ -222,7 +299,7 @@ Las réplicas y registros relacionados deben permanecer en el mismo grupo de par
 
 ## Baseline y modelos candidatos
 
-El **baseline** es una referencia mínima: predecir para todos los casos externos la mediana de la carga observada **solo en entrenamiento**. Si un método complejo no mejora esa referencia fuera de muestra, su complejidad no queda justificada por el error predictivo.
+El **baseline** predice la mediana de la carga observada en el entrenamiento. Permite comprobar si los modelos candidatos aportan una reducción real del error.
 
 | Familia | Qué representa | Estado de la implementación |
 |---|---|---|
@@ -233,31 +310,33 @@ El **baseline** es una referencia mínima: predecir para todos los casos externo
 | Proceso gaussiano | Relación no lineal definida mediante un kernel de similitud | Pipeline y búsqueda preliminar; intervalos calibrados pendientes |
 | Red neuronal de regresión | Combinación no lineal de entradas mediante capas | Constructor disponible; deshabilitado por defecto hasta justificar su complejidad |
 
-Los rangos en `config/model_config.yml` son puntos de partida revisables, no valores óptimos. Cada pipeline incluye imputación de medianas, eliminación de constantes y escalamiento cuando corresponde. Los árboles conservan la escala original. Si una columna está completamente ausente en algún entrenamiento, se detiene el protocolo para revisar esa representación.
-
-No hay modelo ganador ni se presupone que una red neuronal será superior. Agregar familias o ampliar rejillas después de ver los errores externos modifica el experimento y exige una nueva evaluación.
+Los rangos de `config/model_config.yml` son puntos de partida. Cada pipeline contiene su preprocesamiento; los árboles no requieren escalamiento. Una columna completamente ausente en un entrenamiento detiene el protocolo. No se presupone un modelo ganador ni que una red neuronal será superior.
 
 ### Cómo se separan ajuste y validación
 
-1. Reservar un fold externo, manteniendo juntos los registros dependientes.
-2. Dividir únicamente el entrenamiento externo en folds internos.
-3. Ajustar cada pipeline y sus hiperparámetros en esos folds; seleccionar por MAE interno.
-4. Elegir la familia por ese criterio interno y reajustarla en todo el entrenamiento externo.
-5. Predecir el fold externo una sola vez para evaluación y comparar contra la mediana del mismo entrenamiento.
-6. Repetir y conservar todas las predicciones externas, configuraciones y advertencias.
+1. Reservar un fold externo y mantener juntos los registros dependientes.
+2. Usar folds internos para seleccionar familia e hiperparámetros mediante MAE.
+3. Reajustar la selección con todo el entrenamiento externo.
+4. Predecir una sola vez el fold externo y compararlo con el baseline.
 
-La salida `selected` evalúa este procedimiento completo. Los errores externos por familia se conservan para diagnóstico; elegir una familia utilizando esos errores y reportar el mismo error como evaluación final produciría una estimación optimista. Este diseño sigue la separación descrita en la [documentación de validación cruzada anidada de scikit-learn](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
+La salida `selected` evalúa el procedimiento completo. Escoger posteriormente una familia por sus errores externos requeriría una nueva evaluación. Véase la [validación cruzada anidada de scikit-learn](https://scikit-learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html).
 
 ## Evaluación
 
-| Métrica | Rol | Interpretación |
-|---|---|---|
-| MAE | Principal | Error absoluto medio en unidades de carga |
-| RMSE | Complementaria | Error en unidades de carga; penaliza más los errores grandes |
-| R² | Complementaria | Proporción de variación explicada fuera de muestra; puede ser negativa; indefinida con target constante o menos de dos observaciones |
-| MedAE | Complementaria | Mediana del error absoluto; medida robusta en unidades de carga |
+Las métricas se calculan con predicciones OOF y se comparan con el baseline usando exactamente los mismos folds. No se reportará solo un ajuste sobre los datos empleados para entrenar.
 
-La comparación contra el baseline será siempre **fuera de muestra**, considerando variabilidad entre particiones. No se usan matriz de confusión, accuracy, precision, recall ni F1 para el problema principal: el target es continuo y la tarea es regresión.
+| Métrica | Prioridad | Qué responde | Lectura en el proyecto |
+|---|---|---|---|
+| **MAE** | Principal | ¿Cuántos newtons se desvía, en promedio, la predicción? | Promedio de `|carga observada − carga predicha|`. Menor es mejor y mantiene una interpretación directa en N |
+| **RMSE** | Complementaria | ¿El modelo está cometiendo algunos errores especialmente grandes? | Eleva los errores al cuadrado antes de promediarlos, por lo que penaliza más las desviaciones grandes. Menor es mejor |
+| **MedAE** | Complementaria | ¿Cuál es el error absoluto típico sin quedar dominado por casos extremos? | Mediana de los errores absolutos, expresada en N. Menor es mejor |
+| **R² OOF** | Complementaria | ¿Cuánto mejora el procedimiento respecto de predecir la media global de las observaciones evaluadas? | Un valor cercano a 1 indica mejor ajuste; 0 equivale a esa referencia y un valor negativo indica peor desempeño. No se interpreta si el target es constante o hay menos de dos observaciones |
+
+El **criterio principal de ajuste interno será el MAE**. En la evaluación externa se informarán las cuatro métricas por fold y sobre el conjunto de predicciones OOF. También se reportará `MAE_baseline − MAE_modelo`: un valor positivo indica que el procedimiento reduce el error frente a la referencia de mediana.
+
+No se fijará anticipadamente un valor de MAE “aceptable” sin conocer la variabilidad experimental y la utilidad mecánica requerida. La dispersión entre folds se mostrará como estabilidad del resultado, no como un intervalo de confianza automático porque los entrenamientos se superponen.
+
+Accuracy, precision, recall, F1 y matriz de confusión no corresponden al objetivo principal, ya que la respuesta es una fuerza continua. Si posteriormente se evalúan intervalos probabilísticos, se añadirán cobertura y amplitud media como métricas específicas de incertidumbre; no sustituirán al MAE.
 
 ## Interpretabilidad
 
@@ -320,16 +399,7 @@ python -m pip install -r requirements.txt
    python src/preprocesamiento.py --input data/interim/VERSION/dataset_interim.csv
    ```
 
-4. Revisar el reporte y seguir los notebooks en este orden:
-
-| Orden | Notebook | Decisión o producto |
-|---|---|---|
-| 1 | `01_Ingesta_y_curaduria.ipynb` | Procedencia, target, unidades, exclusiones y tabla curada |
-| 2 | `EDA_basico.ipynb` | Distribuciones, faltantes, relaciones y anomalías |
-| 3 | `03_Particiones_y_preprocesamiento.ipynb` | Justificación de grupos, folds y transformaciones internas |
-| 4 | `Baseline_basico.ipynb` | Referencia de mediana sobre los mismos folds |
-| 5 | `05_Ajuste_y_validacion.ipynb` | Búsquedas internas, selección y evaluación externa |
-| 6 | `06_Evaluacion_e_interpretabilidad.ipynb` | Métricas reales, residuos, importancia y limitaciones |
+4. Revisar el reporte y seguir los seis notebooks en el orden documentado en **Estructura del repositorio**.
 
 ### Inspección sin entrenamiento
 
@@ -361,13 +431,11 @@ Para añadir un reajuste final después de la evaluación, sin atribuirle una nu
 python -m src.experimento --run --fit-final
 ```
 
-Estos comandos de entrenamiento están implementados, pero **no se han ejecutado**. El comando histórico `python src/modelo_baseline.py` solo muestra un aviso; el baseline se integra en la validación común para asegurar comparabilidad.
+El comando histórico `python src/modelo_baseline.py` solo muestra un aviso; la evaluación real integra el baseline en las mismas particiones de los candidatos.
 
 ## Resultados esperados del avance
 
-El avance entrega una estructura de investigación completa a nivel de flujo: documentación física, procedencia, curaduría, seis notebooks y módulos para particiones, pipelines, ajuste, validación e interpretación. Los contratos e índices se verifican con pruebas de software que no representan datos experimentales.
-
-Permanecen pendientes la fuente original, la conciliación científica, el diccionario definitivo, la elección justificada de grupos/folds y la ejecución real. Las extensiones de incertidumbre calibrada, SHAP/PDP/ALE y análisis estadístico de estabilidad requieren desarrollo y validación adicionales. No hay valores de desempeño, predicciones, modelos ganadores ni conclusiones experimentales en este avance.
+El flujo, los notebooks y los controles de software están preparados. Faltan la fuente original, la conciliación científica, el diccionario definitivo, la elección de grupos/folds y la ejecución experimental. Por ello aún no existen métricas, predicciones ni un modelo ganador.
 
 ## Roadmap
 
