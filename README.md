@@ -6,8 +6,9 @@
 
 <p align="center">
   <a href="demo/index.html"><strong>Abrir demostrador</strong></a> ·
-  <a href="notebooks/01_Ingesta_y_curaduria.ipynb">Ver ingesta</a> ·
-  <a href="notebooks/02_EDA.ipynb">Ver EDA</a> ·
+  <a href="notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb">Ver ingesta y calidad</a> ·
+  <a href="notebooks/02_EDA_Avanzado.ipynb">Ver EDA avanzado</a> ·
+  <a href="reports/02_EDA_Avanzado.html">Abrir reporte EDA</a> ·
   <a href="data/README.md">Ver datos</a>
 </p>
 
@@ -151,7 +152,7 @@ flowchart TB
 
     subgraph B["B. Exploración y protocolo"]
         direction LR
-        B1["EDA<br/>distribuciones + faltantes"] --> B2["Dependencia<br/>grupos + réplicas"] --> B3["Partición externa<br/>casos reservados"]
+        B1["EDA avanzado<br/>univariado + bivariado<br/>multivariado + atípicos"] --> B2["Dependencia<br/>grupos + réplicas"] --> B3["Partición externa<br/>casos reservados"]
     end
 
     subgraph C["C. Modelado sin fuga"]
@@ -204,23 +205,25 @@ La evaluación separa selección y medición para evitar resultados optimistas:
 
 | Etapa | Evidencia visible | Estado |
 |---:|---|---|
-| 1. Ingesta y curaduría | [01_Ingesta_y_curaduria.ipynb](notebooks/01_Ingesta_y_curaduria.ipynb) | Ejecutado con la fuente MATLAB; contiene manifiesto, control de calidad y tabla de salida |
-| 2. EDA | [02_EDA.ipynb](notebooks/02_EDA.ipynb) | Ejecutado con tablas, diagnósticos y gráficos |
+| 1. Ingesta, curaduría y calidad | [Notebook](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) · [Reporte HTML](reports/01_Ingesta_Curaduria_y_Calidad.html) | Ejecutado; verifica hash, esquema, tipos, faltantes, duplicados, constantes, exclusiones y salidas |
+| 2. EDA avanzado | [Notebook](notebooks/02_EDA_Avanzado.ipynb) · [Reporte HTML](reports/02_EDA_Avanzado.html) | Ejecutado; contiene análisis univariado, bivariado, multivariado y detección de atípicos |
 
 La fuente cruda está en [data/raw](data/raw/), la extracción revisable en [data/interim/preliminary](data/interim/preliminary/) y la tabla analítica en [data/processed/preliminary](data/processed/preliminary/). La explicación de cada nivel está en [data/README.md](data/README.md).
 
-## EDA
+## EDA avanzado
 
-El notebook [02_EDA.ipynb](notebooks/02_EDA.ipynb) está ejecutado y contiene:
+El [notebook ejecutado](notebooks/02_EDA_Avanzado.ipynb) y su [reporte HTML](reports/02_EDA_Avanzado.html) separan cuatro niveles de análisis:
 
-- control de faltantes, duplicados y constantes;
-- distribución y rango de la carga de primera falla;
-- comparación descriptiva por configuración geométrica;
-- distribuciones y diagramas predictor–target;
-- correlaciones de Spearman y detección de redundancia;
-- controles físicos de signo y revisión de variables posensayo.
+| Nivel | Análisis realizados | Insight esperado |
+|---|---|---|
+| Univariado | rango, cuartiles, dispersión, CV, asimetría, histogramas, ECDF y cajas | escala del target, variables constantes, niveles discretos y extremos |
+| Atípicos | cercas IQR, puntuación robusta MAD y revisión por identificador | casos que requieren contraste con la fuente; no se eliminan automáticamente |
+| Bivariado | Pearson, Spearman, intervalos bootstrap, dispersión predictor–target y comparación por celdas | forma y estabilidad de asociaciones geométricas con la carga |
+| Multivariado | matriz de correlación, pares con alta redundancia, VIF, PCA y distancia de Mahalanobis | colinealidad, dimensión efectiva del diseño y combinaciones geométricas inusuales |
 
-El análisis detecta un radio de pivote constante y relaciones fuertes entre medidas derivadas de la misma geometría. Estas asociaciones orientan el protocolo, pero no demuestran causalidad ni desempeño predictivo.
+La **calidad de datos** se resuelve primero en el cuaderno 01: procedencia, esquema, faltantes, duplicados, constantes y exclusiones. El EDA usa la tabla ya curada y añade controles físicos y temporales para comprobar que ninguna respuesta posensayo entre como predictor.
+
+El análisis detecta un radio de pivote constante y relaciones fuertes entre medidas derivadas de la misma geometría. Estas asociaciones orientan la selección y regularización dentro de cada fold, pero no demuestran causalidad ni desempeño fuera de muestra.
 
 ## Propuesta de artefacto
 
@@ -268,12 +271,15 @@ T02_MIA14_SeccionB/
 ├── demo/
 │   └── index.html
 ├── notebooks/
-│   ├── 01_Ingesta_y_curaduria.ipynb
-│   ├── 02_EDA.ipynb
-│   ├── 03_Particiones_y_preprocesamiento.ipynb
-│   ├── 04_Baseline.ipynb
-│   ├── 05_Ajuste_y_validacion.ipynb
-│   └── 06_Evaluacion_e_interpretabilidad.ipynb
+│   ├── 01_Ingesta_Curaduria_y_Calidad.ipynb
+│   ├── 02_EDA_Avanzado.ipynb
+│   ├── 03_Diseno_de_Particiones_y_Preprocesamiento.ipynb
+│   ├── 04_Baseline_de_Referencia.ipynb
+│   ├── 05_Entrenamiento_Ajuste_y_Validacion.ipynb
+│   └── 06_Evaluacion_Final_e_Interpretabilidad.ipynb
+├── reports/
+│   ├── 01_Ingesta_Curaduria_y_Calidad.html
+│   └── 02_EDA_Avanzado.html
 ├── src/
 │   ├── importar_matlab.py
 │   ├── ingesta.py
@@ -343,12 +349,12 @@ La ampliación hacia un conjunto del orden de cientos o aproximadamente mil obse
 
 | Orden | Notebook | Función |
 |---:|---|---|
-| 1 | `01_Ingesta_y_curaduria.ipynb` | Procedencia, esquema, exclusiones y tabla analítica |
-| 2 | `02_EDA.ipynb` | Calidad, distribuciones, relaciones y redundancia |
-| 3 | `03_Particiones_y_preprocesamiento.ipynb` | Grupos, folds y transformaciones dentro de train |
-| 4 | `04_Baseline.ipynb` | Referencia de valor central en los folds externos |
-| 5 | `05_Ajuste_y_validacion.ipynb` | Tuneo interno y predicción externa |
-| 6 | `06_Evaluacion_e_interpretabilidad.ipynb` | Métricas, residuos, estabilidad y explicación |
+| 1 | `01_Ingesta_Curaduria_y_Calidad.ipynb` | Procedencia, esquema, calidad, exclusiones y tabla analítica |
+| 2 | `02_EDA_Avanzado.ipynb` | Análisis univariado, bivariado, multivariado y atípicos |
+| 3 | `03_Diseno_de_Particiones_y_Preprocesamiento.ipynb` | Grupos, folds y transformaciones dentro de train |
+| 4 | `04_Baseline_de_Referencia.ipynb` | Referencia de valor central en los folds externos |
+| 5 | `05_Entrenamiento_Ajuste_y_Validacion.ipynb` | Tuneo interno y predicción externa |
+| 6 | `06_Evaluacion_Final_e_Interpretabilidad.ipynb` | Métricas, residuos, estabilidad y explicación |
 
 Los notebooks documentan la investigación. La lógica reutilizable permanece en `src/` y las pruebas de contratos están en `tests/`.
 

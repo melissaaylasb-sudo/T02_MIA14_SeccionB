@@ -12,4 +12,6 @@ Esta carpeta contiene una versión **preliminar y trazable** de la campaña expe
 
 Las carpetas con identificadores de fecha corresponden a ejecuciones reproducibles y permanecen fuera de Git. `preliminary/` es una copia estable para revisión académica.
 
+La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) o abrirse directamente como [reporte HTML](../reports/01_Ingesta_Curaduria_y_Calidad.html). El análisis posterior está en [02_EDA_Avanzado.ipynb](../notebooks/02_EDA_Avanzado.ipynb) y en su [reporte HTML](../reports/02_EDA_Avanzado.html).
+
 El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas. Una meta cercana al orden de mil observaciones debe entenderse como una **proyección de adquisición**, condicionada a una fuente y un protocolo aprobados; no describe el volumen disponible actualmente.

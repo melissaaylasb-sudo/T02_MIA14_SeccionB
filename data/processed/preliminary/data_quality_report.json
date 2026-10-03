@@ -131,17 +131,17 @@
     "Confirmar que todos los predictores estarán disponibles antes del ensayo"
   ],
   "report_version": 1,
-  "run_id": "20261003T015928287717Z",
-  "curated_at_utc": "2026-10-03T01:59:28.289427+00:00",
-  "input_file": "data/interim/20261003T015928118917Z/dataset_interim.csv",
+  "run_id": "20261003T021320523691Z",
+  "curated_at_utc": "2026-10-03T02:13:20.525500+00:00",
+  "input_file": "data/interim/20261003T021320337207Z/dataset_interim.csv",
   "input_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
   "ingestion_manifest": {
     "manifest_version": 1,
-    "run_id": "20261003T015928118917Z",
+    "run_id": "20261003T021320337207Z",
     "source_file": "data/raw/dati_campagna_venditti.m",
     "sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
     "source_modified_at_utc": "2026-07-07T03:10:09.424381+00:00",
-    "ingested_at_utc": "2026-10-03T01:59:28.128495+00:00",
+    "ingested_at_utc": "2026-10-03T02:13:20.341927+00:00",
     "rows": 27,
     "columns": 20,
     "column_names": [
@@ -175,7 +175,7 @@
       ],
       "dtype": "numeric"
     },
-    "interim_file": "data/interim/20261003T015928118917Z/dataset_interim.csv",
+    "interim_file": "data/interim/20261003T021320337207Z/dataset_interim.csv",
     "interim_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
     "execution": {
       "python": "3.13.5",
@@ -189,7 +189,7 @@
         "joblib": "1.5.1"
       },
       "git": {
-        "commit": "b3669002616ba5f3569e9cbbe99439939ef2e254",
+        "commit": "edbc8e27693a3f99da96cb9441e2481daff7979c",
         "dirty": true
       }
     }
@@ -254,7 +254,7 @@
     }
   },
   "schema_sha256": "2dfaa653155b8cfbb250979417a70c990c73c7830019e6f6bb022f4d185019c7",
-  "output_file": "data/processed/20261003T015928287717Z/model_table.csv",
+  "output_file": "data/processed/20261003T021320523691Z/model_table.csv",
   "output_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
   "execution": {
     "python": "3.13.5",
@@ -268,7 +268,7 @@
       "joblib": "1.5.1"
     },
     "git": {
-      "commit": "b3669002616ba5f3569e9cbbe99439939ef2e254",
+      "commit": "edbc8e27693a3f99da96cb9441e2481daff7979c",
       "dirty": true
     }
   }

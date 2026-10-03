@@ -11,7 +11,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import GridSearchCV
 
-from src.experimento import inspect_plan, load_model_data, read_config, run_experiment
+from src.experimento import find_completed_run, inspect_plan, load_model_data, read_config, run_experiment
 from src.ingesta import sha256_file
 from src.importar_matlab import load_matlab_samples
 from src.modelos import build_pipeline, candidate_specs
@@ -35,13 +35,43 @@ class WorkflowTests(unittest.TestCase):
     def test_default_inspection_does_not_fit(self):
         with patch.object(GridSearchCV, "fit", side_effect=AssertionError("fit prohibido")):
             result = inspect_plan(self.config)
-        self.assertEqual(result["status"], "pending_real_data_and_protocol")
-        self.assertFalse(result["training_enabled"])
+        self.assertEqual(result["status"], "ready_for_reviewed_execution")
+        self.assertTrue(result["training_enabled"])
+        self.assertEqual(result["outer_folds"], 5)
 
     def test_training_disabled_before_data_access(self):
+        config = copy.deepcopy(self.config)
+        config["execution"]["allow_training"] = False
         with patch("src.experimento.load_model_data", side_effect=AssertionError("No leer datos")):
             with self.assertRaisesRegex(ValueError, "deshabilitado"):
-                run_experiment(self.config, "fixture")
+                run_experiment(config, "fixture")
+
+    def test_completed_run_requires_matching_inputs_and_intact_artifacts(self):
+        with tempfile.TemporaryDirectory(prefix="pantographic-results-") as temp:
+            root = Path(temp)
+            data, report = root / "data.csv", root / "quality.json"
+            data.write_text("feature,target\n1,2\n", encoding="utf-8")
+            report.write_text("{}", encoding="utf-8")
+            folder = root / "results" / "001"
+            folder.mkdir(parents=True)
+            artifact = folder / "evaluation.json"
+            artifact.write_text("{}", encoding="utf-8")
+            manifest_path = folder / "experiment_manifest.json"
+            manifest_path.write_text(json.dumps({
+                "status": "complete", "configuration_sha256": "matching",
+                "dataset_sha256": sha256_file(data),
+                "quality_report_sha256": sha256_file(report),
+                "artifacts_sha256": {"evaluation.json": sha256_file(artifact)},
+            }), encoding="utf-8")
+            with patch("src.experimento.ROOT", root), patch(
+                "src.experimento.load_model_data", return_value=(None,) * 5 + (data, report)
+            ):
+                self.assertIsNone(find_completed_run(self.config, "other-config"))
+                self.assertIsNone(find_completed_run(self.config, "matching", require_final=True))
+                self.assertEqual(find_completed_run(self.config, "matching"), folder)
+                artifact.write_text('{"modified": true}', encoding="utf-8")
+                with self.assertRaisesRegex(ValueError, "Artefacto modificado"):
+                    find_completed_run(self.config, "matching")
 
     def test_candidates_are_unfitted_pipelines(self):
         for name, (pipeline, _) in candidate_specs(self.config).items():

@@ -122,6 +122,39 @@ def inspect_plan(config: dict) -> dict:
             "outer_folds": len(plan), "features": X.columns.tolist()}
 
 
+def find_completed_run(config: dict, config_hash: str, *, require_final: bool = False) -> Path | None:
+    """Localiza resultados completos de los datos/configuración actuales y verifica hashes.
+
+    No reutiliza corridas parciales ni resultados de otra versión. Un artefacto
+    alterado en una corrida compatible provoca error en lugar de mostrar métricas
+    que ya no corresponden a su manifiesto.
+    """
+    _, _, _, _, _, data_path, report_path = load_model_data(config)
+    data_hash, quality_hash = sha256_file(data_path), sha256_file(report_path)
+    manifests = sorted((ROOT / "results").glob("*/experiment_manifest.json"), reverse=True)
+    for manifest_path in manifests:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        if (
+            manifest.get("status") != "complete"
+            or manifest.get("configuration_sha256") != config_hash
+            or manifest.get("dataset_sha256") != data_hash
+            or manifest.get("quality_report_sha256") != quality_hash
+        ):
+            continue
+        run_dir = manifest_path.parent.resolve()
+        artifacts = manifest["artifacts_sha256"]
+        if require_final and "final_model.joblib" not in artifacts:
+            continue
+        for relative, digest in artifacts.items():
+            artifact = (run_dir / relative).resolve()
+            if not artifact.is_relative_to(run_dir) or not artifact.is_file():
+                raise ValueError(f"Artefacto ausente o fuera de la ejecución: {relative}")
+            if sha256_file(artifact) != digest:
+                raise ValueError(f"Artefacto modificado: {relative}")
+        return run_dir
+    return None
+
+
 def run_experiment(config: dict, config_hash: str, *, fit_final: bool = False) -> Path:
     """Entrena solo mediante llamada explícita y configuración habilitada/revisada."""
     if config["execution"].get("allow_training") is not True:
