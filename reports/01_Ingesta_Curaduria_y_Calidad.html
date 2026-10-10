@@ -7815,7 +7815,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="1.-Ingesta-y-validaci%C3%B3n-de-datos">1. Ingesta y validación de datos<a class="anchor-link" href="#1.-Ingesta-y-validaci%C3%B3n-de-datos">¶</a></h1><p>MATLAB → tablas por caso y ciclo/evento → controles de integridad, completitud y consistencia.</p>
+<h1 id="1.-Ingesta-y-validaci%C3%B3n-de-datos">1. Ingesta y validación de datos<a class="anchor-link" href="#1.-Ingesta-y-validaci%C3%B3n-de-datos">¶</a></h1><p>Se convierte el archivo MATLAB en tablas y se comprueba su calidad. Cada caso describe una malla de fibras unidas por pivotes; la <strong>familia</strong> agrupa por número de celdas en Y y la <strong>primera falla</strong> es la primera rotura identificada. Los <a href="../docs/diccionario_datos.md#conceptos-del-estudio">conceptos</a>, el <a href="../docs/diccionario_datos.md#consulta-r%C3%A1pida">diccionario de variables y unidades</a> y el <a href="../docs/introduccion_experimento.md">protocolo experimental</a> se consultan en <code>docs/</code>.</p>
 </div>
 </div>
 </div>
@@ -7826,7 +7826,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.1-Configuraci%C3%B3n-y-archivos-de-entrada">1.1 Configuración y archivos de entrada<a class="anchor-link" href="#1.1-Configuraci%C3%B3n-y-archivos-de-entrada">¶</a></h2><p>Se definen rutas, bloques de variables y directorios de resultados. Los hashes SHA-256 permiten comprobar que la fuente, el esquema y las tablas preliminares permanecen intactos.</p>
+<h2 id="1.1-Configuraci%C3%B3n-y-archivos-de-entrada">1.1 Configuración y archivos de entrada<a class="anchor-link" href="#1.1-Configuraci%C3%B3n-y-archivos-de-entrada">¶</a></h2><p>Se configuran las rutas y se calculan huellas digitales (SHA-256) para detectar cambios en los archivos.</p>
 </div>
 </div>
 </div>
@@ -7852,7 +7852,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">1.2 Extracción y curaduría reproducible<a class="anchor-link" href="#1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">¶</a></h2><p>Se ejecutan el adaptador MATLAB y la curaduría en carpetas fechadas. La extracción no ejecuta el código MATLAB ni sobrescribe las tablas preliminares.</p>
+<h2 id="1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">1.2 Extracción y curaduría reproducible<a class="anchor-link" href="#1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">¶</a></h2><p>Extracción del MATLAB y curaduría en carpetas fechadas, conservando las tablas preliminares originales.</p>
 </div>
 </div>
 </div>
@@ -7908,7 +7908,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.3-Validaci%C3%B3n-de-valores-y-nulos">1.3 Validación de valores y nulos<a class="anchor-link" href="#1.3-Validaci%C3%B3n-de-valores-y-nulos">¶</a></h2><p>Comparación por <code>Case_n</code> entre vectores originales, tabla intermedia y tabla procesada; tolerancia absoluta: $10^{-10}$. Se reconstruye el procesamiento histórico con su esquema y se verifican los hashes de sus manifiestos.</p>
+<h2 id="1.3-Validaci%C3%B3n-de-valores-y-nulos">1.3 Validación de valores y nulos<a class="anchor-link" href="#1.3-Validaci%C3%B3n-de-valores-y-nulos">¶</a></h2><p>Se comparan valores y nulos por <code>Case_n</code>, con tolerancia absoluta de $10^{-10}$, y se verifica la integridad de los archivos.</p>
 </div>
 </div>
 </div>
@@ -8134,7 +8134,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.4-Contrato-de-datos">1.4 Contrato de datos<a class="anchor-link" href="#1.4-Contrato-de-datos">¶</a></h2><p>Validación de nombres, identificadores, tipos, roles y unidades. La tabla principal usa una fila por caso; las matrices energéticas, caso × ciclo/evento. Los ciclos de un mismo caso no son observaciones independientes.</p>
+<h2 id="1.4-Contrato-de-datos">1.4 Contrato de datos<a class="anchor-link" href="#1.4-Contrato-de-datos">¶</a></h2><p>Se comprueban nombres, tipos, unidades y roles. La tabla principal tiene una fila por caso; los ciclos y eventos pertenecen a ese mismo caso.</p>
 </div>
 </div>
 </div>
@@ -8529,7 +8529,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.5-Completitud-por-variable-y-bloque">1.5 Completitud por variable y bloque<a class="anchor-link" href="#1.5-Completitud-por-variable-y-bloque">¶</a></h2><p>Perfil de valores disponibles, nulos, ceros y signos. Las relaciones se calculan sobre pares observados; no se imputa la carga de primera falla ni se sustituyen posiciones vacías por ceros.</p>
+<h2 id="1.5-Completitud-por-variable-y-bloque">1.5 Completitud por variable y bloque<a class="anchor-link" href="#1.5-Completitud-por-variable-y-bloque">¶</a></h2><p>Se revisan nulos, ceros y signos. La carga de primera falla ausente no se rellena ni se convierte en cero.</p>
 </div>
 </div>
 </div>
@@ -9170,7 +9170,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.6-Patrones-de-valores-faltantes">1.6 Patrones de valores faltantes<a class="anchor-link" href="#1.6-Patrones-de-valores-faltantes">¶</a></h2><p>Se comparan máscaras de ausencia por caso, ciclo y evento. La coausencia identifica mediciones que faltan conjuntamente; no determina la causa del faltante ni demuestra ausencia de ensayo.</p>
+<h2 id="1.6-Patrones-de-valores-faltantes">1.6 Patrones de valores faltantes<a class="anchor-link" href="#1.6-Patrones-de-valores-faltantes">¶</a></h2><p>Se identifican variables que faltan conjuntamente; este patrón no explica por qué faltan.</p>
 </div>
 </div>
 </div>
@@ -9231,7 +9231,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.7-Cobertura-por-familia-y-ciclo">1.7 Cobertura por familia y ciclo<a class="anchor-link" href="#1.7-Cobertura-por-familia-y-ciclo">¶</a></h2><p>Disponibilidad dentro de cada arquitectura y a lo largo de los ciclos. Las comparaciones longitudinales requieren una cohorte común para separar cambios de respuesta y cambios de composición.</p>
+<h2 id="1.7-Cobertura-por-familia-y-ciclo">1.7 Cobertura por familia y ciclo<a class="anchor-link" href="#1.7-Cobertura-por-familia-y-ciclo">¶</a></h2><p>Se revisa la disponibilidad por familia y ciclo. Para comparar ciclos deben utilizarse los mismos casos.</p>
 </div>
 </div>
 </div>
@@ -9376,7 +9376,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.8-Validaci%C3%B3n-de-dominios-y-signos">1.8 Validación de dominios y signos<a class="anchor-link" href="#1.8-Validaci%C3%B3n-de-dominios-y-signos">¶</a></h2><p>Controles de valores no finitos, dimensiones positivas, conteos enteros y residual/amplitud nominal. Se conservan los signos energéticos; no se aplica truncamiento ni valor absoluto sin justificar la convención de cálculo.</p>
+<h2 id="1.8-Validaci%C3%B3n-de-dominios-y-signos">1.8 Validación de dominios y signos<a class="anchor-link" href="#1.8-Validaci%C3%B3n-de-dominios-y-signos">¶</a></h2><p>Se revisan dimensiones positivas, conteos enteros y valores no finitos. Los signos energéticos se conservan para revisión.</p>
 </div>
 </div>
 </div>
@@ -9718,7 +9718,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.9-Duplicados-y-cobertura-de-configuraciones">1.9 Duplicados y cobertura de configuraciones<a class="anchor-link" href="#1.9-Duplicados-y-cobertura-de-configuraciones">¶</a></h2><p>Detección de filas idénticas, columnas iguales y geometrías repetidas. Las coincidencias parciales de factores no acreditan réplicas; faltan identificadores de espécimen y lote para comprobar independencia experimental.</p>
+<h2 id="1.9-Duplicados-y-cobertura-de-configuraciones">1.9 Duplicados y cobertura de configuraciones<a class="anchor-link" href="#1.9-Duplicados-y-cobertura-de-configuraciones">¶</a></h2><p>Se buscan filas y geometrías repetidas. Una coincidencia no demuestra que existan ensayos independientes repetidos.</p>
 </div>
 </div>
 </div>
@@ -9815,7 +9815,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.10-Consistencia-geom%C3%A9trica">1.10 Consistencia geométrica<a class="anchor-link" href="#1.10-Consistencia-geom%C3%A9trica">¶</a></h2><p>Contraste con $V_{p}=N_p\pi r_p^2h_p$ y $V_f=L_f b_fh_f$: desviación $100(V_{registrado}/V_{ideal}-1)$. El umbral del 5 % señala revisión, no una tolerancia de fabricación. La suma de partes y el volumen CAD se mantienen como campos distintos.</p>
+<h2 id="1.10-Consistencia-geom%C3%A9trica">1.10 Consistencia geométrica<a class="anchor-link" href="#1.10-Consistencia-geom%C3%A9trica">¶</a></h2><p>Se contrastan los volúmenes con $V_p=N_p\pi r_p^2h_p$ y $V_f=L_fb_fh_f$. Una diferencia mayor al 5 % señala revisión; no es una tolerancia de fabricación.</p>
 </div>
 </div>
 </div>
@@ -10276,7 +10276,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">1.11 Detección robusta de valores atípicos<a class="anchor-link" href="#1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">¶</a></h2><p>Cercas IQR y puntuaciones MAD, globales y por familia. <code>MAD = 0</code> impide calcular la puntuación robusta; no demuestra ausencia de atípicos. Las alertas se conservan para el análisis de sensibilidad, sin eliminar observaciones.</p>
+<h2 id="1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">1.11 Detección robusta de valores atípicos<a class="anchor-link" href="#1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">¶</a></h2><p>Se detectan posibles extremos mediante IQR y MAD, globalmente y por familia. Si MAD es cero, su puntuación no es calculable. No se eliminan casos.</p>
 </div>
 </div>
 </div>
@@ -10607,7 +10607,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">1.12 Disponibilidad de respuesta y composición<a class="anchor-link" href="#1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">¶</a></h2><p>Comparación de mediana y rango de primera falla según disponibilidad del sexto residual, por familia. El resultado describe diferencias de composición; no identifica un mecanismo causal de ausencia.</p>
+<h2 id="1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">1.12 Disponibilidad de respuesta y composición<a class="anchor-link" href="#1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">¶</a></h2><p>Se compara la primera falla según la disponibilidad del sexto desplazamiento residual, dentro de cada familia; no se atribuyen causas a las ausencias.</p>
 </div>
 </div>
 </div>
@@ -10704,7 +10704,7 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.13-Registro-de-incidencias">1.13 Registro de incidencias<a class="anchor-link" href="#1.13-Registro-de-incidencias">¶</a></h2><p>Consolidación de variable afectada, evidencia, impacto y tratamiento. Se mantienen los valores originales y las discrepancias identificadas; una alerta de calidad no autoriza una corrección automática.</p>
+<h2 id="1.13-Registro-de-incidencias">1.13 Registro de incidencias<a class="anchor-link" href="#1.13-Registro-de-incidencias">¶</a></h2><p>Se registra cada incidencia con su evidencia y tratamiento. Los valores originales se conservan.</p>
 </div>
 </div>
 </div>
@@ -10904,8 +10904,8 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">1.14 Interpretación de resultados y validación final<a class="anchor-link" href="#1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">¶</a></h2><p>La extracción y la reconstrucción histórica coinciden con las tablas preliminares; el esquema actual difiere en la selección de <code>Fiber_base</code>. La geometría está completa, mientras la disponibilidad de respuestas cambia entre ciclos y familias. No se eliminaron valores atípicos ni se imputaron respuestas.</p>
-<p>Los controles verifican integridad digital y consistencia interna. Las discrepancias geométricas, la independencia de réplicas y las causas de ausencia requieren información adicional. Las curvas y la precisión instrumental no se pueden validar con estos agregados.</p>
+<h2 id="1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">1.14 Interpretación de resultados y validación final<a class="anchor-link" href="#1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">¶</a></h2><p>La extracción coincide con las tablas preliminares. La geometría está completa y la disponibilidad de respuestas varía por ciclo y familia. El esquema actual omite <code>Fiber_base</code>, presente en la fuente. No se imputaron respuestas ni se eliminaron atípicos.</p>
+<p>Quedan por aclarar las discrepancias geométricas, las réplicas y los motivos de ausencia. Estos controles no validan la calibración instrumental.</p>
 </div>
 </div>
 </div>

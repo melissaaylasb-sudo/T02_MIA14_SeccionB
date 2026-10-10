@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T02:09:00.977367+00:00",
+  "checked_at_utc": "2026-10-10T02:10:50.838253+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -15,8 +15,8 @@
     "executed_code_cells": 55,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 109,
-    "checks": 492,
+    "local_links": 111,
+    "checks": 494,
     "failed_checks": 0
   },
   "notebooks": [
@@ -24,7 +24,7 @@
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "code_cells": 14,
       "executed_code_cells": 14,
-      "sha256": "7c8125ef9f84241ada6c2b49283bd15c1cf48f7ad21890ce5b44eeaaeda26772",
+      "sha256": "7ee3ca86d0f271c986e8664e1c9c4bc60dd8b508b3f7d68f74af5b142ced7eab",
       "unexecuted_cells": [],
       "error_cells": []
     },
@@ -32,7 +32,7 @@
       "path": "notebooks/02_EDA.ipynb",
       "code_cells": 34,
       "executed_code_cells": 34,
-      "sha256": "cfb2328825284a4ac7a8b992fdbb6848341eed4582b75e5308ffd1fee8f21e26",
+      "sha256": "583776ca81099db089da2ff1f960bfb32ba0de22c8f0f0e9bf68f656c3c16717",
       "unexecuted_cells": [],
       "error_cells": []
     },
@@ -560,6 +560,11 @@
   "local_links": [
     {
       "source": "README.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
       "target": "notebooks/02_EDA.ipynb",
       "exists": true
     },
@@ -695,6 +700,16 @@
     },
     {
       "source": "docs/diccionario_datos.md",
+      "target": "docs/introduccion_experimento.md",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
       "target": "data/interim/preliminary/dataset_interim.csv",
       "exists": true
     },
@@ -711,11 +726,6 @@
     {
       "source": "docs/diccionario_datos.md",
       "target": "docs/diccionario_datos.csv",
-      "exists": true
-    },
-    {
-      "source": "docs/diccionario_datos.md",
-      "target": "docs/trazabilidad_datos.md",
       "exists": true
     },
     {
@@ -1149,6 +1159,13 @@
     },
     {
       "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
       "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1344,6 +1361,20 @@
     },
     {
       "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
       "path": "data/interim/preliminary/dataset_interim.csv",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1366,13 +1397,6 @@
     {
       "category": "local_link",
       "path": "docs/diccionario_datos.csv",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/diccionario_datos.md"
-    },
-    {
-      "category": "local_link",
-      "path": "docs/trazabilidad_datos.md",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/diccionario_datos.md"

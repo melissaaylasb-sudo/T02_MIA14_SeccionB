@@ -4,7 +4,15 @@
 Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.º ciclo, sección B · **2026-2**<br>
 **Investigadora:** Melissa Dessire Aylas Barranca · **Docente:** Glen Dario Rodríguez Rafael
 
-Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
+| Delimitación del estudio | Alcance |
+|---|---|
+| **Tema** | Comportamiento mecánico de estructuras pantográficas: mallas de barras (fibras) conectadas mediante uniones (pivotes). |
+| **Aspecto específico** | Relación entre la geometría de la malla y la carga de primera falla durante un ensayo de tracción. |
+| **Pregunta de investigación** | ¿Cómo se relacionan la arquitectura y las dimensiones de fibras y pivotes con la fuerza a la que aparece la primera rotura? |
+
+El objetivo posterior es **predecir esa fuerza en newtons con información conocida antes del ensayo**. Esta rama `eda` documenta la calidad de los datos y explora asociaciones; todavía no evalúa un modelo predictivo.
+
+**Familia** agrupa las estructuras con el mismo número de celdas en Y (`n_cells_Y`: 4, 5 o 6); dentro de cada familia pueden variar las dimensiones de fibras y pivotes. **Primera falla** es el primer evento de rotura identificado de una fibra o un pivote, y no implica la rotura completa de la malla. [Conceptos y diccionario de variables](docs/diccionario_datos.md#conceptos-del-estudio).
 
 **Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
 

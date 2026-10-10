@@ -1,5 +1,20 @@
 # Diccionario científico de los datos
 
+## Conceptos del estudio
+
+El aspecto estudiado es la relación entre la geometría y la **carga de primera falla bajo tracción**. Cada caso reúne una configuración geométrica y las respuestas disponibles de su ensayo.
+
+| Concepto | Significado en estos datos |
+|---|---|
+| **Malla o estructura pantográfica** | Conjunto de barras cruzadas, llamadas fibras, conectadas mediante uniones llamadas pivotes. |
+| **Celda** | Unidad geométrica repetida de la malla. `n_cells_Y` indica cuántas hay en la dirección Y. |
+| **Familia** | Agrupación utilizada en el análisis por `n_cells_Y`: 4, 5 o 6. Compartir familia no significa tener todas las dimensiones iguales ni ser réplicas del mismo espécimen. |
+| **Tracción** | Solicitación que tiende a alargar la estructura al separar sus extremos. |
+| **Primera falla** | Primer evento de rotura identificado de una fibra o un pivote. La malla puede seguir transmitiendo carga después. |
+| **Carga de primera falla** | Fuerza registrada en ese evento, en newtons (N): `First_Failure_Load_N`, la variable objetivo. La falla es el evento; la carga es el valor numérico asociado. |
+
+Las familias describen la arquitectura interna, no un aumento de la longitud exterior. El [contexto experimental](introduccion_experimento.md) y la [trazabilidad de las fuentes](trazabilidad_datos.md) amplían estas definiciones.
+
 ## Consulta rápida
 
 **Target: `First_Failure_Load_N`.** Fuerza, en newtons, asociada a la primera rotura identificada de una fibra o un pivote. Es la respuesta que se buscará estimar a partir de la geometría previa al ensayo; no representa la rotura completa ni necesariamente la fuerza máxima.
