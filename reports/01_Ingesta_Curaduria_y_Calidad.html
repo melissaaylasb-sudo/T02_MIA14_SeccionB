@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>1. Ingesta y validación de datos</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>01_Ingesta_Curaduria_y_Calidad</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7808,7 +7808,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 @media(max-width:750px){main{padding:15px!important}table{font-size:11px!important}.eda-toc ul{columns:1}}
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA_Avanzado.html">02 · Análisis</a><a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#1.1-Configuraci%C3%B3n-y-archivos-de-entrada">1.1 Configuración y archivos de entrada</a></li><li><a href="#1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">1.2 Extracción y curaduría reproducible</a></li><li><a href="#1.3-Validaci%C3%B3n-de-valores-y-nulos">1.3 Validación de valores y nulos</a></li><li><a href="#1.4-Contrato-de-datos">1.4 Contrato de datos</a></li><li><a href="#1.5-Completitud-por-variable-y-bloque">1.5 Completitud por variable y bloque</a></li><li><a href="#1.6-Patrones-de-valores-faltantes">1.6 Patrones de valores faltantes</a></li><li><a href="#1.7-Cobertura-por-familia-y-ciclo">1.7 Cobertura por familia y ciclo</a></li><li><a href="#1.8-Validaci%C3%B3n-de-dominios-y-signos">1.8 Validación de dominios y signos</a></li><li><a href="#1.9-Duplicados-y-cobertura-de-configuraciones">1.9 Duplicados y cobertura de configuraciones</a></li><li><a href="#1.10-Consistencia-geom%C3%A9trica">1.10 Consistencia geométrica</a></li><li><a href="#1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">1.11 Detección robusta de valores atípicos</a></li><li><a href="#1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">1.12 Disponibilidad de respuesta y composición</a></li><li><a href="#1.13-Registro-de-incidencias">1.13 Registro de incidencias</a></li><li><a href="#1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">1.14 Interpretación de resultados y validación final</a></li></ul></details></div>
+<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA.html">02 · Análisis</a><a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#1.1-Configuraci%C3%B3n-y-archivos-de-entrada">1.1 Configuración y archivos de entrada</a></li><li><a href="#1.2-Extracci%C3%B3n-y-curadur%C3%ADa-reproducible">1.2 Extracción y curaduría reproducible</a></li><li><a href="#1.3-Validaci%C3%B3n-de-valores-y-nulos">1.3 Validación de valores y nulos</a></li><li><a href="#1.4-Contrato-de-datos">1.4 Contrato de datos</a></li><li><a href="#1.5-Completitud-por-variable-y-bloque">1.5 Completitud por variable y bloque</a></li><li><a href="#1.6-Patrones-de-valores-faltantes">1.6 Patrones de valores faltantes</a></li><li><a href="#1.7-Cobertura-por-familia-y-ciclo">1.7 Cobertura por familia y ciclo</a></li><li><a href="#1.8-Validaci%C3%B3n-de-dominios-y-signos">1.8 Validación de dominios y signos</a></li><li><a href="#1.9-Duplicados-y-cobertura-de-configuraciones">1.9 Duplicados y cobertura de configuraciones</a></li><li><a href="#1.10-Consistencia-geom%C3%A9trica">1.10 Consistencia geométrica</a></li><li><a href="#1.11-Detecci%C3%B3n-robusta-de-valores-at%C3%ADpicos">1.11 Detección robusta de valores atípicos</a></li><li><a href="#1.12-Disponibilidad-de-respuesta-y-composici%C3%B3n">1.12 Disponibilidad de respuesta y composición</a></li><li><a href="#1.13-Registro-de-incidencias">1.13 Registro de incidencias</a></li><li><a href="#1.14-Interpretaci%C3%B3n-de-resultados-y-validaci%C3%B3n-final">1.14 Interpretación de resultados y validación final</a></li></ul></details></div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a54b082">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7880,12 +7880,12 @@ SHA-256 fuente: 3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c
 </tr>
 <tr>
 <td>Ingesta nueva</td>
-<td>data/interim/20261010T003541879032Z/dataset_interim.csv</td>
+<td>data/interim/20261010T020722970011Z/dataset_interim.csv</td>
 <td>220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9</td>
 </tr>
 <tr>
 <td>Curaduría nueva</td>
-<td>data/processed/20261010T003542015232Z/model_table.csv</td>
+<td>data/processed/20261010T020723120011Z/model_table.csv</td>
 <td>6807df337f38bf799082812b5e10929553e51769bfe146c93b66bc0d040ea7a2</td>
 </tr>
 </tbody>

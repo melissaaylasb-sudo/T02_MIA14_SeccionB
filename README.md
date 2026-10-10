@@ -6,7 +6,7 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 
 Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
 
-**Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA_Avanzado.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
+**Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
 
 ## Índice
 
@@ -99,7 +99,7 @@ Una **curva completa de fuerza–desplazamiento**, con carga, descarga y primera
 | Orden | Notebook | Contenido |
 |---:|---|---|
 | **01** | [Ingesta y validación de datos](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) | Extracción, contrato de datos, integridad, valores faltantes, duplicados y consistencia geométrica |
-| **02** | [Análisis exploratorio](notebooks/02_EDA_Avanzado.ipynb) | Análisis univariado, bivariado y multivariado; valores atípicos, influencia, ciclos, eventos e interpretación de resultados |
+| **02** | [Análisis exploratorio](notebooks/02_EDA.ipynb) | Análisis univariado, bivariado y multivariado; valores atípicos, influencia, ciclos, eventos e interpretación de resultados |
 | **03** | [Ingeniería de características](notebooks/03_Transformaciones_Exploratorias.ipynb) | Descriptores geométricos, redundancia, logaritmos, escalamiento y evaluación exploratoria de las características derivadas |
 
 **Los tres archivos `.ipynb` contienen el código, las figuras, las tablas y sus interpretaciones.**
@@ -138,7 +138,7 @@ El estudio distingue **un valor extremo, una geometría poco habitual, un caso i
 
 | Análisis | Dónde revisarlo | Interpretación |
 |---|---|---|
-| IQR y puntuación robusta basada en MAD, globales y por familia | Cuaderno 01, **§1.11**; cuaderno 02, **§2.2.4** | Identifica valores extremos respetando diferencias de arquitectura; MAD igual a cero se informa como criterio no calculable |
+| IQR y puntuación robusta basada en MAD, globales y por familia | Cuaderno 01, **§1.11**; cuaderno 02, **§2.2.3** | Identifica valores extremos respetando diferencias de arquitectura; MAD igual a cero se informa como criterio no calculable |
 | Distancia de Mahalanobis en el subespacio PCA | Cuaderno 02, **§2.5.1** | Examina combinaciones geométricas poco habituales, aunque ninguna variable aislada resulte extrema |
 | Leverage y distancia de Cook en un ajuste descriptivo | Cuaderno 02, **§2.5.1** | Evalúa cuánto influye un caso sobre una tendencia concreta; no certifica que ese registro sea erróneo |
 | Omisión individual y revisión de incidencias geométricas | Cuaderno 02, **§2.5.3–2.5.4**, y tablas de sensibilidad | Comprueba si el signo o la intensidad de las asociaciones dependen de casos particulares |
@@ -160,7 +160,7 @@ Resultados: [alertas de calidad](reports/eda_calidad/tables/11_alertas_robustas.
 | Mediana fuerza/pivote: 0,594; 0,589; 0,852 N/pivote para Y = 4/5/6 | La diferencia 4–5 se atenúa con ese denominador | La normalización no mide la fuerza interna de cada unión |
 | Representación original: rango numérico 7 entre 9 columnas variables; núcleo propuesto: 5 de 5, con tolerancia relativa 10⁻¹⁰ | Hay redundancia lineal, sin contar redondeo como nueva dimensión | Interpretar la información que aporta cada representación |
 
-La relación volumen–carga también es sensible a la omisión dentro de algunas familias: su signo puede cambiar en Y = 4 y Y = 6. Las discrepancias geométricas con las fichas limitan la atribución mecánica. Evidencia: [cuaderno 02](notebooks/02_EDA_Avanzado.ipynb), [tablas completas](reports/eda_relaciones/tables/) y [síntesis](reports/eda/hallazgos.md).
+La relación volumen–carga también es sensible a la omisión dentro de algunas familias: su signo puede cambiar en Y = 4 y Y = 6. Las discrepancias geométricas con las fichas limitan la atribución mecánica. Evidencia: [cuaderno 02](notebooks/02_EDA.ipynb), [tablas completas](reports/eda_relaciones/tables/) y [síntesis](reports/eda/hallazgos.md).
 
 ## Calidad y límites
 
@@ -199,7 +199,7 @@ T02_MIA14_SeccionB/
 │   └── README.md                    # Procedencia y versiones de datos
 ├── notebooks/
 │   ├── 01_Ingesta_Curaduria_y_Calidad.ipynb
-│   ├── 02_EDA_Avanzado.ipynb
+│   ├── 02_EDA.ipynb
 │   └── 03_Transformaciones_Exploratorias.ipynb
 ├── reports/
 │   ├── eda_calidad/                  # Auditoría, PNG/SVG, CSV y manifiesto

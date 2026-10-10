@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T02:01:22.669451+00:00",
+  "checked_at_utc": "2026-10-10T02:09:00.977367+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -24,15 +24,15 @@
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "code_cells": 14,
       "executed_code_cells": 14,
-      "sha256": "3f1fe40ec7d97b11227812ea00f6c89f569c2dca49bbeaca186a6de29beaf72d",
+      "sha256": "7c8125ef9f84241ada6c2b49283bd15c1cf48f7ad21890ce5b44eeaaeda26772",
       "unexecuted_cells": [],
       "error_cells": []
     },
     {
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "code_cells": 34,
       "executed_code_cells": 34,
-      "sha256": "8db24bd5144f2902ed2283f190d262d9844ee65b0e5a47e5f2b6955a30b3e032",
+      "sha256": "cfb2328825284a4ac7a8b992fdbb6848341eed4582b75e5308ffd1fee8f21e26",
       "unexecuted_cells": [],
       "error_cells": []
     },
@@ -40,7 +40,7 @@
       "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "code_cells": 7,
       "executed_code_cells": 7,
-      "sha256": "764dc1ac9a09f8ef5fecbb63884c006ac1f143671dc2001f55a3eacdf777d0e9",
+      "sha256": "bfd980d8650b9a36352e638d4cd7efe436d33f4986164c412a0de41d5f7af8aa",
       "unexecuted_cells": [],
       "error_cells": []
     }
@@ -51,28 +51,28 @@
       "input_hashes_checked": 4,
       "artifact_hashes_checked": 89,
       "tables_csv": 38,
-      "sha256": "906ae9c75fa182a3b354e471d83511922ef623ccbff017cb76a89542f101a4e7"
+      "sha256": "9a56bd4eb93f75c9b86c318fc481c6be40b7950b649ab91036205b4b2a82f0da"
     },
     {
       "path": "reports/eda_calidad/manifest.json",
       "input_hashes_checked": 6,
       "artifact_hashes_checked": 41,
       "tables_csv": 25,
-      "sha256": "474278ae154b3f778ec827a35264b7517d276dfcf58a76102e364f7f8fb8193d"
+      "sha256": "59aadae4ec3e9ed0c9c45ebd7d3296e0b2a0b4c3af270965f71505df90cbdfa0"
     },
     {
       "path": "reports/eda_relaciones/manifest.json",
       "input_hashes_checked": 2,
       "artifact_hashes_checked": 46,
       "tables_csv": 23,
-      "sha256": "9b75aa7b2e9f6260190f8e438999bf110171fa8c2e980e13db5ceb5c73beaf03"
+      "sha256": "b0b1ff85a42f21d83d23e8d9f336732c8beabcb6048f16038e48febb6f56dead"
     },
     {
       "path": "reports/eda_transformaciones/manifest.json",
       "input_hashes_checked": 2,
       "artifact_hashes_checked": 17,
       "tables_csv": 9,
-      "sha256": "410fb73232ddc6a79871d77dc67140a5e648985c9c941aba0c87a9a4b6a62457"
+      "sha256": "ba9ee2023788649196dd0281fa9dbc7d24a59af47b3f824c99e9bbf8eb30b0f2"
     }
   ],
   "figures": [
@@ -560,7 +560,7 @@
   "local_links": [
     {
       "source": "README.md",
-      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "target": "notebooks/02_EDA.ipynb",
       "exists": true
     },
     {
@@ -1045,7 +1045,7 @@
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "target": "notebooks/02_EDA.ipynb",
       "exists": true
     },
     {
@@ -1119,13 +1119,13 @@
     },
     {
       "category": "notebook_schema",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Esquema nbformat válido"
     },
     {
       "category": "notebook_execution",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Celdas de código ejecutadas y sin salidas de error"
     },
@@ -1149,7 +1149,7 @@
     },
     {
       "category": "local_link",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1846,7 +1846,7 @@
     },
     {
       "category": "local_link",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -2019,8 +2019,8 @@
       "path": "reports/eda/figures/02_objetivo.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "8e82c93a9455e7b34978ef0c5b66b5ebaf09a944c8bcab79620f1de16cd4d957",
-      "actual_sha256": "8e82c93a9455e7b34978ef0c5b66b5ebaf09a944c8bcab79620f1de16cd4d957"
+      "expected_sha256": "cb0fe485b8bf0d2641b64200525a6739c4e0de03b0338f3b718d91f04ad2c61a",
+      "actual_sha256": "cb0fe485b8bf0d2641b64200525a6739c4e0de03b0338f3b718d91f04ad2c61a"
     },
     {
       "category": "artifact_hash",
@@ -2035,8 +2035,8 @@
       "path": "reports/eda/figures/03_distribuciones_geometricas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "0af7ff155064f6c954830fc90cb69b68516a169757ba30699746692277ab815e",
-      "actual_sha256": "0af7ff155064f6c954830fc90cb69b68516a169757ba30699746692277ab815e"
+      "expected_sha256": "ca901a4f1901604ef2dbe078cc866ff8765a36a19aafae441bbf1348a42a2fc4",
+      "actual_sha256": "ca901a4f1901604ef2dbe078cc866ff8765a36a19aafae441bbf1348a42a2fc4"
     },
     {
       "category": "artifact_hash",
@@ -2051,8 +2051,8 @@
       "path": "reports/eda/figures/04_soporte_diseno.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "52da72b9ab6d6b263646fc5f3e54bd5a809680fe7c3965107ce63245dbe5bc6f",
-      "actual_sha256": "52da72b9ab6d6b263646fc5f3e54bd5a809680fe7c3965107ce63245dbe5bc6f"
+      "expected_sha256": "834124c32c712f2b356ff62ea6683bd2e0b01cb5e0de69a9f49cf05092dd05b1",
+      "actual_sha256": "834124c32c712f2b356ff62ea6683bd2e0b01cb5e0de69a9f49cf05092dd05b1"
     },
     {
       "category": "artifact_hash",
@@ -2067,8 +2067,8 @@
       "path": "reports/eda/figures/05_familias.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "1184bdbf037f4d7d81ad6cb98606adfd5553896323dc6724fe6a9860073f221c",
-      "actual_sha256": "1184bdbf037f4d7d81ad6cb98606adfd5553896323dc6724fe6a9860073f221c"
+      "expected_sha256": "d977b686e15cfbb6a90aaa4c9319962c68a946111b3b93594ea6f5812c91686e",
+      "actual_sha256": "d977b686e15cfbb6a90aaa4c9319962c68a946111b3b93594ea6f5812c91686e"
     },
     {
       "category": "artifact_hash",
@@ -2083,8 +2083,8 @@
       "path": "reports/eda/figures/06_contrastes.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "3c979e9e4a6bccb2d280ead9b797620c9bb3be925a4209d13edb414edc3c48f8",
-      "actual_sha256": "3c979e9e4a6bccb2d280ead9b797620c9bb3be925a4209d13edb414edc3c48f8"
+      "expected_sha256": "34d16d5dbd10c5340346e1d833b7493cf0b83371ac3c1840aa4fe324824616ae",
+      "actual_sha256": "34d16d5dbd10c5340346e1d833b7493cf0b83371ac3c1840aa4fe324824616ae"
     },
     {
       "category": "artifact_hash",
@@ -2099,8 +2099,8 @@
       "path": "reports/eda/figures/07_atipicos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "b3e0edcf8e42d06af9caa5b2e33a3dbfc15d66010c54f09811f7914d0d849bab",
-      "actual_sha256": "b3e0edcf8e42d06af9caa5b2e33a3dbfc15d66010c54f09811f7914d0d849bab"
+      "expected_sha256": "342be54427f15126fd4585649977c4495a30920c27d8b47fd4c9988a8ad379bc",
+      "actual_sha256": "342be54427f15126fd4585649977c4495a30920c27d8b47fd4c9988a8ad379bc"
     },
     {
       "category": "artifact_hash",
@@ -2115,8 +2115,8 @@
       "path": "reports/eda/figures/08_dispersion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "716640c822dffccf1c2ac2277cde928c6d0b8902342df9cb9da1b77e8b10912d",
-      "actual_sha256": "716640c822dffccf1c2ac2277cde928c6d0b8902342df9cb9da1b77e8b10912d"
+      "expected_sha256": "3992e053d5d6822696ac39de40017ab749365cf8e9d1fde1f1cc62cbf18a8187",
+      "actual_sha256": "3992e053d5d6822696ac39de40017ab749365cf8e9d1fde1f1cc62cbf18a8187"
     },
     {
       "category": "artifact_hash",
@@ -2131,8 +2131,8 @@
       "path": "reports/eda/figures/09_asociacion_condicionada.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "3b6755cd4e75b4ff3c206453a7a57c2f6082da36f43b691773ec6716d6381a02",
-      "actual_sha256": "3b6755cd4e75b4ff3c206453a7a57c2f6082da36f43b691773ec6716d6381a02"
+      "expected_sha256": "d0a37ff1b63407c165206d6549c254171c2042197b5984848afb2a9cd95779f8",
+      "actual_sha256": "d0a37ff1b63407c165206d6549c254171c2042197b5984848afb2a9cd95779f8"
     },
     {
       "category": "artifact_hash",
@@ -2147,8 +2147,8 @@
       "path": "reports/eda/figures/10_inversion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "7a116b62639b25f5ef38d0c692d606fec101fdd0c414bf66ca250fc9a680fe07",
-      "actual_sha256": "7a116b62639b25f5ef38d0c692d606fec101fdd0c414bf66ca250fc9a680fe07"
+      "expected_sha256": "7ce2fb8aadce513e9b0e24dbace295a9624cae970dfaf14ad79bff40292cabaf",
+      "actual_sha256": "7ce2fb8aadce513e9b0e24dbace295a9624cae970dfaf14ad79bff40292cabaf"
     },
     {
       "category": "artifact_hash",
@@ -2163,8 +2163,8 @@
       "path": "reports/eda/figures/11_interacciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "3cf86ef1e523b36ab498f441a50533f373bde1998d4062ef53c7569d6e8fe72d",
-      "actual_sha256": "3cf86ef1e523b36ab498f441a50533f373bde1998d4062ef53c7569d6e8fe72d"
+      "expected_sha256": "5592b86c33cdf51339754790654c436fb8e31742c3d18f7e3ddc0fb1b64d5e1f",
+      "actual_sha256": "5592b86c33cdf51339754790654c436fb8e31742c3d18f7e3ddc0fb1b64d5e1f"
     },
     {
       "category": "artifact_hash",
@@ -2179,8 +2179,8 @@
       "path": "reports/eda/figures/12_restricciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "a84c17b8337a137136b632f037fcfe68cad76383a25019d9de8721048785b765",
-      "actual_sha256": "a84c17b8337a137136b632f037fcfe68cad76383a25019d9de8721048785b765"
+      "expected_sha256": "d1e5f34e86c540d0ddf7319a0998dfc2af242c23c07777435bfb868d548323e9",
+      "actual_sha256": "d1e5f34e86c540d0ddf7319a0998dfc2af242c23c07777435bfb868d548323e9"
     },
     {
       "category": "artifact_hash",
@@ -2195,8 +2195,8 @@
       "path": "reports/eda/figures/13_coherencia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "669c74ffdaebc57f1167438db9139e89acfc2ca548e46be86b1af527cd2c5b13",
-      "actual_sha256": "669c74ffdaebc57f1167438db9139e89acfc2ca548e46be86b1af527cd2c5b13"
+      "expected_sha256": "932a728042075ff0565dde07feb161868c5aa716ae6828f2523f36fdb53a39e3",
+      "actual_sha256": "932a728042075ff0565dde07feb161868c5aa716ae6828f2523f36fdb53a39e3"
     },
     {
       "category": "artifact_hash",
@@ -2211,8 +2211,8 @@
       "path": "reports/eda/figures/15_correlaciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "3f311c870392f97e07a14bc793f798faa5cc00e68e56b5b1f9f6d19607f93673",
-      "actual_sha256": "3f311c870392f97e07a14bc793f798faa5cc00e68e56b5b1f9f6d19607f93673"
+      "expected_sha256": "1a66b1c84c03ddf2b2826c4df487f2baed70dfe656c526d454f315f458736170",
+      "actual_sha256": "1a66b1c84c03ddf2b2826c4df487f2baed70dfe656c526d454f315f458736170"
     },
     {
       "category": "artifact_hash",
@@ -2227,8 +2227,8 @@
       "path": "reports/eda/figures/16_dimension.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "c44b920d43e02a7d6ef0b7789ceb27b24e5d5b844cc07a671868d5f2be785db0",
-      "actual_sha256": "c44b920d43e02a7d6ef0b7789ceb27b24e5d5b844cc07a671868d5f2be785db0"
+      "expected_sha256": "aaddfdb8e6156af6fb2829d8e0c5f546ffaf356d7a5dece22ed3527ab43c763f",
+      "actual_sha256": "aaddfdb8e6156af6fb2829d8e0c5f546ffaf356d7a5dece22ed3527ab43c763f"
     },
     {
       "category": "artifact_hash",
@@ -2243,8 +2243,8 @@
       "path": "reports/eda/figures/17_PCA.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "2e6742233c08ecd8292bf60b4978227b42c4c30d379e8432cd9a8920efa7d8f0",
-      "actual_sha256": "2e6742233c08ecd8292bf60b4978227b42c4c30d379e8432cd9a8920efa7d8f0"
+      "expected_sha256": "33e31f16e3196c65dec4ba7a54ec5930c3afb50c4890f1575a40847ada55f890",
+      "actual_sha256": "33e31f16e3196c65dec4ba7a54ec5930c3afb50c4890f1575a40847ada55f890"
     },
     {
       "category": "artifact_hash",
@@ -2259,8 +2259,8 @@
       "path": "reports/eda/figures/18_clusters.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "c527c59006e3991a5cf9a87106d8a8835b5c6dc1677ae9da3b7780d50e5bf2c6",
-      "actual_sha256": "c527c59006e3991a5cf9a87106d8a8835b5c6dc1677ae9da3b7780d50e5bf2c6"
+      "expected_sha256": "5eb14489803fb5de87abe3dcdf4c058b786d5eb418b72a76b0a5c569d866e1b0",
+      "actual_sha256": "5eb14489803fb5de87abe3dcdf4c058b786d5eb418b72a76b0a5c569d866e1b0"
     },
     {
       "category": "artifact_hash",
@@ -2275,8 +2275,8 @@
       "path": "reports/eda/figures/19_vecinos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "2bb8ccf99d239593aff8b4a81eb87cf59473f6ee78e9c301629a45ebf719d8d8",
-      "actual_sha256": "2bb8ccf99d239593aff8b4a81eb87cf59473f6ee78e9c301629a45ebf719d8d8"
+      "expected_sha256": "0b2a1eacda70b19139dbd4988aae919bf5d97a40fb7d0430c61380baf592803d",
+      "actual_sha256": "0b2a1eacda70b19139dbd4988aae919bf5d97a40fb7d0430c61380baf592803d"
     },
     {
       "category": "artifact_hash",
@@ -2291,8 +2291,8 @@
       "path": "reports/eda/figures/20_influencia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "75b1dcd37279e0cab94208112095846513fdd9e7f912eca9c81ce1736acfcba5",
-      "actual_sha256": "75b1dcd37279e0cab94208112095846513fdd9e7f912eca9c81ce1736acfcba5"
+      "expected_sha256": "abaa4036d55d21a8931ee515bd8ee216b5d8931f6184029ee4aa587488625569",
+      "actual_sha256": "abaa4036d55d21a8931ee515bd8ee216b5d8931f6184029ee4aa587488625569"
     },
     {
       "category": "artifact_hash",
@@ -2307,8 +2307,8 @@
       "path": "reports/eda/figures/21_omision.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "e84d3d2b2aab1daa4fde21ad3599bd124229ba62861b59a4df7904e7e46753dd",
-      "actual_sha256": "e84d3d2b2aab1daa4fde21ad3599bd124229ba62861b59a4df7904e7e46753dd"
+      "expected_sha256": "a182e8e6a98698784aa2cc1b51af026713cdc96b8da89d1bff70a081e0b59b8a",
+      "actual_sha256": "a182e8e6a98698784aa2cc1b51af026713cdc96b8da89d1bff70a081e0b59b8a"
     },
     {
       "category": "artifact_hash",
@@ -2323,8 +2323,8 @@
       "path": "reports/eda/figures/23_respuestas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "99042c9d77f42b18d62800f82f93f615ebfff43c86dad2a57b238ffde4826b55",
-      "actual_sha256": "99042c9d77f42b18d62800f82f93f615ebfff43c86dad2a57b238ffde4826b55"
+      "expected_sha256": "1f7d6e12a3b8b33aec711cfe4451535a2806df4b40297bfbcdb128e84b43ee85",
+      "actual_sha256": "1f7d6e12a3b8b33aec711cfe4451535a2806df4b40297bfbcdb128e84b43ee85"
     },
     {
       "category": "artifact_hash",
@@ -2339,8 +2339,8 @@
       "path": "reports/eda/figures/24_ciclos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "d9660c776584c7fab319fed9f0d571ca03a36d6e505a01cde63dcdf7e0766756",
-      "actual_sha256": "d9660c776584c7fab319fed9f0d571ca03a36d6e505a01cde63dcdf7e0766756"
+      "expected_sha256": "476ec7f2010f73f49f4b52447baa8c4610c29b60b3407ce45e65239d04221732",
+      "actual_sha256": "476ec7f2010f73f49f4b52447baa8c4610c29b60b3407ce45e65239d04221732"
     },
     {
       "category": "artifact_hash",
@@ -2355,8 +2355,8 @@
       "path": "reports/eda/figures/25_asociacion_ciclos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "a7a2f24b6d7eccd4f77e11dd085e7f1ed0c5b4d44fb6fddf6fa2592a260f5810",
-      "actual_sha256": "a7a2f24b6d7eccd4f77e11dd085e7f1ed0c5b4d44fb6fddf6fa2592a260f5810"
+      "expected_sha256": "71f87cfd5150e19871002f019b1109169a0220fcd5b4ae781ac75f3ed95546b0",
+      "actual_sha256": "71f87cfd5150e19871002f019b1109169a0220fcd5b4ae781ac75f3ed95546b0"
     },
     {
       "category": "artifact_hash",
@@ -2371,8 +2371,8 @@
       "path": "reports/eda/figures/26_disipacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "8416fac9e96a1031dcd831c291f3b7c29de6d3852b7c1586ad4e9f99e1b82f14",
-      "actual_sha256": "8416fac9e96a1031dcd831c291f3b7c29de6d3852b7c1586ad4e9f99e1b82f14"
+      "expected_sha256": "860cdb4c327d33f97b0cb73c453cb6442c220b16d53632a9f35902dda9b6ba76",
+      "actual_sha256": "860cdb4c327d33f97b0cb73c453cb6442c220b16d53632a9f35902dda9b6ba76"
     },
     {
       "category": "artifact_hash",
@@ -2387,8 +2387,8 @@
       "path": "reports/eda/figures/27_fractura.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "9852666a3d4511aef212472c9dfcf17451f3c658663c23a8e2d4dfbe731a35da",
-      "actual_sha256": "9852666a3d4511aef212472c9dfcf17451f3c658663c23a8e2d4dfbe731a35da"
+      "expected_sha256": "dd9ada8c751e00ba92bc74e62a2acb78b98b4337e9fe55f065962fa57e1373c0",
+      "actual_sha256": "dd9ada8c751e00ba92bc74e62a2acb78b98b4337e9fe55f065962fa57e1373c0"
     },
     {
       "category": "artifact_hash",
@@ -2781,8 +2781,8 @@
       "path": "reports/eda_calidad/figures/FQ01_completitud.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef",
-      "actual_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef"
+      "expected_sha256": "727b993992747d006514668c24eab4c863ca68b73e9aea1ccbcb85115847ba0d",
+      "actual_sha256": "727b993992747d006514668c24eab4c863ca68b73e9aea1ccbcb85115847ba0d"
     },
     {
       "category": "artifact_hash",
@@ -2797,8 +2797,8 @@
       "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416",
-      "actual_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416"
+      "expected_sha256": "757e479a307b247e0ee922f962e66855bdfe5cc78d3406988c4141603a43eca9",
+      "actual_sha256": "757e479a307b247e0ee922f962e66855bdfe5cc78d3406988c4141603a43eca9"
     },
     {
       "category": "artifact_hash",
@@ -2813,8 +2813,8 @@
       "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2",
-      "actual_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2"
+      "expected_sha256": "b2213c1209dfada096c7f62d04a8bb5702082a0c2206e21f6abddf213da8e1b8",
+      "actual_sha256": "b2213c1209dfada096c7f62d04a8bb5702082a0c2206e21f6abddf213da8e1b8"
     },
     {
       "category": "artifact_hash",
@@ -2829,8 +2829,8 @@
       "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5",
-      "actual_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5"
+      "expected_sha256": "16c5e023798d45c9c3f3afca2554f92c7cb0247803d66793815ac34317f63849",
+      "actual_sha256": "16c5e023798d45c9c3f3afca2554f92c7cb0247803d66793815ac34317f63849"
     },
     {
       "category": "artifact_hash",
@@ -2845,8 +2845,8 @@
       "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098",
-      "actual_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098"
+      "expected_sha256": "38b4b2db78fb40e9ed7edb03613c4c8e6d17233dee9de7bc6f2afec8ab7a77c4",
+      "actual_sha256": "38b4b2db78fb40e9ed7edb03613c4c8e6d17233dee9de7bc6f2afec8ab7a77c4"
     },
     {
       "category": "artifact_hash",
@@ -2861,8 +2861,8 @@
       "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3",
-      "actual_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3"
+      "expected_sha256": "57fc8e004abc31754d3f5c5622fb661dbb945e2a054843652828df70c7e9c85d",
+      "actual_sha256": "57fc8e004abc31754d3f5c5622fb661dbb945e2a054843652828df70c7e9c85d"
     },
     {
       "category": "artifact_hash",
@@ -2877,8 +2877,8 @@
       "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01",
-      "actual_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01"
+      "expected_sha256": "0f0ef286068f2474f305f987de99935dc35fda4d4eca9783a2dd598a39be4ed9",
+      "actual_sha256": "0f0ef286068f2474f305f987de99935dc35fda4d4eca9783a2dd598a39be4ed9"
     },
     {
       "category": "artifact_hash",
@@ -2893,16 +2893,16 @@
       "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297",
-      "actual_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297"
+      "expected_sha256": "893b74e988cd4cd4c73b74955683a58aa11289b662c6bc3ee436451036dbcace",
+      "actual_sha256": "893b74e988cd4cd4c73b74955683a58aa11289b662c6bc3ee436451036dbcace"
     },
     {
       "category": "artifact_hash",
       "path": "reports/eda_calidad/tables/01_ejecucion.csv",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a",
-      "actual_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a"
+      "expected_sha256": "c0299ba679b9b169e1cdbbf7e255182417fd92c0aebb43edd2f13fa70464831b",
+      "actual_sha256": "c0299ba679b9b169e1cdbbf7e255182417fd92c0aebb43edd2f13fa70464831b"
     },
     {
       "category": "artifact_hash",
@@ -3149,8 +3149,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_input_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "aa50fe98961aa0f6178473164aa62c25a0bd83ac7ef2ecc5b71ffa60f227de90",
-      "actual_sha256": "aa50fe98961aa0f6178473164aa62c25a0bd83ac7ef2ecc5b71ffa60f227de90"
+      "expected_sha256": "c3479fea9ed946066f3dfa7ea0c9c99209ea960b8ad41057c21eb4e28f74b245",
+      "actual_sha256": "c3479fea9ed946066f3dfa7ea0c9c99209ea960b8ad41057c21eb4e28f74b245"
     },
     {
       "category": "artifact_hash",
@@ -3165,8 +3165,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_input_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "cee6d05024119b936043152af33705282a3e232a91728d7bedde56b17cbcd6d7",
-      "actual_sha256": "cee6d05024119b936043152af33705282a3e232a91728d7bedde56b17cbcd6d7"
+      "expected_sha256": "5e5ea99ced786411e8f2d52933bcd7c897601257f1aaef35fa1ef82851258aa0",
+      "actual_sha256": "5e5ea99ced786411e8f2d52933bcd7c897601257f1aaef35fa1ef82851258aa0"
     },
     {
       "category": "artifact_hash",
@@ -3181,8 +3181,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_output_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "83aa7dd3f78f3deda2293379426fe2d1bce455f8bab2ce7180b5c3fea6066685",
-      "actual_sha256": "83aa7dd3f78f3deda2293379426fe2d1bce455f8bab2ce7180b5c3fea6066685"
+      "expected_sha256": "b06dc1e2f3cdd62e31d8cf6679ee3cec852bda9637a788e0d4708fdb97015e1a",
+      "actual_sha256": "b06dc1e2f3cdd62e31d8cf6679ee3cec852bda9637a788e0d4708fdb97015e1a"
     },
     {
       "category": "artifact_hash",
@@ -3197,8 +3197,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_output_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "378abf747a389394ee88945d7c9396d73265368b368b302cdb6e297214eb4db3",
-      "actual_sha256": "378abf747a389394ee88945d7c9396d73265368b368b302cdb6e297214eb4db3"
+      "expected_sha256": "57e426c4ec21ac30b09683f482c2f8024a74c3de4678f7ec48359678ae413060",
+      "actual_sha256": "57e426c4ec21ac30b09683f482c2f8024a74c3de4678f7ec48359678ae413060"
     },
     {
       "category": "artifact_hash",
@@ -3213,8 +3213,8 @@
       "path": "reports/eda_relaciones/figures/R01_output_output_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "915818f603ac15f7dbd229ad5b3e2d289339af13c319072719d97ebe588030e2",
-      "actual_sha256": "915818f603ac15f7dbd229ad5b3e2d289339af13c319072719d97ebe588030e2"
+      "expected_sha256": "22ffb4dc745bc5b107394ad124f14eb5a67952b04f494f3d498c61d0b2f9a037",
+      "actual_sha256": "22ffb4dc745bc5b107394ad124f14eb5a67952b04f494f3d498c61d0b2f9a037"
     },
     {
       "category": "artifact_hash",
@@ -3229,8 +3229,8 @@
       "path": "reports/eda_relaciones/figures/R01_output_output_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "78e9b0f27cc2c65416dc886d436d31b4be763d5038e3e59b031d79202e8ba6ca",
-      "actual_sha256": "78e9b0f27cc2c65416dc886d436d31b4be763d5038e3e59b031d79202e8ba6ca"
+      "expected_sha256": "265816baa57bd4d4f2e048476f407b681387e24617636af86e73234a8dea7440",
+      "actual_sha256": "265816baa57bd4d4f2e048476f407b681387e24617636af86e73234a8dea7440"
     },
     {
       "category": "artifact_hash",
@@ -3245,8 +3245,8 @@
       "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "76f27ebf6efbed9e05dd53d8764cef683f34f8df48e9914b07162597c4e99018",
-      "actual_sha256": "76f27ebf6efbed9e05dd53d8764cef683f34f8df48e9914b07162597c4e99018"
+      "expected_sha256": "8c6e04efd1fc4c50c0b9381d2b91e80b322a7ac23753082c4e7ea1bcced9a898",
+      "actual_sha256": "8c6e04efd1fc4c50c0b9381d2b91e80b322a7ac23753082c4e7ea1bcced9a898"
     },
     {
       "category": "artifact_hash",
@@ -3261,8 +3261,8 @@
       "path": "reports/eda_relaciones/figures/R03_tamano_forma.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "2bf4e4dbb385b2588d66b132e5cd12e68e23721cea12b6f641ddf1c8049cd6e5",
-      "actual_sha256": "2bf4e4dbb385b2588d66b132e5cd12e68e23721cea12b6f641ddf1c8049cd6e5"
+      "expected_sha256": "269e5057c01a7fa963cf9e05c16f875318c37ca13db4fa36c3aa09f24bffcc16",
+      "actual_sha256": "269e5057c01a7fa963cf9e05c16f875318c37ca13db4fa36c3aa09f24bffcc16"
     },
     {
       "category": "artifact_hash",
@@ -3277,8 +3277,8 @@
       "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "935c0b7b188621c1a1ebee63431a776cf89fc5142790a8bdb7562168300c9b05",
-      "actual_sha256": "935c0b7b188621c1a1ebee63431a776cf89fc5142790a8bdb7562168300c9b05"
+      "expected_sha256": "c1543d2008ef6c18efb4626f3aa4fbba3043973b98b11345751a1bbfac244c61",
+      "actual_sha256": "c1543d2008ef6c18efb4626f3aa4fbba3043973b98b11345751a1bbfac244c61"
     },
     {
       "category": "artifact_hash",
@@ -3293,8 +3293,8 @@
       "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "41d5ab853d9a1959e42650aef837dce12b5849d2f7f65811c4fd017c7136b82e",
-      "actual_sha256": "41d5ab853d9a1959e42650aef837dce12b5849d2f7f65811c4fd017c7136b82e"
+      "expected_sha256": "a1a36e28264fbd4cb701e37bbb3e38a3eb41d76c574526b9f183f54856f956ca",
+      "actual_sha256": "a1a36e28264fbd4cb701e37bbb3e38a3eb41d76c574526b9f183f54856f956ca"
     },
     {
       "category": "artifact_hash",
@@ -3309,8 +3309,8 @@
       "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "5a2c1b6258584158b280403b49916a6e0ac24a97a2254a285fc2688fb34ab45c",
-      "actual_sha256": "5a2c1b6258584158b280403b49916a6e0ac24a97a2254a285fc2688fb34ab45c"
+      "expected_sha256": "8cff16acbe3eff3f7487519ccc3975f584b29daea8ff9e6f49d1dd1cb235aed1",
+      "actual_sha256": "8cff16acbe3eff3f7487519ccc3975f584b29daea8ff9e6f49d1dd1cb235aed1"
     },
     {
       "category": "artifact_hash",
@@ -3565,8 +3565,8 @@
       "path": "reports/eda_transformaciones/figures/F01_representaciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "6039db64d299fcfac354bdef743de9f58ab03c3627cd490418130e6ed42cd2cd",
-      "actual_sha256": "6039db64d299fcfac354bdef743de9f58ab03c3627cd490418130e6ed42cd2cd"
+      "expected_sha256": "b2cd2237a89590e1fc93b72a316163d32b46ea6379d401721d2d87137bfa47d9",
+      "actual_sha256": "b2cd2237a89590e1fc93b72a316163d32b46ea6379d401721d2d87137bfa47d9"
     },
     {
       "category": "artifact_hash",
@@ -3581,8 +3581,8 @@
       "path": "reports/eda_transformaciones/figures/F02_logaritmos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "997a4e11f7dff32f133a7bc6f3b9302b210e4bf7c92727b6f46de240bec65d28",
-      "actual_sha256": "997a4e11f7dff32f133a7bc6f3b9302b210e4bf7c92727b6f46de240bec65d28"
+      "expected_sha256": "3d0119b4ad2ec2e78c69555322200b94f0f22716af381bdc65f0250d7816a2a1",
+      "actual_sha256": "3d0119b4ad2ec2e78c69555322200b94f0f22716af381bdc65f0250d7816a2a1"
     },
     {
       "category": "artifact_hash",
@@ -3597,8 +3597,8 @@
       "path": "reports/eda_transformaciones/figures/F03_escalamiento.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "5725b4cf520a5fc50445cf900f89c74653f291248026b3b74bf1f4feea58b4c1",
-      "actual_sha256": "5725b4cf520a5fc50445cf900f89c74653f291248026b3b74bf1f4feea58b4c1"
+      "expected_sha256": "a65098707c60e59f92f1c1123fd8f721dfa2e69c32e89dfa8b8376f18415da34",
+      "actual_sha256": "a65098707c60e59f92f1c1123fd8f721dfa2e69c32e89dfa8b8376f18415da34"
     },
     {
       "category": "artifact_hash",
@@ -3613,8 +3613,8 @@
       "path": "reports/eda_transformaciones/figures/F04_caracteristicas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "8024ff2bdc1b6bd9dfe4c525bb02d3f245574e787f46637a1d8a9e5b53226246",
-      "actual_sha256": "8024ff2bdc1b6bd9dfe4c525bb02d3f245574e787f46637a1d8a9e5b53226246"
+      "expected_sha256": "179724a853f4cbaebb0492da90e98a8cbf7aca37ceae687648b1a49828ff1a53",
+      "actual_sha256": "179724a853f4cbaebb0492da90e98a8cbf7aca37ceae687648b1a49828ff1a53"
     },
     {
       "category": "artifact_hash",

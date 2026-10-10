@@ -24,7 +24,7 @@ from PIL import Image
 
 NOTEBOOKS = (
     "01_Ingesta_Curaduria_y_Calidad.ipynb",
-    "02_EDA_Avanzado.ipynb",
+    "02_EDA.ipynb",
     "03_Transformaciones_Exploratorias.ipynb",
 )
 REPORT_DIRS = ("eda", "eda_calidad", "eda_relaciones", "eda_transformaciones")

@@ -224,7 +224,7 @@ def export_quality_notebook(*, execute=False):
     exporter.exclude_input = True
     html, _ = exporter.from_notebook_node(notebook)
     html = re.sub(r"<title>.*?</title>", "<title>Calidad y curaduría de datos pantográficos</title>", html, count=1)
-    html = html.replace('href="02_EDA_Avanzado.ipynb"', 'href="02_EDA_Avanzado.html"')
+    html = html.replace('href="02_EDA.ipynb"', 'href="02_EDA.html"')
     manifest = json.loads((root / "reports/eda_calidad/manifest.json").read_text(encoding="utf-8"))
     descriptions = iter(item["titulo"] + ". " + item["resultado"] for item in manifest["figures"])
 

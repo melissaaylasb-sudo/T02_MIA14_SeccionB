@@ -14,7 +14,7 @@ from nbconvert import HTMLExporter
 from .ingesta import ROOT
 from .eda import write_bytes_atomic
 
-NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA_Avanzado.ipynb",
+NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA.ipynb",
              "03_Transformaciones_Exploratorias.ipynb"]
 
 
@@ -42,7 +42,7 @@ def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -
     exporter = HTMLExporter()
     exporter.exclude_input = True
     html, _ = exporter.from_notebook_node(notebook)
-    title = notebook.cells[0].source.splitlines()[0].lstrip("# ")
+    title = notebook.metadata.get("title", Path(notebook_name).stem)
     html = re.sub(r"<title>.*?</title>", "<title>" + escape(title) + "</title>", html, count=1, flags=re.DOTALL)
     for other in (ROOT / "notebooks").glob("*.ipynb"):
         html = html.replace(f'href="{other.name}"', f'href="{other.stem}.html"')
@@ -98,7 +98,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
         '<div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br>'
         f'<a href="../notebooks/{escape(notebook_name)}">Notebook reproducible</a>'
         '<a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a>'
-        '<a href="02_EDA_Avanzado.html">02 · Análisis</a>'
+        '<a href="02_EDA.html">02 · Análisis</a>'
         '<a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a>'
         '<a href="../docs/informe_eda.md">Informe académico</a>'
         '<a href="../docs/diccionario_datos.md">Diccionario</a>'

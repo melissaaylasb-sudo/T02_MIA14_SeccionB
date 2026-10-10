@@ -187,7 +187,7 @@ El estudio examina cuatro aspectos complementarios: extremos de una variable, ge
 
 | Diagnóstico | Ubicación en los notebooks | Alcance |
 |---|---|---|
-| Cercas IQR y puntuación robusta MAD | 01, §1.11; 02, §2.2.4 | Se comparan resultados globales y por familia; MAD nula deja ese criterio no calculable |
+| Cercas IQR y puntuación robusta MAD | 01, §1.11; 02, §2.2.3 | Se comparan resultados globales y por familia; MAD nula deja ese criterio no calculable |
 | Distancia de Mahalanobis en el subespacio PCA | 02, §2.5.1 | Detecta combinaciones geométricas poco habituales en la representación examinada |
 | Leverage y distancia de Cook | 02, §2.5.1 | Mide influencia sobre una formulación descriptiva concreta |
 | Omisión individual e incidencias geométricas | 02, §2.5.3–2.5.4 y análisis de sensibilidad | Comprueba cambios en intensidad y signo sin modificar la tabla fuente |
@@ -324,7 +324,7 @@ Los ciclos y energías amplían la caracterización experimental respetando depe
 Los notebooks organizan el cálculo en ingesta y validación, análisis exploratorio e ingeniería de características. El cuaderno 02 sigue la secuencia univariado → bivariado → multivariado → atípicos e influencia → ciclos y eventos → interpretación. El contexto experimental y el diccionario permanecen en la documentación. Las tablas conservan soporte técnico por comparación sin convertir el total de casos en eje narrativo.
 
 - [Ingesta y validación de datos](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb).
-- [Análisis exploratorio](../notebooks/02_EDA_Avanzado.ipynb).
+- [Análisis exploratorio](../notebooks/02_EDA.ipynb).
 - [Ingeniería de características](../notebooks/03_Transformaciones_Exploratorias.ipynb).
 - [Diccionario](diccionario_datos.md), [trazabilidad](trazabilidad_datos.md) e [informe de curaduría](informe_curaduria.md).
 - [Manifiesto del EDA](../reports/eda/manifest.json), [relaciones](../reports/eda_relaciones/manifest.json) y [transformaciones](../reports/eda_transformaciones/manifest.json).
