@@ -1,10 +1,8 @@
-# Caracterización estadístico-mecánica de estructuras pantográficas
+# Análisis exploratorio de datos (EDA) de estructuras pantográficas
 
 **Universidad Nacional de Ingeniería · Facultad de Ingeniería Industrial y de Sistemas**<br>
 Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.º ciclo, sección B · **2026-2**<br>
 **Investigadora:** Melissa Dessire Aylas Barranca · **Docente:** Glen Dario Rodríguez Rafael
-
-> **Título académico:** ANÁLISIS EXPLORATORIO Y CARACTERIZACIÓN ESTADÍSTICO-MECÁNICA DE ESTRUCTURAS PANTOGRÁFICAS: CALIDAD DE DATOS, GEOMETRÍA Y RESPUESTA EXPERIMENTAL.
 
 Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
 
@@ -33,7 +31,6 @@ Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un ret
 | Aspecto | Definición y alcance |
 |---|---|
 | Fuente experimental | Archivo MATLAB recibido, contrastado con el capítulo 9 y el apéndice de la tesis doctoral de Enrico Venditti |
-| Procedencia académica | Venditti: doctorado en Arquitectura y Ambiente, Università degli Studi di Sassari, Italia; portada 2024/2025. El plan de tesis 2026 registra la provisión académica de datos por Emilio Turco |
 | Material y fabricación | Poliamida —nylon— mediante sinterización láser selectiva, según la tesis |
 | Envolvente nominal | 210 × 70 mm; más celdas no significa mayor longitud exterior |
 | Ensayo documentado | Tracción con carga y descarga; velocidad de desplazamiento de 15 mm/min y niveles nominales cada 10 mm |
@@ -57,17 +54,19 @@ La [introducción científica](docs/introduccion_experimento.md) explica los mec
 
 Los nombres exactos de la fuente se relacionan con los componentes y respuestas del esquema. El **target** es el OUTPUT elegido para predecir.
 
-| Rol | Nombre en los datos | Unidad | Significado sencillo |
-|---|---|---|---|
-| INPUT · arquitectura | `n_cells_Y`, `Pivot_total_number` | conteos | Celdas en Y y cantidad de pivotes |
-| INPUT · fibras | `Fiber_height`, `Fiber_base`, `Fiber_total_length` | mm | Altura y base de la sección de las barras; longitud total de fibras |
-| INPUT · pivotes | `Pivot_height`, `Pivot_radius` | mm | Altura y radio de las pequeñas uniones entre fibras |
-| INPUT · volúmenes | `Fiber_total_volume`, `Pivot_total_volume`, `Sample_total_volume` | mm³ | Volúmenes declarados de componentes y volumen CAD del espécimen |
-| **Target** | **`First_Failure_Load_N`** | **N** | **Carga de primera falla: fuerza del primer evento de rotura identificado en la fuente** |
-| OUTPUT · evento terminal | `Ultimate_Load` | N | Fuerza asociada a rotura terminal; no máximo global automático |
-| OUTPUT · desplazamientos | `Maximum_Displacement`, `residual_Displacement_*` | mm | Mayor desplazamiento alcanzado y desplazamiento que permanece al descargar cada ciclo |
-| OUTPUT · energías | `Energy_Dissipated`, `Energy_Fracture` | mJ | Energía disipada por ciclo y asociada a eventos de rotura; matrices del MATLAB, analizadas por separado del CSV principal |
-| Metadato | `Case_n` | identificador | Trazabilidad; excluido de los predictores |
+| Rol | Nombre en los datos | Unidad | Significado sencillo | Ejemplo real · caso 1 |
+|---|---|---|---|---|
+| INPUT · arquitectura | `n_cells_Y`, `Pivot_total_number` | conteos | Celdas en Y y cantidad de pivotes | 4 celdas; 113 pivotes |
+| INPUT · fibras | `Fiber_height`, `Fiber_base`, `Fiber_total_length` | mm | Altura y base de la sección de las barras; longitud total de fibras | Altura: 1; base: 2.4; longitud: 2685.82 |
+| INPUT · pivotes | `Pivot_height`, `Pivot_radius` | mm | Altura y radio de las pequeñas uniones entre fibras | Altura: 1; radio: 0.5 |
+| INPUT · volúmenes | `Fiber_total_volume`, `Pivot_total_volume`, `Sample_total_volume` | mm³ | Volúmenes declarados de componentes y volumen CAD del espécimen | Fibras: 6435.30; pivotes: 88.71; espécimen: 6249.74 |
+| **Target** | **`First_Failure_Load_N`** | **N** | **Carga de primera falla: fuerza del primer evento de rotura identificado en la fuente** | **47.55** |
+| OUTPUT · evento terminal | `Ultimate_Load` | N | Fuerza asociada a rotura terminal; no máximo global automático | 51.19 |
+| OUTPUT · desplazamientos | `Maximum_Displacement`, `residual_Displacement_*` | mm | Mayor desplazamiento alcanzado y desplazamiento que permanece al descargar cada ciclo | Máximo: 72.48; residual del ciclo 1: 5.97 |
+| OUTPUT · energías | `Energy_Dissipated`, `Energy_Fracture` | mJ | Energía disipada por ciclo y asociada a eventos de rotura; matrices del MATLAB, analizadas por separado del CSV principal | Disipada, ciclo 1: 0.2247; fractura, evento 1: 812.5974 |
+| Metadato | `Case_n` | identificador | Trazabilidad; excluido de los predictores | 1 |
+
+Los ejemplos pertenecen al mismo caso: geometría y respuestas de la [tabla intermedia](data/interim/preliminary/dataset_interim.csv), y energías del [archivo MATLAB](data/raw/dati_campagna_venditti.m). **Son valores registrados, no predicciones del modelo.**
 
 Se plantea un problema de regresión: estimar una fuerza numérica. Las energías, otras cargas y desplazamientos del ensayo se usan para el EDA, pero no como entradas de una predicción previa al ensayo.
 
