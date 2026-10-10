@@ -10,7 +10,7 @@ Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un ret
 
 Una estructura pantográfica es una red de dos familias de fibras conectadas por pivotes deformables. Su interés como metamaterial mecánico reside en diseñar la respuesta mediante la arquitectura, además del material constituyente. Estudiar las relaciones geometría–respuesta permite formular hipótesis, detectar redundancias y evitar interpretar una correlación inducida por el diseño como una ley física.
 
-**Ruta de lectura:** [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md) · [EDA ejecutado en HTML](reports/02_EDA_Avanzado.html).
+**Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA_Avanzado.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
 
 ## Índice
 
@@ -68,13 +68,15 @@ El [diccionario completo](docs/diccionario_datos.md), también en [CSV](docs/dic
 
 ## Tres cuadernos para la entrega
 
-| Orden | Cuaderno y reporte de lectura | Contenido |
+| Orden | Notebook | Contenido |
 |---:|---|---|
 | **01** | [Ingesta, curaduría y calidad](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) · [HTML](reports/01_Ingesta_Curaduria_y_Calidad.html) | Fundamento, fuentes, concordancia, esquemas, ausencias, duplicados, configuraciones y decisiones |
 | **02** | [Análisis estadístico y mecánico](notebooks/02_EDA_Avanzado.ipynb) · [HTML](reports/02_EDA_Avanzado.html) | Distribuciones, asociaciones completas, familias, incertidumbre, influencia, geometría, ciclos y fractura |
 | **03** | [Transformaciones y preparación](notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb) · [HTML](reports/03_Diseno_de_Particiones_y_Preprocesamiento.html) | Fórmulas geométricas, representaciones, logaritmos, aislamiento del escalamiento y protocolo conservado |
 
 Los tres conservan código y resultados visibles. Los HTML permiten revisar sin instalar Jupyter: desde GitHub, descargarlos y abrirlos en el navegador; el informe y los notebooks pueden revisarse en el repositorio. El nombre histórico del cuaderno 03 conserva la continuidad del proyecto; su título y contenido priorizan transformaciones.
+
+El cuaderno 02 incluye **Interpretación de resultados**; el 03 explica qué está preparado para entrenar y qué falta ajustar. Ya existe un entrenamiento preliminar, pero todavía no incorpora las representaciones del nuevo EDA. Antes de compararlas deben fijarse la tabla, las entradas y el protocolo de evaluación.
 
 ```mermaid
 flowchart LR

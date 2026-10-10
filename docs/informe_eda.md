@@ -27,7 +27,7 @@ La revisión documental verifica unidades energéticas en mJ y precisa que la ca
 9. [Respuestas secundarias, ciclos y energías](#9-respuestas-secundarias-ciclos-y-energías)
 10. [Transformaciones y modelado posterior](#10-transformaciones-y-modelado-posterior)
 11. [Preguntas de investigación](#11-preguntas-de-investigación)
-12. [Discusión y recomendaciones](#12-discusión-y-recomendaciones)
+12. [Interpretación de resultados](#12-interpretación-de-resultados)
 13. [Conclusiones y reproducción](#13-conclusiones-y-reproducción)
 14. [Referencias](#14-referencias)
 
@@ -127,7 +127,7 @@ La familia con seis celdas tiene mayor fuerza y menor dispersión absoluta en es
 
 Celdas en Y, longitud total y número de pivotes tienen **Spearman 0.9307** con primera falla. El coeficiente compartido refleja que ordenan las mismas familias; no son tres confirmaciones independientes de un mecanismo. La base presenta asociación global negativa; la altura no ordena monotónicamente el target en el conjunto global.
 
-| Entrada | Pearson | Spearman | Rango Spearman LOO | Lectura |
+| Entrada | Pearson | Spearman | Rango Spearman LOO | Interpretación |
 |---|---:|---:|---|---|
 | Celdas en Y | 0.936 | 0.931 | [0.928, 0.943] | Arquitectura |
 | Altura de fibra | 0.004 | 0.000 | [−0.087, 0.086] | No concluyente globalmente |
@@ -149,7 +149,7 @@ Kendall, tamaños efectivos, empates e identificadores influyentes se conservan 
 
 Volumen del espécimen–primera falla produce **r = 0.7727** y **ρ = 0.7994** globalmente. Dentro de familias, los Spearman son **−0.2619, −0.2167 y −0.2194**. La correlación de rangos residualizados por familia es **−0.2647**, con intervalo bootstrap del 95 % **[−0.6865, 0.2566]** y q BH **0.3447**.
 
-El cambio de signo es compatible con una inversión descriptiva de agregación tipo Simpson: la tendencia global mezcla diferencias entre arquitecturas. No demuestra un efecto físico negativo de volumen; el intervalo condicionado incluye cero. La lectura defendible es que la asociación global no puede atribuirse al volumen aislado.
+El cambio de signo es compatible con una inversión descriptiva de agregación tipo Simpson: la tendencia global mezcla diferencias entre arquitecturas. No demuestra un efecto físico negativo de volumen; el intervalo condicionado incluye cero. Por ello, la asociación global no puede atribuirse al volumen aislado.
 
 ![Figura 6. Geometría y respuesta dentro de familia](../reports/eda_relaciones/figures/R03_tamano_forma.png)
 
@@ -249,7 +249,7 @@ El preprocesamiento demuestra que los centros aprendidos por escalamiento están
 
 **Figura 13. Escalamiento estándar y robusto.** Pregunta: ¿se transforma sin aprender de datos reservados? Geometría transformada, adimensional; S1. Las alternativas producen representaciones distintas y deben compararse dentro de validación interna futura. Evidencia: [aislamiento](../reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv).
 
-| Decisión posterior | Justificación |
+| Preparación requerida | Justificación |
 |---|---|
 | Comparar representación reducida de arquitectura y geometría local | Conteos/longitudes redundantes y volúmenes complementarios |
 | Conservar radio en fuente, excluir constante del ajuste | No aporta variación actual |
@@ -258,6 +258,16 @@ El preprocesamiento demuestra que los centros aprendidos por escalamiento están
 | Identificar réplicas, lotes y espécimen físico | No separar observaciones relacionadas entre particiones |
 | Distinguir interpolación de extrapolación geométrica | Nueva arquitectura no equivale a otro caso del mismo dominio |
 | Conciliar geometrías antes de conclusiones definitivas | Relaciones locales dependen de versión digital |
+
+### Preparación para el entrenamiento
+
+El proyecto ya permite entrenar y conserva una corrida preliminar en los cuadernos de modelado. Esa corrida utiliza la tabla histórica y un protocolo de validación anidada; no incorpora las representaciones examinadas en este EDA. Es posible preparar una nueva comparación exploratoria con el código existente.
+
+Primero debe fijarse la versión de entradas: la [configuración del experimento](../config/model_config.yml) apunta a la tabla histórica, que incluye `Fiber_base`, mientras que el [esquema actual](../config/data_schema.yml) la omite. Las representaciones reducidas y de forma del [cuaderno de transformaciones](../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb) todavía no forman parte de los candidatos del entrenamiento. Su comparación y la elección del escalamiento deben realizarse dentro de la validación interna. Las discrepancias geométricas requieren una política documentada de conservación y análisis de sensibilidad, sin corregir o eliminar valores por conveniencia del modelo.
+
+También debe precisarse el dominio de predicción: casos comparables de la misma campaña, nuevas arquitecturas o ensayos de otra campaña. Si se confirman réplicas o lotes, las particiones deben mantener juntas las observaciones relacionadas. El reparto actual presupone independencia provisional.
+
+El EDA y la evaluación previa ya han examinado este conjunto. Repartirlo nuevamente permite desarrollar y comparar procedimientos, pero no crea una prueba independiente. La confirmación del desempeño requerirá datos nuevos reservados para ese propósito.
 
 ## 11. Preguntas de investigación
 
@@ -276,9 +286,9 @@ El preprocesamiento demuestra que los centros aprendidos por escalamiento están
 | **RQ11. ¿Qué limita las conclusiones?** | Dependencia de diseño, geometrías discordantes, cobertura desigual, ausencia de lotes y series instrumentales (§4, §12). | Limita remuestreo, causalidad y extrapolación. |
 | **RQ12. ¿Qué conviene medir?** | Réplicas/lotes, geometría medida y CAD conciliado, masa, curvas digitales, tipo de rotura y protocolo de integración (§12). | Prioridades dirigidas a incertidumbres reales. |
 
-## 12. Discusión y recomendaciones
+## 12. Interpretación de resultados
 
-El resultado central es que arquitectura, geometría local y respuesta no se interpretan como factores aislados. La separación de familias es intensa, pero varias columnas representan esa misma separación. La inversión volumen–fuerza demuestra la insuficiencia de una lectura exclusivamente global. Normalizar por pivotes aporta una pregunta complementaria: cuánto contraste permanece al cambiar la referencia geométrica.
+El resultado central es que arquitectura, geometría local y respuesta no se interpretan como factores aislados. La separación de familias es intensa, pero varias columnas representan esa misma separación. La inversión volumen–fuerza demuestra la insuficiencia de un análisis exclusivamente global. Normalizar por pivotes permite examinar cuánto contraste permanece al cambiar la referencia geométrica.
 
 La asociación energética inicial es estable incluso dentro de familias, pero sus ingredientes son posteriores al ensayo. Es útil para revisar caracterización y procesamiento energético, sin resolver la predicción previa. La ausencia de límites de integración impide separar por completo relación mecánica y dependencia del cálculo.
 

@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T00:41:11.239980+00:00",
+  "checked_at_utc": "2026-10-10T00:49:21.574421+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -15,8 +15,8 @@
     "executed_code_cells": 61,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 93,
-    "checks": 475,
+    "local_links": 96,
+    "checks": 478,
     "failed_checks": 0
   },
   "notebooks": [
@@ -24,7 +24,7 @@
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "code_cells": 14,
       "executed_code_cells": 14,
-      "sha256": "bdeb1ab2b6d28138540096aee907c1881480aba1fef0ceccbbfe9e828086a6f8",
+      "sha256": "e6e6f2f59a46984e3c5861fa7bdf155d289db0ab8edaebc898600538768f7bbe",
       "unexecuted_cells": [],
       "error_cells": []
     },
@@ -32,7 +32,7 @@
       "path": "notebooks/02_EDA_Avanzado.ipynb",
       "code_cells": 37,
       "executed_code_cells": 37,
-      "sha256": "89741f83e5ccdf4964eefe109719c135dc5ec67d02c3b43b9e8928a716d95882",
+      "sha256": "aef8528be2d7b0507beae37525c1465226dd046c80834cfc7650c7d0b26e75b8",
       "unexecuted_cells": [],
       "error_cells": []
     },
@@ -40,7 +40,7 @@
       "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
       "code_cells": 10,
       "executed_code_cells": 10,
-      "sha256": "268d77e01e626dc8338b45f1a29980f83945da91c32471c43a9250658a655c43",
+      "sha256": "82bea7af0c3a62b53a8ea3244ede50a27874b2d0288ea0431fe04fc687732d51",
       "unexecuted_cells": [],
       "error_cells": []
     }
@@ -560,6 +560,11 @@
   "local_links": [
     {
       "source": "README.md",
+      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "exists": true
+    },
+    {
+      "source": "README.md",
       "target": "docs/informe_eda.md",
       "exists": true
     },
@@ -571,11 +576,6 @@
     {
       "source": "README.md",
       "target": "docs/trazabilidad_datos.md",
-      "exists": true
-    },
-    {
-      "source": "README.md",
-      "target": "reports/02_EDA_Avanzado.html",
       "exists": true
     },
     {
@@ -605,7 +605,7 @@
     },
     {
       "source": "README.md",
-      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "target": "reports/02_EDA_Avanzado.html",
       "exists": true
     },
     {
@@ -965,6 +965,21 @@
     },
     {
       "source": "docs/informe_eda.md",
+      "target": "config/model_config.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "config/data_schema.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
       "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "exists": true
     },
@@ -1069,6 +1084,13 @@
     },
     {
       "category": "local_link",
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
       "path": "docs/informe_eda.md",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1084,13 +1106,6 @@
     {
       "category": "local_link",
       "path": "docs/trazabilidad_datos.md",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "README.md"
-    },
-    {
-      "category": "local_link",
-      "path": "reports/02_EDA_Avanzado.html",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1132,7 +1147,7 @@
     },
     {
       "category": "local_link",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "reports/02_EDA_Avanzado.html",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1648,6 +1663,27 @@
     {
       "category": "local_link",
       "path": "reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/model_config.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/data_schema.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
