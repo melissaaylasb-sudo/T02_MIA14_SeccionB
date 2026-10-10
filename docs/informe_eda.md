@@ -25,7 +25,7 @@ La revisión documental verifica unidades energéticas en mJ y precisa que la ca
 7. [Redundancia y análisis multivariado](#7-redundancia-y-análisis-multivariado)
 8. [Estabilidad e incertidumbre](#8-estabilidad-e-incertidumbre)
 9. [Respuestas secundarias, ciclos y energías](#9-respuestas-secundarias-ciclos-y-energías)
-10. [Transformaciones y modelado posterior](#10-transformaciones-y-modelado-posterior)
+10. [Transformaciones exploratorias y contexto de las variables](#10-transformaciones-exploratorias-y-contexto-de-las-variables)
 11. [Preguntas de investigación](#11-preguntas-de-investigación)
 12. [Interpretación de resultados](#12-interpretación-de-resultados)
 13. [Conclusiones y reproducción](#13-conclusiones-y-reproducción)
@@ -181,6 +181,21 @@ El agrupamiento exploratorio alcanza su mayor silhouette en k = 2 (**0.294**), c
 
 ## 8. Estabilidad e incertidumbre
 
+### 8.1 Valores atípicos e influencia
+
+El estudio examina cuatro aspectos complementarios: extremos de una variable, geometrías inusuales en conjunto, influencia sobre asociaciones y coherencia con la definición física. Una señal en uno de ellos no implica automáticamente un error en los demás.
+
+| Diagnóstico | Ubicación en los notebooks | Alcance |
+|---|---|---|
+| Cercas IQR y puntuación robusta MAD | 01, §1.11; 02, §2.7 | Se comparan resultados globales y por familia; MAD nula deja ese criterio no calculable |
+| Distancia de Mahalanobis en el subespacio PCA | 02, §2.20 | Detecta combinaciones geométricas poco habituales en la representación examinada |
+| Leverage y distancia de Cook | 02, §2.20 | Mide influencia sobre una formulación descriptiva concreta |
+| Omisión individual e incidencias geométricas | 02, §2.22 y análisis de sensibilidad | Comprueba cambios en intensidad y signo sin modificar la tabla fuente |
+
+Las alertas se revisan junto con arquitectura, unidades, restricciones geométricas y páginas de la fuente. Se conservan los valores originales. Los registros de [alertas robustas](../reports/eda_calidad/tables/11_alertas_robustas.csv), [influencia](../reports/eda/tables/20_influencia.csv) y [sensibilidad](../reports/eda/tables/22_sensibilidad_geometrica.csv) permiten seguir cada comprobación.
+
+### 8.2 Sensibilidad de las asociaciones
+
 La asociación arquitectura–primera falla conserva ρ entre **0.928 y 0.943** bajo omisión individual; aun así, no separa los parámetros que cambian con arquitectura. El volumen mantiene relación global positiva, **[0.786, 0.832]**, pero dentro de familia el comportamiento difiere:
 
 | Familia | ρ volumen–primera falla | Rango LOO | Implicación |
@@ -237,7 +252,7 @@ Energía del primer evento de fractura–primera falla produce **r = 0.9859**, *
 
 La fuente denomina esta magnitud energía en curvas de fractura. Se usa **energía tabulada asociada al evento** sin identificarla inequívocamente como trabajo previo, energía liberada en una caída o tenacidad. Su relevancia estadística no la convierte en entrada previa: incorporarla para predecir primera falla produciría fuga de información.
 
-## 10. Transformaciones y modelado posterior
+## 10. Transformaciones exploratorias y contexto de las variables
 
 Se construyen áreas de secciones ideales, relaciones de aspecto, segundos momentos geométricos, altura/diámetro de pivote y razones de volúmenes. Las [fórmulas](../reports/eda_transformaciones/tables/T01_formulas.csv) no añaden mediciones: sus interpretaciones están en el diccionario. El volumen por n_y no es volumen físico de una celda; F/V en N/mm³ no es esfuerzo; un segundo momento en mm⁴ no es EI ni rigidez experimental.
 
@@ -247,27 +262,17 @@ El preprocesamiento demuestra que los centros aprendidos por escalamiento están
 
 ![Figura 13. Escalamiento aislado de datos reservados](../reports/eda_transformaciones/figures/F03_escalamiento.png)
 
-**Figura 13. Escalamiento estándar y robusto.** Pregunta: ¿se transforma sin aprender de datos reservados? Geometría transformada, adimensional; S1. Las alternativas producen representaciones distintas y deben compararse dentro de validación interna futura. Evidencia: [aislamiento](../reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv).
+**Figura 13. Escalamiento estándar y robusto.** Pregunta: ¿se transforma sin aprender de datos reservados? Geometría transformada, adimensional; S1. Las alternativas producen representaciones distintas; este análisis verifica su cálculo y significado, sin establecer superioridad predictiva. Evidencia: [aislamiento](../reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv).
 
-| Preparación requerida | Justificación |
+| Criterio de interpretación | Justificación |
 |---|---|
-| Comparar representación reducida de arquitectura y geometría local | Conteos/longitudes redundantes y volúmenes complementarios |
-| Conservar radio en fuente, excluir constante del ajuste | No aporta variación actual |
+| Comparar representaciones de arquitectura y geometría local | Conteos/longitudes redundantes y volúmenes complementarios |
+| Conservar el radio en fuente e identificar su carácter constante | No aporta variación actual |
 | Excluir cargas, residuales, energías y derivados posteriores de X | Frontera temporal del objetivo |
 | Aprender imputación y escalamiento dentro de entrenamiento | Evitar transmisión de estadísticas de evaluación |
-| Identificar réplicas, lotes y espécimen físico | No separar observaciones relacionadas entre particiones |
-| Distinguir interpolación de extrapolación geométrica | Nueva arquitectura no equivale a otro caso del mismo dominio |
+| Identificar réplicas, lotes y espécimen físico | Distinguir observaciones relacionadas de casos independientes |
+| Delimitar el dominio geométrico observado | Una nueva arquitectura puede tener relaciones distintas |
 | Conciliar geometrías antes de conclusiones definitivas | Relaciones locales dependen de versión digital |
-
-### Preparación para el entrenamiento
-
-El proyecto ya permite entrenar y conserva una corrida preliminar en los cuadernos de modelado. Esa corrida utiliza la tabla histórica y un protocolo de validación anidada; no incorpora las representaciones examinadas en este EDA. Es posible preparar una nueva comparación exploratoria con el código existente.
-
-Primero debe fijarse la versión de entradas: la [configuración del experimento](../config/model_config.yml) apunta a la tabla histórica, que incluye `Fiber_base`, mientras que el [esquema actual](../config/data_schema.yml) la omite. Las representaciones reducidas y de forma del [cuaderno de transformaciones](../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb) todavía no forman parte de los candidatos del entrenamiento. Su comparación y la elección del escalamiento deben realizarse dentro de la validación interna. Las discrepancias geométricas requieren una política documentada de conservación y análisis de sensibilidad, sin corregir o eliminar valores por conveniencia del modelo.
-
-También debe precisarse el dominio de predicción: casos comparables de la misma campaña, nuevas arquitecturas o ensayos de otra campaña. Si se confirman réplicas o lotes, las particiones deben mantener juntas las observaciones relacionadas. El reparto actual presupone independencia provisional.
-
-El EDA y la evaluación previa ya han examinado este conjunto. Repartirlo nuevamente permite desarrollar y comparar procedimientos, pero no crea una prueba independiente. La confirmación del desempeño requerirá datos nuevos reservados para ese propósito.
 
 ## 11. Preguntas de investigación
 
@@ -314,12 +319,13 @@ La primera falla quedó definida como evento distinto de rotura terminal y máxi
 
 La arquitectura organiza gran parte de la variación de carga, mientras que algunas asociaciones globales se atenúan o invierten dentro de familia. La redundancia, incertidumbre y discordancias documentales justifican representaciones reducidas y nuevas verificaciones, sin atribuir efectos causales a columnas aisladas.
 
-Los ciclos y energías amplían la caracterización experimental respetando dependencia y cobertura. La asociación energética inicial es estable como respuesta posensayo y debe excluirse de X. Las transformaciones verificadas preparan una etapa supervisada posterior; no constituyen evidencia de precisión predictiva.
+Los ciclos y energías amplían la caracterización experimental respetando dependencia y cobertura. La asociación energética inicial es estable como respuesta posensayo y debe excluirse de X. Las transformaciones verificadas caracterizan otras representaciones de la geometría; no constituyen evidencia de precisión predictiva.
 
 Los notebooks muestran cómo se obtiene la evidencia; el informe explica sus implicancias. Las tablas conservan soporte técnico por comparación sin convertir el total de casos en eje narrativo.
 
 - [Ingesta, curaduría y calidad](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb).
 - [EDA integral](../notebooks/02_EDA_Avanzado.ipynb).
+- [Transformaciones exploratorias](../notebooks/03_Transformaciones_Exploratorias.ipynb).
 - [Diccionario](diccionario_datos.md), [trazabilidad](trazabilidad_datos.md) e [informe de curaduría](informe_curaduria.md).
 - [Manifiesto del EDA](../reports/eda/manifest.json), [relaciones](../reports/eda_relaciones/manifest.json) y [transformaciones](../reports/eda_transformaciones/manifest.json).
 

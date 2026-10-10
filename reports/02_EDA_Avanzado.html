@@ -7808,7 +7808,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 @media(max-width:750px){main{padding:15px!important}table{font-size:11px!important}.eda-toc ul{columns:1}}
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/02_EDA_Avanzado.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA_Avanzado.html">02 · Análisis</a><a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#2.0-Experimento,-variables-y-preguntas-de-investigaci%C3%B3n">2.0 Experimento, variables y preguntas de investigación</a></li><li><a href="#2.1-Mapa-de-variables-y-frontera-temporal">2.1 Mapa de variables y frontera temporal</a></li><li><a href="#2.2-Distribuci%C3%B3n-de-la-primera-falla">2.2 Distribución de la primera falla</a></li><li><a href="#2.3-Distribuciones-geom%C3%A9tricas-y-escala-de-variaci%C3%B3n">2.3 Distribuciones geométricas y escala de variación</a></li><li><a href="#2.4-Dise%C3%B1o-experimental-y-soporte-de-combinaciones">2.4 Diseño experimental y soporte de combinaciones</a></li><li><a href="#2.5-Familias-de-respuesta-y-descomposici%C3%B3n-de-la-variabilidad">2.5 Familias de respuesta y descomposición de la variabilidad</a></li><li><a href="#2.6-Contrastes-entre-familias:-magnitud-y-estabilidad">2.6 Contrastes entre familias: magnitud y estabilidad</a></li><li><a href="#2.7-At%C3%ADpicos-globales-y-condicionados-por-familia">2.7 Atípicos globales y condicionados por familia</a></li><li><a href="#2.8-Asociaci%C3%B3n-bivariada-y-control-de-comparaciones-m%C3%BAltiples">2.8 Asociación bivariada y control de comparaciones múltiples</a></li><li><a href="#2.9-Asociaci%C3%B3n-condicionada:-separar-topolog%C3%ADa-de-geometr%C3%ADa">2.9 Asociación condicionada: separar topología de geometría</a></li><li><a href="#2.10-Visualizaci%C3%B3n-de-la-inversi%C3%B3n-y-relaciones-dentro-de-familia">2.10 Visualización de la inversión y relaciones dentro de familia</a></li><li><a href="#2.11-Interacciones-geom%C3%A9tricas-observadas">2.11 Interacciones geométricas observadas</a></li><li><a href="#2.12-Restricciones-e-identidades-geom%C3%A9tricas">2.12 Restricciones e identidades geométricas</a></li><li><a href="#2.13-Coherencia-f%C3%ADsica-y-revisi%C3%B3n-dirigida-de-la-fuente">2.13 Coherencia física y revisión dirigida de la fuente</a></li><li><a href="#2.14-Descriptores-derivados-con-significado-geom%C3%A9trico">2.14 Descriptores derivados con significado geométrico</a></li><li><a href="#2.15-Redundancia-multivariada-y-estructura-de-asociaciones">2.15 Redundancia multivariada y estructura de asociaciones</a></li><li><a href="#2.16-Colinealidad,-VIF-y-dimensi%C3%B3n-efectiva">2.16 Colinealidad, VIF y dimensión efectiva</a></li><li><a href="#2.17-PCA-y-sensibilidad-a-la-representaci%C3%B3n">2.17 PCA y sensibilidad a la representación</a></li><li><a href="#2.18-Agrupaciones-geom%C3%A9tricas-sin-usar-el-objetivo">2.18 Agrupaciones geométricas sin usar el objetivo</a></li><li><a href="#2.19-Novedad-geom%C3%A9trica-y-vecinos-pr%C3%B3ximos">2.19 Novedad geométrica y vecinos próximos</a></li><li><a href="#2.20-At%C3%ADpicos-multivariados-e-influencia-sobre-una-tendencia">2.20 Atípicos multivariados e influencia sobre una tendencia</a></li><li><a href="#2.21-Sensibilidad-leave-one-out-de-las-asociaciones">2.21 Sensibilidad leave-one-out de las asociaciones</a></li><li><a href="#2.22-An%C3%A1lisis-de-sensibilidad-a-incidencias-geom%C3%A9tricas">2.22 Análisis de sensibilidad a incidencias geométricas</a></li><li><a href="#2.23-Primera-falla,-rotura-terminal-y-desplazamiento-m%C3%A1ximo">2.23 Primera falla, rotura terminal y desplazamiento máximo</a></li><li><a href="#2.24-Evoluci%C3%B3n-del-desplazamiento-residual-por-ciclo">2.24 Evolución del desplazamiento residual por ciclo</a></li><li><a href="#2.25-Relaci%C3%B3n-entre-primera-falla-y-trayectoria-residual">2.25 Relación entre primera falla y trayectoria residual</a></li><li><a href="#2.26-Energ%C3%ADa-disipada:-evoluci%C3%B3n,-dispersi%C3%B3n-y-anomal%C3%ADas">2.26 Energía disipada: evolución, dispersión y anomalías</a></li><li><a href="#2.27-Energ%C3%ADa-de-fractura-por-evento-y-v%C3%ADnculo-con-la-primera-falla">2.27 Energía de fractura por evento y vínculo con la primera falla</a></li><li><a href="#2.28-Caracterizaci%C3%B3n-completa-y-cobertura-de-respuestas">2.28 Caracterización completa y cobertura de respuestas</a></li><li><a href="#2.29-Dependencias-INPUT%E2%80%93INPUT:-linealidad,-monoton%C3%ADa-e-identidades">2.29 Dependencias INPUT–INPUT: linealidad, monotonía e identidades</a></li><li><a href="#2.30-Relaciones-INPUT%E2%80%93OUTPUT-y-prioridad-mec%C3%A1nica-del-objetivo">2.30 Relaciones INPUT–OUTPUT y prioridad mecánica del objetivo</a></li><li><a href="#2.31-Relaciones-OUTPUT%E2%80%93OUTPUT-y-eventos-de-da%C3%B1o-distintos">2.31 Relaciones OUTPUT–OUTPUT y eventos de daño distintos</a></li><li><a href="#2.32-Arquitectura,-forma-y-normalizaciones-de-carga">2.32 Arquitectura, forma y normalizaciones de carga</a></li><li><a href="#2.33-Residual,-recuperaci%C3%B3n-nominal-y-dependencia-algebraica">2.33 Residual, recuperación nominal y dependencia algebraica</a></li><li><a href="#2.34-S%C3%ADntesis-de-hallazgos-y-decisiones-de-investigaci%C3%B3n">2.34 Síntesis de hallazgos y decisiones de investigación</a></li><li><a href="#2.35-Exportaci%C3%B3n,-reproducibilidad-y-traspaso-al-modelado">2.35 Exportación, reproducibilidad y traspaso al modelado</a></li></ul></details></div>
+<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/02_EDA_Avanzado.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA_Avanzado.html">02 · Análisis</a><a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#2.0-Experimento,-variables-y-preguntas-de-investigaci%C3%B3n">2.0 Experimento, variables y preguntas de investigación</a></li><li><a href="#2.1-Variables-disponibles-antes-y-despu%C3%A9s-del-ensayo">2.1 Variables disponibles antes y después del ensayo</a></li><li><a href="#2.2-Distribuci%C3%B3n-de-la-primera-falla">2.2 Distribución de la primera falla</a></li><li><a href="#2.3-Distribuciones-geom%C3%A9tricas-y-escala-de-variaci%C3%B3n">2.3 Distribuciones geométricas y escala de variación</a></li><li><a href="#2.4-Dise%C3%B1o-experimental-y-soporte-de-combinaciones">2.4 Diseño experimental y soporte de combinaciones</a></li><li><a href="#2.5-Familias-de-respuesta-y-descomposici%C3%B3n-de-la-variabilidad">2.5 Familias de respuesta y descomposición de la variabilidad</a></li><li><a href="#2.6-Contrastes-entre-familias:-magnitud-y-estabilidad">2.6 Contrastes entre familias: magnitud y estabilidad</a></li><li><a href="#2.7-At%C3%ADpicos-globales-y-condicionados-por-familia">2.7 Atípicos globales y condicionados por familia</a></li><li><a href="#2.8-Asociaci%C3%B3n-bivariada-y-control-de-comparaciones-m%C3%BAltiples">2.8 Asociación bivariada y control de comparaciones múltiples</a></li><li><a href="#2.9-Asociaci%C3%B3n-condicionada:-separar-topolog%C3%ADa-de-geometr%C3%ADa">2.9 Asociación condicionada: separar topología de geometría</a></li><li><a href="#2.10-Visualizaci%C3%B3n-de-la-inversi%C3%B3n-y-relaciones-dentro-de-familia">2.10 Visualización de la inversión y relaciones dentro de familia</a></li><li><a href="#2.11-Interacciones-geom%C3%A9tricas-observadas">2.11 Interacciones geométricas observadas</a></li><li><a href="#2.12-Restricciones-e-identidades-geom%C3%A9tricas">2.12 Restricciones e identidades geométricas</a></li><li><a href="#2.13-Coherencia-f%C3%ADsica-y-revisi%C3%B3n-dirigida-de-la-fuente">2.13 Coherencia física y revisión dirigida de la fuente</a></li><li><a href="#2.14-Descriptores-derivados-con-significado-geom%C3%A9trico">2.14 Descriptores derivados con significado geométrico</a></li><li><a href="#2.15-Redundancia-multivariada-y-estructura-de-asociaciones">2.15 Redundancia multivariada y estructura de asociaciones</a></li><li><a href="#2.16-Colinealidad,-VIF-y-dimensi%C3%B3n-efectiva">2.16 Colinealidad, VIF y dimensión efectiva</a></li><li><a href="#2.17-PCA-y-sensibilidad-a-la-representaci%C3%B3n">2.17 PCA y sensibilidad a la representación</a></li><li><a href="#2.18-Agrupaciones-geom%C3%A9tricas-sin-usar-el-objetivo">2.18 Agrupaciones geométricas sin usar el objetivo</a></li><li><a href="#2.19-Novedad-geom%C3%A9trica-y-vecinos-pr%C3%B3ximos">2.19 Novedad geométrica y vecinos próximos</a></li><li><a href="#2.20-At%C3%ADpicos-multivariados-e-influencia-sobre-una-tendencia">2.20 Atípicos multivariados e influencia sobre una tendencia</a></li><li><a href="#2.21-Sensibilidad-leave-one-out-de-las-asociaciones">2.21 Sensibilidad leave-one-out de las asociaciones</a></li><li><a href="#2.22-An%C3%A1lisis-de-sensibilidad-a-incidencias-geom%C3%A9tricas">2.22 Análisis de sensibilidad a incidencias geométricas</a></li><li><a href="#2.23-Primera-falla,-rotura-terminal-y-desplazamiento-m%C3%A1ximo">2.23 Primera falla, rotura terminal y desplazamiento máximo</a></li><li><a href="#2.24-Evoluci%C3%B3n-del-desplazamiento-residual-por-ciclo">2.24 Evolución del desplazamiento residual por ciclo</a></li><li><a href="#2.25-Relaci%C3%B3n-entre-primera-falla-y-trayectoria-residual">2.25 Relación entre primera falla y trayectoria residual</a></li><li><a href="#2.26-Energ%C3%ADa-disipada:-evoluci%C3%B3n,-dispersi%C3%B3n-y-anomal%C3%ADas">2.26 Energía disipada: evolución, dispersión y anomalías</a></li><li><a href="#2.27-Energ%C3%ADa-de-fractura-por-evento-y-v%C3%ADnculo-con-la-primera-falla">2.27 Energía de fractura por evento y vínculo con la primera falla</a></li><li><a href="#2.28-Caracterizaci%C3%B3n-completa-y-cobertura-de-respuestas">2.28 Caracterización completa y cobertura de respuestas</a></li><li><a href="#2.29-Dependencias-INPUT%E2%80%93INPUT:-linealidad,-monoton%C3%ADa-e-identidades">2.29 Dependencias INPUT–INPUT: linealidad, monotonía e identidades</a></li><li><a href="#2.30-Relaciones-INPUT%E2%80%93OUTPUT-y-prioridad-mec%C3%A1nica-del-objetivo">2.30 Relaciones INPUT–OUTPUT y prioridad mecánica del objetivo</a></li><li><a href="#2.31-Relaciones-OUTPUT%E2%80%93OUTPUT-y-eventos-de-da%C3%B1o-distintos">2.31 Relaciones OUTPUT–OUTPUT y eventos de daño distintos</a></li><li><a href="#2.32-Arquitectura,-forma-y-normalizaciones-de-carga">2.32 Arquitectura, forma y normalizaciones de carga</a></li><li><a href="#2.33-Residual,-recuperaci%C3%B3n-nominal-y-dependencia-algebraica">2.33 Residual, recuperación nominal y dependencia algebraica</a></li><li><a href="#2.34-Resumen-de-resultados">2.34 Resumen de resultados</a></li><li><a href="#2.35-Interpretaci%C3%B3n-de-resultados">2.35 Interpretación de resultados</a></li><li><a href="#2.36-Archivos-generados-y-reproducci%C3%B3n-del-an%C3%A1lisis">2.36 Archivos generados y reproducción del análisis</a></li></ul></details></div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=78cddd40">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7821,7 +7821,7 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 <p><strong>ANÁLISIS EXPLORATORIO Y CARACTERIZACIÓN ESTADÍSTICO-MECÁNICA DE ESTRUCTURAS PANTOGRÁFICAS: CALIDAD DE DATOS, GEOMETRÍA Y RESPUESTA EXPERIMENTAL</strong></p>
 <p>Este cuaderno estudia las relaciones geometría–respuesta del archivo MATLAB recibido. El cuaderno
 <a href="01_Ingesta_Curaduria_y_Calidad.html">01</a> documenta ingesta y calidad; el
-<a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03</a> desarrolla transformaciones y preparación.
+<a href="03_Transformaciones_Exploratorias.html">03</a> estudia transformaciones y contexto de las variables.
 El <a href="../docs/informe_eda.md">informe académico</a> interpreta la evidencia y responde las preguntas de investigación.</p>
 <p>La finalidad predictiva posterior es estimar la fuerza de primera falla <strong>antes del ensayo</strong>:</p>
 <p>$$F_{\mathrm{primera\ falla}} = f(X_{\mathrm{geometría}}, X_{\mathrm{estructura}})+\varepsilon.$$</p>
@@ -7958,7 +7958,7 @@ estadísticamente independientes: las mediciones de ciclos y eventos pertenecen 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El esquema es original, idealizado y sin escala: no reproduce exactamente un espécimen ni identifica dónde fallará. Colores azul/verde: familias de fibras; círculos: pivotes; F: fuerza axial aplicada. Las tablas disponibles son resúmenes y no series digitales completas de fuerza–desplazamiento.</p>
+<p><strong>Interpretación del resultado.</strong> El esquema es original, idealizado y sin escala: no reproduce exactamente un espécimen ni identifica dónde fallará. Colores azul/verde: familias de fibras; círculos: pivotes; F: fuerza axial aplicada. Las tablas disponibles son resúmenes y no series digitales completas de fuerza–desplazamiento.</p>
 </div>
 </div>
 </div>
@@ -7970,7 +7970,7 @@ estadísticamente independientes: las mediciones de ciclos y eventos pertenecen 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.1-Mapa-de-variables-y-frontera-temporal">2.1 Mapa de variables y frontera temporal<a class="anchor-link" href="#2.1-Mapa-de-variables-y-frontera-temporal">¶</a></h2><p>La cobertura incluye geometría previa al ensayo, primera falla, carga posterior, desplazamientos
+<h2 id="2.1-Variables-disponibles-antes-y-despu%C3%A9s-del-ensayo">2.1 Variables disponibles antes y después del ensayo<a class="anchor-link" href="#2.1-Variables-disponibles-antes-y-despu%C3%A9s-del-ensayo">¶</a></h2><p>La cobertura incluye geometría previa al ensayo, primera falla, carga posterior, desplazamientos
 y matrices energéticas del archivo MATLAB. Se explicita qué puede entrar al predictor y qué solo
 puede ayudar a interpretar un ensayo ya realizado.</p>
 </div>
@@ -8114,7 +8114,7 @@ puede ayudar a interpretar un ensayo ya realizado.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Una asociación intensa con una respuesta posensayo puede ser útil para interpretar el daño, pero no autoriza usarla para predecir antes del ensayo. La unidad energética mJ está verificada en las fichas de Venditti, no inferida de los valores.</p>
+<p><strong>Interpretación del resultado.</strong> Una asociación intensa con una respuesta posensayo puede ser útil para interpretar el daño, pero no autoriza usarla para predecir antes del ensayo. La unidad energética mJ está verificada en las fichas de Venditti, no inferida de los valores.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -8197,7 +8197,7 @@ El Q–Q se utiliza como diagnóstico de forma, sin imponer normalidad al target
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La mediana es 101.89 N y el intervalo intercuartílico va de 78.39 a 196.88 N. La forma marginal puede mezclar familias con mecanismos y geometrías diferentes; por eso se descompone a continuación.</p>
+<p><strong>Interpretación del resultado.</strong> La mediana es 101.89 N y el intervalo intercuartílico va de 78.39 a 196.88 N. La forma marginal puede mezclar familias con mecanismos y geometrías diferentes; por eso se descompone a continuación.</p>
 </div>
 </div>
 </div>
@@ -8378,7 +8378,7 @@ variación bajo no implica irrelevancia mecánica; puede revelar una restricció
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El radio de pivote permanece constante. Las distribuciones con niveles separados describen configuraciones discretas; no prueban que cualquier combinación intermedia sea físicamente realizable.</p>
+<p><strong>Interpretación del resultado.</strong> El radio de pivote permanece constante. Las distribuciones con niveles separados describen configuraciones discretas; no prueban que cualquier combinación intermedia sea físicamente realizable.</p>
 </div>
 </div>
 </div>
@@ -8624,7 +8624,7 @@ no resistencia nula. No se interpolan valores.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El soporte conjunto importa: un nuevo punto puede estar dentro del rango de cada variable y aun así no corresponder a una configuración ensayada. Estos mapas no justifican extrapolación.</p>
+<p><strong>Interpretación del resultado.</strong> El soporte conjunto importa: un nuevo punto puede estar dentro del rango de cada variable y aun así no corresponder a una configuración ensayada. Estos mapas no justifican extrapolación.</p>
 </div>
 </div>
 </div>
@@ -8730,7 +8730,7 @@ descriptiva de variación observada; no es una métrica predictiva fuera de mues
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El 96.55% de la variación observada se sitúa entre familias. Esto obliga a separar asociación topológica de variación dentro de familia: una correlación global alta podría reflejar principalmente esta agrupación. La permutación presupone intercambiabilidad bajo la hipótesis nula.</p>
+<p><strong>Interpretación del resultado.</strong> El 96.55% de la variación observada se sitúa entre familias. Esto obliga a separar asociación topológica de variación dentro de familia: una correlación global alta podría reflejar principalmente esta agrupación. La permutación presupone intercambiabilidad bajo la hipótesis nula.</p>
 </div>
 </div>
 </div>
@@ -8828,7 +8828,7 @@ contrastan diferencia de medias y se corrigen conjuntamente con BH y BY.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El tamaño de efecto describe cuánto se separan las distribuciones. El contraste no identifica un efecto causal de añadir celdas porque cambian simultáneamente otras características geométricas.</p>
+<p><strong>Interpretación del resultado.</strong> El tamaño de efecto describe cuánto se separan las distribuciones. El contraste no identifica un efecto causal de añadir celdas porque cambian simultáneamente otras características geométricas.</p>
 </div>
 </div>
 </div>
@@ -8974,7 +8974,7 @@ Si MAD es cero, ese criterio queda sin identificar. Ninguna bandera elimina dato
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Una regla aplicada globalmente y otra condicionada pueden discrepar porque describen referencias distintas. Las configuraciones extremas del diseño no son errores por sí mismas; las banderas pasan a revisión de la fuente.</p>
+<p><strong>Interpretación del resultado.</strong> Una regla aplicada globalmente y otra condicionada pueden discrepar porque describen referencias distintas. Las configuraciones extremas del diseño no son errores por sí mismas; las banderas pasan a revisión de la fuente.</p>
 </div>
 </div>
 </div>
@@ -9155,7 +9155,7 @@ sobre la familia completa, junto a intervalos percentiles bootstrap para Spearma
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El color revela cuándo una asociación sigue la separación entre familias. BH y BY tratan la multiplicidad; BY añade una referencia conservadora ante dependencia entre contrastes. Ningún coeficiente representa por sí solo importancia física independiente.</p>
+<p><strong>Interpretación del resultado.</strong> El color revela cuándo una asociación sigue la separación entre familias. BH y BY tratan la multiplicidad; BY añade una referencia conservadora ante dependencia entre contrastes. Ningún coeficiente representa por sí solo importancia física independiente.</p>
 </div>
 </div>
 </div>
@@ -9376,13 +9376,13 @@ la familia, su efecto condicionado no es identificable.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El volumen CAD del espécimen pasa de ρ=0.799 global a -0.265 condicionado. Dentro de cada familia su asociación también es negativa. La tendencia global no puede interpretarse como 'aumentar volumen mejora resistencia'. La incertidumbre de los efectos dentro de familia se revisa en sus intervalos y q, sin presentar la inversión descriptiva como causalidad.</p>
+<p><strong>Interpretación del resultado.</strong> El volumen CAD del espécimen pasa de ρ=0.799 global a -0.265 condicionado. Dentro de cada familia su asociación también es negativa. La tendencia global no puede interpretarse como 'aumentar volumen mejora resistencia'. La incertidumbre de los efectos dentro de familia se revisa en sus intervalos y q, sin presentar la inversión descriptiva como causalidad.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> En esta corrida, el menor q BH condicionado es 0.0624: ninguna asociación condicionada supera FDR 5 %. El intervalo del volumen CAD del espécimen incluye cero; la inversión observada debe tratarse como hipótesis, no como efecto concluyente.</p>
+<p><strong>Interpretación del resultado.</strong> En esta corrida, el menor q BH condicionado es 0.0624: ninguna asociación condicionada supera FDR 5 %. El intervalo del volumen CAD del espécimen incluye cero; la inversión observada debe tratarse como hipótesis, no como efecto concluyente.</p>
 </div>
 </div>
 </div>
@@ -9421,7 +9421,7 @@ de posición entre familias y deja visible la variación interna.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La inversión es un hallazgo del diseño observado. Un efecto global mezcla familias con distintos niveles de carga; el comportamiento dentro de familia responde a otra pregunta. Una relación condicionada débil o inestable tampoco demuestra ausencia de mecanismo físico.</p>
+<p><strong>Interpretación del resultado.</strong> La inversión es un hallazgo del diseño observado. Un efecto global mezcla familias con distintos niveles de carga; el comportamiento dentro de familia responde a otra pregunta. Una relación condicionada débil o inestable tampoco demuestra ausencia de mecanismo físico.</p>
 </div>
 </div>
 </div>
@@ -9621,7 +9621,7 @@ interacciones, pero no prueba interacción causal ni proporciona una ley constit
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El patrón depende de qué combinaciones están representadas. No se estima aquí una superficie suave para combinaciones sin observación. Estas interacciones son candidatas a evaluación dentro del entrenamiento, no una selección hecha con el error externo.</p>
+<p><strong>Interpretación del resultado.</strong> El patrón depende de qué combinaciones están representadas. No se estima aquí una superficie suave para combinaciones sin observación. Estas interacciones son candidatas a evaluación dentro del entrenamiento, no una selección hecha con el error externo.</p>
 </div>
 </div>
 </div>
@@ -9730,7 +9730,7 @@ espécimen ni masa: <code>Sample_total_volume</code> emplea una magnitud distint
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La suma de volúmenes declarados es 6524.01 mm³. La correlación inversa perfecta entre esos componentes responde a esta restricción; no demuestra un efecto mecánico independiente. Longitud total, número de pivotes y celdas codifican el mismo eje de familia en esta campaña.</p>
+<p><strong>Interpretación del resultado.</strong> La suma de volúmenes declarados es 6524.01 mm³. La correlación inversa perfecta entre esos componentes responde a esta restricción; no demuestra un efecto mecánico independiente. Longitud total, número de pivotes y celdas codifican el mismo eje de familia en esta campaña.</p>
 </div>
 </div>
 </div>
@@ -9861,7 +9861,7 @@ redondeo o transcripción; el EDA no decide cuál explicación es correcta.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Las discrepancias existen en la fuente original. Se registran como incidencias para el cuaderno de curaduría; no se cambia ningún dato, se conserva su identificación y se evalúa después la sensibilidad de las asociaciones a estas señales.</p>
+<p><strong>Interpretación del resultado.</strong> Las discrepancias existen en la fuente original. Se registran como incidencias para el cuaderno de curaduría; no se cambia ningún dato, se conserva su identificación y se evalúa después la sensibilidad de las asociaciones a estas señales.</p>
 </div>
 </div>
 </div>
@@ -9994,7 +9994,7 @@ descriptivos: no equivalen a rigidez sin módulo elástico, tensión del materia
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Los descriptores se presentan como hipótesis para futuros pipelines y no se añaden automáticamente al modelo ya evaluado. Cualquier comparación supervisada de estas representaciones deberá ocurrir en validación interna.</p>
+<p><strong>Interpretación del resultado.</strong> Los descriptores se presentan como hipótesis para futuros pipelines y no se añaden automáticamente al modelo ya evaluado. Cualquier comparación supervisada de estas representaciones deberá ocurrir en validación interna.</p>
 </div>
 </div>
 </div>
@@ -10268,7 +10268,7 @@ El dendrograma describe similitud estadística, no conexiones mecánicas entre p
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Duplicar variables que codifican la misma familia puede sobrerrepresentar esa dirección en distancias, PCA y explicación de modelos. Una baja importancia por permutación también puede ser consecuencia de sustitutos altamente correlacionados.</p>
+<p><strong>Interpretación del resultado.</strong> Duplicar variables que codifican la misma familia puede sobrerrepresentar esa dirección en distancias, PCA y explicación de modelos. Una baja importancia por permutación también puede ser consecuencia de sustitutos altamente correlacionados.</p>
 </div>
 </div>
 </div>
@@ -10420,7 +10420,7 @@ del bloque geométrico.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Los coeficientes de una regresión sin regularización no serían identificables de forma estable con todas las entradas redundantes. Se recomienda evaluar representaciones de diseño y regularización dentro del protocolo de modelado.</p>
+<p><strong>Interpretación del resultado.</strong> Los coeficientes de una regresión sin regularización no serían identificables de forma estable con todas las entradas redundantes. Se recomienda evaluar representaciones de diseño y regularización dentro del protocolo de modelado.</p>
 </div>
 </div>
 </div>
@@ -10592,7 +10592,7 @@ También se compara escalamiento estándar y robusto.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Los primeros 3 componentes del PCA completo concentran 95.59% de la variación estandarizada. El cambio de representación modifica los pesos de cada dirección; la varianza explicada no equivale a capacidad de predecir la falla.</p>
+<p><strong>Interpretación del resultado.</strong> Los primeros 3 componentes del PCA completo concentran 95.59% de la variación estandarizada. El cambio de representación modifica los pesos de cada dirección; la varianza explicada no equivale a capacidad de predecir la falla.</p>
 </div>
 </div>
 </div>
@@ -10707,13 +10707,13 @@ se consulta después para describir los grupos. No se buscan clusters que maximi
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La elección descriptiva por silhouette favorece k=2. La estabilidad entre inicializaciones mide sensibilidad del algoritmo, no evidencia de nuevos tipos físicos. Los grupos pueden reproducir niveles del diseño; deberán contrastarse con documentación experimental.</p>
+<p><strong>Interpretación del resultado.</strong> La elección descriptiva por silhouette favorece k=2. La estabilidad entre inicializaciones mide sensibilidad del algoritmo, no evidencia de nuevos tipos físicos. Los grupos pueden reproducir niveles del diseño; deberán contrastarse con documentación experimental.</p>
 </div>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La silhouette máxima es 0.294; para esa solución la ARI mínima entre inicios es 0.459. La separación es modesta y las asignaciones son sensibles a la inicialización.</p>
+<p><strong>Interpretación del resultado.</strong> La silhouette máxima es 0.294; para esa solución la ARI mínima entre inicios es 0.459. La separación es modesta y las asignaciones son sensibles a la inicialización.</p>
 </div>
 </div>
 </div>
@@ -10829,7 +10829,7 @@ La distancia depende de las variables y de su escala; no es una norma de similit
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Los pares comparten casos y no son observaciones independientes. Este gráfico es diagnóstico: no se calculan p sobre los pares ni se trata su cantidad como nueva evidencia experimental.</p>
+<p><strong>Interpretación del resultado.</strong> Los pares comparten casos y no son observaciones independientes. Este gráfico es diagnóstico: no se calculan p sobre los pares ni se trata su cantidad como nueva evidencia experimental.</p>
 </div>
 </div>
 </div>
@@ -11047,7 +11047,7 @@ no se utiliza para valorar desempeño.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Un diseño alejado no necesariamente influye mucho en la respuesta, y un caso influyente no necesariamente tiene geometría extrema. χ², 4/n y 2p/n son referencias de inspección; sus supuestos no autorizan descarte automático.</p>
+<p><strong>Interpretación del resultado.</strong> Un diseño alejado no necesariamente influye mucho en la respuesta, y un caso influyente no necesariamente tiene geometría extrema. χ², 4/n y 2p/n son referencias de inspección; sus supuestos no autorizan descarte automático.</p>
 </div>
 </div>
 </div>
@@ -11257,7 +11257,7 @@ ni una validación predictiva leave-one-out.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La conservación del signo y el cambio máximo distinguen asociaciones estables de efectos dirigidos por un caso. Cerca de cero, un cambio de signo puede ser numéricamente trivial; se interpreta junto con la magnitud del efecto.</p>
+<p><strong>Interpretación del resultado.</strong> La conservación del signo y el cambio máximo distinguen asociaciones estables de efectos dirigidos por un caso. Cerca de cero, un cambio de signo puede ser numéricamente trivial; se interpreta junto con la magnitud del efecto.</p>
 </div>
 </div>
 </div>
@@ -11366,7 +11366,7 @@ no coincidir con la definición usada en la fuente.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Las diferencias indican cuánto dependen las asociaciones de esas incidencias bajo el escenario planteado. No se elige la versión que dé mejores resultados y no se sustituyen las métricas del experimento por cálculos exploratorios.</p>
+<p><strong>Interpretación del resultado.</strong> Las diferencias indican cuánto dependen las asociaciones de esas incidencias bajo el escenario planteado. No se elige la versión que dé mejores resultados y no se sustituyen las métricas del experimento por cálculos exploratorios.</p>
 </div>
 </div>
 </div>
@@ -11457,7 +11457,7 @@ Por ello una fuerza de primera falla mayor que la terminal no es, por sí sola, 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La mediana del cociente entre cargas es 1.144. Las fuerzas corresponden a eventos diferentes según la tesis. El cociente no es un margen de seguridad y no cuantifica toda la capacidad posdaño. Ambas respuestas secundarias seguirán fuera de X por su disponibilidad temporal.</p>
+<p><strong>Interpretación del resultado.</strong> La mediana del cociente entre cargas es 1.144. Las fuerzas corresponden a eventos diferentes según la tesis. El cociente no es un margen de seguridad y no cuantifica toda la capacidad posdaño. Ambas respuestas secundarias seguirán fuera de X por su disponibilidad temporal.</p>
 </div>
 </div>
 </div>
@@ -11598,7 +11598,7 @@ cambio mecánico con cambio de composición. Un ciclo sin dato permanece ausente
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> En la cohorte común, la mediana residual/amplitud pasa de 0.452 a 0.677. Sugiere acumulación relativa de deformación residual; no equivale a una ley de fatiga ni a deformación unitaria sin longitud de referencia.</p>
+<p><strong>Interpretación del resultado.</strong> En la cohorte común, la mediana residual/amplitud pasa de 0.452 a 0.677. Sugiere acumulación relativa de deformación residual; no equivale a una ley de fatiga ni a deformación unitaria sin longitud de referencia.</p>
 </div>
 </div>
 </div>
@@ -11690,7 +11690,7 @@ depender del protocolo o de la evolución del daño; no se asume ausencia aleato
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Comparar las tres curvas permite distinguir composición, familia y etapa del ensayo. Estos desplazamientos son respuestas posteriores; una correlación útil para interpretación no los convierte en predictores previos.</p>
+<p><strong>Interpretación del resultado.</strong> Comparar las tres curvas permite distinguir composición, familia y etapa del ensayo. Estos desplazamientos son respuestas posteriores; una correlación útil para interpretación no los convierte en predictores previos.</p>
 </div>
 </div>
 </div>
@@ -11901,7 +11901,7 @@ reintegrar curvas de histéresis ni verificar el procedimiento de corrección de
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Las medianas de energía registrada aumentan con el ciclo; se analizan valores por ciclo y no una suma acumulada. La señal del ciclo inicial y los valores extremos requieren revisar referencia, corrección de cero e integración experimental. El caso 5 presenta un valor destacado en el quinto ciclo; se conserva para contraste con la fuente.</p>
+<p><strong>Interpretación del resultado.</strong> Las medianas de energía registrada aumentan con el ciclo; se analizan valores por ciclo y no una suma acumulada. La señal del ciclo inicial y los valores extremos requieren revisar referencia, corrección de cero e integración experimental. El caso 5 presenta un valor destacado en el quinto ciclo; se conserva para contraste con la fuente.</p>
 </div>
 </div>
 </div>
@@ -12088,7 +12088,7 @@ No se interpreta como tenacidad, energía acumulada del ensayo ni tasa de libera
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El primer evento es el mayor valor de cada perfil observado; su participación mediana en la suma registrada es 63.29%. La asociación con primera falla es ρ=0.988. Es una respuesta del mismo ensayo: incorporarla como input previo produciría fuga de información. La relación no demuestra una ley fuerza–energía ni identifica los límites de integración experimental.</p>
+<p><strong>Interpretación del resultado.</strong> El primer evento es el mayor valor de cada perfil observado; su participación mediana en la suma registrada es 63.29%. La asociación con primera falla es ρ=0.988. Es una respuesta del mismo ensayo: incorporarla como input previo produciría fuga de información. La relación no demuestra una ley fuerza–energía ni identifica los límites de integración experimental.</p>
 </div>
 </div>
 </div>
@@ -13903,7 +13903,7 @@ efectivos describen soporte técnico, no demuestran independencia.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Las energías de signo variable conservan una advertencia específica para el coeficiente de variación. No se confunden ausencias con ceros ni se rellenan ciclos o eventos no registrados. Las respuestas energéticas conservan mJ y su carácter posensayo.</p>
+<p><strong>Interpretación del resultado.</strong> Las energías de signo variable conservan una advertencia específica para el coeficiente de variación. No se confunden ausencias con ceros ni se rellenan ciclos o eventos no registrados. Las respuestas energéticas conservan mJ y su carácter posensayo.</p>
 </div>
 </div>
 </div>
@@ -13997,7 +13997,7 @@ el radio constante carece de correlación identificable, no tiene una correlaci�
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> La suma de volúmenes declarados y el mapeo entre celdas, longitud y número de pivotes explican parte de las dependencias. La diferencia entre Pearson y Spearman distingue identidad lineal de orden compartido por la arquitectura; ambas requieren interpretación conjunta con las fórmulas.</p>
+<p><strong>Interpretación del resultado.</strong> La suma de volúmenes declarados y el mapeo entre celdas, longitud y número de pivotes explican parte de las dependencias. La diferencia entre Pearson y Spearman distingue identidad lineal de orden compartido por la arquitectura; ambas requieren interpretación conjunta con las fórmulas.</p>
 </div>
 </div>
 </div>
@@ -14200,7 +14200,7 @@ No se multiplican contrastes inferenciales en esta extensión; el análisis es d
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Para volumen CAD y primera falla: r=0.773, ρ=0.799, y rango de ρ por omisión [0.786, 0.832]. La estabilidad global frente a una omisión no resuelve la confusión por arquitectura: el apartado2.9 muestra otro resultado al condicionar por familia.</p>
+<p><strong>Interpretación del resultado.</strong> Para volumen CAD y primera falla: r=0.773, ρ=0.799, y rango de ρ por omisión [0.786, 0.832]. La estabilidad global frente a una omisión no resuelve la confusión por arquitectura: el apartado2.9 muestra otro resultado al condicionar por familia.</p>
 </div>
 </div>
 </div>
@@ -14622,7 +14622,7 @@ para una predicción previa ni identifica una ley constitutiva.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Primera falla y rotura terminal presentan r=0.470 y ρ=0.574; el rango de ρ por omisión es [0.521, 0.645]. Son asociaciones diferentes de la relación muy elevada entre primera falla y energía del primer evento. La rotura terminal no es el máximo global de fuerza.</p>
+<p><strong>Interpretación del resultado.</strong> Primera falla y rotura terminal presentan r=0.470 y ρ=0.574; el rango de ρ por omisión es [0.521, 0.645]. Son asociaciones diferentes de la relación muy elevada entre primera falla y energía del primer evento. La rotura terminal no es el máximo global de fuerza.</p>
 </div>
 </div>
 </div>
@@ -14822,7 +14822,7 @@ es fija según la tesis; no se interpreta el número de celdas como longitud ext
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Mediana de primera falla / pivotes [N/pivote]: Y=4: 0.5940, Y=5: 0.5893, Y=6: 0.8520. La diferencia entre arquitecturas Y=4 y Y=5 se atenúa al normalizar por pivotes; Y=6 mantiene una mediana mayor bajo esta representación. El denominador cambia entre arquitecturas; no prueba reparto uniforme, causalidad ni efecto independiente de densidad. Dimensiones exteriores fijas en la tesis.</p>
+<p><strong>Interpretación del resultado.</strong> Mediana de primera falla / pivotes [N/pivote]: Y=4: 0.5940, Y=5: 0.5893, Y=6: 0.8520. La diferencia entre arquitecturas Y=4 y Y=5 se atenúa al normalizar por pivotes; Y=6 mantiene una mediana mayor bajo esta representación. El denominador cambia entre arquitecturas; no prueba reparto uniforme, causalidad ni efecto independiente de densidad. Dimensiones exteriores fijas en la tesis.</p>
 </div>
 </div>
 </div>
@@ -15155,7 +15155,7 @@ de desplazamientos recibida solo integra los seis primeros. No se reconstruyen c
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> Una correlación inversa exacta entre residual relativo y su complemento se debe a la identidad 1−x. Interpretarlos como dos evidencias independientes sobrerrepresentaría la misma respuesta. El cambio de mediana por ciclo debe leerse sobre la cohorte común y junto con el protocolo de amplitud creciente.</p>
+<p><strong>Interpretación del resultado.</strong> Una correlación inversa exacta entre residual relativo y su complemento se debe a la identidad 1−x. Interpretarlos como dos evidencias independientes sobrerrepresentaría la misma respuesta. El cambio de mediana por ciclo debe leerse sobre la cohorte común y junto con el protocolo de amplitud creciente.</p>
 </div>
 </div>
 </div>
@@ -15167,9 +15167,8 @@ de desplazamientos recibida solo integra los seis primeros. No se reconstruyen c
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.34-S%C3%ADntesis-de-hallazgos-y-decisiones-de-investigaci%C3%B3n">2.34 Síntesis de hallazgos y decisiones de investigación<a class="anchor-link" href="#2.34-S%C3%ADntesis-de-hallazgos-y-decisiones-de-investigaci%C3%B3n">¶</a></h2><p>La síntesis distingue evidencia directa, interpretación plausible, límites y acción siguiente.
-Se priorizan hallazgos que cambian decisiones de modelado o revisión experimental. Ningún
-resultado se califica como descubrimiento universal ni sustituye validación con nueva evidencia.</p>
+<h2 id="2.34-Resumen-de-resultados">2.34 Resumen de resultados<a class="anchor-link" href="#2.34-Resumen-de-resultados">¶</a></h2><p>La tabla reúne las asociaciones, restricciones geométricas y respuestas mecánicas examinadas.
+Cada resultado incluye su explicación y las condiciones que limitan su interpretación.</p>
 </div>
 </div>
 </div>
@@ -15255,8 +15254,24 @@ resultado se califica como descubrimiento universal ni sustituye validación con
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Lectura del resultado.</strong> El resultado central es distinguir asociaciones entre familias, relaciones dentro de familia e identidades geométricas. Esa separación evita atribuir a una variable aislada un efecto que proviene de la arquitectura completa.</p>
+<p><strong>Interpretación del resultado.</strong> El resultado central es distinguir asociaciones entre familias, relaciones dentro de familia e identidades geométricas. Esa separación evita atribuir a una variable aislada un efecto que proviene de la arquitectura completa.</p>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=interpretacion-resultados-eda">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.35-Interpretaci%C3%B3n-de-resultados">2.35 Interpretación de resultados<a class="anchor-link" href="#2.35-Interpretaci%C3%B3n-de-resultados">¶</a></h2><h3 id="La-arquitectura-distingue-niveles-de-carga">La arquitectura distingue niveles de carga<a class="anchor-link" href="#La-arquitectura-distingue-niveles-de-carga">¶</a></h3><p>Las familias de celdas en Y presentan cargas de primera falla diferentes. La variación entre familias representa el <strong>96.55 %</strong> de la variación observada de la respuesta (§2.5). En esta campaña, conocer la familia permite distinguir configuraciones con niveles de resistencia diferentes. Sin embargo, también cambian la longitud total de fibras y el número de pivotes: el resultado describe esas configuraciones conjuntamente y no permite atribuir el aumento de carga a una sola dimensión. Ese porcentaje es una descripción de los datos, no la precisión de un modelo.</p>
+<h3 id="El-volumen-no-explica-por-s%C3%AD-solo-la-resistencia">El volumen no explica por sí solo la resistencia<a class="anchor-link" href="#El-volumen-no-explica-por-s%C3%AD-solo-la-resistencia">¶</a></h3><p>La asociación global entre volumen CAD del espécimen y primera falla es positiva (<strong>Spearman ρ = 0.799</strong>). Al comparar después de retirar las diferencias entre familias, pasa a <strong>ρ = −0.265</strong>, con un intervalo de confianza que incluye cero (§2.9). Esto indica que la tendencia global mezcla configuraciones distintas. No hay evidencia suficiente para concluir que aumentar el volumen, manteniendo lo demás constante, aumente o reduzca la fuerza de primera falla. Por eso deben distinguirse la predicción de otro caso de una familia conocida y la predicción de una arquitectura no ensayada.</p>
+<h3 id="Algunas-correlaciones-proceden-de-la-definici%C3%B3n-de-las-variables">Algunas correlaciones proceden de la definición de las variables<a class="anchor-link" href="#Algunas-correlaciones-proceden-de-la-definici%C3%B3n-de-las-variables">¶</a></h3><p>Los volúmenes declarados de fibras y pivotes suman <strong>6524.01 mm³</strong> (§2.12). Su correlación inversa responde a esa restricción: cuando una parte aumenta, la otra disminuye. No demuestra que ambos componentes compitan mecánicamente. Del mismo modo, incluir varias columnas que describen la misma familia puede repetir información en las distancias o el PCA. Las representaciones reducidas del cuaderno 03 permiten comprobar si se conserva la información predictiva usando menos variables; su ventaja debe evaluarse mediante validación.</p>
+<h3 id="La-respuesta-posterior-ayuda-a-interpretar-el-ensayo">La respuesta posterior ayuda a interpretar el ensayo<a class="anchor-link" href="#La-respuesta-posterior-ayuda-a-interpretar-el-ensayo">¶</a></h3><p>La energía asociada al primer evento de fractura y la carga de primera falla muestran una asociación intensa (<strong>ρ = 0.988</strong>, §2.27). Ambas se obtienen del ensayo y la relación puede depender del cálculo de la energía. Sirve para estudiar su correspondencia, pero no prueba una ley mecánica independiente ni permite usar la energía como entrada de una predicción previa al ensayo. La evolución del desplazamiento residual en los mismos casos (§2.24) es compatible con una acumulación relativa de deformación no recuperada; no identifica por sí sola un mecanismo de daño ni una ley de fatiga.</p>
+<h3 id="Los-valores-extremos-requieren-revisi%C3%B3n-f%C3%ADsica">Los valores extremos requieren revisión física<a class="anchor-link" href="#Los-valores-extremos-requieren-revisi%C3%B3n-f%C3%ADsica">¶</a></h3><p>Un valor señalado por IQR, MAD o un diagnóstico de influencia puede corresponder a una configuración real del diseño. Las discrepancias entre MATLAB y las fichas experimentales justifican una revisión documental, no una eliminación automática (§2.7, §2.13 y §2.22). Los análisis de sensibilidad muestran qué conclusiones dependen de esos casos. Una corrección de geometría debe apoyarse en la fuente verificada y conservar su trazabilidad.</p>
+<h3 id="Qu%C3%A9-significa-esto-para-la-tesis">Qué significa esto para la tesis<a class="anchor-link" href="#Qu%C3%A9-significa-esto-para-la-tesis">¶</a></h3><p>El resultado principal es que la predicción debe distinguir lo que aporta la arquitectura y lo que añade la geometría local. Hay base para desarrollar modelos preliminares de carga de primera falla y comparar sus errores en N. Aún no se ha demostrado que las nuevas representaciones mejoren el entrenamiento previo ni que un modelo se transfiera a otras campañas, materiales o arquitecturas. Esas afirmaciones requieren una evaluación específica.</p>
 </div>
 </div>
 </div>
@@ -15267,9 +15282,9 @@ resultado se califica como descubrimiento universal ni sustituye validación con
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.35-Exportaci%C3%B3n,-reproducibilidad-y-traspaso-al-modelado">2.35 Exportación, reproducibilidad y traspaso al modelado<a class="anchor-link" href="#2.35-Exportaci%C3%B3n,-reproducibilidad-y-traspaso-al-modelado">¶</a></h2><p>Se guardan las tablas analíticas y figuras originales, los hallazgos y un manifiesto de entradas
-y parámetros de cálculo. Las tablas curadas y el experimento previo no se modifican. El EDA sugiere
-hipótesis; las nuevas representaciones e interacciones deberán evaluarse dentro del entrenamiento.</p>
+<h2 id="2.36-Archivos-generados-y-reproducci%C3%B3n-del-an%C3%A1lisis">2.36 Archivos generados y reproducción del análisis<a class="anchor-link" href="#2.36-Archivos-generados-y-reproducci%C3%B3n-del-an%C3%A1lisis">¶</a></h2><p>Se guardan las tablas analíticas y figuras originales, los hallazgos y un manifiesto de entradas
+y parámetros de cálculo. Las tablas curadas se conservan. Los resultados describen relaciones
+observadas y sus límites; no constituyen una evaluación predictiva.</p>
 </div>
 </div>
 </div>
@@ -15296,14 +15311,6 @@ Integridad de las fuentes originales verificada al finalizar.
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Decisiones-que-pasan-a-la-siguiente-etapa">Decisiones que pasan a la siguiente etapa<a class="anchor-link" href="#Decisiones-que-pasan-a-la-siguiente-etapa">¶</a></h3><ul>
-<li>Contrastar una representación reducida del diseño frente a las magnitudes redundantes, dentro de CV.</li>
-<li>Mantener separados el objetivo predictivo previo al ensayo y las respuestas de interpretación posensayo.</li>
-<li>Reconciliar geometrías MATLAB–PDF y confirmar réplicas/lotes; conservar las unidades y definiciones documentales verificadas.</li>
-<li>Verificar sensibilidad de las conclusiones a incidencias sin escoger retrospectivamente los datos que mejor funcionan.</li>
-<li>Usar nuevos ensayos o grupos externos para contrastar las hipótesis generadas por este EDA.</li>
-</ul>
-<p>Siguiente: <a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones y preparación para el modelado</a>.</p>
 <h3 id="Referencias-metodol%C3%B3gicas">Referencias metodológicas<a class="anchor-link" href="#Referencias-metodol%C3%B3gicas">¶</a></h3><p>El contraste por permutación depende de qué elementos sean intercambiables bajo la hipótesis nula;
 las asociaciones condicionadas usan permutación dentro de familia.
 <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.permutation_test.html">SciPy: permutation_test</a>.</p>

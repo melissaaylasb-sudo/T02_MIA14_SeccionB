@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T00:49:21.574421+00:00",
+  "checked_at_utc": "2026-10-10T01:02:00.430856+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -11,12 +11,12 @@
   },
   "summary": {
     "notebooks": 3,
-    "code_cells": 61,
-    "executed_code_cells": 61,
+    "code_cells": 57,
+    "executed_code_cells": 57,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 96,
-    "checks": 478,
+    "local_links": 94,
+    "checks": 476,
     "failed_checks": 0
   },
   "notebooks": [
@@ -32,15 +32,15 @@
       "path": "notebooks/02_EDA_Avanzado.ipynb",
       "code_cells": 37,
       "executed_code_cells": 37,
-      "sha256": "aef8528be2d7b0507beae37525c1465226dd046c80834cfc7650c7d0b26e75b8",
+      "sha256": "2f4b3ddb68f8c123fbae1cf364ab641c8e40f6385cb92755a262dd7406c14b8d",
       "unexecuted_cells": [],
       "error_cells": []
     },
     {
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "code_cells": 10,
-      "executed_code_cells": 10,
-      "sha256": "82bea7af0c3a62b53a8ea3244ede50a27874b2d0288ea0431fe04fc687732d51",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
+      "code_cells": 6,
+      "executed_code_cells": 6,
+      "sha256": "d50316b460e8e565aa94a7ef8ff3d84e7821e4e566333b31b48b30aabe8d4916",
       "unexecuted_cells": [],
       "error_cells": []
     }
@@ -72,7 +72,7 @@
       "input_hashes_checked": 1,
       "artifact_hashes_checked": 13,
       "tables_csv": 7,
-      "sha256": "22319ef60feff1fedaae0e02ad6977ad1812a18832aefd8d8815b797afae05a6"
+      "sha256": "cc8327a1d95f5aa80f2a1740c5099a9801cbeb8b6f4b08c87af70c308b744711"
     }
   ],
   "figures": [
@@ -600,22 +600,22 @@
     },
     {
       "source": "README.md",
-      "target": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "target": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/02_EDA_Avanzado.html",
+      "target": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "target": "reports/eda/tables/20_influencia.csv",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "target": "reports/eda/tables/22_sensibilidad_geometrica.csv",
       "exists": true
     },
     {
@@ -631,11 +631,6 @@
     {
       "source": "README.md",
       "target": "docs/informe_curaduria.md",
-      "exists": true
-    },
-    {
-      "source": "README.md",
-      "target": "demo/index.html",
       "exists": true
     },
     {
@@ -870,7 +865,7 @@
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "target": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "exists": true
     },
     {
@@ -881,6 +876,11 @@
     {
       "source": "docs/informe_eda.md",
       "target": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
       "exists": true
     },
     {
@@ -965,27 +965,17 @@
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "config/model_config.yml",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
-      "target": "config/data_schema.yml",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
-      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
       "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "exists": true
     },
     {
       "source": "docs/informe_eda.md",
       "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "exists": true
     },
     {
@@ -1066,13 +1056,13 @@
     },
     {
       "category": "notebook_schema",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Esquema nbformat válido"
     },
     {
       "category": "notebook_execution",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Celdas de código ejecutadas y sin salidas de error"
     },
@@ -1140,28 +1130,28 @@
     },
     {
       "category": "local_link",
-      "path": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "reports/02_EDA_Avanzado.html",
+      "path": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "reports/eda/tables/20_influencia.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1183,13 +1173,6 @@
     {
       "category": "local_link",
       "path": "docs/informe_curaduria.md",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "README.md"
-    },
-    {
-      "category": "local_link",
-      "path": "demo/index.html",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1536,7 +1519,7 @@
     },
     {
       "category": "local_link",
-      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "path": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -1551,6 +1534,13 @@
     {
       "category": "local_link",
       "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -1669,27 +1659,6 @@
     },
     {
       "category": "local_link",
-      "path": "config/model_config.yml",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
-      "path": "config/data_schema.yml",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1698,6 +1667,13 @@
     {
       "category": "local_link",
       "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -3433,8 +3409,8 @@
       "path": "reports/eda_transformaciones/figures/F01_representaciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0",
-      "actual_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0"
+      "expected_sha256": "fb8ee4a62577cd52fc1c0c7c38aae95104956e7ebe7a43bd4a33ea7b121396a9",
+      "actual_sha256": "fb8ee4a62577cd52fc1c0c7c38aae95104956e7ebe7a43bd4a33ea7b121396a9"
     },
     {
       "category": "artifact_hash",
@@ -3449,8 +3425,8 @@
       "path": "reports/eda_transformaciones/figures/F02_logaritmos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1",
-      "actual_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1"
+      "expected_sha256": "1df62cba6323aa2fcd0d62a5d46cd11dc40e6d75f13edeccebbdee76bbca0a1b",
+      "actual_sha256": "1df62cba6323aa2fcd0d62a5d46cd11dc40e6d75f13edeccebbdee76bbca0a1b"
     },
     {
       "category": "artifact_hash",
@@ -3465,8 +3441,8 @@
       "path": "reports/eda_transformaciones/figures/F03_escalamiento.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f",
-      "actual_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f"
+      "expected_sha256": "f1a215d66b19e9146cb10302a518cfec5523c499b58df04af721bd1bdd001f09",
+      "actual_sha256": "f1a215d66b19e9146cb10302a518cfec5523c499b58df04af721bd1bdd001f09"
     },
     {
       "category": "artifact_hash",

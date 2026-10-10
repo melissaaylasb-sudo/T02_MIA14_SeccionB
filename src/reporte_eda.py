@@ -15,7 +15,7 @@ from nbconvert import HTMLExporter
 from .ingesta import ROOT
 
 NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA_Avanzado.ipynb",
-             "03_Diseno_de_Particiones_y_Preprocesamiento.ipynb"]
+             "03_Transformaciones_Exploratorias.ipynb"]
 
 
 def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -> Path:
@@ -89,7 +89,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
         f'<a href="../notebooks/{escape(notebook_name)}">Notebook reproducible</a>'
         '<a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a>'
         '<a href="02_EDA_Avanzado.html">02 · Análisis</a>'
-        '<a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones</a>'
+        '<a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a>'
         '<a href="../docs/informe_eda.md">Informe académico</a>'
         '<a href="../docs/diccionario_datos.md">Diccionario</a>'
         '<a href="eda/hallazgos.md">Hallazgos</a>'

@@ -20,4 +20,4 @@ La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb]
 
 El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.
 
-La entrega culmina con el [cuaderno 03 de transformaciones y preparación](../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb). Ninguna transformación exploratoria modifica la fuente cruda ni incorpora automáticamente nuevas entradas al modelo previo.
+La entrega culmina con el [cuaderno 03 de transformaciones exploratorias](../notebooks/03_Transformaciones_Exploratorias.ipynb). Las fórmulas y cambios de escala caracterizan las variables y conservan la fuente original.

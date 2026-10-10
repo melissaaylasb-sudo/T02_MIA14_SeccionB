@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>3. Transformaciones geométricas y preparación para el modelado</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>3. Transformaciones exploratorias y contexto de las variables</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7808,23 +7808,20 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 @media(max-width:750px){main{padding:15px!important}table{font-size:11px!important}.eda-toc ul{columns:1}}
 </style></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA_Avanzado.html">02 · Análisis</a><a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#3.1-F%C3%B3rmulas,-dimensiones-y-significado-f%C3%ADsico">3.1 Fórmulas, dimensiones y significado físico</a></li><li><a href="#3.2-Representaciones-originales,-reducidas-y-de-forma">3.2 Representaciones originales, reducidas y de forma</a></li><li><a href="#3.3-Logaritmos:-cambios-de-escala-sin-nueva-informaci%C3%B3n">3.3 Logaritmos: cambios de escala sin nueva información</a></li><li><a href="#3.4-Aprendizaje-de-transformaciones-dentro-de-entrenamiento">3.4 Aprendizaje de transformaciones dentro de entrenamiento</a></li><li><a href="#3.5-Admisibilidad-temporal-y-decisiones-posteriores">3.5 Admisibilidad temporal y decisiones posteriores</a></li><li><a href="#3.6-Protocolo-previo-conservado-y-l%C3%ADmites-de-generalizaci%C3%B3n">3.6 Protocolo previo conservado y límites de generalización</a></li><li><a href="#3.7-Conclusi%C3%B3n-y-reproducci%C3%B3n">3.7 Conclusión y reproducción</a></li></ul></details></div>
+<main><div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br><a href="../notebooks/03_Transformaciones_Exploratorias.ipynb">Notebook reproducible</a><a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a><a href="02_EDA_Avanzado.html">02 · Análisis</a><a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a><a href="../docs/informe_eda.md">Informe académico</a><a href="../docs/diccionario_datos.md">Diccionario</a><a href="eda/hallazgos.md">Hallazgos</a><a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a><a href="eda/manifest.json">Trazabilidad</a><details class="eda-toc"><summary>Contenido del estudio</summary><ul><li><a href="#3.1-F%C3%B3rmulas,-dimensiones-y-significado-f%C3%ADsico">3.1 Fórmulas, dimensiones y significado físico</a></li><li><a href="#3.2-Representaciones-originales,-reducidas-y-de-forma">3.2 Representaciones originales, reducidas y de forma</a></li><li><a href="#3.3-Logaritmos:-cambios-de-escala-sin-nueva-informaci%C3%B3n">3.3 Logaritmos: cambios de escala sin nueva información</a></li><li><a href="#3.4-Escalamiento-y-comprobaci%C3%B3n-del-ajuste-por-subconjuntos">3.4 Escalamiento y comprobación del ajuste por subconjuntos</a></li><li><a href="#3.5-Geometr%C3%ADa-previa-y-respuestas-del-ensayo">3.5 Geometría previa y respuestas del ensayo</a></li><li><a href="#3.6-Interpretaci%C3%B3n-de-las-transformaciones">3.6 Interpretación de las transformaciones</a></li><li><a href="#3.7-Reproducci%C3%B3n">3.7 Reproducción</a></li></ul></details></div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=365a6b0d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="3.-Transformaciones-geom%C3%A9tricas-y-preparaci%C3%B3n-para-el-modelado">3. Transformaciones geométricas y preparación para el modelado<a class="anchor-link" href="#3.-Transformaciones-geom%C3%A9tricas-y-preparaci%C3%B3n-para-el-modelado">¶</a></h1><p><strong>Universidad Nacional de Ingeniería · Facultad de Ingeniería Industrial y de Sistemas</strong><br/>
+<h1 id="3.-Transformaciones-exploratorias-y-contexto-de-las-variables">3. Transformaciones exploratorias y contexto de las variables<a class="anchor-link" href="#3.-Transformaciones-exploratorias-y-contexto-de-las-variables">¶</a></h1><p><strong>Universidad Nacional de Ingeniería · Facultad de Ingeniería Industrial y de Sistemas</strong><br/>
 Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.º ciclo, sección B · 2026-2<br/>
 <strong>Investigadora:</strong> Melissa Dessire Aylas Barranca · <strong>Docente:</strong> Glen Dario Rodríguez Rafael</p>
 <p><strong>ANÁLISIS EXPLORATORIO Y CARACTERIZACIÓN ESTADÍSTICO-MECÁNICA DE ESTRUCTURAS PANTOGRÁFICAS: CALIDAD DE DATOS, GEOMETRÍA Y RESPUESTA EXPERIMENTAL</strong></p>
-<p><strong>Objetivo.</strong> Convertir los hallazgos exploratorios en representaciones candidatas reproducibles y
-comprobar que imputación, eliminación de constantes y escalamiento se aprenden únicamente dentro
-del entrenamiento. Este cuaderno no entrena ni selecciona regresores y no publica métricas predictivas.</p>
-<p>Las transformaciones por fórmula se distinguen de las que estiman parámetros a partir de los datos.
-Se conserva el archivo MATLAB, la tabla analítica histórica y la configuración vigente. Las diferencias
-geométricas frente a las fichas PDF condicionan la interpretación de cualquier descriptor derivado.</p>
+<p><strong>Objetivo.</strong> Examinar cómo cambia la descripción geométrica al calcular áreas, proporciones, segundos momentos y escalas alternativas. Se documentan unidades, dependencias algebraicas e información conservada por cada transformación.</p>
+<p>Las fórmulas geométricas se calculan por caso. El escalamiento se comprueba sobre subconjuntos separados para verificar que los valores reservados no alteran sus parámetros. El ejercicio caracteriza las variables, sin ajustar regresores.
+Se conservan el MATLAB y las tablas preliminares. Las discrepancias geométricas frente a las fichas PDF condicionan la interpretación de cualquier descriptor derivado.</p>
 </div>
 </div>
 </div>
@@ -8293,7 +8290,7 @@ El volumen por celda en Y es un cociente descriptivo: no asigna un volumen real 
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p><strong>Resultado.</strong> Las fórmulas no leen el target ni respuestas posensayo. Todos los valores se conservan en una tabla separada; no sustituyen los INPUTS de los modelos existentes.</p>
+<p><strong>Resultado.</strong> Las fórmulas no leen el target ni respuestas posensayo. Todos los valores se conservan en una tabla separada; no sustituyen las variables originales de la fuente.</p>
 </div>
 </div>
 </div>
@@ -8469,7 +8466,7 @@ para transformar ni impone normalidad al aprendizaje. No se transforma automáti
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.4-Aprendizaje-de-transformaciones-dentro-de-entrenamiento">3.4 Aprendizaje de transformaciones dentro de entrenamiento<a class="anchor-link" href="#3.4-Aprendizaje-de-transformaciones-dentro-de-entrenamiento">¶</a></h2><p><strong>Pregunta.</strong> ¿Los casos reservados alteran los parámetros del preprocesamiento?
+<h2 id="3.4-Escalamiento-y-comprobaci%C3%B3n-del-ajuste-por-subconjuntos">3.4 Escalamiento y comprobación del ajuste por subconjuntos<a class="anchor-link" href="#3.4-Escalamiento-y-comprobaci%C3%B3n-del-ajuste-por-subconjuntos">¶</a></h2><p><strong>Pregunta.</strong> ¿Los casos reservados alteran los parámetros del preprocesamiento?
 <strong>Método.</strong> Se usa una partición reproducible exclusivamente para comprobar aislamiento. Mediana,
 constantes y centro/escala se estiman en train y se aplican a la parte reservada. Se verifica por cálculo
 independiente el centro de cada transformación. Los tamaños de cada partición se conservan en la tabla técnica.
@@ -8619,7 +8616,7 @@ independiente el centro de cada transformación. Los tamaños de cada partición
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.5-Admisibilidad-temporal-y-decisiones-posteriores">3.5 Admisibilidad temporal y decisiones posteriores<a class="anchor-link" href="#3.5-Admisibilidad-temporal-y-decisiones-posteriores">¶</a></h2><p><strong>Pregunta.</strong> ¿Qué puede entrar al modelo que operará antes del ensayo?
+<h2 id="3.5-Geometr%C3%ADa-previa-y-respuestas-del-ensayo">3.5 Geometría previa y respuestas del ensayo<a class="anchor-link" href="#3.5-Geometr%C3%ADa-previa-y-respuestas-del-ensayo">¶</a></h2><p><strong>Pregunta.</strong> ¿Qué puede entrar al modelo que operará antes del ensayo?
 <strong>Método.</strong> Se auditan roles por disponibilidad temporal. Las derivadas que contengan fuerza, residual,
 energía o eventos conservan su condición posensayo aunque su nombre parezca geométrico.
 <strong>Límite.</strong> Admisibilidad temporal no equivale a selección final; las alternativas deben compararse
@@ -8840,315 +8837,15 @@ con validación que respete réplicas y dependencias confirmadas.</p>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a70bdbc2">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=interpretacion-transformaciones">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.6-Protocolo-previo-conservado-y-l%C3%ADmites-de-generalizaci%C3%B3n">3.6 Protocolo previo conservado y límites de generalización<a class="anchor-link" href="#3.6-Protocolo-previo-conservado-y-l%C3%ADmites-de-generalizaci%C3%B3n">¶</a></h2><p>Se conserva a continuación la inspección del protocolo previamente implementado. La configuración
-actual y el snapshot histórico pueden tener listas de predictores distintas (véase auditoría01).
-Aquí se inspecciona la configuración del experimento guardado, sin entrenarlo ni atribuir sus métricas al EDA.
-Un reparto aleatorio de casos comparables, una prueba sobre otra familia y una campaña externa responden
-a preguntas diferentes. El EDA ya utiliza este dominio; una evaluación confirmatoria requiere nueva evidencia.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=42b87c9f">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Datos: data\processed\preliminary\model_table.csv
-Objetivo: First_Failure_Load_N [N]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=34f30aec">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Configuraci%C3%B3n-previa-%C2%B7-Configuraci%C3%B3n-y-justificaci%C3%B3n-registradas">Configuración previa · Configuración y justificación registradas<a class="anchor-link" href="#Configuraci%C3%B3n-previa-%C2%B7-Configuraci%C3%B3n-y-justificaci%C3%B3n-registradas">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=43b942f9">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>estado</th>
-<th>estrategia</th>
-<th>folds externos</th>
-<th>folds internos</th>
-<th>semilla</th>
-<th>familias candidatas</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>ready_for_reviewed_execution</td>
-<td>kfold</td>
-<td>5</td>
-<td>3</td>
-<td>42</td>
-<td>6</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
-<p>Evaluación exploratoria de casos de la misma campaña. La tabla curada contiene identificadores únicos y no declara lotes o réplicas. Se asume provisionalmente independencia entre registros; esa condición no se deduce de un identificador único. KFold barajado permite evaluar cada caso una vez y conserva suficientes observaciones en las particiones internas. La selección por MAE usa solo CV interna. No estima transferencia a otra campaña ni a familias geométricas inéditas; si se confirman dependencias debe repetirse con partición agrupada.</p>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>La configuración permite entrenamiento; esta inspección no ajusta modelos.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e62ce7b1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Particiones-previas-%C2%B7-Particiones-y-verificaci%C3%B3n-del-aislamiento">Particiones previas · Particiones y verificación del aislamiento<a class="anchor-link" href="#Particiones-previas-%C2%B7-Particiones-y-verificaci%C3%B3n-del-aislamiento">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=5f9d6d91">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>fold</th>
-<th>casos entrenamiento</th>
-<th>casos evaluación</th>
-<th>particiones internas</th>
-<th>casos reservados</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>1</td>
-<td>20</td>
-<td>6</td>
-<td>3</td>
-<td>1, 10, 11, 13, 18, 26</td>
-</tr>
-<tr>
-<th>1</th>
-<td>2</td>
-<td>21</td>
-<td>5</td>
-<td>3</td>
-<td>3, 4, 7, 15, 25</td>
-</tr>
-<tr>
-<th>2</th>
-<td>3</td>
-<td>21</td>
-<td>5</td>
-<td>3</td>
-<td>5, 6, 14, 17, 23</td>
-</tr>
-<tr>
-<th>3</th>
-<td>4</td>
-<td>21</td>
-<td>5</td>
-<td>3</td>
-<td>19, 20, 22, 24, 27</td>
-</tr>
-<tr>
-<th>4</th>
-<td>5</td>
-<td>21</td>
-<td>5</td>
-<td>3</td>
-<td>8, 9, 12, 16, 21</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Verificado: cada caso se evalúa una vez; no hay solapamientos entre train y evaluación.
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8caaf93e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Pipelines-previos-%C2%B7-Preprocesamiento-dentro-del-entrenamiento">Pipelines previos · Preprocesamiento dentro del entrenamiento<a class="anchor-link" href="#Pipelines-previos-%C2%B7-Preprocesamiento-dentro-del-entrenamiento">¶</a></h3><p>Cada pipeline ajusta imputación de predictores, eliminación de constantes y escalamiento
-dentro de su propio conjunto de entrenamiento. La carga de primera falla nunca se imputa.
-Los identificadores y las respuestas posensayo no entran en X.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput" id="cell-id=b99e2679">
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>familia</th>
-<th>imputación</th>
-<th>constantes</th>
-<th>escalamiento</th>
-<th>estimador</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>ridge</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>StandardScaler</td>
-<td>Ridge</td>
-</tr>
-<tr>
-<th>1</th>
-<td>elastic_net</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>StandardScaler</td>
-<td>ElasticNet</td>
-</tr>
-<tr>
-<th>2</th>
-<td>support_vector</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>StandardScaler</td>
-<td>SVR</td>
-</tr>
-<tr>
-<th>3</th>
-<td>decision_tree</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>no requerido</td>
-<td>DecisionTreeRegressor</td>
-</tr>
-<tr>
-<th>4</th>
-<td>random_forest</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>no requerido</td>
-<td>RandomForestRegressor</td>
-</tr>
-<tr>
-<th>5</th>
-<td>gaussian_process</td>
-<td>mediana de train</td>
-<td>eliminación dentro de train</td>
-<td>StandardScaler</td>
-<td>GaussianProcessRegressor</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>X contiene exclusivamente los predictores declarados en el esquema.
-</pre>
-</div>
+<h2 id="3.6-Interpretaci%C3%B3n-de-las-transformaciones">3.6 Interpretación de las transformaciones<a class="anchor-link" href="#3.6-Interpretaci%C3%B3n-de-las-transformaciones">¶</a></h2><p>El bloque geométrico original contiene dependencias: su rango numérico centrado es <strong>7 entre 9 columnas variables</strong>. Las dos representaciones reducidas tienen rango <strong>5 entre 5</strong> (§3.2). Con la tolerancia declarada se evita repetir algunas relaciones algebraicas; esto describe la representación de las variables y no demuestra una ventaja predictiva.</p>
+<p>El logaritmo reduce la asimetría del volumen de pivotes, pero no la de todos los volúmenes (§3.3). Por tanto, no se justifica transformar todas las variables por una regla general. El orden se conserva, mientras que las distancias y la forma de la distribución cambian.</p>
+<p>La comprobación del escalamiento confirma que los centros se calculan exclusivamente con el subconjunto de ajuste (§3.4). Las observaciones reservadas no alteran esos parámetros. Las fórmulas derivadas heredan las discrepancias de las geometrías documentadas; no las corrigen ni verifican independencia experimental.</p>
 </div>
 </div>
 </div>
@@ -9159,15 +8856,9 @@ Los identificadores y las respuestas posensayo no entran en X.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3.7-Conclusi%C3%B3n-y-reproducci%C3%B3n">3.7 Conclusión y reproducción<a class="anchor-link" href="#3.7-Conclusi%C3%B3n-y-reproducci%C3%B3n">¶</a></h2><p>Las representaciones geométricas quedan calculadas y trazadas; el aislamiento de las transformaciones
-estadísticas está comprobado. La comparación futura deberá considerar redundancia, dependencia por
-espécimen/campaña y discrepancias de documentación. No se incorporan datos sintéticos, no se eliminan
-atípicos y no se decide una representación ganadora en este cuaderno.</p>
-<p>La evidencia se exporta en <code>reports/eda_transformaciones/</code>. Reproducción de la entrega:
-<code>python -m src.reporte_eda --execute --all</code>.</p>
-<p>Referencia metodológica: <a href="https://scikit-learn.org/stable/modules/preprocessing.html">scikit-learn, preprocesamiento</a>.
-Las definiciones físicas y su soporte documental están en el <a href="../docs/diccionario_datos.md">diccionario</a>.
-Los cuadernos04–06 conservan la etapa de modelado previa y quedan fuera de los resultados de esta entrega exploratoria.</p>
+<h2 id="3.7-Reproducci%C3%B3n">3.7 Reproducción<a class="anchor-link" href="#3.7-Reproducci%C3%B3n">¶</a></h2><p>Las representaciones geométricas y sus comprobaciones se guardan en <code>reports/eda_transformaciones/</code>. Se conservan la fuente original y las tablas preliminares. Los cambios de representación permiten examinar redundancia y escala sin añadir ensayos ni corregir geometrías por suposición.</p>
+<p>Este cuaderno concluye en la caracterización de las variables. Reproducción de los tres cuadernos: <code>python -m src.reporte_eda --execute --all</code>.</p>
+<p>Referencia metodológica: <a href="https://scikit-learn.org/stable/modules/preprocessing.html">scikit-learn, preprocesamiento</a>. Las definiciones físicas y su soporte documental están en el <a href="../docs/diccionario_datos.md">diccionario</a>.</p>
 </div>
 </div>
 </div>

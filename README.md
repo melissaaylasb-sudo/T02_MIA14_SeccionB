@@ -6,7 +6,7 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 
 > **Título académico:** ANÁLISIS EXPLORATORIO Y CARACTERIZACIÓN ESTADÍSTICO-MECÁNICA DE ESTRUCTURAS PANTOGRÁFICAS: CALIDAD DE DATOS, GEOMETRÍA Y RESPUESTA EXPERIMENTAL.
 
-Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. Esta entrega establece la evidencia exploratoria y las condiciones necesarias para ese modelado.
+Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
 
 Una estructura pantográfica es una red de dos familias de fibras conectadas por pivotes deformables. Su interés como metamaterial mecánico reside en diseñar la respuesta mediante la arquitectura, además del material constituyente. Estudiar las relaciones geometría–respuesta permite formular hipótesis, detectar redundancias y evitar interpretar una correlación inducida por el diseño como una ley física.
 
@@ -18,11 +18,11 @@ Una estructura pantográfica es una red de dos familias de fibras conectadas por
 - [INPUT, target y OUTPUT](#input-target-y-output)
 - [Tres cuadernos para la entrega](#tres-cuadernos-para-la-entrega)
 - [Preguntas y análisis](#preguntas-y-análisis)
+- [Estudio de valores atípicos](#estudio-de-valores-atípicos)
 - [Hallazgos e implicancias](#hallazgos-e-implicancias)
 - [Calidad y límites](#calidad-y-límites)
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Reproducción](#reproducción)
-- [Etapa predictiva posterior](#etapa-predictiva-posterior)
 - [Fuentes y privacidad](#fuentes-y-privacidad)
 
 ## Experimento y objetivo
@@ -70,20 +70,17 @@ El [diccionario completo](docs/diccionario_datos.md), también en [CSV](docs/dic
 
 | Orden | Notebook | Contenido |
 |---:|---|---|
-| **01** | [Ingesta, curaduría y calidad](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) · [HTML](reports/01_Ingesta_Curaduria_y_Calidad.html) | Fundamento, fuentes, concordancia, esquemas, ausencias, duplicados, configuraciones y decisiones |
-| **02** | [Análisis estadístico y mecánico](notebooks/02_EDA_Avanzado.ipynb) · [HTML](reports/02_EDA_Avanzado.html) | Distribuciones, asociaciones completas, familias, incertidumbre, influencia, geometría, ciclos y fractura |
-| **03** | [Transformaciones y preparación](notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb) · [HTML](reports/03_Diseno_de_Particiones_y_Preprocesamiento.html) | Fórmulas geométricas, representaciones, logaritmos, aislamiento del escalamiento y protocolo conservado |
+| **01** | [Ingesta, curaduría y calidad](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) | Fuentes, concordancia, esquemas, ausencias, duplicados, configuraciones y alertas de calidad |
+| **02** | [Análisis estadístico y mecánico](notebooks/02_EDA_Avanzado.ipynb) | Distribuciones, asociaciones, familias, valores atípicos, influencia, geometría, ciclos, fractura e interpretación de resultados |
+| **03** | [Transformaciones exploratorias y contexto de las variables](notebooks/03_Transformaciones_Exploratorias.ipynb) | Fórmulas geométricas, representaciones, logaritmos, escalamiento y significado de las variables derivadas |
 
-Los tres conservan código y resultados visibles. Los HTML permiten revisar sin instalar Jupyter: desde GitHub, descargarlos y abrirlos en el navegador; el informe y los notebooks pueden revisarse en el repositorio. El nombre histórico del cuaderno 03 conserva la continuidad del proyecto; su título y contenido priorizan transformaciones.
-
-El cuaderno 02 incluye **Interpretación de resultados**; el 03 explica qué está preparado para entrenar y qué falta ajustar. Ya existe un entrenamiento preliminar, pero todavía no incorpora las representaciones del nuevo EDA. Antes de compararlas deben fijarse la tabla, las entradas y el protocolo de evaluación.
+**Los tres archivos `.ipynb` contienen el código, las figuras, las tablas y sus interpretaciones.**
 
 ```mermaid
 flowchart LR
-    A["Fuentes experimentales<br/>MATLAB + contraste documental"] --> B["01 · Calidad<br/>trazabilidad + decisiones"]
+    A["Fuentes experimentales<br/>MATLAB + contraste documental"] --> B["01 · Calidad<br/>trazabilidad + curaduría"]
     B --> C["02 · Exploración<br/>relaciones + interpretación"]
-    C --> D["03 · Transformaciones<br/>representaciones + control de fuga"]
-    D --> E["Investigación posterior<br/>validación predictiva"]
+    C --> D["03 · Transformaciones<br/>geometría + escalas"]
 ```
 
 ## Preguntas y análisis
@@ -99,9 +96,24 @@ flowchart LR
 | Robustez | IQR/MAD, Cook, leverage, bootstrap, permutaciones y FDR BH/BY | ¿Cuánto dependen los hallazgos de casos y supuestos? |
 | Multivariado | PCA, escalas/representaciones y diagnóstico de agrupamientos | ¿Cómo se organiza el espacio geométrico? |
 | Mecánica experimental | Residuales por ciclo, complemento nominal y energías por evento | ¿Qué describe la evolución observada del daño? |
-| Preparación posterior | Áreas, razones, segundos momentos ideales y escalamiento solo en train | ¿Qué representaciones pueden evaluarse sin fuga? |
+| Transformaciones | Áreas, razones, segundos momentos ideales, logaritmos y escalamiento | ¿Cómo cambia la representación sin alterar el significado físico? |
 
 Las figuras se exportan en **PNG de 300 dpi o superior y SVG**. Las tablas técnicas conservan los tamaños efectivos. El [informe](docs/informe_eda.md) responde RQ1–RQ12 y conecta resultados, interpretación, límites y recomendaciones experimentales.
+
+## Estudio de valores atípicos
+
+El estudio distingue **un valor extremo, una geometría poco habitual, un caso influyente y una posible inconsistencia física**. Cada diagnóstico responde a una pregunta diferente.
+
+| Análisis | Dónde revisarlo | Interpretación |
+|---|---|---|
+| IQR y puntuación robusta basada en MAD, globales y por familia | Cuaderno 01, **§1.11**; cuaderno 02, **§2.7** | Identifica valores extremos respetando diferencias de arquitectura; MAD igual a cero se informa como criterio no calculable |
+| Distancia de Mahalanobis en el subespacio PCA | Cuaderno 02, **§2.20** | Examina combinaciones geométricas poco habituales, aunque ninguna variable aislada resulte extrema |
+| Leverage y distancia de Cook en un ajuste descriptivo | Cuaderno 02, **§2.20** | Evalúa cuánto influye un caso sobre una tendencia concreta; no certifica que ese registro sea erróneo |
+| Omisión individual y revisión de incidencias geométricas | Cuaderno 02, **§2.21–2.22**, y tablas de sensibilidad | Comprueba si el signo o la intensidad de las asociaciones dependen de casos particulares |
+
+Por ejemplo, los casos 1 y 3 muestran influencia en el ajuste descriptivo examinado, y la energía del caso 5 en el quinto ciclo requiere revisión pese a coincidir con la fuente documental. **Las banderas se conservan para revisión: no se eliminan ni sustituyen observaciones automáticamente.** La interpretación contrasta la señal estadística con la familia, la definición de la variable y su procedencia.
+
+Resultados: [alertas de calidad](reports/eda_calidad/tables/11_alertas_robustas.csv), [influencia](reports/eda/tables/20_influencia.csv) y [sensibilidad geométrica](reports/eda/tables/22_sensibilidad_geometrica.csv).
 
 ## Hallazgos e implicancias
 
@@ -114,7 +126,7 @@ Las figuras se exportan en **PNG de 300 dpi o superior y SVG**. Las tablas técn
 | Energía del primer evento–primera falla: ρ = 0,988; rango por omisión 0,986–0,992 | Asociación estable entre respuestas del mismo ensayo | Interpretación mecánica; excluir del INPUT previo |
 | Mediana residual/amplitud nominal: 0,452 → 0,677 en cohorte común | Aumenta la fracción residual mediana con ciclo/amplitud | No confundir con fatiga ni recuperación independiente |
 | Mediana fuerza/pivote: 0,594; 0,589; 0,852 N/pivote para Y = 4/5/6 | La diferencia 4–5 se atenúa con ese denominador | La normalización no mide la fuerza interna de cada unión |
-| Representación original: rango numérico 7 entre 9 columnas variables; núcleo propuesto: 5 de 5, con tolerancia relativa 10⁻¹⁰ | Hay redundancia lineal, sin contar redondeo como nueva dimensión | Comparar representaciones dentro de validación posterior |
+| Representación original: rango numérico 7 entre 9 columnas variables; núcleo propuesto: 5 de 5, con tolerancia relativa 10⁻¹⁰ | Hay redundancia lineal, sin contar redondeo como nueva dimensión | Interpretar la información que aporta cada representación |
 
 La relación volumen–carga también es sensible a la omisión dentro de algunas familias: su signo puede cambiar en Y = 4 y Y = 6. Las discrepancias geométricas con las fichas limitan la atribución mecánica. Evidencia: [cuaderno 02](notebooks/02_EDA_Avanzado.ipynb), [tablas completas](reports/eda_relaciones/tables/) y [síntesis](reports/eda/hallazgos.md).
 
@@ -124,7 +136,7 @@ Un hash correcto acredita integridad del archivo; no demuestra que su geometría
 
 - **Geometrías discrepantes:** tabla general, fichas y MATLAB difieren en campos identificados. Se documentan valores y páginas sin correcciones automáticas.
 - **Carga terminal reportada:** su definición conceptual se verifica en el protocolo, pero hay discordancias numéricas frente a los picos del apéndice. El caso 27 requiere aclaración: `Ultimate_Load` coincide numéricamente con el desplazamiento máximo. Se conserva el valor recibido y se limita su interpretación.
-- **Esquema actual e histórico:** `Fiber_base` existe en la fuente y el snapshot anterior, pero no está seleccionada en el esquema actual. Describirla en el EDA no la incorpora al modelo.
+- **Esquema actual e histórico:** `Fiber_base` existe en la fuente y el snapshot anterior, pero no está seleccionada en el esquema actual. El EDA conserva su definición y examina esa diferencia de versiones.
 - **Ausencias y dependencia:** ausencia no equivale a cero ni a inexistencia de un evento. Los ciclos del mismo espécimen no se tratan como ensayos independientes; identificadores únicos no prueban independencia.
 - **Inferencia exploratoria:** remuestreo y permutaciones dependen de intercambiabilidad. El rango por omisión no es un intervalo de confianza. La separación de clusters es modesta y no define nuevos tipos físicos.
 - **Mecánica:** existen curvas como figuras PDF, pero el MATLAB contiene resúmenes. No se reconstruyen curvas, rigidez experimental, esfuerzo, tenacidad ni histéresis a partir de máximos o agregados.
@@ -139,83 +151,52 @@ La estructura separa evidencia, decisiones metodológicas, implementación y res
 ```text
 T02_MIA14_SeccionB/
 ├── docs/
-│   ├── introduccion_experimento.md    # Mecánica y ensayo explicados
+│   ├── introduccion_experimento.md    # Material, mecanismos y ensayo
 │   ├── diccionario_datos.md          # Definiciones, unidades, fórmulas y roles
 │   ├── diccionario_datos.csv
-│   ├── trazabilidad_datos.md         # Fuente, página, definición y discrepancias
-│   ├── informe_curaduria.md          # Evidencia y decisiones de calidad
+│   ├── trazabilidad_datos.md         # Fuentes, páginas y discrepancias
+│   ├── informe_curaduria.md          # Evidencia e incidencias de calidad
 │   └── informe_eda.md                # Interpretación académica y RQ1–RQ12
 ├── config/
-│   ├── data_schema.yml
-│   └── model_config.yml
+│   └── data_schema.yml              # Variables, unidades y reglas de curaduría
 ├── data/
-│   ├── raw/dati_campagna_venditti.m
-│   ├── interim/preliminary/
-│   ├── processed/preliminary/
-│   └── README.md
-├── demo/
-│   └── index.html
+│   ├── raw/dati_campagna_venditti.m   # Fuente experimental original
+│   ├── interim/preliminary/          # Extracción verificable
+│   ├── processed/preliminary/        # Tabla analítica preliminar
+│   └── README.md                    # Procedencia y versiones de datos
 ├── notebooks/
 │   ├── 01_Ingesta_Curaduria_y_Calidad.ipynb
 │   ├── 02_EDA_Avanzado.ipynb
-│   ├── 03_Diseno_de_Particiones_y_Preprocesamiento.ipynb
-│   ├── 04_Baseline_de_Referencia.ipynb
-│   ├── 05_Entrenamiento_Ajuste_y_Validacion.ipynb
-│   └── 06_Evaluacion_Final_e_Interpretabilidad.ipynb
+│   └── 03_Transformaciones_Exploratorias.ipynb
 ├── reports/
-│   ├── 01_Ingesta_Curaduria_y_Calidad.html
-│   ├── 02_EDA_Avanzado.html
-│   ├── 03_Diseno_de_Particiones_y_Preprocesamiento.html
-│   ├── 04_Baseline_de_Referencia.html
-│   ├── 05_Entrenamiento_Ajuste_y_Validacion.html
-│   ├── 06_Evaluacion_Final_e_Interpretabilidad.html
-│   ├── metricas_modelos_preliminares.csv
-│   ├── resumen_modelado_preliminar.json
 │   ├── eda_calidad/                  # Auditoría, PNG/SVG, CSV y manifiesto
-│   ├── eda_relaciones/               # Matrices completas, soporte y sensibilidad
-│   ├── eda_transformaciones/         # Representaciones y aislamiento en train
+│   ├── eda_relaciones/               # Asociaciones, soporte y sensibilidad
+│   ├── eda_transformaciones/         # Fórmulas, representaciones y escalas
+│   ├── verificacion_eda.json         # Comprobación de artefactos y enlaces
 │   └── eda/
-│       ├── figures/                # figuras científicas exportables
-│       ├── tables/                 # resultados exploratorios en CSV
-│       ├── hallazgos.md            # evidencia, límites y decisiones
-│       └── manifest.json          # hashes y parámetros de cálculo
+│       ├── figures/                 # Figuras científicas exportables
+│       ├── tables/                  # Resultados exploratorios en CSV
+│       ├── hallazgos.md             # Evidencia e interpretación
+│       └── manifest.json           # Hashes y parámetros de cálculo
 ├── src/
-│   ├── importar_matlab.py
-│   ├── eda_calidad.py
-│   ├── eda_relaciones.py
-│   ├── transformaciones_eda.py
-│   ├── eda.py
-│   ├── eda_energia.py
-│   ├── verificar_eda.py              # Contrasta outputs, enlaces, hashes y figuras
-│   ├── reporte_eda.py
-│   ├── ingesta.py
-│   ├── preprocesamiento.py
-│   ├── particiones.py
-│   ├── modelos.py
-│   ├── modelo_baseline.py
-│   ├── ajuste.py
-│   ├── validacion.py
-│   ├── interpretabilidad.py
-│   └── experimento.py
+│   ├── importar_matlab.py           # Lectura restringida de la fuente
+│   ├── ingesta.py                   # Integridad y tabla intermedia
+│   ├── preprocesamiento.py          # Curaduría y tabla analítica
+│   ├── eda_calidad.py               # Auditoría de calidad y coherencia
+│   ├── eda_relaciones.py            # Asociaciones y sensibilidad
+│   ├── eda.py                       # Análisis estadístico exploratorio
+│   ├── eda_energia.py               # Ciclos y eventos energéticos
+│   ├── transformaciones_eda.py       # Geometría derivada y escalas
+│   ├── verificar_eda.py             # Outputs, enlaces, hashes y figuras
+│   └── reporte_eda.py               # Ejecución reproducible de cuadernos
 ├── tests/
-│   ├── test_workflow.py
+│   ├── test_importar_matlab.py
 │   ├── test_eda.py
 │   ├── test_eda_energia.py
 │   ├── test_eda_calidad.py
 │   ├── test_eda_relaciones.py
 │   └── test_transformaciones_eda.py
-├── results/                         # ejecuciones locales fechadas
-│   └── VERSION/
-│       ├── fold_01/ ... fold_05/    # búsquedas, pipelines e interpretación
-│       ├── oof_predictions.csv
-│       ├── fold_metrics.csv
-│       ├── evaluation.json
-│       ├── splits.json
-│       ├── final_model.joblib
-│       ├── final_model_info.json
-│       └── experiment_manifest.json
 ├── logs/
-├── slides/
 ├── requirements.txt
 ├── pyproject.toml
 └── README.md
@@ -228,19 +209,10 @@ T02_MIA14_SeccionB/
 | `data/raw/` | Fuente experimental original | Se conserva sin modificaciones |
 | `data/interim/preliminary/` | Tabla extraída, hash y manifiesto | Etapa intermedia visible antes de seleccionar variables |
 | `data/processed/preliminary/` | Tabla analítica y reporte de calidad | Versión preliminar para revisión, todavía no definitiva |
-| `results/` | Predicciones, métricas, modelos e interpretación | Una carpeta nueva por experimento |
-| `reports/` | HTML de notebooks, métricas CSV y resumen JSON | Evidencia exploratoria; subcarpetas temáticas con tablas CSV, PNG/SVG y manifiestos |
+| `reports/` | Tablas, figuras y manifiestos del EDA | Evidencia exploratoria organizada por tema y vinculada a los notebooks |
 | `logs/` | Eventos, advertencias y fallos | Complementan los manifiestos |
 
-### Demostrador
-
-| Ruta | Responsabilidad |
-|---|---|
-| `demo/index.html` | Prototipo interactivo y autónomo; funciona sin instalar dependencias web |
-| `data/processed/preliminary/` | Proporciona rangos verificables para controlar el dominio de entrada |
-| Futuro servicio de inferencia | Cargará el pipeline validado y devolverá predicción y explicación |
-
-**Interim** significa etapa intermedia: traduce la fuente MATLAB a una tabla verificable, pero todavía no es la entrada definitiva del modelo. Las ejecuciones fechadas permanecen fuera de Git; las carpetas `preliminary/` son copias estables para que el profesor pueda revisar la evidencia.
+**Interim** significa etapa intermedia: traduce la fuente MATLAB a una tabla verificable antes de aplicar la curaduría. Las ejecuciones fechadas permanecen fuera de Git; las carpetas `preliminary/` conservan copias estables para revisar la evidencia.
 
 La ampliación del conjunto depende de nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.
 
@@ -249,7 +221,6 @@ La ampliación del conjunto depende de nuevos ensayos o simulaciones físicament
 | Archivo | Responsabilidad |
 |---|---|
 | `config/data_schema.yml` | Target, identificadores, predictores, unidades y reglas de curaduría |
-| `config/model_config.yml` | Ruta real de datos, protocolo preliminar, modelos y rejillas; listo para ejecutar |
 
 ### Código científico
 
@@ -262,29 +233,13 @@ La ampliación del conjunto depende de nuevos ensayos o simulaciones físicament
 | `eda.py` | Asociaciones globales/condicionadas, permutaciones, bootstrap, FDR y diagnósticos de influencia |
 | `eda_energia.py` | Extrae de forma restringida matrices energéticas para interpretación posensayo |
 | `verificar_eda.py` | Verifica ejecución guardada, enlaces, hashes y exportaciones sin recalcular |
-| `reporte_eda.py` | Ejecuta los tres cuadernos exploratorios y exporta HTML con navegación |
+| `reporte_eda.py` | Ejecuta los tres cuadernos exploratorios y conserva sus resultados |
 | `ingesta.py` | Valida la fuente, calcula SHA-256 y crea la versión intermedia |
 | `preprocesamiento.py` | Construye la tabla analítica y registra exclusiones y calidad |
-| `particiones.py` | Genera folds externos e internos y protege grupos relacionados |
-| `modelos.py` | Define los seis candidatos y su preprocesamiento |
-| `modelo_baseline.py` | Implementa la mediana y las métricas de regresión |
-| `ajuste.py` | Ejecuta el tuneo exclusivamente en CV interna |
-| `validacion.py` | Produce predicciones OOF y compara candidatos con el baseline |
-| `interpretabilidad.py` | Extrae coeficientes e importancia por permutación |
-| `experimento.py` | Orquesta el protocolo y guarda artefactos reproducibles |
 
-### Notebooks
+### Notebooks y código
 
-| Orden | Notebook | Función |
-|---:|---|---|
-| 1 | `01_Ingesta_Curaduria_y_Calidad.ipynb` | Procedencia, esquema, calidad, exclusiones y tabla analítica |
-| 2 | `02_EDA_Avanzado.ipynb` | EDA integral: familias, interacciones, robustez, geometría, ciclos y energías |
-| 3 | `03_Diseno_de_Particiones_y_Preprocesamiento.ipynb` | Transformaciones geométricas, escalas, representaciones y protocolo conservado |
-| 4 | `04_Baseline_de_Referencia.ipynb` | Referencia de valor central en los folds externos |
-| 5 | `05_Entrenamiento_Ajuste_y_Validacion.ipynb` | Tuneo interno y predicción externa |
-| 6 | `06_Evaluacion_Final_e_Interpretabilidad.ipynb` | Métricas, residuos, estabilidad y explicación |
-
-Los notebooks documentan la investigación. La lógica reutilizable permanece en `src/` y las pruebas de contratos están en `tests/`.
+Los cuadernos siguen el orden **calidad → exploración → transformaciones**. Documentan las preguntas, muestran el cálculo y desarrollan la interpretación; la lógica reutilizable permanece en `src/`. Las pruebas en `tests/` comprueban la extracción, los estadísticos y las transformaciones.
 
 ## Reproducción
 
@@ -303,36 +258,9 @@ El comando ejecuta los cuadernos 01→02→03 desde kernels limpios y guarda out
 
 `.gitattributes` conserva los bytes de las fuentes y artefactos con SHA-256 para que Git no altere sus huellas al convertir saltos de línea entre plataformas.
 
-Solo análisis 02: `python -m src.reporte_eda --execute`. Solo exportación HTML desde outputs existentes: `python -m src.reporte_eda --all`.
+Solo análisis 02: `python -m src.reporte_eda --execute`. Los resultados se guardan en el `.ipynb` correspondiente.
 
 Los documentos interpretan esta versión de resultados. Si cambia la fuente, deben revisarse también las cifras y conclusiones del informe y README. Los PDF privados se necesitan para repetir el cotejo documental, pero no para recalcular las tablas y figuras del archivo MATLAB disponible.
-
-## Etapa predictiva posterior
-
-Se conservan los módulos y cuadernos 04–06 del trabajo previo. No se reentrenan ni se atribuyen sus métricas a esta entrega exploratoria.
-
-| Modelo existente | Función en la comparación |
-|---|---|
-| Ridge | Referencia lineal regularizada |
-| Elastic Net | Regularización con variables correlacionadas |
-| SVR con kernel RBF | Relaciones no lineales suaves |
-| Árbol de regresión | Reglas e interacciones interpretables |
-| Bosque aleatorio | Agregación de árboles |
-| Proceso gaussiano RBF | Relación no lineal con supuestos explícitos de covarianza |
-
-El baseline aprende la mediana solo del entrenamiento: permite contrastar el error absoluto con una regla elemental. La MLP dispone de un constructor experimental; TabNet y FT-Transformer son propuestas sujetas a soporte y validación, sin resultados de deep learning atribuidos a este EDA.
-
-| Métrica prevista | Interpretación |
-|---|---|
-| **MAE [N]** | Error absoluto medio; criterio principal de selección |
-| RMSE [N] | Penaliza especialmente errores grandes |
-| MedAE [N] | Error absoluto mediano |
-| R² fuera de muestra | Comparación con variabilidad de la respuesta; puede ser negativo |
-| Diferencia de MAE frente al baseline | Reducción del error frente a la regla sin geometría |
-
-La comparación requiere preprocesamiento dentro de train, selección interna y evaluación externa. Réplicas o lotes confirmados deben permanecer juntos. Evaluar una arquitectura nueva no equivale a repartir aleatoriamente casos de arquitecturas conocidas.
-
-El producto de tesis previsto es un **modelo versionado, pipeline de inferencia y demostrador de predicción estructural**. El [HTML preliminar](demo/index.html) conserva ese planteamiento; no es un simulador de elementos finitos ni demuestra operación mecánica en tiempo real.
 
 ## Fuentes y privacidad
 
@@ -341,4 +269,4 @@ El producto de tesis previsto es un **modelo versionado, pipeline de inferencia 
 - **Turco y colaboradores (2017, 2019).** Antecedentes Hencky y Piola–Hencky; referencias verificadas y diferencias de protocolo en [introducción](docs/introduccion_experimento.md).
 - **Métodos:** [SciPy: Spearman](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html), [control FDR](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.false_discovery_control.html) y [scikit-learn: preprocesamiento](https://scikit-learn.org/stable/modules/preprocessing.html).
 
-Se conserva el MATLAB previamente incorporado al proyecto; no se agregan PDF privados. `.gitignore` excluye PDF, referencias privadas, modelos ajustados y ejecuciones locales. La licencia del código no implica permiso adicional sobre documentos de terceros. Se trabaja en **`eda`**, sin merge ni cambios en `main`.
+Se conserva el MATLAB previamente incorporado al proyecto; no se agregan PDF privados. `.gitignore` excluye PDF, referencias privadas y ejecuciones locales. La licencia del código no implica permiso adicional sobre documentos de terceros. Se trabaja en **`eda`**, sin merge ni cambios en `main`.
