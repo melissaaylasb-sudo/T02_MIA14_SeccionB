@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T01:21:50.724118+00:00",
+  "checked_at_utc": "2026-10-10T01:37:17.502863+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -15,8 +15,8 @@
     "executed_code_cells": 55,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 95,
-    "checks": 478,
+    "local_links": 106,
+    "checks": 489,
     "failed_checks": 0
   },
   "notebooks": [
@@ -590,7 +590,47 @@
     },
     {
       "source": "README.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
       "target": "docs/diccionario_datos.csv",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/02_objetivo.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/05_familias.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/08_dispersion.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/24_ciclos.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/26_disipacion.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/20_influencia.png",
       "exists": true
     },
     {
@@ -636,6 +676,21 @@
     {
       "source": "README.md",
       "target": "docs/informe_curaduria.md",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "data/interim/preliminary/dataset_interim.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "config/data_schema.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "data/raw/dati_campagna_venditti.m",
       "exists": true
     },
     {
@@ -1121,7 +1176,63 @@
     },
     {
       "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
       "path": "docs/diccionario_datos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/20_influencia.png",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1194,6 +1305,27 @@
       "path": "docs/diccionario_datos.md",
       "passed": true,
       "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/data_schema.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
     },
     {
       "category": "local_link",

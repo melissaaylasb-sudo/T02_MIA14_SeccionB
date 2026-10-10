@@ -25,6 +25,10 @@ La utilidad de estudiar esta arquitectura en una investigación peruana reside e
 
 El protocolo documenta **tracción con ciclos de carga y descarga**, una velocidad de desplazamiento impuesta de **15 mm/min** y niveles nominales de desplazamiento espaciados cada **10 mm**. El espécimen se fija al equipo y se registra la respuesta fuerza–desplazamiento. Los valores de velocidad en mm/min describen desplazamiento por tiempo, no una tasa de deformación unitaria. Los detalles instrumentales de otros artículos no se atribuyen a esta campaña. [V, PDF 96.]
 
+La tracción tiende a alargar la estructura. Durante la fase de carga aumenta el desplazamiento impuesto; la fuerza puede caer si se produce una rotura. Durante la descarga se reduce la solicitación y se registra el desplazamiento que permanece: descargar no implica necesariamente comprimir. La flexión de fibras y los giros de las conexiones son mecanismos de respuesta y no acreditan otros ensayos externos.
+
+La descripción consultada identifica el equipo de ensayo de tracción y el registro de fuerza–desplazamiento, pero no especifica fabricante, modelo, capacidad ni sensores concretos. También documenta grabación del sonido de las roturas para identificar sus instantes. Esto no acredita un sistema de emisión acústica ni un modelo de micrófono específico. [V, PDF 96–97.]
+
 La **fuerza** expresa la acción mecánica medida, en newtons (N). El **desplazamiento** expresa el cambio de posición impuesto o registrado, en milímetros (mm). La **deformación** describe el cambio de forma o dimensiones; una deformación unitaria requeriría definir una longitud de referencia apropiada. Las columnas de desplazamiento disponibles no deben renombrarse como deformación unitaria.
 
 Durante el ensayo pueden producirse roturas locales de fibras o pivotes. La estructura puede conservar capacidad de carga después del primer daño porque aún existen elementos conectados capaces de transmitir acciones. La fuente documenta esa capacidad y secuencias de rotura; el EDA no identifica por sí solo qué elemento se rompe en cada caso ni cuantifica la redistribución de esfuerzos. [V, PDF 96–97.]

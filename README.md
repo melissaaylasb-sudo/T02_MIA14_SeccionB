@@ -8,7 +8,7 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 
 Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
 
-Una estructura pantográfica es una red de dos familias de fibras conectadas por pivotes deformables. Su interés como metamaterial mecánico reside en diseñar la respuesta mediante la arquitectura, además del material constituyente. Estudiar las relaciones geometría–respuesta permite formular hipótesis, detectar redundancias y evitar interpretar una correlación inducida por el diseño como una ley física.
+Una estructura pantográfica es una malla de barras delgadas, llamadas **fibras**, conectadas por pequeñas uniones deformables, llamadas **pivotes**. Su respuesta depende tanto del material como de la forma y disposición de esos elementos. El EDA estudia esas relaciones sin atribuir causalidad a una correlación.
 
 **Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA_Avanzado.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
 
@@ -16,6 +16,7 @@ Una estructura pantográfica es una red de dos familias de fibras conectadas por
 
 - [Experimento y objetivo](#experimento-y-objetivo)
 - [INPUT, target y OUTPUT](#input-target-y-output)
+- [Gráficos para explicar los datos](#gráficos-para-explicar-los-datos)
 - [Tres cuadernos para la entrega](#tres-cuadernos-para-la-entrega)
 - [Preguntas y análisis](#preguntas-y-análisis)
 - [Estudio de valores atípicos](#estudio-de-valores-atípicos)
@@ -35,10 +36,21 @@ Una estructura pantográfica es una red de dos familias de fibras conectadas por
 | Arquitectura | Fibras cruzadas y pivotes; familias de discretización del retículo |
 | Envolvente nominal | 210 × 70 mm; más celdas no significa mayor longitud exterior |
 | Ensayo documentado | Tracción con carga y descarga; velocidad de desplazamiento de 15 mm/min y niveles nominales cada 10 mm |
+| Equipo e instrumentos | Equipo de ensayo de tracción, con probetas sujetas y registro de fuerza y desplazamiento. También se documenta grabación del sonido de las roturas. La descripción revisada no identifica marca, modelo ni sensores específicos |
 | Respuesta objetivo | Fuerza asociada al primer evento de rotura identificado de una fibra o un pivote |
 | Estado científico | Exploración reproducible del archivo recibido; diferencias geométricas MATLAB–PDF registradas y pendientes de conciliación |
 
-La fuerza mide la acción aplicada; el desplazamiento mide el cambio de posición. Una deformación unitaria requeriría definir una longitud de referencia. Tras la primera rotura pueden quedar elementos conectados que transmitan carga: **primera falla, rotura terminal y máximo global no son equivalentes**.
+**Cómo se aplica la carga**
+
+| Término | Explicación en este ensayo |
+|---|---|
+| **Tracción** | Fuerza que tiende a alargar la malla. La máquina impone el estiramiento y se registra la fuerza que opone la estructura |
+| **Carga** | Fuerza aplicada, medida en newtons (N). Durante la fase de carga aumenta el desplazamiento impuesto; la fuerza puede caer si ocurre una rotura |
+| **Descarga** | Se reduce la solicitación y se observa cuánto recupera su forma la estructura y qué desplazamiento permanece. No implica necesariamente compresión |
+| **Desplazamiento** | Cambio de posición, medido en milímetros (mm). Los 15 mm/min describen la velocidad de desplazamiento; no son una fuerza |
+| **Flexión y giros internos** | Las fibras pueden doblarse y las conexiones girar durante la tracción. Son mecanismos de deformación; no acreditan ensayos independientes de flexión o torsión |
+
+La carga externa documentada es de **tracción**; no se atribuyen otras pruebas a esta campaña. Tras la primera rotura pueden quedar elementos que transmitan carga: **primera falla, rotura terminal y fuerza máxima del ensayo son conceptos distintos**. Protocolo y registro de sonido: Venditti, páginas 96–97 del PDF; [trazabilidad](docs/trazabilidad_datos.md).
 
 La [introducción científica](docs/introduccion_experimento.md) explica los mecanismos y las fuentes. La metodología es pertinente para investigación peruana en diseño y fabricación; su transferencia a otro material, proceso o aplicación requiere verificación experimental local.
 
@@ -48,23 +60,45 @@ La [introducción científica](docs/introduccion_experimento.md) explica los mec
 
 ## INPUT, target y OUTPUT
 
-**INPUT** es una característica disponible antes del ensayo. **OUTPUT** es una respuesta obtenida durante o después. El **target** es el OUTPUT elegido como objetivo predictivo.
+**INPUT** es una característica conocida antes del ensayo y candidata a entrada del modelo. **OUTPUT** es una respuesta obtenida durante o después. El **target** es el OUTPUT elegido para predecir: **cuántos newtons actúan cuando se rompe por primera vez una fibra o un pivote**.
 
-| Rol | Variables reales | Unidad | Uso |
+| Rol | Nombre en los datos | Unidad | Significado sencillo |
 |---|---|---|---|
 | INPUT · arquitectura | `n_cells_Y`, `Pivot_total_number` | conteos | Celdas en Y y cantidad de pivotes |
-| INPUT · fibras | `Fiber_height`, `Fiber_base`, `Fiber_total_length` | mm | Dimensiones y longitud declarada de fibras |
-| INPUT · pivotes | `Pivot_height`, `Pivot_radius` | mm | Geometría local de conexiones |
+| INPUT · fibras | `Fiber_height`, `Fiber_base`, `Fiber_total_length` | mm | Altura y base de la sección de las barras; longitud total de fibras |
+| INPUT · pivotes | `Pivot_height`, `Pivot_radius` | mm | Altura y radio de las pequeñas uniones entre fibras |
 | INPUT · volúmenes | `Fiber_total_volume`, `Pivot_total_volume`, `Sample_total_volume` | mm³ | Volúmenes declarados de componentes y volumen CAD del espécimen |
 | **Target** | **`First_Failure_Load_N`** | **N** | **Carga de primera falla: fuerza del primer evento de rotura identificado en la fuente** |
 | OUTPUT · evento terminal | `Ultimate_Load` | N | Fuerza asociada a rotura terminal; no máximo global automático |
-| OUTPUT · desplazamientos | `Maximum_Displacement`, `residual_Displacement_*` | mm | Respuesta global y residual por ciclo |
-| OUTPUT · energías | `Energy_Dissipated`, `Energy_Fracture` | mJ | Resúmenes por ciclo y evento; unidad cotejada en el apéndice |
+| OUTPUT · desplazamientos | `Maximum_Displacement`, `residual_Displacement_*` | mm | Mayor desplazamiento alcanzado y desplazamiento que permanece al descargar cada ciclo |
+| OUTPUT · energías | `Energy_Dissipated`, `Energy_Fracture` | mJ | Energía disipada por ciclo y asociada a eventos de rotura; matrices del MATLAB, analizadas por separado del CSV principal |
 | Metadato | `Case_n` | identificador | Trazabilidad; excluido de los predictores |
 
-La relación futura de regresión es **F_primera_falla = f(X_geometría, X_estructura) + error**. Su salida será una fuerza estimada en N para una configuración comparable. Energías, cargas posteriores, residuales y cantidades de eventos **no son entradas admisibles** para predecir antes del ensayo.
+**Entrada → salida prevista:** geometría y arquitectura conocidas → **fuerza estimada de primera falla [N]**. Es un problema de regresión: se estima un valor numérico. Las energías, otras cargas y desplazamientos del ensayo se usan para el EDA, pero no como entradas de una predicción previa al ensayo.
 
-El [diccionario completo](docs/diccionario_datos.md), también en [CSV](docs/diccionario_datos.csv), documenta definición física, símbolo, unidad, fuente, fórmula, dominio, disponibilidad temporal y fuga. Distingue datos tabulados, cálculos determinísticos y proxies geométricos. El target ausente no se imputa.
+La tabla identifica variables candidatas, no una selección final: `Fiber_base` está en la fuente y el EDA, pero no en la lista del esquema actual; `Pivot_radius` es constante en el dominio observado. `Case_n` identifica el caso y no se usa como predictor. El target ausente no se imputa.
+
+El [diccionario de consulta rápida](docs/diccionario_datos.md#consulta-rápida) muestra **nombre exacto, significado, unidad, tipo de dato y rol**. Las fichas detalladas y el [CSV](docs/diccionario_datos.csv) añaden fuente, fórmula, disponibilidad temporal y limitaciones.
+
+## Gráficos para explicar los datos
+
+Estos gráficos ya están calculados en el cuaderno 02. Cada enlace abre la figura completa.
+
+| Gráfico | Variables y ejes | Qué permite observar |
+|---|---|---|
+| [Distribución de primera falla](reports/eda/figures/02_objetivo.png) | Fuerza de primera falla [N]; frecuencia y proporción acumulada | Dónde se concentran las fuerzas y cuánto varían |
+| [Carga por arquitectura](reports/eda/figures/05_familias.png) | Fuerza de primera falla [N] y proporción acumulada; una curva por familia | Diferencias entre configuraciones y variación entre/dentro de familias |
+| [Geometría frente a primera falla](reports/eda/figures/08_dispersion.png) | Dimensiones o volúmenes frente a fuerza [N]; color por familia | Asociaciones INPUT–target y patrones que dependen de la arquitectura |
+| [Relaciones entre entradas](reports/eda_relaciones/figures/R01_input_input_spearman.png) | Matriz de variables geométricas; color según correlación | Variables que cambian juntas o repiten información |
+| [Desplazamiento residual por ciclo](reports/eda/figures/24_ciclos.png) | Amplitud nominal del ciclo [mm] frente a residual [mm] y residual/amplitud | Cuánto desplazamiento permanece después de descargar |
+| [Energía disipada](reports/eda/figures/26_disipacion.png) | Ciclo y energía [mJ] | Evolución de otra respuesta del ensayo y valores que requieren revisión |
+| [Atípicos e influencia](reports/eda/figures/20_influencia.png) | Distancia geométrica, residuo, leverage y Cook; cada punto es un caso | Configuraciones poco habituales y casos que afectan una tendencia |
+
+![Carga de primera falla por número de celdas en Y](reports/eda/figures/05_familias.png)
+
+*Izquierda: cada curva muestra la proporción de casos cuya primera falla ocurre hasta la fuerza indicada. Derecha: se separa la variación entre familias y dentro de ellas. Es una comparación descriptiva; no mide la precisión de un modelo.*
+
+Una **curva completa de fuerza–desplazamiento**, con carga, descarga y primera rotura señaladas, sería útil para explicar el ensayo. Para incorporarla como gráfico calculado se requieren las series instrumentales: el MATLAB recibido contiene resúmenes y no permite reconstruir esa curva.
 
 ## Tres cuadernos para la entrega
 
