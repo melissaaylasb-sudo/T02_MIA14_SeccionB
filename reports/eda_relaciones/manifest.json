@@ -5,7 +5,7 @@
     "data/raw/dati_campagna_venditti.m": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
     "data/interim/preliminary/dataset_interim.csv": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9"
   },
-  "analysis_source_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21",
+  "analysis_source_sha256": "987cc086e3faef9ec64a8ed66691fdc2f8f22c32e72851cc25288acc9f84ad85",
   "execution": {
     "python": "3.13.5",
     "dependencies": {
@@ -18,7 +18,7 @@
       "joblib": "1.5.1"
     },
     "git": {
-      "commit": "3f6ea12b76d78f4bb9f69ace36b6af0fa2e254f2",
+      "commit": "567acdc93d527d1532bb447dc9e5d987871999fe",
       "dirty": true
     }
   },
@@ -115,28 +115,28 @@
   },
   "artifact_sha256": {
     "figures/R01_input_input_pearson.png": "6e7610ef5eaee178e054609823bf2f700095c9b9cee3abd60cd2d45e9efe8053",
-    "figures/R01_input_input_pearson.svg": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa",
+    "figures/R01_input_input_pearson.svg": "c3479fea9ed946066f3dfa7ea0c9c99209ea960b8ad41057c21eb4e28f74b245",
     "figures/R01_input_input_spearman.png": "d3bcfaa2636b012b9e7ff5b73c46ed10e19b953ff20146bc0422a610f6e334e7",
-    "figures/R01_input_input_spearman.svg": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085",
+    "figures/R01_input_input_spearman.svg": "5e5ea99ced786411e8f2d52933bcd7c897601257f1aaef35fa1ef82851258aa0",
     "figures/R01_input_output_pearson.png": "31b239159c815b34f9360607e51d7a0a25a3b1b8f61acc8e310731a1d5c44ac9",
-    "figures/R01_input_output_pearson.svg": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d",
+    "figures/R01_input_output_pearson.svg": "b06dc1e2f3cdd62e31d8cf6679ee3cec852bda9637a788e0d4708fdb97015e1a",
     "figures/R01_input_output_spearman.png": "da7e3fd350bef399f467de6c0cf11e865b1fda00bf1ffc88e2c5c676c4094fd3",
-    "figures/R01_input_output_spearman.svg": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e",
+    "figures/R01_input_output_spearman.svg": "57e426c4ec21ac30b09683f482c2f8024a74c3de4678f7ec48359678ae413060",
     "figures/R01_output_output_pearson.png": "9d98aa24fd4d81b99dcc3198b768f79aa674f3d8364ed3dd315e2f10dd06f9d9",
-    "figures/R01_output_output_pearson.svg": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86",
+    "figures/R01_output_output_pearson.svg": "22ffb4dc745bc5b107394ad124f14eb5a67952b04f494f3d498c61d0b2f9a037",
     "figures/R01_output_output_spearman.png": "45a4eda5a15c24cdac7f3d1fa7b4bf09ac0afdc775edca09dddf5ff7aa57a85e",
-    "figures/R01_output_output_spearman.svg": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e",
+    "figures/R01_output_output_spearman.svg": "265816baa57bd4d4f2e048476f407b681387e24617636af86e73234a8dea7440",
     "figures/R02_coeficientes_estabilidad.png": "45781165d72ccc0c9726ba2842786d495ae2af3eea8ad4c853d9e6493e11777a",
-    "figures/R02_coeficientes_estabilidad.svg": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd",
+    "figures/R02_coeficientes_estabilidad.svg": "8c6e04efd1fc4c50c0b9381d2b91e80b322a7ac23753082c4e7ea1bcced9a898",
     "figures/R03_tamano_forma.png": "20ddc3d03e66ff12d90eec871f3e1321102be1701d8756fc36e8cefb880818ae",
-    "figures/R03_tamano_forma.svg": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98",
+    "figures/R03_tamano_forma.svg": "269e5057c01a7fa963cf9e05c16f875318c37ca13db4fa36c3aa09f24bffcc16",
     "figures/R04_comparacion_cargas.png": "441d4b7bd82d61fec0e9cd6adb9734b6435d45d78674b1c5720d978888aee549",
-    "figures/R04_comparacion_cargas.svg": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0",
+    "figures/R04_comparacion_cargas.svg": "c1543d2008ef6c18efb4626f3aa4fbba3043973b98b11345751a1bbfac244c61",
     "figures/R05_residual_recuperacion.png": "9d4b956a9ca19ed84d9c082561bded51ae969acc099b67b3b171f52f6d3405ba",
-    "figures/R05_residual_recuperacion.svg": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4",
+    "figures/R05_residual_recuperacion.svg": "a1a36e28264fbd4cb701e37bbb3e38a3eb41d76c574526b9f183f54856f956ca",
     "figures/R06_normalizaciones_carga.png": "f9cc41f2f6db9f384d9144f635cf4fd33d0c3348f10a788f34214e99fae89d66",
-    "figures/R06_normalizaciones_carga.svg": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a",
-    "hallazgos.json": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776",
+    "figures/R06_normalizaciones_carga.svg": "8cff16acbe3eff3f7487519ccc3975f584b29daea8ff9e6f49d1dd1cb235aed1",
+    "hallazgos.json": "aacc2b5e82a389f7a6439547462cf77dcf0bf3a5c8f2a595e44b673311f97299",
     "tables/01_definiciones.csv": "3eb31847f0cb3afc4573da83ca68088eb47b5b253d5cc8806f6ed8c1a1fbcf58",
     "tables/02_univariado_completo.csv": "5828a8b02ea8fb14b7f58d6f52571a7c90eeb76692998958d51a7d8dbe504377",
     "tables/03_cobertura_niveles.csv": "2646c641164882db0ee2b75a62c2e6382ced6c7f96adfbf2e41f11b85f1abeb5",

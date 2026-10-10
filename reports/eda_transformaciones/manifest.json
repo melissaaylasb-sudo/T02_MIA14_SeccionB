@@ -2,7 +2,8 @@
   "status": "executed",
   "scope": "transformaciones exploratorias sin entrenamiento predictivo",
   "source": {
-    "data/raw/dati_campagna_venditti.m": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
+    "data/raw/dati_campagna_venditti.m": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8"
   },
   "seed": 42,
   "tables": [
@@ -12,26 +13,33 @@
     "T04_logaritmos",
     "T05_aislamiento_transformaciones",
     "T06_frontera_predictiva",
-    "T07_decisiones"
+    "T07_decisiones",
+    "T08_asociaciones_caracteristicas",
+    "T09_carga_por_volumen"
   ],
   "figures": {
     "F01_representaciones": "Dimensión algebraica de representaciones geométricas",
     "F02_logaritmos": "Efecto del logaritmo sobre la distribución del volumen CAD",
-    "F03_escalamiento": "Transformaciones ajustadas en entrenamiento y aplicadas a casos reservados"
+    "F03_escalamiento": "Transformaciones ajustadas en entrenamiento y aplicadas a casos reservados",
+    "F04_caracteristicas": "Descriptores geométricos derivados frente a primera falla"
   },
   "artifacts_sha256": {
     "figures/F01_representaciones.png": "392a1a614be2429c9b908c70c90862c5d9022e3267e9e6ff2837e469d0f6a91d",
-    "figures/F01_representaciones.svg": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0",
+    "figures/F01_representaciones.svg": "b2cd2237a89590e1fc93b72a316163d32b46ea6379d401721d2d87137bfa47d9",
     "figures/F02_logaritmos.png": "3572c0b8222895e5a31ce52542cd40430225d540b599db47d1d2a02926e851f3",
-    "figures/F02_logaritmos.svg": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1",
+    "figures/F02_logaritmos.svg": "3d0119b4ad2ec2e78c69555322200b94f0f22716af381bdc65f0250d7816a2a1",
     "figures/F03_escalamiento.png": "da3f61882b18e4943bd7e9cf4d76ace6be36412658c52a8f8729433d9485363b",
-    "figures/F03_escalamiento.svg": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f",
+    "figures/F03_escalamiento.svg": "a65098707c60e59f92f1c1123fd8f721dfa2e69c32e89dfa8b8376f18415da34",
+    "figures/F04_caracteristicas.png": "e8bb59520a078f3dd656535e83cab18f619d76fc4c8c1d45839b7b24d412fc9a",
+    "figures/F04_caracteristicas.svg": "179724a853f4cbaebb0492da90e98a8cbf7aca37ceae687648b1a49828ff1a53",
     "tables/T01_formulas.csv": "1bb6db4cab247d5e9cde440fe54614cee16515c4c54653c1a108ec52e617453e",
     "tables/T02_geometria_derivada.csv": "273ac53771a16d12bd47fc113a39b16c30c13b7bf0df86c2dcd2a9128cf2f4dc",
     "tables/T03_representaciones.csv": "4de403a3df2adc0b983d579fd874d2cd0ab19c1d03a49418c3fa716e6e5ab044",
     "tables/T04_logaritmos.csv": "d25626822e80aa8eee78ff89fbfd9606254a638e48ec38080ac758eb5e42ddc0",
     "tables/T05_aislamiento_transformaciones.csv": "4b3eee1bbb01fc4d6d5f5b9cac3721431c2168377338dbce7983d9ccfe70ca8b",
     "tables/T06_frontera_predictiva.csv": "0e98c47ba91707fc1d04d5f5f9162dc481ab537c88d53f6d3efccd100d396b97",
-    "tables/T07_decisiones.csv": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819"
+    "tables/T07_decisiones.csv": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819",
+    "tables/T08_asociaciones_caracteristicas.csv": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b",
+    "tables/T09_carga_por_volumen.csv": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6"
   }
 }

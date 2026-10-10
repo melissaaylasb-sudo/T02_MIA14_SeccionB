@@ -16,8 +16,8 @@ Los snapshots `preliminary/` conservan el esquema histórico. El esquema vigente
 
 El [diccionario](../docs/diccionario_datos.md) define variables y unidades; la [trazabilidad](../docs/trazabilidad_datos.md) registra las discrepancias entre MATLAB y fichas experimentales. Las energías se expresan en mJ, según el apéndice de la tesis. Integridad de archivo y concordancia documental son verificaciones distintas.
 
-La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) o abrirse directamente como [reporte HTML](../reports/01_Ingesta_Curaduria_y_Calidad.html). El análisis posterior está en [02_EDA_Avanzado.ipynb](../notebooks/02_EDA_Avanzado.ipynb) y en su [reporte HTML](../reports/02_EDA_Avanzado.html).
+La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) o abrirse directamente como [reporte HTML](../reports/01_Ingesta_Curaduria_y_Calidad.html). El análisis posterior está en [02_EDA.ipynb](../notebooks/02_EDA.ipynb) y en su [reporte HTML](../reports/02_EDA.html).
 
 El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.
 
-La entrega culmina con el [cuaderno 03 de transformaciones y preparación](../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb). Ninguna transformación exploratoria modifica la fuente cruda ni incorpora automáticamente nuevas entradas al modelo previo.
+La entrega culmina con el [cuaderno 03 de transformaciones exploratorias](../notebooks/03_Transformaciones_Exploratorias.ipynb). Las fórmulas y cambios de escala caracterizan las variables y conservan la fuente original.

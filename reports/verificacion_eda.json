@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T00:49:21.574421+00:00",
+  "checked_at_utc": "2026-10-10T02:10:50.838253+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -11,12 +11,12 @@
   },
   "summary": {
     "notebooks": 3,
-    "code_cells": 61,
-    "executed_code_cells": 61,
+    "code_cells": 55,
+    "executed_code_cells": 55,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 96,
-    "checks": 478,
+    "local_links": 111,
+    "checks": 494,
     "failed_checks": 0
   },
   "notebooks": [
@@ -24,23 +24,23 @@
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "code_cells": 14,
       "executed_code_cells": 14,
-      "sha256": "e6e6f2f59a46984e3c5861fa7bdf155d289db0ab8edaebc898600538768f7bbe",
+      "sha256": "7ee3ca86d0f271c986e8664e1c9c4bc60dd8b508b3f7d68f74af5b142ced7eab",
       "unexecuted_cells": [],
       "error_cells": []
     },
     {
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
-      "code_cells": 37,
-      "executed_code_cells": 37,
-      "sha256": "aef8528be2d7b0507beae37525c1465226dd046c80834cfc7650c7d0b26e75b8",
+      "path": "notebooks/02_EDA.ipynb",
+      "code_cells": 34,
+      "executed_code_cells": 34,
+      "sha256": "583776ca81099db089da2ff1f960bfb32ba0de22c8f0f0e9bf68f656c3c16717",
       "unexecuted_cells": [],
       "error_cells": []
     },
     {
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "code_cells": 10,
-      "executed_code_cells": 10,
-      "sha256": "82bea7af0c3a62b53a8ea3244ede50a27874b2d0288ea0431fe04fc687732d51",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
+      "code_cells": 7,
+      "executed_code_cells": 7,
+      "sha256": "bfd980d8650b9a36352e638d4cd7efe436d33f4986164c412a0de41d5f7af8aa",
       "unexecuted_cells": [],
       "error_cells": []
     }
@@ -49,30 +49,30 @@
     {
       "path": "reports/eda/manifest.json",
       "input_hashes_checked": 4,
-      "artifact_hashes_checked": 93,
-      "tables_csv": 40,
-      "sha256": "0ac79b7769429fc73d0d8f3ced3158b3243ec10d539e153c25ee00c74dd1b322"
+      "artifact_hashes_checked": 89,
+      "tables_csv": 38,
+      "sha256": "9a56bd4eb93f75c9b86c318fc481c6be40b7950b649ab91036205b4b2a82f0da"
     },
     {
       "path": "reports/eda_calidad/manifest.json",
       "input_hashes_checked": 6,
       "artifact_hashes_checked": 41,
       "tables_csv": 25,
-      "sha256": "474278ae154b3f778ec827a35264b7517d276dfcf58a76102e364f7f8fb8193d"
+      "sha256": "59aadae4ec3e9ed0c9c45ebd7d3296e0b2a0b4c3af270965f71505df90cbdfa0"
     },
     {
       "path": "reports/eda_relaciones/manifest.json",
       "input_hashes_checked": 2,
       "artifact_hashes_checked": 46,
       "tables_csv": 23,
-      "sha256": "99e4b47fa821dce77e1b6cf854ae2e75538148a9a76b16c28b156c3b7d9949fb"
+      "sha256": "b0b1ff85a42f21d83d23e8d9f336732c8beabcb6048f16038e48febb6f56dead"
     },
     {
       "path": "reports/eda_transformaciones/manifest.json",
-      "input_hashes_checked": 1,
-      "artifact_hashes_checked": 13,
-      "tables_csv": 7,
-      "sha256": "22319ef60feff1fedaae0e02ad6977ad1812a18832aefd8d8815b797afae05a6"
+      "input_hashes_checked": 2,
+      "artifact_hashes_checked": 17,
+      "tables_csv": 9,
+      "sha256": "ba9ee2023788649196dd0281fa9dbc7d24a59af47b3f824c99e9bbf8eb30b0f2"
     }
   ],
   "figures": [
@@ -200,16 +200,6 @@
       "png": "reports/eda/figures/13_coherencia.png",
       "svg": "reports/eda/figures/13_coherencia.svg",
       "width_px": 3572,
-      "height_px": 1228,
-      "dpi": [
-        299.9994,
-        299.9994
-      ]
-    },
-    {
-      "png": "reports/eda/figures/14_descriptores.png",
-      "svg": "reports/eda/figures/14_descriptores.svg",
-      "width_px": 3872,
       "height_px": 1228,
       "dpi": [
         299.9994,
@@ -555,12 +545,27 @@
         299.9994,
         299.9994
       ]
+    },
+    {
+      "png": "reports/eda_transformaciones/figures/F04_caracteristicas.png",
+      "svg": "reports/eda_transformaciones/figures/F04_caracteristicas.svg",
+      "width_px": 3870,
+      "height_px": 1226,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
     }
   ],
   "local_links": [
     {
       "source": "README.md",
-      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "notebooks/02_EDA.ipynb",
       "exists": true
     },
     {
@@ -580,12 +585,32 @@
     },
     {
       "source": "README.md",
+      "target": "docs/figures/malla_fuerzas_variables.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/figures/malla_fuerzas_variables.svg",
+      "exists": true
+    },
+    {
+      "source": "README.md",
       "target": "docs/introduccion_experimento.md",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/eda/figures/00_contexto.png",
+      "target": "data/interim/preliminary/dataset_interim.csv",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "data/raw/dati_campagna_venditti.m",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/diccionario_datos.md",
       "exists": true
     },
     {
@@ -595,27 +620,67 @@
     },
     {
       "source": "README.md",
+      "target": "reports/eda/figures/02_objetivo.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/05_familias.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/08_dispersion.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/24_ciclos.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/26_disipacion.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/20_influencia.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
       "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "target": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/02_EDA_Avanzado.html",
+      "target": "docs",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "target": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "target": "reports/eda/tables/20_influencia.csv",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/tables/22_sensibilidad_geometrica.csv",
       "exists": true
     },
     {
@@ -634,18 +699,33 @@
       "exists": true
     },
     {
-      "source": "README.md",
-      "target": "demo/index.html",
-      "exists": true
-    },
-    {
       "source": "docs/diccionario_datos.md",
-      "target": "docs/diccionario_datos.csv",
+      "target": "docs/introduccion_experimento.md",
       "exists": true
     },
     {
       "source": "docs/diccionario_datos.md",
       "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "data/interim/preliminary/dataset_interim.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "config/data_schema.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "data/raw/dati_campagna_venditti.m",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "docs/diccionario_datos.csv",
       "exists": true
     },
     {
@@ -870,7 +950,7 @@
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "target": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "exists": true
     },
     {
@@ -881,6 +961,11 @@
     {
       "source": "docs/informe_eda.md",
       "target": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
       "exists": true
     },
     {
@@ -965,27 +1050,17 @@
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "config/model_config.yml",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
-      "target": "config/data_schema.yml",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
-      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "exists": true
-    },
-    {
-      "source": "docs/informe_eda.md",
       "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "exists": true
     },
     {
       "source": "docs/informe_eda.md",
-      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "target": "notebooks/02_EDA.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "exists": true
     },
     {
@@ -1054,25 +1129,25 @@
     },
     {
       "category": "notebook_schema",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Esquema nbformat válido"
     },
     {
       "category": "notebook_execution",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Celdas de código ejecutadas y sin salidas de error"
     },
     {
       "category": "notebook_schema",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Esquema nbformat válido"
     },
     {
       "category": "notebook_execution",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Celdas de código ejecutadas y sin salidas de error"
     },
@@ -1084,7 +1159,14 @@
     },
     {
       "category": "local_link",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/02_EDA.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1112,6 +1194,20 @@
     },
     {
       "category": "local_link",
+      "path": "docs/figures/malla_fuerzas_variables.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/figures/malla_fuerzas_variables.svg",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
       "path": "docs/introduccion_experimento.md",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1119,7 +1215,21 @@
     },
     {
       "category": "local_link",
-      "path": "reports/eda/figures/00_contexto.png",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1133,6 +1243,55 @@
     },
     {
       "category": "local_link",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/20_influencia.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1140,28 +1299,35 @@
     },
     {
       "category": "local_link",
-      "path": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "reports/02_EDA_Avanzado.html",
+      "path": "docs",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "path": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "path": "reports/eda/tables/20_influencia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
@@ -1188,13 +1354,6 @@
       "source_document": "README.md"
     },
     {
-      "category": "local_link",
-      "path": "demo/index.html",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "README.md"
-    },
-    {
       "category": "markdown",
       "path": "docs/diccionario_datos.md",
       "passed": true,
@@ -1202,7 +1361,7 @@
     },
     {
       "category": "local_link",
-      "path": "docs/diccionario_datos.csv",
+      "path": "docs/introduccion_experimento.md",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/diccionario_datos.md"
@@ -1210,6 +1369,34 @@
     {
       "category": "local_link",
       "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/data_schema.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/diccionario_datos.md"
@@ -1536,7 +1723,7 @@
     },
     {
       "category": "local_link",
-      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "path": "reports/eda_calidad/tables/11_alertas_robustas.csv",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -1551,6 +1738,13 @@
     {
       "category": "local_link",
       "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -1669,27 +1863,6 @@
     },
     {
       "category": "local_link",
-      "path": "config/model_config.yml",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
-      "path": "config/data_schema.yml",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
-      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
-      "passed": true,
-      "detail": "Destino local disponible",
-      "source_document": "docs/informe_eda.md"
-    },
-    {
-      "category": "local_link",
       "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
@@ -1697,7 +1870,14 @@
     },
     {
       "category": "local_link",
-      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "path": "notebooks/02_EDA.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/03_Transformaciones_Exploratorias.ipynb",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "docs/informe_eda.md"
@@ -1863,8 +2043,8 @@
       "path": "reports/eda/figures/02_objetivo.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "e0a377ed0e821a0a8f88175d43e4b0a2a299328b4a7a8851e8923e187183a7fc",
-      "actual_sha256": "e0a377ed0e821a0a8f88175d43e4b0a2a299328b4a7a8851e8923e187183a7fc"
+      "expected_sha256": "cb0fe485b8bf0d2641b64200525a6739c4e0de03b0338f3b718d91f04ad2c61a",
+      "actual_sha256": "cb0fe485b8bf0d2641b64200525a6739c4e0de03b0338f3b718d91f04ad2c61a"
     },
     {
       "category": "artifact_hash",
@@ -1879,8 +2059,8 @@
       "path": "reports/eda/figures/03_distribuciones_geometricas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "7c0e9f9422a5c7a07d6d9941f6f010b2e043ee59f0594b38e9f2085d8beb2ff1",
-      "actual_sha256": "7c0e9f9422a5c7a07d6d9941f6f010b2e043ee59f0594b38e9f2085d8beb2ff1"
+      "expected_sha256": "ca901a4f1901604ef2dbe078cc866ff8765a36a19aafae441bbf1348a42a2fc4",
+      "actual_sha256": "ca901a4f1901604ef2dbe078cc866ff8765a36a19aafae441bbf1348a42a2fc4"
     },
     {
       "category": "artifact_hash",
@@ -1895,8 +2075,8 @@
       "path": "reports/eda/figures/04_soporte_diseno.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "28676152a0c186dd8865607ba3b389a748283d9abf414f628e76763d73d97bf5",
-      "actual_sha256": "28676152a0c186dd8865607ba3b389a748283d9abf414f628e76763d73d97bf5"
+      "expected_sha256": "834124c32c712f2b356ff62ea6683bd2e0b01cb5e0de69a9f49cf05092dd05b1",
+      "actual_sha256": "834124c32c712f2b356ff62ea6683bd2e0b01cb5e0de69a9f49cf05092dd05b1"
     },
     {
       "category": "artifact_hash",
@@ -1911,8 +2091,8 @@
       "path": "reports/eda/figures/05_familias.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "4672d81fb443e665b5c561dd54402f256c7b1a7343a5b0677f457e0b212d292f",
-      "actual_sha256": "4672d81fb443e665b5c561dd54402f256c7b1a7343a5b0677f457e0b212d292f"
+      "expected_sha256": "d977b686e15cfbb6a90aaa4c9319962c68a946111b3b93594ea6f5812c91686e",
+      "actual_sha256": "d977b686e15cfbb6a90aaa4c9319962c68a946111b3b93594ea6f5812c91686e"
     },
     {
       "category": "artifact_hash",
@@ -1927,8 +2107,8 @@
       "path": "reports/eda/figures/06_contrastes.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "0e53ad3ca9ca8f17f984545e1a53b0476b3dcc0e0bc2823d97794a6829aad144",
-      "actual_sha256": "0e53ad3ca9ca8f17f984545e1a53b0476b3dcc0e0bc2823d97794a6829aad144"
+      "expected_sha256": "34d16d5dbd10c5340346e1d833b7493cf0b83371ac3c1840aa4fe324824616ae",
+      "actual_sha256": "34d16d5dbd10c5340346e1d833b7493cf0b83371ac3c1840aa4fe324824616ae"
     },
     {
       "category": "artifact_hash",
@@ -1943,8 +2123,8 @@
       "path": "reports/eda/figures/07_atipicos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "eb46ca9192e4a4809c915552ac101ad67825f37abd9c08019fa484dc22f8b180",
-      "actual_sha256": "eb46ca9192e4a4809c915552ac101ad67825f37abd9c08019fa484dc22f8b180"
+      "expected_sha256": "342be54427f15126fd4585649977c4495a30920c27d8b47fd4c9988a8ad379bc",
+      "actual_sha256": "342be54427f15126fd4585649977c4495a30920c27d8b47fd4c9988a8ad379bc"
     },
     {
       "category": "artifact_hash",
@@ -1959,8 +2139,8 @@
       "path": "reports/eda/figures/08_dispersion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "0ecadb52c5dc2fe751554ec9fbe2b8c2bc8fa0236e612d6095cd9f57691d709a",
-      "actual_sha256": "0ecadb52c5dc2fe751554ec9fbe2b8c2bc8fa0236e612d6095cd9f57691d709a"
+      "expected_sha256": "3992e053d5d6822696ac39de40017ab749365cf8e9d1fde1f1cc62cbf18a8187",
+      "actual_sha256": "3992e053d5d6822696ac39de40017ab749365cf8e9d1fde1f1cc62cbf18a8187"
     },
     {
       "category": "artifact_hash",
@@ -1975,8 +2155,8 @@
       "path": "reports/eda/figures/09_asociacion_condicionada.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "dfee8ab5542a175601ccc9fd3c3360725214b68d78ea14e0127883a2e7a3c274",
-      "actual_sha256": "dfee8ab5542a175601ccc9fd3c3360725214b68d78ea14e0127883a2e7a3c274"
+      "expected_sha256": "d0a37ff1b63407c165206d6549c254171c2042197b5984848afb2a9cd95779f8",
+      "actual_sha256": "d0a37ff1b63407c165206d6549c254171c2042197b5984848afb2a9cd95779f8"
     },
     {
       "category": "artifact_hash",
@@ -1991,8 +2171,8 @@
       "path": "reports/eda/figures/10_inversion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "fb4b0584065be6364151392be0e154cea7801892e2e16f6be5e8cb96bd8d3182",
-      "actual_sha256": "fb4b0584065be6364151392be0e154cea7801892e2e16f6be5e8cb96bd8d3182"
+      "expected_sha256": "7ce2fb8aadce513e9b0e24dbace295a9624cae970dfaf14ad79bff40292cabaf",
+      "actual_sha256": "7ce2fb8aadce513e9b0e24dbace295a9624cae970dfaf14ad79bff40292cabaf"
     },
     {
       "category": "artifact_hash",
@@ -2007,8 +2187,8 @@
       "path": "reports/eda/figures/11_interacciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "92f17068bd2a1b10b0c873c75b3d42af8b78fcfc1013cddd9e8f51e2c96f3a2b",
-      "actual_sha256": "92f17068bd2a1b10b0c873c75b3d42af8b78fcfc1013cddd9e8f51e2c96f3a2b"
+      "expected_sha256": "5592b86c33cdf51339754790654c436fb8e31742c3d18f7e3ddc0fb1b64d5e1f",
+      "actual_sha256": "5592b86c33cdf51339754790654c436fb8e31742c3d18f7e3ddc0fb1b64d5e1f"
     },
     {
       "category": "artifact_hash",
@@ -2023,8 +2203,8 @@
       "path": "reports/eda/figures/12_restricciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "8bb427a4f98ba2e9cbedc70e1e4588c2caa4ed7e004b99bb9e1d3d1ff0864806",
-      "actual_sha256": "8bb427a4f98ba2e9cbedc70e1e4588c2caa4ed7e004b99bb9e1d3d1ff0864806"
+      "expected_sha256": "d1e5f34e86c540d0ddf7319a0998dfc2af242c23c07777435bfb868d548323e9",
+      "actual_sha256": "d1e5f34e86c540d0ddf7319a0998dfc2af242c23c07777435bfb868d548323e9"
     },
     {
       "category": "artifact_hash",
@@ -2039,24 +2219,8 @@
       "path": "reports/eda/figures/13_coherencia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "f36e62f7fbc27db180e9cc08e948d05d1930732c8313963114b9fd385efbf651",
-      "actual_sha256": "f36e62f7fbc27db180e9cc08e948d05d1930732c8313963114b9fd385efbf651"
-    },
-    {
-      "category": "artifact_hash",
-      "path": "reports/eda/figures/14_descriptores.png",
-      "passed": true,
-      "detail": "SHA-256 coincide",
-      "expected_sha256": "d221d05cc577134580b15d495fb120015b939df1693ffc0b6a4377c710ce6176",
-      "actual_sha256": "d221d05cc577134580b15d495fb120015b939df1693ffc0b6a4377c710ce6176"
-    },
-    {
-      "category": "artifact_hash",
-      "path": "reports/eda/figures/14_descriptores.svg",
-      "passed": true,
-      "detail": "SHA-256 coincide",
-      "expected_sha256": "c21b566ceb8bd8e713ae66f07ce72fb0ba4ff66e6c0f1aec1fe5b6969fb5c2a0",
-      "actual_sha256": "c21b566ceb8bd8e713ae66f07ce72fb0ba4ff66e6c0f1aec1fe5b6969fb5c2a0"
+      "expected_sha256": "932a728042075ff0565dde07feb161868c5aa716ae6828f2523f36fdb53a39e3",
+      "actual_sha256": "932a728042075ff0565dde07feb161868c5aa716ae6828f2523f36fdb53a39e3"
     },
     {
       "category": "artifact_hash",
@@ -2071,8 +2235,8 @@
       "path": "reports/eda/figures/15_correlaciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "0dcafb05b85b60aad573a0161eacca5b72cf5ca11784838b6d56edd4ecec2609",
-      "actual_sha256": "0dcafb05b85b60aad573a0161eacca5b72cf5ca11784838b6d56edd4ecec2609"
+      "expected_sha256": "1a66b1c84c03ddf2b2826c4df487f2baed70dfe656c526d454f315f458736170",
+      "actual_sha256": "1a66b1c84c03ddf2b2826c4df487f2baed70dfe656c526d454f315f458736170"
     },
     {
       "category": "artifact_hash",
@@ -2087,8 +2251,8 @@
       "path": "reports/eda/figures/16_dimension.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "4ce1163669d434aa79a469817b289bdd871ef084391eef70afe99af41f40f9a9",
-      "actual_sha256": "4ce1163669d434aa79a469817b289bdd871ef084391eef70afe99af41f40f9a9"
+      "expected_sha256": "aaddfdb8e6156af6fb2829d8e0c5f546ffaf356d7a5dece22ed3527ab43c763f",
+      "actual_sha256": "aaddfdb8e6156af6fb2829d8e0c5f546ffaf356d7a5dece22ed3527ab43c763f"
     },
     {
       "category": "artifact_hash",
@@ -2103,8 +2267,8 @@
       "path": "reports/eda/figures/17_PCA.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "bb74032962b411f1c2e7fe43b1edec45121286088d725c4abdf6b0dfc897d3ad",
-      "actual_sha256": "bb74032962b411f1c2e7fe43b1edec45121286088d725c4abdf6b0dfc897d3ad"
+      "expected_sha256": "33e31f16e3196c65dec4ba7a54ec5930c3afb50c4890f1575a40847ada55f890",
+      "actual_sha256": "33e31f16e3196c65dec4ba7a54ec5930c3afb50c4890f1575a40847ada55f890"
     },
     {
       "category": "artifact_hash",
@@ -2119,8 +2283,8 @@
       "path": "reports/eda/figures/18_clusters.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "6523381f22931e592aec34700b81fc548daebd8c58eae2f33eaabe936ee00d80",
-      "actual_sha256": "6523381f22931e592aec34700b81fc548daebd8c58eae2f33eaabe936ee00d80"
+      "expected_sha256": "5eb14489803fb5de87abe3dcdf4c058b786d5eb418b72a76b0a5c569d866e1b0",
+      "actual_sha256": "5eb14489803fb5de87abe3dcdf4c058b786d5eb418b72a76b0a5c569d866e1b0"
     },
     {
       "category": "artifact_hash",
@@ -2135,8 +2299,8 @@
       "path": "reports/eda/figures/19_vecinos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "61a70a05dc7ec3a21eb80592d5081701c6fde1467d940163f784752647e029c9",
-      "actual_sha256": "61a70a05dc7ec3a21eb80592d5081701c6fde1467d940163f784752647e029c9"
+      "expected_sha256": "0b2a1eacda70b19139dbd4988aae919bf5d97a40fb7d0430c61380baf592803d",
+      "actual_sha256": "0b2a1eacda70b19139dbd4988aae919bf5d97a40fb7d0430c61380baf592803d"
     },
     {
       "category": "artifact_hash",
@@ -2151,8 +2315,8 @@
       "path": "reports/eda/figures/20_influencia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "4212ca23831472d04bc01d687bdbebb033fbb09957308a63e83f569ef9766943",
-      "actual_sha256": "4212ca23831472d04bc01d687bdbebb033fbb09957308a63e83f569ef9766943"
+      "expected_sha256": "abaa4036d55d21a8931ee515bd8ee216b5d8931f6184029ee4aa587488625569",
+      "actual_sha256": "abaa4036d55d21a8931ee515bd8ee216b5d8931f6184029ee4aa587488625569"
     },
     {
       "category": "artifact_hash",
@@ -2167,8 +2331,8 @@
       "path": "reports/eda/figures/21_omision.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "e3e7ac60d3cdb334e189e0a683541a2e73cdde069fd3eb82ce0178f48a338642",
-      "actual_sha256": "e3e7ac60d3cdb334e189e0a683541a2e73cdde069fd3eb82ce0178f48a338642"
+      "expected_sha256": "a182e8e6a98698784aa2cc1b51af026713cdc96b8da89d1bff70a081e0b59b8a",
+      "actual_sha256": "a182e8e6a98698784aa2cc1b51af026713cdc96b8da89d1bff70a081e0b59b8a"
     },
     {
       "category": "artifact_hash",
@@ -2183,8 +2347,8 @@
       "path": "reports/eda/figures/23_respuestas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "b8b0f4736812ff7c4e1406d68d065d5959beb7d448d333770ab946d94ad10edb",
-      "actual_sha256": "b8b0f4736812ff7c4e1406d68d065d5959beb7d448d333770ab946d94ad10edb"
+      "expected_sha256": "1f7d6e12a3b8b33aec711cfe4451535a2806df4b40297bfbcdb128e84b43ee85",
+      "actual_sha256": "1f7d6e12a3b8b33aec711cfe4451535a2806df4b40297bfbcdb128e84b43ee85"
     },
     {
       "category": "artifact_hash",
@@ -2199,8 +2363,8 @@
       "path": "reports/eda/figures/24_ciclos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "946cfb702716c8b1ef4f8725bb7dc3ef82d33cac9d8dad7fdb4c9f231e8217fb",
-      "actual_sha256": "946cfb702716c8b1ef4f8725bb7dc3ef82d33cac9d8dad7fdb4c9f231e8217fb"
+      "expected_sha256": "476ec7f2010f73f49f4b52447baa8c4610c29b60b3407ce45e65239d04221732",
+      "actual_sha256": "476ec7f2010f73f49f4b52447baa8c4610c29b60b3407ce45e65239d04221732"
     },
     {
       "category": "artifact_hash",
@@ -2215,8 +2379,8 @@
       "path": "reports/eda/figures/25_asociacion_ciclos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "32001fae21f95a4e610262ca7d7eceea9026bf3dd5ea58c016de0c7caa1c4b1c",
-      "actual_sha256": "32001fae21f95a4e610262ca7d7eceea9026bf3dd5ea58c016de0c7caa1c4b1c"
+      "expected_sha256": "71f87cfd5150e19871002f019b1109169a0220fcd5b4ae781ac75f3ed95546b0",
+      "actual_sha256": "71f87cfd5150e19871002f019b1109169a0220fcd5b4ae781ac75f3ed95546b0"
     },
     {
       "category": "artifact_hash",
@@ -2231,8 +2395,8 @@
       "path": "reports/eda/figures/26_disipacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "20c196266798e4c7eaf59ac91f593e0769a6bbf0337bc857df51cb25f724e0bb",
-      "actual_sha256": "20c196266798e4c7eaf59ac91f593e0769a6bbf0337bc857df51cb25f724e0bb"
+      "expected_sha256": "860cdb4c327d33f97b0cb73c453cb6442c220b16d53632a9f35902dda9b6ba76",
+      "actual_sha256": "860cdb4c327d33f97b0cb73c453cb6442c220b16d53632a9f35902dda9b6ba76"
     },
     {
       "category": "artifact_hash",
@@ -2247,8 +2411,8 @@
       "path": "reports/eda/figures/27_fractura.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "b49b18b2ad6dd969fb6999d4638283e200538db87a914474687335c361af96f1",
-      "actual_sha256": "b49b18b2ad6dd969fb6999d4638283e200538db87a914474687335c361af96f1"
+      "expected_sha256": "dd9ada8c751e00ba92bc74e62a2acb78b98b4337e9fe55f065962fa57e1373c0",
+      "actual_sha256": "dd9ada8c751e00ba92bc74e62a2acb78b98b4337e9fe55f065962fa57e1373c0"
     },
     {
       "category": "artifact_hash",
@@ -2377,22 +2541,6 @@
       "detail": "SHA-256 coincide",
       "expected_sha256": "fe01ef6fc387a77aba0f051ab3fec1fc5e4671e4ea4d9ada8ebbcd5d4f2ddbd1",
       "actual_sha256": "fe01ef6fc387a77aba0f051ab3fec1fc5e4671e4ea4d9ada8ebbcd5d4f2ddbd1"
-    },
-    {
-      "category": "artifact_hash",
-      "path": "reports/eda/tables/14_carga_por_volumen.csv",
-      "passed": true,
-      "detail": "SHA-256 coincide",
-      "expected_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6",
-      "actual_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6"
-    },
-    {
-      "category": "artifact_hash",
-      "path": "reports/eda/tables/14_descriptores.csv",
-      "passed": true,
-      "detail": "SHA-256 coincide",
-      "expected_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b",
-      "actual_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b"
     },
     {
       "category": "artifact_hash",
@@ -2657,8 +2805,8 @@
       "path": "reports/eda_calidad/figures/FQ01_completitud.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef",
-      "actual_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef"
+      "expected_sha256": "727b993992747d006514668c24eab4c863ca68b73e9aea1ccbcb85115847ba0d",
+      "actual_sha256": "727b993992747d006514668c24eab4c863ca68b73e9aea1ccbcb85115847ba0d"
     },
     {
       "category": "artifact_hash",
@@ -2673,8 +2821,8 @@
       "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416",
-      "actual_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416"
+      "expected_sha256": "757e479a307b247e0ee922f962e66855bdfe5cc78d3406988c4141603a43eca9",
+      "actual_sha256": "757e479a307b247e0ee922f962e66855bdfe5cc78d3406988c4141603a43eca9"
     },
     {
       "category": "artifact_hash",
@@ -2689,8 +2837,8 @@
       "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2",
-      "actual_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2"
+      "expected_sha256": "b2213c1209dfada096c7f62d04a8bb5702082a0c2206e21f6abddf213da8e1b8",
+      "actual_sha256": "b2213c1209dfada096c7f62d04a8bb5702082a0c2206e21f6abddf213da8e1b8"
     },
     {
       "category": "artifact_hash",
@@ -2705,8 +2853,8 @@
       "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5",
-      "actual_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5"
+      "expected_sha256": "16c5e023798d45c9c3f3afca2554f92c7cb0247803d66793815ac34317f63849",
+      "actual_sha256": "16c5e023798d45c9c3f3afca2554f92c7cb0247803d66793815ac34317f63849"
     },
     {
       "category": "artifact_hash",
@@ -2721,8 +2869,8 @@
       "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098",
-      "actual_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098"
+      "expected_sha256": "38b4b2db78fb40e9ed7edb03613c4c8e6d17233dee9de7bc6f2afec8ab7a77c4",
+      "actual_sha256": "38b4b2db78fb40e9ed7edb03613c4c8e6d17233dee9de7bc6f2afec8ab7a77c4"
     },
     {
       "category": "artifact_hash",
@@ -2737,8 +2885,8 @@
       "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3",
-      "actual_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3"
+      "expected_sha256": "57fc8e004abc31754d3f5c5622fb661dbb945e2a054843652828df70c7e9c85d",
+      "actual_sha256": "57fc8e004abc31754d3f5c5622fb661dbb945e2a054843652828df70c7e9c85d"
     },
     {
       "category": "artifact_hash",
@@ -2753,8 +2901,8 @@
       "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01",
-      "actual_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01"
+      "expected_sha256": "0f0ef286068f2474f305f987de99935dc35fda4d4eca9783a2dd598a39be4ed9",
+      "actual_sha256": "0f0ef286068f2474f305f987de99935dc35fda4d4eca9783a2dd598a39be4ed9"
     },
     {
       "category": "artifact_hash",
@@ -2769,16 +2917,16 @@
       "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297",
-      "actual_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297"
+      "expected_sha256": "893b74e988cd4cd4c73b74955683a58aa11289b662c6bc3ee436451036dbcace",
+      "actual_sha256": "893b74e988cd4cd4c73b74955683a58aa11289b662c6bc3ee436451036dbcace"
     },
     {
       "category": "artifact_hash",
       "path": "reports/eda_calidad/tables/01_ejecucion.csv",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a",
-      "actual_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a"
+      "expected_sha256": "c0299ba679b9b169e1cdbbf7e255182417fd92c0aebb43edd2f13fa70464831b",
+      "actual_sha256": "c0299ba679b9b169e1cdbbf7e255182417fd92c0aebb43edd2f13fa70464831b"
     },
     {
       "category": "artifact_hash",
@@ -3025,8 +3173,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_input_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa",
-      "actual_sha256": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa"
+      "expected_sha256": "c3479fea9ed946066f3dfa7ea0c9c99209ea960b8ad41057c21eb4e28f74b245",
+      "actual_sha256": "c3479fea9ed946066f3dfa7ea0c9c99209ea960b8ad41057c21eb4e28f74b245"
     },
     {
       "category": "artifact_hash",
@@ -3041,8 +3189,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_input_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085",
-      "actual_sha256": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085"
+      "expected_sha256": "5e5ea99ced786411e8f2d52933bcd7c897601257f1aaef35fa1ef82851258aa0",
+      "actual_sha256": "5e5ea99ced786411e8f2d52933bcd7c897601257f1aaef35fa1ef82851258aa0"
     },
     {
       "category": "artifact_hash",
@@ -3057,8 +3205,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_output_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d",
-      "actual_sha256": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d"
+      "expected_sha256": "b06dc1e2f3cdd62e31d8cf6679ee3cec852bda9637a788e0d4708fdb97015e1a",
+      "actual_sha256": "b06dc1e2f3cdd62e31d8cf6679ee3cec852bda9637a788e0d4708fdb97015e1a"
     },
     {
       "category": "artifact_hash",
@@ -3073,8 +3221,8 @@
       "path": "reports/eda_relaciones/figures/R01_input_output_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e",
-      "actual_sha256": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e"
+      "expected_sha256": "57e426c4ec21ac30b09683f482c2f8024a74c3de4678f7ec48359678ae413060",
+      "actual_sha256": "57e426c4ec21ac30b09683f482c2f8024a74c3de4678f7ec48359678ae413060"
     },
     {
       "category": "artifact_hash",
@@ -3089,8 +3237,8 @@
       "path": "reports/eda_relaciones/figures/R01_output_output_pearson.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86",
-      "actual_sha256": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86"
+      "expected_sha256": "22ffb4dc745bc5b107394ad124f14eb5a67952b04f494f3d498c61d0b2f9a037",
+      "actual_sha256": "22ffb4dc745bc5b107394ad124f14eb5a67952b04f494f3d498c61d0b2f9a037"
     },
     {
       "category": "artifact_hash",
@@ -3105,8 +3253,8 @@
       "path": "reports/eda_relaciones/figures/R01_output_output_spearman.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e",
-      "actual_sha256": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e"
+      "expected_sha256": "265816baa57bd4d4f2e048476f407b681387e24617636af86e73234a8dea7440",
+      "actual_sha256": "265816baa57bd4d4f2e048476f407b681387e24617636af86e73234a8dea7440"
     },
     {
       "category": "artifact_hash",
@@ -3121,8 +3269,8 @@
       "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd",
-      "actual_sha256": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd"
+      "expected_sha256": "8c6e04efd1fc4c50c0b9381d2b91e80b322a7ac23753082c4e7ea1bcced9a898",
+      "actual_sha256": "8c6e04efd1fc4c50c0b9381d2b91e80b322a7ac23753082c4e7ea1bcced9a898"
     },
     {
       "category": "artifact_hash",
@@ -3137,8 +3285,8 @@
       "path": "reports/eda_relaciones/figures/R03_tamano_forma.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98",
-      "actual_sha256": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98"
+      "expected_sha256": "269e5057c01a7fa963cf9e05c16f875318c37ca13db4fa36c3aa09f24bffcc16",
+      "actual_sha256": "269e5057c01a7fa963cf9e05c16f875318c37ca13db4fa36c3aa09f24bffcc16"
     },
     {
       "category": "artifact_hash",
@@ -3153,8 +3301,8 @@
       "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0",
-      "actual_sha256": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0"
+      "expected_sha256": "c1543d2008ef6c18efb4626f3aa4fbba3043973b98b11345751a1bbfac244c61",
+      "actual_sha256": "c1543d2008ef6c18efb4626f3aa4fbba3043973b98b11345751a1bbfac244c61"
     },
     {
       "category": "artifact_hash",
@@ -3169,8 +3317,8 @@
       "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4",
-      "actual_sha256": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4"
+      "expected_sha256": "a1a36e28264fbd4cb701e37bbb3e38a3eb41d76c574526b9f183f54856f956ca",
+      "actual_sha256": "a1a36e28264fbd4cb701e37bbb3e38a3eb41d76c574526b9f183f54856f956ca"
     },
     {
       "category": "artifact_hash",
@@ -3185,16 +3333,16 @@
       "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a",
-      "actual_sha256": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a"
+      "expected_sha256": "8cff16acbe3eff3f7487519ccc3975f584b29daea8ff9e6f49d1dd1cb235aed1",
+      "actual_sha256": "8cff16acbe3eff3f7487519ccc3975f584b29daea8ff9e6f49d1dd1cb235aed1"
     },
     {
       "category": "artifact_hash",
       "path": "reports/eda_relaciones/hallazgos.json",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776",
-      "actual_sha256": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776"
+      "expected_sha256": "aacc2b5e82a389f7a6439547462cf77dcf0bf3a5c8f2a595e44b673311f97299",
+      "actual_sha256": "aacc2b5e82a389f7a6439547462cf77dcf0bf3a5c8f2a595e44b673311f97299"
     },
     {
       "category": "artifact_hash",
@@ -3391,8 +3539,8 @@
       "path": "src/eda_relaciones.py",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21",
-      "actual_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21"
+      "expected_sha256": "987cc086e3faef9ec64a8ed66691fdc2f8f22c32e72851cc25288acc9f84ad85",
+      "actual_sha256": "987cc086e3faef9ec64a8ed66691fdc2f8f22c32e72851cc25288acc9f84ad85"
     },
     {
       "category": "manifest",
@@ -3415,6 +3563,14 @@
       "actual_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
     },
     {
+      "category": "input_hash",
+      "path": "data/processed/preliminary/model_table.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+      "actual_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8"
+    },
+    {
       "category": "manifest_inputs",
       "path": "reports/eda_transformaciones/manifest.json",
       "passed": true,
@@ -3433,8 +3589,8 @@
       "path": "reports/eda_transformaciones/figures/F01_representaciones.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0",
-      "actual_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0"
+      "expected_sha256": "b2cd2237a89590e1fc93b72a316163d32b46ea6379d401721d2d87137bfa47d9",
+      "actual_sha256": "b2cd2237a89590e1fc93b72a316163d32b46ea6379d401721d2d87137bfa47d9"
     },
     {
       "category": "artifact_hash",
@@ -3449,8 +3605,8 @@
       "path": "reports/eda_transformaciones/figures/F02_logaritmos.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1",
-      "actual_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1"
+      "expected_sha256": "3d0119b4ad2ec2e78c69555322200b94f0f22716af381bdc65f0250d7816a2a1",
+      "actual_sha256": "3d0119b4ad2ec2e78c69555322200b94f0f22716af381bdc65f0250d7816a2a1"
     },
     {
       "category": "artifact_hash",
@@ -3465,8 +3621,24 @@
       "path": "reports/eda_transformaciones/figures/F03_escalamiento.svg",
       "passed": true,
       "detail": "SHA-256 coincide",
-      "expected_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f",
-      "actual_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f"
+      "expected_sha256": "a65098707c60e59f92f1c1123fd8f721dfa2e69c32e89dfa8b8376f18415da34",
+      "actual_sha256": "a65098707c60e59f92f1c1123fd8f721dfa2e69c32e89dfa8b8376f18415da34"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F04_caracteristicas.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e8bb59520a078f3dd656535e83cab18f619d76fc4c8c1d45839b7b24d412fc9a",
+      "actual_sha256": "e8bb59520a078f3dd656535e83cab18f619d76fc4c8c1d45839b7b24d412fc9a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F04_caracteristicas.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "179724a853f4cbaebb0492da90e98a8cbf7aca37ceae687648b1a49828ff1a53",
+      "actual_sha256": "179724a853f4cbaebb0492da90e98a8cbf7aca37ceae687648b1a49828ff1a53"
     },
     {
       "category": "artifact_hash",
@@ -3523,6 +3695,22 @@
       "detail": "SHA-256 coincide",
       "expected_sha256": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819",
       "actual_sha256": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T08_asociaciones_caracteristicas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b",
+      "actual_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T09_carga_por_volumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6",
+      "actual_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6"
     },
     {
       "category": "manifest_artifacts",
@@ -3767,24 +3955,6 @@
     {
       "category": "figure_dpi",
       "path": "reports/eda/figures/13_coherencia.png",
-      "passed": true,
-      "detail": "Resolución declarada mínima: 299 dpi"
-    },
-    {
-      "category": "figure_pair",
-      "path": "reports/eda/figures/14_descriptores.png",
-      "passed": true,
-      "detail": "SVG correspondiente disponible"
-    },
-    {
-      "category": "figure_png",
-      "path": "reports/eda/figures/14_descriptores.png",
-      "passed": true,
-      "detail": "PNG íntegro"
-    },
-    {
-      "category": "figure_dpi",
-      "path": "reports/eda/figures/14_descriptores.png",
       "passed": true,
       "detail": "Resolución declarada mínima: 299 dpi"
     },
@@ -4415,6 +4585,24 @@
     {
       "category": "figure_dpi",
       "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_transformaciones/figures/F04_caracteristicas.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_transformaciones/figures/F04_caracteristicas.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_transformaciones/figures/F04_caracteristicas.png",
       "passed": true,
       "detail": "Resolución declarada mínima: 299 dpi"
     }

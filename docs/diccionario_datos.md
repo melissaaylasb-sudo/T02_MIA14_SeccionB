@@ -1,5 +1,81 @@
 # Diccionario científico de los datos
 
+## Conceptos del estudio
+
+El aspecto estudiado es la relación entre la geometría y la **carga de primera falla bajo tracción**. Cada caso reúne una configuración geométrica y las respuestas disponibles de su ensayo.
+
+| Concepto | Significado en estos datos |
+|---|---|
+| **Malla o estructura pantográfica** | Conjunto de barras cruzadas, llamadas fibras, conectadas mediante uniones llamadas pivotes. |
+| **Celda** | Unidad geométrica repetida de la malla. `n_cells_Y` indica cuántas hay en la dirección Y. |
+| **Familia** | Agrupación utilizada en el análisis por `n_cells_Y`: 4, 5 o 6. Compartir familia no significa tener todas las dimensiones iguales ni ser réplicas del mismo espécimen. |
+| **Tracción** | Solicitación que tiende a alargar la estructura al separar sus extremos. |
+| **Primera falla** | Primer evento de rotura identificado de una fibra o un pivote. La malla puede seguir transmitiendo carga después. |
+| **Carga de primera falla** | Fuerza registrada en ese evento, en newtons (N): `First_Failure_Load_N`, la variable objetivo. La falla es el evento; la carga es el valor numérico asociado. |
+
+Las familias describen la arquitectura interna, no un aumento de la longitud exterior. El [contexto experimental](introduccion_experimento.md) y la [trazabilidad de las fuentes](trazabilidad_datos.md) amplían estas definiciones.
+
+## Consulta rápida
+
+**Target: `First_Failure_Load_N`.** Fuerza, en newtons, asociada a la primera rotura identificada de una fibra o un pivote. Es la respuesta que se buscará estimar a partir de la geometría previa al ensayo; no representa la rotura completa ni necesariamente la fuerza máxima.
+
+**INPUT** identifica una entrada candidata disponible antes del ensayo, no una selección definitiva. **OUTPUT** identifica una respuesta experimental; **OUTPUT-target**, la respuesta objetivo. Un **metadato** identifica u organiza los registros y no describe su comportamiento mecánico.
+
+### Geometría e identificador
+
+Estos nombres corresponden a columnas reales de [`dataset_interim.csv`](../data/interim/preliminary/dataset_interim.csv).
+
+| Nombre exacto | Significado sencillo | Unidad | Tipo de dato | Rol |
+|---|---|---|---|---|
+| `Case_n` | Identificador que vincula la geometría con las respuestas del mismo caso. | Sin unidad | Entero nominal (`int64`) | metadato |
+| `n_cells_Y` | Número de celdas en la dirección Y del retículo. | Conteo | Entero discreto¹ | INPUT |
+| `Fiber_height` | Altura de la sección de una fibra. | mm | Real (`float64`) | INPUT |
+| `Fiber_base` | Base o ancho de la sección de una fibra. | mm | Real (`float64`) | INPUT |
+| `Fiber_total_length` | Longitud total declarada del conjunto de fibras. | mm | Real (`float64`) | INPUT |
+| `Fiber_total_volume` | Volumen declarado del conjunto de fibras. | mm³ | Real (`float64`) | INPUT |
+| `Pivot_height` | Altura del pivote que conecta las fibras. | mm | Real (`float64`) | INPUT |
+| `Pivot_radius` | Radio de la sección circular del pivote. | mm | Real (`float64`), constante | INPUT |
+| `Pivot_total_number` | Número total de pivotes de la estructura. | Conteo | Entero discreto¹ | INPUT |
+| `Pivot_total_volume` | Volumen declarado del conjunto de pivotes. | mm³ | Real (`float64`) | INPUT |
+| `Sample_total_volume` | Volumen global del espécimen registrado a partir de su geometría CAD. | mm³ | Real (`float64`) | INPUT |
+
+¹ Los conteos tienen significado entero; la lectura actual del CSV los almacena como `float64`. `n_cells_Y` describe la arquitectura interna, no el tamaño exterior. `Sample_total_volume` se conserva separado de la suma de los volúmenes de fibras y pivotes.
+
+`Fiber_base` **existe en la fuente, la tabla intermedia y el EDA**, pero no está seleccionada en `columns.predictors` del [`config/data_schema.yml`](../config/data_schema.yml) actual. `Pivot_radius` vale **0.5 mm** en el dominio observado: se conserva como dato geométrico, aunque su constancia impide estudiar una asociación estadística con la respuesta.
+
+### Respuestas de la tabla principal
+
+Todas las columnas siguientes están en `dataset_interim.csv`. Los valores faltantes se conservan como `NaN`; no equivalen a una fuerza o un desplazamiento de cero.
+
+| Nombre exacto | Significado sencillo | Unidad | Tipo de dato | Rol |
+|---|---|---|---|---|
+| `First_Failure_Load_N` | Fuerza asociada a la primera rotura identificada de fibra o pivote. | N | Real (`float64`) | **OUTPUT-target** |
+| `Ultimate_Load` | Fuerza reportada para el evento terminal o rotura final. No es necesariamente la fuerza máxima. | N | Real (`float64`) | OUTPUT |
+| `Maximum_Displacement` | Máximo desplazamiento consignado en el resumen del ensayo. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_1cycle_10mm` | Desplazamiento que permanece tras descargar el ciclo 1, con amplitud nominal de 10 mm. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_2cycle_20mm` | Desplazamiento que permanece tras descargar el ciclo 2, con amplitud nominal de 20 mm. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_3cycle_30mm` | Desplazamiento que permanece tras descargar el ciclo 3, con amplitud nominal de 30 mm. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_4cycle_40mm` | Desplazamiento que permanece tras descargar el ciclo 4, con amplitud nominal de 40 mm. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_5cycle_50mm` | Desplazamiento que permanece tras descargar el ciclo 5, con amplitud nominal de 50 mm. | mm | Real (`float64`) | OUTPUT |
+| `residual_Displacement_6cycle_60mm` | Desplazamiento que permanece tras descargar el ciclo 6, con amplitud nominal de 60 mm. | mm | Real (`float64`) | OUTPUT |
+
+Los residuales describen ciclos del mismo caso, no especímenes independientes. Las amplitudes del nombre son referencias nominales del ciclo; el valor de la columna es el desplazamiento residual medido.
+
+### Energías del archivo MATLAB
+
+Estas matrices proceden de [`dati_campagna_venditti.m`](../data/raw/dati_campagna_venditti.m) y se extraen por separado en el EDA: **no son columnas del CSV principal**. La unidad mJ está corroborada con la tesis; el script MATLAB no la declara explícitamente.
+
+| Nombre en la fuente o componente | Significado sencillo | Unidad | Tipo de dato | Rol |
+|---|---|---|---|---|
+| `Energy_Dissipated` | Energías disipadas tabuladas por caso y ciclo de carga–descarga. | mJ | Matriz de reales (`float64`) | OUTPUT |
+| `Energy_Dissipated(:,k)` | Energía disipada del ciclo `k`; `k = 1, …, 7`. Python conserva los componentes como `cycle_1` a `cycle_7`. | mJ | Real por caso y ciclo (`float64`) | OUTPUT |
+| `Energy_Fracture` | Energías tabuladas asociadas a los eventos de fractura de cada caso. | mJ | Matriz de reales (`float64`) | OUTPUT |
+| `Energy_Fracture(:,j)` | Energía del evento ordinal `j`; `j = 1, …, 13`. Python conserva los componentes como `event_1` a `event_13`. | mJ | Real por caso y evento (`float64`) | OUTPUT |
+
+En la notación MATLAB, `:` selecciona todos los casos y `k` o `j` identifica una columna. Los ciclos y eventos pertenecen al mismo caso. Una posición energética vacía no demuestra que el evento no haya ocurrido; la energía asociada a fractura tampoco se interpreta automáticamente como tenacidad o energía total del ensayo. Ninguna respuesta medida durante el ensayo es una entrada previa admisible para predecir la primera falla.
+
+## Definiciones y trazabilidad detalladas
+
 Cada entrada explica el campo original, su significado físico y su admisibilidad predictiva. El [CSV](diccionario_datos.csv) conserva los diecisiete campos de definición para consulta automática. Se incluyen las columnas escalares, las matrices energéticas y sus componentes, y las derivadas geométricas o de respuesta utilizadas/propuestas.
 
 **INPUT** es una característica disponible antes del ensayo; **OUTPUT** es una respuesta del ensayo. Una **derivada** se construye mediante una fórmula explícita y hereda el momento de disponibilidad de sus ingredientes. Un **metadato** describe procedencia u organización. Las tablas MATLAB samples y energy son contenedores, no variables físicas. Los alias cycle_k y event_j no constituyen nuevos especímenes.
@@ -97,7 +173,7 @@ La energía en **mJ** está expresamente verificada en S2. Las geometrías prese
 | Momento de disponibilidad | antes del ensayo: geometría de diseño |
 | Utilidad como predictor | candidata sujeta a conciliación documental |
 | Riesgo de fuga de información | bajo si se obtiene de diseño previo; no asegura validez física |
-| Advertencias y limitaciones | Discrepa con tabla general y fichas. Variable real aunque el esquema predictivo histórico no la incluya. |
+| Advertencias y limitaciones | Discrepa con tabla general y fichas. Variable real presente en la fuente y el snapshot; el esquema actual no la selecciona como predictor. |
 
 </details>
 

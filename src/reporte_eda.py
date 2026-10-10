@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 from html import escape
-import json
 from pathlib import Path
 import re
 
@@ -13,9 +12,10 @@ from nbclient import NotebookClient
 from nbconvert import HTMLExporter
 
 from .ingesta import ROOT
+from .eda import write_bytes_atomic
 
-NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA_Avanzado.ipynb",
-             "03_Diseno_de_Particiones_y_Preprocesamiento.ipynb"]
+NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA.ipynb",
+             "03_Transformaciones_Exploratorias.ipynb"]
 
 
 def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -> Path:
@@ -32,7 +32,7 @@ def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -
             on_cell_executed=progress,
         ).execute(cwd=str(ROOT))
         nbformat.validate(notebook)
-        nbformat.write(notebook, path)
+        write_bytes_atomic(path, nbformat.writes(notebook).encode("utf-8"))
     for cell in notebook.cells:
         if cell.cell_type == "code" and (
             cell.execution_count is None
@@ -42,21 +42,31 @@ def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -
     exporter = HTMLExporter()
     exporter.exclude_input = True
     html, _ = exporter.from_notebook_node(notebook)
-    title = notebook.cells[0].source.splitlines()[0].lstrip("# ")
+    title = notebook.metadata.get("title", Path(notebook_name).stem)
     html = re.sub(r"<title>.*?</title>", "<title>" + escape(title) + "</title>", html, count=1, flags=re.DOTALL)
     for other in (ROOT / "notebooks").glob("*.ipynb"):
         html = html.replace(f'href="{other.name}"', f'href="{other.stem}.html"')
     descriptions_list = []
-    manifests = (["eda/manifest.json", "eda_relaciones/manifest.json"] if notebook_name == NOTEBOOKS[1]
-                 else ["eda_transformaciones/manifest.json"] if notebook_name == NOTEBOOKS[2]
-                 else ["eda_calidad/manifest.json"])
-    for relative in manifests:
-        manifest_path = ROOT / "reports" / relative
-        if manifest_path.exists():
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            catalog = manifest.get("figures", {})
-            for item in catalog.values() if isinstance(catalog, dict) else catalog:
-                descriptions_list.append(item.get("caption", item.get("title", item.get("titulo", "Figura de auditoría"))) if isinstance(item, dict) else item)
+    # Las figuras de varios análisis pueden estar intercaladas en el notebook.
+    # Usar su leyenda inmediata conserva la correspondencia al reordenar celdas.
+    for cell in notebook.cells:
+        outputs = cell.get("outputs", [])
+        for index, output in enumerate(outputs):
+            if "image/png" not in output.get("data", {}):
+                continue
+            caption = "Figura exploratoria"
+            for following in outputs[index + 1:]:
+                data = following.get("data", {})
+                if "image/png" in data:
+                    break
+                candidate = data.get("text/markdown", "")
+                if isinstance(candidate, list):
+                    candidate = "".join(candidate)
+                if candidate.lstrip(" *").startswith("Figura"):
+                    caption = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", candidate)
+                    caption = caption.replace("**", "").replace("`", "").strip()
+                    break
+            descriptions_list.append(caption)
     descriptions = iter(descriptions_list)
 
     def alt_text(match):
@@ -88,8 +98,8 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
         '<div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br>'
         f'<a href="../notebooks/{escape(notebook_name)}">Notebook reproducible</a>'
         '<a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a>'
-        '<a href="02_EDA_Avanzado.html">02 · Análisis</a>'
-        '<a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones</a>'
+        '<a href="02_EDA.html">02 · Análisis</a>'
+        '<a href="03_Transformaciones_Exploratorias.html">03 · Transformaciones</a>'
         '<a href="../docs/informe_eda.md">Informe académico</a>'
         '<a href="../docs/diccionario_datos.md">Diccionario</a>'
         '<a href="eda/hallazgos.md">Hallazgos</a>'
@@ -100,7 +110,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
     )
     html = html.replace("<main>", "<main>" + navigation, 1)
     destination = ROOT / "reports" / (Path(notebook_name).stem + ".html")
-    destination.write_text(html, encoding="utf-8")
+    write_bytes_atomic(destination, html.encode("utf-8"))
     return destination
 
 
