@@ -1,0 +1,11 @@
+variable,First_Failure_Load_N,Ultimate_Load,Maximum_Displacement,residual_Displacement_1cycle_10mm,residual_Displacement_2cycle_20mm,residual_Displacement_3cycle_30mm,residual_Displacement_4cycle_40mm,residual_Displacement_5cycle_50mm,residual_Displacement_6cycle_60mm,Dissipated_cycle_1,Dissipated_cycle_2,Dissipated_cycle_3,Dissipated_cycle_4,Dissipated_cycle_5,Dissipated_cycle_6,Dissipated_cycle_7,Fracture_event_1,Fracture_event_2,Fracture_event_3,Fracture_event_4,Fracture_event_5,Fracture_event_6,Fracture_event_7,Fracture_event_8,Fracture_event_9,Fracture_event_10,Fracture_event_11,Fracture_event_12,Fracture_event_13,Load_ratio_first_over_ultimate,Load_per_specimen_volume,Load_per_pivot,Load_per_cell_Y,Fracture_observed_sum,Fracture_registered_events,Fracture_initial_share,Residual_fraction_cycle1,Residual_fraction_cycle2,Residual_fraction_cycle3,Residual_fraction_cycle4,Residual_fraction_cycle5,Residual_fraction_cycle6,Recovery_complement_cycle6
+n_cells_Y,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Fiber_height,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Fiber_base,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Fiber_total_length,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Fiber_total_volume,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Pivot_height,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Pivot_radius,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Pivot_total_number,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Pivot_total_volume,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20
+Sample_total_volume,26,26,26,26,26,26,26,26,20,26,26,26,26,26,20,7,26,24,22,19,17,7,6,4,2,1,1,1,1,26,26,26,26,26,26,26,26,26,26,26,26,20,20

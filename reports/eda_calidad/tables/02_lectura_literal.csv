@@ -1,0 +1,21 @@
+Variable,Expresion,Lexico_valido,Valores_y_NaN_coinciden
+Case_n,intervalo entero,True,True
+n_cells_Y,vector literal,True,True
+Fiber_height,vector literal,True,True
+Fiber_base,vector literal,True,True
+Fiber_total_length,vector literal,True,True
+Fiber_total_volume,vector literal,True,True
+Pivot_height,vector literal,True,True
+Pivot_radius,repetición escalar,True,True
+Pivot_total_number,vector literal,True,True
+Pivot_total_volume,vector literal,True,True
+Sample_total_volume,vector literal,True,True
+First_Failure_Load_N,vector literal,True,True
+Ultimate_Load,vector literal,True,True
+Maximum_Displacement,vector literal,True,True
+residual_Displacement_1cycle_10mm,vector literal,True,True
+residual_Displacement_2cycle_20mm,vector literal,True,True
+residual_Displacement_3cycle_30mm,vector literal,True,True
+residual_Displacement_4cycle_40mm,vector literal,True,True
+residual_Displacement_5cycle_50mm,vector literal,True,True
+residual_Displacement_6cycle_60mm,vector literal,True,True

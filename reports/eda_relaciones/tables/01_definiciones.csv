@@ -1,0 +1,58 @@
+variable,nombre,rol,unidad,formula,limitacion
+n_cells_Y,Celdas en Y,INPUT,conteo,valor fuente,Geometría previa; dependencia del diseño experimental
+Fiber_height,Altura de fibra,INPUT,mm,valor fuente,Geometría previa; dependencia del diseño experimental
+Fiber_base,Base de fibra,INPUT,mm,valor fuente,Geometría previa; dependencia del diseño experimental
+Fiber_total_length,Longitud de fibras,INPUT,mm,valor fuente,Geometría previa; dependencia del diseño experimental
+Fiber_total_volume,Volumen de fibras,INPUT,mm³,valor fuente,Geometría previa; dependencia del diseño experimental
+Pivot_height,Altura de pivote,INPUT,mm,valor fuente,Geometría previa; dependencia del diseño experimental
+Pivot_radius,Radio de pivote,INPUT,mm,valor fuente,Geometría previa; dependencia del diseño experimental
+Pivot_total_number,Número de pivotes,INPUT,conteo,valor fuente,Geometría previa; dependencia del diseño experimental
+Pivot_total_volume,Volumen de pivotes,INPUT,mm³,valor fuente,Geometría previa; dependencia del diseño experimental
+Sample_total_volume,Volumen del espécimen,INPUT,mm³,valor fuente,Geometría previa; dependencia del diseño experimental
+First_Failure_Load_N,Primera falla,OUTPUT,N,valor fuente,Posensayo; excluido de INPUT
+Ultimate_Load,Carga de rotura final,OUTPUT,N,valor fuente,"Posensayo; excluido de INPUT; fuerza del evento terminal/rotura final, no máximo global (docs/trazabilidad_datos.md)"
+Maximum_Displacement,Desplazamiento máximo,OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_1cycle_10mm,"Residual, ciclo 1",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_2cycle_20mm,"Residual, ciclo 2",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_3cycle_30mm,"Residual, ciclo 3",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_4cycle_40mm,"Residual, ciclo 4",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_5cycle_50mm,"Residual, ciclo 5",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+residual_Displacement_6cycle_60mm,"Residual, ciclo 6",OUTPUT,mm,valor fuente,Posensayo; excluido de INPUT
+Dissipated_cycle_1,"Energía disipada, ciclo 1",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_2,"Energía disipada, ciclo 2",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_3,"Energía disipada, ciclo 3",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_4,"Energía disipada, ciclo 4",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_5,"Energía disipada, ciclo 5",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_6,"Energía disipada, ciclo 6",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Dissipated_cycle_7,"Energía disipada, ciclo 7",OUTPUT,mJ,Energy_Dissipated leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_1,"Energía de fractura, evento 1",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_2,"Energía de fractura, evento 2",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_3,"Energía de fractura, evento 3",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_4,"Energía de fractura, evento 4",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_5,"Energía de fractura, evento 5",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_6,"Energía de fractura, evento 6",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_7,"Energía de fractura, evento 7",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_8,"Energía de fractura, evento 8",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_9,"Energía de fractura, evento 9",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_10,"Energía de fractura, evento 10",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_11,"Energía de fractura, evento 11",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_12,"Energía de fractura, evento 12",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fracture_event_13,"Energía de fractura, evento 13",OUTPUT,mJ,Energy_Fracture leído sin ejecución de MATLAB,Posensayo; unidad corroborada con tesis PDF pp.117/121 (docs/trazabilidad_datos.md); ausencia de energía no demuestra ausencia de evento/ciclo
+Fiber_area_proxy,Área rectangular de fibra (proxy),INPUT derivada,mm²,Fiber_height * Fiber_base,Sección rectangular idealizada; no área resistente global
+Fiber_aspect_ratio,Altura / base de fibra,INPUT derivada,adimensional,Fiber_height / Fiber_base,Aspecto local; no aísla un efecto causal de forma
+Pivot_aspect_ratio,Altura / diámetro de pivote,INPUT derivada,adimensional,Pivot_height / (2 * Pivot_radius),Esbeltez geométrica nominal; radio constante en el diseño
+Fiber_I_proxy,Momento de área rectangular (proxy),INPUT derivada,mm⁴,Fiber_base * Fiber_height^3 / 12,Momento de área respecto al eje asociado a altura; no rigidez medida ni mecanismo demostrado
+Load_ratio_first_over_ultimate,Primera falla / Ultimate_Load,OUTPUT derivada,adimensional,First_Failure_Load_N / Ultimate_Load,Cociente primera/rotura final; no factor de seguridad ni reserva de carga
+Load_per_specimen_volume,Carga / volumen del espécimen,OUTPUT derivada,N/mm³,First_Failure_Load_N / Sample_total_volume,Índice descriptivo de carga por volumen; no esfuerzo ni resistencia material
+Load_per_pivot,Carga / número de pivotes,OUTPUT derivada,N/pivote,First_Failure_Load_N / Pivot_total_number,No presupone reparto uniforme de cargas entre pivotes
+Load_per_cell_Y,Carga / celdas en Y,OUTPUT derivada,N/celda en Y,First_Failure_Load_N / n_cells_Y,Normalización por conteo en Y; no fuerza medida en cada celda
+Fracture_observed_sum,Suma de energías de fractura registradas,OUTPUT derivada,mJ,"sum(Energy_Fracture disponible), min_count=1",Suma observada de longitud variable; no energía total del ensayo
+Fracture_registered_events,Eventos con energía registrada,OUTPUT derivada,conteo,número de valores Energy_Fracture presentes,"Disponibilidad de registro, no conteo verificado de todas las fracturas"
+Fracture_initial_share,Fracción energética del evento inicial,OUTPUT derivada,adimensional,Energy_Fracture(evento1) / suma registrada,Comparte numerador y denominador con otras respuestas; sensible a cobertura de eventos
+Residual_fraction_cycle1,"Residual / amplitud, ciclo 1",OUTPUT derivada,adimensional,residual_Displacement_1cycle_10mm / 10 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Residual_fraction_cycle2,"Residual / amplitud, ciclo 2",OUTPUT derivada,adimensional,residual_Displacement_2cycle_20mm / 20 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Residual_fraction_cycle3,"Residual / amplitud, ciclo 3",OUTPUT derivada,adimensional,residual_Displacement_3cycle_30mm / 30 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Residual_fraction_cycle4,"Residual / amplitud, ciclo 4",OUTPUT derivada,adimensional,residual_Displacement_4cycle_40mm / 40 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Residual_fraction_cycle5,"Residual / amplitud, ciclo 5",OUTPUT derivada,adimensional,residual_Displacement_5cycle_50mm / 50 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Residual_fraction_cycle6,"Residual / amplitud, ciclo 6",OUTPUT derivada,adimensional,residual_Displacement_6cycle_60mm / 60 mm,Amplitud nominal del nombre de columna; no deformación unitaria
+Recovery_complement_cycle6,"Complemento residual nominal, ciclo 6",OUTPUT derivada,adimensional,1 - residual_Displacement_6cycle_60mm / 60 mm,Proxy complemento nominal; requiere protocolo para interpretar recuperación elástica

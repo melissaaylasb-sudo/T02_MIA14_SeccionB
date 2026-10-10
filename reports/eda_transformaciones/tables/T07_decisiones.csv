@@ -1,0 +1,9 @@
+elemento,decision,justificacion
+Fórmulas geométricas,"Candidatas, no selección definitiva",Construcción determinística sin target; contrastar geometría con fichas
+Volúmenes fibra/pivote,Controlar redundancia,Su suma declarada es constante; no interpretar efectos independientes
+Radio del pivote,Eliminar constante dentro de train,Fuera de este dominio podría variar; no se elimina de la fuente
+Escala estándar/robusta,Comparar dentro de validación interna,"Este cuaderno verifica implementación, no cuál predice mejor"
+Logaritmos,Alternativa descriptiva,Preservan orden; no crean información ni garantizan normalidad
+Imputación,Solo predictores dentro de train,No imputar target ni completar eventos no observados
+Particiones,Escenario demostrativo de aislamiento,Confirmar réplicas/lotes; una familia de diseño no es por sí sola una réplica
+Transferencia,No evaluada,"Nuevas arquitecturas, materiales y protocolos requieren validación externa"

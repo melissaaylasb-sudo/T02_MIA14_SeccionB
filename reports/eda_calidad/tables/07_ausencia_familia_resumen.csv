@@ -1,0 +1,13 @@
+Familia,Variable,Base_familia,Disponibles,Ausentes,Ausencia_%
+4.0,residual_Displacement_6cycle_60mm,9,4,5,55.55555555555556
+4.0,Energy_Dissipated__cycle_6,9,4,5,55.55555555555556
+4.0,Energy_Dissipated__cycle_7,9,0,9,100.0
+4.0,Energy_Fracture__event_5,9,7,2,22.22222222222222
+5.0,residual_Displacement_6cycle_60mm,9,7,2,22.22222222222222
+5.0,Energy_Dissipated__cycle_6,9,7,2,22.22222222222222
+5.0,Energy_Dissipated__cycle_7,9,0,9,100.0
+5.0,Energy_Fracture__event_5,9,7,2,22.22222222222222
+6.0,residual_Displacement_6cycle_60mm,9,9,0,0.0
+6.0,Energy_Dissipated__cycle_6,9,9,0,0.0
+6.0,Energy_Dissipated__cycle_7,9,7,2,22.22222222222222
+6.0,Energy_Fracture__event_5,9,3,6,66.66666666666666

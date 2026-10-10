@@ -12,7 +12,7 @@ La estructura del diseño domina la distribución marginal. No equivale a precis
 
 ## Inversión de asociación
 
-**Evidencia:** Volumen del espécimen: rho global 0.799; condicionado -0.265.
+**Evidencia:** Volumen CAD del espécimen: rho global 0.799; condicionado -0.265.
 
 La tendencia global mezcla diferencias entre familias. IC condicionado [-0.686, 0.257] incluye cero; q BH=0.345.
 
@@ -54,7 +54,7 @@ Aumenta la mediana de la fracción residual en la cohorte común. No es una ley 
 
 **Evidencia:** Evento energético inicial y carga: rho 0.988.
 
-Respuesta energética estrechamente ligada al daño registrado. Variable posensayo y unidad no especificada.
+Respuesta energética estrechamente ligada al daño registrado. Variable posensayo; energía asociada al evento [mJ].
 
 **Decisión:** Usar para interpretación; excluir del predictor previo.
 

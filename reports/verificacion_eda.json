@@ -1,0 +1,4422 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-10-10T00:49:21.574421+00:00",
+  "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
+  "environment": {
+    "python": "3.13.5",
+    "system": "Windows",
+    "nbformat": "5.11.1",
+    "Pillow": "11.3.0",
+    "git_branch": "eda"
+  },
+  "summary": {
+    "notebooks": 3,
+    "code_cells": 61,
+    "executed_code_cells": 61,
+    "figures_png": 48,
+    "tables_csv": 95,
+    "local_links": 96,
+    "checks": 478,
+    "failed_checks": 0
+  },
+  "notebooks": [
+    {
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "code_cells": 14,
+      "executed_code_cells": 14,
+      "sha256": "e6e6f2f59a46984e3c5861fa7bdf155d289db0ab8edaebc898600538768f7bbe",
+      "unexecuted_cells": [],
+      "error_cells": []
+    },
+    {
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "code_cells": 37,
+      "executed_code_cells": 37,
+      "sha256": "aef8528be2d7b0507beae37525c1465226dd046c80834cfc7650c7d0b26e75b8",
+      "unexecuted_cells": [],
+      "error_cells": []
+    },
+    {
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "code_cells": 10,
+      "executed_code_cells": 10,
+      "sha256": "82bea7af0c3a62b53a8ea3244ede50a27874b2d0288ea0431fe04fc687732d51",
+      "unexecuted_cells": [],
+      "error_cells": []
+    }
+  ],
+  "manifests": [
+    {
+      "path": "reports/eda/manifest.json",
+      "input_hashes_checked": 4,
+      "artifact_hashes_checked": 93,
+      "tables_csv": 40,
+      "sha256": "0ac79b7769429fc73d0d8f3ced3158b3243ec10d539e153c25ee00c74dd1b322"
+    },
+    {
+      "path": "reports/eda_calidad/manifest.json",
+      "input_hashes_checked": 6,
+      "artifact_hashes_checked": 41,
+      "tables_csv": 25,
+      "sha256": "474278ae154b3f778ec827a35264b7517d276dfcf58a76102e364f7f8fb8193d"
+    },
+    {
+      "path": "reports/eda_relaciones/manifest.json",
+      "input_hashes_checked": 2,
+      "artifact_hashes_checked": 46,
+      "tables_csv": 23,
+      "sha256": "99e4b47fa821dce77e1b6cf854ae2e75538148a9a76b16c28b156c3b7d9949fb"
+    },
+    {
+      "path": "reports/eda_transformaciones/manifest.json",
+      "input_hashes_checked": 1,
+      "artifact_hashes_checked": 13,
+      "tables_csv": 7,
+      "sha256": "22319ef60feff1fedaae0e02ad6977ad1812a18832aefd8d8815b797afae05a6"
+    }
+  ],
+  "figures": [
+    {
+      "png": "reports/eda/figures/00_contexto.png",
+      "svg": "reports/eda/figures/00_contexto.svg",
+      "width_px": 4083,
+      "height_px": 1558,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/02_objetivo.png",
+      "svg": "reports/eda/figures/02_objetivo.svg",
+      "width_px": 3572,
+      "height_px": 2373,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/03_distribuciones_geometricas.png",
+      "svg": "reports/eda/figures/03_distribuciones_geometricas.svg",
+      "width_px": 3872,
+      "height_px": 2974,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/04_soporte_diseno.png",
+      "svg": "reports/eda/figures/04_soporte_diseno.svg",
+      "width_px": 3872,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/05_familias.png",
+      "svg": "reports/eda/figures/05_familias.svg",
+      "width_px": 3571,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/06_contrastes.png",
+      "svg": "reports/eda/figures/06_contrastes.svg",
+      "width_px": 2668,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/07_atipicos.png",
+      "svg": "reports/eda/figures/07_atipicos.svg",
+      "width_px": 3265,
+      "height_px": 1473,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/08_dispersion.png",
+      "svg": "reports/eda/figures/08_dispersion.svg",
+      "width_px": 3872,
+      "height_px": 2974,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/09_asociacion_condicionada.png",
+      "svg": "reports/eda/figures/09_asociacion_condicionada.svg",
+      "width_px": 2965,
+      "height_px": 1473,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/10_inversion.png",
+      "svg": "reports/eda/figures/10_inversion.svg",
+      "width_px": 3572,
+      "height_px": 1323,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/11_interacciones.png",
+      "svg": "reports/eda/figures/11_interacciones.svg",
+      "width_px": 3872,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/12_restricciones.png",
+      "svg": "reports/eda/figures/12_restricciones.svg",
+      "width_px": 3572,
+      "height_px": 1229,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/13_coherencia.png",
+      "svg": "reports/eda/figures/13_coherencia.svg",
+      "width_px": 3572,
+      "height_px": 1228,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/14_descriptores.png",
+      "svg": "reports/eda/figures/14_descriptores.svg",
+      "width_px": 3872,
+      "height_px": 1228,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/15_correlaciones.png",
+      "svg": "reports/eda/figures/15_correlaciones.svg",
+      "width_px": 4769,
+      "height_px": 2147,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/16_dimension.png",
+      "svg": "reports/eda/figures/16_dimension.svg",
+      "width_px": 2368,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/17_PCA.png",
+      "svg": "reports/eda/figures/17_PCA.svg",
+      "width_px": 4466,
+      "height_px": 1324,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/18_clusters.png",
+      "svg": "reports/eda/figures/18_clusters.svg",
+      "width_px": 3572,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/19_vecinos.png",
+      "svg": "reports/eda/figures/19_vecinos.svg",
+      "width_px": 2372,
+      "height_px": 1324,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/20_influencia.png",
+      "svg": "reports/eda/figures/20_influencia.svg",
+      "width_px": 3572,
+      "height_px": 1382,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/21_omision.png",
+      "svg": "reports/eda/figures/21_omision.svg",
+      "width_px": 2965,
+      "height_px": 1473,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/23_respuestas.png",
+      "svg": "reports/eda/figures/23_respuestas.svg",
+      "width_px": 3572,
+      "height_px": 1172,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/24_ciclos.png",
+      "svg": "reports/eda/figures/24_ciclos.svg",
+      "width_px": 4472,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/25_asociacion_ciclos.png",
+      "svg": "reports/eda/figures/25_asociacion_ciclos.svg",
+      "width_px": 2671,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/26_disipacion.png",
+      "svg": "reports/eda/figures/26_disipacion.svg",
+      "width_px": 4471,
+      "height_px": 1173,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda/figures/27_fractura.png",
+      "svg": "reports/eda/figures/27_fractura.svg",
+      "width_px": 4462,
+      "height_px": 1172,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "svg": "reports/eda_calidad/figures/FQ01_completitud.svg",
+      "width_px": 4126,
+      "height_px": 1567,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "svg": "reports/eda_calidad/figures/FQ02_mapa_ausencias.svg",
+      "width_px": 4447,
+      "height_px": 2500,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "svg": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.svg",
+      "width_px": 4128,
+      "height_px": 1503,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ04_signos_normalizacion.png",
+      "svg": "reports/eda_calidad/figures/FQ04_signos_normalizacion.svg",
+      "width_px": 3806,
+      "height_px": 1579,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "svg": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.svg",
+      "width_px": 3803,
+      "height_px": 1413,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "svg": "reports/eda_calidad/figures/FQ06_revision_volumenes.svg",
+      "width_px": 4127,
+      "height_px": 1545,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "svg": "reports/eda_calidad/figures/FQ07_alertas_robustas.svg",
+      "width_px": 4126,
+      "height_px": 2016,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.png",
+      "svg": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.svg",
+      "width_px": 2848,
+      "height_px": 1510,
+      "dpi": [
+        319.9892,
+        319.9892
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_input_pearson.svg",
+      "width_px": 2663,
+      "height_px": 1466,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_input_spearman.svg",
+      "width_px": 2663,
+      "height_px": 1466,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_output_pearson.svg",
+      "width_px": 2625,
+      "height_px": 1465,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_output_spearman.svg",
+      "width_px": 2625,
+      "height_px": 1465,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_output_output_pearson.svg",
+      "width_px": 2669,
+      "height_px": 1693,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_output_output_spearman.svg",
+      "width_px": 2669,
+      "height_px": 1693,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "svg": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.svg",
+      "width_px": 3868,
+      "height_px": 1456,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "svg": "reports/eda_relaciones/figures/R03_tamano_forma.svg",
+      "width_px": 4167,
+      "height_px": 1324,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "svg": "reports/eda_relaciones/figures/R04_comparacion_cargas.svg",
+      "width_px": 3572,
+      "height_px": 1322,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "svg": "reports/eda_relaciones/figures/R05_residual_recuperacion.svg",
+      "width_px": 3573,
+      "height_px": 1324,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "svg": "reports/eda_relaciones/figures/R06_normalizaciones_carga.svg",
+      "width_px": 4472,
+      "height_px": 1174,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_transformaciones/figures/F01_representaciones.png",
+      "svg": "reports/eda_transformaciones/figures/F01_representaciones.svg",
+      "width_px": 3270,
+      "height_px": 1167,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_transformaciones/figures/F02_logaritmos.png",
+      "svg": "reports/eda_transformaciones/figures/F02_logaritmos.svg",
+      "width_px": 3270,
+      "height_px": 1166,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    },
+    {
+      "png": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "svg": "reports/eda_transformaciones/figures/F03_escalamiento.svg",
+      "width_px": 3570,
+      "height_px": 1256,
+      "dpi": [
+        299.9994,
+        299.9994
+      ]
+    }
+  ],
+  "local_links": [
+    {
+      "source": "README.md",
+      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/informe_eda.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/introduccion_experimento.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/figures/00_contexto.png",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/diccionario_datos.csv",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/02_EDA_Avanzado.html",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda_relaciones/tables",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "reports/eda/hallazgos.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/informe_curaduria.md",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "demo/index.html",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "docs/diccionario_datos.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/diccionario_datos.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "docs/introduccion_experimento.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/tables/03_equivalencia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/manifest.json",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_curaduria.md",
+      "target": "reports/eda_calidad/tables/14_decisiones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/figures/00_contexto.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "docs/introduccion_experimento.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "docs/diccionario_datos.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_calidad/tables/07_ausencia_familia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_calidad/tables/03_equivalencia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "docs/informe_curaduria.md",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/figures/02_objetivo.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/02_objetivo.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/02_univariado_completo.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/figures/05_familias.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/05_familias.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/05_descomposicion.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/06_contrastes_familias.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/08_objetivo_priorizado.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/07_input_output_spearman.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/07_input_output_n_efectivo.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/04_input_output_asociaciones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/09_tamano_forma.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/09_asociaciones_condicionadas.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/13_normalizaciones_carga.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/tables/T03_representaciones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/17_PCA_varianza.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/17_PCA_direcciones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/18_clusters.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/20_influencia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/11_cargas_por_familia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/06_output_output_asociaciones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/15_respuestas_por_familia.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/tables/12_ciclos_cohorte_comun.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/figures/26_disipacion.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/26_energia_disipada.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/26_revision_energetica.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/figures/27_fractura.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/27_fractura_eventos.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/tables/27_fractura_asociacion.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/tables/T01_formulas.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/tables/T04_logaritmos.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "config/model_config.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "config/data_schema.yml",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "notebooks/02_EDA_Avanzado.ipynb",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda/manifest.json",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_relaciones/manifest.json",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "reports/eda_transformaciones/manifest.json",
+      "exists": true
+    },
+    {
+      "source": "docs/informe_eda.md",
+      "target": "README.md",
+      "exists": true
+    },
+    {
+      "source": "docs/introduccion_experimento.md",
+      "target": "docs/trazabilidad_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/introduccion_experimento.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/introduccion_experimento.md",
+      "target": "docs/informe_curaduria.md",
+      "exists": true
+    },
+    {
+      "source": "docs/trazabilidad_datos.md",
+      "target": "docs/introduccion_experimento.md",
+      "exists": true
+    },
+    {
+      "source": "docs/trazabilidad_datos.md",
+      "target": "docs/diccionario_datos.md",
+      "exists": true
+    },
+    {
+      "source": "docs/trazabilidad_datos.md",
+      "target": "docs/informe_curaduria.md",
+      "exists": true
+    }
+  ],
+  "checks": [
+    {
+      "category": "notebook_schema",
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "passed": true,
+      "detail": "Esquema nbformat válido"
+    },
+    {
+      "category": "notebook_execution",
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "passed": true,
+      "detail": "Celdas de código ejecutadas y sin salidas de error"
+    },
+    {
+      "category": "notebook_schema",
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Esquema nbformat válido"
+    },
+    {
+      "category": "notebook_execution",
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Celdas de código ejecutadas y sin salidas de error"
+    },
+    {
+      "category": "notebook_schema",
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "passed": true,
+      "detail": "Esquema nbformat válido"
+    },
+    {
+      "category": "notebook_execution",
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "passed": true,
+      "detail": "Celdas de código ejecutadas y sin salidas de error"
+    },
+    {
+      "category": "markdown",
+      "path": "README.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/informe_eda.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/02_EDA_Avanzado.html",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/03_Diseno_de_Particiones_y_Preprocesamiento.html",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/hallazgos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/informe_curaduria.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "demo/index.html",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "markdown",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/diccionario_datos.md"
+    },
+    {
+      "category": "markdown",
+      "path": "docs/informe_curaduria.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/tables/03_equivalencia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/01_Ingesta_Curaduria_y_Calidad.html",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/manifest.json",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/tables/14_decisiones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_curaduria.md"
+    },
+    {
+      "category": "markdown",
+      "path": "docs/informe_eda.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/tables/07_ausencia_familia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_calidad/tables/03_equivalencia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/informe_curaduria.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/02_objetivo.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/02_univariado_completo.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/05_familias.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/05_descomposicion.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/06_contrastes_familias.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/08_objetivo_priorizado.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/07_input_output_spearman.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/07_input_output_n_efectivo.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/04_input_output_asociaciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/09_tamano_forma.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/09_asociaciones_condicionadas.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/13_normalizaciones_carga.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/tables/T03_representaciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/17_PCA_varianza.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/17_PCA_direcciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/18_clusters.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/20_influencia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/11_cargas_por_familia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/06_output_output_asociaciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/15_respuestas_por_familia.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/tables/12_ciclos_cohorte_comun.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/26_energia_disipada.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/26_revision_energetica.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/figures/27_fractura.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/27_fractura_eventos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/tables/27_fractura_asociacion.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/tables/T01_formulas.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/tables/T04_logaritmos.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/model_config.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "config/data_schema.yml",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "notebooks/02_EDA_Avanzado.ipynb",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda/manifest.json",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_relaciones/manifest.json",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "reports/eda_transformaciones/manifest.json",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "local_link",
+      "path": "README.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/informe_eda.md"
+    },
+    {
+      "category": "markdown",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/introduccion_experimento.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/introduccion_experimento.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/informe_curaduria.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/introduccion_experimento.md"
+    },
+    {
+      "category": "markdown",
+      "path": "docs/trazabilidad_datos.md",
+      "passed": true,
+      "detail": "Documento disponible"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/trazabilidad_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/diccionario_datos.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/trazabilidad_datos.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/informe_curaduria.md",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "docs/trazabilidad_datos.md"
+    },
+    {
+      "category": "manifest",
+      "path": "reports/eda/manifest.json",
+      "passed": true,
+      "detail": "JSON válido"
+    },
+    {
+      "category": "manifest_status",
+      "path": "reports/eda/manifest.json",
+      "passed": true,
+      "detail": "Estado esperado: executed"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+      "actual_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/processed/preliminary/model_table.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+      "actual_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
+      "actual_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/processed/preliminary/data_quality_report.json",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "86ba074a872a95e75ca05cb8b96425bd05d8936998f5a390ce7182260080188e",
+      "actual_sha256": "86ba074a872a95e75ca05cb8b96425bd05d8936998f5a390ce7182260080188e"
+    },
+    {
+      "category": "manifest_inputs",
+      "path": "reports/eda/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de fuentes verificables"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "40edbf389e3d136e43c06765a7786094fbe4036710644322323cfbe19de7bc46",
+      "actual_sha256": "40edbf389e3d136e43c06765a7786094fbe4036710644322323cfbe19de7bc46"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/00_contexto.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "6f834ef61e995ece60ac7068922872d1cff8443f1bcbe261894ef0e8f9fc7664",
+      "actual_sha256": "6f834ef61e995ece60ac7068922872d1cff8443f1bcbe261894ef0e8f9fc7664"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b05cf47de02ef8e2be58c9bc46adfbf94d4c47556214b0138e567da91e7a14cb",
+      "actual_sha256": "b05cf47de02ef8e2be58c9bc46adfbf94d4c47556214b0138e567da91e7a14cb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/02_objetivo.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e0a377ed0e821a0a8f88175d43e4b0a2a299328b4a7a8851e8923e187183a7fc",
+      "actual_sha256": "e0a377ed0e821a0a8f88175d43e4b0a2a299328b4a7a8851e8923e187183a7fc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/03_distribuciones_geometricas.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8b2dab4949e311cdc0feb69848ad20623155d23f6c89656c5a255979a7393ee5",
+      "actual_sha256": "8b2dab4949e311cdc0feb69848ad20623155d23f6c89656c5a255979a7393ee5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/03_distribuciones_geometricas.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7c0e9f9422a5c7a07d6d9941f6f010b2e043ee59f0594b38e9f2085d8beb2ff1",
+      "actual_sha256": "7c0e9f9422a5c7a07d6d9941f6f010b2e043ee59f0594b38e9f2085d8beb2ff1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/04_soporte_diseno.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ed44f914847988b8fb55683b4a84496426a70c27f559a11cb04196354ef858e8",
+      "actual_sha256": "ed44f914847988b8fb55683b4a84496426a70c27f559a11cb04196354ef858e8"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/04_soporte_diseno.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "28676152a0c186dd8865607ba3b389a748283d9abf414f628e76763d73d97bf5",
+      "actual_sha256": "28676152a0c186dd8865607ba3b389a748283d9abf414f628e76763d73d97bf5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "75e9e740c90c454194f0a43e394d4b12d102475b9a2c9df7ab14969e2c8bf93f",
+      "actual_sha256": "75e9e740c90c454194f0a43e394d4b12d102475b9a2c9df7ab14969e2c8bf93f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/05_familias.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4672d81fb443e665b5c561dd54402f256c7b1a7343a5b0677f457e0b212d292f",
+      "actual_sha256": "4672d81fb443e665b5c561dd54402f256c7b1a7343a5b0677f457e0b212d292f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/06_contrastes.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "79d459dd6ed1e5b2a5043577c62dc0fcf123a4c3984713abdaba57c24824f2f7",
+      "actual_sha256": "79d459dd6ed1e5b2a5043577c62dc0fcf123a4c3984713abdaba57c24824f2f7"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/06_contrastes.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0e53ad3ca9ca8f17f984545e1a53b0476b3dcc0e0bc2823d97794a6829aad144",
+      "actual_sha256": "0e53ad3ca9ca8f17f984545e1a53b0476b3dcc0e0bc2823d97794a6829aad144"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/07_atipicos.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "73df834fea1a736af9c08a84fc5afd4218a1e8fdba9cd9d99d5fd74f03eaee03",
+      "actual_sha256": "73df834fea1a736af9c08a84fc5afd4218a1e8fdba9cd9d99d5fd74f03eaee03"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/07_atipicos.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "eb46ca9192e4a4809c915552ac101ad67825f37abd9c08019fa484dc22f8b180",
+      "actual_sha256": "eb46ca9192e4a4809c915552ac101ad67825f37abd9c08019fa484dc22f8b180"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "23abd6f6bd07dfa11ad30bd094c7f889d06b1aeef5af701373aa5fdecc6d555f",
+      "actual_sha256": "23abd6f6bd07dfa11ad30bd094c7f889d06b1aeef5af701373aa5fdecc6d555f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/08_dispersion.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0ecadb52c5dc2fe751554ec9fbe2b8c2bc8fa0236e612d6095cd9f57691d709a",
+      "actual_sha256": "0ecadb52c5dc2fe751554ec9fbe2b8c2bc8fa0236e612d6095cd9f57691d709a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/09_asociacion_condicionada.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "cb3fd20a07e746932ab46a932b07641dcf0c37d109a7ed2849f8287021622f74",
+      "actual_sha256": "cb3fd20a07e746932ab46a932b07641dcf0c37d109a7ed2849f8287021622f74"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/09_asociacion_condicionada.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "dfee8ab5542a175601ccc9fd3c3360725214b68d78ea14e0127883a2e7a3c274",
+      "actual_sha256": "dfee8ab5542a175601ccc9fd3c3360725214b68d78ea14e0127883a2e7a3c274"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/10_inversion.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4a3f2f48d79d9ddf9c987c339b45675ecc79f5e5147747d4bb56a6d53d974c69",
+      "actual_sha256": "4a3f2f48d79d9ddf9c987c339b45675ecc79f5e5147747d4bb56a6d53d974c69"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/10_inversion.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fb4b0584065be6364151392be0e154cea7801892e2e16f6be5e8cb96bd8d3182",
+      "actual_sha256": "fb4b0584065be6364151392be0e154cea7801892e2e16f6be5e8cb96bd8d3182"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/11_interacciones.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e739a04e866d69335d0304e9691aa2e8f2efd8e193eeddf04585d284bdac8090",
+      "actual_sha256": "e739a04e866d69335d0304e9691aa2e8f2efd8e193eeddf04585d284bdac8090"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/11_interacciones.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "92f17068bd2a1b10b0c873c75b3d42af8b78fcfc1013cddd9e8f51e2c96f3a2b",
+      "actual_sha256": "92f17068bd2a1b10b0c873c75b3d42af8b78fcfc1013cddd9e8f51e2c96f3a2b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/12_restricciones.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4f4a8e8330e48acf7eafc23d066833c0201a54cddefc5a0831d44d20136164fa",
+      "actual_sha256": "4f4a8e8330e48acf7eafc23d066833c0201a54cddefc5a0831d44d20136164fa"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/12_restricciones.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8bb427a4f98ba2e9cbedc70e1e4588c2caa4ed7e004b99bb9e1d3d1ff0864806",
+      "actual_sha256": "8bb427a4f98ba2e9cbedc70e1e4588c2caa4ed7e004b99bb9e1d3d1ff0864806"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/13_coherencia.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4dddfc373c7194ef8d7fb0f8558c801dd8ccf8d14c93f300b749a5db5bd03216",
+      "actual_sha256": "4dddfc373c7194ef8d7fb0f8558c801dd8ccf8d14c93f300b749a5db5bd03216"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/13_coherencia.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f36e62f7fbc27db180e9cc08e948d05d1930732c8313963114b9fd385efbf651",
+      "actual_sha256": "f36e62f7fbc27db180e9cc08e948d05d1930732c8313963114b9fd385efbf651"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/14_descriptores.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "d221d05cc577134580b15d495fb120015b939df1693ffc0b6a4377c710ce6176",
+      "actual_sha256": "d221d05cc577134580b15d495fb120015b939df1693ffc0b6a4377c710ce6176"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/14_descriptores.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "c21b566ceb8bd8e713ae66f07ce72fb0ba4ff66e6c0f1aec1fe5b6969fb5c2a0",
+      "actual_sha256": "c21b566ceb8bd8e713ae66f07ce72fb0ba4ff66e6c0f1aec1fe5b6969fb5c2a0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/15_correlaciones.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "10aadd0b93ff6be9b404daad14f3569a0de3612f5a7c3b07c953180a73104f7b",
+      "actual_sha256": "10aadd0b93ff6be9b404daad14f3569a0de3612f5a7c3b07c953180a73104f7b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/15_correlaciones.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0dcafb05b85b60aad573a0161eacca5b72cf5ca11784838b6d56edd4ecec2609",
+      "actual_sha256": "0dcafb05b85b60aad573a0161eacca5b72cf5ca11784838b6d56edd4ecec2609"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/16_dimension.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "390107fa078f132e1d77996e5dde045dc9a4dfa0957c591a2feaadef47c25539",
+      "actual_sha256": "390107fa078f132e1d77996e5dde045dc9a4dfa0957c591a2feaadef47c25539"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/16_dimension.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4ce1163669d434aa79a469817b289bdd871ef084391eef70afe99af41f40f9a9",
+      "actual_sha256": "4ce1163669d434aa79a469817b289bdd871ef084391eef70afe99af41f40f9a9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/17_PCA.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fa779a1555222556cefedd0f1fb2d566bd812c4743330966cf90892d8c2784c5",
+      "actual_sha256": "fa779a1555222556cefedd0f1fb2d566bd812c4743330966cf90892d8c2784c5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/17_PCA.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "bb74032962b411f1c2e7fe43b1edec45121286088d725c4abdf6b0dfc897d3ad",
+      "actual_sha256": "bb74032962b411f1c2e7fe43b1edec45121286088d725c4abdf6b0dfc897d3ad"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/18_clusters.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2b90f5fe338f81b6c130cf3276844ce518dc66fd80ef7d221089cd4999761a34",
+      "actual_sha256": "2b90f5fe338f81b6c130cf3276844ce518dc66fd80ef7d221089cd4999761a34"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/18_clusters.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "6523381f22931e592aec34700b81fc548daebd8c58eae2f33eaabe936ee00d80",
+      "actual_sha256": "6523381f22931e592aec34700b81fc548daebd8c58eae2f33eaabe936ee00d80"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/19_vecinos.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ac89e9fe1783d68c20393ed86e639b2d83ed67f5d849648804be5a21d0d83049",
+      "actual_sha256": "ac89e9fe1783d68c20393ed86e639b2d83ed67f5d849648804be5a21d0d83049"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/19_vecinos.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "61a70a05dc7ec3a21eb80592d5081701c6fde1467d940163f784752647e029c9",
+      "actual_sha256": "61a70a05dc7ec3a21eb80592d5081701c6fde1467d940163f784752647e029c9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/20_influencia.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4a61c330a35ce36c8a949ab03d14e62e43520e03e7aa087fdf7422d5890c80fb",
+      "actual_sha256": "4a61c330a35ce36c8a949ab03d14e62e43520e03e7aa087fdf7422d5890c80fb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/20_influencia.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4212ca23831472d04bc01d687bdbebb033fbb09957308a63e83f569ef9766943",
+      "actual_sha256": "4212ca23831472d04bc01d687bdbebb033fbb09957308a63e83f569ef9766943"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/21_omision.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "688bdc938dd5a803d992d04674cba3878034768882f6ddff9e8682d786f445f6",
+      "actual_sha256": "688bdc938dd5a803d992d04674cba3878034768882f6ddff9e8682d786f445f6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/21_omision.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e3e7ac60d3cdb334e189e0a683541a2e73cdde069fd3eb82ce0178f48a338642",
+      "actual_sha256": "e3e7ac60d3cdb334e189e0a683541a2e73cdde069fd3eb82ce0178f48a338642"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/23_respuestas.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "953aa15a0035b2dc1791e913d3c8a532ed5f482e8056d541f4e13ce9e3a5356b",
+      "actual_sha256": "953aa15a0035b2dc1791e913d3c8a532ed5f482e8056d541f4e13ce9e3a5356b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/23_respuestas.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b8b0f4736812ff7c4e1406d68d065d5959beb7d448d333770ab946d94ad10edb",
+      "actual_sha256": "b8b0f4736812ff7c4e1406d68d065d5959beb7d448d333770ab946d94ad10edb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "519b82a8e5f580cf5298bc86a1627791d200b00985910b7dd12ff850d5a776bb",
+      "actual_sha256": "519b82a8e5f580cf5298bc86a1627791d200b00985910b7dd12ff850d5a776bb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/24_ciclos.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "946cfb702716c8b1ef4f8725bb7dc3ef82d33cac9d8dad7fdb4c9f231e8217fb",
+      "actual_sha256": "946cfb702716c8b1ef4f8725bb7dc3ef82d33cac9d8dad7fdb4c9f231e8217fb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/25_asociacion_ciclos.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a7bc4d1cf49a6731426873bc0516ff239d1d55620c6cde8dfb17a02f54dc5f96",
+      "actual_sha256": "a7bc4d1cf49a6731426873bc0516ff239d1d55620c6cde8dfb17a02f54dc5f96"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/25_asociacion_ciclos.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "32001fae21f95a4e610262ca7d7eceea9026bf3dd5ea58c016de0c7caa1c4b1c",
+      "actual_sha256": "32001fae21f95a4e610262ca7d7eceea9026bf3dd5ea58c016de0c7caa1c4b1c"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a94804c444fd1640c60abbd33617932c193edee4904e4c3ab4ff66dc883e1fc1",
+      "actual_sha256": "a94804c444fd1640c60abbd33617932c193edee4904e4c3ab4ff66dc883e1fc1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/26_disipacion.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "20c196266798e4c7eaf59ac91f593e0769a6bbf0337bc857df51cb25f724e0bb",
+      "actual_sha256": "20c196266798e4c7eaf59ac91f593e0769a6bbf0337bc857df51cb25f724e0bb"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/27_fractura.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f9b2fc2fca84add4630df06332072dc29ab47e742630d9f6477da68aa964730a",
+      "actual_sha256": "f9b2fc2fca84add4630df06332072dc29ab47e742630d9f6477da68aa964730a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/figures/27_fractura.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b49b18b2ad6dd969fb6999d4638283e200538db87a914474687335c361af96f1",
+      "actual_sha256": "b49b18b2ad6dd969fb6999d4638283e200538db87a914474687335c361af96f1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/hallazgos.md",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "255c65225a6ad07f6a0b49494fa3d7afd1a863c5967bcbe6e43ee628be86b3a4",
+      "actual_sha256": "255c65225a6ad07f6a0b49494fa3d7afd1a863c5967bcbe6e43ee628be86b3a4"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/01_diccionario.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9e4a8744f1d68bea4b56e622c10f37fa4ab13628bcca65edbcf11620e7384c43",
+      "actual_sha256": "9e4a8744f1d68bea4b56e622c10f37fa4ab13628bcca65edbcf11620e7384c43"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/02_objetivo.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "6e1d06639dbde430ec02b3e7ec06c98f0f76fe7c7385e5554b30290d06b5dae7",
+      "actual_sha256": "6e1d06639dbde430ec02b3e7ec06c98f0f76fe7c7385e5554b30290d06b5dae7"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/03_geometrias.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8fc2f292fc24129661416f8ef8702ab8069e5cbe47553df16da829e22ff7e7ea",
+      "actual_sha256": "8fc2f292fc24129661416f8ef8702ab8069e5cbe47553df16da829e22ff7e7ea"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/04_soporte.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fe2de918f6bb0cf3dd5330b2cfa4b1eb24447801cacf513f91e365ed564d86b9",
+      "actual_sha256": "fe2de918f6bb0cf3dd5330b2cfa4b1eb24447801cacf513f91e365ed564d86b9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/05_descomposicion.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0f1de5bb8cce2ad9bcf0c492b40ab47de09e7f5aa031c8be37b7ab79efe6ddee",
+      "actual_sha256": "0f1de5bb8cce2ad9bcf0c492b40ab47de09e7f5aa031c8be37b7ab79efe6ddee"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/05_familias.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8fbf20ac99a32c15bf1c82710993a904220194533baa0df1cd4482f956aeb84b",
+      "actual_sha256": "8fbf20ac99a32c15bf1c82710993a904220194533baa0df1cd4482f956aeb84b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/06_contrastes_familias.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "35ed7bf9afbdbaa7fedc4a373df464d1738b15e7dead2cd7f71fb1a4d3d98737",
+      "actual_sha256": "35ed7bf9afbdbaa7fedc4a373df464d1738b15e7dead2cd7f71fb1a4d3d98737"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/07_atipicos_resumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9d629887c8a7a1a10c5ddc2cd2ec989915e21ee36d5b8e79427eb7067b845166",
+      "actual_sha256": "9d629887c8a7a1a10c5ddc2cd2ec989915e21ee36d5b8e79427eb7067b845166"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/07_casos_atipicos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2cfe3e1a0942e0384688fe9cb71dc72e072993c4ebbe103a7663bf087d729ddf",
+      "actual_sha256": "2cfe3e1a0942e0384688fe9cb71dc72e072993c4ebbe103a7663bf087d729ddf"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/08_asociaciones_globales.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "79e3125616d4f7dac693a67c75bcc4dacc68315f8388ec1f223decbf626f9e87",
+      "actual_sha256": "79e3125616d4f7dac693a67c75bcc4dacc68315f8388ec1f223decbf626f9e87"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/09_asociaciones_condicionadas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc",
+      "actual_sha256": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/11_interacciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "aedec6828524bc593c1b52eb122e9d29d42c3f7591b75a526d90ed52e2700ca6",
+      "actual_sha256": "aedec6828524bc593c1b52eb122e9d29d42c3f7591b75a526d90ed52e2700ca6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/12_identidades.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "11af67b195ace49cdf7ba4c5cdfce429957b56c2fef1cd49581941102e4ad7a4",
+      "actual_sha256": "11af67b195ace49cdf7ba4c5cdfce429957b56c2fef1cd49581941102e4ad7a4"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/12_mapa_topologia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f7ecf3e82d05ba43fdfb95ac15254be6c4aaeb406e24a6093c610ff10df2fbe4",
+      "actual_sha256": "f7ecf3e82d05ba43fdfb95ac15254be6c4aaeb406e24a6093c610ff10df2fbe4"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/13_revision_geometrica.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fe01ef6fc387a77aba0f051ab3fec1fc5e4671e4ea4d9ada8ebbcd5d4f2ddbd1",
+      "actual_sha256": "fe01ef6fc387a77aba0f051ab3fec1fc5e4671e4ea4d9ada8ebbcd5d4f2ddbd1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/14_carga_por_volumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6",
+      "actual_sha256": "f84c9238bed252e49b108a9d48308cf3aa9e10f57693e8dcfe4ccc5d5a4d61d6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/14_descriptores.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b",
+      "actual_sha256": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/15_correlacion_spearman.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fe2d95c0c8998aaf476c1ff5e7106ab62a4a1ce224763f4ffe64c09238197828",
+      "actual_sha256": "fe2d95c0c8998aaf476c1ff5e7106ab62a4a1ce224763f4ffe64c09238197828"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/15_pares_redundantes.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "865cb217272c055c30e5e5a3139ce1069ef58ca9078b304d9855dd315d8914ec",
+      "actual_sha256": "865cb217272c055c30e5e5a3139ce1069ef58ca9078b304d9855dd315d8914ec"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/16_valores_singulares.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9c7f4fd27164982ad7cb30b4090d070edb7a02f5b64e58711d01303e783ff12f",
+      "actual_sha256": "9c7f4fd27164982ad7cb30b4090d070edb7a02f5b64e58711d01303e783ff12f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/16_VIF.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4df6ef91692250ba3647a65a61581962820f1b20ffe66db967977c11df57bd30",
+      "actual_sha256": "4df6ef91692250ba3647a65a61581962820f1b20ffe66db967977c11df57bd30"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/17_PCA_direcciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "baebdd5c606c96dc44b916b93c24a11c06362176a899177e0b64a9bff0480102",
+      "actual_sha256": "baebdd5c606c96dc44b916b93c24a11c06362176a899177e0b64a9bff0480102"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/17_PCA_varianza.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a08927af3b2c3d512d7a5dd9f79f3fb0a331788581ca16831977e298d3091400",
+      "actual_sha256": "a08927af3b2c3d512d7a5dd9f79f3fb0a331788581ca16831977e298d3091400"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/18_clusters.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "5d928ab30c5b379f5e11ee87787913a38ea0f9df12910d6b4c06a478a6904181",
+      "actual_sha256": "5d928ab30c5b379f5e11ee87787913a38ea0f9df12910d6b4c06a478a6904181"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/18_perfiles_clusters.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fce13089fe7375e400668a8b65c4491776086e1d6bc9adffcc74b4c7793d3524",
+      "actual_sha256": "fce13089fe7375e400668a8b65c4491776086e1d6bc9adffcc74b4c7793d3524"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/19_vecinos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8669ec8b5056882c625e2f160cdaf3d56baa7d8b2de4dd615076c71331860b34",
+      "actual_sha256": "8669ec8b5056882c625e2f160cdaf3d56baa7d8b2de4dd615076c71331860b34"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/20_influencia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0d3a2ff1ce1d23dc6e7e40d0c4282a6f88b4056682573c805e1668f03673bc55",
+      "actual_sha256": "0d3a2ff1ce1d23dc6e7e40d0c4282a6f88b4056682573c805e1668f03673bc55"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/20_OLS_coeficientes.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3fd9a54df8782faa933185285fbe45c507efe3a5861fd6d80aedd27ea040e1c6",
+      "actual_sha256": "3fd9a54df8782faa933185285fbe45c507efe3a5861fd6d80aedd27ea040e1c6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/21_sensibilidad_omision.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a4eccfb97a86041c413bf4ef43b7cf3830a353e16ebd28c35807321dc86f28b9",
+      "actual_sha256": "a4eccfb97a86041c413bf4ef43b7cf3830a353e16ebd28c35807321dc86f28b9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/22_sensibilidad_geometrica.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "341614271da8179b8a235ea52038b5f758e75bb81081a43f9f18e785b2255069",
+      "actual_sha256": "341614271da8179b8a235ea52038b5f758e75bb81081a43f9f18e785b2255069"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/23_cociente_cargas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "abcd8afb316228a32e00b817de8e926c3cb21aca346ef3b42fcf26c9ac9a44c1",
+      "actual_sha256": "abcd8afb316228a32e00b817de8e926c3cb21aca346ef3b42fcf26c9ac9a44c1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/23_respuestas_secundarias.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7bf57c80e746640f3a686a311ca0d491b9b7eeae1c529ece51164e7f43d48033",
+      "actual_sha256": "7bf57c80e746640f3a686a311ca0d491b9b7eeae1c529ece51164e7f43d48033"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/24_ciclos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "71b307eab21de43f55b493202c6cd98233af3e5e7cddf046c6ae4a5ad3d51606",
+      "actual_sha256": "71b307eab21de43f55b493202c6cd98233af3e5e7cddf046c6ae4a5ad3d51606"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/24_incrementos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f700b7294b3d6e4dada77992ba9853396faba76854e6cca72c8b9082a5d0a015",
+      "actual_sha256": "f700b7294b3d6e4dada77992ba9853396faba76854e6cca72c8b9082a5d0a015"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/25_asociacion_ciclos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "362c6311faf903a62f7a237580f1c136922f4ddedbf1640652520812bfb80ce1",
+      "actual_sha256": "362c6311faf903a62f7a237580f1c136922f4ddedbf1640652520812bfb80ce1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/26_energia_disipada.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "95f642b061dd63adf251ae64ccba2207624fde0588c6b02efb717d43a3235962",
+      "actual_sha256": "95f642b061dd63adf251ae64ccba2207624fde0588c6b02efb717d43a3235962"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/26_revision_energetica.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b7a9fc2cc414a4c5f05a1764ccdf4a7633dc48cca9af6c039786b5cdd45ea7f9",
+      "actual_sha256": "b7a9fc2cc414a4c5f05a1764ccdf4a7633dc48cca9af6c039786b5cdd45ea7f9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/27_fractura_asociacion.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "66a36deb8662d9b4caf148428fcd7a059aeab8be0cb8e0e1391b2d29e4c4c263",
+      "actual_sha256": "66a36deb8662d9b4caf148428fcd7a059aeab8be0cb8e0e1391b2d29e4c4c263"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/27_fractura_eventos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e53c0bfe86b40920690648bf1b482937efb915ef3ca8b14e7e366ade12320ae8",
+      "actual_sha256": "e53c0bfe86b40920690648bf1b482937efb915ef3ca8b14e7e366ade12320ae8"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda/tables/28_hallazgos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "d3223fc6687d18cc19f942416b674527199f5094dcdc7d67192c420555ce5ef4",
+      "actual_sha256": "d3223fc6687d18cc19f942416b674527199f5094dcdc7d67192c420555ce5ef4"
+    },
+    {
+      "category": "manifest_artifacts",
+      "path": "reports/eda/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de artefactos verificables"
+    },
+    {
+      "category": "manifest",
+      "path": "reports/eda_calidad/manifest.json",
+      "passed": true,
+      "detail": "JSON válido"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+      "actual_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
+      "actual_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/processed/preliminary/model_table.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+      "actual_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8"
+    },
+    {
+      "category": "input_hash",
+      "path": "config/data_schema.yml",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "79f65f521e7307c372a63ba8a214810a423516315ef6515b1a4249f9537b59d8",
+      "actual_sha256": "79f65f521e7307c372a63ba8a214810a423516315ef6515b1a4249f9537b59d8"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/interim/preliminary/dataset_manifest.json",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "96f61c4ba333f1d855d0ff008c69eb5f75a5a6ae0576f6f35c16228ff51fc8e8",
+      "actual_sha256": "96f61c4ba333f1d855d0ff008c69eb5f75a5a6ae0576f6f35c16228ff51fc8e8"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/processed/preliminary/data_quality_report.json",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "86ba074a872a95e75ca05cb8b96425bd05d8936998f5a390ce7182260080188e",
+      "actual_sha256": "86ba074a872a95e75ca05cb8b96425bd05d8936998f5a390ce7182260080188e"
+    },
+    {
+      "category": "manifest_inputs",
+      "path": "reports/eda_calidad/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de fuentes verificables"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8f9b101fc443fcb4876b000796c6c5c5a1cc681f8228f66466cd48b68aea5df8",
+      "actual_sha256": "8f9b101fc443fcb4876b000796c6c5c5a1cc681f8228f66466cd48b68aea5df8"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef",
+      "actual_sha256": "416ffe30ece3c50704eb8709efe1dfb5380c2a9fddc0206a893c6c0e71fe35ef"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0c0c863b1d04f101df78c7575370b20d9c93850c4147d7744000df16d959cb4b",
+      "actual_sha256": "0c0c863b1d04f101df78c7575370b20d9c93850c4147d7744000df16d959cb4b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416",
+      "actual_sha256": "e7de1768ccf4051da830ba93f19fa4834535db421aaa3356470de530f43f8416"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "c340ec0e8290176e4827b721b0de42c458f231d9b05c83ffee8e245cb9705645",
+      "actual_sha256": "c340ec0e8290176e4827b721b0de42c458f231d9b05c83ffee8e245cb9705645"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2",
+      "actual_sha256": "cfe4c66da41a9b893a593423aa59d3f891555b41e814126d7a89aa13246bb9c2"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3f2438fa0ea0531173143b000e331712754a0bd7c096432c77842ab123fdbaac",
+      "actual_sha256": "3f2438fa0ea0531173143b000e331712754a0bd7c096432c77842ab123fdbaac"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5",
+      "actual_sha256": "ded35c9140be83df80c09b3c6de478996483887e3e30f83bc8a09e6e3f536ed5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ad25b288ca28b0a0d7de91ced0a7d1de234637053ae0df31424c98bf6715598f",
+      "actual_sha256": "ad25b288ca28b0a0d7de91ced0a7d1de234637053ae0df31424c98bf6715598f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098",
+      "actual_sha256": "d9aff4c66cc2075128377e4ededcefc36891bcc45454b46ee965bbcfbb1fc098"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e4d16bbc6a19c077e78c5a964d90a9613da2d4a21c0636360d13abf8cbba429b",
+      "actual_sha256": "e4d16bbc6a19c077e78c5a964d90a9613da2d4a21c0636360d13abf8cbba429b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3",
+      "actual_sha256": "23ad77faf8414e3a6e2c30666c13dab94eec978139cab9e3d29bf5f8f553a1f3"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "517362f7134316091c8734673feb2bfd4ba2829b460151b866dd861e09648e1e",
+      "actual_sha256": "517362f7134316091c8734673feb2bfd4ba2829b460151b866dd861e09648e1e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01",
+      "actual_sha256": "361ec69568b8bf4c16a78c55ff6a716777756780fb0fab8b6efe3ff3dd1bdd01"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "5776f04965a6ae52385b3a6ffe316734c20449d8b643b727cbdd804320809607",
+      "actual_sha256": "5776f04965a6ae52385b3a6ffe316734c20449d8b643b727cbdd804320809607"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297",
+      "actual_sha256": "c9342b36c27c0fbae8160d6a946524abe079d36301f68ec14ba606e2409e0297"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/01_ejecucion.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a",
+      "actual_sha256": "2c78d55cd7dcc339f428b6af2854aedf3238c7fc956b468ee0d9d3e22873ab2a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/02_lectura_literal.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a33d7c7a740e94de367c2716e189a6441217ee5b258c4c972d5bdcb1be76deff",
+      "actual_sha256": "a33d7c7a740e94de367c2716e189a6441217ee5b258c4c972d5bdcb1be76deff"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/03_equivalencia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "bc8eca330d00970afaf7788037f2e65cbf91dec7250cb7e8186e345050a627f0",
+      "actual_sha256": "bc8eca330d00970afaf7788037f2e65cbf91dec7250cb7e8186e345050a627f0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/03_ubicacion_manifiestos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "8af3cd52ca9377ce0e7afc46732eeac1df9bd685885223294bf690b35ebbfcd6",
+      "actual_sha256": "8af3cd52ca9377ce0e7afc46732eeac1df9bd685885223294bf690b35ebbfcd6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/04_nombres_identificadores.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "20bf29f1fb5c430d2209849ca963dd1a448597271f2871680979159d9b0ebdbc",
+      "actual_sha256": "20bf29f1fb5c430d2209849ca963dd1a448597271f2871680979159d9b0ebdbc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/04_roles_unidades.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b4e6f783a0bb1b5c34e523903396f20214352cb5e34cc01992baeb9899ba51dd",
+      "actual_sha256": "b4e6f783a0bb1b5c34e523903396f20214352cb5e34cc01992baeb9899ba51dd"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/05_perfil_variables.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b45d7aa8531b86c525b94ac8f446d48a7d23dcbe9168d910fb536e5c56cd0586",
+      "actual_sha256": "b45d7aa8531b86c525b94ac8f446d48a7d23dcbe9168d910fb536e5c56cd0586"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/06_coausencia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "35e12c6ddb6eeb86fa7028f86dd5b3ffc8441725bfa50e1c3b73166e5a4fcfaa",
+      "actual_sha256": "35e12c6ddb6eeb86fa7028f86dd5b3ffc8441725bfa50e1c3b73166e5a4fcfaa"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/06_patrones_energia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "605bdc3ec642ff8e7f5e1beeece480133cd3d65cdb194a4bbc3c3a2d6178c9a5",
+      "actual_sha256": "605bdc3ec642ff8e7f5e1beeece480133cd3d65cdb194a4bbc3c3a2d6178c9a5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/06_patrones_samples.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "59d31cb5acbc58f673eba22d2a41288ec8ee530b9b8d1af68ba76ed0131d9135",
+      "actual_sha256": "59d31cb5acbc58f673eba22d2a41288ec8ee530b9b8d1af68ba76ed0131d9135"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/07_ausencia_familia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ed868d714aa244b69a900bfdbf7d4828846eb4500645da7d6e2c9439d010f5d3",
+      "actual_sha256": "ed868d714aa244b69a900bfdbf7d4828846eb4500645da7d6e2c9439d010f5d3"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/07_ausencia_familia_resumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "280eb24073f6cfd230cdc9e41d3dd25727560491b0bbe4405fb76fc91c23643e",
+      "actual_sha256": "280eb24073f6cfd230cdc9e41d3dd25727560491b0bbe4405fb76fc91c23643e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/08_dominios.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ab6452b43975f3acb54e83373cd86266a89691b7ac110114e39fd7cbfff2ca68",
+      "actual_sha256": "ab6452b43975f3acb54e83373cd86266a89691b7ac110114e39fd7cbfff2ca68"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/08_signos_y_nulos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b5c69d47cb6aba6d9dfc12daabf84d074e8018afb19f9ef12e1c4070b5e21003",
+      "actual_sha256": "b5c69d47cb6aba6d9dfc12daabf84d074e8018afb19f9ef12e1c4070b5e21003"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/09_cobertura_configuraciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "bd00c38d5bdd174f088715d15998dccf8cd1d4df3e49fdd7cda7fd13a3232807",
+      "actual_sha256": "bd00c38d5bdd174f088715d15998dccf8cd1d4df3e49fdd7cda7fd13a3232807"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/09_columnas_iguales.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "fd2c6df94a041dc303bd360772c3f139afa230081642870519fd12c55529344c",
+      "actual_sha256": "fd2c6df94a041dc303bd360772c3f139afa230081642870519fd12c55529344c"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/09_configuraciones_repetidas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a1d4559a97e28e12789dc5869e0bb2c21c5870cc2c6a1ad70c982a2e5253b1b2",
+      "actual_sha256": "a1d4559a97e28e12789dc5869e0bb2c21c5870cc2c6a1ad70c982a2e5253b1b2"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/09_duplicados_resumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "dc1afc23d0776ad384ff8d229d12a17db4d980e5ec33e7516b991914c86b1ae5",
+      "actual_sha256": "dc1afc23d0776ad384ff8d229d12a17db4d980e5ec33e7516b991914c86b1ae5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/10_consistencia_geometrica.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2b4d5fa536619c179f838d20c68ceaab0c5f28115e614ff2018eea8080843929",
+      "actual_sha256": "2b4d5fa536619c179f838d20c68ceaab0c5f28115e614ff2018eea8080843929"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/11_alertas_resumen.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "6a22912c7eb15747651ea03baff79594edb3e422ecc3bc7cfe4ea0c2f215776b",
+      "actual_sha256": "6a22912c7eb15747651ea03baff79594edb3e422ecc3bc7cfe4ea0c2f215776b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/11_alertas_robustas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "dff79e9fa3aefe0ac86a9dfdd8902faa7394bfe8323d4ae280436bbfd7650cfc",
+      "actual_sha256": "dff79e9fa3aefe0ac86a9dfdd8902faa7394bfe8323d4ae280436bbfd7650cfc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/11_diagnosticos_robustos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2d536e02debb8ef94a473d6c7dd4b30dd2f70f8bbca2a2768ca27ec9c4b3aaae",
+      "actual_sha256": "2d536e02debb8ef94a473d6c7dd4b30dd2f70f8bbca2a2768ca27ec9c4b3aaae"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/12_disponibilidad_y_fuerza.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e8c3b005f23d806134404686ed51187005b70a9089521f8b8578cd73e4cd64c9",
+      "actual_sha256": "e8c3b005f23d806134404686ed51187005b70a9089521f8b8578cd73e4cd64c9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/14_decisiones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "12cb44d32cc1daa763c73ae379ce18010b72c22188277cfa6bfcf9889e5ec1fe",
+      "actual_sha256": "12cb44d32cc1daa763c73ae379ce18010b72c22188277cfa6bfcf9889e5ec1fe"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_calidad/tables/15_validacion.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ca9b289ef91d4345fe105dc7a45483cc397315cd55d0ae47112a34dd47402980",
+      "actual_sha256": "ca9b289ef91d4345fe105dc7a45483cc397315cd55d0ae47112a34dd47402980"
+    },
+    {
+      "category": "manifest_artifacts",
+      "path": "reports/eda_calidad/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de artefactos verificables"
+    },
+    {
+      "category": "manifest",
+      "path": "reports/eda_relaciones/manifest.json",
+      "passed": true,
+      "detail": "JSON válido"
+    },
+    {
+      "category": "manifest_status",
+      "path": "reports/eda_relaciones/manifest.json",
+      "passed": true,
+      "detail": "Estado esperado: executed"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+      "actual_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/interim/preliminary/dataset_interim.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9",
+      "actual_sha256": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9"
+    },
+    {
+      "category": "manifest_inputs",
+      "path": "reports/eda_relaciones/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de fuentes verificables"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "6e7610ef5eaee178e054609823bf2f700095c9b9cee3abd60cd2d45e9efe8053",
+      "actual_sha256": "6e7610ef5eaee178e054609823bf2f700095c9b9cee3abd60cd2d45e9efe8053"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_input_pearson.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa",
+      "actual_sha256": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "d3bcfaa2636b012b9e7ff5b73c46ed10e19b953ff20146bc0422a610f6e334e7",
+      "actual_sha256": "d3bcfaa2636b012b9e7ff5b73c46ed10e19b953ff20146bc0422a610f6e334e7"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085",
+      "actual_sha256": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "31b239159c815b34f9360607e51d7a0a25a3b1b8f61acc8e310731a1d5c44ac9",
+      "actual_sha256": "31b239159c815b34f9360607e51d7a0a25a3b1b8f61acc8e310731a1d5c44ac9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_output_pearson.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d",
+      "actual_sha256": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "da7e3fd350bef399f467de6c0cf11e865b1fda00bf1ffc88e2c5c676c4094fd3",
+      "actual_sha256": "da7e3fd350bef399f467de6c0cf11e865b1fda00bf1ffc88e2c5c676c4094fd3"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e",
+      "actual_sha256": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9d98aa24fd4d81b99dcc3198b768f79aa674f3d8364ed3dd315e2f10dd06f9d9",
+      "actual_sha256": "9d98aa24fd4d81b99dcc3198b768f79aa674f3d8364ed3dd315e2f10dd06f9d9"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_output_output_pearson.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86",
+      "actual_sha256": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "45a4eda5a15c24cdac7f3d1fa7b4bf09ac0afdc775edca09dddf5ff7aa57a85e",
+      "actual_sha256": "45a4eda5a15c24cdac7f3d1fa7b4bf09ac0afdc775edca09dddf5ff7aa57a85e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R01_output_output_spearman.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e",
+      "actual_sha256": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "45781165d72ccc0c9726ba2842786d495ae2af3eea8ad4c853d9e6493e11777a",
+      "actual_sha256": "45781165d72ccc0c9726ba2842786d495ae2af3eea8ad4c853d9e6493e11777a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd",
+      "actual_sha256": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "20ddc3d03e66ff12d90eec871f3e1321102be1701d8756fc36e8cefb880818ae",
+      "actual_sha256": "20ddc3d03e66ff12d90eec871f3e1321102be1701d8756fc36e8cefb880818ae"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98",
+      "actual_sha256": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "441d4b7bd82d61fec0e9cd6adb9734b6435d45d78674b1c5720d978888aee549",
+      "actual_sha256": "441d4b7bd82d61fec0e9cd6adb9734b6435d45d78674b1c5720d978888aee549"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0",
+      "actual_sha256": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9d4b956a9ca19ed84d9c082561bded51ae969acc099b67b3b171f52f6d3405ba",
+      "actual_sha256": "9d4b956a9ca19ed84d9c082561bded51ae969acc099b67b3b171f52f6d3405ba"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4",
+      "actual_sha256": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f9cc41f2f6db9f384d9144f635cf4fd33d0c3348f10a788f34214e99fae89d66",
+      "actual_sha256": "f9cc41f2f6db9f384d9144f635cf4fd33d0c3348f10a788f34214e99fae89d66"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a",
+      "actual_sha256": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/hallazgos.json",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776",
+      "actual_sha256": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/01_definiciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3eb31847f0cb3afc4573da83ca68088eb47b5b253d5cc8806f6ed8c1a1fbcf58",
+      "actual_sha256": "3eb31847f0cb3afc4573da83ca68088eb47b5b253d5cc8806f6ed8c1a1fbcf58"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/02_univariado_completo.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "5828a8b02ea8fb14b7f58d6f52571a7c90eeb76692998958d51a7d8dbe504377",
+      "actual_sha256": "5828a8b02ea8fb14b7f58d6f52571a7c90eeb76692998958d51a7d8dbe504377"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/03_cobertura_niveles.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "2646c641164882db0ee2b75a62c2e6382ced6c7f96adfbf2e41f11b85f1abeb5",
+      "actual_sha256": "2646c641164882db0ee2b75a62c2e6382ced6c7f96adfbf2e41f11b85f1abeb5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/04_input_output_asociaciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "eb4b3f8aa1c7a02b354427d14746b147a0455667cbd11dea17e324f7c4821084",
+      "actual_sha256": "eb4b3f8aa1c7a02b354427d14746b147a0455667cbd11dea17e324f7c4821084"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/05_input_input_asociaciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "059e5a2059da6c4d7eb92c8f5d0a6c4e2f2095c76069494e9a6db323bf8899e6",
+      "actual_sha256": "059e5a2059da6c4d7eb92c8f5d0a6c4e2f2095c76069494e9a6db323bf8899e6"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/06_output_output_asociaciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "829cf40e840bd2e0c52c49a92a4b92c9cf96e4868414d6027aaab92d1b5a6da0",
+      "actual_sha256": "829cf40e840bd2e0c52c49a92a4b92c9cf96e4868414d6027aaab92d1b5a6da0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_input_n_efectivo.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "eeb4051ff746c547436ecfbc974fe5d8e00e15e9d527ece19cbfcdaaa2f2b97b",
+      "actual_sha256": "eeb4051ff746c547436ecfbc974fe5d8e00e15e9d527ece19cbfcdaaa2f2b97b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_input_pearson.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "b9faa1bcfca86ff3316feddbe3c8cdb1632bde4c3df98ea52ef8225ae79324cc",
+      "actual_sha256": "b9faa1bcfca86ff3316feddbe3c8cdb1632bde4c3df98ea52ef8225ae79324cc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_input_spearman.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f6b1957baf0f0dab4251180496ed7d365ed411d0771b8266c06817747558ddf5",
+      "actual_sha256": "f6b1957baf0f0dab4251180496ed7d365ed411d0771b8266c06817747558ddf5"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_output_n_efectivo.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "28408b1623dbebe628df93716b9115b0c5abcefd154e7eae5808dbf712919b68",
+      "actual_sha256": "28408b1623dbebe628df93716b9115b0c5abcefd154e7eae5808dbf712919b68"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_output_pearson.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4728475508efd30417693e85ef2bf7507268e569b6892f075664129282f1cfb0",
+      "actual_sha256": "4728475508efd30417693e85ef2bf7507268e569b6892f075664129282f1cfb0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_input_output_spearman.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3fa879ab3371fe8b714da829aba7e5d30b5fd388c62349c7ddaf5cbfa62a8fda",
+      "actual_sha256": "3fa879ab3371fe8b714da829aba7e5d30b5fd388c62349c7ddaf5cbfa62a8fda"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_output_output_n_efectivo.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "e5b8068f7527de12d93870ada46e0c9143cb60fb4d6381436d940d60c4de597a",
+      "actual_sha256": "e5b8068f7527de12d93870ada46e0c9143cb60fb4d6381436d940d60c4de597a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_output_output_pearson.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "498eef6c43fd51c010d5c4ca72d69e56800b89560db1e1bacabcc2b44c241e77",
+      "actual_sha256": "498eef6c43fd51c010d5c4ca72d69e56800b89560db1e1bacabcc2b44c241e77"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/07_output_output_spearman.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "bc9824187f3eb44366ec76c851d241424b456aa073d1d657aee985c942c86224",
+      "actual_sha256": "bc9824187f3eb44366ec76c851d241424b456aa073d1d657aee985c942c86224"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/08_objetivo_priorizado.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "57430cdabf43d8c8ea1f2a7c596cb1e732d40095efbd6c5282d3cbbc4270811f",
+      "actual_sha256": "57430cdabf43d8c8ea1f2a7c596cb1e732d40095efbd6c5282d3cbbc4270811f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/09_tamano_forma.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "78aa3fa06dca96dea005fa2ac667d52d5b3b58330ac08ce45ec454341b07dfab",
+      "actual_sha256": "78aa3fa06dca96dea005fa2ac667d52d5b3b58330ac08ce45ec454341b07dfab"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/10_redundancias.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0f8d217ab0dbd1fd98c05182600c03a0f01dc863014bdd492d4a2df89c2b1b51",
+      "actual_sha256": "0f8d217ab0dbd1fd98c05182600c03a0f01dc863014bdd492d4a2df89c2b1b51"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/11_cargas_por_familia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0e72a124ef84cac845951f196c741eba60670bbc3711fd88127613e23bb1c58a",
+      "actual_sha256": "0e72a124ef84cac845951f196c741eba60670bbc3711fd88127613e23bb1c58a"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/12_ciclos_cohorte_comun.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f4210cef353a4e7cc4172cbd7cc27b2fcfc2879d4a1dca30e53f6a25057d2adc",
+      "actual_sha256": "f4210cef353a4e7cc4172cbd7cc27b2fcfc2879d4a1dca30e53f6a25057d2adc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/13_normalizaciones_carga.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "9226619795aacf436e026cdb38b85888c7d66b4c77ad8eda9ad2e76240bc5cfd",
+      "actual_sha256": "9226619795aacf436e026cdb38b85888c7d66b4c77ad8eda9ad2e76240bc5cfd"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/14_hallazgos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "49b2034d668888021be38e8f30791235e3f938d63e8db12e5f33f070eef05844",
+      "actual_sha256": "49b2034d668888021be38e8f30791235e3f938d63e8db12e5f33f070eef05844"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_relaciones/tables/15_respuestas_por_familia.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7f2df307c87862f6c6f3c91a31edd00c87b4deb596b358f1bb3ca2eb3df2a692",
+      "actual_sha256": "7f2df307c87862f6c6f3c91a31edd00c87b4deb596b358f1bb3ca2eb3df2a692"
+    },
+    {
+      "category": "manifest_artifacts",
+      "path": "reports/eda_relaciones/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de artefactos verificables"
+    },
+    {
+      "category": "analysis_hash",
+      "path": "src/eda_relaciones.py",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21",
+      "actual_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21"
+    },
+    {
+      "category": "manifest",
+      "path": "reports/eda_transformaciones/manifest.json",
+      "passed": true,
+      "detail": "JSON válido"
+    },
+    {
+      "category": "manifest_status",
+      "path": "reports/eda_transformaciones/manifest.json",
+      "passed": true,
+      "detail": "Estado esperado: executed"
+    },
+    {
+      "category": "input_hash",
+      "path": "data/raw/dati_campagna_venditti.m",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+      "actual_sha256": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c"
+    },
+    {
+      "category": "manifest_inputs",
+      "path": "reports/eda_transformaciones/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de fuentes verificables"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F01_representaciones.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "392a1a614be2429c9b908c70c90862c5d9022e3267e9e6ff2837e469d0f6a91d",
+      "actual_sha256": "392a1a614be2429c9b908c70c90862c5d9022e3267e9e6ff2837e469d0f6a91d"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F01_representaciones.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0",
+      "actual_sha256": "260026c5a1d29d8c7f7af860422a033a30f4ba854e9bb540d2ee2a861c7139c0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F02_logaritmos.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "3572c0b8222895e5a31ce52542cd40430225d540b599db47d1d2a02926e851f3",
+      "actual_sha256": "3572c0b8222895e5a31ce52542cd40430225d540b599db47d1d2a02926e851f3"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F02_logaritmos.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1",
+      "actual_sha256": "05c6d0caea16dea47910bef13e097073b4a5e34ba3bc6c0f9ccca314044dc5f1"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "da3f61882b18e4943bd7e9cf4d76ace6be36412658c52a8f8729433d9485363b",
+      "actual_sha256": "da3f61882b18e4943bd7e9cf4d76ace6be36412658c52a8f8729433d9485363b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.svg",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f",
+      "actual_sha256": "7fba440616aa5d57416a971ea2c4dc9f964b115ac1a5bc0513d83e4e254e1d7f"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T01_formulas.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "1bb6db4cab247d5e9cde440fe54614cee16515c4c54653c1a108ec52e617453e",
+      "actual_sha256": "1bb6db4cab247d5e9cde440fe54614cee16515c4c54653c1a108ec52e617453e"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T02_geometria_derivada.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "273ac53771a16d12bd47fc113a39b16c30c13b7bf0df86c2dcd2a9128cf2f4dc",
+      "actual_sha256": "273ac53771a16d12bd47fc113a39b16c30c13b7bf0df86c2dcd2a9128cf2f4dc"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T03_representaciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4de403a3df2adc0b983d579fd874d2cd0ab19c1d03a49418c3fa716e6e5ab044",
+      "actual_sha256": "4de403a3df2adc0b983d579fd874d2cd0ab19c1d03a49418c3fa716e6e5ab044"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T04_logaritmos.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "d25626822e80aa8eee78ff89fbfd9606254a638e48ec38080ac758eb5e42ddc0",
+      "actual_sha256": "d25626822e80aa8eee78ff89fbfd9606254a638e48ec38080ac758eb5e42ddc0"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T05_aislamiento_transformaciones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "4b3eee1bbb01fc4d6d5f5b9cac3721431c2168377338dbce7983d9ccfe70ca8b",
+      "actual_sha256": "4b3eee1bbb01fc4d6d5f5b9cac3721431c2168377338dbce7983d9ccfe70ca8b"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T06_frontera_predictiva.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "0e98c47ba91707fc1d04d5f5f9162dc481ab537c88d53f6d3efccd100d396b97",
+      "actual_sha256": "0e98c47ba91707fc1d04d5f5f9162dc481ab537c88d53f6d3efccd100d396b97"
+    },
+    {
+      "category": "artifact_hash",
+      "path": "reports/eda_transformaciones/tables/T07_decisiones.csv",
+      "passed": true,
+      "detail": "SHA-256 coincide",
+      "expected_sha256": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819",
+      "actual_sha256": "7df2c8ee3282dda2d3b5b9e0c30ddf3d25ef92be6f4d490ab310a51ff9f97819"
+    },
+    {
+      "category": "manifest_artifacts",
+      "path": "reports/eda_transformaciones/manifest.json",
+      "passed": true,
+      "detail": "Manifiesto con hashes de artefactos verificables"
+    },
+    {
+      "category": "figure_directory",
+      "path": "reports/eda/figures",
+      "passed": true,
+      "detail": "Figuras PNG presentes"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/00_contexto.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/02_objetivo.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/03_distribuciones_geometricas.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/03_distribuciones_geometricas.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/03_distribuciones_geometricas.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/04_soporte_diseno.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/04_soporte_diseno.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/04_soporte_diseno.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/05_familias.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/06_contrastes.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/06_contrastes.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/06_contrastes.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/07_atipicos.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/07_atipicos.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/07_atipicos.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/08_dispersion.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/09_asociacion_condicionada.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/09_asociacion_condicionada.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/09_asociacion_condicionada.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/10_inversion.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/10_inversion.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/10_inversion.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/11_interacciones.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/11_interacciones.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/11_interacciones.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/12_restricciones.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/12_restricciones.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/12_restricciones.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/13_coherencia.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/13_coherencia.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/13_coherencia.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/14_descriptores.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/14_descriptores.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/14_descriptores.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/15_correlaciones.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/15_correlaciones.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/15_correlaciones.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/16_dimension.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/16_dimension.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/16_dimension.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/17_PCA.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/17_PCA.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/17_PCA.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/18_clusters.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/18_clusters.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/18_clusters.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/19_vecinos.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/19_vecinos.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/19_vecinos.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/20_influencia.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/20_influencia.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/20_influencia.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/21_omision.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/21_omision.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/21_omision.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/23_respuestas.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/23_respuestas.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/23_respuestas.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/24_ciclos.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/25_asociacion_ciclos.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/25_asociacion_ciclos.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/25_asociacion_ciclos.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/26_disipacion.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda/figures/27_fractura.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda/figures/27_fractura.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda/figures/27_fractura.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_directory",
+      "path": "reports/eda_calidad/figures",
+      "passed": true,
+      "detail": "Figuras PNG presentes"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ01_completitud.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ02_mapa_ausencias.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ03_cobertura_ciclos_familia.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ04_signos_normalizacion.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ05_cobertura_configuraciones.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ06_revision_volumenes.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ07_alertas_robustas.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_calidad/figures/FQ08_disponibilidad_respuesta.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_directory",
+      "path": "reports/eda_relaciones/figures",
+      "passed": true,
+      "detail": "Figuras PNG presentes"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_directory",
+      "path": "reports/eda_transformaciones/figures",
+      "passed": true,
+      "detail": "Figuras PNG presentes"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_transformaciones/figures/F01_representaciones.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_transformaciones/figures/F01_representaciones.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_transformaciones/figures/F01_representaciones.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_transformaciones/figures/F02_logaritmos.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_transformaciones/figures/F02_logaritmos.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_transformaciones/figures/F02_logaritmos.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    },
+    {
+      "category": "figure_pair",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "SVG correspondiente disponible"
+    },
+    {
+      "category": "figure_png",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "PNG íntegro"
+    },
+    {
+      "category": "figure_dpi",
+      "path": "reports/eda_transformaciones/figures/F03_escalamiento.png",
+      "passed": true,
+      "detail": "Resolución declarada mínima: 299 dpi"
+    }
+  ]
+}

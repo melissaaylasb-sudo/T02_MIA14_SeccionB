@@ -1,0 +1,11 @@
+variable,n_cells_Y,Fiber_height,Fiber_base,Fiber_total_length,Fiber_total_volume,Pivot_height,Pivot_radius,Pivot_total_number,Pivot_total_volume,Sample_total_volume
+n_cells_Y,27,27,27,27,27,27,27,27,27,27
+Fiber_height,27,27,27,27,27,27,27,27,27,27
+Fiber_base,27,27,27,27,27,27,27,27,27,27
+Fiber_total_length,27,27,27,27,27,27,27,27,27,27
+Fiber_total_volume,27,27,27,27,27,27,27,27,27,27
+Pivot_height,27,27,27,27,27,27,27,27,27,27
+Pivot_radius,27,27,27,27,27,27,27,27,27,27
+Pivot_total_number,27,27,27,27,27,27,27,27,27,27
+Pivot_total_volume,27,27,27,27,27,27,27,27,27,27
+Sample_total_volume,27,27,27,27,27,27,27,27,27,27

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "R-H01",
+    "pregunta": "¿La asociación del volumen es uniforme entre familias?",
+    "metodo": "Pearson/Spearman/Kendall globales, por familia y omisión de caso",
+    "resultado": "Volumen–primera falla: r=0.7727, rho=0.7994; rho por familia Y=4: -0.2619, Y=5: -0.2167, Y=6: -0.2194",
+    "interpretacion": "La arquitectura confunde la asociación global; el signo no puede atribuirse a volumen aislado.",
+    "limitacion": "Correlaciones descriptivas internas; no identificación causal ni evidencia de generalización.",
+    "tabla": "09_tamano_forma",
+    "figura": "R03_tamano_forma"
+  },
+  {
+    "id": "R-H02",
+    "pregunta": "¿Todas las cargas registradas representan el mismo evento?",
+    "metodo": "Diagrama de igualdad y cociente observado por familia",
+    "resultado": "Mediana de primera falla / Ultimate_Load=1.1435; porcentaje por encima de igualdad=65.38%.",
+    "interpretacion": "Ultimate_Load registra fuerza de rotura final, evento distinto de primera rotura y del máximo global de fuerza.",
+    "limitacion": "No interpretar el cociente como capacidad posterior o seguridad; no hay series digitales fuerza–desplazamiento en el MATLAB para estimar la evolución completa.",
+    "tabla": "11_cargas_por_familia",
+    "figura": "R04_comparacion_cargas"
+  },
+  {
+    "id": "R-H03",
+    "pregunta": "¿Cómo cambia el residual respecto de la amplitud?",
+    "metodo": "Medianas de residual/amplitud nominal en cohorte completa y por familia",
+    "resultado": "Mediana global de residual/amplitud: 0.4515 en ciclo 1 y 0.6768 en ciclo 6.",
+    "interpretacion": "El complemento nominal disminuye porque se define como uno menos la fracción residual.",
+    "limitacion": "No es observación independiente de recuperación ni ley de fatiga; hay figuras de curvas en la tesis, pero no series digitales fuerza–desplazamiento en el MATLAB.",
+    "tabla": "12_ciclos_cohorte_comun",
+    "figura": "R05_residual_recuperacion"
+  },
+  {
+    "id": "R-H04",
+    "pregunta": "¿El evento energético inicial acompaña a la primera falla?",
+    "metodo": "Correlaciones entre respuestas, tamaño efectivo y sensibilidad LOO",
+    "resultado": "Evento energético inicial–primera falla: r=0.9859, rho=0.9877, tau-b=0.9323; rho LOO [0.9862, 0.9923].",
+    "interpretacion": "Ambas respuestas del ensayo covarían de forma intensa en el dominio observado.",
+    "limitacion": "La energía se conoce después del ensayo; unidad mJ corroborada documentalmente. No es INPUT previo ni prueba de ley mecánica; geometría del MATLAB pendiente de conciliación con tesis.",
+    "tabla": "06_output_output_asociaciones",
+    "figura": "R01_output_output_spearman"
+  },
+  {
+    "id": "R-H05",
+    "pregunta": "¿Más columnas geométricas equivalen a más información independiente?",
+    "metodo": "Verificación de identidades declaradas y mapeos dentro de familia",
+    "resultado": "La suma declarada de volúmenes de fibra y pivote tiene rango [6524.01, 6524.01] mm³.",
+    "interpretacion": "Su anticorrelación está introducida por construcción; longitud total y conteo de pivotes también codifican familia.",
+    "limitacion": "No equivale a volumen neto o masa constantes; las representaciones deben compararse dentro del protocolo predictivo futuro.",
+    "tabla": "10_redundancias",
+    "figura": "R01_input_input_spearman"
+  },
+  {
+    "id": "R-H06",
+    "pregunta": "¿Los contrastes de arquitectura dependen de la normalización elegida?",
+    "metodo": "Medianas e IQR de fuerza absoluta, por volumen y por conteos",
+    "resultado": "Mediana de primera falla / pivotes [N/pivote]: Y=4: 0.5940, Y=5: 0.5893, Y=6: 0.8520.",
+    "interpretacion": "La diferencia entre arquitecturas Y=4 y Y=5 se atenúa al normalizar por pivotes; Y=6 mantiene una mediana mayor bajo esta representación.",
+    "limitacion": "El denominador cambia entre arquitecturas; no prueba reparto uniforme, causalidad ni efecto independiente de densidad. Dimensiones exteriores fijas en la tesis.",
+    "tabla": "13_normalizaciones_carga",
+    "figura": "R06_normalizaciones_carga"
+  }
+]

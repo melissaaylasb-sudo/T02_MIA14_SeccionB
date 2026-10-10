@@ -1,0 +1,11 @@
+fold,escalamiento,n_train,n_reservado,constantes_en_train,error_centro_train,verificacion
+1,standard,21,6,Pivot_radius,0.0,Verificado solo con entrenamiento
+1,robust,21,6,Pivot_radius,0.0,Verificado solo con entrenamiento
+2,standard,21,6,Pivot_radius,0.0,Verificado solo con entrenamiento
+2,robust,21,6,Pivot_radius,0.0,Verificado solo con entrenamiento
+3,standard,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento
+3,robust,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento
+4,standard,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento
+4,robust,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento
+5,standard,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento
+5,robust,22,5,Pivot_radius,0.0,Verificado solo con entrenamiento

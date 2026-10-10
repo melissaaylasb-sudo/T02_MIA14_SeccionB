@@ -14,9 +14,14 @@ from nbconvert import HTMLExporter
 
 from .ingesta import ROOT
 
+NOTEBOOKS = ["01_Ingesta_Curaduria_y_Calidad.ipynb", "02_EDA_Avanzado.ipynb",
+             "03_Diseno_de_Particiones_y_Preprocesamiento.ipynb"]
 
-def export_report(*, execute: bool = False) -> Path:
-    path = ROOT / "notebooks" / "02_EDA_Avanzado.ipynb"
+
+def export_report(*, execute: bool = False, notebook_name: str = NOTEBOOKS[1]) -> Path:
+    if notebook_name not in NOTEBOOKS:
+        raise ValueError("Solo se exportan los tres cuadernos de la entrega exploratoria.")
+    path = ROOT / "notebooks" / notebook_name
     notebook = nbformat.read(path, as_version=4)
     if execute:
         def progress(cell, cell_index, **kwargs):
@@ -37,11 +42,22 @@ def export_report(*, execute: bool = False) -> Path:
     exporter = HTMLExporter()
     exporter.exclude_input = True
     html, _ = exporter.from_notebook_node(notebook)
-    html = re.sub(r"<title>.*?</title>", "<title>EDA integral de estructuras pantográficas</title>", html, count=1, flags=re.DOTALL)
+    title = notebook.cells[0].source.splitlines()[0].lstrip("# ")
+    html = re.sub(r"<title>.*?</title>", "<title>" + escape(title) + "</title>", html, count=1, flags=re.DOTALL)
     for other in (ROOT / "notebooks").glob("*.ipynb"):
         html = html.replace(f'href="{other.name}"', f'href="{other.stem}.html"')
-    manifest = json.loads((ROOT / "reports/eda/manifest.json").read_text(encoding="utf-8"))
-    descriptions = iter(manifest["figures"].values())
+    descriptions_list = []
+    manifests = (["eda/manifest.json", "eda_relaciones/manifest.json"] if notebook_name == NOTEBOOKS[1]
+                 else ["eda_transformaciones/manifest.json"] if notebook_name == NOTEBOOKS[2]
+                 else ["eda_calidad/manifest.json"])
+    for relative in manifests:
+        manifest_path = ROOT / "reports" / relative
+        if manifest_path.exists():
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            catalog = manifest.get("figures", {})
+            for item in catalog.values() if isinstance(catalog, dict) else catalog:
+                descriptions_list.append(item.get("caption", item.get("title", item.get("titulo", "Figura de auditoría"))) if isinstance(item, dict) else item)
+    descriptions = iter(descriptions_list)
 
     def alt_text(match):
         tag = match.group(0)
@@ -70,7 +86,12 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
     toc = "".join(f'<li><a href="#{escape(anchor)}">{text}</a></li>' for anchor, text in headings)
     navigation = (
         '<div class="eda-nav"><strong>EDA integral · resultados ejecutados</strong><br>'
-        '<a href="../notebooks/02_EDA_Avanzado.ipynb">Notebook reproducible</a>'
+        f'<a href="../notebooks/{escape(notebook_name)}">Notebook reproducible</a>'
+        '<a href="01_Ingesta_Curaduria_y_Calidad.html">01 · Calidad</a>'
+        '<a href="02_EDA_Avanzado.html">02 · Análisis</a>'
+        '<a href="03_Diseno_de_Particiones_y_Preprocesamiento.html">03 · Transformaciones</a>'
+        '<a href="../docs/informe_eda.md">Informe académico</a>'
+        '<a href="../docs/diccionario_datos.md">Diccionario</a>'
         '<a href="eda/hallazgos.md">Hallazgos</a>'
         '<a href="eda/tables/28_hallazgos.csv">Síntesis CSV</a>'
         '<a href="eda/manifest.json">Trazabilidad</a>'
@@ -78,7 +99,7 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
         + toc + "</ul></details></div>"
     )
     html = html.replace("<main>", "<main>" + navigation, 1)
-    destination = ROOT / "reports/02_EDA_Avanzado.html"
+    destination = ROOT / "reports" / (Path(notebook_name).stem + ".html")
     destination.write_text(html, encoding="utf-8")
     return destination
 
@@ -86,8 +107,11 @@ td,th{padding:8px!important;text-align:left!important;border-bottom:1px solid #e
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--execute", action="store_true", help="Recalcular antes de exportar")
+    parser.add_argument("--all", action="store_true", help="Ejecutar/exportar los tres cuadernos en orden")
+    parser.add_argument("--notebook", choices=NOTEBOOKS, default=NOTEBOOKS[1])
     args = parser.parse_args()
-    print(export_report(execute=args.execute))
+    for name in NOTEBOOKS if args.all else [args.notebook]:
+        print(export_report(execute=args.execute, notebook_name=name))
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+Variable,Rol,Unidad,Momento,Nivel,Leakage
+n_cells_Y,INPUT candidato,conteo,antes del ensayo,caso,No por temporalidad
+Fiber_height,INPUT candidato,mm,antes del ensayo,caso,No por temporalidad
+Fiber_base,INPUT disponible; no seleccionado,mm,antes del ensayo,caso,No por temporalidad
+Fiber_total_length,INPUT candidato,mm,antes del ensayo,caso,No por temporalidad
+Fiber_total_volume,INPUT candidato,mm^3,antes del ensayo,caso,No por temporalidad
+Pivot_height,INPUT candidato,mm,antes del ensayo,caso,No por temporalidad
+Pivot_radius,INPUT candidato,mm,antes del ensayo,caso,No por temporalidad
+Pivot_total_number,INPUT candidato,conteo,antes del ensayo,caso,No por temporalidad
+Pivot_total_volume,INPUT candidato,mm^3,antes del ensayo,caso,No por temporalidad
+Sample_total_volume,INPUT candidato,mm^3,antes del ensayo,caso,No por temporalidad
+First_Failure_Load_N,OUTPUT objetivo,N,durante/después del ensayo,caso,"Sí, si entra a X"
+Ultimate_Load,OUTPUT secundario,N,durante/después del ensayo,caso,"Sí, si entra a X"
+Maximum_Displacement,OUTPUT secundario,mm,durante/después del ensayo,caso,"Sí, si entra a X"
+residual_Displacement_1cycle_10mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+residual_Displacement_2cycle_20mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+residual_Displacement_3cycle_30mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+residual_Displacement_4cycle_40mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+residual_Displacement_5cycle_50mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+residual_Displacement_6cycle_60mm,OUTPUT secundario,mm,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_1,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_2,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_3,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_4,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_5,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_6,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Dissipated__cycle_7,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_1,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_2,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_3,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_4,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_5,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_6,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_7,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_8,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_9,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_10,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_11,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_12,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"
+Energy_Fracture__event_13,OUTPUT secundario,mJ; tesis PDF 117/121,durante/después del ensayo,caso × ciclo/evento,"Sí, si entra a X"

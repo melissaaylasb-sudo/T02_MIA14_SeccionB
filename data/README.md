@@ -12,6 +12,12 @@ Esta carpeta contiene una versión **preliminar y trazable** de la campaña expe
 
 Las carpetas con identificadores de fecha corresponden a ejecuciones reproducibles y permanecen fuera de Git. `preliminary/` es una copia estable para revisión académica.
 
+Los snapshots `preliminary/` conservan el esquema histórico. El esquema vigente no selecciona `Fiber_base`, aunque esta variable existe en la fuente y en el snapshot anterior. La auditoría reconstruye ambas versiones y documenta la diferencia sin sobrescribirlas. Las representaciones geométricas exploratorias se guardan aparte en `reports/eda_transformaciones/`.
+
+El [diccionario](../docs/diccionario_datos.md) define variables y unidades; la [trazabilidad](../docs/trazabilidad_datos.md) registra las discrepancias entre MATLAB y fichas experimentales. Las energías se expresan en mJ, según el apéndice de la tesis. Integridad de archivo y concordancia documental son verificaciones distintas.
+
 La ejecución completa puede revisarse en [01_Ingesta_Curaduria_y_Calidad.ipynb](../notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) o abrirse directamente como [reporte HTML](../reports/01_Ingesta_Curaduria_y_Calidad.html). El análisis posterior está en [02_EDA_Avanzado.ipynb](../notebooks/02_EDA_Avanzado.ipynb) y en su [reporte HTML](../reports/02_EDA_Avanzado.html).
 
 El conjunto podrá ampliarse con nuevos ensayos o simulaciones físicamente validadas, con una fuente y un protocolo documentados.
+
+La entrega culmina con el [cuaderno 03 de transformaciones y preparación](../notebooks/03_Diseno_de_Particiones_y_Preprocesamiento.ipynb). Ninguna transformación exploratoria modifica la fuente cruda ni incorpora automáticamente nuevas entradas al modelo previo.

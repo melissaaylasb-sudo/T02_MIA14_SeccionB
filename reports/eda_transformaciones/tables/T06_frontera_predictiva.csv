@@ -1,0 +1,23 @@
+variable,rol,admisible_temporalmente,decision
+Case_n,identificador,False,Excluir de X
+n_cells_Y,INPUT geométrico,True,Disponible antes del ensayo
+Fiber_height,INPUT geométrico,True,Disponible antes del ensayo
+Fiber_base,INPUT geométrico,True,Disponible antes del ensayo
+Fiber_total_length,INPUT geométrico,True,Disponible antes del ensayo
+Fiber_total_volume,INPUT geométrico,True,Disponible antes del ensayo
+Pivot_height,INPUT geométrico,True,Disponible antes del ensayo
+Pivot_radius,INPUT geométrico,True,Disponible antes del ensayo
+Pivot_total_number,INPUT geométrico,True,Disponible antes del ensayo
+Pivot_total_volume,INPUT geométrico,True,Disponible antes del ensayo
+Sample_total_volume,INPUT geométrico,True,Disponible antes del ensayo
+First_Failure_Load_N,target,False,Excluir de X
+Ultimate_Load,OUTPUT posensayo,False,Excluir de X
+Maximum_Displacement,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_1cycle_10mm,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_2cycle_20mm,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_3cycle_30mm,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_4cycle_40mm,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_5cycle_50mm,OUTPUT posensayo,False,Excluir de X
+residual_Displacement_6cycle_60mm,OUTPUT posensayo,False,Excluir de X
+Energy_Dissipated,OUTPUT posensayo,False,Excluir de X: energía obtenida durante el ensayo
+Energy_Fracture,OUTPUT posensayo,False,Excluir de X: energía obtenida durante el ensayo
