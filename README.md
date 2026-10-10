@@ -8,8 +8,6 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 
 Se investiga cómo la geometría de fibras y pivotes y la arquitectura de un retículo se relacionan con su respuesta al ensayo de tracción. El objetivo posterior es **predecir la carga de primera falla, en newtons, utilizando únicamente información conocida antes del ensayo**. La rama `eda` reúne el contexto de las variables, la curaduría, el análisis exploratorio y las transformaciones geométricas.
 
-Una estructura pantográfica es una malla de barras delgadas, llamadas **fibras**, conectadas por pequeñas uniones deformables, llamadas **pivotes**. Su respuesta depende tanto del material como de la forma y disposición de esos elementos. El EDA estudia esas relaciones sin atribuir causalidad a una correlación.
-
 **Documentación y resultados:** [EDA ejecutado en notebook](notebooks/02_EDA_Avanzado.ipynb) · [informe académico](docs/informe_eda.md) · [diccionario](docs/diccionario_datos.md) · [trazabilidad](docs/trazabilidad_datos.md).
 
 ## Índice
@@ -28,39 +26,36 @@ Una estructura pantográfica es una malla de barras delgadas, llamadas **fibras*
 
 ## Experimento y objetivo
 
+![Malla de fibras y pivotes sometida a tracción: geometría de entrada, respuestas del ensayo y fuerza de primera falla como objetivo](docs/figures/malla_fuerzas_variables.png)
+
+[Ampliar el esquema en formato vectorial](docs/figures/malla_fuerzas_variables.svg).
+
 | Aspecto | Definición y alcance |
 |---|---|
 | Fuente experimental | Archivo MATLAB recibido, contrastado con el capítulo 9 y el apéndice de la tesis doctoral de Enrico Venditti |
 | Procedencia académica | Venditti: doctorado en Arquitectura y Ambiente, Università degli Studi di Sassari, Italia; portada 2024/2025. El plan de tesis 2026 registra la provisión académica de datos por Emilio Turco |
 | Material y fabricación | Poliamida —nylon— mediante sinterización láser selectiva, según la tesis |
-| Arquitectura | Fibras cruzadas y pivotes; familias de discretización del retículo |
 | Envolvente nominal | 210 × 70 mm; más celdas no significa mayor longitud exterior |
 | Ensayo documentado | Tracción con carga y descarga; velocidad de desplazamiento de 15 mm/min y niveles nominales cada 10 mm |
 | Equipo e instrumentos | Equipo de ensayo de tracción, con probetas sujetas y registro de fuerza y desplazamiento. También se documenta grabación del sonido de las roturas. La descripción revisada no identifica marca, modelo ni sensores específicos |
-| Respuesta objetivo | Fuerza asociada al primer evento de rotura identificado de una fibra o un pivote |
 | Estado científico | Exploración reproducible del archivo recibido; diferencias geométricas MATLAB–PDF registradas y pendientes de conciliación |
 
 **Cómo se aplica la carga**
 
 | Término | Explicación en este ensayo |
 |---|---|
-| **Tracción** | Fuerza que tiende a alargar la malla. La máquina impone el estiramiento y se registra la fuerza que opone la estructura |
 | **Carga** | Fuerza aplicada, medida en newtons (N). Durante la fase de carga aumenta el desplazamiento impuesto; la fuerza puede caer si ocurre una rotura |
 | **Descarga** | Se reduce la solicitación y se observa cuánto recupera su forma la estructura y qué desplazamiento permanece. No implica necesariamente compresión |
 | **Desplazamiento** | Cambio de posición, medido en milímetros (mm). Los 15 mm/min describen la velocidad de desplazamiento; no son una fuerza |
 | **Flexión y giros internos** | Las fibras pueden doblarse y las conexiones girar durante la tracción. Son mecanismos de deformación; no acreditan ensayos independientes de flexión o torsión |
 
-La carga externa documentada es de **tracción**; no se atribuyen otras pruebas a esta campaña. Tras la primera rotura pueden quedar elementos que transmitan carga: **primera falla, rotura terminal y fuerza máxima del ensayo son conceptos distintos**. Protocolo y registro de sonido: Venditti, páginas 96–97 del PDF; [trazabilidad](docs/trazabilidad_datos.md).
+Tras la primera rotura pueden quedar elementos que transmitan carga: **primera falla, rotura terminal y fuerza máxima del ensayo son conceptos distintos**. Protocolo y registro de sonido: Venditti, páginas 96–97 del PDF; [trazabilidad](docs/trazabilidad_datos.md).
 
 La [introducción científica](docs/introduccion_experimento.md) explica los mecanismos y las fuentes. La metodología es pertinente para investigación peruana en diseño y fabricación; su transferencia a otro material, proceso o aplicación requiere verificación experimental local.
 
-![Esquema conceptual original de fibras, pivotes y flujo experimental](reports/eda/figures/00_contexto.png)
-
-*Esquema idealizado, sin escala; no reproduce exactamente una probeta ni simula su deformación. Fuente conceptual contrastada en la trazabilidad.*
-
 ## INPUT, target y OUTPUT
 
-**INPUT** es una característica conocida antes del ensayo y candidata a entrada del modelo. **OUTPUT** es una respuesta obtenida durante o después. El **target** es el OUTPUT elegido para predecir: **cuántos newtons actúan cuando se rompe por primera vez una fibra o un pivote**.
+Los nombres exactos de la fuente se relacionan con los componentes y respuestas del esquema. El **target** es el OUTPUT elegido para predecir.
 
 | Rol | Nombre en los datos | Unidad | Significado sencillo |
 |---|---|---|---|
@@ -74,7 +69,7 @@ La [introducción científica](docs/introduccion_experimento.md) explica los mec
 | OUTPUT · energías | `Energy_Dissipated`, `Energy_Fracture` | mJ | Energía disipada por ciclo y asociada a eventos de rotura; matrices del MATLAB, analizadas por separado del CSV principal |
 | Metadato | `Case_n` | identificador | Trazabilidad; excluido de los predictores |
 
-**Entrada → salida prevista:** geometría y arquitectura conocidas → **fuerza estimada de primera falla [N]**. Es un problema de regresión: se estima un valor numérico. Las energías, otras cargas y desplazamientos del ensayo se usan para el EDA, pero no como entradas de una predicción previa al ensayo.
+Se plantea un problema de regresión: estimar una fuerza numérica. Las energías, otras cargas y desplazamientos del ensayo se usan para el EDA, pero no como entradas de una predicción previa al ensayo.
 
 La tabla identifica variables candidatas, no una selección final: `Fiber_base` está en la fuente y el EDA, pero no en la lista del esquema actual; `Pivot_radius` es constante en el dominio observado. `Case_n` identifica el caso y no se usa como predictor. El target ausente no se imputa.
 
@@ -192,6 +187,7 @@ T02_MIA14_SeccionB/
 │   ├── introduccion_experimento.md    # Material, mecanismos y ensayo
 │   ├── diccionario_datos.md          # Definiciones, unidades, fórmulas y roles
 │   ├── diccionario_datos.csv
+│   ├── figures/                     # Esquema del ensayo, INPUT y OUTPUT (PNG y SVG)
 │   ├── trazabilidad_datos.md         # Fuentes, páginas y discrepancias
 │   ├── informe_curaduria.md          # Evidencia e incidencias de calidad
 │   └── informe_eda.md                # Interpretación académica y RQ1–RQ12

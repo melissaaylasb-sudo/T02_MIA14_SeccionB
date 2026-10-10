@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-10-10T01:37:17.502863+00:00",
+  "checked_at_utc": "2026-10-10T01:58:41.119680+00:00",
   "scope": "Verificación de archivos guardados; no ejecuta notebooks ni valida causalidad o desempeño predictivo",
   "environment": {
     "python": "3.13.5",
@@ -15,8 +15,8 @@
     "executed_code_cells": 55,
     "figures_png": 48,
     "tables_csv": 95,
-    "local_links": 106,
-    "checks": 489,
+    "local_links": 107,
+    "checks": 490,
     "failed_checks": 0
   },
   "notebooks": [
@@ -580,12 +580,17 @@
     },
     {
       "source": "README.md",
-      "target": "docs/introduccion_experimento.md",
+      "target": "docs/figures/malla_fuerzas_variables.png",
       "exists": true
     },
     {
       "source": "README.md",
-      "target": "reports/eda/figures/00_contexto.png",
+      "target": "docs/figures/malla_fuerzas_variables.svg",
+      "exists": true
+    },
+    {
+      "source": "README.md",
+      "target": "docs/introduccion_experimento.md",
       "exists": true
     },
     {
@@ -1162,14 +1167,21 @@
     },
     {
       "category": "local_link",
-      "path": "docs/introduccion_experimento.md",
+      "path": "docs/figures/malla_fuerzas_variables.png",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
     },
     {
       "category": "local_link",
-      "path": "reports/eda/figures/00_contexto.png",
+      "path": "docs/figures/malla_fuerzas_variables.svg",
+      "passed": true,
+      "detail": "Destino local disponible",
+      "source_document": "README.md"
+    },
+    {
+      "category": "local_link",
+      "path": "docs/introduccion_experimento.md",
       "passed": true,
       "detail": "Destino local disponible",
       "source_document": "README.md"
