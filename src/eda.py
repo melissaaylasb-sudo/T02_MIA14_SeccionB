@@ -7,22 +7,19 @@ import pandas as pd
 from scipy import stats
 
 
-def save_figure_atomic(figure, path, *, dpi=300):
-    """Exporta y reemplaza al terminar; reintenta bloqueos transitorios de Windows."""
-    from io import BytesIO
+def write_bytes_atomic(path, payload):
+    """Reemplaza un artefacto completo; reintenta bloqueos transitorios de Windows."""
     import os
     from pathlib import Path
     import tempfile
     import time
 
     path = Path(path)
-    payload = BytesIO()
-    figure.savefig(payload, format=path.suffix.lstrip('.'), dpi=dpi, bbox_inches='tight')
     temporary = None
     try:
         with tempfile.NamedTemporaryFile(dir=path.parent, prefix=path.stem + '-', suffix='.tmp', delete=False) as handle:
             temporary = Path(handle.name)
-            handle.write(payload.getvalue())
+            handle.write(payload)
         for attempt in range(4):
             try:
                 os.replace(temporary, path)
@@ -34,6 +31,16 @@ def save_figure_atomic(figure, path, *, dpi=300):
     finally:
         if temporary is not None:
             temporary.unlink(missing_ok=True)
+
+
+def save_figure_atomic(figure, path, *, dpi=300):
+    """Renderiza en memoria antes de reemplazar el archivo de la figura."""
+    from io import BytesIO
+    from pathlib import Path
+
+    payload = BytesIO()
+    figure.savefig(payload, format=Path(path).suffix.lstrip('.'), dpi=dpi, bbox_inches='tight')
+    write_bytes_atomic(path, payload.getvalue())
 
 
 def safe_correlation(x, y) -> float:

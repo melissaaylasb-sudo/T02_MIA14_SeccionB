@@ -70,17 +70,21 @@ El [diccionario completo](docs/diccionario_datos.md), también en [CSV](docs/dic
 
 | Orden | Notebook | Contenido |
 |---:|---|---|
-| **01** | [Ingesta, curaduría y calidad](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) | Fuentes, concordancia, esquemas, ausencias, duplicados, configuraciones y alertas de calidad |
-| **02** | [Análisis estadístico y mecánico](notebooks/02_EDA_Avanzado.ipynb) | Distribuciones, asociaciones, familias, valores atípicos, influencia, geometría, ciclos, fractura e interpretación de resultados |
-| **03** | [Transformaciones exploratorias y contexto de las variables](notebooks/03_Transformaciones_Exploratorias.ipynb) | Fórmulas geométricas, representaciones, logaritmos, escalamiento y significado de las variables derivadas |
+| **01** | [Ingesta y validación de datos](notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb) | Extracción, contrato de datos, integridad, valores faltantes, duplicados y consistencia geométrica |
+| **02** | [Análisis exploratorio](notebooks/02_EDA_Avanzado.ipynb) | Análisis univariado, bivariado y multivariado; valores atípicos, influencia, ciclos, eventos e interpretación de resultados |
+| **03** | [Ingeniería de características](notebooks/03_Transformaciones_Exploratorias.ipynb) | Descriptores geométricos, redundancia, logaritmos, escalamiento y evaluación exploratoria de las características derivadas |
 
 **Los tres archivos `.ipynb` contienen el código, las figuras, las tablas y sus interpretaciones.**
 
+**Secuencia del análisis:** carga y calidad → univariado → bivariado → multivariado → atípicos e influencia → ciclos y eventos → interpretación. El cuaderno 03 desarrolla la ingeniería de características a partir de esos resultados.
+
+El contexto experimental, las fuentes y el diccionario completo se concentran en [`docs/`](docs/). Los notebooks presentan el método, el código ejecutado y la interpretación de cada análisis.
+
 ```mermaid
 flowchart LR
-    A["Fuentes experimentales<br/>MATLAB + contraste documental"] --> B["01 · Calidad<br/>trazabilidad + curaduría"]
-    B --> C["02 · Exploración<br/>relaciones + interpretación"]
-    C --> D["03 · Transformaciones<br/>geometría + escalas"]
+    A["Datos experimentales<br/>MATLAB"] --> B["01 · Ingesta y validación<br/>integridad + calidad"]
+    B --> C["02 · Análisis exploratorio<br/>distribuciones + relaciones + robustez"]
+    C --> D["03 · Ingeniería de características<br/>descriptores + transformaciones"]
 ```
 
 ## Preguntas y análisis
@@ -106,10 +110,10 @@ El estudio distingue **un valor extremo, una geometría poco habitual, un caso i
 
 | Análisis | Dónde revisarlo | Interpretación |
 |---|---|---|
-| IQR y puntuación robusta basada en MAD, globales y por familia | Cuaderno 01, **§1.11**; cuaderno 02, **§2.7** | Identifica valores extremos respetando diferencias de arquitectura; MAD igual a cero se informa como criterio no calculable |
-| Distancia de Mahalanobis en el subespacio PCA | Cuaderno 02, **§2.20** | Examina combinaciones geométricas poco habituales, aunque ninguna variable aislada resulte extrema |
-| Leverage y distancia de Cook en un ajuste descriptivo | Cuaderno 02, **§2.20** | Evalúa cuánto influye un caso sobre una tendencia concreta; no certifica que ese registro sea erróneo |
-| Omisión individual y revisión de incidencias geométricas | Cuaderno 02, **§2.21–2.22**, y tablas de sensibilidad | Comprueba si el signo o la intensidad de las asociaciones dependen de casos particulares |
+| IQR y puntuación robusta basada en MAD, globales y por familia | Cuaderno 01, **§1.11**; cuaderno 02, **§2.2.4** | Identifica valores extremos respetando diferencias de arquitectura; MAD igual a cero se informa como criterio no calculable |
+| Distancia de Mahalanobis en el subespacio PCA | Cuaderno 02, **§2.5.1** | Examina combinaciones geométricas poco habituales, aunque ninguna variable aislada resulte extrema |
+| Leverage y distancia de Cook en un ajuste descriptivo | Cuaderno 02, **§2.5.1** | Evalúa cuánto influye un caso sobre una tendencia concreta; no certifica que ese registro sea erróneo |
+| Omisión individual y revisión de incidencias geométricas | Cuaderno 02, **§2.5.3–2.5.4**, y tablas de sensibilidad | Comprueba si el signo o la intensidad de las asociaciones dependen de casos particulares |
 
 Por ejemplo, los casos 1 y 3 muestran influencia en el ajuste descriptivo examinado, y la energía del caso 5 en el quinto ciclo requiere revisión pese a coincidir con la fuente documental. **Las banderas se conservan para revisión: no se eliminan ni sustituyen observaciones automáticamente.** La interpretación contrasta la señal estadística con la familia, la definición de la variable y su procedencia.
 
@@ -239,7 +243,7 @@ La ampliación del conjunto depende de nuevos ensayos o simulaciones físicament
 
 ### Notebooks y código
 
-Los cuadernos siguen el orden **calidad → exploración → transformaciones**. Documentan las preguntas, muestran el cálculo y desarrollan la interpretación; la lógica reutilizable permanece en `src/`. Las pruebas en `tests/` comprueban la extracción, los estadísticos y las transformaciones.
+Los cuadernos siguen el orden **ingesta y validación → análisis exploratorio → ingeniería de características**. Cada sección reúne método, cálculo y resultados; la interpretación se apoya en sus tablas y figuras. La lógica reutilizable permanece en `src/`, y las pruebas en `tests/` comprueban la extracción, los estadísticos y las transformaciones.
 
 ## Reproducción
 

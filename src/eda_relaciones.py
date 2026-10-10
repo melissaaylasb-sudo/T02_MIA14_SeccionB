@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
-from .eda import safe_correlation, rank_association
+from .eda import safe_correlation, rank_association, save_figure_atomic, write_bytes_atomic
 from .eda_energia import load_energy_tables
 from .ingesta import execution_context, sha256_file
 
@@ -299,7 +299,8 @@ def run_analysis(root):
     def save_fig(name, fig, caption):
         fig.tight_layout()
         for extension in ["png", "svg"]:
-            fig.savefig(figdir/f"{name}.{extension}", dpi=300, bbox_inches="tight", facecolor="white")
+            fig.set_facecolor("white")
+            save_figure_atomic(fig, figdir/f"{name}.{extension}", dpi=300)
         plt.close(fig)
         figures[name] = {"png": (figdir/f"{name}.png").relative_to(root).as_posix(),
                         "svg": (figdir/f"{name}.svg").relative_to(root).as_posix(), "caption": caption}
@@ -483,7 +484,7 @@ def run_analysis(root):
          "tabla":"13_normalizaciones_carga","figura":"R06_normalizaciones_carga"},
     ]
     save_table("14_hallazgos",pd.DataFrame(findings))
-    (out/"hallazgos.json").write_text(json.dumps(findings,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    write_bytes_atomic(out/"hallazgos.json", (json.dumps(findings,ensure_ascii=False,indent=2)+"\n").encode("utf-8"))
     assert inputs == {p.relative_to(root).as_posix():sha256_file(p) for p in [source,interim]}, "Se alteró una fuente durante el análisis"
     manifest={"status":"executed","purpose":"Relaciones exploratorias completas y sensibilidad",
         "inputs_sha256":inputs,"analysis_source_sha256":sha256_file(Path(__file__)),"execution":execution_context(),"tables":list(tables),"figures":figures,
@@ -491,7 +492,7 @@ def run_analysis(root):
                   "LOO_is_confidence_interval":False,"pvalues_computed":False,
                   "resampling":"ninguno; sensibilidad determinista por caso","energy_unit":"mJ; ver docs/trazabilidad_datos.md"},
         "artifact_sha256":{p.relative_to(out).as_posix():sha256_file(p) for p in sorted(out.rglob('*')) if p.is_file() and p.name!='manifest.json'}}
-    (out/"manifest.json").write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+    write_bytes_atomic(out/"manifest.json", (json.dumps(manifest,ensure_ascii=False,indent=2)+"\n").encode("utf-8"))
     return {"tables":tables,"figures":figures,"findings":findings,"manifest":manifest}
 
 

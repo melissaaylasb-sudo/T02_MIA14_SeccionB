@@ -15,6 +15,7 @@ from sklearn.model_selection import KFold
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import RobustScaler, StandardScaler
 
+from .eda import rank_association, save_figure_atomic, write_bytes_atomic
 from .importar_matlab import load_matlab_samples
 from .ingesta import sha256_file
 
@@ -82,10 +83,52 @@ def representation_diagnostics(frame: pd.DataFrame) -> dict:
             "condicion": float(singular[0] / singular[-1]) if rank == variable.shape[1] else float("inf")}
 
 
+def descriptor_associations(frame: pd.DataFrame):
+    """Evalúa descriptores geométricos frente a la carga de primera falla.
+
+    Se aplica al snapshot model_table, con el objetivo observado. Las fórmulas,
+    el orden de columnas y los estadísticos se conservan explícitos.
+    El coeficiente condicionado correlaciona rangos residualizados por familia;
+    no representa causalidad ni validación predictiva. F/V es una respuesta
+    normalizada, no un esfuerzo ni un predictor disponible antes del ensayo.
+    """
+    required = ["Fiber_base", "Fiber_height", "Pivot_total_volume", "Fiber_total_volume",
+                "Sample_total_volume", "First_Failure_Load_N", "n_cells_Y"]
+    if any(column not in frame for column in required):
+        raise ValueError("La evaluación requiere geometría, familia y carga observada del snapshot.")
+    values = frame[required].to_numpy(dtype=float)
+    if not np.isfinite(values).all() or (values <= 0).any():
+        raise ValueError("El snapshot debe contener valores positivos y finitos para esta evaluación.")
+    response = frame["First_Failure_Load_N"].astype(float)
+    families = frame["n_cells_Y"].astype(int)
+    derived = pd.DataFrame(index=frame.index)
+    derived["area_fibra_mm2"] = frame.Fiber_base * frame.Fiber_height
+    derived["base_sobre_altura"] = frame.Fiber_base / frame.Fiber_height
+    derived["I_bh3_mm4"] = frame.Fiber_base * frame.Fiber_height ** 3 / 12
+    derived["I_hb3_mm4"] = frame.Fiber_height * frame.Fiber_base ** 3 / 12
+    derived["log_vol_pivote_sobre_fibra"] = np.log(frame.Pivot_total_volume / frame.Fiber_total_volume)
+    rows = []
+    for column in derived:
+        rows.append([column, derived[column].min(), derived[column].median(), derived[column].max(),
+                     rank_association(derived[column], response),
+                     rank_association(derived[column], response, families)])
+    associations = pd.DataFrame(rows, columns=[
+        "descriptor", "mínimo", "mediana", "máximo", "rho_global", "rho_condicionado"])
+    efficiency = response / frame.Sample_total_volume
+    normalized = pd.DataFrame({"familia": families, "carga_por_volumen_N_mm3": efficiency}).groupby("familia").agg(
+        mediana=("carga_por_volumen_N_mm3", "median"),
+        mínimo=("carga_por_volumen_N_mm3", "min"),
+        máximo=("carga_por_volumen_N_mm3", "max"),
+    ).reset_index()
+    return derived, associations, normalized
+
+
 def run_transformations(root: Path) -> dict:
     root = Path(root)
     raw = root / "data/raw/dati_campagna_venditti.m"
     source_hash = sha256_file(raw)
+    curated_path = root / "data/processed/preliminary/model_table.csv"
+    curated_hash = sha256_file(curated_path)
     full = load_matlab_samples(raw)
     x = full[GEOMETRY].copy()
     derived = geometry_features(x)
@@ -102,7 +145,7 @@ def run_transformations(root: Path) -> dict:
     def figure(name, fig, title):
         fig.tight_layout()
         for suffix in ("png", "svg"):
-            fig.savefig(figdir / f"{name}.{suffix}", dpi=300, bbox_inches="tight")
+            save_figure_atomic(fig, figdir / f"{name}.{suffix}", dpi=300)
         plt.close(fig)
         figures[name] = {"path": str(figdir / f"{name}.png"), "title": title}
 
@@ -196,11 +239,36 @@ def run_transformations(root: Path) -> dict:
         ["Transferencia", "No evaluada", "Nuevas arquitecturas, materiales y protocolos requieren validación externa"],
     ], columns=["elemento", "decision", "justificacion"])
     table("T07_decisiones", decisions)
+    curated = pd.read_csv(curated_path)
+    evaluated, associations, normalized = descriptor_associations(curated)
+    table("T08_asociaciones_caracteristicas", associations)
+    table("T09_carga_por_volumen", normalized)
+    response = curated["First_Failure_Load_N"].astype(float)
+    families = curated["n_cells_Y"].astype(int)
+    colors = {4: "#2563a6", 5: "#008579", 6: "#d78930"}
+    labels = {"area_fibra_mm2": "Área de fibra [mm²]",
+              "base_sobre_altura": "Base / altura [sin unidad]",
+              "log_vol_pivote_sobre_fibra": "ln(V_pivote / V_fibra) [sin unidad]"}
+    titles = {"area_fibra_mm2": "Sección de fibra y primera falla",
+              "base_sobre_altura": "Forma de sección y primera falla",
+              "log_vol_pivote_sobre_fibra": "Reparto de volumen y primera falla"}
+    fig, axes = plt.subplots(1, 3, figsize=(13, 4))
+    for ax, column in zip(axes, labels):
+        ax.scatter(evaluated[column], response, c=[colors[g] for g in families])
+        ax.set(xlabel=labels[column], ylabel="Primera falla [N]", title=titles[column])
+    from matplotlib.lines import Line2D
+    fig.legend(handles=[Line2D([], [], color=colors[g], marker="o", linestyle="",
+                               label=f"Celdas Y = {g}") for g in sorted(families.unique())],
+               loc="lower center", bbox_to_anchor=(.5, -.03), ncol=3, frameon=False)
+    figure("F04_caracteristicas", fig, "Descriptores geométricos derivados frente a primera falla")
+    figures["F04_caracteristicas"]["source"] = "snapshot model_table.csv; target observado en N"
     assert sha256_file(raw) == source_hash
+    assert sha256_file(curated_path) == curated_hash
     manifest = {"status": "executed", "scope": "transformaciones exploratorias sin entrenamiento predictivo",
-                "source": {raw.relative_to(root).as_posix(): source_hash}, "seed": 42,
+                "source": {raw.relative_to(root).as_posix(): source_hash,
+                           curated_path.relative_to(root).as_posix(): curated_hash}, "seed": 42,
                 "tables": list(tables), "figures": {k: v["title"] for k, v in figures.items()},
                 "artifacts_sha256": {p.relative_to(out).as_posix(): sha256_file(p)
                                       for p in sorted(out.rglob("*")) if p.is_file() and p.name != "manifest.json"}}
-    (out / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    write_bytes_atomic(out / "manifest.json", (json.dumps(manifest, ensure_ascii=False, indent=2) + "\n").encode("utf-8"))
     return {"tables": tables, "figures": figures, "manifest": manifest}
