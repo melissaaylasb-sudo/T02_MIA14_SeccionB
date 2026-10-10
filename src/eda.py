@@ -7,6 +7,35 @@ import pandas as pd
 from scipy import stats
 
 
+def save_figure_atomic(figure, path, *, dpi=300):
+    """Exporta y reemplaza al terminar; reintenta bloqueos transitorios de Windows."""
+    from io import BytesIO
+    import os
+    from pathlib import Path
+    import tempfile
+    import time
+
+    path = Path(path)
+    payload = BytesIO()
+    figure.savefig(payload, format=path.suffix.lstrip('.'), dpi=dpi, bbox_inches='tight')
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(dir=path.parent, prefix=path.stem + '-', suffix='.tmp', delete=False) as handle:
+            temporary = Path(handle.name)
+            handle.write(payload.getvalue())
+        for attempt in range(4):
+            try:
+                os.replace(temporary, path)
+                break
+            except OSError:
+                if attempt == 3:
+                    raise
+                time.sleep(.2 * (attempt + 1))
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
 def safe_correlation(x, y) -> float:
     x, y = np.asarray(x, dtype=float), np.asarray(y, dtype=float)
     x, y = x - x.mean(), y - y.mean()

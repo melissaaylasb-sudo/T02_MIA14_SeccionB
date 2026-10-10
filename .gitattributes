@@ -1,2 +1,16 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Preserve exact bytes used by the EDA SHA-256 manifests across platforms.
+data/raw/dati_campagna_venditti.m -text whitespace=cr-at-eol
+data/interim/preliminary/** -text whitespace=cr-at-eol
+data/processed/preliminary/** -text whitespace=cr-at-eol
+config/data_schema.yml -text whitespace=cr-at-eol
+src/eda_relaciones.py -text whitespace=cr-at-eol
+reports/eda/** -text whitespace=cr-at-eol
+reports/eda_calidad/** -text whitespace=cr-at-eol
+reports/eda_relaciones/** -text whitespace=cr-at-eol
+reports/eda_transformaciones/** -text whitespace=cr-at-eol
+
+# Matplotlib SVG paths include harmless trailing spaces in generated geometry.
+reports/**/figures/*.svg whitespace=-blank-at-eol,cr-at-eol

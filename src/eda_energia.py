@@ -2,7 +2,8 @@
 
 Solo se admiten literales numéricos, ``NaN(filas, columnas)`` y asignaciones
 de vectores a una fila y un intervalo de columnas. La energía se conserva en
-la escala original: el archivo de campaña no declara su unidad.
+la escala original. El script no declara unidad; el apéndice de Venditti
+la documenta en milijulios (mJ), véase docs/trazabilidad_datos.md.
 """
 
 from __future__ import annotations

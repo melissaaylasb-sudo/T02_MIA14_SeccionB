@@ -1,0 +1,164 @@
+{
+  "status": "executed",
+  "purpose": "Relaciones exploratorias completas y sensibilidad",
+  "inputs_sha256": {
+    "data/raw/dati_campagna_venditti.m": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+    "data/interim/preliminary/dataset_interim.csv": "220bd1022cf05e227ef029477ebc685df74f5034b9846790421da2c0019cf2b9"
+  },
+  "analysis_source_sha256": "f70a181e2c311beb3d51ba40b861c98f6a61d684c7db10eef01395970e2c7b21",
+  "execution": {
+    "python": "3.13.5",
+    "dependencies": {
+      "pandas": "2.3.0",
+      "numpy": "2.5.2",
+      "scipy": "1.16.0",
+      "scikit-learn": "1.7.0",
+      "openpyxl": "3.1.5",
+      "PyYAML": "6.0.2",
+      "joblib": "1.5.1"
+    },
+    "git": {
+      "commit": "3f6ea12b76d78f4bb9f69ace36b6af0fa2e254f2",
+      "dirty": true
+    }
+  },
+  "tables": [
+    "01_definiciones",
+    "02_univariado_completo",
+    "03_cobertura_niveles",
+    "04_input_output_asociaciones",
+    "05_input_input_asociaciones",
+    "06_output_output_asociaciones",
+    "07_input_input_pearson",
+    "07_input_input_n_efectivo",
+    "07_input_input_spearman",
+    "07_input_output_pearson",
+    "07_input_output_n_efectivo",
+    "07_input_output_spearman",
+    "07_output_output_pearson",
+    "07_output_output_n_efectivo",
+    "07_output_output_spearman",
+    "08_objetivo_priorizado",
+    "09_tamano_forma",
+    "10_redundancias",
+    "11_cargas_por_familia",
+    "15_respuestas_por_familia",
+    "12_ciclos_cohorte_comun",
+    "13_normalizaciones_carga",
+    "14_hallazgos"
+  ],
+  "figures": {
+    "R01_input_input_pearson": {
+      "png": "reports/eda_relaciones/figures/R01_input_input_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_input_pearson.svg",
+      "caption": "Matriz completa de geometrías. Un coeficiente perfecto puede reflejar una identidad o el diseño; no identifica un efecto mecánico independiente."
+    },
+    "R01_input_input_spearman": {
+      "png": "reports/eda_relaciones/figures/R01_input_input_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_input_spearman.svg",
+      "caption": "Matriz completa de geometrías. Un coeficiente perfecto puede reflejar una identidad o el diseño; no identifica un efecto mecánico independiente."
+    },
+    "R01_input_output_pearson": {
+      "png": "reports/eda_relaciones/figures/R01_input_output_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_output_pearson.svg",
+      "caption": "Matriz por parejas completas. Las tablas CSV incluyen todas las variables; esta figura usa respuestas representativas predefinidas."
+    },
+    "R01_input_output_spearman": {
+      "png": "reports/eda_relaciones/figures/R01_input_output_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_input_output_spearman.svg",
+      "caption": "Matriz por parejas completas. Las tablas CSV incluyen todas las variables; esta figura usa respuestas representativas predefinidas."
+    },
+    "R01_output_output_pearson": {
+      "png": "reports/eda_relaciones/figures/R01_output_output_pearson.png",
+      "svg": "reports/eda_relaciones/figures/R01_output_output_pearson.svg",
+      "caption": "Matriz por parejas completas. Las tablas CSV incluyen todas las variables; esta figura usa respuestas representativas predefinidas."
+    },
+    "R01_output_output_spearman": {
+      "png": "reports/eda_relaciones/figures/R01_output_output_spearman.png",
+      "svg": "reports/eda_relaciones/figures/R01_output_output_spearman.svg",
+      "caption": "Matriz por parejas completas. Las tablas CSV incluyen todas las variables; esta figura usa respuestas representativas predefinidas."
+    },
+    "R02_coeficientes_estabilidad": {
+      "png": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.png",
+      "svg": "reports/eda_relaciones/figures/R02_coeficientes_estabilidad.svg",
+      "caption": "Los rangos LOO miden sensibilidad a omisión, no incertidumbre inferencial ni validación predictiva. Orden de variables por familia física, sin ranking automático."
+    },
+    "R03_tamano_forma": {
+      "png": "reports/eda_relaciones/figures/R03_tamano_forma.png",
+      "svg": "reports/eda_relaciones/figures/R03_tamano_forma.svg",
+      "caption": "Contraste de volumen declarado, sección idealizada y proporción local. Las dimensiones exteriores son fijas en la tesis; n_cells_Y expresa discretización de arquitectura, no crecimiento exterior. Se analizan valores del archivo MATLAB recibido, pendientes de conciliación geométrica con la tesis."
+    },
+    "R04_comparacion_cargas": {
+      "png": "reports/eda_relaciones/figures/R04_comparacion_cargas.png",
+      "svg": "reports/eda_relaciones/figures/R04_comparacion_cargas.svg",
+      "caption": "La fuerza de rotura final no coincide necesariamente con la máxima del ensayo. Definición cotejada con fichas de la tesis (docs/trazabilidad_datos.md); el cociente no mide reserva estructural."
+    },
+    "R05_residual_recuperacion": {
+      "png": "reports/eda_relaciones/figures/R05_residual_recuperacion.png",
+      "svg": "reports/eda_relaciones/figures/R05_residual_recuperacion.svg",
+      "caption": "Mismos casos a lo largo de los ciclos. Las dos magnitudes son complementos algebraicos, no evidencias independientes; no se reconstruyen curvas ni histéresis."
+    },
+    "R06_normalizaciones_carga": {
+      "png": "reports/eda_relaciones/figures/R06_normalizaciones_carga.png",
+      "svg": "reports/eda_relaciones/figures/R06_normalizaciones_carga.svg",
+      "caption": "Medianas e IQR por familia: normalizar responde a otra pregunta. N/mm³ no es esfuerzo y N/pivote no es reparto interno medido."
+    }
+  },
+  "method": {
+    "pairwise_complete": true,
+    "minimum_for_correlation": 3,
+    "minimum_for_LOO": 4,
+    "LOO_is_confidence_interval": false,
+    "pvalues_computed": false,
+    "resampling": "ninguno; sensibilidad determinista por caso",
+    "energy_unit": "mJ; ver docs/trazabilidad_datos.md"
+  },
+  "artifact_sha256": {
+    "figures/R01_input_input_pearson.png": "6e7610ef5eaee178e054609823bf2f700095c9b9cee3abd60cd2d45e9efe8053",
+    "figures/R01_input_input_pearson.svg": "24412d7c0a69bce857ba541c45b8c4b66004fa0d27a054a3f430e832bb9cc3aa",
+    "figures/R01_input_input_spearman.png": "d3bcfaa2636b012b9e7ff5b73c46ed10e19b953ff20146bc0422a610f6e334e7",
+    "figures/R01_input_input_spearman.svg": "aa0883cc623ba96659514aaaf1dceb6ede99740b965d0fb8072654d7741a3085",
+    "figures/R01_input_output_pearson.png": "31b239159c815b34f9360607e51d7a0a25a3b1b8f61acc8e310731a1d5c44ac9",
+    "figures/R01_input_output_pearson.svg": "ec531cef840d412c287bd7a68d288458c3dad90a212ec5737925f33d8bfb838d",
+    "figures/R01_input_output_spearman.png": "da7e3fd350bef399f467de6c0cf11e865b1fda00bf1ffc88e2c5c676c4094fd3",
+    "figures/R01_input_output_spearman.svg": "18adc0a4a02eda247718b679caf73f81ac9d5d007a338117ad555df4240ccd2e",
+    "figures/R01_output_output_pearson.png": "9d98aa24fd4d81b99dcc3198b768f79aa674f3d8364ed3dd315e2f10dd06f9d9",
+    "figures/R01_output_output_pearson.svg": "73c3f2f8e48a647074e2c4ed2b44c76922b48169f4ad9bb1f6262c14132c1f86",
+    "figures/R01_output_output_spearman.png": "45a4eda5a15c24cdac7f3d1fa7b4bf09ac0afdc775edca09dddf5ff7aa57a85e",
+    "figures/R01_output_output_spearman.svg": "09d4606694f2e777f85b3e54f59839c0376b4e63252085af0e58c659efd5ce7e",
+    "figures/R02_coeficientes_estabilidad.png": "45781165d72ccc0c9726ba2842786d495ae2af3eea8ad4c853d9e6493e11777a",
+    "figures/R02_coeficientes_estabilidad.svg": "b5d655e46a96d6ed7088fa1a9f188769e2e5e66399e3236162d1287d5ae484bd",
+    "figures/R03_tamano_forma.png": "20ddc3d03e66ff12d90eec871f3e1321102be1701d8756fc36e8cefb880818ae",
+    "figures/R03_tamano_forma.svg": "94f5da6f4c1325ae50feaf1ec9f5d138b3614cfe709055342b203c95fedf4e98",
+    "figures/R04_comparacion_cargas.png": "441d4b7bd82d61fec0e9cd6adb9734b6435d45d78674b1c5720d978888aee549",
+    "figures/R04_comparacion_cargas.svg": "bf43d41aeedc6fd9727e9141e75ec01f671221d00d8d0c26412914195b4690d0",
+    "figures/R05_residual_recuperacion.png": "9d4b956a9ca19ed84d9c082561bded51ae969acc099b67b3b171f52f6d3405ba",
+    "figures/R05_residual_recuperacion.svg": "7b1fa05265b9c2559353e82db0c0192bb5d1f77818566ebce3dc6b5420f5d7c4",
+    "figures/R06_normalizaciones_carga.png": "f9cc41f2f6db9f384d9144f635cf4fd33d0c3348f10a788f34214e99fae89d66",
+    "figures/R06_normalizaciones_carga.svg": "a9ac8c88c6635ddbc385f9a3ff5b36e577c37e8058fc8325d649daedcfbd292a",
+    "hallazgos.json": "4ae8d0bc6af06d17313cb2746891efaf1dcd7f579b89d7ffd006422924e28776",
+    "tables/01_definiciones.csv": "3eb31847f0cb3afc4573da83ca68088eb47b5b253d5cc8806f6ed8c1a1fbcf58",
+    "tables/02_univariado_completo.csv": "5828a8b02ea8fb14b7f58d6f52571a7c90eeb76692998958d51a7d8dbe504377",
+    "tables/03_cobertura_niveles.csv": "2646c641164882db0ee2b75a62c2e6382ced6c7f96adfbf2e41f11b85f1abeb5",
+    "tables/04_input_output_asociaciones.csv": "eb4b3f8aa1c7a02b354427d14746b147a0455667cbd11dea17e324f7c4821084",
+    "tables/05_input_input_asociaciones.csv": "059e5a2059da6c4d7eb92c8f5d0a6c4e2f2095c76069494e9a6db323bf8899e6",
+    "tables/06_output_output_asociaciones.csv": "829cf40e840bd2e0c52c49a92a4b92c9cf96e4868414d6027aaab92d1b5a6da0",
+    "tables/07_input_input_n_efectivo.csv": "eeb4051ff746c547436ecfbc974fe5d8e00e15e9d527ece19cbfcdaaa2f2b97b",
+    "tables/07_input_input_pearson.csv": "b9faa1bcfca86ff3316feddbe3c8cdb1632bde4c3df98ea52ef8225ae79324cc",
+    "tables/07_input_input_spearman.csv": "f6b1957baf0f0dab4251180496ed7d365ed411d0771b8266c06817747558ddf5",
+    "tables/07_input_output_n_efectivo.csv": "28408b1623dbebe628df93716b9115b0c5abcefd154e7eae5808dbf712919b68",
+    "tables/07_input_output_pearson.csv": "4728475508efd30417693e85ef2bf7507268e569b6892f075664129282f1cfb0",
+    "tables/07_input_output_spearman.csv": "3fa879ab3371fe8b714da829aba7e5d30b5fd388c62349c7ddaf5cbfa62a8fda",
+    "tables/07_output_output_n_efectivo.csv": "e5b8068f7527de12d93870ada46e0c9143cb60fb4d6381436d940d60c4de597a",
+    "tables/07_output_output_pearson.csv": "498eef6c43fd51c010d5c4ca72d69e56800b89560db1e1bacabcc2b44c241e77",
+    "tables/07_output_output_spearman.csv": "bc9824187f3eb44366ec76c851d241424b456aa073d1d657aee985c942c86224",
+    "tables/08_objetivo_priorizado.csv": "57430cdabf43d8c8ea1f2a7c596cb1e732d40095efbd6c5282d3cbbc4270811f",
+    "tables/09_tamano_forma.csv": "78aa3fa06dca96dea005fa2ac667d52d5b3b58330ac08ce45ec454341b07dfab",
+    "tables/10_redundancias.csv": "0f8d217ab0dbd1fd98c05182600c03a0f01dc863014bdd492d4a2df89c2b1b51",
+    "tables/11_cargas_por_familia.csv": "0e72a124ef84cac845951f196c741eba60670bbc3711fd88127613e23bb1c58a",
+    "tables/12_ciclos_cohorte_comun.csv": "f4210cef353a4e7cc4172cbd7cc27b2fcfc2879d4a1dca30e53f6a25057d2adc",
+    "tables/13_normalizaciones_carga.csv": "9226619795aacf436e026cdb38b85888c7d66b4c77ad8eda9ad2e76240bc5cfd",
+    "tables/14_hallazgos.csv": "49b2034d668888021be38e8f30791235e3f938d63e8db12e5f33f070eef05844",
+    "tables/15_respuestas_por_familia.csv": "7f2df307c87862f6c6f3c91a31edd00c87b4deb596b358f1bb3ca2eb3df2a692"
+  }
+}

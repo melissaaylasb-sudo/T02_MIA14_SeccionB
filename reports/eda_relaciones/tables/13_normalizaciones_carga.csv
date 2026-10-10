@@ -1,0 +1,13 @@
+variable,familia,n_efectivo,unidad,mediana,Q1,Q3,limitacion
+First_Failure_Load_N,4,8,N,67.12,60.9925,77.1275,Posensayo; excluido de INPUT
+First_Failure_Load_N,5,9,N,100.77,91.8,107.15,Posensayo; excluido de INPUT
+First_Failure_Load_N,6,9,N,205.34,198.11,209.6,Posensayo; excluido de INPUT
+Load_per_specimen_volume,4,8,N/mm³,0.01084726703019805,0.009940225838780601,0.012434855906284882,Índice descriptivo de carga por volumen; no esfuerzo ni resistencia material
+Load_per_specimen_volume,5,9,N/mm³,0.015557336124606897,0.014119623046054887,0.01674456836831487,Índice descriptivo de carga por volumen; no esfuerzo ni resistencia material
+Load_per_specimen_volume,6,9,N/mm³,0.03130698346679026,0.030036033554639796,0.03185008577945335,Índice descriptivo de carga por volumen; no esfuerzo ni resistencia material
+Load_per_pivot,4,8,N/pivote,0.5939823008849557,0.5397566371681416,0.6825442477876106,No presupone reparto uniforme de cargas entre pivotes
+Load_per_pivot,5,9,N/pivote,0.5892982456140351,0.5368421052631579,0.626608187134503,No presupone reparto uniforme de cargas entre pivotes
+Load_per_pivot,6,9,N/pivote,0.8520331950207469,0.8220331950207469,0.8697095435684647,No presupone reparto uniforme de cargas entre pivotes
+Load_per_cell_Y,4,8,N/celda en Y,16.78,15.248125,19.281875,Normalización por conteo en Y; no fuerza medida en cada celda
+Load_per_cell_Y,5,9,N/celda en Y,20.154,18.36,21.43,Normalización por conteo en Y; no fuerza medida en cada celda
+Load_per_cell_Y,6,9,N/celda en Y,34.223333333333336,33.01833333333334,34.93333333333333,Normalización por conteo en Y; no fuerza medida en cada celda

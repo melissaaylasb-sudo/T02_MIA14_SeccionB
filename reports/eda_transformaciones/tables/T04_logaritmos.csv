@@ -1,0 +1,4 @@
+variable,asimetria_original,asimetria_log,rho_original_log,formula
+Fiber_total_volume,-0.37471622292275647,-0.38607062920187957,1.0,ln(V / 1 mm³)
+Pivot_total_volume,0.3747162229228625,-0.073715733770468,1.0,ln(V / 1 mm³)
+Sample_total_volume,-0.4878321690812766,-0.5068778248129595,1.0,ln(V / 1 mm³)

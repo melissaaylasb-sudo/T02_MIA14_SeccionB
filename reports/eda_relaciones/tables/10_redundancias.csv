@@ -1,0 +1,4 @@
+relacion,evidencia,residuo_max,implicacion
+Fiber_total_volume + Pivot_total_volume,"rango de suma [6524.01, 6524.01] mm³",9.094947017729282e-13,Identidad del volumen declarado de componentes; no equivale a Sample_total_volume
+n_cells_Y → Fiber_total_length,Cada familia tiene un valor único,0.0,Codificación del mismo eje de configuración; coeficientes separados no son efectos independientes
+n_cells_Y → Pivot_total_number,Cada familia tiene un valor único,0.0,Codificación del mismo eje de configuración; coeficientes separados no son efectos independientes

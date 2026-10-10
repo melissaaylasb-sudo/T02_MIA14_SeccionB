@@ -1,0 +1,10 @@
+variable,nombre,formula,unidad,limite
+area_fibra_mm2,Área rectangular de fibra,b·h,mm²,Geometría ideal; no área resistente global
+aspecto_fibra,Relación de aspecto de fibra,h/b,1,Forma de sección; no deformación
+I_fibra_bh3_mm4,Segundo momento geométrico bh³/12,b·h³/12,mm⁴,Eje paralelo a b; sección rectangular ideal; no EI
+I_fibra_hb3_mm4,Segundo momento geométrico hb³/12,h·b³/12,mm⁴,Eje paralelo a h; sección rectangular ideal; no EI
+area_pivote_mm2,Área circular ideal de pivote,π·r²,mm²,Sección geométrica; constante en esta fuente
+esbeltez_pivote,Altura/diámetro de pivote,h_p/(2·r),1,Proxy geométrico; no umbral de pandeo
+fraccion_volumen_pivotes,Fracción declarada de volumen de pivotes,V_p/(V_f+V_p),1,Denominador suma declarada; distinto del volumen CAD
+volumen_por_celda_mm3,Volumen CAD por celda en Y,V_CAD/n_Y,mm³,Normalización por conteo en Y; no volumen físico de una celda
+razon_volumenes,Razón de volúmenes declarados,V_f/V_p,1,Variables complementarias por diseño; no efectos independientes

@@ -1,0 +1,3 @@
+Manifiesto,Ruta_registrada,Ruta_actual,Hash_valido
+Ingesta,data/interim/20261003T021320337207Z/dataset_interim.csv,data/interim/preliminary/dataset_interim.csv,True
+Curaduría,data/processed/20261003T021320523691Z/model_table.csv,data/processed/preliminary/model_table.csv,True
