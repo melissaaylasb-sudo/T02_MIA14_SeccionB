@@ -28,11 +28,13 @@ from threadpoolctl import threadpool_limits
 from .eda import save_figure_atomic, write_bytes_atomic
 from .feature_engineering import LOG_RATIO, MOMENTS, REDUNDANT, TARGET, feature_names, make_pipeline, nominal_groups
 from .ingesta import sha256_file
+from .presentacion_fe import ETIQUETAS_VARIABLES, EXPERIMENTOS, UNIDADES_VARIABLES
 from .transformaciones_eda import GEOMETRY
 
 ROOT = Path(__file__).resolve().parents[1]
-LABELS = {"A": "A · Geometría original", "B": "B · A + momentos de sección",
-          "C": "C · B + log(Vp/Vf)", "D": "D · C − descriptores redundantes", "Dummy": "Media del entrenamiento"}
+LABELS = {"A": "Línea base (A) · Geometría original", "B": "Variante 1 (B) · Momentos de sección",
+          "C": "Variante 2 (C) · Logaritmo de razón de volúmenes",
+          "D": "Variante 3 (D) · Reducción de descriptores", "Dummy": "Control de media"}
 COLORS = {"A": "#2563a6", "B": "#008579", "C": "#d78930", "D": "#7755a1", "Dummy": "#777777"}
 
 
@@ -222,18 +224,12 @@ def figures(out, summary, predictions, contrasts, folds, audits):
     # La presencia se obtiene de las columnas realmente retenidas en cada train.
     # La operación fija de D se distingue del filtro de varianza aprendido.
     feature_order = [*GEOMETRY, *MOMENTS, LOG_RATIO]
-    descriptions = {
-        "n_cells_Y": "Celdas en Y", "Fiber_height": "Altura de fibra",
-        "Fiber_base": "Ancho de fibra", "Fiber_total_length": "Longitud de fibras",
-        "Fiber_total_volume": "Volumen de fibras", "Pivot_height": "Altura de pivote",
-        "Pivot_radius": "Radio de pivote", "Pivot_total_number": "Cantidad de pivotes",
-        "Pivot_total_volume": "Volumen de pivotes", "Sample_total_volume": "Volumen CAD",
-        MOMENTS[0]: "Momento b·h³/12", MOMENTS[1]: "Momento h·b³/12",
-        LOG_RATIO: "Logaritmo del cociente Vp/Vf",
-    }
-    state_labels = ["No incorporada", "Original", "Añadida", "Retirada en D",
-                    "Constante filtrada", "Filtrada en algunos folds"]
-    cell_labels = ["—", "Original", "+ Derivada", "Retirada", "Constante", "Según fold"]
+    descriptions = {name: f"{ETIQUETAS_VARIABLES[name]} [{UNIDADES_VARIABLES[name]}]"
+                    for name in feature_order}
+    descriptions[LOG_RATIO] = "Logaritmo de la razón de volúmenes\npivotes/fibras [adimensional]"
+    state_labels = ["No incorporada", "Original", "Añadida", "Retirada en variante 3",
+                    "Constante filtrada", "Filtrada en algunas particiones"]
+    cell_labels = ["—", "Original", "+ Derivada", "Retirada", "Constante", "Según partición"]
     state_colors = ["#f4f5f7", "#c9def0", "#b6dfd1", "#f1ced0", "#d6d7dd", "#f4dfaf"]
     state = np.zeros((len(feature_order), 4), dtype=int)
     for j, exp in enumerate("ABCD"):
@@ -255,9 +251,9 @@ def figures(out, summary, predictions, contrasts, folds, audits):
                 state[i, j] = (1 if name in GEOMETRY else 2) if all(retained) else 5 if any(retained) else 4
     fig, ax = plt.subplots(figsize=(12.5, 8.4))
     ax.imshow(state, cmap=ListedColormap(state_colors), vmin=-.5, vmax=5.5, aspect="auto")
-    ax.set(xticks=range(4), xticklabels=["A · Original", "B · + Momentos", "C · + Log de razón", "D · Reducción"],
+    ax.set(xticks=range(4), xticklabels=[EXPERIMENTOS[exp] for exp in "ABCD"],
            yticks=range(len(feature_order)),
-           yticklabels=[f"{descriptions[name]}  |  {name}" for name in feature_order],
+           yticklabels=[descriptions[name] for name in feature_order],
            title="Figura 1. Construcción de las representaciones geométricas")
     ax.xaxis.tick_top()
     ax.tick_params(axis="both", length=0, pad=8)
@@ -272,7 +268,7 @@ def figures(out, summary, predictions, contrasts, folds, audits):
     used_states = np.unique(state)
     ax.legend(handles=[Patch(facecolor=state_colors[v], label=state_labels[v]) for v in used_states],
               loc="upper center", bbox_to_anchor=(.5, -.04), ncol=3, frameon=False, fontsize=9)
-    ax.text(0, -.18, "Fuente: columnas retenidas en los folds de configuración. El filtrado por constancia se aprende en train.",
+    ax.text(0, -.18, "Fuente: columnas retenidas al excluir cada configuración. Las constantes se detectan solo en entrenamiento.",
             transform=ax.transAxes, fontsize=9, va="top", color="#435166")
     save(fig, "FE06_representaciones")
 
@@ -290,11 +286,11 @@ def figures(out, summary, predictions, contrasts, folds, audits):
         for pos, minimum, maximum in zip(positions + offset, low, high):
             ax.text(pos, maximum + .18, f"{int(minimum)}–{int(maximum)}", ha="center", fontsize=10)
     upper = int(dimensions.max().max())
-    ax.set(xticks=positions, xticklabels=["A · Original", "B · + Momentos", "C · + Log de razón", "D · Reducción"],
+    ax.set(xticks=positions, xticklabels=[EXPERIMENTOS[exp] for exp in "ABCD"],
            ylabel="Dimensión / rango", ylim=(0, upper + 3), yticks=np.arange(0, upper + 2, 2),
            title="Figura 2. Dimensión y rango efectivo en entrenamiento")
     ax.legend(loc="upper left", fontsize=9, frameon=False)
-    ax.text(0, -.14, "Etiquetas: mínimo–máximo entre folds de configuración; no son intervalos de confianza.\n"
+    ax.text(0, -.14, "Etiquetas: mínimo–máximo entre particiones por configuración; no son intervalos de confianza.\n"
             "Rango tras filtro y estandarización. Un rango completo no garantiza una mejor predicción.",
             transform=ax.transAxes, fontsize=9, va="top", color="#435166")
     save(fig, "FE07_rango")
@@ -313,7 +309,8 @@ def figures(out, summary, predictions, contrasts, folds, audits):
         z = p[p.experimento == exp]
         ax.scatter(z.observado_N, z.predicho_N, color=COLORS[exp], edgecolors="white")
         ax.plot(lim, lim, "--", color="gray", label="Predicción = observado")
-        ax.set(xlabel="Primera falla observada [N]", ylabel="Primera falla predicha [N]", title=LABELS[exp])
+        ax.set(xlabel="Carga de primera falla observada [N]", ylabel="Carga de primera falla predicha [N]",
+               title=LABELS[exp].replace(" · ", "\n"))
         ax.legend(fontsize=8)
     fig.suptitle("Figura 4. Observaciones y predicciones fuera de muestra"); save(fig, "FE02_observado_predicho")
     fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
@@ -323,29 +320,82 @@ def figures(out, summary, predictions, contrasts, folds, audits):
         ax.axhline(0, color="gray", ls="--")
         for row in z.loc[z.residuo_N.abs().nlargest(2).index].itertuples():
             ax.annotate(f"Caso {row.Case_n}", (row.predicho_N, row.residuo_N), fontsize=8)
-        ax.set(xlabel="Predicción fuera de muestra [N]", ylabel="Observado − predicho [N]", title=LABELS[exp])
+        ax.set(xlabel="Predicción fuera de muestra [N]", ylabel="Observado − predicho [N]",
+               title=LABELS[exp].replace(" · ", "\n"))
     fig.suptitle("Figura 5. Residuales de validación"); save(fig, "FE03_residuos")
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.8))
     for ax, protocol, title in zip(axes, ["configuracion", "familia"], ["Configuraciones excluidas", "Familia completa excluida"]):
         z = predictions[(predictions.protocolo == protocol) & (predictions.experimento != "Dummy")]
         for exp in "ABCD":
             v = z[z.experimento == exp].groupby("familia").error_absoluto_N.mean()
-            ax.plot(v.index, v, "o-", label=exp, color=COLORS[exp])
+            ax.plot(v.index, v, "o-", label=EXPERIMENTOS[exp], color=COLORS[exp])
         ax.set(xlabel="Familia: número de celdas en Y", ylabel="MAE fuera de muestra [N]", title=title, xticks=[4,5,6])
         ax.legend(title="Experimento")
     fig.suptitle("Figura 6. Error por arquitectura y alcance de generalización"); save(fig, "FE04_error_familia")
-    fig, ax = plt.subplots(figsize=(10, 4.8))
+    fig, ax = plt.subplots(figsize=(12, 4.8))
     for i, exp in enumerate("BCD"):
         z = contrasts[(contrasts.protocolo == "configuracion") & (contrasts.experimento == exp)].delta_MAE_N.to_numpy()
         offset = np.linspace(-.15, .15, len(z))
-        ax.scatter(z, i + offset, alpha=.65, color=COLORS[exp], label=f"{exp}: un punto por grupo")
+        ax.scatter(z, i + offset, alpha=.65, color=COLORS[exp], label=f"{EXPERIMENTOS[exp]}: un punto por grupo")
         ax.scatter(z.mean(), i, marker="D", color="black", s=45)
     ax.axvline(0, color="gray", ls="--")
     ax.scatter([], [], marker="D", color="black", s=45, label="Media no ponderada de grupos")
-    ax.set(yticks=[0,1,2], yticklabels=["B − A: momentos", "C − B: log de razón", "D − C: redundancia"],
-           xlabel="Cambio de MAE por grupo [N]; negativo = mejora", title="Figura 7. Contribución incremental y dispersión entre grupos")
+    ax.set(yticks=[0,1,2], yticklabels=["Variante 1 − línea base: momentos", "Variante 2 − variante 1: razón de volúmenes",
+                                    "Variante 3 − variante 2: reducción"],
+           xlabel="Cambio de MAE por grupo [N]; negativo = mejora", title="Figura 7. Cambio por bloque de variables y dispersión entre grupos")
     ax.legend(fontsize=8); save(fig, "FE05_ablaciones")
     return paths
+
+
+def execution_log(started, config, summary, folds):
+    """Describe las intervenciones y los tiempos medidos, sin añadir evaluaciones."""
+    model = config["model"]
+    lines = [
+        f"Inicio UTC: {started}",
+        "Fuente curada y objetivo de carga de primera falla verificados.",
+        "DISEÑO COMPARABLE",
+        f"Modelo fijo: {model['name']}; alpha={model['alpha']}; solver={model['solver']}; sin búsqueda de hiperparámetros.",
+        "Una línea base y tres variantes acumulativas; mismas particiones y mismo modelo para A/B/C/D.",
+        "Comparaciones por bloque: B frente a A, C frente a B y D frente a C.",
+        "B añade conjuntamente los dos momentos de área; D retira conjuntamente tres descriptores.",
+        "Los efectos corresponden a cada bloque; no se atribuyen a una sola variable de esos bloques.",
+        "El control de media es una referencia adicional y no una variante de ingeniería de características.",
+        "VALIDACIÓN",
+        "Principal: validación cruzada dejando fuera una configuración nominal completa en cada partición.",
+        "Configuración = número de celdas en Y + altura de fibra + altura de pivote.",
+        "Secundaria: validación cruzada dejando fuera una familia completa, definida por el número de celdas en Y.",
+        "Se verifica que entrenamiento y evaluación no compartan grupos en ninguna partición.",
+        "Cada predicción fuera de muestra procede de un modelo que no entrenó con su grupo excluido.",
+        "No se utiliza un conjunto final independiente reservado.",
+        "TRANSFORMACIONES",
+        "Entradas numéricas: no se aplicó codificación one-hot; los conteos permanecen numéricos.",
+        "Imputación de entradas mediante mediana: estadísticas ajustadas solo en entrenamiento.",
+        "Construcción algebraica por fila: segundos momentos de área y logaritmo de la razón de volúmenes pivotes/fibras.",
+        "Filtro de varianza cero y estandarización: ajustados solo en entrenamiento y reutilizados en evaluación.",
+        "El identificador, el objetivo y las respuestas posteriores al ensayo se excluyen de las entradas.",
+        "No se imputan objetivos ni se recortan predicciones; las respuestas negativas se conservan para diagnóstico.",
+        "Auditoría: particiones.json y auditoria_transformaciones.json guardan casos, columnas y estadísticas por ajuste.",
+        "Alcance: el protocolo evita fuga operativa entre entrenamiento y evaluación; el EDA previo con la muestra completa mantiene la evaluación como exploratoria.",
+        "INTERVENCIONES EJECUTADAS",
+    ]
+    for experiment, spec in config["experiments"].items():
+        reference = "sin referencia; línea base" if spec["reference"] is None else EXPERIMENTOS[spec["reference"]]
+        lines.append(f"{EXPERIMENTOS[experiment]} | referencia: {reference} | intervención: {spec['intervention']}")
+    lines.extend([
+        "RESULTADOS Y TIEMPO",
+        "Métrica principal: MAE [N]. Secundarias: RMSE [N], MedAE [N] y R² sobre predicciones fuera de muestra agregadas.",
+        "Tiempo [s] = suma de ajuste del pipeline completo + predicción en cada partición; excluye informes, gráficos y auditoría posterior.",
+        "No se estiman costos monetarios. Los tiempos dependen del equipo y de la ejecución.",
+    ])
+    protocols = {"configuracion": "Configuración excluida", "familia": "Familia excluida"}
+    for row in summary.itertuples(index=False):
+        lines.append(
+            f"{protocols[row.protocolo]} | {EXPERIMENTOS[row.experimento]} | "
+            f"MAE={row.MAE_N:.6f} N | RMSE={row.RMSE_N:.6f} N | MedAE={row.MedAE_N:.6f} N | "
+            f"R²={row.R2_OOF:.6f} | tiempo={row.tiempo_s:.6f} s | particiones={row.n_folds}"
+        )
+    lines.append(f"Ajustes terminados: {len(folds)}")
+    return "\n".join(lines) + "\n"
 
 
 def run(root=ROOT):
@@ -376,7 +426,7 @@ def run(root=ROOT):
     from .informe_fe import write_documents
     write_documents(root, config, summary, decisions, score_sensitivity, per_family)
     inputs = [config_path, root / config["dataset"], root / "data/processed/preliminary/data_quality_report.json"]
-    sources = [root / "src" / name for name in ["feature_engineering.py", "experimentos_fe.py", "informe_fe.py", "transformaciones_eda.py", "reporte_fe.py", "verificar_fe.py"]]
+    sources = [root / "src" / name for name in ["feature_engineering.py", "experimentos_fe.py", "informe_fe.py", "transformaciones_eda.py", "reporte_fe.py", "verificar_fe.py", "presentacion_fe.py"]]
     evidence = list((root / "reports/eda/tables").glob("*.csv")) + list((root / "reports/eda_transformaciones/tables").glob("*.csv"))
     manifest = {"status": "executed", "started_utc": started, "finished_utc": datetime.now(timezone.utc).isoformat(),
                 "eda_base": config["eda_commit"], "branch": subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip(),
@@ -387,9 +437,7 @@ def run(root=ROOT):
                 "n_cases": len(frame), "split_counts": {k: len(v) for k,v in splits.items()}, "figures": chart_paths,
                 "artifacts_sha256": {p.relative_to(out).as_posix(): sha256_file(p) for p in out.rglob("*") if p.is_file() and p.name not in {"manifest.json", "ejecucion.log", "verificacion.json", "ejecucion_notebook.log"}}}
     save_json(out / "manifest.json", manifest)
-    write_bytes_atomic(out / "ejecucion.log", (f"Inicio UTC: {started}\nFuente curada y objetivo verificados.\n"
-        "Particiones compartidas; sin tuning, clipping ni imputación del target.\n"
-        "Ajustes terminados: " + str(len(folds)) + "\n" + summary.to_string(index=False) + "\n").encode("utf-8"))
+    write_bytes_atomic(out / "ejecucion.log", execution_log(started, config, summary, folds).encode("utf-8"))
     return summary
 
 

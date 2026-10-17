@@ -6,24 +6,26 @@
 
 Melissa Dessire Aylas Barranca · UNI, Maestría en Inteligencia Artificial · Trabajo de Investigación II.
 
-Se evalúa si transformar la geometría mejora la predicción de **`First_Failure_Load_N`**: fuerza, en newtons, de la primera rotura de una barra o unión de la malla.
+Se evalúa si transformar la geometría mejora la predicción de la **carga de primera falla**: fuerza, en newtons, de la primera rotura de una fibra o un pivote de la malla. Esta entrega vive en la rama `feature-engineering`, separada de `eda`.
 
 | Elemento | Especificación |
 |---|---|
-| INPUT | Arquitectura `n_cells_Y`; dimensiones y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. [Nombres, unidades y significado](docs/diccionario_datos.md#consulta-rápida). |
+| Entradas / INPUT | Cantidad de celdas en Y; altura, ancho, longitud y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. [Variables en español y correspondencia con la fuente](docs/diccionario_features.md#variables-de-esta-etapa). |
 | Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
-| Target | `First_Failure_Load_N` [N], observado en el ensayo. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
-| OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
-| Comparación | A/B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con su referencia; no hay búsqueda de hiperparámetros en esta etapa. |
+| Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
+| Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
+| Comparación | Línea base A y tres variantes B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con la anterior; no hay búsqueda de hiperparámetros en esta etapa. |
 
 ## Resultado
 
-| Experimento | Cambio | MAE (N) | RMSE (N) |
-| --- | --- | --- | --- |
-| A | Geometría original | 13.2466 | 16.3457 |
-| B | A + dos momentos de sección | 12.8346 | 16.2029 |
-| C | B + ln(Vp/Vf) | 12.9139 | 16.3271 |
-| D | C − tres descriptores redundantes | 17.0350 | 21.1361 |
+| Experimento | Cambio | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
+| --- | --- | --- | --- | --- | --- | --- |
+| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2421 |
+| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4685 |
+| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.5854 |
+| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5325 |
+
+**Tiempo CV:** suma medida de ajuste y predicción de todos los folds de la validación por configuración; excluye figuras y escritura de archivos. Depende del equipo y no representa la latencia de una aplicación.
 
 **B obtiene el menor MAE: 12.8346 N**, una reducción de 3.11 % frente a A. Al excluir familias completas, su MAE es 57.6538 N; la mejora no demuestra transferencia a arquitecturas nuevas. **B se mantiene en evaluación**; C no mejora B y D empeora. El EDA previo usó el mismo conjunto: la evidencia es exploratoria.
 
@@ -39,6 +41,14 @@ Se evalúa si transformar la geometría mejora la predicción de **`First_Failur
 
 **Métricas:** MAE [N], error absoluto medio principal; RMSE [N], más sensible a errores grandes; MedAE [N], error absoluto mediano; R², ajuste agregado de las predicciones fuera de muestra. Se evalúan configuraciones nominales completas y, por separado, familias Y completas. Cada predicción de validación procede de un ajuste que excluyó su grupo.
 
+## Técnicas y validación
+
+El pipeline aplica **imputación por mediana → construcción de variables → filtro de varianza nula → estandarización → regresión Ridge**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
+
+**No se usó one-hot encoding:** todas las entradas son mediciones o conteos numéricos. Cada comparación cambia un bloque: dos momentos, luego una razón y después la retirada de tres columnas; no se atribuyen efectos a variables individuales dentro de esos bloques.
+
+Se ejecuta **validación cruzada LeaveOneGroupOut** por configuración nominal y una segunda comprobación por familia Y. No hay holdout externo. El notebook verifica grupos disjuntos, exclusión de respuestas e identificadores y ajuste de transformaciones solo en entrenamiento. El EDA previo utilizó el mismo conjunto, por lo que estas comprobaciones no equivalen a garantizar ausencia absoluta de sesgo.
+
 ## Estructura del proyecto
 
 ```text
@@ -51,6 +61,7 @@ src/
   feature_engineering.py   # Contrato, fórmulas y pipeline
   experimentos_fe.py       # Particiones, ajustes y métricas OOF
   informe_fe.py            # Resúmenes ligados a resultados
+  presentacion_fe.py       # Nombres y etiquetas en español
   reporte_fe.py            # Ejecución del notebook 04
   verificar_fe.py          # Integridad y coherencia de la entrega
 config/feature_engineering.json  # Parámetros e intervenciones
@@ -69,7 +80,7 @@ tests/                    # Pruebas, incluidos grupos y fuga de información
 
 ## Consulta y reproducción
 
-[Diccionario de variables](docs/diccionario_datos.md#consulta-rápida) · [Nuevas features](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Tabla de resultados](reports/feature_engineering/tables/comparacion_experimentos.csv) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
+[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Tabla de resultados](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
 
 ```powershell
 python -m src.reporte_fe --execute

@@ -1,15 +1,45 @@
-Inicio UTC: 2026-10-17T00:22:32.111361+00:00
-Fuente curada y objetivo verificados.
-Particiones compartidas; sin tuning, clipping ni imputación del target.
+Inicio UTC: 2026-10-17T00:31:26.145508+00:00
+Fuente curada y objetivo de carga de primera falla verificados.
+DISEÑO COMPARABLE
+Modelo fijo: Ridge; alpha=1.0; solver=svd; sin búsqueda de hiperparámetros.
+Una línea base y tres variantes acumulativas; mismas particiones y mismo modelo para A/B/C/D.
+Comparaciones por bloque: B frente a A, C frente a B y D frente a C.
+B añade conjuntamente los dos momentos de área; D retira conjuntamente tres descriptores.
+Los efectos corresponden a cada bloque; no se atribuyen a una sola variable de esos bloques.
+El control de media es una referencia adicional y no una variante de ingeniería de características.
+VALIDACIÓN
+Principal: validación cruzada dejando fuera una configuración nominal completa en cada partición.
+Configuración = número de celdas en Y + altura de fibra + altura de pivote.
+Secundaria: validación cruzada dejando fuera una familia completa, definida por el número de celdas en Y.
+Se verifica que entrenamiento y evaluación no compartan grupos en ninguna partición.
+Cada predicción fuera de muestra procede de un modelo que no entrenó con su grupo excluido.
+No se utiliza un conjunto final independiente reservado.
+TRANSFORMACIONES
+Entradas numéricas: no se aplicó codificación one-hot; los conteos permanecen numéricos.
+Imputación de entradas mediante mediana: estadísticas ajustadas solo en entrenamiento.
+Construcción algebraica por fila: segundos momentos de área y logaritmo de la razón de volúmenes pivotes/fibras.
+Filtro de varianza cero y estandarización: ajustados solo en entrenamiento y reutilizados en evaluación.
+El identificador, el objetivo y las respuestas posteriores al ensayo se excluyen de las entradas.
+No se imputan objetivos ni se recortan predicciones; las respuestas negativas se conservan para diagnóstico.
+Auditoría: particiones.json y auditoria_transformaciones.json guardan casos, columnas y estadísticas por ajuste.
+Alcance: el protocolo evita fuga operativa entre entrenamiento y evaluación; el EDA previo con la muestra completa mantiene la evaluación como exploratoria.
+INTERVENCIONES EJECUTADAS
+Línea base (A) | referencia: sin referencia; línea base | intervención: Geometría original admisible; referencia predictiva
+Variante 1 (B) | referencia: Línea base (A) | intervención: Añadir dos segundos momentos de área de la sección de fibra
+Variante 2 (C) | referencia: Variante 1 (B) | intervención: Añadir ln(volumen_pivotes / volumen_fibras)
+Variante 3 (D) | referencia: Variante 2 (C) | intervención: Retirar longitud total de fibras, número de pivotes y volumen de fibras del bloque original
+RESULTADOS Y TIEMPO
+Métrica principal: MAE [N]. Secundarias: RMSE [N], MedAE [N] y R² sobre predicciones fuera de muestra agregadas.
+Tiempo [s] = suma de ajuste del pipeline completo + predicción en cada partición; excluye informes, gráficos y auditoría posterior.
+No se estiman costos monetarios. Los tiempos dependen del equipo y de la ejecución.
+Configuración excluida | Control de media | MAE=56.309035 N | RMSE=61.716449 N | MedAE=61.358400 N | R²=-0.103595 | tiempo=0.251907 s | particiones=24
+Configuración excluida | Línea base (A) | MAE=13.246554 N | RMSE=16.345726 N | MedAE=11.940893 N | R²=0.922587 | tiempo=0.242114 s | particiones=24
+Configuración excluida | Variante 1 (B) | MAE=12.834625 N | RMSE=16.202866 N | MedAE=11.780062 N | R²=0.923934 | tiempo=0.468539 s | particiones=24
+Configuración excluida | Variante 2 (C) | MAE=12.913867 N | RMSE=16.327115 N | MedAE=11.864332 N | R²=0.922763 | tiempo=0.585374 s | particiones=24
+Configuración excluida | Variante 3 (D) | MAE=17.034964 N | RMSE=21.136079 N | MedAE=14.910906 N | R²=0.870563 | tiempo=0.532461 s | particiones=24
+Familia excluida | Control de media | MAE=80.592617 N | RMSE=87.521435 N | MedAE=84.391667 N | R²=-1.219406 | tiempo=0.030744 s | particiones=3
+Familia excluida | Línea base (A) | MAE=57.637397 N | RMSE=60.428137 N | MedAE=64.519642 N | R²=-0.058002 | tiempo=0.034966 s | particiones=3
+Familia excluida | Variante 1 (B) | MAE=57.653767 N | RMSE=60.474030 N | MedAE=61.760908 N | R²=-0.059609 | tiempo=0.071554 s | particiones=3
+Familia excluida | Variante 2 (C) | MAE=57.619003 N | RMSE=60.527658 N | MedAE=61.635140 N | R²=-0.061489 | tiempo=0.073341 s | particiones=3
+Familia excluida | Variante 3 (D) | MAE=68.834066 N | RMSE=71.292274 N | MedAE=72.558920 N | R²=-0.472627 | tiempo=0.066290 s | particiones=3
 Ajustes terminados: 135
-    protocolo experimento                      feature_set                     modelo     MAE_N    RMSE_N   MedAE_N    R2_OOF  MAE_fold_media_N  MAE_fold_sd_N  tiempo_s  prediccion_min_N  predicciones_negativas  n_features_min  n_features_max  n_casos_evaluados  n_folds  delta_MAE_vs_A_N  cambio_MAE_vs_A_pct  delta_RMSE_vs_A_N
-configuracion       Dummy          Media del entrenamiento     Media de entrenamiento 56.309035 61.716449 61.358400 -0.103595         54.361610      25.697448  0.240339        119.880833                       0               9               9                 26       24         43.062481           325.084405          45.370723
-configuracion           A           A · Geometría original Ridge(alpha=1, solver=svd) 13.246554 16.345726 11.940893  0.922587         13.640059       9.676509  0.242064         56.060520                       0               9               9                 26       24          0.000000             0.000000           0.000000
-configuracion           B      B · A + momentos de sección Ridge(alpha=1, solver=svd) 12.834625 16.202866 11.780062  0.923934         13.284741      10.166502  0.471002         55.661117                       0              11              11                 26       24         -0.411929            -3.109705          -0.142860
-configuracion           C               C · B + log(Vp/Vf) Ridge(alpha=1, solver=svd) 12.913867 16.327115 11.864332  0.922763         13.364133      10.266722  0.486230         55.569620                       0              12              12                 26       24         -0.332687            -2.511496          -0.018611
-configuracion           D D · C − descriptores redundantes Ridge(alpha=1, solver=svd) 17.034964 21.136079 14.910906  0.870563         17.335498      12.703259  0.494365         55.205151                       0               9               9                 26       24          3.788411            28.599216           4.790353
-      familia       Dummy          Media del entrenamiento     Media de entrenamiento 80.592617 87.521435 84.391667 -1.219406         80.664295      38.870188  0.028384         85.075294                       0               9               9                 26        3         22.955220            39.826955          27.093299
-      familia           A           A · Geometría original Ridge(alpha=1, solver=svd) 57.637397 60.428137 64.519642 -0.058002         57.554693      17.144636  0.031872          6.821429                       0               9               9                 26        3          0.000000             0.000000           0.000000
-      familia           B      B · A + momentos de sección Ridge(alpha=1, solver=svd) 57.653767 60.474030 61.760908 -0.059609         57.465170      17.217171  0.054420          9.991465                       0              11              11                 26        3          0.016371             0.028403           0.045894
-      familia           C               C · B + log(Vp/Vf) Ridge(alpha=1, solver=svd) 57.619003 60.527658 61.635140 -0.061489         57.409261      17.529931  0.067390         10.071668                       0              12              12                 26        3         -0.018394            -0.031913           0.099522
-      familia           D D · C − descriptores redundantes Ridge(alpha=1, solver=svd) 68.834066 71.292274 72.558920 -0.472627         68.856146      16.238457  0.062646         -6.797795                       4               9               9                 26        3         11.196669            19.426049          10.864137

@@ -11,11 +11,63 @@ import pandas as pd
 from PIL import Image
 
 from .experimentos_fe import load_dataset, metrics, save_json, summarize, source_digest
-from .feature_engineering import GEOMETRY, nominal_groups
+from .feature_engineering import GEOMETRY, GeometryRepresentation, nominal_groups
 from .ingesta import sha256_file
 from .verificar_eda import markdown_destinations
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def auditar_preprocesamiento(data, auditorias):
+    """Reconstruye estadísticas de cada partición usando exclusivamente sus casos train.
+
+    No ajusta regresores ni consulta respuestas. Las fórmulas geométricas no aprenden
+    parámetros; las medianas, el filtro de varianza y la estandarización se calculan
+    de nuevo para contrastarlos con el registro del entrenamiento original.
+    """
+    assert not data.Case_n.duplicated().any(), "Identificadores repetidos en los datos de auditoría"
+    by_case = data.set_index("Case_n")
+    rows, seen = [], set()
+    required = {"protocolo", "experimento", "fold", "train_cases", "imputer_columns",
+                "imputer_median", "feature_names", "scaler_mean", "scaler_scale",
+                "scaler_n_samples_seen"}
+    for record in auditorias:
+        assert required.issubset(record), "Registro de preprocesamiento incompleto"
+        key = (record["protocolo"], record["experimento"], record["fold"])
+        label = " / ".join(map(str, key))
+        assert key not in seen, "Auditoría duplicada: " + label
+        seen.add(key)
+        cases = record["train_cases"]
+        assert cases and len(cases) == len(set(cases)), "Casos train vacíos o repetidos: " + label
+        assert set(cases).issubset(by_case.index), "Casos train desconocidos: " + label
+        assert record["imputer_columns"] == list(GEOMETRY), "Orden de entradas incorrecto: " + label
+        train = by_case.loc[cases, GEOMETRY].copy()
+        medians = train.median()
+        assert np.isfinite(medians.to_numpy()).all(), "Medianas train no finitas: " + label
+        np.testing.assert_allclose(record["imputer_median"], medians.to_numpy(),
+                                   rtol=1e-10, atol=1e-10,
+                                   err_msg="Medianas de entrenamiento incorrectas: " + label)
+        variant = "A" if record["experimento"] == "Dummy" else record["experimento"]
+        represented = GeometryRepresentation(variant).fit_transform(train.fillna(medians))
+        values = represented.to_numpy()
+        # Para umbral cero, VarianceThreshold contrasta también el rango para
+        # evitar retener constantes con residuos de redondeo en su varianza.
+        keep = np.minimum(np.var(values, axis=0), np.ptp(values, axis=0)) > 0
+        names = represented.columns[keep].tolist()
+        assert record["feature_names"] == names, "Variables retenidas incorrectas: " + label
+        kept = values[:, keep]
+        np.testing.assert_allclose(record["scaler_mean"], kept.mean(axis=0),
+                                   rtol=1e-10, atol=1e-10,
+                                   err_msg="Media de entrenamiento incorrecta: " + label)
+        np.testing.assert_allclose(record["scaler_scale"], kept.std(axis=0, ddof=0),
+                                   rtol=1e-10, atol=1e-10,
+                                   err_msg="Escala de entrenamiento incorrecta: " + label)
+        assert record["scaler_n_samples_seen"] == len(train), "Tamaño train del escalador incorrecto: " + label
+        rows.append({"protocolo": key[0], "experimento": key[1], "particion": key[2],
+                     "medianas_correctas": True, "variables_correctas": True,
+                     "medias_correctas": True, "escalas_correctas": True})
+    assert rows, "No hay registros de preprocesamiento que auditar"
+    return pd.DataFrame(rows)
 
 
 def verify(root=ROOT):
@@ -61,8 +113,10 @@ def verify(root=ROOT):
     for record in audit:
         split = partition_index[(record["protocolo"],record["fold"])]
         check(record["train_cases"] == split["train_cases"] and record["test_cases"] == split["test_cases"], "Auditoría y partición coinciden")
-        np.testing.assert_allclose(record["imputer_median"], by_case.loc[record["train_cases"],GEOMETRY].median().to_numpy())
-        check(record["scaler_n_samples_seen"] == len(record["train_cases"]), "Escalador solo ve train")
+    preprocessing_audit = auditar_preprocesamiento(data, audit)
+    expected_audits = set(folds[["protocolo", "experimento", "fold"]].itertuples(index=False, name=None))
+    actual_audits = set(preprocessing_audit[["protocolo", "experimento", "particion"]].itertuples(index=False, name=None))
+    check(actual_audits == expected_audits, "Preprocesamiento de todos los folds coincide con estadísticas exclusivas de train")
     _, _, decisions = summarize(pred, folds, config)
     actual = pd.read_csv(out / "tables/decisiones.csv")
     pd.testing.assert_frame_equal(actual, decisions, check_exact=False, rtol=1e-10, atol=1e-10)

@@ -10,6 +10,7 @@ from sklearn.metrics import mean_absolute_error
 
 from src.experimentos_fe import build_splits, load_dataset, metrics
 from src.feature_engineering import GEOMETRY, LOG_RATIO, MOMENTS, REDUNDANT, TARGET, make_pipeline
+from src.verificar_fe import auditar_preprocesamiento
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -121,3 +122,26 @@ def test_metrics_use_original_units():
     scores = metrics(observed, predicted)
     assert scores["MAE_N"] == mean_absolute_error(observed, predicted)
     assert scores["RMSE_N"] == pytest.approx(np.sqrt(17/3))
+
+
+@pytest.mark.parametrize("field", ["scaler_mean", "scaler_scale"])
+def test_preprocessing_audit_detects_corrupted_statistics_in_last_fold(data, field):
+    frame, _ = data
+    records = json.loads((ROOT / "reports/feature_engineering/auditoria_transformaciones.json").read_text(encoding="utf-8"))
+    checked = auditar_preprocesamiento(frame, records)
+    assert len(checked) == len(records)
+    # Corromper la última partición exige recorrer la auditoría completa.
+    records[-1][field][0] += 1.0
+    with pytest.raises(AssertionError, match="entrenamiento incorrect"):
+        auditar_preprocesamiento(frame, records)
+
+
+def test_preprocessing_audit_ignores_reserved_values_and_target(data):
+    frame, _ = data
+    records = json.loads((ROOT / "reports/feature_engineering/auditoria_transformaciones.json").read_text(encoding="utf-8"))
+    record = next(r for r in records if r["experimento"] == "C")
+    expected = auditar_preprocesamiento(frame, [record])
+    altered = frame.copy()
+    altered.loc[altered.Case_n.isin(record["test_cases"]), GEOMETRY] = 999.0
+    altered[TARGET] = -999.0
+    pd.testing.assert_frame_equal(auditar_preprocesamiento(altered, [record]), expected)
