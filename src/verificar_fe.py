@@ -125,7 +125,7 @@ def verify(root=ROOT):
     code = [c for c in nb.cells if c.cell_type == "code"]
     check([c.execution_count for c in code] == list(range(1,len(code)+1)), "Notebook ejecutado en orden desde kernel limpio")
     check(not any(o.output_type == "error" for c in code for o in c.get("outputs",[])), "Notebook sin errores")
-    check(len(manifest["figures"]) == 7, "Siete figuras registradas")
+    check(len(manifest["figures"]) == 11, "Once figuras registradas: siete de comparación y cuatro de tratamiento")
     check(sum("image/png" in o.get("data",{}) for c in code for o in c.get("outputs",[])) == len(manifest["figures"]), "Todas las figuras embebidas")
     for path in (out / "figures").glob("*.png"):
         with Image.open(path) as img:

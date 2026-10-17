@@ -423,10 +423,12 @@ def run(root=ROOT):
         save_csv(out / "tables" / f"{name}.csv", data)
     save_json(out / "auditoria_transformaciones.json", audits)
     chart_paths = figures(out, summary, pred, contrasts, folds, audits)
+    from .tratamiento_fe import ejecutar_tratamiento
+    chart_paths.extend(ejecutar_tratamiento(root, frame, config, records, audits))
     from .informe_fe import write_documents
     write_documents(root, config, summary, decisions, score_sensitivity, per_family)
     inputs = [config_path, root / config["dataset"], root / "data/processed/preliminary/data_quality_report.json"]
-    sources = [root / "src" / name for name in ["feature_engineering.py", "experimentos_fe.py", "informe_fe.py", "transformaciones_eda.py", "reporte_fe.py", "verificar_fe.py", "presentacion_fe.py"]]
+    sources = [root / "src" / name for name in ["feature_engineering.py", "experimentos_fe.py", "informe_fe.py", "transformaciones_eda.py", "reporte_fe.py", "verificar_fe.py", "presentacion_fe.py", "tratamiento_fe.py"]]
     evidence = list((root / "reports/eda/tables").glob("*.csv")) + list((root / "reports/eda_transformaciones/tables").glob("*.csv"))
     manifest = {"status": "executed", "started_utc": started, "finished_utc": datetime.now(timezone.utc).isoformat(),
                 "eda_base": config["eda_commit"], "branch": subprocess.check_output(["git", "branch", "--show-current"], cwd=root, text=True).strip(),

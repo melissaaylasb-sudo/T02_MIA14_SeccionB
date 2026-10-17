@@ -4,10 +4,10 @@
 
 | Experimento | Cambio | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2421 |
-| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4685 |
-| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.5854 |
-| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5325 |
+| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2423 |
+| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4573 |
+| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.4931 |
+| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5200 |
 
 **Tiempo CV:** suma medida de ajuste y predicción en la validación por configuración; excluye figuras y escritura de archivos. Es costo computacional de esta ejecución, no costo monetario ni latencia de una aplicación.
 

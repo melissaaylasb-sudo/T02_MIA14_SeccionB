@@ -165,6 +165,10 @@ El EDA ya utilizó todo el conjunto. Estos resultados no son validación externa
 [Resultados completos y tiempos](../reports/feature_engineering/tables/comparacion_experimentos.csv) · [Predicciones OOF](../reports/feature_engineering/tables/predicciones_oof.csv) · [Errores por familia](../reports/feature_engineering/tables/errores_familia.csv) · [Sensibilidad](../reports/feature_engineering/tables/sensibilidad_scores.csv)
 """)
     captions = [
+        ("FE08_momentos", "Tratamiento 1. De la sección de fibra a los momentos de área", f"Los dos momentos representan orientaciones distintas de una sección rectangular; no son rigidez EI medida. Se prueban juntos: ΔMAE de variante 1 frente a la base = {primary.loc['B', 'MAE_N'] - primary.loc['A', 'MAE_N']:.4f} N."),
+        ("FE09_razon_log", "Tratamiento 2. Razón de volúmenes antes y después del logaritmo", f"El logaritmo conserva el orden y modifica las distancias entre valores. Un resultado negativo indica menos volumen de pivotes que de fibras. Añadir esta característica cambia el MAE en {primary.loc['C', 'MAE_N'] - primary.loc['B', 'MAE_N']:+.4f} N frente a la variante 1."),
+        ("FE10_redundancia", "Tratamiento 3. Evidencia geométrica para estudiar redundancia", f"La dependencia se observa en este diseño. El radio constante se filtra en entrenamiento; retirar además el bloque de tres descriptores cambia el MAE en {primary.loc['D', 'MAE_N'] - primary.loc['C', 'MAE_N']:+.4f} N frente a la variante 2. La redundancia no basta para recomendar su eliminación."),
+        ("FE11_escalamiento", "Tratamiento 4. Escalas originales y estandarización", "Las medias y escalas proceden únicamente del entrenamiento. El caso reservado reutiliza esas estadísticas y no tiene por qué quedar centrado en cero. La estandarización cambia la escala numérica, no la geometría física."),
         ("FE06_representaciones", "Figura 1. Variables que llegan a cada experimento", "El filtro de varianza retira el radio constante dentro de cada entrenamiento. D retira además tres columnas por hipótesis geométrica; el volumen de fibras sigue interviniendo en la razón logarítmica. Añadir columnas no añade mediciones."),
         ("FE07_rango", "Figura 2. Dimensión y rango de la representación", "El rango se calcula después de transformar y estandarizar cada entrenamiento. Un rango menor que el número de columnas indica dependencia lineal en ese diseño. Las fórmulas no lineales pueden aumentar el rango sin aportar nuevas observaciones ni garantizar menor error."),
         ("FE01_error", "Figura 3. Error por representación", "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 7; estas barras no son intervalos de confianza."),
@@ -175,6 +179,8 @@ El EDA ya utilizó todo el conjunto. Estos resultados no son validación externa
     ]
     import json
     figure_sources = {
+        **{name: "Geometría y auditoría de la variante 2, partición por configuración que reserva el primer caso por identificador; sin utilizar la respuesta."
+           for name in ["FE08_momentos", "FE09_razon_log", "FE10_redundancia", "FE11_escalamiento"]},
         "FE06_representaciones": "auditoria_transformaciones.json: presencia de columnas en cada entrenamiento; categorías sin unidad.",
         "FE07_rango": "tables/metricas_folds.csv: dimensión y rango de cada entrenamiento; conteos sin unidad física.",
     }
@@ -200,6 +206,7 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
 | Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
 | Comparación | Línea base A y tres variantes B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con la anterior; no hay búsqueda de hiperparámetros en esta etapa. |
+| Modelos usados | Regresión Ridge en A–D; control auxiliar DummyRegressor que predice la media del entrenamiento. A–D son conjuntos de características, no cuatro algoritmos distintos. |
 
 ## Resultado
 
@@ -214,7 +221,7 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Sección | Evidencia ejecutada |
 |---|---|
 | 4.1–4.2 · Datos y construcción | Entradas autorizadas, hipótesis del EDA y cálculo de las nuevas variables con un caso real. |
-| 4.3–4.4 · Pipeline y representación | Ejecución A/B/C/D, mapa de variables conservadas o retiradas y diagnóstico de rango por entrenamiento. |
+| 4.3–4.4 · Tratamiento visual | Sección y momentos de área, razón antes/después del logaritmo, redundancias, escalamiento, mapa de variables y rango. |
 | 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
 | 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
 | 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
@@ -242,6 +249,7 @@ src/
   experimentos_fe.py       # Particiones, ajustes y métricas OOF
   informe_fe.py            # Resúmenes ligados a resultados
   presentacion_fe.py       # Nombres y etiquetas en español
+  tratamiento_fe.py        # Figuras y comprobaciones del tratamiento geométrico
   reporte_fe.py            # Ejecución del notebook 04
   verificar_fe.py          # Integridad y coherencia de la entrega
 config/feature_engineering.json  # Parámetros e intervenciones

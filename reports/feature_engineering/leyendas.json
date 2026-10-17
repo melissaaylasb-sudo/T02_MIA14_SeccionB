@@ -1,5 +1,29 @@
 [
   {
+    "file": "FE08_momentos",
+    "title": "Tratamiento 1. De la sección de fibra a los momentos de área",
+    "interpretation": "Los dos momentos representan orientaciones distintas de una sección rectangular; no son rigidez EI medida. Se prueban juntos: ΔMAE de variante 1 frente a la base = -0.4119 N.",
+    "source": "Geometría y auditoría de la variante 2, partición por configuración que reserva el primer caso por identificador; sin utilizar la respuesta."
+  },
+  {
+    "file": "FE09_razon_log",
+    "title": "Tratamiento 2. Razón de volúmenes antes y después del logaritmo",
+    "interpretation": "El logaritmo conserva el orden y modifica las distancias entre valores. Un resultado negativo indica menos volumen de pivotes que de fibras. Añadir esta característica cambia el MAE en +0.0792 N frente a la variante 1.",
+    "source": "Geometría y auditoría de la variante 2, partición por configuración que reserva el primer caso por identificador; sin utilizar la respuesta."
+  },
+  {
+    "file": "FE10_redundancia",
+    "title": "Tratamiento 3. Evidencia geométrica para estudiar redundancia",
+    "interpretation": "La dependencia se observa en este diseño. El radio constante se filtra en entrenamiento; retirar además el bloque de tres descriptores cambia el MAE en +4.1211 N frente a la variante 2. La redundancia no basta para recomendar su eliminación.",
+    "source": "Geometría y auditoría de la variante 2, partición por configuración que reserva el primer caso por identificador; sin utilizar la respuesta."
+  },
+  {
+    "file": "FE11_escalamiento",
+    "title": "Tratamiento 4. Escalas originales y estandarización",
+    "interpretation": "Las medias y escalas proceden únicamente del entrenamiento. El caso reservado reutiliza esas estadísticas y no tiene por qué quedar centrado en cero. La estandarización cambia la escala numérica, no la geometría física.",
+    "source": "Geometría y auditoría de la variante 2, partición por configuración que reserva el primer caso por identificador; sin utilizar la respuesta."
+  },
+  {
     "file": "FE06_representaciones",
     "title": "Figura 1. Variables que llegan a cada experimento",
     "interpretation": "El filtro de varianza retira el radio constante dentro de cada entrenamiento. D retira además tres columnas por hipótesis geométrica; el volumen de fibras sigue interviniendo en la razón logarítmica. Añadir columnas no añade mediciones.",

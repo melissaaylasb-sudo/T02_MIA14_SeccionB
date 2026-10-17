@@ -15,15 +15,16 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
 | Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
 | Comparación | Línea base A y tres variantes B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con la anterior; no hay búsqueda de hiperparámetros en esta etapa. |
+| Modelos usados | Regresión Ridge en A–D; control auxiliar DummyRegressor que predice la media del entrenamiento. A–D son conjuntos de características, no cuatro algoritmos distintos. |
 
 ## Resultado
 
 | Experimento | Cambio | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2421 |
-| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4685 |
-| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.5854 |
-| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5325 |
+| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2423 |
+| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4573 |
+| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.4931 |
+| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5200 |
 
 **Tiempo CV:** suma medida de ajuste y predicción de todos los folds de la validación por configuración; excluye figuras y escritura de archivos. Depende del equipo y no representa la latencia de una aplicación.
 
@@ -34,7 +35,7 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Sección | Evidencia ejecutada |
 |---|---|
 | 4.1–4.2 · Datos y construcción | Entradas autorizadas, hipótesis del EDA y cálculo de las nuevas variables con un caso real. |
-| 4.3–4.4 · Pipeline y representación | Ejecución A/B/C/D, mapa de variables conservadas o retiradas y diagnóstico de rango por entrenamiento. |
+| 4.3–4.4 · Tratamiento visual | Sección y momentos de área, razón antes/después del logaritmo, redundancias, escalamiento, mapa de variables y rango. |
 | 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
 | 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
 | 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
@@ -62,6 +63,7 @@ src/
   experimentos_fe.py       # Particiones, ajustes y métricas OOF
   informe_fe.py            # Resúmenes ligados a resultados
   presentacion_fe.py       # Nombres y etiquetas en español
+  tratamiento_fe.py        # Figuras y comprobaciones del tratamiento geométrico
   reporte_fe.py            # Ejecución del notebook 04
   verificar_fe.py          # Integridad y coherencia de la entrega
 config/feature_engineering.json  # Parámetros e intervenciones

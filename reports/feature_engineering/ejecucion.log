@@ -1,4 +1,4 @@
-Inicio UTC: 2026-10-17T00:31:26.145508+00:00
+Inicio UTC: 2026-10-17T00:37:01.258231+00:00
 Fuente curada y objetivo de carga de primera falla verificados.
 DISEÑO COMPARABLE
 Modelo fijo: Ridge; alpha=1.0; solver=svd; sin búsqueda de hiperparámetros.
@@ -32,14 +32,14 @@ RESULTADOS Y TIEMPO
 Métrica principal: MAE [N]. Secundarias: RMSE [N], MedAE [N] y R² sobre predicciones fuera de muestra agregadas.
 Tiempo [s] = suma de ajuste del pipeline completo + predicción en cada partición; excluye informes, gráficos y auditoría posterior.
 No se estiman costos monetarios. Los tiempos dependen del equipo y de la ejecución.
-Configuración excluida | Control de media | MAE=56.309035 N | RMSE=61.716449 N | MedAE=61.358400 N | R²=-0.103595 | tiempo=0.251907 s | particiones=24
-Configuración excluida | Línea base (A) | MAE=13.246554 N | RMSE=16.345726 N | MedAE=11.940893 N | R²=0.922587 | tiempo=0.242114 s | particiones=24
-Configuración excluida | Variante 1 (B) | MAE=12.834625 N | RMSE=16.202866 N | MedAE=11.780062 N | R²=0.923934 | tiempo=0.468539 s | particiones=24
-Configuración excluida | Variante 2 (C) | MAE=12.913867 N | RMSE=16.327115 N | MedAE=11.864332 N | R²=0.922763 | tiempo=0.585374 s | particiones=24
-Configuración excluida | Variante 3 (D) | MAE=17.034964 N | RMSE=21.136079 N | MedAE=14.910906 N | R²=0.870563 | tiempo=0.532461 s | particiones=24
-Familia excluida | Control de media | MAE=80.592617 N | RMSE=87.521435 N | MedAE=84.391667 N | R²=-1.219406 | tiempo=0.030744 s | particiones=3
-Familia excluida | Línea base (A) | MAE=57.637397 N | RMSE=60.428137 N | MedAE=64.519642 N | R²=-0.058002 | tiempo=0.034966 s | particiones=3
-Familia excluida | Variante 1 (B) | MAE=57.653767 N | RMSE=60.474030 N | MedAE=61.760908 N | R²=-0.059609 | tiempo=0.071554 s | particiones=3
-Familia excluida | Variante 2 (C) | MAE=57.619003 N | RMSE=60.527658 N | MedAE=61.635140 N | R²=-0.061489 | tiempo=0.073341 s | particiones=3
-Familia excluida | Variante 3 (D) | MAE=68.834066 N | RMSE=71.292274 N | MedAE=72.558920 N | R²=-0.472627 | tiempo=0.066290 s | particiones=3
+Configuración excluida | Control de media | MAE=56.309035 N | RMSE=61.716449 N | MedAE=61.358400 N | R²=-0.103595 | tiempo=0.232823 s | particiones=24
+Configuración excluida | Línea base (A) | MAE=13.246554 N | RMSE=16.345726 N | MedAE=11.940893 N | R²=0.922587 | tiempo=0.242274 s | particiones=24
+Configuración excluida | Variante 1 (B) | MAE=12.834625 N | RMSE=16.202866 N | MedAE=11.780062 N | R²=0.923934 | tiempo=0.457344 s | particiones=24
+Configuración excluida | Variante 2 (C) | MAE=12.913867 N | RMSE=16.327115 N | MedAE=11.864332 N | R²=0.922763 | tiempo=0.493084 s | particiones=24
+Configuración excluida | Variante 3 (D) | MAE=17.034964 N | RMSE=21.136079 N | MedAE=14.910906 N | R²=0.870563 | tiempo=0.519990 s | particiones=24
+Familia excluida | Control de media | MAE=80.592617 N | RMSE=87.521435 N | MedAE=84.391667 N | R²=-1.219406 | tiempo=0.032188 s | particiones=3
+Familia excluida | Línea base (A) | MAE=57.637397 N | RMSE=60.428137 N | MedAE=64.519642 N | R²=-0.058002 | tiempo=0.037114 s | particiones=3
+Familia excluida | Variante 1 (B) | MAE=57.653767 N | RMSE=60.474030 N | MedAE=61.760908 N | R²=-0.059609 | tiempo=0.068705 s | particiones=3
+Familia excluida | Variante 2 (C) | MAE=57.619003 N | RMSE=60.527658 N | MedAE=61.635140 N | R²=-0.061489 | tiempo=0.078444 s | particiones=3
+Familia excluida | Variante 3 (D) | MAE=68.834066 N | RMSE=71.292274 N | MedAE=72.558920 N | R²=-0.472627 | tiempo=0.075740 s | particiones=3
 Ajustes terminados: 135

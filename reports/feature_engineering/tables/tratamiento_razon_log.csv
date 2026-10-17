@@ -1,0 +1,3 @@
+variable,fold,unidad,minimo_train,q25_train,mediana_train,q75_train,maximo_train,caso_reservado,valor_reservado,proporcion_train_menor_igual
+razon_volumenes_pivotes_fibras,6,adimensional,0.013784905132627848,0.019405233272185782,0.025315381435910816,0.036052145548905117,0.04232231099948715,1,0.013784905132627848,0.04
+log_razon_volumenes_pivotes_fibras,6,adimensional,-4.284181116457671,-3.942212492992306,-3.6763431060889165,-3.3227889011024834,-3.1624408851846866,1,-4.284181116457671,0.04

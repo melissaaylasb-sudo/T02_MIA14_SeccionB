@@ -1,0 +1,10 @@
+tecnica,motivo,ajuste,aplicacion
+Contrato de entrada,Medidas positivas; conteos enteros; geometría previa al ensayo,Reglas fijas,Excluye respuesta e identificador del predictor
+Codificación categórica,No se usa one-hot: todas las entradas son medidas o conteos,No requiere ajuste,Número de celdas se conserva como conteo numérico
+Imputación por mediana,Contingencia para geometría faltante; no se imputa la respuesta,Mediana solo de entrenamiento,Valores imputados en train: 0; en reservado: 0
+Momentos de sección,b·h³/12 y h·b³/12 resumen la sección para dos ejes,Fórmulas por fila; sin ajuste,Variante 1 añade ambos; no representan rigidez medida
+Razón logarítmica,ln(Vp/Vf) expresa balance relativo de los volúmenes,Fórmula por fila; exige volúmenes positivos,Variante 2 añade una columna; no garantiza normalidad
+Filtro de constantes,Radio de pivote sin variación en este fold,Varianza calculada solo en entrenamiento,Se retira antes de estandarizar
+Reducción de descriptores,"Dependencias de volúmenes, longitud y número de pivotes en el diseño",Bloque predefinido para Variante 3,La comparación predictiva decide si conviene retirarlos
+Estandarización,Evita que las unidades dominen la penalización Ridge,Media y desviación ddof=0 solo de entrenamiento,El reservado usa las mismas estadísticas; sin reajuste
+Tratamiento de atípicos,Se conservan las geometrías observadas,"Sin recorte, winsorización ni eliminación",El análisis de errores no modifica las entradas
