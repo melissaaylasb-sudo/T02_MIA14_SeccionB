@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-10-16T19:15:48.941627</dc:date>
+    <dc:date>2026-10-16T19:22:37.454208</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -1338,7 +1338,7 @@ z
     </g>
    </g>
    <g id="text_18">
-    <!-- Figura 1. Error por representación geométrica -->
+    <!-- Figura 3. Error por representación geométrica -->
     <g transform="translate(306.069688 16.798125) scale(0.12 -0.12)">
      <defs>
       <path id="DejaVuSans-46" d="M 628 4666 
@@ -1393,7 +1393,7 @@ z
      <use xlink:href="#DejaVuSans-72" transform="translate(204.908203 0)"/>
      <use xlink:href="#DejaVuSans-61" transform="translate(246.021484 0)"/>
      <use xlink:href="#DejaVuSans-20" transform="translate(307.300781 0)"/>
-     <use xlink:href="#DejaVuSans-31" transform="translate(339.087891 0)"/>
+     <use xlink:href="#DejaVuSans-33" transform="translate(339.087891 0)"/>
      <use xlink:href="#DejaVuSans-2e" transform="translate(402.710938 0)"/>
      <use xlink:href="#DejaVuSans-20" transform="translate(434.498047 0)"/>
      <use xlink:href="#DejaVuSans-45" transform="translate(466.285156 0)"/>

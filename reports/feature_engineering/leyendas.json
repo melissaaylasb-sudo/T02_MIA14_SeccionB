@@ -1,31 +1,43 @@
 [
   {
+    "file": "FE06_representaciones",
+    "title": "Figura 1. Variables que llegan a cada experimento",
+    "interpretation": "El filtro de varianza retira el radio constante dentro de cada entrenamiento. D retira además tres columnas por hipótesis geométrica; el volumen de fibras sigue interviniendo en la razón logarítmica. Añadir columnas no añade mediciones.",
+    "source": "auditoria_transformaciones.json: presencia de columnas en cada entrenamiento; categorías sin unidad."
+  },
+  {
+    "file": "FE07_rango",
+    "title": "Figura 2. Dimensión y rango de la representación",
+    "interpretation": "El rango se calcula después de transformar y estandarizar cada entrenamiento. Un rango menor que el número de columnas indica dependencia lineal en ese diseño. Las fórmulas no lineales pueden aumentar el rango sin aportar nuevas observaciones ni garantizar menor error.",
+    "source": "tables/metricas_folds.csv: dimensión y rango de cada entrenamiento; conteos sin unidad física."
+  },
+  {
     "file": "FE01_error",
-    "title": "Figura 1. Error por representación",
-    "interpretation": "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 5; estas barras no son intervalos de confianza.",
+    "title": "Figura 3. Error por representación",
+    "interpretation": "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 7; estas barras no son intervalos de confianza.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE02_observado_predicho",
-    "title": "Figura 2. Observado frente a predicho",
+    "title": "Figura 4. Observado frente a predicho",
     "interpretation": "La diagonal representa coincidencia perfecta. Cada predicción procede de un modelo que no entrenó con esa configuración nominal.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE03_residuos",
-    "title": "Figura 3. Residuales",
+    "title": "Figura 5. Residuales",
     "interpretation": "Residual = observado − predicho: positivo indica subestimación. Los casos señalados tienen los mayores errores absolutos; no se eliminan.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE04_error_familia",
-    "title": "Figura 4. Error por familia",
+    "title": "Figura 6. Error por familia",
     "interpretation": "En la validación por configuración, B mejora frente a A en Y=5 y Y=6, pero empeora en Y=4. Excluir una familia completa aumenta mucho el error: generalizar a otra arquitectura sigue sin resolverse.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE05_ablaciones",
-    "title": "Figura 5. Aporte de cada intervención",
+    "title": "Figura 7. Aporte de cada intervención",
     "interpretation": "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   }

@@ -65,6 +65,10 @@
     "Artefacto figures/FE04_error_familia.svg",
     "Artefacto figures/FE05_ablaciones.png",
     "Artefacto figures/FE05_ablaciones.svg",
+    "Artefacto figures/FE06_representaciones.png",
+    "Artefacto figures/FE06_representaciones.svg",
+    "Artefacto figures/FE07_rango.png",
+    "Artefacto figures/FE07_rango.svg",
     "Artefacto tables/coeficientes_folds.csv",
     "Artefacto tables/comparacion_experimentos.csv",
     "Artefacto tables/contrastes_pareados.csv",
@@ -809,12 +813,15 @@
     "Escalador solo ve train",
     "Notebook ejecutado en orden desde kernel limpio",
     "Notebook sin errores",
-    "Cinco figuras embebidas",
+    "Siete figuras registradas",
+    "Todas las figuras embebidas",
     "Figura de alta resolución FE01_error.png",
     "Figura de alta resolución FE02_observado_predicho.png",
     "Figura de alta resolución FE03_residuos.png",
     "Figura de alta resolución FE04_error_familia.png",
     "Figura de alta resolución FE05_ablaciones.png",
+    "Figura de alta resolución FE06_representaciones.png",
+    "Figura de alta resolución FE07_rango.png",
     "Enlace local notebooks/04_Feature_Engineering_Pantograficas.ipynb",
     "Enlace local docs/diccionario_datos.md",
     "Enlace local docs/diccionario_features.md",
@@ -843,6 +850,6 @@
     "Cifras coinciden experimentos_fe.md D",
     "EDA y datos originales conservados"
   ],
-  "code_cells_executed": 12,
-  "notebook_sha256": "4fa7830db8d41dfd3e9a5880c4bbafc060cc4ee6d0849540b3702ae78911fb01"
+  "code_cells_executed": 22,
+  "notebook_sha256": "88e79cd8595688f574c4f39d143184201f43418baa729c58bab70a325b05e594"
 }

@@ -2,9 +2,19 @@
 
 **[Abrir notebook 04 ejecutado →](notebooks/04_Feature_Engineering_Pantograficas.ipynb)**
 
+**Enlace para compartir esta entrega:** [notebook actualizado en la rama feature-engineering](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/blob/feature-engineering/notebooks/04_Feature_Engineering_Pantograficas.ipynb). Las actualizaciones de este trabajo se publican en esa misma ruta.
+
 Melissa Dessire Aylas Barranca · UNI, Maestría en Inteligencia Artificial · Trabajo de Investigación II.
 
 Se evalúa si transformar la geometría mejora la predicción de **`First_Failure_Load_N`**: fuerza, en newtons, de la primera rotura de una barra o unión de la malla.
+
+| Elemento | Especificación |
+|---|---|
+| INPUT | Arquitectura `n_cells_Y`; dimensiones y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. [Nombres, unidades y significado](docs/diccionario_datos.md#consulta-rápida). |
+| Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
+| Target | `First_Failure_Load_N` [N], observado en el ensayo. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
+| OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
+| Comparación | A/B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con su referencia; no hay búsqueda de hiperparámetros en esta etapa. |
 
 ## Resultado
 
@@ -19,7 +29,15 @@ Se evalúa si transformar la geometría mejora la predicción de **`First_Failur
 
 ## Qué encontrarás en el notebook
 
-Hipótesis del EDA → fórmulas → pipeline → comparación A/B/C/D → cinco gráficos → interpretación. Ridge y particiones se mantienen fijos; las transformaciones se ajustan solo en entrenamiento. Se excluyen configuraciones completas y, en una prueba adicional, familias completas.
+| Sección | Evidencia ejecutada |
+|---|---|
+| 4.1–4.2 · Datos y construcción | Entradas autorizadas, hipótesis del EDA y cálculo de las nuevas variables con un caso real. |
+| 4.3–4.4 · Pipeline y representación | Ejecución A/B/C/D, mapa de variables conservadas o retiradas y diagnóstico de rango por entrenamiento. |
+| 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
+| 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
+| 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
+
+**Métricas:** MAE [N], error absoluto medio principal; RMSE [N], más sensible a errores grandes; MedAE [N], error absoluto mediano; R², ajuste agregado de las predicciones fuera de muestra. Se evalúan configuraciones nominales completas y, por separado, familias Y completas. Cada predicción de validación procede de un ajuste que excluyó su grupo.
 
 ## Estructura del proyecto
 

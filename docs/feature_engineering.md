@@ -14,7 +14,7 @@
 | Comprobación adicional | Excluir cada familia Y completa; evalúa una arquitectura no vista. |
 | Métricas | MAE principal; RMSE, MedAE y R² agregado OOF. Sin R² en folds individuales. |
 | Selección | Retirada fija por hipótesis geométrica; varianza nula aprendida en train. Sin selección supervisada ni tuning. |
-| Decisión | Adoptar provisionalmente si MAE mejora ≥5 %, gana en ≥60 % de grupos y no empeora RMSE ni MAE por familia; si solo mejora MAE, mantener en evaluación; si no, descartar. |
+| Decisión | Adoptar provisionalmente si MAE mejora ≥5 %, gana en ≥60 % de grupos y no empeora RMSE ni MAE agregado al excluir familias completas; si solo mejora MAE, mantener en evaluación; si no, descartar. |
 
 Las hipótesis proceden del EDA del mismo conjunto: los resultados son exploratorios y pueden tener sesgo de selección. Faltan réplicas/lotes verificados y persisten discrepancias geométricas. Las familias no representan campañas independientes.
 

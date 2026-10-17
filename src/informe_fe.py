@@ -85,7 +85,7 @@ Los momentos se evalúan juntos en B; son geometría de sección, no rigidez EI 
 | Comprobación adicional | Excluir cada familia Y completa; evalúa una arquitectura no vista. |
 | Métricas | MAE principal; RMSE, MedAE y R² agregado OOF. Sin R² en folds individuales. |
 | Selección | Retirada fija por hipótesis geométrica; varianza nula aprendida en train. Sin selección supervisada ni tuning. |
-| Decisión | Adoptar provisionalmente si MAE mejora ≥5 %, gana en ≥60 % de grupos y no empeora RMSE ni MAE por familia; si solo mejora MAE, mantener en evaluación; si no, descartar. |
+| Decisión | Adoptar provisionalmente si MAE mejora ≥5 %, gana en ≥60 % de grupos y no empeora RMSE ni MAE agregado al excluir familias completas; si solo mejora MAE, mantener en evaluación; si no, descartar. |
 
 Las hipótesis proceden del EDA del mismo conjunto: los resultados son exploratorios y pueden tener sesgo de selección. Faltan réplicas/lotes verificados y persisten discrepancias geométricas. Las familias no representan campañas independientes.
 
@@ -119,21 +119,41 @@ El EDA ya utilizó todo el conjunto. Estos resultados no son validación externa
 [Resultados completos y tiempos](../reports/feature_engineering/tables/comparacion_experimentos.csv) · [Predicciones OOF](../reports/feature_engineering/tables/predicciones_oof.csv) · [Errores por familia](../reports/feature_engineering/tables/errores_familia.csv) · [Sensibilidad](../reports/feature_engineering/tables/sensibilidad_scores.csv)
 """)
     captions = [
-        ("FE01_error", "Figura 1. Error por representación", "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 5; estas barras no son intervalos de confianza."),
-        ("FE02_observado_predicho", "Figura 2. Observado frente a predicho", "La diagonal representa coincidencia perfecta. Cada predicción procede de un modelo que no entrenó con esa configuración nominal."),
-        ("FE03_residuos", "Figura 3. Residuales", "Residual = observado − predicho: positivo indica subestimación. Los casos señalados tienen los mayores errores absolutos; no se eliminan."),
-        ("FE04_error_familia", "Figura 4. Error por familia", "En la validación por configuración, B mejora frente a A en Y=5 y Y=6, pero empeora en Y=4. Excluir una familia completa aumenta mucho el error: generalizar a otra arquitectura sigue sin resolverse."),
-        ("FE05_ablaciones", "Figura 5. Aporte de cada intervención", "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual."),
+        ("FE06_representaciones", "Figura 1. Variables que llegan a cada experimento", "El filtro de varianza retira el radio constante dentro de cada entrenamiento. D retira además tres columnas por hipótesis geométrica; el volumen de fibras sigue interviniendo en la razón logarítmica. Añadir columnas no añade mediciones."),
+        ("FE07_rango", "Figura 2. Dimensión y rango de la representación", "El rango se calcula después de transformar y estandarizar cada entrenamiento. Un rango menor que el número de columnas indica dependencia lineal en ese diseño. Las fórmulas no lineales pueden aumentar el rango sin aportar nuevas observaciones ni garantizar menor error."),
+        ("FE01_error", "Figura 3. Error por representación", "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 7; estas barras no son intervalos de confianza."),
+        ("FE02_observado_predicho", "Figura 4. Observado frente a predicho", "La diagonal representa coincidencia perfecta. Cada predicción procede de un modelo que no entrenó con esa configuración nominal."),
+        ("FE03_residuos", "Figura 5. Residuales", "Residual = observado − predicho: positivo indica subestimación. Los casos señalados tienen los mayores errores absolutos; no se eliminan."),
+        ("FE04_error_familia", "Figura 6. Error por familia", "En la validación por configuración, B mejora frente a A en Y=5 y Y=6, pero empeora en Y=4. Excluir una familia completa aumenta mucho el error: generalizar a otra arquitectura sigue sin resolverse."),
+        ("FE05_ablaciones", "Figura 7. Aporte de cada intervención", "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual."),
     ]
     import json
-    write(out / "leyendas.json", json.dumps([{"file":name,"title":title,"interpretation":text,"source":"Tabla curada y predicciones OOF; fuerzas y errores en N."} for name,title,text in captions], ensure_ascii=False, indent=2))
+    figure_sources = {
+        "FE06_representaciones": "auditoria_transformaciones.json: presencia de columnas en cada entrenamiento; categorías sin unidad.",
+        "FE07_rango": "tables/metricas_folds.csv: dimensión y rango de cada entrenamiento; conteos sin unidad física.",
+    }
+    write(out / "leyendas.json", json.dumps([
+        {"file": name, "title": title, "interpretation": text,
+         "source": figure_sources.get(name, "Tabla curada y predicciones OOF; fuerzas y errores en N.")}
+        for name, title, text in captions
+    ], ensure_ascii=False, indent=2))
     readme = f"""# Ingeniería de características de estructuras pantográficas
 
 **[Abrir notebook 04 ejecutado →](notebooks/04_Feature_Engineering_Pantograficas.ipynb)**
 
+**Enlace para compartir esta entrega:** [notebook actualizado en la rama feature-engineering](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/blob/feature-engineering/notebooks/04_Feature_Engineering_Pantograficas.ipynb). Las actualizaciones de este trabajo se publican en esa misma ruta.
+
 Melissa Dessire Aylas Barranca · UNI, Maestría en Inteligencia Artificial · Trabajo de Investigación II.
 
 Se evalúa si transformar la geometría mejora la predicción de **`First_Failure_Load_N`**: fuerza, en newtons, de la primera rotura de una barra o unión de la malla.
+
+| Elemento | Especificación |
+|---|---|
+| INPUT | Arquitectura `n_cells_Y`; dimensiones y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. [Nombres, unidades y significado](docs/diccionario_datos.md#consulta-rápida). |
+| Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
+| Target | `First_Failure_Load_N` [N], observado en el ensayo. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
+| OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
+| Comparación | A/B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con su referencia; no hay búsqueda de hiperparámetros en esta etapa. |
 
 ## Resultado
 
@@ -143,7 +163,15 @@ Se evalúa si transformar la geometría mejora la predicción de **`First_Failur
 
 ## Qué encontrarás en el notebook
 
-Hipótesis del EDA → fórmulas → pipeline → comparación A/B/C/D → cinco gráficos → interpretación. Ridge y particiones se mantienen fijos; las transformaciones se ajustan solo en entrenamiento. Se excluyen configuraciones completas y, en una prueba adicional, familias completas.
+| Sección | Evidencia ejecutada |
+|---|---|
+| 4.1–4.2 · Datos y construcción | Entradas autorizadas, hipótesis del EDA y cálculo de las nuevas variables con un caso real. |
+| 4.3–4.4 · Pipeline y representación | Ejecución A/B/C/D, mapa de variables conservadas o retiradas y diagnóstico de rango por entrenamiento. |
+| 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
+| 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
+| 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
+
+**Métricas:** MAE [N], error absoluto medio principal; RMSE [N], más sensible a errores grandes; MedAE [N], error absoluto mediano; R², ajuste agregado de las predicciones fuera de muestra. Se evalúan configuraciones nominales completas y, por separado, familias Y completas. Cada predicción de validación procede de un ajuste que excluyó su grupo.
 
 ## Estructura del proyecto
 

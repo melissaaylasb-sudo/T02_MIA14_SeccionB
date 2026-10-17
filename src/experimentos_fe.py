@@ -17,6 +17,8 @@ from time import perf_counter
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap
+from matplotlib.patches import Patch
 import numpy as np
 import pandas as pd
 from sklearn.metrics import mean_absolute_error, median_absolute_error, r2_score, mean_squared_error
@@ -24,7 +26,7 @@ from sklearn.model_selection import LeaveOneGroupOut
 from threadpoolctl import threadpool_limits
 
 from .eda import save_figure_atomic, write_bytes_atomic
-from .feature_engineering import TARGET, feature_names, make_pipeline, nominal_groups
+from .feature_engineering import LOG_RATIO, MOMENTS, REDUNDANT, TARGET, feature_names, make_pipeline, nominal_groups
 from .ingesta import sha256_file
 from .transformaciones_eda import GEOMETRY
 
@@ -206,7 +208,7 @@ def sensitivity(predictions, config):
     return pd.DataFrame(rows)
 
 
-def figures(out, summary, predictions, contrasts):
+def figures(out, summary, predictions, contrasts, folds, audits):
     plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False,
                          "svg.hashsalt": "pantographic-feature-engineering", "savefig.facecolor": "white"})
     paths = []
@@ -216,13 +218,94 @@ def figures(out, summary, predictions, contrasts):
             save_figure_atomic(fig, out / "figures" / f"{name}.{ext}", dpi=300)
         plt.close(fig)
         paths.append(name)
+
+    # La presencia se obtiene de las columnas realmente retenidas en cada train.
+    # La operación fija de D se distingue del filtro de varianza aprendido.
+    feature_order = [*GEOMETRY, *MOMENTS, LOG_RATIO]
+    descriptions = {
+        "n_cells_Y": "Celdas en Y", "Fiber_height": "Altura de fibra",
+        "Fiber_base": "Ancho de fibra", "Fiber_total_length": "Longitud de fibras",
+        "Fiber_total_volume": "Volumen de fibras", "Pivot_height": "Altura de pivote",
+        "Pivot_radius": "Radio de pivote", "Pivot_total_number": "Cantidad de pivotes",
+        "Pivot_total_volume": "Volumen de pivotes", "Sample_total_volume": "Volumen CAD",
+        MOMENTS[0]: "Momento b·h³/12", MOMENTS[1]: "Momento h·b³/12",
+        LOG_RATIO: "Logaritmo del cociente Vp/Vf",
+    }
+    state_labels = ["No incorporada", "Original", "Añadida", "Retirada en D",
+                    "Constante filtrada", "Filtrada en algunos folds"]
+    cell_labels = ["—", "Original", "+ Derivada", "Retirada", "Constante", "Según fold"]
+    state_colors = ["#f4f5f7", "#c9def0", "#b6dfd1", "#f1ced0", "#d6d7dd", "#f4dfaf"]
+    state = np.zeros((len(feature_order), 4), dtype=int)
+    for j, exp in enumerate("ABCD"):
+        current = [a for a in audits if a["protocolo"] == "configuracion" and a["experimento"] == exp]
+        if not current:
+            raise ValueError(f"Falta la auditoría de entrenamiento de {exp} para el mapa de características.")
+        expected = set(GEOMETRY)
+        if exp != "A":
+            expected.update(MOMENTS)
+        if exp in "CD":
+            expected.add(LOG_RATIO)
+        if exp == "D":
+            expected.difference_update(REDUNDANT)
+        for i, name in enumerate(feature_order):
+            if exp == "D" and name in REDUNDANT:
+                state[i, j] = 3
+            elif name in expected:
+                retained = [name in a["feature_names"] for a in current]
+                state[i, j] = (1 if name in GEOMETRY else 2) if all(retained) else 5 if any(retained) else 4
+    fig, ax = plt.subplots(figsize=(12.5, 8.4))
+    ax.imshow(state, cmap=ListedColormap(state_colors), vmin=-.5, vmax=5.5, aspect="auto")
+    ax.set(xticks=range(4), xticklabels=["A · Original", "B · + Momentos", "C · + Log de razón", "D · Reducción"],
+           yticks=range(len(feature_order)),
+           yticklabels=[f"{descriptions[name]}  |  {name}" for name in feature_order],
+           title="Figura 1. Construcción de las representaciones geométricas")
+    ax.xaxis.tick_top()
+    ax.tick_params(axis="both", length=0, pad=8)
+    ax.tick_params(axis="y", labelsize=9)
+    ax.set_xticks(np.arange(-.5, 4, 1), minor=True)
+    ax.set_yticks(np.arange(-.5, len(feature_order), 1), minor=True)
+    ax.grid(which="minor", color="white", linewidth=2)
+    ax.tick_params(which="minor", bottom=False, left=False)
+    for i, row in enumerate(state):
+        for j, value in enumerate(row):
+            ax.text(j, i, cell_labels[value], ha="center", va="center", fontsize=9, color="#243144")
+    used_states = np.unique(state)
+    ax.legend(handles=[Patch(facecolor=state_colors[v], label=state_labels[v]) for v in used_states],
+              loc="upper center", bbox_to_anchor=(.5, -.04), ncol=3, frameon=False, fontsize=9)
+    ax.text(0, -.18, "Fuente: columnas retenidas en los folds de configuración. El filtrado por constancia se aprende en train.",
+            transform=ax.transAxes, fontsize=9, va="top", color="#435166")
+    save(fig, "FE06_representaciones")
+
+    primary_folds = folds[(folds.protocolo == "configuracion") & folds.experimento.isin(list("ABCD"))]
+    dimensions = primary_folds.groupby("experimento")[["n_features", "rango_train"]].agg(["min", "max"]).loc[list("ABCD")]
+    fig, ax = plt.subplots(figsize=(10, 5.6))
+    positions = np.arange(4)
+    for offset, column, label, color in [(-.18, "n_features", "Columnas tras filtrar constantes", "#7899b8"),
+                                         (.18, "rango_train", "Rango de la matriz de entrenamiento", "#238575")]:
+        low = dimensions[(column, "min")].to_numpy()
+        high = dimensions[(column, "max")].to_numpy()
+        ax.bar(positions + offset, low, width=.32, color=color, label=label)
+        ax.errorbar(positions + offset, low, yerr=np.vstack([np.zeros(4), high - low]),
+                    fmt="none", ecolor="#243144", capsize=5, linewidth=1.5)
+        for pos, minimum, maximum in zip(positions + offset, low, high):
+            ax.text(pos, maximum + .18, f"{int(minimum)}–{int(maximum)}", ha="center", fontsize=10)
+    upper = int(dimensions.max().max())
+    ax.set(xticks=positions, xticklabels=["A · Original", "B · + Momentos", "C · + Log de razón", "D · Reducción"],
+           ylabel="Dimensión / rango", ylim=(0, upper + 3), yticks=np.arange(0, upper + 2, 2),
+           title="Figura 2. Dimensión y rango efectivo en entrenamiento")
+    ax.legend(loc="upper left", fontsize=9, frameon=False)
+    ax.text(0, -.14, "Etiquetas: mínimo–máximo entre folds de configuración; no son intervalos de confianza.\n"
+            "Rango tras filtro y estandarización. Un rango completo no garantiza una mejor predicción.",
+            transform=ax.transAxes, fontsize=9, va="top", color="#435166")
+    save(fig, "FE07_rango")
+
     s = summary[(summary.protocolo == "configuracion") & (summary.experimento != "Dummy")].set_index("experimento").loc[list("ABCD")]
     p = predictions[(predictions.protocolo == "configuracion") & (predictions.experimento != "Dummy")]
     fig, ax = plt.subplots(figsize=(10, 4.5))
     ax.barh(s.feature_set, s.MAE_N, color=[COLORS[e] for e in s.index])
     for i, v in enumerate(s.MAE_N):
         ax.text(v + .15, i, f"{v:.2f}", va="center")
-    ax.set(xlabel="MAE de predicciones fuera de muestra [N]", title="Figura 1. Error por representación geométrica", xlim=(0, s.MAE_N.max() * 1.16))
+    ax.set(xlabel="MAE de predicciones fuera de muestra [N]", title="Figura 3. Error por representación geométrica", xlim=(0, s.MAE_N.max() * 1.16))
     ax.invert_yaxis(); save(fig, "FE01_error")
     fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
     lim = [min(p.observado_N.min(), p.predicho_N.min()) - 10, max(p.observado_N.max(), p.predicho_N.max()) + 10]
@@ -232,7 +315,7 @@ def figures(out, summary, predictions, contrasts):
         ax.plot(lim, lim, "--", color="gray", label="Predicción = observado")
         ax.set(xlabel="Primera falla observada [N]", ylabel="Primera falla predicha [N]", title=LABELS[exp])
         ax.legend(fontsize=8)
-    fig.suptitle("Figura 2. Observaciones y predicciones fuera de muestra"); save(fig, "FE02_observado_predicho")
+    fig.suptitle("Figura 4. Observaciones y predicciones fuera de muestra"); save(fig, "FE02_observado_predicho")
     fig, axes = plt.subplots(2, 2, figsize=(10, 8), sharex=True, sharey=True)
     for ax, exp in zip(axes.flat, "ABCD"):
         z = p[p.experimento == exp]
@@ -241,7 +324,7 @@ def figures(out, summary, predictions, contrasts):
         for row in z.loc[z.residuo_N.abs().nlargest(2).index].itertuples():
             ax.annotate(f"Caso {row.Case_n}", (row.predicho_N, row.residuo_N), fontsize=8)
         ax.set(xlabel="Predicción fuera de muestra [N]", ylabel="Observado − predicho [N]", title=LABELS[exp])
-    fig.suptitle("Figura 3. Residuales de validación"); save(fig, "FE03_residuos")
+    fig.suptitle("Figura 5. Residuales de validación"); save(fig, "FE03_residuos")
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.8))
     for ax, protocol, title in zip(axes, ["configuracion", "familia"], ["Configuraciones excluidas", "Familia completa excluida"]):
         z = predictions[(predictions.protocolo == protocol) & (predictions.experimento != "Dummy")]
@@ -250,7 +333,7 @@ def figures(out, summary, predictions, contrasts):
             ax.plot(v.index, v, "o-", label=exp, color=COLORS[exp])
         ax.set(xlabel="Familia: número de celdas en Y", ylabel="MAE fuera de muestra [N]", title=title, xticks=[4,5,6])
         ax.legend(title="Experimento")
-    fig.suptitle("Figura 4. Error por arquitectura y alcance de generalización"); save(fig, "FE04_error_familia")
+    fig.suptitle("Figura 6. Error por arquitectura y alcance de generalización"); save(fig, "FE04_error_familia")
     fig, ax = plt.subplots(figsize=(10, 4.8))
     for i, exp in enumerate("BCD"):
         z = contrasts[(contrasts.protocolo == "configuracion") & (contrasts.experimento == exp)].delta_MAE_N.to_numpy()
@@ -260,7 +343,7 @@ def figures(out, summary, predictions, contrasts):
     ax.axvline(0, color="gray", ls="--")
     ax.scatter([], [], marker="D", color="black", s=45, label="Media no ponderada de grupos")
     ax.set(yticks=[0,1,2], yticklabels=["B − A: momentos", "C − B: log de razón", "D − C: redundancia"],
-           xlabel="Cambio de MAE por grupo [N]; negativo = mejora", title="Figura 5. Contribución incremental y dispersión entre grupos")
+           xlabel="Cambio de MAE por grupo [N]; negativo = mejora", title="Figura 7. Contribución incremental y dispersión entre grupos")
     ax.legend(fontsize=8); save(fig, "FE05_ablaciones")
     return paths
 
@@ -289,7 +372,7 @@ def run(root=ROOT):
                        "errores_familia": per_family, "coeficientes_folds": coef}.items():
         save_csv(out / "tables" / f"{name}.csv", data)
     save_json(out / "auditoria_transformaciones.json", audits)
-    chart_paths = figures(out, summary, pred, contrasts)
+    chart_paths = figures(out, summary, pred, contrasts, folds, audits)
     from .informe_fe import write_documents
     write_documents(root, config, summary, decisions, score_sensitivity, per_family)
     inputs = [config_path, root / config["dataset"], root / "data/processed/preliminary/data_quality_report.json"]
