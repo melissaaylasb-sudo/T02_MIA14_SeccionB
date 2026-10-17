@@ -1,0 +1,4 @@
+experimento,referencia,intervencion,delta_MAE_N,reduccion_MAE_pct,delta_RMSE_N,fraccion_grupos_mejora,delta_MAE_familia_N,decision
+B,A,Añadir dos segundos momentos de área de la sección de fibra,-0.41192873583138656,3.1097049158683334,-0.14286029320743765,0.625,0.0163706895573128,Mantener en evaluación
+C,B,Añadir ln(volumen_pivotes / volumen_fibras),0.07924211522729507,-0.6174088811073958,0.12424924648013302,0.375,-0.034764535723248,Descartar
+D,C,"Retirar longitud total de fibras, número de pivotes y volumen de fibras del bloque original",4.1210971358419375,-31.91218453001138,4.808964493682534,0.2916666666666667,11.21506273518439,Descartar

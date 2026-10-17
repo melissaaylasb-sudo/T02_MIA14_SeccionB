@@ -1,0 +1,49 @@
+{
+  "study": "Ingeniería de características para carga de primera falla",
+  "eda_commit": "e9b2cc3f9824922601ff40a8e8960b02f44de876",
+  "dataset": "data/processed/preliminary/model_table.csv",
+  "target": "First_Failure_Load_N",
+  "target_unit": "N",
+  "seed": 42,
+  "model": {
+    "name": "Ridge",
+    "alpha": 1.0,
+    "solver": "svd",
+    "tuning": false
+  },
+  "scaler": "StandardScaler",
+  "primary_validation": "LeaveOneGroupOut_configuracion_nominal",
+  "group_columns": [
+    "n_cells_Y",
+    "Fiber_height",
+    "Pivot_height"
+  ],
+  "secondary_validation": "LeaveOneGroupOut_familia",
+  "experiments": {
+    "A": {
+      "reference": null,
+      "intervention": "Geometría original admisible; referencia predictiva"
+    },
+    "B": {
+      "reference": "A",
+      "intervention": "Añadir dos segundos momentos de área de la sección de fibra"
+    },
+    "C": {
+      "reference": "B",
+      "intervention": "Añadir ln(volumen_pivotes / volumen_fibras)"
+    },
+    "D": {
+      "reference": "C",
+      "intervention": "Retirar longitud total de fibras, número de pivotes y volumen de fibras del bloque original"
+    }
+  },
+  "decision_rule": {
+    "scope": "Intervención frente a su referencia declarada; decisión exploratoria",
+    "adopt_min_mae_reduction_percent": 5.0,
+    "adopt_min_group_win_fraction": 0.6,
+    "require_rmse_not_worse": true,
+    "require_secondary_mae_not_worse": true,
+    "otherwise_if_primary_mae_improves": "Mantener en evaluación",
+    "otherwise": "Descartar"
+  }
+}

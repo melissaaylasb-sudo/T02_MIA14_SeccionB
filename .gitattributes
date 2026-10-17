@@ -14,3 +14,11 @@ reports/eda_transformaciones/** -text whitespace=cr-at-eol
 
 # Matplotlib SVG paths include harmless trailing spaces in generated geometry.
 reports/**/figures/*.svg whitespace=-blank-at-eol,cr-at-eol
+
+# Preserve new FE provenance artifacts and source hashes in Windows checkouts.
+reports/feature_engineering/** -text whitespace=cr-at-eol
+reports/feature_engineering/figures/*.svg whitespace=-blank-at-eol,cr-at-eol
+config/feature_engineering.json -text whitespace=cr-at-eol
+src/feature_engineering.py -text whitespace=cr-at-eol
+src/experimentos_fe.py -text whitespace=cr-at-eol
+src/informe_fe.py -text whitespace=cr-at-eol

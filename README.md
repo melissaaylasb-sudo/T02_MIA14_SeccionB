@@ -1,4 +1,50 @@
-# Análisis exploratorio de datos (EDA) de estructuras pantográficas
+# Ingeniería de características de estructuras pantográficas
+
+<!-- FEATURE_ENGINEERING_START -->
+## Ingeniería de características y evaluación predictiva
+
+**Entrega:** Ingeniería de características guiada por análisis exploratorio y evaluación experimental de su contribución a la predicción de la carga de primera falla en estructuras pantográficas.
+
+La rama `feature-engineering` continúa el [EDA publicado](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda). La pregunta es si transformar la geometría conocida antes del ensayo mejora la estimación de `First_Failure_Load_N` (N). Se conserva el EDA y se añade una comparación ejecutada, con Ridge fijo y las mismas particiones.
+
+**Entradas:** geometría de fibras, pivotes y arquitectura. **Salida:** fuerza de primera rotura; las respuestas posteriores nunca entran al modelo. B añade dos momentos de sección, C añade ln(Vp/Vf) y D retira tres descriptores redundantes del bloque original.
+
+| experimento | feature_set | MAE_N | RMSE_N | delta_MAE_vs_A_N | decision |
+| --- | --- | --- | --- | --- | --- |
+| A | A · Geometría original | 13.2466 | 16.3457 | 0.0000 | Baseline |
+| B | B · A + momentos de sección | 12.8346 | 16.2029 | -0.4119 | Mantener en evaluación |
+| C | C · B + log(Vp/Vf) | 12.9139 | 16.3271 | -0.3327 | Descartar |
+| D | D · C − descriptores redundantes | 17.0350 | 21.1361 | 3.7884 | Descartar |
+
+ΔMAE negativo indica mejora frente a A. Las decisiones valoran cada intervención frente a su referencia inmediata: B−A, C−B y D−C.
+
+**Validación:** exclusión completa de cada configuración nominal; prueba adicional excluyendo familias Y completas. Imputación, filtro de constantes y escalamiento se ajustan solo en entrenamiento. No hay tuning ni cambios de algoritmo entre variantes.
+
+**Resultado:** El menor MAE del protocolo principal corresponde a **B**, con **12.8346 N**, frente a **13.2466 N** de A; reducción descriptiva de **3.11 %**. Al excluir familias completas, el MAE de B es **57.6538 N**. El ganador entre variantes examinadas no constituye una estimación independiente del rendimiento de un modelo seleccionado.
+
+**Límites:** hipótesis informadas por el EDA del mismo conjunto, geometrías por conciliar y réplicas/lotes sin verificar. Las decisiones son exploratorias; el siguiente paso es confirmar A y B en una campaña independiente con protocolo congelado.
+
+| Artefacto | Contenido |
+|---|---|
+| [04 · Notebook ejecutado](notebooks/04_Feature_Engineering_Pantograficas.ipynb) | Pipeline, experimentos, gráficos e interpretación |
+| [Metodología](docs/feature_engineering.md) | Matriz EDA → FE, validación y control de fuga |
+| [Diccionario de features](docs/diccionario_features.md) | Origen, fórmulas, unidades y decisiones |
+| [Resultados y discusión](docs/experimentos_fe.md) | Ablaciones, errores y limitaciones |
+| [Comparación CSV](reports/feature_engineering/tables/comparacion_experimentos.csv) | Métricas, tiempos y tamaños efectivos |
+| [Predicciones OOF](reports/feature_engineering/tables/predicciones_oof.csv) | Cada predicción identificada por caso, variante y fold |
+| [Configuración](config/feature_engineering.json) | Hipótesis, parámetros fijos y criterio de decisión |
+| [Particiones](reports/feature_engineering/particiones.json) | Casos de entrenamiento y validación |
+| [Auditoría de transformaciones](reports/feature_engineering/auditoria_transformaciones.json) | Estadísticas aprendidas en cada entrenamiento |
+| [Código de características](src/feature_engineering.py) · [experimentos](src/experimentos_fe.py) | Implementación reutilizable |
+
+```powershell
+python -m src.reporte_fe --execute
+python -m pytest tests -q
+python -m src.verificar_fe
+```
+
+Los tres primeros notebooks conservan el EDA. El cuarto ejecuta esta etapa y genera `reports/feature_engineering/` (tablas, figuras, particiones, auditoría, manifiesto y logs) y los tres documentos FE en `docs/`.
+<!-- FEATURE_ENGINEERING_END -->
 
 **Universidad Nacional de Ingeniería · Facultad de Ingeniería Industrial y de Sistemas**<br>
 Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.º ciclo, sección B · **2026-2**<br>
@@ -10,7 +56,7 @@ Maestría en Inteligencia Artificial · Trabajo de Investigación II · MIA, 4.�
 | **Aspecto específico** | Relación entre la geometría de la malla y la carga de primera falla durante un ensayo de tracción. |
 | **Pregunta de investigación** | ¿Cómo se relacionan la arquitectura y las dimensiones de fibras y pivotes con la fuerza a la que aparece la primera rotura? |
 
-El objetivo posterior es **predecir esa fuerza en newtons con información conocida antes del ensayo**. Esta rama `eda` documenta la calidad de los datos y explora asociaciones; todavía no evalúa un modelo predictivo.
+El objetivo posterior es **predecir esa fuerza en newtons con información conocida antes del ensayo**. La etapa anterior `eda` documenta la calidad de los datos y explora asociaciones; el modelo predictivo se evalúa en la nueva etapa descrita arriba.
 
 **Familia** agrupa las estructuras con el mismo número de celdas en Y (`n_cells_Y`: 4, 5 o 6); dentro de cada familia pueden variar las dimensiones de fibras y pivotes. **Primera falla** es el primer evento de rotura identificado de una fibra o un pivote, y no implica la rotura completa de la malla. [Conceptos y diccionario de variables](docs/diccionario_datos.md#conceptos-del-estudio).
 
@@ -18,10 +64,12 @@ El objetivo posterior es **predecir esa fuerza en newtons con información conoc
 
 ## Índice
 
+- [Ingeniería de características](#ingeniería-de-características-y-evaluación-predictiva)
+
 - [Experimento y objetivo](#experimento-y-objetivo)
 - [INPUT, target y OUTPUT](#input-target-y-output)
 - [Gráficos para explicar los datos](#gráficos-para-explicar-los-datos)
-- [Tres cuadernos para la entrega](#tres-cuadernos-para-la-entrega)
+- [Cuadernos del EDA](#tres-cuadernos-de-la-etapa-eda)
 - [Preguntas y análisis](#preguntas-y-análisis)
 - [Estudio de valores atípicos](#estudio-de-valores-atípicos)
 - [Hallazgos e implicancias](#hallazgos-e-implicancias)
@@ -102,7 +150,7 @@ Estos gráficos ya están calculados en el cuaderno 02. Cada enlace abre la figu
 
 Una **curva completa de fuerza–desplazamiento**, con carga, descarga y primera rotura señaladas, sería útil para explicar el ensayo. Para incorporarla como gráfico calculado se requieren las series instrumentales: el MATLAB recibido contiene resúmenes y no permite reconstruir esa curva.
 
-## Tres cuadernos para la entrega
+## Tres cuadernos de la etapa EDA
 
 | Orden | Notebook | Contenido |
 |---:|---|---|
@@ -197,9 +245,13 @@ T02_MIA14_SeccionB/
 │   ├── figures/                     # Esquema del ensayo, INPUT y OUTPUT (PNG y SVG)
 │   ├── trazabilidad_datos.md         # Fuentes, páginas y discrepancias
 │   ├── informe_curaduria.md          # Evidencia e incidencias de calidad
-│   └── informe_eda.md                # Interpretación académica y RQ1–RQ12
+│   ├── informe_eda.md                # Interpretación académica y RQ1–RQ12
+│   ├── feature_engineering.md         # Matriz EDA → FE y protocolo de validación
+│   ├── diccionario_features.md        # Fórmulas, unidades y admisibilidad
+│   └── experimentos_fe.md             # Métricas, decisiones y discusión
 ├── config/
-│   └── data_schema.yml              # Variables, unidades y reglas de curaduría
+│   ├── data_schema.yml              # Variables, unidades y reglas de curaduría
+│   └── feature_engineering.json       # Experimentos, parámetros y regla de decisión
 ├── data/
 │   ├── raw/dati_campagna_venditti.m   # Fuente experimental original
 │   ├── interim/preliminary/          # Extracción verificable
@@ -208,8 +260,10 @@ T02_MIA14_SeccionB/
 ├── notebooks/
 │   ├── 01_Ingesta_Curaduria_y_Calidad.ipynb
 │   ├── 02_EDA.ipynb
-│   └── 03_Transformaciones_Exploratorias.ipynb
+│   ├── 03_Transformaciones_Exploratorias.ipynb
+│   └── 04_Feature_Engineering_Pantograficas.ipynb
 ├── reports/
+│   ├── feature_engineering/           # OOF, métricas, figuras, particiones, auditoría y logs
 │   ├── eda_calidad/                  # Auditoría, PNG/SVG, CSV y manifiesto
 │   ├── eda_relaciones/               # Asociaciones, soporte y sensibilidad
 │   ├── eda_transformaciones/         # Fórmulas, representaciones y escalas
@@ -229,14 +283,20 @@ T02_MIA14_SeccionB/
 │   ├── eda_energia.py               # Ciclos y eventos energéticos
 │   ├── transformaciones_eda.py       # Geometría derivada y escalas
 │   ├── verificar_eda.py             # Outputs, enlaces, hashes y figuras
-│   └── reporte_eda.py               # Ejecución reproducible de cuadernos
+│   ├── reporte_eda.py               # Ejecución reproducible de cuadernos EDA
+│   ├── feature_engineering.py         # Contrato, fórmulas y pipelines
+│   ├── experimentos_fe.py             # Comparación A/B/C/D y exportación
+│   ├── informe_fe.py                  # Documentación ligada a los resultados
+│   ├── reporte_fe.py                  # Ejecución del notebook 04
+│   └── verificar_fe.py                # Comprobación independiente de la entrega
 ├── tests/
 │   ├── test_importar_matlab.py
 │   ├── test_eda.py
 │   ├── test_eda_energia.py
 │   ├── test_eda_calidad.py
 │   ├── test_eda_relaciones.py
-│   └── test_transformaciones_eda.py
+│   ├── test_transformaciones_eda.py
+│   └── test_feature_engineering.py     # Fuga, grupos, fórmulas y dominios
 ├── logs/
 ├── requirements.txt
 ├── pyproject.toml
@@ -250,7 +310,7 @@ T02_MIA14_SeccionB/
 | `data/raw/` | Fuente experimental original | Se conserva sin modificaciones |
 | `data/interim/preliminary/` | Tabla extraída, hash y manifiesto | Etapa intermedia visible antes de seleccionar variables |
 | `data/processed/preliminary/` | Tabla analítica y reporte de calidad | Versión preliminar para revisión, todavía no definitiva |
-| `reports/` | Tablas, figuras y manifiestos del EDA | Evidencia exploratoria organizada por tema y vinculada a los notebooks |
+| `reports/` | Evidencia del EDA y evaluación FE | Resultados separados por etapa; FE añade predicciones OOF, particiones y auditorías |
 | `logs/` | Eventos, advertencias y fallos | Complementan los manifiestos |
 
 **Interim** significa etapa intermedia: traduce la fuente MATLAB a una tabla verificable antes de aplicar la curaduría. Las ejecuciones fechadas permanecen fuera de Git; las carpetas `preliminary/` conservan copias estables para revisar la evidencia.
