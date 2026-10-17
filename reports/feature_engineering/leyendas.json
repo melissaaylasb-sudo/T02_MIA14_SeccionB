@@ -1,32 +1,32 @@
 [
   {
     "file": "FE01_error",
-    "title": "Figura 1. Error predictivo por representación",
-    "interpretation": "El menor MAE del protocolo principal corresponde a **B**, con **12.8346 N**, frente a **13.2466 N** de A; reducción descriptiva de **3.11 %**. Al excluir familias completas, el MAE de B es **57.6538 N**. El ganador entre variantes examinadas no constituye una estimación independiente del rendimiento de un modelo seleccionado. Las barras muestran MAE agrupado por caso; la dispersión entre grupos se presenta en la figura 5 y en metricas_folds.csv, no como intervalos de confianza.",
-    "source": "Tabla curada publicada; predicciones fuera de muestra bajo los protocolos indicados. Fuerzas y errores en N."
+    "title": "Figura 1. Error por representación",
+    "interpretation": "Menor MAE significa menor error medio. La dispersión entre grupos se muestra en la figura 5; estas barras no son intervalos de confianza.",
+    "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE02_observado_predicho",
-    "title": "Figura 2. Predicción fuera de muestra frente a observación",
-    "interpretation": "Cada punto es un caso validado excluyendo su configuración nominal. La línea de identidad indica coincidencia perfecta; distancias verticales representan errores. La agrupación por fuerzas puede reflejar familias; no demuestra precisión en arquitecturas nuevas.",
-    "source": "Tabla curada publicada; predicciones fuera de muestra bajo los protocolos indicados. Fuerzas y errores en N."
+    "title": "Figura 2. Observado frente a predicho",
+    "interpretation": "La diagonal representa coincidencia perfecta. Cada predicción procede de un modelo que no entrenó con esa configuración nominal.",
+    "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE03_residuos",
-    "title": "Figura 3. Diagnóstico de residuales",
-    "interpretation": "Residual = observado − predicho: positivo indica subestimación y negativo sobreestimación. Se identifican los dos errores absolutos mayores por variante para revisión, sin eliminarlos. La figura permite buscar sesgo y errores concentrados; no certifica normalidad ni independencia.",
-    "source": "Tabla curada publicada; predicciones fuera de muestra bajo los protocolos indicados. Fuerzas y errores en N."
+    "title": "Figura 3. Residuales",
+    "interpretation": "Residual = observado − predicho: positivo indica subestimación. Los casos señalados tienen los mayores errores absolutos; no se eliminan.",
+    "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE04_error_familia",
-    "title": "Figura 4. Error por familia y protocolo",
-    "interpretation": "La comparación distingue configuraciones ausentes y familias completas ausentes. Para B, MAE pasa de 12.8346 N en el protocolo principal a 57.6538 N en el secundario. Son objetivos de generalización diferentes; la dispersión entre familias no es un intervalo de confianza.",
-    "source": "Tabla curada publicada; predicciones fuera de muestra bajo los protocolos indicados. Fuerzas y errores en N."
+    "title": "Figura 4. Error por familia",
+    "interpretation": "En la validación por configuración, B mejora frente a A en Y=5 y Y=6, pero empeora en Y=4. Excluir una familia completa aumenta mucho el error: generalizar a otra arquitectura sigue sin resolverse.",
+    "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   },
   {
     "file": "FE05_ablaciones",
-    "title": "Figura 5. Contribución incremental de las intervenciones",
-    "interpretation": "Cada punto es ΔMAE de un grupo bajo la misma partición; negativo favorece la intervención. El rombo muestra la media no ponderada de grupos, que puede diferir del ΔMAE ponderado por casos. La dispersión revela consistencia o heterogeneidad del aporte; no es importancia individual ni evidencia de información física nueva.",
-    "source": "Tabla curada publicada; predicciones fuera de muestra bajo los protocolos indicados. Fuerzas y errores en N."
+    "title": "Figura 5. Aporte de cada intervención",
+    "interpretation": "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual.",
+    "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
   }
 ]
