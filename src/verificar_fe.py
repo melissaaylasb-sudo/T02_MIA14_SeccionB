@@ -117,6 +117,8 @@ def verify(root=ROOT):
     expected_audits = set(folds[["protocolo", "experimento", "fold"]].itertuples(index=False, name=None))
     actual_audits = set(preprocessing_audit[["protocolo", "experimento", "particion"]].itertuples(index=False, name=None))
     check(actual_audits == expected_audits, "Preprocesamiento de todos los folds coincide con estadísticas exclusivas de train")
+    from .verificar_modelos import verificar_modelos
+    checks.extend(verificar_modelos(root, data, config, partitions, pred))
     _, _, decisions = summarize(pred, folds, config)
     actual = pd.read_csv(out / "tables/decisiones.csv")
     pd.testing.assert_frame_equal(actual, decisions, check_exact=False, rtol=1e-10, atol=1e-10)
@@ -125,7 +127,7 @@ def verify(root=ROOT):
     code = [c for c in nb.cells if c.cell_type == "code"]
     check([c.execution_count for c in code] == list(range(1,len(code)+1)), "Notebook ejecutado en orden desde kernel limpio")
     check(not any(o.output_type == "error" for c in code for o in c.get("outputs",[])), "Notebook sin errores")
-    check(len(manifest["figures"]) == 11, "Once figuras registradas: siete de comparación y cuatro de tratamiento")
+    check(len(manifest["figures"]) == 14, "Catorce figuras registradas: siete de características, cuatro de tratamiento y tres de regresores")
     check(sum("image/png" in o.get("data",{}) for c in code for o in c.get("outputs",[])) == len(manifest["figures"]), "Todas las figuras embebidas")
     for path in (out / "figures").glob("*.png"):
         with Image.open(path) as img:

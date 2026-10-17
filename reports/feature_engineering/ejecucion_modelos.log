@@ -1,0 +1,25 @@
+Inicio UTC: 2026-10-17T00:45:20.948382+00:00
+COMPARACIÓN DE CINCO REGRESORES
+Representación A fija: geometría original. Se cambia únicamente el regresor.
+Particiones idénticas a A/B/C/D; exclusión por configuración y por familia.
+Sin búsqueda ni selección final de hiperparámetros. Parámetros en configuracion_modelos.json.
+Imputación, filtro y escalamiento ajustados solo en entrenamiento; auditoría por modelo y partición.
+No se usa one-hot, no se imputan objetivos y no se recortan predicciones negativas.
+SVR ajusta directamente el objetivo en N; epsilon es una tolerancia de error de 5 N.
+El proceso gaussiano normaliza el objetivo con media y desviación de entrenamiento; predict devuelve N.
+El núcleo Matérn del proceso gaussiano permanece fijo (optimizer=None); no se reportan intervalos calibrados.
+MAE principal; RMSE, MedAE y R² calculados sobre predicciones fuera de muestra agregadas.
+Tiempo: suma de ajuste del pipeline y predicción; excluye informes y gráficos.
+No hay conjunto final independiente. El EDA y la comparación de candidatos hacen exploratoria esta evaluación.
+Resultados por protocolo:
+configuracion | Ridge | MAE=13.246554 N | RMSE=16.345726 N | MedAE=11.940893 N | R²=0.922587 | tiempo=0.271630 s
+configuracion | Elastic Net | MAE=13.979172 N | RMSE=17.100415 N | MedAE=13.719970 N | R²=0.915273 | tiempo=0.352485 s
+configuracion | SVR con núcleo RBF | MAE=15.650714 N | RMSE=19.095784 N | MedAE=12.633397 N | R²=0.894347 | tiempo=0.330918 s
+configuracion | Bosque aleatorio | MAE=13.232501 N | RMSE=16.341489 N | MedAE=9.699368 N | R²=0.922627 | tiempo=4.126250 s
+configuracion | Proceso gaussiano | MAE=16.057726 N | RMSE=19.341358 N | MedAE=14.193689 N | R²=0.891612 | tiempo=0.247985 s
+familia | Ridge | MAE=57.637397 N | RMSE=60.428137 N | MedAE=64.519642 N | R²=-0.058002 | tiempo=0.031685 s
+familia | Elastic Net | MAE=57.112995 N | RMSE=59.887876 N | MedAE=64.292320 N | R²=-0.039168 | tiempo=0.030393 s
+familia | SVR con núcleo RBF | MAE=82.357653 N | RMSE=88.039219 N | MedAE=87.602428 N | R²=-1.245744 | tiempo=0.030025 s
+familia | Bosque aleatorio | MAE=60.900578 N | RMSE=71.570303 N | MedAE=45.648860 N | R²=-0.484136 | tiempo=0.475287 s
+familia | Proceso gaussiano | MAE=77.680139 N | RMSE=83.628565 N | MedAE=77.740141 N | R²=-1.026363 | tiempo=0.031316 s
+Avisos capturados: 0

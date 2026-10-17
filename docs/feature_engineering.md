@@ -8,8 +8,9 @@
 | Objetivo | Carga de primera falla [N]: fuerza correspondiente a la primera rotura de fibra o pivote. |
 | Entradas | Geometría previa al ensayo; se excluyen identificador, fuerzas, desplazamientos y energías. |
 | Experimentos | Línea base A: geometría original. Variante 1 B: añadir dos momentos como bloque. Variante 2 C: añadir razón logarítmica a B. Variante 3 D: retirar tres descriptores como bloque de C. |
-| Modelo | Ridge, alpha=1, solver SVD; mismos parámetros y particiones. Dummy de media como control. |
-| Pipeline | Contrato de entradas → imputación con mediana → fórmulas → filtro de varianza nula → estandarización → Ridge; estadísticas aprendidas solo en entrenamiento. |
+| Modelo de los contrastes A–D | Ridge fijo; mismos parámetros y particiones. Dummy de media como control auxiliar. |
+| Comparación de algoritmos | Ridge, Elastic Net, SVR con núcleo RBF, bosque aleatorio y proceso gaussiano; todos con la geometría original A y las mismas particiones. |
+| Pipeline | Contrato de entradas → imputación con mediana → representación geométrica → filtro de varianza nula → estandarización → regresor; estadísticas aprendidas solo en entrenamiento. |
 | Validación principal | Validación cruzada LeaveOneGroupOut por combinación de cantidad de celdas en Y, altura de fibra y altura de pivote; configuraciones nominales repetidas permanecen juntas. |
 | Comprobación adicional | Excluir cada familia Y completa; evalúa una arquitectura no vista. |
 | Métricas | MAE principal; RMSE, MedAE y R² agregado OOF. Sin R² en folds individuales. |
@@ -32,10 +33,12 @@ Las nuevas características son funciones de mediciones existentes. Retirar colu
 | Reducción de variables | En D se retiran tres descriptores por hipótesis geométrica fija, sin seleccionar columnas por el objetivo. |
 | One-hot encoding | No se utilizó: las entradas admitidas son mediciones o conteos numéricos. La cantidad de celdas en Y conserva su valor numérico; usarla para agrupar no la convierte en una categoría codificada. |
 
-Cada contraste modifica **un bloque**: B−A, C−B y D−C. Los dos momentos se prueban juntos y las tres retiradas también; el diseño no permite atribuir la mejora a cada variable individual. El modelo y las particiones se mantienen fijos.
+Cada contraste modifica **un bloque**: B−A, C−B y D−C. Los dos momentos se prueban juntos y las tres retiradas también; el diseño no permite atribuir la mejora a cada variable individual. El modelo y las particiones se mantienen fijos en estos contrastes.
+
+La comparación de cinco regresores es un experimento separado: conserva la representación A, el preprocesamiento y las particiones, y cambia únicamente el algoritmo con sus parámetros declarados. No se combinan cinco modelos con cuatro variantes ni se presenta esta comparación como ajuste de hiperparámetros. Las reglas de adopción de características no seleccionan automáticamente un algoritmo.
 
 ## Controles de fuga y separación
 
 Se comprueba que entrenamiento y validación no comparten casos ni grupos; las respuestas del ensayo y los identificadores no entran al modelo. La imputación, el filtro y la estandarización se ajustan dentro de cada entrenamiento. Esto controla la fuga de procesamiento, pero **no acredita ausencia absoluta de sesgo**: las hipótesis ya se exploraron con el EDA del conjunto completo y faltan lotes experimentales verificados. Se ejecutó validación cruzada por grupos, no un holdout externo ni una partición temporal o estratificada.
 
-[Configuración](../config/feature_engineering.json) · [Particiones](../reports/feature_engineering/particiones.json) · [Estadísticas aprendidas](../reports/feature_engineering/auditoria_transformaciones.json)
+[Configuración de características](../config/feature_engineering.json) · [Configuración de modelos](../config/comparacion_modelos.json) · [Particiones](../reports/feature_engineering/particiones.json) · [Estadísticas aprendidas](../reports/feature_engineering/auditoria_transformaciones.json)

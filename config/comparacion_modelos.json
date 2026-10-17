@@ -1,0 +1,48 @@
+{
+  "representacion": "A",
+  "objetivo": "First_Failure_Load_N",
+  "unidad_objetivo": "N",
+  "metrica_principal": "MAE_N",
+  "sin_busqueda_hiperparametros": true,
+  "particiones": "Reutilizar las particiones por configuración y por familia de feature_engineering.json.",
+  "alcance": "Comparación exploratoria con geometría original; no selecciona ni reentrena un modelo final.",
+  "modelos": {
+    "Ridge": {
+      "nombre": "Ridge",
+      "clase": "sklearn.linear_model.Ridge",
+      "parametros": {"alpha": 1.0, "solver": "svd"},
+      "proposito": "Referencia lineal regularizada ante descriptores geométricos relacionados."
+    },
+    "ElasticNet": {
+      "nombre": "Elastic Net",
+      "clase": "sklearn.linear_model.ElasticNet",
+      "parametros": {"alpha": 0.1, "l1_ratio": 0.5, "max_iter": 20000, "tol": 0.0001, "selection": "cyclic"},
+      "proposito": "Contrastar regularización que combina contracción y coeficientes nulos."
+    },
+    "SVR_RBF": {
+      "nombre": "SVR con núcleo RBF",
+      "clase": "sklearn.svm.SVR",
+      "parametros": {"kernel": "rbf", "C": 100.0, "epsilon": 5.0, "gamma": "scale"},
+      "proposito": "Explorar relaciones geométricas no lineales; la tolerancia epsilon se expresa en N."
+    },
+    "RandomForest": {
+      "nombre": "Bosque aleatorio",
+      "clase": "sklearn.ensemble.RandomForestRegressor",
+      "parametros": {"n_estimators": 200, "min_samples_leaf": 2, "max_features": 1.0, "random_state": 42, "n_jobs": 1},
+      "proposito": "Explorar interacciones y umbrales sin imponer una relación lineal."
+    },
+    "GaussianProcess": {
+      "nombre": "Proceso gaussiano",
+      "clase": "sklearn.gaussian_process.GaussianProcessRegressor",
+      "parametros": {"kernel": "Matern", "length_scale": 3.0, "nu": 1.5, "alpha": 0.05, "optimizer": null, "normalize_y": true},
+      "proposito": "Contrastar una función suave definida por similitud entre geometrías estandarizadas."
+    }
+  },
+  "notas": [
+    "Todos usan el mismo contrato geométrico, imputación de mediana, filtro de constantes y estandarización ajustados solo en entrenamiento.",
+    "El escalamiento también se mantiene para el bosque para conservar el mismo preprocesamiento; no es un requisito del algoritmo.",
+    "Los parámetros son valores de partida fijos; no se consideran óptimos ni se ajustan mirando las métricas de evaluación.",
+    "En el proceso gaussiano, alpha es regularización de la covarianza en la escala normalizada del objetivo; no es una medición experimental de ruido.",
+    "No se publican intervalos de incertidumbre ni se supone que estén calibrados."
+  ]
+}

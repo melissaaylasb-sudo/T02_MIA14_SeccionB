@@ -14,21 +14,41 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
 | Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
 | Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
-| Comparación | Línea base A y tres variantes B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con la anterior; no hay búsqueda de hiperparámetros en esta etapa. |
-| Modelos usados | Regresión Ridge en A–D; control auxiliar DummyRegressor que predice la media del entrenamiento. A–D son conjuntos de características, no cuatro algoritmos distintos. |
+| Comparación de características | Línea base A y tres variantes B/C/D con Ridge fijo. Cada intervención se contrasta con la anterior. A–D son representaciones, no algoritmos. |
+| Comparación de modelos | Cinco regresores, todos con geometría original A y las mismas particiones; parámetros declarados, sin búsqueda de hiperparámetros. Control auxiliar de media del entrenamiento. |
 
 ## Resultado
 
 | Experimento | Cambio | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2423 |
-| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.4573 |
-| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.4931 |
-| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5200 |
-
-**Tiempo CV:** suma medida de ajuste y predicción de todos los folds de la validación por configuración; excluye figuras y escritura de archivos. Depende del equipo y no representa la latencia de una aplicación.
+| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2901 |
+| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.6825 |
+| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.5711 |
+| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5131 |
 
 **B obtiene el menor MAE: 12.8346 N**, una reducción de 3.11 % frente a A. Al excluir familias completas, su MAE es 57.6538 N; la mejora no demuestra transferencia a arquitecturas nuevas. **B se mantiene en evaluación**; C no mejora B y D empeora. El EDA previo usó el mismo conjunto: la evidencia es exploratoria.
+
+## Cinco modelos de regresión
+
+| Modelo de regresión | Motivo de inclusión |
+| --- | --- |
+| Ridge | Referencia lineal regularizada frente a entradas correlacionadas. |
+| Elastic Net | Contrasta otra regularización lineal; puede reducir algunos coeficientes a cero. |
+| SVR con núcleo RBF | Estudia relaciones no lineales entre geometría y fuerza. |
+| Bosque aleatorio (Random Forest) | Combina árboles para representar interacciones y umbrales geométricos. |
+| Proceso gaussiano | Contrasta una función no lineal mediante similitud entre geometrías. |
+
+La comparación cambia el algoritmo y conserva las entradas A para distinguir su efecto del tratamiento de características.
+
+| Modelo | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
+| --- | --- | --- | --- | --- | --- |
+| Ridge | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2716 |
+| Elastic Net | 13.9792 | 17.1004 | 13.7200 | 0.9153 | 0.3525 |
+| SVR con núcleo RBF | 15.6507 | 19.0958 | 12.6334 | 0.8943 | 0.3309 |
+| Bosque aleatorio | 13.2325 | 16.3415 | 9.6994 | 0.9226 | 4.1263 |
+| Proceso gaussiano | 16.0577 | 19.3414 | 14.1937 | 0.8916 | 0.2480 |
+
+**Bosque aleatorio presenta el menor MAE por configuración: 13.2325 N.** La diferencia respecto a Ridge es 0.0141 N. Al excluir familias completas, su MAE es 60.9006 N. La comparación es exploratoria: no constituye una selección validada en ensayos externos.
 
 ## Qué encontrarás en el notebook
 
@@ -38,13 +58,21 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | 4.3–4.4 · Tratamiento visual | Sección y momentos de área, razón antes/después del logaritmo, redundancias, escalamiento, mapa de variables y rango. |
 | 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
 | 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
-| 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
+| 4.9 · Interpretación del tratamiento | Reglas de decisión contrastadas con los resultados de A–D. |
+| 4.10 · Cinco modelos | Tabla común de métricas, tiempos, residuales y generalización por familia. |
+| 4.11 · Verificación | Integridad de datos, fuentes y artefactos ejecutados. |
 
-**Métricas:** MAE [N], error absoluto medio principal; RMSE [N], más sensible a errores grandes; MedAE [N], error absoluto mediano; R², ajuste agregado de las predicciones fuera de muestra. Se evalúan configuraciones nominales completas y, por separado, familias Y completas. Cada predicción de validación procede de un ajuste que excluyó su grupo.
+| Métrica | Interpretación |
+| --- | --- |
+| MAE [N] · principal | Promedio del error absoluto; menor es mejor. |
+| RMSE [N] | Penaliza más los errores grandes; menor es mejor. |
+| MedAE [N] | Mediana del error absoluto; resume el error central con menor sensibilidad a extremos. |
+| R² OOF | Se calcula sobre todas las predicciones fuera de muestra. 1 indica ajuste perfecto; negativo indica mayor error cuadrático que la media global observada como referencia. |
+| Tiempo CV [s] | Suma medida de ajuste y predicción de las particiones; excluye figuras y archivos. Depende del equipo, no es latencia de despliegue. |
 
 ## Técnicas y validación
 
-El pipeline aplica **imputación por mediana → construcción de variables → filtro de varianza nula → estandarización → regresión Ridge**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
+El pipeline aplica **imputación por mediana → representación geométrica → filtro de varianza nula → estandarización → regresor**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
 
 **No se usó one-hot encoding:** todas las entradas son mediciones o conteos numéricos. Cada comparación cambia un bloque: dos momentos, luego una razón y después la retirada de tres columnas; no se atribuyen efectos a variables individuales dentro de esos bloques.
 
@@ -61,12 +89,16 @@ notebooks/
 src/
   feature_engineering.py   # Contrato, fórmulas y pipeline
   experimentos_fe.py       # Particiones, ajustes y métricas OOF
+  comparacion_modelos.py   # Cinco regresores con representación A y particiones comunes
   informe_fe.py            # Resúmenes ligados a resultados
   presentacion_fe.py       # Nombres y etiquetas en español
   tratamiento_fe.py        # Figuras y comprobaciones del tratamiento geométrico
   reporte_fe.py            # Ejecución del notebook 04
   verificar_fe.py          # Integridad y coherencia de la entrega
-config/feature_engineering.json  # Parámetros e intervenciones
+  verificar_modelos.py     # Auditoría de particiones, transformaciones y métricas de modelos
+config/
+  feature_engineering.json  # Intervenciones sobre características
+  comparacion_modelos.json  # Algoritmos y parámetros reproducibles
 reports/feature_engineering/
   tables/                  # Métricas, predicciones y decisiones
   figures/                 # PNG a 300 dpi y SVG
@@ -82,7 +114,7 @@ tests/                    # Pruebas, incluidos grupos y fuga de información
 
 ## Consulta y reproducción
 
-[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Tabla de resultados](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
+[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Resultados de características](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Resultados de modelos](reports/feature_engineering/tables/comparacion_modelos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
 
 ```powershell
 python -m src.reporte_fe --execute

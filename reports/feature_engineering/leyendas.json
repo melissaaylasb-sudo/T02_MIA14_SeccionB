@@ -64,5 +64,23 @@
     "title": "Figura 7. Aporte de cada intervención",
     "interpretation": "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual.",
     "source": "Tabla curada y predicciones OOF; fuerzas y errores en N."
+  },
+  {
+    "file": "FE12_modelos_metricas",
+    "title": "Figura 8. Cinco regresores con las mismas entradas",
+    "interpretation": "La geometría original A y las particiones permanecen fijas; cambia el algoritmo con sus parámetros declarados. MAE es la métrica principal y RMSE penaliza errores grandes. Los tiempos corresponden al ajuste y predicción de la validación cruzada, no al despliegue.",
+    "source": "tables/comparacion_modelos.csv: métricas OOF y tiempos de la comparación de regresores."
+  },
+  {
+    "file": "FE13_modelos_residuos",
+    "title": "Figura 9. Residuales fuera de muestra por modelo",
+    "interpretation": "Residual = observado − predicho: positivo indica subestimación y negativo, sobreestimación. Cada caso se predice sin entrenar con su configuración. Los errores se conservan sin recortar predicciones ni retirar casos.",
+    "source": "Predicciones OOF de los cinco regresores; geometría original A y validación por configuración. Fuerzas y residuales en N."
+  },
+  {
+    "file": "FE14_modelos_generalizacion",
+    "title": "Figura 10. Configuraciones nuevas frente a familias excluidas",
+    "interpretation": "Excluir una configuración y excluir una familia completa responden a preguntas distintas. El segundo protocolo exige predecir una arquitectura no vista; comparar ambos errores muestra el límite de transferencia de cada algoritmo. No equivale a una validación con otra campaña experimental.",
+    "source": "tables/errores_modelos_familia.csv: MAE OOF de cada familia Y en los protocolos por configuración y por familia, en N."
   }
 ]

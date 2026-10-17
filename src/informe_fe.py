@@ -35,7 +35,7 @@ def decision_matrix():
     ], columns=["Hallazgo EDA", "Evidencia", "Problema u oportunidad", "Feature propuesta", "Justificación física", "Transformación", "Riesgo", "Experimento"])
 
 
-def write_documents(root, config, summary, decisions, sensitivity, family):
+def write_documents(root, config, summary, decisions, sensitivity, family, model_summary):
     """Guía breve; el notebook es la entrega principal y los CSV son el respaldo."""
     out = root / "reports/feature_engineering"
     def write(path, text):
@@ -54,6 +54,32 @@ def write_documents(root, config, summary, decisions, sensitivity, family):
     result = f"**{best} obtiene el menor MAE: {primary.loc[best,'MAE_N']:.4f} N**, una reducción de {improvement:.2f} % frente a A. Al excluir familias completas, su MAE es {secondary.loc[best,'MAE_N']:.4f} N; la mejora no demuestra transferencia a arquitecturas nuevas."
     brief = ("B: mantener en evaluación; C: descartar la razón añadida frente a B; D: descartar la reducción probada. "
              "Las decisiones corresponden a este modelo y protocolo.")
+    model_primary = model_summary[model_summary.protocolo == "configuracion"].copy()
+    model_secondary = model_summary[model_summary.protocolo == "familia"].set_index("modelo")
+    model_compact = model_primary[["nombre_modelo", "MAE_N", "RMSE_N", "MedAE_N", "R2_OOF", "tiempo_s"]].rename(columns={
+        "nombre_modelo": "Modelo", "MAE_N": "MAE (N)", "RMSE_N": "RMSE (N)",
+        "MedAE_N": "MedAE (N)", "R2_OOF": "R² OOF", "tiempo_s": "Tiempo CV (s)",
+    })
+    best_model = model_primary.loc[model_primary.MAE_N.idxmin()]
+    second_model = model_primary.sort_values("MAE_N").iloc[1]
+    model_result = (f"**{best_model['nombre_modelo']} presenta el menor MAE por configuración: {best_model['MAE_N']:.4f} N.** "
+                    f"La diferencia respecto a {second_model['nombre_modelo']} es {second_model['MAE_N'] - best_model['MAE_N']:.4f} N. "
+                    f"Al excluir familias completas, su MAE es {model_secondary.loc[best_model['modelo'], 'MAE_N']:.4f} N. "
+                    "La comparación es exploratoria: no constituye una selección validada en ensayos externos.")
+    model_descriptions = pd.DataFrame([
+        ["Ridge", "Referencia lineal regularizada frente a entradas correlacionadas."],
+        ["Elastic Net", "Contrasta otra regularización lineal; puede reducir algunos coeficientes a cero."],
+        ["SVR con núcleo RBF", "Estudia relaciones no lineales entre geometría y fuerza."],
+        ["Bosque aleatorio (Random Forest)", "Combina árboles para representar interacciones y umbrales geométricos."],
+        ["Proceso gaussiano", "Contrasta una función no lineal mediante similitud entre geometrías."],
+    ], columns=["Modelo de regresión", "Motivo de inclusión"])
+    metric_descriptions = pd.DataFrame([
+        ["MAE [N] · principal", "Promedio del error absoluto; menor es mejor."],
+        ["RMSE [N]", "Penaliza más los errores grandes; menor es mejor."],
+        ["MedAE [N]", "Mediana del error absoluto; resume el error central con menor sensibilidad a extremos."],
+        ["R² OOF", "Se calcula sobre todas las predicciones fuera de muestra. 1 indica ajuste perfecto; negativo indica mayor error cuadrático que la media global observada como referencia."],
+        ["Tiempo CV [s]", "Suma medida de ajuste y predicción de las particiones; excluye figuras y archivos. Depende del equipo, no es latencia de despliegue."],
+    ], columns=["Métrica", "Interpretación"])
     # Los campos completos del diccionario siguen disponibles en CSV.
     features = pd.DataFrame([
         ["I_fibra_bh3_mm4", "Fiber_base=b; Fiber_height=h", "b*h³/12", "mm⁴", "Segundo momento de área: eje paralelo a b", "Representar la forma de sección", "Mediana train antes de fórmula", "No usa target; hipótesis del EDA global", "B–D", verdict["B"]],
@@ -104,8 +130,9 @@ El ancho de fibra (base de la sección) se incluye en todas las variantes aunque
 | Objetivo | Carga de primera falla [N]: fuerza correspondiente a la primera rotura de fibra o pivote. |
 | Entradas | Geometría previa al ensayo; se excluyen identificador, fuerzas, desplazamientos y energías. |
 | Experimentos | Línea base A: geometría original. Variante 1 B: añadir dos momentos como bloque. Variante 2 C: añadir razón logarítmica a B. Variante 3 D: retirar tres descriptores como bloque de C. |
-| Modelo | Ridge, alpha=1, solver SVD; mismos parámetros y particiones. Dummy de media como control. |
-| Pipeline | Contrato de entradas → imputación con mediana → fórmulas → filtro de varianza nula → estandarización → Ridge; estadísticas aprendidas solo en entrenamiento. |
+| Modelo de los contrastes A–D | Ridge fijo; mismos parámetros y particiones. Dummy de media como control auxiliar. |
+| Comparación de algoritmos | Ridge, Elastic Net, SVR con núcleo RBF, bosque aleatorio y proceso gaussiano; todos con la geometría original A y las mismas particiones. |
+| Pipeline | Contrato de entradas → imputación con mediana → representación geométrica → filtro de varianza nula → estandarización → regresor; estadísticas aprendidas solo en entrenamiento. |
 | Validación principal | Validación cruzada LeaveOneGroupOut por combinación de cantidad de celdas en Y, altura de fibra y altura de pivote; configuraciones nominales repetidas permanecen juntas. |
 | Comprobación adicional | Excluir cada familia Y completa; evalúa una arquitectura no vista. |
 | Métricas | MAE principal; RMSE, MedAE y R² agregado OOF. Sin R² en folds individuales. |
@@ -128,13 +155,15 @@ Las nuevas características son funciones de mediciones existentes. Retirar colu
 | Reducción de variables | En D se retiran tres descriptores por hipótesis geométrica fija, sin seleccionar columnas por el objetivo. |
 | One-hot encoding | No se utilizó: las entradas admitidas son mediciones o conteos numéricos. La cantidad de celdas en Y conserva su valor numérico; usarla para agrupar no la convierte en una categoría codificada. |
 
-Cada contraste modifica **un bloque**: B−A, C−B y D−C. Los dos momentos se prueban juntos y las tres retiradas también; el diseño no permite atribuir la mejora a cada variable individual. El modelo y las particiones se mantienen fijos.
+Cada contraste modifica **un bloque**: B−A, C−B y D−C. Los dos momentos se prueban juntos y las tres retiradas también; el diseño no permite atribuir la mejora a cada variable individual. El modelo y las particiones se mantienen fijos en estos contrastes.
+
+La comparación de cinco regresores es un experimento separado: conserva la representación A, el preprocesamiento y las particiones, y cambia únicamente el algoritmo con sus parámetros declarados. No se combinan cinco modelos con cuatro variantes ni se presenta esta comparación como ajuste de hiperparámetros. Las reglas de adopción de características no seleccionan automáticamente un algoritmo.
 
 ## Controles de fuga y separación
 
 Se comprueba que entrenamiento y validación no comparten casos ni grupos; las respuestas del ensayo y los identificadores no entran al modelo. La imputación, el filtro y la estandarización se ajustan dentro de cada entrenamiento. Esto controla la fuga de procesamiento, pero **no acredita ausencia absoluta de sesgo**: las hipótesis ya se exploraron con el EDA del conjunto completo y faltan lotes experimentales verificados. Se ejecutó validación cruzada por grupos, no un holdout externo ni una partición temporal o estratificada.
 
-[Configuración](../config/feature_engineering.json) · [Particiones](../reports/feature_engineering/particiones.json) · [Estadísticas aprendidas](../reports/feature_engineering/auditoria_transformaciones.json)
+[Configuración de características](../config/feature_engineering.json) · [Configuración de modelos](../config/comparacion_modelos.json) · [Particiones](../reports/feature_engineering/particiones.json) · [Estadísticas aprendidas](../reports/feature_engineering/auditoria_transformaciones.json)
 """)
     pairwise = decisions[["experimento", "referencia", "delta_MAE_N", "fraccion_grupos_mejora", "decision"]].copy()
     pairwise["experimento"] = pairwise["experimento"].map(EXPERIMENTOS)
@@ -143,6 +172,8 @@ Se comprueba que entrenamiento y validación no comparten casos ni grupos; las r
     write(root / "docs/experimentos_fe.md", f"""# Resultados de ingeniería de características
 
 [Ver el desarrollo, las figuras y la interpretación en el notebook](../notebooks/04_Feature_Engineering_Pantograficas.ipynb).
+
+## Características: mismo modelo Ridge
 
 {md_table(compact)}
 
@@ -157,6 +188,16 @@ Se comprueba que entrenamiento y validación no comparten casos ni grupos; las r
 ΔMAE negativo indica mejora frente a la referencia de cada fila. {brief}
 
 La variante D produce fuerzas negativas al excluir Y=4: un fallo físico de extrapolación, conservado en las métricas. La comprobación de sensibilidad omite scores del agregado OOF; no elimina su influencia en los modelos entrenados.
+
+## Algoritmos: misma geometría original A
+
+Los cinco regresores usan las mismas entradas, preprocesamiento y particiones. Cada fila reúne predicciones de configuraciones excluidas del entrenamiento; los parámetros se fijaron sin búsqueda de hiperparámetros.
+
+{md_table(model_compact)}
+
+{model_result}
+
+El notebook muestra errores, residuales y el contraste entre excluir configuraciones o familias completas. [Resultados de ambos protocolos](../reports/feature_engineering/tables/comparacion_modelos.csv).
 
 ## Alcance
 
@@ -176,6 +217,9 @@ El EDA ya utilizó todo el conjunto. Estos resultados no son validación externa
         ("FE03_residuos", "Figura 5. Residuales", "Residual = observado − predicho: positivo indica subestimación. Los casos señalados tienen los mayores errores absolutos; no se eliminan."),
         ("FE04_error_familia", "Figura 6. Error por familia", "En la validación por configuración, B mejora frente a A en Y=5 y Y=6, pero empeora en Y=4. Excluir una familia completa aumenta mucho el error: generalizar a otra arquitectura sigue sin resolverse."),
         ("FE05_ablaciones", "Figura 7. Aporte de cada intervención", "Cada punto es el cambio de MAE de un grupo; negativo indica mejora. El rombo es la media de grupos, no ponderada por casos. No mide importancia causal individual."),
+        ("FE12_modelos_metricas", "Figura 8. Cinco regresores con las mismas entradas", "La geometría original A y las particiones permanecen fijas; cambia el algoritmo con sus parámetros declarados. MAE es la métrica principal y RMSE penaliza errores grandes. Los tiempos corresponden al ajuste y predicción de la validación cruzada, no al despliegue."),
+        ("FE13_modelos_residuos", "Figura 9. Residuales fuera de muestra por modelo", "Residual = observado − predicho: positivo indica subestimación y negativo, sobreestimación. Cada caso se predice sin entrenar con su configuración. Los errores se conservan sin recortar predicciones ni retirar casos."),
+        ("FE14_modelos_generalizacion", "Figura 10. Configuraciones nuevas frente a familias excluidas", "Excluir una configuración y excluir una familia completa responden a preguntas distintas. El segundo protocolo exige predecir una arquitectura no vista; comparar ambos errores muestra el límite de transferencia de cada algoritmo. No equivale a una validación con otra campaña experimental."),
     ]
     import json
     figure_sources = {
@@ -183,6 +227,9 @@ El EDA ya utilizó todo el conjunto. Estos resultados no son validación externa
            for name in ["FE08_momentos", "FE09_razon_log", "FE10_redundancia", "FE11_escalamiento"]},
         "FE06_representaciones": "auditoria_transformaciones.json: presencia de columnas en cada entrenamiento; categorías sin unidad.",
         "FE07_rango": "tables/metricas_folds.csv: dimensión y rango de cada entrenamiento; conteos sin unidad física.",
+        "FE12_modelos_metricas": "tables/comparacion_modelos.csv: métricas OOF y tiempos de la comparación de regresores.",
+        "FE13_modelos_residuos": "Predicciones OOF de los cinco regresores; geometría original A y validación por configuración. Fuerzas y residuales en N.",
+        "FE14_modelos_generalizacion": "tables/errores_modelos_familia.csv: MAE OOF de cada familia Y en los protocolos por configuración y por familia, en N.",
     }
     write(out / "leyendas.json", json.dumps([
         {"file": name, "title": title, "interpretation": text,
@@ -205,16 +252,24 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
 | Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
 | Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
-| Comparación | Línea base A y tres variantes B/C/D con Ridge y parámetros fijos. Cada intervención se contrasta con la anterior; no hay búsqueda de hiperparámetros en esta etapa. |
-| Modelos usados | Regresión Ridge en A–D; control auxiliar DummyRegressor que predice la media del entrenamiento. A–D son conjuntos de características, no cuatro algoritmos distintos. |
+| Comparación de características | Línea base A y tres variantes B/C/D con Ridge fijo. Cada intervención se contrasta con la anterior. A–D son representaciones, no algoritmos. |
+| Comparación de modelos | Cinco regresores, todos con geometría original A y las mismas particiones; parámetros declarados, sin búsqueda de hiperparámetros. Control auxiliar de media del entrenamiento. |
 
 ## Resultado
 
 {md_table(compact)}
 
-**Tiempo CV:** suma medida de ajuste y predicción de todos los folds de la validación por configuración; excluye figuras y escritura de archivos. Depende del equipo y no representa la latencia de una aplicación.
-
 {result} **B se mantiene en evaluación**; C no mejora B y D empeora. El EDA previo usó el mismo conjunto: la evidencia es exploratoria.
+
+## Cinco modelos de regresión
+
+{md_table(model_descriptions)}
+
+La comparación cambia el algoritmo y conserva las entradas A para distinguir su efecto del tratamiento de características.
+
+{md_table(model_compact)}
+
+{model_result}
 
 ## Qué encontrarás en el notebook
 
@@ -224,13 +279,15 @@ Se evalúa si transformar la geometría mejora la predicción de la **carga de p
 | 4.3–4.4 · Tratamiento visual | Sección y momentos de área, razón antes/después del logaritmo, redundancias, escalamiento, mapa de variables y rango. |
 | 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
 | 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
-| 4.9–4.10 · Conclusiones y verificación | Reglas de decisión contrastadas con resultados e integridad de los artefactos. |
+| 4.9 · Interpretación del tratamiento | Reglas de decisión contrastadas con los resultados de A–D. |
+| 4.10 · Cinco modelos | Tabla común de métricas, tiempos, residuales y generalización por familia. |
+| 4.11 · Verificación | Integridad de datos, fuentes y artefactos ejecutados. |
 
-**Métricas:** MAE [N], error absoluto medio principal; RMSE [N], más sensible a errores grandes; MedAE [N], error absoluto mediano; R², ajuste agregado de las predicciones fuera de muestra. Se evalúan configuraciones nominales completas y, por separado, familias Y completas. Cada predicción de validación procede de un ajuste que excluyó su grupo.
+{md_table(metric_descriptions)}
 
 ## Técnicas y validación
 
-El pipeline aplica **imputación por mediana → construcción de variables → filtro de varianza nula → estandarización → regresión Ridge**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
+El pipeline aplica **imputación por mediana → representación geométrica → filtro de varianza nula → estandarización → regresor**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
 
 **No se usó one-hot encoding:** todas las entradas son mediciones o conteos numéricos. Cada comparación cambia un bloque: dos momentos, luego una razón y después la retirada de tres columnas; no se atribuyen efectos a variables individuales dentro de esos bloques.
 
@@ -247,12 +304,16 @@ notebooks/
 src/
   feature_engineering.py   # Contrato, fórmulas y pipeline
   experimentos_fe.py       # Particiones, ajustes y métricas OOF
+  comparacion_modelos.py   # Cinco regresores con representación A y particiones comunes
   informe_fe.py            # Resúmenes ligados a resultados
   presentacion_fe.py       # Nombres y etiquetas en español
   tratamiento_fe.py        # Figuras y comprobaciones del tratamiento geométrico
   reporte_fe.py            # Ejecución del notebook 04
   verificar_fe.py          # Integridad y coherencia de la entrega
-config/feature_engineering.json  # Parámetros e intervenciones
+  verificar_modelos.py     # Auditoría de particiones, transformaciones y métricas de modelos
+config/
+  feature_engineering.json  # Intervenciones sobre características
+  comparacion_modelos.json  # Algoritmos y parámetros reproducibles
 reports/feature_engineering/
   tables/                  # Métricas, predicciones y decisiones
   figures/                 # PNG a 300 dpi y SVG
@@ -268,7 +329,7 @@ tests/                    # Pruebas, incluidos grupos y fuga de información
 
 ## Consulta y reproducción
 
-[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Tabla de resultados](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
+[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Resultados de características](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Resultados de modelos](reports/feature_engineering/tables/comparacion_modelos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
 
 ```powershell
 python -m src.reporte_fe --execute
