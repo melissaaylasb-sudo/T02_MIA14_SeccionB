@@ -1,0 +1,73 @@
+{
+  "purpose": "Figuras académicas de síntesis del sprint Semana 6; sin nuevos modelos ni predicciones.",
+  "generator": "reports/semana_6/generar_figuras.py",
+  "generator_sha256": "c4d31dc2b68b3668aad14de4386e2ec831e396a0fc32760bfa013bdcfee0262c",
+  "source_sha256": {
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/feature_engineering/tables/comparacion_experimentos.csv": "2c765cae1333c92d8f761075225199a4124f541e5e1745a47a547da930182a75",
+    "reports/feature_engineering/tables/predicciones_oof.csv": "d63a4e594d9904b1f210ce581f58efcf64b2d53eeb81e64290306d517974bad0",
+    "reports/feature_engineering/tables/contrastes_pareados.csv": "3b651edee1685c05344946df413ecd9728e5eaf4f9321d19ac75b1d909fcebd6",
+    "reports/feature_engineering/tables/metricas_folds.csv": "b3aa51f98addc40e877c50c605599c74721eaa29037590398c51f688194543b6",
+    "reports/eda/tables/08_asociaciones_globales.csv": "79e3125616d4f7dac693a67c75bcc4dacc68315f8388ec1f223decbf626f9e87",
+    "reports/eda/tables/09_asociaciones_condicionadas.csv": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc"
+  },
+  "matplotlib_version": "3.10.3",
+  "figures": [
+    {
+      "file": "figures/01_mae.png",
+      "sha256": "f53f42d9e9aaf8bdf4de4d29d821909096a87cdd7dad77695f3b774dcf492801",
+      "width_inches": 7.1,
+      "height_inches": 3.35,
+      "dpi": 300,
+      "sources": [
+        "reports/feature_engineering/tables/comparacion_experimentos.csv"
+      ],
+      "description": "MAE OOF agregado por caso de las representaciones A–D, con Ridge fijo. Los paneles muestran protocolos distintos y escalas verticales distintas.",
+      "interpretation": "B reduce el MAE de configuración de 13.246554 a 12.834625 N; el MAE de familia permanece cercano a 58 N. Sin barras inferenciales.",
+      "new_training": false
+    },
+    {
+      "file": "figures/02_diagnostico.png",
+      "sha256": "c74fdc8638bdf7c88c917fa82dc122d064be0e28c9322ba8de65d27f879169f9",
+      "width_inches": 7.1,
+      "height_inches": 3.9,
+      "dpi": 300,
+      "sources": [
+        "reports/feature_engineering/tables/predicciones_oof.csv"
+      ],
+      "description": "Predicciones OOF de B al excluir configuraciones. Identidad en panel a; residuo observado menos predicho y referencia cero en b. Etiquetas: casos 1, 17 y 22.",
+      "interpretation": "Las familias ocupan bandas distintas; no se trata de predicciones de entrenamiento. Residuo positivo equivale a subestimación.",
+      "new_training": false
+    },
+    {
+      "file": "figures/03_pareadas.png",
+      "sha256": "cae880f68e1132d57d57f08a3ba0bd45fe507688004104bf5c739b61aac70b83",
+      "width_inches": 7.1,
+      "height_inches": 4.55,
+      "dpi": 300,
+      "sources": [
+        "reports/feature_engineering/tables/contrastes_pareados.csv",
+        "reports/feature_engineering/tables/metricas_folds.csv"
+      ],
+      "description": "Diferencia de MAE por grupo, variante B menos A. Alturas en mm, Y como conteo. Cada barra corresponde al mismo grupo reservado para ambas representaciones.",
+      "interpretation": "B mejora en 15 de 24 grupos. Los grupos no son experimentos independientes: sus conjuntos de entrenamiento se superponen.",
+      "new_training": false
+    },
+    {
+      "file": "figures/04_eda.png",
+      "sha256": "212e4ffbe5eaca5213a1a97f0131f64828de01a127644750fa28af6db40304fe",
+      "width_inches": 7.1,
+      "height_inches": 3.65,
+      "dpi": 300,
+      "sources": [
+        "data/processed/preliminary/model_table.csv",
+        "reports/eda/tables/08_asociaciones_globales.csv",
+        "reports/eda/tables/09_asociaciones_condicionadas.csv"
+      ],
+      "description": "a) Valores individuales, mediana e intervalo intercuartílico de la primera falla por familia. b) Spearman global y correlación entre rangos globales residualizados por familia del volumen de pivotes con el objetivo.",
+      "interpretation": "El cambio de signo de +0.828017 a −0.477342 muestra dependencia de la arquitectura; no es una relación causal ni una prueba de mejora predictiva.",
+      "new_training": false
+    }
+  ],
+  "review_note": "Fuentes ejecutadas conservadas. Los gráficos no muestran intervalos inferenciales."
+}

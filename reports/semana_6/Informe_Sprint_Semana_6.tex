@@ -1,0 +1,98 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,array,longtable}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=6pt}
+\usepackage{enumitem}
+\setlist{noitemsep,topsep=4pt,leftmargin=*}
+\usepackage{placeins}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titlespacing*{\section}{0pt}{12pt plus 2pt minus 1pt}{5pt}
+\titlespacing*{\subsection}{0pt}{8pt plus 1pt minus 1pt}{3pt}
+\makeatletter
+\let\tableinput\@@input
+\makeatother
+\usepackage{fancyhdr}
+\usepackage{xurl}
+\usepackage[hidelinks,unicode]{hyperref}
+\hypersetup{pdftitle={Informe de Sprint — Semana 6},pdfauthor={Melissa Dessire Aylas Barranca},pdfsubject={Ingeniería de características y carga de primera falla en estructuras pantográficas}}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small UNI · Maestría en Inteligencia Artificial}
+\fancyhead[R]{\small Sprint — Semana 6}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\clubpenalty=10000
+\widowpenalty=10000
+\setlength{\parindent}{1.2em}
+\setlength{\parskip}{3pt}
+\setlength{\emergencystretch}{1.5em}
+\setcounter{tocdepth}{1}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\setcounter{totalnumber}{5}
+\renewcommand{\arraystretch}{1.12}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\ruta}[1]{\path{#1}}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+{\Large\bfseries UNIVERSIDAD NACIONAL DE INGENIERÍA\par}
+\vspace{0.25cm}
+{\large Facultad de Ingeniería Industrial y de Sistemas\par}
+{\large Maestría en Inteligencia Artificial\par}
+\vspace{0.8cm}
+\includegraphics[width=3.6cm]{figures/logo_uni.png}\par
+\vspace{0.8cm}
+{\Large\bfseries INFORME DE SPRINT — SEMANA 6\par}
+\vspace{0.5cm}
+{\large\bfseries Análisis exploratorio, ingeniería de características y evaluación comparativa de modelos de regresión para la predicción de la carga de primera falla en estructuras pantográficas\par}
+\vspace{0.85cm}
+{\large Trabajo de Investigación II\par}
+\vspace{0.8cm}
+\begin{tabular}{rl}
+\textbf{Estudiante:} & Melissa Dessire Aylas Barranca \\
+\textbf{Docente:} & Glen Dario Rodríguez Rafael \\
+\textbf{Periodo:} & 2026-II \\
+\textbf{Ciclo y sección:} & Cuarto ciclo · Sección B
+\end{tabular}
+\vfill
+{\large Lima, Perú — 2026\par}
+\end{titlepage}
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+\section*{Resumen}
+\addcontentsline{toc}{section}{Resumen}
+\label{body:first}
+La estimación de la carga de primera falla de estructuras pantográficas exige relacionar la geometría previa al ensayo con un evento local de rotura, distinto del colapso terminal. Este sprint consolida datos experimentales de retículos de poliamida sometidos a tracción con carga y descarga y evalúa si una representación geométrica derivada reduce el error de regresión. El análisis exploratorio identificó escalas heterogéneas, dependencias de diseño y asociaciones que cambian al condicionar por familia. Sobre esa evidencia se compararon cuatro conjuntos acumulativos: geometría original, adición de dos segundos momentos de área, incorporación de una razón logarítmica de volúmenes y retirada de un bloque de descriptores dependientes. Se mantuvieron Ridge y sus parámetros fijos, con preprocesamiento ajustado exclusivamente en entrenamiento. La validación reservó grupos de configuración nominal y, como comprobación de transferencia, familias completas. En el protocolo principal, los momentos redujeron el MAE de 13,247 a 12,835~N, una diferencia de 0,412~N (3,11\%); la razón adicional elevó el MAE a 12,914~N y la reducción de columnas a 17,035~N. Al reservar familias completas, la variante con momentos obtuvo MAE de 57,654~N y $R^2=-0{,}060$, lo que limita la extrapolación. La mejora inicial no satisface todos los criterios de adopción: se conserva la referencia y los momentos permanecen en evaluación. Las comparaciones son exploratorias por el uso del EDA completo para proponer características y por la ausencia de validación externa. La contribución del sprint es una decisión trazable sobre representaciones, incluidos sus resultados negativos.
+
+\noindent\textbf{Palabras clave:} estructuras pantográficas; primera falla; ingeniería de características; regresión Ridge; validación por grupos.
+\input{secciones/contexto_y_features.tex}
+\input{secciones/evaluacion_y_discusion.tex}
+\FloatBarrier
+\label{body:last}
+\clearpage
+\addcontentsline{toc}{section}{Referencias}
+\bibliographystyle{IEEEtran}
+\bibliography{referencias}
+\clearpage
+\appendix
+\input{secciones/anexos.tex}
+\end{document}

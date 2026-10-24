@@ -39,3 +39,6 @@ references_private/**
 results/*
 !results/.gitkeep
 *.joblib
+
+# Entrega académica autorizada; los PDF fuente privados siguen excluidos
+!reports/semana_6/Informe_Sprint_Semana_6.pdf

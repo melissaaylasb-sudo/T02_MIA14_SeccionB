@@ -1,0 +1,195 @@
+\section{Introducción}
+\label{sec:introduccion}
+
+\subsection{Contextualización del problema}
+Las estructuras pantográficas son retículos constituidos por fibras conectadas mediante pivotes. La campaña estudiada utiliza dos conjuntos ortogonales de fibras, situados en planos paralelos y unidos por conectores cilíndricos deformables. Su respuesta depende tanto del material constitutivo como de la arquitectura, las dimensiones de los elementos y la interacción entre ellos \cite{venditti2025,turco2017}. En la literatura, la extensión y flexión de las fibras y la torsión de las conexiones aparecen como mecanismos de modelos discretos; su presencia en un modelo mecánico no demuestra cuál domina cada rotura experimental \cite{turco2019}.
+
+Durante un ensayo de tracción se impone un desplazamiento y se registra la fuerza correspondiente. La primera falla identifica un evento local de rotura, mientras que la estructura puede conservar capacidad de transmisión de carga después de ese evento. Predecir la fuerza asociada permite estudiar una respuesta anterior a la rotura terminal. El presente trabajo aborda esa estimación mediante regresión supervisada sobre descriptores geométricos previos al ensayo.
+
+\subsection{Problema de investigación}
+Una colección de dimensiones no constituye, por sí sola, una representación adecuada para cualquier regresor. Las variables presentan escalas distintas, dependencias impuestas por el diseño y asociaciones con la respuesta que pueden cambiar al comparar arquitecturas. Además, un modelo lineal no genera automáticamente productos o potencias entre sus entradas. La pregunta aplicada del sprint es: \emph{¿en qué medida las características geométricas derivadas permiten reducir el error de predicción de la carga de primera falla respecto al uso de las variables originales?}
+
+\subsection{Objetivo del sprint}
+Evaluar el aporte de las características ya implementadas mediante una comparación controlada entre cuatro representaciones de datos, manteniendo constantes el regresor Ridge, sus parámetros y las particiones. El informe consolida la evidencia existente: relaciona los hallazgos exploratorios con las transformaciones, contrasta las predicciones fuera de muestra e identifica qué decisiones pueden sostenerse sin atribuir causalidad a asociaciones observacionales.
+
+\subsection{Preguntas específicas}
+Se examinan cinco preguntas verificables: ¿qué problemas de calidad y dependencias geométricas condicionan las entradas?; ¿qué fundamento tienen los momentos de sección y la razón logarítmica de volúmenes?; ¿cuánto cambia el error con cada intervención?; ¿persiste el resultado al reservar configuraciones y familias completas?; y ¿conviene adoptar una variante, conservar la referencia o mantener una propuesta en evaluación? Las respuestas se sustentan en tablas, predicciones y registros de la ejecución, sin sustituirlas por métricas de ajuste sobre entrenamiento.
+
+\subsection{Alcance}
+El dominio corresponde a la campaña experimental disponible y a su versión digital conservada. La validación interna examina configuraciones nominales y familias de cantidad de celdas en Y; no representa validación en otra campaña, material o proceso de fabricación. El EDA previo utilizó el conjunto completo, por lo que la comparación tiene carácter exploratorio y posible sesgo de selección de hipótesis. La comparación adicional de cinco regresores se conserva como antecedente; el aporte central de este informe es la representación de las entradas, no una búsqueda de algoritmos o hiperparámetros.
+
+\section{Contexto experimental y comprensión de los datos}
+\label{sec:datos}
+
+\subsection{Descripción del experimento}
+La fuente académica es la tesis doctoral de Enrico Venditti, de la Università degli Studi di Sassari, cuya portada consigna el año académico 2024/2025. El capítulo experimental describe especímenes de poliamida fabricados por sinterización láser selectiva, diseñados en SolidWorks, con dimensiones exteriores nominales de $210\times70$~mm. Se variaron las alturas de fibras y pivotes y la cantidad de celdas en Y, buscando una masa idéntica o similar; el archivo no contiene masas medidas para verificar esa condición individualmente \cite{venditti2025}.
+
+El protocolo documenta tracción con carga y descarga, velocidad de desplazamiento de 15~mm/min y niveles nominales separados por 10~mm. Descargar significa reducir la solicitación, no acreditar un ensayo de compresión. Se registró la respuesta fuerza--desplazamiento y el sonido de las roturas. La documentación consultada no identifica marca, modelo ni sensores del equipo; no se trasladan datos instrumentales de otros artículos a esta campaña. El archivo MATLAB proporciona resúmenes y matrices por ciclo o evento, no las series instrumentales completas.
+
+\subsection{Unidad de análisis}
+La unidad operativa es el \emph{caso experimental} identificado por \texttt{Case\_n}. No se presupone que identificadores diferentes certifiquen especímenes físicos independientes: faltan metadatos concluyentes de réplica y lote. La fuente contiene 27 casos; la tabla supervisada utiliza 26 con objetivo observado, al excluir únicamente el caso 2 de los análisis que requieren esa respuesta. La exclusión no elimina su geometría de la fuente ni se interpreta como ausencia de falla.
+
+Las familias analíticas $Y=4$, $Y=5$ y $Y=6$ agrupan casos con igual cantidad de celdas en esa dirección. Esta denominación es distinta de los dos conjuntos ortogonales de fibras de cada retículo. Las combinaciones $(n_Y,h_f,h_p)$ definen 24 grupos nominales en la tabla supervisada. Los pares 19/25 y 24/27 comparten esos factores, pero difieren en otros atributos y no son réplicas verificadas. Mantenerlos juntos durante la validación reduce una dependencia identificable; no controla lotes desconocidos. Los ciclos de un caso tampoco se convierten en nuevas filas independientes para predecir su primera falla.
+
+\subsection{Variables de entrada}
+La Tabla~\ref{tab:entradas} contiene las diez columnas geométricas admitidas. Sus nombres originales se conservan para trazabilidad; el notebook utiliza etiquetas en español. Son descriptores declarados de diseño, no una certificación de dimensiones medidas después de fabricar cada pieza.
+
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Entradas originales, unidades e interpretación. Todas tienen rol de predictor previo al ensayo.}
+\label{tab:entradas}
+\begin{tabularx}{\linewidth}{@{}l l X@{}}
+\toprule
+Columna original & Unidad & Interpretación \\
+\midrule
+\texttt{n\_cells\_Y} & conteo & Celdas en Y; descriptor de arquitectura. \\
+\texttt{Fiber\_height} & mm & Altura $h$ de la sección de fibra. \\
+\texttt{Fiber\_base} & mm & Ancho $b$ de la sección de fibra. \\
+\texttt{Fiber\_total\_length} & mm & Longitud total declarada de fibras. \\
+\texttt{Fiber\_total\_volume} & mm$^3$ & Volumen declarado de fibras, $V_f$. \\
+\texttt{Pivot\_height} & mm & Altura de los conectores. \\
+\texttt{Pivot\_radius} & mm & Radio de pivote; constante en esta campaña. \\
+\texttt{Pivot\_total\_number} & conteo & Cantidad total declarada de pivotes. \\
+\texttt{Pivot\_total\_volume} & mm$^3$ & Volumen declarado de pivotes, $V_p$. \\
+\texttt{Sample\_total\_volume} & mm$^3$ & Volumen CAD del espécimen; distinto de $V_f+V_p$. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: diccionario del repositorio y tabla analítica curada. La retirada del radio se aprende en entrenamiento; la columna original se conserva.
+\end{table}
+
+\subsection{Variable objetivo}
+El objetivo $y_i=F_{\mathrm{FF},i}$ corresponde a \texttt{First\_Failure\_Load\_N}, fuerza en newtons asociada al primer evento de rotura de una fibra o un pivote según el resumen experimental \cite{venditti2025}. La regresión estima $F_{\mathrm{FF}}=f(\mathbf{x})+\varepsilon$, donde $\mathbf{x}$ representa geometría previa y $\varepsilon$ recoge variación no explicada y limitaciones de medición y modelado. Un residuo observado, $y_i-\widehat y_i$, no identifica por separado esas contribuciones.
+
+La primera falla no equivale a colapso total ni necesariamente al máximo de la curva. \texttt{Ultimate\_Load} es la carga terminal reportada; desplazamientos y energías son otras respuestas. Ninguna se admite como entrada, aunque presente asociación con el objetivo. Tampoco se predice aquí el instante, la localización ni el componente que se rompe. Existen diferencias entre algunos resúmenes y picos de fichas documentales; se conserva el objetivo digital sin reemplazarlo por una magnitud de definición potencialmente distinta.
+
+\subsection{Procedencia y trazabilidad}
+La ingesta extrae asignaciones numéricas literales de \texttt{dati\_campagna\_venditti.m} sin ejecutar MATLAB. La curaduría convierte tipos, comprueba identificadores y conserva la frontera entre predictores y respuestas. El experimento utiliza \texttt{data/processed/preliminary/model\_table.csv}, cuyo SHA-256 registrado es \texttt{2d0a17f5\ldots defa21f8}; el valor completo se presenta en reproducibilidad. La carpeta \texttt{preliminary} contiene una copia identificable de una ejecución histórica, no datos simulados.
+
+\begin{figure}[htbp]
+\centering\small\setstretch{1.0}
+\fbox{\begin{minipage}{0.93\linewidth}\centering
+Archivo MATLAB original\quad $\longrightarrow$\quad Ingesta literal y manifiesto\\[3pt]
+$\longrightarrow$\quad Tabla intermedia\quad $\longrightarrow$\quad Curaduría y tabla supervisada\\[3pt]
+$\longrightarrow$\quad EDA y representaciones A--D\quad $\longrightarrow$\quad Predicciones, métricas y auditoría
+\end{minipage}}
+\caption{Trazabilidad del procesamiento existente. Los documentos experimentales verifican significado y unidades; las cifras del análisis proceden del archivo digital conservado. Los identificadores permiten enlazar artefactos sin incorporarse a los predictores.}
+\label{fig:trazabilidad}
+\end{figure}
+
+\section{Metodología de análisis exploratorio}
+\label{sec:eda}
+
+\subsection{Auditoría de calidad}
+La tabla supervisada no presenta faltantes geométricos, identificadores repetidos ni filas exactamente duplicadas. El objetivo ausente no se imputa. Los factores nominales repetidos se conservan sin promediarlos, pues no se conoce su condición de réplica. La conciliación con la tesis detectó diferencias en anchos, alturas y algunos volúmenes; destacan las incidencias de pivotes de los casos 23, 25 y 26. La fuente digital queda intacta, dado que una discrepancia no establece cuál documento representa la geometría definitiva.
+
+Las reglas univariadas IQR y MAD no marcaron atípicos en geometría ni en el objetivo. Esto no garantiza ausencia de observaciones influyentes: el diagnóstico OLS del EDA asignó distancias de Cook de 0,332 y 0,183 a los casos 1 y 3. Son señales dependientes de esa formulación, no pruebas de error experimental. No se aplicaron eliminación de extremos, winsorización ni correcciones automáticas. La sensibilidad de los resultados se estudia posteriormente sobre errores fuera de muestra, con sus límites explícitos.
+
+\subsection{Análisis univariado}
+La carga de primera falla varía entre 47,55 y 215,52~N; su mediana es 101,89~N y el rango intercuartílico, 118,49~N. Las medianas por familia son 67,12, 100,77 y 205,34~N para $Y=4,5,6$, respectivamente. Esta separación organiza gran parte de la variación observada y justifica informar errores por arquitectura, además del agregado global. No constituye un efecto aislado de aumentar celdas: cambian simultáneamente otros descriptores del diseño.
+
+Las entradas mezclan conteos, longitudes y volúmenes; sus escalas afectan la penalización de Ridge si no se estandarizan. El radio vale 0,5~mm en todos los casos y no permite estimar una relación con la respuesta. Se distingue así una ausencia de variación de una ausencia de relevancia física. El EDA tampoco justificó transformar indiscriminadamente todas las columnas: reducir asimetría en una magnitud no implica mejorar su utilidad predictiva.
+
+\subsection{Relaciones bivariadas}
+La cantidad de celdas presenta Pearson $r=0{,}9360$ y Spearman $\rho=0{,}9307$ con la primera falla. Longitud de fibras y cantidad de pivotes comparten $\rho=0{,}9307$, porque codifican las mismas familias observadas. El volumen CAD tiene $r=0{,}7727$ y $\rho=0{,}7994$ globales, pero su asociación de rangos condicionada por familia es $-0{,}2647$. Esta última correlaciona rangos globales después de restar su media dentro de cada familia. Por tanto, interpretar la relación agregada como un efecto local de volumen sería injustificado.
+
+Los volúmenes declarados satisfacen $V_f+V_p=6524{,}01$~mm$^3$ y no equivalen al volumen CAD. La correlación de la razón logarítmica con la carga cambia de $0{,}8280$ global a $-0{,}4773$ condicionada. Los momentos $bh^3/12$ y $hb^3/12$ presentan asociaciones condicionadas de $0{,}0163$ y $-0{,}0753$: su propuesta no se fundamenta en una alta correlación marginal, sino en una expansión dirigida de la representación. Los contrastes condicionados de volúmenes no superan el criterio $q_{\mathrm{BH}}<0{,}05$ ($q=0{,}0624$). La selección de hipótesis es, por ello, exploratoria.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/04_eda.png}
+\caption{Carga de primera falla por familia y asociaciones de volumen de pivotes con el objetivo. El coeficiente condicionado corresponde a rangos globales residualizados por familia; no es un promedio de correlaciones. Fuentes: tabla analítica y asociaciones del EDA.}
+\label{fig:eda}
+\end{figure}
+
+\subsection{Síntesis EDA--Feature Engineering}
+La Tabla~\ref{tab:eda-fe} articula observación, interpretación e intervención. Una asociación descriptiva propone una pregunta; la comparación predictiva determina si la representación ayuda bajo el protocolo elegido. Como el EDA precede a la validación y usa todos los objetivos disponibles, ajustar correctamente el pipeline no elimina ese sesgo previo de selección \cite{cawley2010}.
+
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Vinculación entre evidencia exploratoria y decisiones de ingeniería de características.}
+\label{tab:eda-fe}
+\begin{tabularx}{\linewidth}{@{}YYYYY@{}}
+\toprule
+Hallazgo EDA & Evidencia & Interpretación & Necesidad & Acción FE \\
+\midrule
+Forma de sección & Momentos con $\rho$ condicionado próximo a cero & Sin asociación condicionada fuerte; hipótesis geométrica & Evaluar términos no lineales dirigidos & Añadir ambos momentos en B \\
+\addlinespace
+Proporción de componentes & Log-razón: $\rho$ global 0,8280; condicionado $-0,4773$ & Asociación depende de familia & Contrastar representación relativa & Añadir $\ln(V_p/V_f)$ en C \\
+\addlinespace
+Dependencias de diseño & $V_f+V_p$ constante; longitud y pivotes asociados a familia & Descriptores dependientes & Probar parsimonia sin imponerla & Retirar un bloque de tres columnas en D \\
+\addlinespace
+Escalas y constante & mm, mm$^3$, conteos; radio 0,5~mm & Penalización sensible a unidades & Ajuste comparable y sin fuga & Filtrar constantes y escalar dentro de cada entrenamiento \\
+\addlinespace
+Dependencia y momento de medición & Factores repetidos; respuestas posteriores & Riesgo de evaluación optimista & Separar grupos y limitar entradas & Agrupar configuraciones; excluir respuestas e identificador \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: tablas de asociaciones, identidades, representaciones y matriz EDA--FE del repositorio. Los coeficientes son descriptivos; no expresan causalidad.
+\end{table}
+
+\section{Feature Engineering guiado por EDA}
+\label{sec:fe}
+
+\subsection{Justificación}
+Para Ridge, una transformación determinística puede aportar capacidad de representación sin incorporar información experimental nueva. Con ancho y altura separados, una combinación lineal $\beta_b b+\beta_h h$ no reproduce en general los productos cúbicos $bh^3$ y $hb^3$. Añadirlos permite estimar una función lineal en un espacio ampliado, aunque no lineal respecto de las dimensiones originales. Se evita una expansión polinómica indiscriminada: los términos evaluados corresponden a fórmulas geométricas identificables y a hipótesis ya formuladas.
+
+La regularización reduce coeficientes, pero depende de la representación y de la escala \cite{hoerl1970}. Dos conjuntos algebraicamente relacionados pueden producir distintas predicciones penalizadas. Por ello, retirar descriptores dependientes constituye una prueba de parsimonia, no una mejora garantizada. Esta distinción es decisiva para interpretar el resultado negativo de la variante reducida.
+
+\subsection{Características originales}
+La referencia A parte de las diez entradas de la Tabla~\ref{tab:entradas}. El ancho de fibra se incluye expresamente, porque está disponible y alimenta las transformaciones posteriores. El filtro entrenado elimina el radio constante y deja nueve predictores efectivos. La matriz geométrica original centrada tiene rango siete entre esas nueve columnas variables; esta dependencia limita la interpretación individual de coeficientes, aunque Ridge permita ajustar el sistema. El identificador del caso nunca forma parte de esta matriz.
+
+\subsection{Características derivadas}
+El primer bloque incorpora los segundos momentos de área de una sección rectangular ideal respecto de sus ejes centroidales:
+\begin{equation}
+I_{bh^3}=\frac{bh^3}{12},\qquad I_{hb^3}=\frac{hb^3}{12},
+\label{eq:momentos}
+\end{equation}
+con $b,h$ en mm e $I$ en mm$^4$. Describen la distribución geométrica de sección en dos orientaciones. La literatura de pantógrafos sustenta considerar geometría relacionada con flexión \cite{turco2017,turco2019}; sin embargo, estos descriptores no son rigidez $EI$ medida, fuerzas aplicadas adicionales ni criterios de fractura. No se dispone de evidencia para asignar un eje dominante a cada primera rotura. Ambos se prueban conjuntamente, de modo que el contraste B--A no identifica su contribución individual.
+
+Como control del cálculo, el caso 1 tiene $b=2{,}4$~mm y $h=1$~mm: las fórmulas producen 0,2 y 1,152~mm$^4$. La coincidencia con el pipeline verifica implementación, no validez mecánica ni mejora predictiva. Los momentos pueden ser redundantes con otras medidas y amplifican discrepancias del ancho o altura; su beneficio debe juzgarse con predicciones reservadas.
+
+El segundo bloque añade
+\begin{equation}
+L_{p/f}=\ln\!\left(\frac{V_p}{V_f}\right)=\ln(V_p)-\ln(V_f),\qquad V_p,V_f>0.
+\label{eq:logratio}
+\end{equation}
+La razón es adimensional y expresa proporción de volúmenes declarados. Su implementación usa diferencia de logaritmos, equivalente en el dominio positivo. No estima reparto de fuerzas ni asegura normalidad. Dada la complementariedad de volúmenes, no aporta una medición independiente: propone otra función no lineal de cantidades existentes. La inversión entre asociación global y condicionada motiva evaluarla sin anticipar una mejora.
+
+La intervención final elimina longitud total de fibras, número de pivotes y volumen de fibras como columnas directas. Se conserva el conteo de celdas como descriptor de arquitectura y el volumen de fibras continúa siendo necesario para calcular $L_{p/f}$. Por tanto, D reduce entradas al regresor, pero no elimina la necesidad de disponer de ese volumen en el contrato de datos. El contraste evalúa conjuntamente simplificación y cambio de parametrización penalizada; no demuestra que cada columna retirada sea prescindible.
+
+\subsection{Transformaciones estadísticas}
+El pipeline aplica contrato geométrico, imputación, construcción de representación, filtro de varianza nula, estandarización y regresión \cite{pedregosa2011}. Las fórmulas y la lista de columnas de D son determinísticas. Las medianas de imputación y el filtro se calculan en entrenamiento; la imputación es una contingencia sin valores rellenados en la geometría actual. El objetivo nunca se imputa. El escalamiento utiliza
+\begin{equation}
+z_{ij}=\frac{x_{ij}-\mu_{j,\mathrm{train}}}{\sigma_{j,\mathrm{train}}},
+\label{eq:escalamiento}
+\end{equation}
+con desviación poblacional del entrenamiento. Los casos reservados reutilizan esos parámetros. No se aplicaron codificación one-hot, transformación del objetivo, remuestreo sintético, selección supervisada adicional ni recorte de extremos. Los conteos conservan su valor numérico.
+
+\subsection{Control de leakage}
+El contrato admite exclusivamente las diez columnas geométricas, rechaza respuestas e identificadores y verifica positividad, finitud y conteos enteros. Cada partición crea un pipeline independiente; sus medianas, variables retenidas, medias, escalas e identificadores quedan registrados. La auditoría contrasta esas estadísticas con el entrenamiento efectivo y verifica que no se compartan casos ni grupos entre ajuste y evaluación. Las características derivadas no consultan el objetivo ni variables posteriores al ensayo.
+
+Estos controles sustentan ausencia de fuga de procesamiento en las rutas auditadas; no equivalen a independencia experimental certificada ni a ausencia absoluta de sesgo. Persiste el uso del conjunto completo para generar hipótesis, además de las incertidumbres de procedencia geométrica y lotes. La evidencia predictiva debe interpretarse dentro de esos límites.
+
+\subsection{Feature sets experimentales}
+Las variantes son acumulativas (Tabla~\ref{tab:featuresets}): B se contrasta con A, C con B y D con C. Cada paso modifica un bloque documentado, manteniendo el modelo, sus parámetros y las observaciones. No es un diseño factorial ni una ablación individual de todas las características.
+
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Representaciones efectivamente evaluadas con Ridge. Los conteos corresponden a columnas tras retirar el radio constante.}
+\label{tab:featuresets}
+\begin{tabularx}{\linewidth}{@{}lYYYYY@{}}
+\toprule
+Set & Originales & Añadidas & Excluidas & Intervención & Justificación \\
+\midrule
+A (9) & Geometría original & Ninguna & Radio constante & Referencia & Error con dimensiones declaradas \\
+\addlinespace
+B (11) & Igual que A & Dos momentos & Radio constante & B--A: un bloque & Expansión no lineal de sección \\
+\addlinespace
+C (12) & Igual que A & Momentos y $L_{p/f}$ & Radio constante & C--B: una razón & Proporción entre componentes \\
+\addlinespace
+D (9) & A menos tres columnas & Igual que C & Radio, longitud, número de pivotes y $V_f$ directo & D--C: reducción de bloque & Parsimonia y parametrización \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: configuración y auditoría de transformaciones. La exclusión del radio pertenece al procesamiento común; $V_f$ sigue siendo insumo de la razón en D.
+\end{table}
+
+La construcción permite contrastar dos cuestiones distintas: si una función de la geometría mejora la aproximación de Ridge y si una representación reducida conserva el desempeño. Una característica físicamente interpretable no se adopta por su nombre, y una dependencia algebraica no obliga a eliminarla. Ambas decisiones requieren la evidencia comparativa desarrollada en las secciones siguientes.

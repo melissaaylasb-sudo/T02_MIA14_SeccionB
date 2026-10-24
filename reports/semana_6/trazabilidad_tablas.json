@@ -1,0 +1,15 @@
+{
+  "purpose": "Tablas derivadas de CSV de la ejecución histórica; sin reentrenamiento",
+  "reference_commit": "8fdb7961d7eaaaebd9651d0b9a044168893d448a",
+  "source_sha256": {
+    "reports/feature_engineering/tables/comparacion_experimentos.csv": "2c765cae1333c92d8f761075225199a4124f541e5e1745a47a547da930182a75",
+    "reports/feature_engineering/tables/metricas_folds.csv": "b3aa51f98addc40e877c50c605599c74721eaa29037590398c51f688194543b6",
+    "reports/feature_engineering/tables/comparacion_modelos.csv": "f02b2d77781662775f9dbeb83d0dd100d920755014e2dcf233f59624ba491434"
+  },
+  "output_sha256": {
+    "tablas/familias.tex": "21717f103d9924eb39c887022987ad52f92612b50ffa07cd5cccfe74b2232bdc",
+    "tablas/folds.tex": "f5d8182f1fc9b201f97f30ab2b0a95de6666923d4ed0ae5a563e598bfccc2d06",
+    "tablas/modelos.tex": "2903d34f42ad1875cfc2399caa7006afa7635daf0e2537eb7864bc19d9e8d34b",
+    "tablas/principal.tex": "900c7ecc7b59946fe2428cd04801744acf76c2904f7988128be0ad65c9aed5d6"
+  }
+}

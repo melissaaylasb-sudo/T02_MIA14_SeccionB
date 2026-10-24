@@ -1,0 +1,2 @@
+# Conservar bytes exactos de fuentes y manifiestos en Windows/Linux.
+* -text whitespace=cr-at-eol
