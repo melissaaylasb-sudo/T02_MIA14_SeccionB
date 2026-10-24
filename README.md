@@ -1,82 +1,64 @@
-# Ingeniería de características de estructuras pantográficas
+# Predicción de primera falla · Modelos ajustados
 
-**[Abrir notebook 04 ejecutado →](notebooks/04_Feature_Engineering_Pantograficas.ipynb)**
+**[Abrir notebook 05 — modelos, ajuste y evaluación](notebooks/05_Modelos_Ajustados.ipynb)**
 
-**Enlace para compartir esta entrega:** [notebook actualizado en la rama feature-engineering](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/blob/feature-engineering/notebooks/04_Feature_Engineering_Pantograficas.ipynb). Las actualizaciones de este trabajo se publican en esa misma ruta.
+[Enlace para compartir](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/blob/codex/modelos-ajustados/notebooks/05_Modelos_Ajustados.ipynb) · [Etapa anterior: ingeniería de características](notebooks/04_Feature_Engineering_Pantograficas.ipynb)
 
-Melissa Dessire Aylas Barranca · UNI, Maestría en Inteligencia Artificial · Trabajo de Investigación II.
+Melissa Dessire Aylas Barranca · UNI · Maestría en Inteligencia Artificial.
 
-Se evalúa si transformar la geometría mejora la predicción de la **carga de primera falla**: fuerza, en newtons, de la primera rotura de una fibra o un pivote de la malla. Esta entrega vive en la rama `feature-engineering`, separada de `eda`.
+Estimar, a partir de la geometría previa al ensayo, la **fuerza en newtons de la primera rotura de una fibra o un pivote**. Se compara el Ridge de referencia con regresores ajustados mediante validación cruzada anidada. El desarrollo, las imágenes y la interpretación están en el notebook.
 
 | Elemento | Especificación |
 |---|---|
-| Entradas / INPUT | Cantidad de celdas en Y; altura, ancho, longitud y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. [Variables en español y correspondencia con la fuente](docs/diccionario_features.md#variables-de-esta-etapa). |
-| Nuevas características | Dos momentos de sección, b·h³/12 y h·b³/12 [mm⁴], y ln(Vp/Vf) [sin unidad]. Se calculan con geometría previa al ensayo. |
-| Objetivo / target | Carga de primera falla [N], observada en el ensayo; su columna de origen es `First_Failure_Load_N`. Se utiliza para entrenar y evaluar, nunca para construir entradas. |
-| Salida / OUTPUT | Estimación numérica de la fuerza de primera falla [N], junto con su error fuera de muestra al validarla. No predice el instante ni el lugar de rotura. |
-| Comparación de características | Línea base A y tres variantes B/C/D con Ridge fijo. Cada intervención se contrasta con la anterior. A–D son representaciones, no algoritmos. |
-| Comparación de modelos | Cinco regresores, todos con geometría original A y las mismas particiones; parámetros declarados, sin búsqueda de hiperparámetros. Control auxiliar de media del entrenamiento. |
+| Entrada | Número de celdas en Y; altura, ancho, longitud y volumen de fibras; altura, radio, cantidad y volumen de pivotes; volumen CAD del espécimen. |
+| Target | `First_Failure_Load_N`: carga medida en la primera falla, en N. |
+| Salida | Estimación numérica de esa fuerza; se evalúa el error frente a la medición experimental. |
+| Variables | Geometría original A, igual que el baseline. El radio constante se filtra dentro de cada entrenamiento. [Diccionario y unidades](docs/diccionario_features.md#variables-de-esta-etapa). |
+| Referencia | Ridge con parámetros fijos del experimento anterior; sus predicciones se vuelven a calcular y se contrastan con las publicadas. |
+| Modelos ajustados | Ridge, Elastic Net, SVR con núcleo RBF, Random Forest, Extra Trees, proceso gaussiano y Gradient Boosting. |
+| Selección del algoritmo | Se incluye un selector que elige con la validación **interna**, sin usar los errores del grupo externo. |
 
-## Resultado
+## Resultado ejecutado
 
-| Experimento | Cambio | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
-| --- | --- | --- | --- | --- | --- | --- |
-| Línea base (A) | Geometría original | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2901 |
-| Variante 1 (B) | A + dos momentos de sección | 12.8346 | 16.2029 | 11.7801 | 0.9239 | 0.6825 |
-| Variante 2 (C) | B + ln(Vp/Vf) | 12.9139 | 16.3271 | 11.8643 | 0.9228 | 0.5711 |
-| Variante 3 (D) | C − tres descriptores redundantes | 17.0350 | 21.1361 | 14.9109 | 0.8706 | 0.5131 |
+| Procedimiento | MAE configuración [N] | RMSE configuración [N] | R² configuración | MAE familia [N] |
+|---|---:|---:|---:|---:|
+| Ridge · baseline | 13.247 | 16.346 | 0.9226 | 57.637 |
+| Ridge ajustado | 9.707 | 12.331 | 0.9559 | 67.769 |
+| Elastic Net ajustado | 10.180 | 12.628 | 0.9538 | 58.214 |
+| Selección interna de algoritmo | 11.818 | 16.135 | 0.9246 | 72.089 |
 
-**B obtiene el menor MAE: 12.8346 N**, una reducción de 3.11 % frente a A. Al excluir familias completas, su MAE es 57.6538 N; la mejora no demuestra transferencia a arquitecturas nuevas. **B se mantiene en evaluación**; C no mejora B y D empeora. El EDA previo usó el mismo conjunto: la evidencia es exploratoria.
+**Ridge ajustado redujo el MAE un 26.72 % frente al baseline** al excluir configuraciones. Es el menor MAE observado entre los algoritmos comparados. La selección interna evalúa por separado la elección automática del algoritmo. Al excluir familias completas, ninguno de los modelos ajustados mejora el baseline; la transferencia a arquitecturas nuevas sigue sin resolverse.
 
-## Cinco modelos de regresión
+[Tabla completa de métricas y tiempos](reports/modelos_ajustados/metricas_resumen.csv) · [Verificación de la ejecución](reports/modelos_ajustados/verificacion.json)
 
-| Modelo de regresión | Motivo de inclusión |
-| --- | --- |
-| Ridge | Referencia lineal regularizada frente a entradas correlacionadas. |
-| Elastic Net | Contrasta otra regularización lineal; puede reducir algunos coeficientes a cero. |
-| SVR con núcleo RBF | Estudia relaciones no lineales entre geometría y fuerza. |
-| Bosque aleatorio (Random Forest) | Combina árboles para representar interacciones y umbrales geométricos. |
-| Proceso gaussiano | Contrasta una función no lineal mediante similitud entre geometrías. |
+![Métricas fuera de muestra de todos los modelos](reports/modelos_ajustados/figures/02_metricas_modelos.png)
 
-La comparación cambia el algoritmo y conserva las entradas A para distinguir su efecto del tratamiento de características.
+## Protocolo de comparación
 
-| Modelo | MAE (N) | RMSE (N) | MedAE (N) | R² OOF | Tiempo CV (s) |
-| --- | --- | --- | --- | --- | --- |
-| Ridge | 13.2466 | 16.3457 | 11.9409 | 0.9226 | 0.2716 |
-| Elastic Net | 13.9792 | 17.1004 | 13.7200 | 0.9153 | 0.3525 |
-| SVR con núcleo RBF | 15.6507 | 19.0958 | 12.6334 | 0.8943 | 0.3309 |
-| Bosque aleatorio | 13.2325 | 16.3415 | 9.6994 | 0.9226 | 4.1263 |
-| Proceso gaussiano | 16.0577 | 19.3414 | 14.1937 | 0.8916 | 0.2480 |
-
-**Bosque aleatorio presenta el menor MAE por configuración: 13.2325 N.** La diferencia respecto a Ridge es 0.0141 N. Al excluir familias completas, su MAE es 60.9006 N. La comparación es exploratoria: no constituye una selección validada en ensayos externos.
-
-## Qué encontrarás en el notebook
-
-| Sección | Evidencia ejecutada |
+| Requisito | Implementación verificable |
 |---|---|
-| 4.1–4.2 · Datos y construcción | Entradas autorizadas, hipótesis del EDA y cálculo de las nuevas variables con un caso real. |
-| 4.3–4.4 · Tratamiento visual | Sección y momentos de área, razón antes/después del logaritmo, redundancias, escalamiento, mapa de variables y rango. |
-| 4.5 · Auditoría de una predicción | Separación de grupos, estadísticas aprendidas solo en entrenamiento y transformación de un caso reservado. |
-| 4.6–4.8 · Evaluación | Predicciones fuera de muestra, residuales, errores por familia, ablaciones y sensibilidad. |
-| 4.9 · Interpretación del tratamiento | Reglas de decisión contrastadas con los resultados de A–D. |
-| 4.10 · Cinco modelos | Tabla común de métricas, tiempos, residuales y generalización por familia. |
-| 4.11 · Verificación | Integridad de datos, fuentes y artefactos ejecutados. |
+| Split correcto | Se reutilizan exactamente los casos de train/evaluación de la Semana 5: LeaveOneGroupOut por configuración nominal; comprobación adicional dejando fuera una familia Y completa. |
+| Ajuste de hiperparámetros | GridSearchCV dentro de cada train externo. GroupKFold de cinco particiones por configuración; LeaveOneGroupOut por familias para la comprobación adicional. |
+| Fit solo en train | Contrato de entradas → imputación por mediana → geometría A → filtro de constantes → estandarización → regresor. Se ajusta el pipeline completo también en cada partición interna. |
+| PCA / target encoding | No forman parte de este experimento. Las entradas son numéricas y no se incorporan transformaciones aprendidas fuera del pipeline. |
+| Semillas | 42 en algoritmos aleatorios. Las particiones de grupos son deterministas. Versiones, parámetros y semillas quedan registrados. |
+| Datos constantes | Misma tabla curada, mismo target y mismos casos en todos los modelos. SHA-256 comprobado antes y después; sin nuevos datos, eliminación de casos ni imputación del target. |
+| Logs | Configuración congelada, resultados de todos los candidatos, parámetros por partición, predicciones, tiempos, avisos y fechas UTC. |
 
-| Métrica | Interpretación |
-| --- | --- |
-| MAE [N] · principal | Promedio del error absoluto; menor es mejor. |
-| RMSE [N] | Penaliza más los errores grandes; menor es mejor. |
-| MedAE [N] | Mediana del error absoluto; resume el error central con menor sensibilidad a extremos. |
-| R² OOF | Se calcula sobre todas las predicciones fuera de muestra. 1 indica ajuste perfecto; negativo indica mayor error cuadrático que la media global observada como referencia. |
-| Tiempo CV [s] | Suma medida de ajuste y predicción de las particiones; excluye figuras y archivos. Depende del equipo, no es latencia de despliegue. |
+El ajuste interno es la incorporación nueva; **la evaluación externa conserva las particiones anteriores**. La selección interna minimiza el MAE promedio entre particiones; las métricas externas se calculan reuniendo las predicciones fuera de muestra. La clasificación por menor error externo es descriptiva: no reemplaza la evaluación del selector interno.
 
-## Técnicas y validación
+## Métricas e imágenes
 
-El pipeline aplica **imputación por mediana → representación geométrica → filtro de varianza nula → estandarización → regresor**. La mediana es una contingencia: las entradas geométricas actuales están completas. El radio constante se retira en cada entrenamiento. D retira longitud total de fibras, cantidad de pivotes y volumen de fibras; este último sigue interviniendo en la razón logarítmica.
+| Métrica | Qué indica |
+|---|---|
+| **MAE [N]** | Error absoluto promedio; criterio principal. Menor es mejor. |
+| RMSE [N] | Error con mayor penalización de desviaciones grandes. Menor es mejor. |
+| MedAE [N] | Mediana del error absoluto; describe el error central. |
+| R² fuera de muestra | Variación explicada respecto a la media del conjunto evaluado; puede ser negativo. No es un porcentaje de exactitud. |
+| Mejora frente al baseline [%] | 100 × (MAE baseline − MAE modelo) / MAE baseline. Un valor negativo significa deterioro. |
+| Tiempo [s] | Búsqueda, reajuste y predicción medidos; depende del equipo. No equivale a latencia de una aplicación. |
 
-**No se usó one-hot encoding:** todas las entradas son mediciones o conteos numéricos. Cada comparación cambia un bloque: dos momentos, luego una razón y después la retirada de tres columnas; no se atribuyen efectos a variables individuales dentro de esos bloques.
-
-Se ejecuta **validación cruzada LeaveOneGroupOut** por configuración nominal y una segunda comprobación por familia Y. No hay holdout externo. El notebook verifica grupos disjuntos, exclusión de respuestas e identificadores y ajuste de transformaciones solo en entrenamiento. El EDA previo utilizó el mismo conjunto, por lo que estas comprobaciones no equivalen a garantizar ausencia absoluta de sesgo.
+El notebook incluye comparación de métricas, observado frente a predicho, residuales, errores por familia, diferencias por partición y resultados de la búsqueda. Los modelos que no mejoren también permanecen en la comparación.
 
 ## Estructura del proyecto
 
@@ -85,41 +67,52 @@ notebooks/
   01_Ingesta_Curaduria_y_Calidad.ipynb
   02_EDA.ipynb
   03_Transformaciones_Exploratorias.ipynb
-  04_Feature_Engineering_Pantograficas.ipynb  # Entrega actual ejecutada
+  04_Feature_Engineering_Pantograficas.ipynb  # Experimento previo, conservado
+  05_Modelos_Ajustados.ipynb                 # Entrega de esta rama
 src/
-  feature_engineering.py   # Contrato, fórmulas y pipeline
-  experimentos_fe.py       # Particiones, ajustes y métricas OOF
-  comparacion_modelos.py   # Cinco regresores con representación A y particiones comunes
-  informe_fe.py            # Resúmenes ligados a resultados
-  presentacion_fe.py       # Nombres y etiquetas en español
-  tratamiento_fe.py        # Figuras y comprobaciones del tratamiento geométrico
-  reporte_fe.py            # Ejecución del notebook 04
-  verificar_fe.py          # Integridad y coherencia de la entrega
-  verificar_modelos.py     # Auditoría de particiones, transformaciones y métricas de modelos
+  feature_engineering.py   # Contrato geométrico y pipeline compartido
+  ajuste_modelos.py        # Búsqueda anidada y predicciones de evaluación
+  verificar_ajuste.py      # Grupos, estadísticas train, hashes y métricas
+  reporte_ajuste.py        # Gráficos y ejecución del notebook 05
 config/
-  feature_engineering.json  # Intervenciones sobre características
-  comparacion_modelos.json  # Algoritmos y parámetros reproducibles
-reports/feature_engineering/
-  tables/                  # Métricas, predicciones y decisiones
-  figures/                 # PNG a 300 dpi y SVG
-  particiones.json         # Casos de train y validación
-  auditoria_transformaciones.json  # Estadísticas aprendidas por fold
-  manifest.json            # Fuentes, versiones y hashes
-  verificacion.json        # Resultado de comprobaciones
-  ejecucion*.log           # Registro de ejecución
-data/                     # Fuente y tablas curadas heredadas del EDA
-docs/                     # Diccionarios y notas metodológicas
-tests/                    # Pruebas, incluidos grupos y fuga de información
+  ajuste_modelos.json      # Modelos, rangos, semillas y protocolo congelado
+reports/
+  feature_engineering/    # Referencia histórica: splits y resultados
+  modelos_ajustados/
+    metricas_resumen.csv  # Comparación común de errores y tiempos
+    predicciones_oof.csv  # Fuerza observada y predicha fuera de muestra
+    metricas_folds.csv    # Resultados y parámetros por grupo reservado
+    busquedas.csv         # Todos los candidatos de la validación interna
+    figures/              # Gráficos PNG y SVG
+    auditoria_train.json  # Estadísticas aprendidas en entrenamiento
+    particiones_internas.json
+    manifest.json         # Fechas, versiones e integridad
+    ejecucion.jsonl       # Registro de ejecución
+    verificacion.json    # Comprobaciones independientes
+    config_ejecutada.json  # Copia de la configuración ejecutada
+    particiones_externas.json  # Copia exacta de los splits anteriores
+    seleccion_interna.json    # Algoritmo elegido solo con train
+    logs_ajustes/         # Cada fit, validación, aviso y timestamp
+  semana_6/               # Informe anterior; esta entrega es el notebook
+config/feature_engineering.json  # Especificación del baseline anterior
+data/processed/preliminary/model_table.csv  # Snapshot fijo compartido
+requirements-modelos-ajustados.txt          # Versiones de esta ejecución
+tests/test_ajuste_modelos.py                # Pruebas de aislamiento
 ```
 
-## Consulta y reproducción
+## Reproducir
 
-[Variables en español](docs/diccionario_features.md) · [Protocolo](docs/feature_engineering.md) · [Resultados de características](reports/feature_engineering/tables/comparacion_experimentos.csv) · [Resultados de modelos](reports/feature_engineering/tables/comparacion_modelos.csv) · [Registro de ejecución](reports/feature_engineering/ejecucion.log) · [EDA anterior](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/eda)
+Desde la raíz del repositorio, en un entorno virtual con Python 3.13:
 
 ```powershell
-python -m src.reporte_fe --execute
-python -m pytest tests -q
-python -m src.verificar_fe
+python -m pip install -r requirements-modelos-ajustados.txt
+python -m src.ajuste_modelos --output reports/modelos_ajustados_repeticion
+python -m src.verificar_ajuste --run-dir reports/modelos_ajustados_repeticion
+python -m pytest tests/test_ajuste_modelos.py -q
 ```
 
-Los datos originales y los tres cuadernos del EDA se conservan. Los PDF y las referencias privadas no se publican. Siguiente paso: confirmar A y B con ensayos independientes y geometrías conciliadas.
+Para volver a ejecutar las celdas y gráficos sobre los resultados publicados: `python -m src.reporte_ajuste --execute`.
+
+La ejecución del entrenamiento exige una carpeta de salida nueva para conservar la evidencia anterior. El notebook permite revisar la ejecución publicada y activar una repetición independiente; ambos modos se identifican explícitamente.
+
+**Alcance:** el EDA previo ya examinó este conjunto. La separación de entrenamiento y evaluación evita reutilizar el grupo reservado durante el ajuste, pero no convierte los resultados en una validación externa. La prueba por familias muestra el comportamiento ante arquitecturas ausentes del entrenamiento.

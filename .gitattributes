@@ -22,3 +22,8 @@ config/feature_engineering.json -text whitespace=cr-at-eol
 src/feature_engineering.py -text whitespace=cr-at-eol
 src/experimentos_fe.py -text whitespace=cr-at-eol
 src/informe_fe.py -text whitespace=cr-at-eol
+
+# Preserve the executed tuning evidence and its SHA-256 checks on all platforms.
+config/ajuste_modelos.json -text whitespace=cr-at-eol
+reports/modelos_ajustados/** -text whitespace=cr-at-eol
+reports/modelos_ajustados/figures/*.svg whitespace=-blank-at-eol,cr-at-eol

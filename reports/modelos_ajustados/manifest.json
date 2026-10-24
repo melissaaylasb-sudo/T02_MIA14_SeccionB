@@ -1,0 +1,143 @@
+{
+  "estado": "completado",
+  "ejecutado": true,
+  "inicio_utc": "2026-10-24T02:39:11.899167+00:00",
+  "seed": 42,
+  "n_jobs_busqueda": 2,
+  "n_jobs_estimadores": 1,
+  "salida": "C:\\Users\\MELISSA\\Downloads\\pantographic-first-failure\\pantographic-first-failure\\T02_MIA14_SeccionB\\reports\\modelos_ajustados",
+  "data_sha256_antes": {
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/feature_engineering/particiones.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59"
+  },
+  "fuentes_sha256": {
+    "config/ajuste_modelos.json": "3d544ec47d020e155cb6dea53a94e1964fc59a6386e5073f021ade26c4742684",
+    "src/ajuste_modelos.py": "8aed6a18feef3ef39a5c432fab8e6b653fc53b70d2948dbdf3271988e1e56490",
+    "src/feature_engineering.py": "02d700c7371307ad1778d3abb12fb2163bc093e090cd377b1947c89b75dbea29",
+    "src/comparacion_modelos.py": "7212c2542217d07ed32ef57c074274453e097e4f96a26d9a9c2f3dc7dfb2567b",
+    "src/experimentos_fe.py": "3aa100f4ccbc8465928fe99b136b75aa75621f5706971dcbc8cba5e085474fab",
+    "src/transformaciones_eda.py": "766b90a2b5ad8d167c98fef97235fbf75d726591f730c2524e6005b4c925f68c"
+  },
+  "entorno": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "packages": {
+      "numpy": "2.5.2",
+      "pandas": "2.3.0",
+      "scikit-learn": "1.7.0",
+      "scipy": "1.16.0",
+      "joblib": "1.5.1",
+      "threadpoolctl": "3.6.0"
+    },
+    "threadpool_info": [
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 20,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\Users\\MELISSA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\numpy.libs\\libscipy_openblas64_-327b2e0bcffce2882e0dc04cdeb4eaa6.dll",
+        "version": "0.3.34.0.0",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      },
+      {
+        "user_api": "openmp",
+        "internal_api": "openmp",
+        "num_threads": 20,
+        "prefix": "vcomp",
+        "filepath": "C:\\Users\\MELISSA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\sklearn\\.libs\\vcomp140.dll",
+        "version": null
+      },
+      {
+        "user_api": "blas",
+        "internal_api": "openblas",
+        "num_threads": 20,
+        "prefix": "libscipy_openblas",
+        "filepath": "C:\\Users\\MELISSA\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\scipy.libs\\libscipy_openblas-f07f5a5d207a3a47104dca54d6d0c86a.dll",
+        "version": "0.3.28",
+        "threading_layer": "pthreads",
+        "architecture": "Haswell"
+      }
+    ],
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "NUMEXPR_NUM_THREADS": null
+    }
+  },
+  "fuentes_hash_normalizacion": "CRLF a LF; SHA-256 de bytes UTF-8",
+  "target": "First_Failure_Load_N",
+  "target_unit": "N",
+  "entradas": [
+    "n_cells_Y",
+    "Fiber_height",
+    "Fiber_base",
+    "Fiber_total_length",
+    "Fiber_total_volume",
+    "Pivot_height",
+    "Pivot_radius",
+    "Pivot_total_number",
+    "Pivot_total_volume",
+    "Sample_total_volume"
+  ],
+  "representacion": "A",
+  "modelos": [
+    "Baseline_Ridge",
+    "Ridge",
+    "ElasticNet",
+    "SVR_RBF",
+    "RandomForest",
+    "ExtraTrees",
+    "GaussianProcess",
+    "GradientBoosting",
+    "Selector_interno"
+  ],
+  "candidatos_por_modelo": {
+    "Ridge": 8,
+    "ElasticNet": 12,
+    "SVR_RBF": 18,
+    "RandomForest": 8,
+    "ExtraTrees": 8,
+    "GaussianProcess": 8,
+    "GradientBoosting": 16
+  },
+  "criterio_busqueda": "MAE: media no ponderada de los folds internos; minimizar",
+  "criterio_selector": "Escoger el modelo con menor MAE interno; empates resueltos por el orden declarado; nunca usar respuestas externas",
+  "particiones_predeclaradas_utc": "2026-10-24T02:39:12.216304+00:00",
+  "sin_holdout_independiente": true,
+  "nota": "Evaluación anidada de un snapshot ya explorado. No equivale a validación externa prospectiva.",
+  "git_commit_inicio": "a2b4ef307e6f6abe7b31ba519b347ef578facf6d",
+  "fin_utc": "2026-10-24T02:45:12.041600+00:00",
+  "tiempo_total_s": 359.7902496000752,
+  "data_sha256_despues": {
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/feature_engineering/particiones.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59"
+  },
+  "fuentes_sha256_despues": {
+    "config/ajuste_modelos.json": "3d544ec47d020e155cb6dea53a94e1964fc59a6386e5073f021ade26c4742684",
+    "src/ajuste_modelos.py": "8aed6a18feef3ef39a5c432fab8e6b653fc53b70d2948dbdf3271988e1e56490",
+    "src/feature_engineering.py": "02d700c7371307ad1778d3abb12fb2163bc093e090cd377b1947c89b75dbea29",
+    "src/comparacion_modelos.py": "7212c2542217d07ed32ef57c074274453e097e4f96a26d9a9c2f3dc7dfb2567b",
+    "src/experimentos_fe.py": "3aa100f4ccbc8465928fe99b136b75aa75621f5706971dcbc8cba5e085474fab",
+    "src/transformaciones_eda.py": "766b90a2b5ad8d167c98fef97235fbf75d726591f730c2524e6005b4c925f68c"
+  },
+  "n_predicciones": 468,
+  "n_ajustes_externos": 216,
+  "n_candidatos_evaluados": 2106,
+  "artefactos_sha256": {
+    "auditoria_train.json": "44a0cfd3381b3ff6ab138d2dfac1c46abbc4b184b95596cc06e1a10e79c8fb00",
+    "busquedas.csv": "ec787829395995bbe468e891d023f5b668dd196678d7c66e21c851ac4e324a35",
+    "config_ejecutada.json": "c1638c0e80923322365930af5b4aae133d0529140d1503ae777c8595f68e50ea",
+    "ejecucion.jsonl": "64af8fc1029c6edbe4f34bb742ed710c945e0f369fc09da53acf30efb24be08e",
+    "metricas_folds.csv": "0568cd946a3b4d9acf73bd7e04a7cbbe76a36a00ef60dad65c29b1d884dc7a08",
+    "metricas_resumen.csv": "a9e280aa3b75ed2497cc29d35e481b451f2a1c4b61ebbf1a167edbbdf4ba549d",
+    "particiones_externas.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59",
+    "particiones_internas.json": "22cec52b41b6bf00eaa67246f27b246c590cf217599231d7b6f81d95a0026796",
+    "predicciones_oof.csv": "594769974ffffd8f8c1047d33f5952eb36a27d33cc5073ffc0116fdeb57f43ee",
+    "seleccion_interna.json": "b26455ea9b093a340a7ef15b365137b09fac408888918842a2b9dfedd16b8371",
+    "logs_ajustes/worker_10920.jsonl": "a2aa92fe717eff4e9d8c563206ed239c75bbc045f016b3eeb700fa46a981beee",
+    "logs_ajustes/worker_36408.jsonl": "6ecdb7b8d489a57984a7d43bd1369027666126e61c944eaf336472d6262b083e",
+    "logs_ajustes/worker_36928.jsonl": "f49bc629b6e3005aeb4c8c94f3bd5a5411453559a7076291b8e2444cc50eb027"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "figuras": {
+    "01_validacion_anidada": {
+      "fuentes": {
+        "reports/feature_engineering/particiones.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59"
+      },
+      "archivos": {
+        "figures/01_validacion_anidada.png": "180de262515304d8b4e4690dc3ebaabd3882c261c88baa79d19f8a4341cb820c",
+        "figures/01_validacion_anidada.svg": "96ec3fd5b34020ea3fd398d6e2e6afa83d9be9fc644bcab63110b88d4146cd8d"
+      }
+    },
+    "02_metricas_modelos": {
+      "fuentes": {
+        "reports/modelos_ajustados/metricas_resumen.csv": "a9e280aa3b75ed2497cc29d35e481b451f2a1c4b61ebbf1a167edbbdf4ba549d"
+      },
+      "archivos": {
+        "figures/02_metricas_modelos.png": "bc83e699c927e5f261d82e1fa575a0e5ebacef4c2350e70095c23a13630a3dd3",
+        "figures/02_metricas_modelos.svg": "3bebb5c690aa42a1341db48acbc28d1d1a014c469343c0f0a0703db42e3a75a4"
+      }
+    },
+    "03_observado_estimado": {
+      "fuentes": {
+        "reports/modelos_ajustados/predicciones_oof.csv": "594769974ffffd8f8c1047d33f5952eb36a27d33cc5073ffc0116fdeb57f43ee"
+      },
+      "archivos": {
+        "figures/03_observado_estimado.png": "f997b589c361489fee1ba2a884e50534354f1f5d7d03b2355ea8e90188189d25",
+        "figures/03_observado_estimado.svg": "e41b8d624857d0351eaec612f8411e0b27d93374804d09de42b07ef3800e4acc"
+      }
+    },
+    "04_residuales_modelos": {
+      "fuentes": {
+        "reports/modelos_ajustados/predicciones_oof.csv": "594769974ffffd8f8c1047d33f5952eb36a27d33cc5073ffc0116fdeb57f43ee"
+      },
+      "archivos": {
+        "figures/04_residuales_modelos.png": "6684665f410a64de0a541bca26880912f199eb8fd92e2493387ae20db85ebf29",
+        "figures/04_residuales_modelos.svg": "b08c1a010959734eda186462c121a0e3ed0eb9e8eccdf376ede9d86402c7c0a6"
+      }
+    },
+    "05_error_familias": {
+      "fuentes": {
+        "reports/modelos_ajustados/predicciones_oof.csv": "594769974ffffd8f8c1047d33f5952eb36a27d33cc5073ffc0116fdeb57f43ee"
+      },
+      "archivos": {
+        "figures/05_error_familias.png": "ae70f946d4c59179c79dcc3a3f36fab3c4013848d6a151a8c7c5d1087c3c3296",
+        "figures/05_error_familias.svg": "5e0a66d78f6f36f9b596356cfd43b2c3a0a2522fa0f8c85a353764cdbe558814"
+      }
+    },
+    "06_mejora_por_split": {
+      "fuentes": {
+        "reports/modelos_ajustados/metricas_folds.csv": "0568cd946a3b4d9acf73bd7e04a7cbbe76a36a00ef60dad65c29b1d884dc7a08"
+      },
+      "archivos": {
+        "figures/06_mejora_por_split.png": "a733f08f47403b8ab748acc8c538890078e03464b477f99284a9d782473f895f",
+        "figures/06_mejora_por_split.svg": "c4a33dfd0a5fa9bf899bffb315af5eef86a469775d50aa62828627951ae482ba"
+      }
+    },
+    "07_costo_precision": {
+      "fuentes": {
+        "reports/modelos_ajustados/metricas_resumen.csv": "a9e280aa3b75ed2497cc29d35e481b451f2a1c4b61ebbf1a167edbbdf4ba549d"
+      },
+      "archivos": {
+        "figures/07_costo_precision.png": "880daa14da8bf871360f115229b61599e1f4c59a5ab74ffcce16452f93b31a74",
+        "figures/07_costo_precision.svg": "35b5dff61edbd810cf813b42e0b4783a07404469162dc507c0140e2c39d0cbea"
+      }
+    },
+    "08_seleccion_interna": {
+      "fuentes": {
+        "reports/modelos_ajustados/metricas_folds.csv": "0568cd946a3b4d9acf73bd7e04a7cbbe76a36a00ef60dad65c29b1d884dc7a08"
+      },
+      "archivos": {
+        "figures/08_seleccion_interna.png": "d1fece6d0f7808e5856068c0ebe2adcb6ebf9e2d2bb70cc4153168f80c8c3153",
+        "figures/08_seleccion_interna.svg": "f7eb20444b573a20df2514e2e3cb6a375b475800f25ea522be19b71f9b1232b6"
+      }
+    }
+  },
+  "generado_utc": "2026-10-24T02:47:35.950167+00:00"
+}

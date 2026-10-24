@@ -1,0 +1,185 @@
+{
+  "estudio": "Ajuste de regresores con validación anidada y geometría original",
+  "dataset": "data/processed/preliminary/model_table.csv",
+  "dataset_sha256": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+  "particiones": "reports/feature_engineering/particiones.json",
+  "particiones_sha256": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59",
+  "target": "First_Failure_Load_N",
+  "target_unit": "N",
+  "representacion": "A",
+  "seed": 42,
+  "group_columns": [
+    "n_cells_Y",
+    "Fiber_height",
+    "Pivot_height"
+  ],
+  "protocolos": [
+    "configuracion",
+    "familia"
+  ],
+  "validacion_interna": {
+    "configuracion": "GroupKFold(n_splits=5, shuffle=False) sobre configuraciones del entrenamiento externo",
+    "familia": "LeaveOneGroupOut sobre las familias del entrenamiento externo"
+  },
+  "criterio_busqueda": "MAE: media no ponderada de los folds internos; minimizar",
+  "criterio_selector": "Escoger el modelo con menor MAE interno; empates resueltos por el orden declarado; nunca usar respuestas externas",
+  "transformaciones": [
+    "contrato geométrico",
+    "imputación por mediana de train",
+    "geometría original A",
+    "filtrado de constantes de train",
+    "StandardScaler de train"
+  ],
+  "sin_pca_sin_target_encoding": true,
+  "baseline": {
+    "modelo": "Ridge",
+    "alpha": 1.0,
+    "solver": "svd"
+  },
+  "modelos": {
+    "Ridge": {
+      "parametros": {
+        "solver": "svd"
+      },
+      "grid": {
+        "model__alpha": [
+          0.0001,
+          0.001,
+          0.01,
+          0.1,
+          1.0,
+          10.0,
+          100.0,
+          1000.0
+        ]
+      }
+    },
+    "ElasticNet": {
+      "parametros": {
+        "max_iter": 100000,
+        "tol": 0.0001,
+        "selection": "cyclic",
+        "random_state": 42
+      },
+      "grid": {
+        "model__alpha": [
+          0.001,
+          0.01,
+          0.1,
+          1.0
+        ],
+        "model__l1_ratio": [
+          0.1,
+          0.5,
+          0.9
+        ]
+      }
+    },
+    "SVR_RBF": {
+      "parametros": {
+        "kernel": "rbf"
+      },
+      "grid": {
+        "model__C": [
+          10.0,
+          100.0,
+          1000.0
+        ],
+        "model__epsilon": [
+          1.0,
+          5.0
+        ],
+        "model__gamma": [
+          "scale",
+          0.01,
+          0.1
+        ]
+      }
+    },
+    "RandomForest": {
+      "parametros": {
+        "n_estimators": 200,
+        "random_state": 42,
+        "n_jobs": 1
+      },
+      "grid": {
+        "model__max_depth": [
+          null,
+          3
+        ],
+        "model__min_samples_leaf": [
+          1,
+          2
+        ],
+        "model__max_features": [
+          1.0,
+          "sqrt"
+        ]
+      }
+    },
+    "ExtraTrees": {
+      "parametros": {
+        "n_estimators": 200,
+        "random_state": 42,
+        "n_jobs": 1
+      },
+      "grid": {
+        "model__max_depth": [
+          null,
+          3
+        ],
+        "model__min_samples_leaf": [
+          1,
+          2
+        ],
+        "model__max_features": [
+          1.0,
+          "sqrt"
+        ]
+      }
+    },
+    "GaussianProcess": {
+      "parametros": {
+        "normalize_y": true,
+        "optimizer": null,
+        "random_state": 42
+      },
+      "matern_length_scales": [
+        0.3,
+        1.0,
+        3.0,
+        10.0
+      ],
+      "matern_nu": 1.5,
+      "grid": {
+        "model__alpha": [
+          0.05,
+          1.0
+        ]
+      }
+    },
+    "GradientBoosting": {
+      "parametros": {
+        "random_state": 42
+      },
+      "grid": {
+        "model__n_estimators": [
+          100,
+          250
+        ],
+        "model__max_depth": [
+          1,
+          2
+        ],
+        "model__learning_rate": [
+          0.03,
+          0.1
+        ],
+        "model__loss": [
+          "squared_error",
+          "huber"
+        ]
+      }
+    }
+  }
+}
