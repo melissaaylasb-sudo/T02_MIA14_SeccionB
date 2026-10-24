@@ -42,10 +42,10 @@ def main():
             check(b[0]>=15 and b[1]>=15 and b[2]<=page.rect.width-15 and b[3]<=page.rect.height-15,f'Página {i}: bloque dentro del soporte')
     bbl=(HERE/(JOB+'.bbl')).read_text(encoding='utf-8')
     references=len(re.findall(r'\\bibitem\{',bbl))
-    check(references==10,'Diez referencias bibliográficas resueltas')
+    check(references==13,'Trece referencias bibliográficas resueltas')
     captions={'figures':len(re.findall(r'\\newlabel\{fig:',aux)),
               'tables':len(re.findall(r'\\@writefile\{lot\}',aux))}
-    check(captions['figures']==5 and captions['tables']==8,'Cinco figuras y ocho tablas')
+    check(captions['figures']==5 and captions['tables']==10,'Cinco figuras y diez tablas')
     for path in sorted((HERE/'figures').glob('*.png')):
         with Image.open(path) as im:
             check(im.width>=1600,f'Resolución de figura: {path.name}')
@@ -72,6 +72,22 @@ def main():
         for metric,v in actual.items():
             check(np.isclose(v,row[metric],rtol=1e-11,atol=1e-11),f'Métrica {row.protocolo}/{row.experimento}/{metric}')
         results.append({'protocolo':row.protocolo,'experimento':row.experimento,**actual})
+    models=pd.read_csv(tables/'comparacion_modelos.csv')
+    model_pred=pd.read_csv(tables/'predicciones_modelos_oof.csv')
+    model_results=[]
+    for _,row in models.iterrows():
+        p=model_pred[(model_pred.protocolo==row.protocolo)&(model_pred.modelo==row.modelo)]
+        check(p.Case_n.is_unique and len(p)==26,f'Cobertura modelos: {row.protocolo}/{row.modelo}')
+        y=p.observado_N.to_numpy(); e=y-p.predicho_N.to_numpy()
+        actual={'MAE_N':np.abs(e).mean(),'RMSE_N':np.sqrt(np.mean(e**2)),
+                'MedAE_N':np.median(np.abs(e)), 'R2_OOF':1-np.sum(e**2)/np.sum((y-y.mean())**2)}
+        for metric,v in actual.items():
+            check(np.isclose(v,row[metric],rtol=1e-11,atol=1e-11),f'Métrica modelo {row.protocolo}/{row.modelo}/{metric}')
+        model_results.append({'protocolo':row.protocolo,'modelo':row.modelo,**actual})
+    all_text='\n'.join(page.get_text() for page in document)
+    check('Procedencia y trazabilidad' not in all_text,'Sección de procedencia y trazabilidad retirada')
+    check('Arquitectura de los modelos' in all_text,'Arquitectura de modelos en el cuerpo')
+    check('Métricas e interpretación de los cinco modelos' in all_text,'Métricas e interpretación de modelos en el cuerpo')
     audit=json.loads((HERE/'auditoria_resultados.json').read_text(encoding='utf-8'))
     check(audit['status']=='passed','Auditoría científica detallada satisfactoria')
     report={
@@ -79,7 +95,7 @@ def main():
         'reference_commit':'8fdb7961d7eaaaebd9651d0b9a044168893d448a',
         'pdf':pdf_path.name,'pdf_sha256':digest(pdf_path),'pages_total':len(document),
         'pages_substantive':substantive,'body_folios':[first,last],
-        'references':references,**captions,'checks_count':len(checks),'checks':checks,'metrics_recomputed':results,
+        'references':references,**captions,'checks_count':len(checks),'checks':checks,'metrics_recomputed':results,'model_metrics_recomputed':model_results,
         'compiler':'pdfTeX 1.40.25 / MiKTeX 24.1; BibTeX 0.99d; IEEEtran.bst 1.14',
         'visual_review':{'status':'not_recorded_by_automatic_verifier',
                          'note':'La revisión visual se documenta por separado para el hash exacto del PDF.'}

@@ -44,15 +44,27 @@ for f in groups:
     vals=[str(f),group,a['n_test']]+[num(rows[k]['MAE_N']) for k in 'ABCD']+[num(delta)]
     lines.append(' & '.join(vals)+r' \\')
 (OUT/'folds.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-models=[r for r in read('comparacion_modelos.csv') if r['protocolo']=='configuracion']
-lines=[]
-for r in models:
-    vals=[r['nombre_modelo']]+[num(r[c]) for c in ['MAE_N','RMSE_N','R2_OOF','tiempo_s']]
-    lines.append(' & '.join(vals)+r' \\')
-(OUT/'modelos.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
+model_rows=read('comparacion_modelos.csv')
+model_order=['Ridge','ElasticNet','SVR_RBF','RandomForest','GaussianProcess']
+model_metrics=['MAE_N','RMSE_N','MedAE_N','R2_OOF','tiempo_s']
+for protocol, filename in [('configuracion','modelos.tex'),('familia','modelos_familias.tex')]:
+    models={r['modelo']:r for r in model_rows if r['protocolo']==protocol}
+    assert set(models)==set(model_order)
+    lines=[]
+    for name in model_order:
+        r=models[name]
+        assert r['representacion']=='A'
+        vals=[r['nombre_modelo']]+[num(r[c]) for c in model_metrics]
+        lines.append(' & '.join(vals)+r' \\')
+    (OUT/filename).write_text('\n'.join(lines)+'\n',encoding='utf-8')
 manifest={
     'purpose':'Tablas derivadas de CSV de la ejecución histórica; sin reentrenamiento',
     'reference_commit':'8fdb7961d7eaaaebd9651d0b9a044168893d448a',
+    'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+    'model_tables':{
+      'tablas/modelos.tex':{'protocol':'configuracion','representation':'A','columns':['Modelo','MAE [N]','RMSE [N]','MedAE [N]','R2 OOF','Tiempo [s]']},
+      'tablas/modelos_familias.tex':{'protocol':'familia','representation':'A','columns':['Modelo','MAE [N]','RMSE [N]','MedAE [N]','R2 OOF','Tiempo [s]']}
+    },
     'source_sha256':{str((SOURCE/n).relative_to(ROOT)).replace('\\','/'):hashlib.sha256((SOURCE/n).read_bytes()).hexdigest()
       for n in ['comparacion_experimentos.csv','metricas_folds.csv','comparacion_modelos.csv']},
     'output_sha256':{str(p.relative_to(HERE)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.tex'))}

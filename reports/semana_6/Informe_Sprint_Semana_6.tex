@@ -79,19 +79,22 @@
 \clearpage
 \pagenumbering{arabic}
 \section*{Resumen}
+\phantomsection
 \addcontentsline{toc}{section}{Resumen}
 \label{body:first}
-La estimación de la carga de primera falla de estructuras pantográficas exige relacionar la geometría previa al ensayo con un evento local de rotura, distinto del colapso terminal. Este sprint consolida datos experimentales de retículos de poliamida sometidos a tracción con carga y descarga y evalúa si una representación geométrica derivada reduce el error de regresión. El análisis exploratorio identificó escalas heterogéneas, dependencias de diseño y asociaciones que cambian al condicionar por familia. Sobre esa evidencia se compararon cuatro conjuntos acumulativos: geometría original, adición de dos segundos momentos de área, incorporación de una razón logarítmica de volúmenes y retirada de un bloque de descriptores dependientes. Se mantuvieron Ridge y sus parámetros fijos, con preprocesamiento ajustado exclusivamente en entrenamiento. La validación reservó grupos de configuración nominal y, como comprobación de transferencia, familias completas. En el protocolo principal, los momentos redujeron el MAE de 13,247 a 12,835~N, una diferencia de 0,412~N (3,11\%); la razón adicional elevó el MAE a 12,914~N y la reducción de columnas a 17,035~N. Al reservar familias completas, la variante con momentos obtuvo MAE de 57,654~N y $R^2=-0{,}060$, lo que limita la extrapolación. La mejora inicial no satisface todos los criterios de adopción: se conserva la referencia y los momentos permanecen en evaluación. Las comparaciones son exploratorias por el uso del EDA completo para proponer características y por la ausencia de validación externa. La contribución del sprint es una decisión trazable sobre representaciones, incluidos sus resultados negativos.
+Este sprint evalúa cómo representar la geometría para predecir la carga de primera falla en estructuras pantográficas. El EDA identifica dependencias de diseño y asociaciones que cambian entre familias. Se contrastan cuatro conjuntos de características con Ridge fijo y cinco regresores con geometría original, mediante predicciones fuera de muestra por grupos. Añadir dos momentos de sección reduce el MAE de 13,247 a 12,835~N (3,11\%); la razón logarítmica posterior no mejora el resultado y retirar tres columnas eleva el error a 17,035~N. Bosque aleatorio y Ridge presentan MAE casi idénticos, 13,233 y 13,247~N. Al reservar familias completas, todos los modelos obtienen $R^2$ negativo. Se mantiene la referencia geométrica y los momentos continúan en evaluación. El informe concentra la evidencia del EDA, las transformaciones, la arquitectura de los regresores y la interpretación de sus errores; las conclusiones son exploratorias y requieren validación independiente.
 
 \noindent\textbf{Palabras clave:} estructuras pantográficas; primera falla; ingeniería de características; regresión Ridge; validación por grupos.
 \input{secciones/contexto_y_features.tex}
+\input{secciones/arquitectura_modelos.tex}
 \input{secciones/evaluacion_y_discusion.tex}
 \FloatBarrier
 \label{body:last}
 \clearpage
+\phantomsection
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{IEEEtran}
-\bibliography{referencias}
+{\small\setstretch{1.0}\bibliography{referencias}}
 \clearpage
 \appendix
 \input{secciones/anexos.tex}

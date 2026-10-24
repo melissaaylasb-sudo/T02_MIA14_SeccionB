@@ -1,22 +1,9 @@
-\section{Diseño experimental y protocolo de validación}
+\section{Validación y métricas de evaluación}
 \label{sec:diseno}
-\subsection{Naturaleza del experimento}
-Se realizó una comparación computacional controlada de representaciones. La unidad de contraste es la diferencia de error entre predicciones de los mismos casos reservados. Compartir objetivo, observaciones, particiones y estimador permite atribuir las diferencias numéricas a la modificación documentada del pipeline. No se aleatorizaron ensayos físicos ni se estimaron efectos causales del tamaño de fibra sobre la rotura.
+\subsection{Comparaciones del sprint}
+Se mantienen dos contrastes separados: A--D modifica las features con Ridge fijo; la comparación de cinco algoritmos conserva la geometría A. Ambos reutilizan casos y particiones. No se realizó una búsqueda de hiperparámetros ni un cruce completo de todos los algoritmos con todas las representaciones. Por tanto, la mejora de los momentos con Ridge no se atribuye al bosque aleatorio.
 
-\subsection{Definición de variantes}
-A establece la referencia con geometría original; B añade el bloque de momentos; C añade la razón logarítmica sobre B; D retira tres columnas directas de C. El análisis incremental usa B--A, C--B y D--C; la tabla principal también informa la distancia de cada conjunto respecto de A. El control auxiliar \textit{Dummy} predice la media del entrenamiento. No se denomina baseline de características a ese control: sirve para comprobar cuánto aporta la geometría frente a una predicción constante.
-
-La regla registrada exige simultáneamente reducir MAE al menos 5\%, mejorar en al menos 60\% de los grupos, no aumentar RMSE y no aumentar el MAE agregado del protocolo secundario por familia. Si únicamente mejora el MAE principal, la intervención permanece en evaluación; si empeora, se descarta. Son umbrales operativos del proyecto, no tolerancias mecánicas ni pruebas de significancia. La configuración los documenta, pero no constituye un registro prospectivo independiente.
-
-\subsection{Modelo utilizado}
-Ridge ajusta una relación lineal en las características transformadas y penaliza la magnitud de sus coeficientes \cite{hoerl1970,sklearnridge}:
-\begin{equation}
- (\widehat\beta_0,\widehat{\boldsymbol\beta})=
- \arg\min_{\beta_0,\boldsymbol\beta}\left[
- \sum_{i\in T}\left(y_i-\beta_0-\mathbf z_i^\top\boldsymbol\beta\right)^2
- +\alpha\|\boldsymbol\beta\|_2^2\right],\qquad \alpha=1.
-\end{equation}
-El intercepto no se penaliza. Se fijaron \texttt{solver=svd}, intercepto habilitado y escalamiento estándar. La descomposición SVD es pertinente ante las dependencias lineales verificadas. No hubo búsqueda de hiperparámetros ni selección del mejor $\alpha$ en este sprint; la igualdad de parámetros delimita el efecto de cambiar la representación.
+Las variantes son acumulativas: B--A añade momentos, C--B añade la razón y D--C retira un bloque. El control auxiliar de media predice el promedio del entrenamiento; A es el baseline geométrico. La regla registrada exige reducir MAE al menos 5\%, mejorar en al menos 60\% de grupos, no aumentar RMSE y no aumentar MAE al reservar familias. Son criterios del proyecto, no tolerancias mecánicas ni pruebas de significancia. Una mejora primaria insuficiente se mantiene en evaluación; un deterioro incremental se descarta.
 
 \subsection{Estrategia de validación}
 El protocolo principal aplica \textit{LeaveOneGroupOut} (LOGO) a la combinación $(n_Y,h_f,h_p)$ \cite{sklearnlogo}. Sus 24 particiones reservan una configuración completa cada vez: 22 grupos contienen un caso y dos contienen dos. Los entrenamientos incluyen 25 o 24 casos, respectivamente. Los pares nominales se mantienen juntos para evitar que una misma combinación aparezca simultáneamente a ambos lados de la partición. La geometría reservada puede compartir familia con el entrenamiento; por tanto, esta evaluación no demuestra transferencia a otra arquitectura completa.
@@ -42,7 +29,7 @@ MAE, RMSE y MedAE se expresan en newtons. MAE es el error absoluto promedio; RMS
 
 Para el contraste $V-R$, $\Delta\mathrm{MAE}=\mathrm{MAE}_V-\mathrm{MAE}_R$; un valor negativo favorece la variante. La reducción porcentual es $100(\mathrm{MAE}_R-\mathrm{MAE}_V)/\mathrm{MAE}_R$. La desviación estándar muestral de MAE entre folds describe heterogeneidad, no un error estándar independiente, pues los entrenamientos se solapan. MAE OOF pondera casos; la media y desviación de MAE por fold ponderan grupos. El tiempo registrado suma ajuste y predicción de los folds.
 
-\section{Resultados experimentales comparativos}
+\section{Resultados del Feature Engineering}
 \label{sec:resultados}
 \subsection{Resultados del baseline}
 A obtuvo MAE de 13,247~N, RMSE de 16,346~N, MedAE de 11,941~N y $R^2_{\mathrm{OOF}}=0{,}923$. El control de media alcanzó MAE de 56,309~N. La geometría aporta capacidad predictiva bajo reserva de configuraciones, aunque la separación entre familias contribuye al buen valor agregado de $R^2$. Este resultado no garantiza el mismo error para una familia excluida: el MAE de A aumenta a 57,637~N en ese protocolo y su $R^2$ resulta negativo (Tabla~\ref{tab:familias}).
@@ -58,7 +45,7 @@ C añadió $L_{p/f}$ a los momentos. Su MAE fue 12,914~N, 0,079~N mayor que B (+
 D retiró el bloque de tres columnas directas y produjo MAE de 17,035~N y RMSE de 21,136~N. Frente a C, el MAE creció 4,121~N (+31,91\%); frente a A, 3,788~N (+28,60\%). La representación reducida conservó nueve predictores efectivos, como A, pero con un contenido funcional distinto. La parsimonia nominal no compensó el cambio de parametrización. Este resultado rechaza la retirada conjunta bajo el protocolo evaluado; no estima la importancia individual de cada columna eliminada.
 
 \subsection{Tabla comparativa principal}
-La Tabla~\ref{tab:principal} procede de la ejecución histórica verificada. La decisión de C y D utiliza su referencia incremental, mientras que la columna $\Delta$ permite comparar todos los conjuntos con A.
+La decisión de C y D utiliza su referencia incremental, mientras que la columna $\Delta$ permite comparar todos los conjuntos con A.
 \begin{table}[htbp]
 \centering\small\setstretch{1.0}
 \caption{Resultados OOF por configuración nominal. Errores y dispersión en N; tiempo en segundos.}
@@ -121,63 +108,19 @@ La sensibilidad disponible retira cada grupo únicamente del cálculo agregado d
 \subsection{Coste computacional}
 Los tiempos de A--D fueron 0,290, 0,683, 0,571 y 0,513~s, sumados sobre los folds principales. B añadió aproximadamente 0,392~s a esa ejecución. No se registraron repeticiones de cronometraje, consumo energético ni costo monetario. Que C tarde menos que B no prueba una ventaja computacional inherente: son tiempos cortos de una sola ejecución sujetos al entorno. La decisión depende del error y de la estabilidad, no de diferencias de latencia sin un benchmark específico.
 
-\section{Discusión crítica}
+\input{secciones/resultados_modelos.tex}
+
+\section{Interpretación y decisiones del sprint}
 \label{sec:discusion}
-\subsection{Aporte del Feature Engineering}
-La expansión de momentos aportó una reducción exploratoria de MAE de 3,11\% para configuraciones reservadas. No añadió mediciones; permitió que Ridge representara productos y potencias con coeficientes propios. La razón posterior no agregó beneficio medible frente a B. La retirada conjunta empeoró claramente las métricas: preservar capacidad de representación y regularización fue más útil que minimizar el número de columnas. Dependencia informativa, colinealidad lineal y equivalencia predictiva son conceptos distintos.
+\subsection{Relación entre EDA, features y errores}
+El 96,55\% de la variación del objetivo se asocia descriptivamente a diferencias entre familias. Esto ayuda a explicar el alto $R^2$ global y el deterioro al excluir una familia. La razón logarítmica presenta alta asociación global, pero no mejora B; los momentos tienen asociación condicionada cercana a cero y aportan una mejora pequeña. La correlación marginal y la utilidad para un estimador responden preguntas distintas.
 
-La comparación adicional de cinco regresores sobre A se limita al Anexo~\ref{anexo:modelos}. Bosque aleatorio obtuvo MAE de 13,233~N frente a 13,247~N de Ridge, una diferencia de 0,014~N. Esta cercanía no respalda convertir el informe en una selección de algoritmo ganador. Mantener Ridge fijo permite examinar el aporte específico de los conjuntos de características.
+Los momentos amplían la base funcional de Ridge sin añadir mediciones. Son compatibles con descripciones geométricas utilizadas en modelos que incluyen flexión \cite{turco2017,turco2019}, pero no equivalen a rigidez $EI$ medida ni identifican el mecanismo de rotura. El deterioro de D demuestra que la dependencia entre descriptores no garantiza que retirarlos conserve la predicción penalizada.
 
-\subsection{Interpretación mecánica}
-Los momentos caracterizan geometría de sección compatible con formulaciones que incluyen flexión de fibras, y la razón describe una proporción de componentes \cite{turco2017,turco2019}. Los datos no permiten convertir esas descripciones en contribuciones separadas de energía ni fuerzas internas. No se conoce para cada evento una etiqueta validada de mecanismo de falla; tampoco se incorpora un módulo elástico medido para estimar $EI$. La mejora de B respalda explorar esa representación, no identificar la causa de la rotura.
+\subsection{Decisiones}
+Se \textbf{mantiene A como baseline} y \textbf{B en evaluación}: su mejora de 3,11\% no cumple todos los criterios, aunque conserva dirección favorable al omitir grupos del agregado de scores. Se \textbf{descartan C respecto de B y D respecto de C}, con deterioros de 0,079 y 4,121~N. La mínima diferencia de 0,014~N entre bosque y Ridge no sustenta sustituir el algoritmo; ninguno resuelve la transferencia entre familias.
 
-La fuerza externa de tracción es la solicitación documentada. La red puede desarrollar mecanismos internos de extensión, flexión y torsión en sus modelos, pero no se acredita haber aplicado tres ensayos independientes. Una interpretación física defendible mantiene esta separación entre condición de ensayo, descriptor geométrico, mecanismo hipotético y respuesta medida.
+\subsection{Incertidumbre y siguiente sprint}
+El procesamiento auditado se ajusta dentro de entrenamiento, pero los candidatos se propusieron usando todo el EDA, lo que mantiene sesgo de selección \cite{cawley2010}. Faltan validación externa y metadatos concluyentes de réplicas y lotes; las discrepancias de algunas geometrías también condicionan la interpretación. Los folds comparten entrenamiento y su dispersión no es un error estándar independiente.
 
-\subsection{Comparación con el EDA}
-El EDA atribuye descriptivamente 96,55\% de la variación del objetivo a diferencias entre familias. Esta estructura ayuda a explicar que las asociaciones agregadas sean altas y el error aumente al excluir una familia. La inversión de signo de la razón al condicionar por familia indica que una relación global puede resumir diferencias de arquitectura. C no supera B pese a esa correlación global elevada; los momentos presentan correlaciones condicionadas cercanas a cero y una mejora pequeña. La utilidad de una representación para un estimador no se determina ordenando correlaciones marginales.
-
-\subsection{Robustez y generalización}
-La evidencia distingue predicción de configuraciones reservadas dentro de familias conocidas y transferencia entre familias. El MAE de B pasa de 12,835 a 57,654~N al cambiar el protocolo. Incluso reservar la familia intermedia no garantiza continuidad útil: arquitectura y otros descriptores cambian conjuntamente. La sensibilidad de scores favorece conservar B como candidata, pero no resuelve ese problema de transferencia ni verifica estabilidad ante otra campaña. El resultado no autoriza desplegar una predicción para geometrías arbitrarias o como límite de seguridad estructural.
-
-\subsection{Amenazas a la validez}
-La validez interna se apoya en mismos casos y particiones, parámetros fijos, auditoría de transformaciones y cálculo desde predicciones OOF. Sus límites son la comparación de bloques, la penalización dependiente de la representación y una única configuración del estimador. El ajuste dentro de entrenamiento previene fuga de procesamiento; la elección de candidatos informada por todo el EDA mantiene sesgo de selección \cite{cawley2010}.
-
-La dependencia experimental no queda completamente controlada sin metadatos de especímenes y lotes. Las discrepancias entre fichas y MATLAB añaden incertidumbre de medición y procedencia, especialmente en magnitudes elevadas al cubo. La validez externa está restringida a la campaña y al diseño observado; no se verificaron otros materiales o procesos. La ausencia de un holdout independiente y el solapamiento de entrenamientos impiden interpretar la dispersión por fold como incertidumbre inferencial calibrada. Estas limitaciones afectan la fuerza de la conclusión, aunque la comparación computacional sea reproducible.
-
-\section{Conclusiones y decisiones del sprint}
-El EDA permitió identificar escala, constantes, dependencias de diseño y diferencias entre asociaciones globales y condicionadas; esos hallazgos se tradujeron en hipótesis explícitas de representación. La incorporación de dos momentos produjo el menor MAE del contraste principal, pero la ganancia de 0,412~N no alcanza todos los criterios de adopción y no se conserva como ventaja al reservar familias completas. La complejidad crece de nueve a once predictores sin incorporar mediciones nuevas.
-
-La decisión es \textbf{mantener A como baseline} y \textbf{mantener B en evaluación}. Se \textbf{descarta la adición de C respecto de B} y la \textbf{reducción de D respecto de C} para esta configuración, con deterioros de 0,079 y 4,121~N, respectivamente. No se adopta una sustitución definitiva. La sensibilidad por omisión de scores preserva la dirección de B--A, pero no establece superioridad estadística ni transferencia externa.
-
-El siguiente sprint debe resolver primero la correspondencia documental de geometrías y la identidad de réplicas y lotes. Después conviene congelar A y B y evaluar ambos sobre ensayos independientes de configuraciones y familias definidas antes de observar sus respuestas, con idéntico pipeline. Si aún no se dispone de esa ampliación, un análisis de influencia con reentrenamiento puede precisar la estabilidad interna, declarándolo exploratorio; no reemplazaría la validación externa. La prioridad es comprobar la generalización y la calidad del objetivo, antes de ampliar transformaciones o algoritmos.
-
-\section{Reproducibilidad}
-\label{sec:repro}
-El informe se construye en la rama \texttt{sprint-semana-6} de
-\href{https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB}{repositorio de la investigación},
-desde el commit de Feature Engineering
-\ruta{8fdb7961d7eaaaebd9651d0b9a044168893d448a}.
-La ejecución de referencia terminó el 17 de octubre de 2026 a las 00:45:30 UTC. Este informe consolida esa ejecución; no mezcla métricas recalculadas con tiempos de nuevos entrenamientos. La tabla analítica es \ruta{data/processed/preliminary/model_table.csv}; su SHA-256 completo es
-\begin{center}\footnotesize
-\texttt{2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8}.
-\end{center}
-
-El manifiesto registra Python 3.13.5, NumPy 2.5.2, pandas 2.3.0, SciPy 1.16.0, scikit-learn 1.7.0 y Matplotlib 3.10.3. Son versiones declaradas por la ejecución histórica. La configuración fija semilla 42, Ridge $\alpha=1$, SVD y los dos agrupamientos. Los hashes verifican datos, código normalizado a LF, evidencia del EDA y resultados; la auditoría del informe reconstruyó métricas y estadísticas de entrenamiento desde los artefactos, sin ajustar regresores.
-
-\begin{table}[htbp]
-\centering\small\setstretch{1.0}
-\caption{Trazabilidad compartida de A--D. Cada columna identifica el artefacto reproducible del contraste.}
-\label{tab:trazabilidad}
-\begin{tabularx}{\linewidth}{@{}lYYYYYY@{}}
-\toprule
-Exp. & Config. & Dataset & Split & Log & Predicciones & Métricas \\
-\midrule
-A--D & C1 & D1 & S1 & L1 & P1 & M1 \\
-\bottomrule
-\end{tabularx}
-\par\smallskip\footnotesize Bajo \ruta{reports/feature_engineering/}: C1 = \ruta{configuracion.json}; S1 = \ruta{particiones.json}; L1 = \ruta{ejecucion.log}; P1 = \ruta{tables/predicciones_oof.csv}; M1 = \ruta{tables/comparacion_experimentos.csv}. D1 corresponde a la tabla analítica identificada arriba.
-\end{table}
-
-La identificación por \texttt{protocolo}, \texttt{experimento}, \texttt{fold} y \texttt{Case\_n} permite reconstruir cada contraste. Los errores por fold, decisiones y sensibilidad se guardan en \ruta{tables/metricas_folds.csv}, \ruta{tables/decisiones.csv} y \ruta{tables/sensibilidad_scores.csv}. \ruta{auditoria_transformaciones.json} conserva los parámetros ajustados; \ruta{manifest.json} documenta la integridad. Los CSV mantienen precisión completa, mientras el informe redondea para lectura.
-
-Desde la raíz, \texttt{python -m src.verificar\_fe} comprueba la entrega existente. Para reproducir el experimento completo se utiliza \texttt{python -m src.reporte\_fe --execute}; este segundo comando reentrena y vuelve a generar sus artefactos, por lo que debe ejecutarse en una copia de trabajo destinada a reproducción. Para regenerar únicamente tablas y figuras del informe se ejecutan los dos scripts de \ruta{reports/semana_6/}. Las instrucciones de compilación autónoma, hashes y auditoría se distribuyen junto al fuente LaTeX. No se incluyen documentos experimentales privados en el paquete.
+El siguiente sprint debe congelar A y B, conciliar las discrepancias geométricas y evaluarlos sobre ensayos independientes con grupos definidos antes de observar las respuestas. Si aún no están disponibles, un análisis de influencia con reentrenamiento puede precisar la estabilidad interna; no reemplaza la validación externa. Las predicciones actuales no se proponen como límites de seguridad estructural. Las configuraciones y los comandos de reproducción se conservan en el README.

@@ -4,7 +4,7 @@
 
 UNI · Maestría en Inteligencia Artificial · Trabajo de Investigación II · Melissa Dessire Aylas Barranca.
 
-Consolidación del EDA y de los experimentos ya ejecutados. El foco es comparar representaciones de la geometría con **Ridge fijo**, conservando datos y particiones. No se entrenaron modelos nuevos para redactar el informe.
+Sprint centrado en **EDA, ingeniería de características, arquitectura de cinco regresores y evaluación de sus métricas**. El contraste A–D mantiene Ridge fijo; la comparación de algoritmos mantiene la geometría A. No se entrenaron modelos nuevos para esta revisión.
 
 | Representación | MAE OOF (N) | Decisión |
 |---|---:|---|
@@ -15,17 +15,19 @@ Consolidación del EDA y de los experimentos ya ejecutados. El foco es comparar 
 
 B reduce el MAE **3,11 %**, pero no alcanza todos los criterios de adopción. Al reservar familias completas, su MAE sube a **57,654 N**. La comparación es exploratoria: el ajuste de transformaciones está aislado dentro de entrenamiento, pero el EDA completo informó los candidatos y no existe un holdout externo independiente.
 
+La arquitectura de **Ridge, Elastic Net, SVR con núcleo RBF, bosque aleatorio y proceso gaussiano** se explica en la sección 4. La sección 7 compara MAE, RMSE, MedAE, R² y tiempo de los cinco modelos, con una figura y una interpretación por protocolo. Bosque y Ridge presentan MAE casi idénticos por configuración (13,233 y 13,247 N); todos obtienen R² negativo al reservar familias.
+
 ## Documento y evidencia
 
-El PDF contiene **16 páginas sustantivas y 21 páginas totales**: portada, índice, cuerpo (folios 1–16), referencias (17) y anexos (18–19). Incluye cinco figuras, ocho tablas y diez referencias. Compilación y revisión visual registradas en [verificacion_documento.json](verificacion_documento.json).
+El PDF contiene **15 páginas sustantivas y 19 páginas totales**: portada, índice, cuerpo (folios 1–15), referencias (16) y anexo (17). Incluye cinco figuras, diez tablas y trece referencias. La introducción está resumida y se retiraron las secciones de procedencia y trazabilidad del PDF. Compilación y revisión visual registradas en [verificacion_documento.json](verificacion_documento.json).
 
 | Archivo | Función |
 |---|---|
 | `Informe_Sprint_Semana_6.tex` | Documento principal editable |
 | `main.tex` | Entrada de Overleaf, incluye el documento principal |
-| `secciones/` | Contexto y features; evaluación y discusión; anexos |
+| `secciones/` | Objetivo y EDA; features; arquitectura de modelos; validación, métricas e interpretación; anexo |
 | `referencias.bib` | Referencias científicas verificadas, estilo IEEE |
-| `figures/` | Sello oficial UNI y cuatro figuras científicas; procedencia y hashes |
+| `figures/` | Sello oficial UNI y cinco figuras científicas; fuentes y hashes |
 | `tablas/` | Tablas LaTeX exportadas desde los CSV existentes |
 | `auditoria_resultados.json` | Verificación de datos, predicciones, particiones y estadísticas train |
 | `trazabilidad_tablas.json` | Fuentes y hashes de tablas |

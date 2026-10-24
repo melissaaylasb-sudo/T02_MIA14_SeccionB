@@ -31,6 +31,8 @@ SOURCE_PATHS = {
     "folds": "reports/feature_engineering/tables/metricas_folds.csv",
     "correlaciones_globales": "reports/eda/tables/08_asociaciones_globales.csv",
     "correlaciones_condicionadas": "reports/eda/tables/09_asociaciones_condicionadas.csv",
+    "modelos": "reports/feature_engineering/tables/comparacion_modelos.csv",
+    "predicciones_modelos": "reports/feature_engineering/tables/predicciones_modelos_oof.csv",
 }
 
 
@@ -212,6 +214,53 @@ def plot_eda(data: dict, output: Path) -> dict:
                 "no es una relación causal ni una prueba de mejora predictiva.")
 
 
+def plot_models(data: dict, output: Path) -> dict:
+    """Compara los cinco regresores sobre A y comprueba las métricas OOF guardadas."""
+    frame = data["modelos"]
+    predictions = data["predicciones_modelos"]
+    order = ["Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess"]
+    labels = ["Ridge", "Elastic Net", "SVR (RBF)", "Bosque aleatorio", "Proceso gaussiano"]
+    target = data["datos"].set_index("Case_n").First_Failure_Load_N
+    assert set(frame.modelo) == set(order)
+    assert frame.representacion.eq("A").all()
+    assert not frame.duplicated(["protocolo", "modelo"]).any()
+    for _, row in frame.iterrows():
+        p = predictions[predictions.protocolo.eq(row.protocolo) & predictions.modelo.eq(row.modelo)]
+        assert p.Case_n.is_unique and set(p.Case_n) == set(target.index)
+        np.testing.assert_allclose(p.observado_N, target.loc[p.Case_n], rtol=1e-10, atol=1e-10)
+        residual = p.observado_N.to_numpy() - p.predicho_N.to_numpy()
+        errors = np.abs(residual)
+        recomputed = {
+            "MAE_N": errors.mean(), "RMSE_N": np.sqrt(np.mean(residual ** 2)),
+            "MedAE_N": np.median(errors),
+            "R2_OOF": 1 - np.sum(residual ** 2) / np.sum((p.observado_N - p.observado_N.mean()) ** 2),
+        }
+        for metric, value in recomputed.items():
+            np.testing.assert_allclose(row[metric], value, rtol=1e-10, atol=1e-10)
+    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.5), sharey=True, layout="constrained")
+    for ax, protocol, title, xmax in zip(
+        axes, ["configuracion", "familia"],
+        ["a) Configuración excluida", "b) Familia excluida"], [20, 100]
+    ):
+        values = frame[frame.protocolo.eq(protocol)].set_index("modelo").loc[order, "MAE_N"].to_numpy()
+        positions = np.arange(len(order))
+        ax.barh(positions, values, color=BLUE, height=.55)
+        for i, value in enumerate(values):
+            ax.text(value + xmax * .025, i, decimal_text(value, 2), va="center", fontsize=10)
+        ax.set(title=title, xlabel="MAE [N]", xlim=(0, xmax))
+        ax.set_yticks(positions, labels)
+        ax.set_axisbelow(True); ax.grid(axis="x", color="#E7E7E7", linewidth=.6)
+    axes[0].invert_yaxis()
+    axes[0].set_xticks([0, 5, 10, 15, 20]); axes[1].set_xticks([0, 25, 50, 75, 100])
+    return save(fig, output, "05_modelos", ["modelos", "predicciones_modelos", "datos"],
+                "MAE OOF de cinco regresores sobre el conjunto A de geometría original. "
+                "Orden idéntico y las mismas particiones dentro de cada protocolo; los paneles "
+                "emplean escalas horizontales distintas. Métricas recalculadas desde predicciones guardadas.",
+                "Bosque aleatorio y Ridge difieren solo 0.014053 N al excluir configuraciones. "
+                "Al excluir familias, el menor MAE es Elastic Net (57.112995 N); los cinco R² "
+                "OOF son negativos. No se realizó reentrenamiento ni búsqueda de hiperparámetros.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=HERE / "figures")
@@ -219,7 +268,7 @@ def main() -> None:
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=True)
     style()
     data = {key: pd.read_csv(ROOT / path) for key, path in SOURCE_PATHS.items()}
-    figures = [function(data, output) for function in [plot_mae, plot_diagnostic, plot_paired, plot_eda]]
+    figures = [function(data, output) for function in [plot_mae, plot_diagnostic, plot_paired, plot_eda, plot_models]]
     manifest = {
         "purpose": "Figuras académicas de síntesis del sprint Semana 6; sin nuevos modelos ni predicciones.",
         "generator": "reports/semana_6/generar_figuras.py", "generator_sha256": digest(Path(__file__)),

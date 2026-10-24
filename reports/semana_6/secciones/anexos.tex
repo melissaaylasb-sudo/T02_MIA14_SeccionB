@@ -15,28 +15,3 @@ Fold & Configuración & Test & A & B & C & D & $\Delta$ B--A \\
 \end{center}
 \noindent\small Fuente: \ruta{reports/feature_engineering/tables/metricas_folds.csv}. Los grupos no constituyen repeticiones independientes del entrenamiento. Se excluye $R^2$ por fold, al existir evaluaciones unitarias.
 \normalsize
-
-\section{Comparación secundaria de regresores}
-\label{anexo:modelos}
-Este antecedente utiliza exclusivamente el conjunto A y las mismas particiones. No interviene en la comparación controlada de representaciones ni acredita una selección final de algoritmo. Los tiempos corresponden a una ejecución separada del contraste A--D, por lo que el tiempo de Ridge difiere ligeramente.
-\begin{table}[htbp]
-\centering\small\setstretch{1.0}
-\caption{Regresores sobre geometría original, protocolo de configuraciones.}
-\begin{tabular}{@{}lrrrr@{}}
-\toprule
-Modelo & MAE (N) & RMSE (N) & $R^2_{\mathrm{OOF}}$ & Tiempo (s) \\
-\midrule
-\tableinput tablas/modelos.tex
-\bottomrule
-\end{tabular}
-\par\smallskip\footnotesize Fuente: \ruta{reports/feature_engineering/tables/comparacion_modelos.csv}. Parámetros fijos; no se realizó búsqueda de hiperparámetros.
-\end{table}
-
-Ridge utiliza $\alpha=1$ y SVD. Elastic Net fija $\alpha=0{,}1$, razón L1 de 0,5 y máximo de 20\,000 iteraciones. SVR usa núcleo RBF, $C=100$, $\varepsilon=5$ y \texttt{gamma=scale}. Bosque aleatorio utiliza 200 árboles, mínimo de dos observaciones por hoja, semilla 42 y un proceso. El proceso gaussiano usa núcleo Matérn con longitud 3, $\nu=1{,}5$, $\alpha=0{,}05$, optimizador deshabilitado y normalización del objetivo dentro de entrenamiento. La configuración exacta está en \ruta{config/comparacion_modelos.json}. El protocolo por familia arroja $R^2$ negativo para los cinco regresores, por lo que la limitación de transferencia no desaparece al cambiar de estimador.
-
-\section{Fuentes documentales y archivos de verificación}
-La fuente experimental de Venditti se consulta por posición de página en el PDF suministrado: portada (1), arquitectura (91), fabricación y dimensiones (94), geometrías (95), protocolo y señales (96--97) y fichas del apéndice A \cite{venditti2025}. La provisión académica se consigna en el plan de tesis \cite{aylas2026}. Estas fuentes privadas se citan para trazabilidad, sin redistribuir sus archivos. Los datos de instrumentación de otros trabajos no se atribuyen a esta campaña.
-
-El sello institucional procede del \emph{Manual de identidad UNI}, enlazado por el portal oficial. Se reproduce el diseño original sin redibujarlo; el archivo \ruta{figures/LOGO_FUENTE.md} conserva URL, página y método de extracción. La fecha de consulta documental del informe es el 23 de octubre de 2026.
-
-El directorio del informe incluye \ruta{auditoria_resultados.json}, \ruta{trazabilidad_tablas.json} y \ruta{figures/manifest_figuras.json}, junto con sus scripts de exportación. El README describe la compilación con pdfLaTeX y BibTeX y la comprobación del PDF. Los archivos \texttt{.tex}, la bibliografía y las imágenes bastan para compilar en Overleaf; no se necesita ejecutar modelos ni acceder a los PDF privados. El paquete ZIP conserva esa separación entre fuentes editoriales y evidencia experimental del repositorio.

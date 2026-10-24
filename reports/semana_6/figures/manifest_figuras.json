@@ -1,7 +1,7 @@
 {
   "purpose": "Figuras académicas de síntesis del sprint Semana 6; sin nuevos modelos ni predicciones.",
   "generator": "reports/semana_6/generar_figuras.py",
-  "generator_sha256": "c4d31dc2b68b3668aad14de4386e2ec831e396a0fc32760bfa013bdcfee0262c",
+  "generator_sha256": "8cf94af911eb92c568cedf391c81e3287420677fba4fb231c07dff0cfecc9833",
   "source_sha256": {
     "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
     "reports/feature_engineering/tables/comparacion_experimentos.csv": "2c765cae1333c92d8f761075225199a4124f541e5e1745a47a547da930182a75",
@@ -9,7 +9,9 @@
     "reports/feature_engineering/tables/contrastes_pareados.csv": "3b651edee1685c05344946df413ecd9728e5eaf4f9321d19ac75b1d909fcebd6",
     "reports/feature_engineering/tables/metricas_folds.csv": "b3aa51f98addc40e877c50c605599c74721eaa29037590398c51f688194543b6",
     "reports/eda/tables/08_asociaciones_globales.csv": "79e3125616d4f7dac693a67c75bcc4dacc68315f8388ec1f223decbf626f9e87",
-    "reports/eda/tables/09_asociaciones_condicionadas.csv": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc"
+    "reports/eda/tables/09_asociaciones_condicionadas.csv": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc",
+    "reports/feature_engineering/tables/comparacion_modelos.csv": "f02b2d77781662775f9dbeb83d0dd100d920755014e2dcf233f59624ba491434",
+    "reports/feature_engineering/tables/predicciones_modelos_oof.csv": "f5c4d8926b4b2edd11edad58e1719e51c343bc3396d9c80b5bae1841f5aede8e"
   },
   "matplotlib_version": "3.10.3",
   "figures": [
@@ -66,6 +68,21 @@
       ],
       "description": "a) Valores individuales, mediana e intervalo intercuartílico de la primera falla por familia. b) Spearman global y correlación entre rangos globales residualizados por familia del volumen de pivotes con el objetivo.",
       "interpretation": "El cambio de signo de +0.828017 a −0.477342 muestra dependencia de la arquitectura; no es una relación causal ni una prueba de mejora predictiva.",
+      "new_training": false
+    },
+    {
+      "file": "figures/05_modelos.png",
+      "sha256": "1ce2be7a41609fa9b8579ed45604611e03f05c6acd3aa62744850498052bf017",
+      "width_inches": 7.1,
+      "height_inches": 3.5,
+      "dpi": 300,
+      "sources": [
+        "reports/feature_engineering/tables/comparacion_modelos.csv",
+        "reports/feature_engineering/tables/predicciones_modelos_oof.csv",
+        "data/processed/preliminary/model_table.csv"
+      ],
+      "description": "MAE OOF de cinco regresores sobre el conjunto A de geometría original. Orden idéntico y las mismas particiones dentro de cada protocolo; los paneles emplean escalas horizontales distintas. Métricas recalculadas desde predicciones guardadas.",
+      "interpretation": "Bosque aleatorio y Ridge difieren solo 0.014053 N al excluir configuraciones. Al excluir familias, el menor MAE es Elastic Net (57.112995 N); los cinco R² OOF son negativos. No se realizó reentrenamiento ni búsqueda de hiperparámetros.",
       "new_training": false
     }
   ],

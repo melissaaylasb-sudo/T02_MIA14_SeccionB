@@ -1,6 +1,33 @@
 {
   "purpose": "Tablas derivadas de CSV de la ejecución histórica; sin reentrenamiento",
   "reference_commit": "8fdb7961d7eaaaebd9651d0b9a044168893d448a",
+  "generator_sha256": "c7ba650b2892a966d504df3402194490f6ef07db40984a9a200b8b8a61b3fda8",
+  "model_tables": {
+    "tablas/modelos.tex": {
+      "protocol": "configuracion",
+      "representation": "A",
+      "columns": [
+        "Modelo",
+        "MAE [N]",
+        "RMSE [N]",
+        "MedAE [N]",
+        "R2 OOF",
+        "Tiempo [s]"
+      ]
+    },
+    "tablas/modelos_familias.tex": {
+      "protocol": "familia",
+      "representation": "A",
+      "columns": [
+        "Modelo",
+        "MAE [N]",
+        "RMSE [N]",
+        "MedAE [N]",
+        "R2 OOF",
+        "Tiempo [s]"
+      ]
+    }
+  },
   "source_sha256": {
     "reports/feature_engineering/tables/comparacion_experimentos.csv": "2c765cae1333c92d8f761075225199a4124f541e5e1745a47a547da930182a75",
     "reports/feature_engineering/tables/metricas_folds.csv": "b3aa51f98addc40e877c50c605599c74721eaa29037590398c51f688194543b6",
@@ -9,7 +36,8 @@
   "output_sha256": {
     "tablas/familias.tex": "21717f103d9924eb39c887022987ad52f92612b50ffa07cd5cccfe74b2232bdc",
     "tablas/folds.tex": "f5d8182f1fc9b201f97f30ab2b0a95de6666923d4ed0ae5a563e598bfccc2d06",
-    "tablas/modelos.tex": "2903d34f42ad1875cfc2399caa7006afa7635daf0e2537eb7864bc19d9e8d34b",
+    "tablas/modelos.tex": "1338bdeb3dafcd5928232edc15f6f39757ddb3b1e1934d6c47f418b1fd79a6c8",
+    "tablas/modelos_familias.tex": "0b6a6d5cdf0bed16d97e852e35f37efe82e7056f8f6f3012558eeaff9634cb8a",
     "tablas/principal.tex": "900c7ecc7b59946fe2428cd04801744acf76c2904f7988128be0ad65c9aed5d6"
   }
 }

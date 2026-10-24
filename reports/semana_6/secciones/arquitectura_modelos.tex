@@ -1,0 +1,53 @@
+\section{Arquitectura de los modelos de regresión}
+\label{sec:arquitectura}
+
+\subsection{Entrada, procesamiento y salida comunes}
+La arquitectura implementada separa la preparación de datos del estimador. Cada caso ingresa mediante diez atributos geométricos. Para comparar los cinco algoritmos se utiliza exclusivamente la representación A: el filtro retira el radio constante y entrega nueve características estandarizadas al regresor. La salida es un único valor continuo, la carga de primera falla estimada en newtons. Cada fold construye y ajusta una instancia nueva del pipeline y del modelo \cite{pedregosa2011}.
+
+\begin{center}\small
+Diez entradas geométricas $\longrightarrow$ validación e imputación de contingencia\\
+$\longrightarrow$ filtro de constantes $\longrightarrow$ nueve entradas estandarizadas\\
+$\longrightarrow$ un regresor por experimento $\longrightarrow$ fuerza estimada [N].
+\end{center}
+
+El bosque conserva el mismo preprocesamiento para comparar bajo condiciones comunes, aunque su estructura de umbrales no requiere estandarización.
+
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Estructuras computacionales efectivamente utilizadas. Los parámetros aprendidos se estiman nuevamente en cada fold.}
+\label{tab:arquitecturas}
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+Modelo & Estructura de predicción & Qué aprende del entrenamiento \\
+\midrule
+Ridge & Combinación lineal con penalización L2 & Intercepto y coeficientes contraídos. \\
+Elastic Net & Combinación lineal con penalización L1 y L2 & Coeficientes; algunos pueden resultar nulos. \\
+SVR--RBF & Suma de similitudes con vectores de soporte & Casos de soporte, pesos e intercepto. \\
+Bosque aleatorio & Promedio de 200 árboles de regresión & Variables de corte, umbrales y valores de hojas. \\
+Proceso gaussiano & Predicción condicionada mediante covarianza Matérn & Pesos de la respuesta condicionada al entrenamiento, con núcleo fijo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Ridge y Elastic Net: combinaciones regularizadas}
+Ambos producen una suma ponderada de las entradas transformadas:
+\begin{equation}
+\widehat F_{\mathrm{FF}}=\beta_0+\sum_{j=1}^{p}\beta_j z_j.
+\end{equation}
+Ridge penaliza la suma de cuadrados de los coeficientes para controlar soluciones de gran magnitud ante entradas relacionadas. Se utilizó $\alpha=1$ y solución SVD. Su papel en el sprint es mantener una referencia estable para contrastar representaciones. Al incorporar momentos, conserva la linealidad en los coeficientes, pero puede representar productos y potencias de dimensiones originales \cite{sklearnridge}.
+
+Elastic Net combina penalización L1, capaz de anular coeficientes, y L2, que los contrae. Se fijaron $\alpha=0{,}1$, proporción L1 de 0,5 y máximo de 20\,000 iteraciones; el ajuste utiliza descenso por coordenadas en orden cíclico. Permite contrastar otra regularización sin construir un ranking causal de características. No se presupone que un coeficiente nulo implique irrelevancia física ni que los valores de $\alpha$ sean directamente comparables entre ambos estimadores \cite{sklearnelasticnet}.
+
+\subsection{SVR y proceso gaussiano: relaciones mediante núcleos}
+SVR utiliza un núcleo RBF para expresar semejanza entre geometrías estandarizadas y construir una función no lineal. El ajuste equilibra complejidad y desviaciones exteriores a una banda de tolerancia. Se fijaron $C=100$, $\varepsilon=5$~N y \texttt{gamma=scale}; este último calcula la escala del núcleo a partir del entrenamiento. La banda pertenece a la función de pérdida: no garantiza errores de evaluación inferiores a 5~N. El modelo almacena los vectores de soporte y sus pesos, no reglas físicas de rotura \cite{sklearnsvr}.
+
+El proceso gaussiano relaciona las observaciones mediante una matriz de covarianza definida por un núcleo Matérn. Se fijaron longitud de escala 3 y $\nu=1{,}5$, sin optimización del núcleo. La respuesta se centra y escala con estadísticas del entrenamiento mediante \texttt{normalize\_y=True}, y la predicción se devuelve en newtons. El término $\alpha=0{,}05$ se añade a la diagonal de la covarianza en esa escala normalizada; no representa ruido experimental medido. Se evaluó la predicción puntual, sin publicar intervalos ni afirmar que su incertidumbre esté calibrada \cite{sklearngpr}.
+
+\subsection{Bosque aleatorio: combinación de árboles}
+Cada árbol se ajusta sobre una muestra bootstrap del entrenamiento, obtenida con reemplazo. Sus divisiones eligen una variable y un umbral que reducen el error cuadrático; las hojas almacenan una media de respuesta. La predicción final promedia los árboles:
+\begin{equation}
+\widehat F_{\mathrm{FF}}(\mathbf z)=\frac{1}{200}\sum_{t=1}^{200}T_t(\mathbf z).
+\end{equation}
+La configuración establece mínimo de dos observaciones por hoja, semilla 42 y \texttt{n\_jobs=1}. Cada división considera todas las entradas (\texttt{max\_features=1.0}); no se impuso una profundidad máxima. Esta estructura permite interacciones y cambios de comportamiento entre regiones geométricas. Sin embargo, promediar hojas no justifica extrapolar una tendencia física fuera del dominio entrenado \cite{sklearnforest}.
+
+Los cinco estimadores utilizan valores de configuración fijos, sin búsqueda de hiperparámetros. La comparación posterior evalúa esas implementaciones concretas; no establece superioridad universal de una familia de algoritmos.
