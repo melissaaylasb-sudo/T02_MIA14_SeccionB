@@ -8,6 +8,8 @@ UNI · Maestría en Inteligencia Artificial · Trabajo de Investigación II · M
 
 La apertura resume contexto y objetivo. Las interpretaciones del EDA se sintetizan en tablas; la matriz de características distingue entradas originales, derivadas y filtradas mediante colores. El balance experimental usa azul para la referencia, ámbar para mantener en evaluación y rojo para una adición no favorable.
 
+El planteamiento inicial ordena problema y pregunta de investigación, objetivo general y específicos, hipótesis de trabajo y variables e indicadores. Las hipótesis organizan los resultados disponibles, sin atribuirles un preregistro ni una validación estadística que no se realizó.
+
 | Representación | Intervención | MAE OOF por configuración (N) | Resultado |
 |---|---|---:|---|
 | A: línea base | Geometría original | 13,247 | Conservar como referencia |
@@ -22,6 +24,7 @@ Se mantiene Ridge fijo para medir el aporte de las características. B reduce MA
 |---|---|
 | `Informe_Sprint_Semana_6.tex`, `main.tex` | Documento principal y entrada para Overleaf |
 | `secciones/datos_eda.tex` | Diccionario, preparación y análisis exploratorio |
+| `secciones/planteamiento.tex` | Problema, objetivos, hipótesis y variables e indicadores |
 | `secciones/features.tex` | Construcción, tratamiento y conjuntos A/B/C |
 | `secciones/evaluacion_y_discusion.tex` | Modelos utilizados, validación, métricas y resultados |
 | `figures/`, `tablas/` | Figuras científicas y tablas exportadas de resultados existentes |

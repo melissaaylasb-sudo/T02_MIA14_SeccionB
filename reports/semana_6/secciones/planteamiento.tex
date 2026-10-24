@@ -1,0 +1,46 @@
+\section{Planteamiento de la investigación}
+\label{sec:planteamiento}
+
+\subsection{Problema de investigación}
+Las dimensiones originales no representan explícitamente todas las combinaciones geométricas de fibras y pivotes. Se desconoce si incorporar esas combinaciones mejora la estimación de la carga de primera falla y si la mejora se mantiene al excluir una familia del entrenamiento.
+
+\noindent\textbf{Pregunta:} ¿En qué medida los momentos de sección y la razón logarítmica de volúmenes reducen el error de predicción frente a las entradas originales, manteniendo el mismo modelo y validación?
+
+\subsection{Objetivos}
+\noindent\textbf{General:} evaluar el aporte de características geométricas derivadas a la predicción de la carga de primera falla mediante una línea base y dos variantes de datos.
+\begin{enumerate}
+\item Caracterizar calidad, distribución y asociaciones de las variables para justificar su tratamiento.
+\item Construir momentos de sección y razón de volúmenes sin utilizar respuestas posteriores al ensayo.
+\item Comparar A, B y C mediante errores fuera de muestra por configuración y familia.
+\end{enumerate}
+
+\subsection{Hipótesis de trabajo}
+\noindent\textbf{H1:} añadir los momentos (B) reduce el MAE por configuración al menos 5\% frente a la geometría original (A).
+
+\noindent\textbf{H2:} añadir la razón logarítmica (C) reduce el MAE respecto de B.
+
+Estas hipótesis organizan la evidencia ya disponible; no constituyen un preregistro ni pruebas de significación. Los criterios adicionales de adopción se especifican en la sección~\ref{sec:diseno}.
+
+\subsection{Variables e indicadores}
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Variables del estudio y forma de evaluación.}
+\label{tab:variables-indicadores}
+\begin{tabularx}{\linewidth}{@{}p{2.8cm}YY@{}}
+\toprule
+\rowcolor{TablaCabecera}
+Rol & Variable o dimensión & Medición / indicador \\
+\midrule
+Entradas predictoras & Geometría de fibras, pivotes y malla & Dimensiones (mm), volúmenes (mm$^3$) y conteos; detalle en Tabla~\ref{tab:diccionario}. \\
+\addlinespace
+Salida objetivo & Carga de primera falla & Fuerza experimental en newtons (N); respuesta continua de regresión. \\
+\addlinespace
+Factor experimental & Representación de las entradas & A: original; B: añade momentos; C: añade la razón a B. \\
+\addlinespace
+Desempeño evaluado & Error de predicción y mejora incremental & MAE principal; RMSE, MedAE, $R^2$, reducción de MAE y tiempo como complementos. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\noindent Se controlan modelo, parámetros y particiones en A--B--C. La familia se usa para agrupar y evaluar generalización; no se interpreta como un efecto causal aislado.
+\FloatBarrier
