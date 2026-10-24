@@ -1,0 +1,23 @@
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Curaduría aplicada y efecto sobre el análisis.}
+\label{tab:curaduria}
+\begin{tabularx}{\linewidth}{@{}YYY@{}}
+\toprule
+Control & Resultado observado & Tratamiento aplicado \\
+\midrule
+Extracción y tipos & Las asignaciones numéricas y sus nulos coinciden con las tablas extraídas. & Lectura literal sin ejecutar MATLAB; conversión numérica y conservación de identificadores. \\
+\addlinespace
+Valores faltantes & Geometría completa; ausencia conjunta de respuestas en una entrada de la fuente. & No inventar el objetivo; conservar la geometría y excluir de supervisión la respuesta ausente. \\
+\addlinespace
+Dominios & Dimensiones positivas, conteos enteros y carga objetivo positiva. & Validar unidades y dominios; ninguna corrección de valores por estos controles. \\
+\addlinespace
+Repetición & Sin filas exactamente duplicadas; coincidencias de factores con otras medidas distintas. & Conservar sin promediar; reunir configuraciones relacionadas durante validación. \\
+\addlinespace
+Consistencia y extremos & Radio constante; discrepancias de volúmenes frente a formas ideales; energías iniciales negativas. & Filtrar el radio en entrenamiento; conservar signos y casos señalados; no corregir mediante fórmulas ideales. \\
+\addlinespace
+Respuestas por ciclo & La disponibilidad cambia entre ciclos y eventos. & Comparar cohortes comunes cuando procede; no convertir ausencia en cero ni cada ciclo en muestra independiente. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: notebook 01 y tablas de validación, duplicación, dominios y decisiones de curaduría. Imputación estadística y escalamiento se ajustan posteriormente dentro de entrenamiento.
+\end{table}

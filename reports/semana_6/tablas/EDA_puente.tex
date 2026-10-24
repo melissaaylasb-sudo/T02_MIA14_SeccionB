@@ -1,0 +1,21 @@
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Del hallazgo exploratorio a las representaciones A, B y C.}
+\label{tab:puente-fe}
+\begin{tabularx}{\linewidth}{@{}YYY@{}}
+\toprule
+Hallazgo y evidencia & Interpretación & Decisión para el experimento \\
+\midrule
+Escalas heterogéneas y radio de 0,5~mm constante & La magnitud numérica influye en la regularización; una constante no distingue geometrías. & A: entradas originales, filtro de constantes y escalamiento dentro de entrenamiento. \\
+\addlinespace
+Ancho y altura de fibra combinables; momentos con asociación condicionada próxima a cero & La hipótesis es una representación geométrica no lineal, no una alta correlación individual. & B: añadir conjuntamente $bh^3/12$ y $hb^3/12$; comparar con A. \\
+\addlinespace
+$V_f+V_p$ constante; log-razón con $\rho$ global 0,828 y condicionado $-0,477$ & Relación dependiente de la arquitectura; representar proporción no garantiza mejora. & C: añadir $\ln(V_p/V_f)$ a B; comparar el incremento con B. \\
+\addlinespace
+Separación de cargas entre familias y coincidencia de factores & El agregado global puede ocultar diferencias dentro de familia. & Mantener el mismo agrupamiento en A--C y revisar error por arquitectura. \\
+\addlinespace
+Sin banderas IQR/MAD, pero con influencia OLS e incidencias geométricas & Ausencia de extremos univariados no asegura estabilidad del ajuste. & Conservar casos; evaluar errores individuales sin depurar observaciones para mejorar métricas. \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: análisis exploratorio y transformaciones de los cuadernos 02--03. Las propuestas son hipótesis que deben contrastarse con predicciones reservadas.
+\end{table}

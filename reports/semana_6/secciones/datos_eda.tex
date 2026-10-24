@@ -1,0 +1,94 @@
+\section{Variables y preparación de datos}
+\label{sec:datos}
+
+Se analiza la carga de primera falla de mallas pantográficas: las \emph{fibras} son los elementos alargados y los \emph{pivotes}, sus conectores deformables. Una familia agrupa estructuras con igual cantidad de celdas en Y ($4$, $5$ o $6$); dentro de ella pueden cambiar otras dimensiones. Se aplicaron ensayos de tracción con carga--descarga. La carga de primera falla es la fuerza asociada al primer evento de rotura identificado, que puede preceder a la rotura terminal \cite{venditti2025}. Las entradas geométricas, la respuesta objetivo y las variables de control se distinguen en la Tabla~\ref{tab:diccionario}.
+
+\input{tablas/EDA_diccionario.tex}
+
+La predicción se plantea antes del ensayo. Por ello, una carga posterior, un desplazamiento o una energía siguen siendo salidas aunque se correlacionen con la primera falla. Tampoco se utilizan los identificadores como predictores. Esta separación permite estudiar las respuestas experimentales en el EDA sin introducirlas indebidamente en la matriz de entrenamiento.
+
+\subsection{Curaduría: qué se revisó y qué se modificó}
+El notebook 01 convierte las asignaciones MATLAB en tablas, valida tipos y conserva los valores ausentes. La equivalencia entre extracción y tablas se comprobó valor a valor. La curaduría no generó geometrías ni fuerzas: normalizó la representación informática y definió qué campos podían pasar al análisis supervisado. La Tabla~\ref{tab:curaduria} muestra las acciones y su efecto.
+
+\input{tablas/EDA_calidad.tex}
+
+La geometría completa hace innecesario rellenar predictores en la tabla actual. La ausencia del objetivo no se interpreta como una fuerza nula o un ensayo sin daño. Del mismo modo, una coincidencia en celdas y alturas no prueba duplicación: el ancho o los volúmenes pueden diferir. Promediar esos registros habría mezclado geometrías sin evidencia de réplica física.
+
+El análisis predictivo utiliza la tabla preliminar que conserva el ancho declarado de fibra, necesario para construir los momentos; el esquema reciente de curaduría no selecciona esa columna. Se mantiene explícita esta diferencia de selección y no se interpreta como ausencia de la medida. Su conciliación documental permanece pendiente.
+
+En las respuestas energéticas se preservaron valores negativos y extremos para su revisión. El signo por sí solo no autoriza aplicar valor absoluto ni logaritmo. El volumen CAD tampoco se sustituyó por la suma de componentes: representan campos distintos. Estas decisiones delimitan la tabla analítica sin convertir una regla automática de calidad en una modificación del experimento.
+
+\section{Análisis exploratorio de geometría y respuesta}
+\label{sec:eda}
+
+\subsection{Análisis univariado de las entradas}
+Las distribuciones siguientes corresponden a la geometría con respuesta de primera falla disponible. Las alturas de fibra y pivote recorren niveles entre 1 y 1,4~mm, mientras que el ancho de fibra varía entre 1,41 y 2,40~mm. El radio de pivote permanece en 0,5~mm. La Figura~\ref{fig:eda-geometria} conserva las unidades y hace visibles los niveles discretos; el pequeño desplazamiento horizontal del panel de volumen CAD solo separa puntos superpuestos.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/EDA_geometria.png}
+\caption{Caracterización de las entradas geométricas. Las posiciones corresponden a valores declarados; los colores identifican familias. Los paneles distinguen dimensiones locales, arquitectura y volúmenes. Fuente: tabla analítica y perfil univariado existente.}
+\label{fig:eda-geometria}
+\end{figure}
+
+La longitud total de fibras toma 2685,82, 3178,56 y 3725,65~mm según la familia; la cantidad de pivotes toma 113, 171 y 241. Por tanto, longitud y conectores no exploran independientemente el diseño observado. Su repetición dentro de familia es una restricción geométrica relevante para interpretar correlaciones y para definir la validación.
+
+El volumen de fibras está entre 6259,11 y 6435,30~mm$^3$, con coeficiente de variación de 0,91\%; el de pivotes varía entre 88,71 y 264,90~mm$^3$, con 33,79\%. Ambos comparten la misma dispersión absoluta aproximada de 57,68~mm$^3$, pero sus niveles centrales son distintos. La variabilidad relativa, por sí sola, no demuestra mayor importancia predictiva de los pivotes.
+
+La suma declarada $V_f+V_p=6524{,}01$~mm$^3$ es constante: cuando un componente aumenta, el otro disminuye en igual magnitud. El volumen CAD del espécimen varía entre 6122,21 y 6607,73~mm$^3$. Son definiciones que deben conservarse separadas. El radio constante no permite estimar una asociación estadística en esta campaña; eso no implica irrelevancia mecánica del radio fuera de ella.
+
+\subsection{Distribución de la carga de primera falla}
+La primera falla abarca de 47,55 a 215,52~N. Su mediana es 101,89~N, la media 126,12~N y el rango intercuartílico 118,49~N. La diferencia entre media y mediana y la amplia dispersión justifican describir centro, cuantiles y distribución completa. La curva acumulada de la Figura~\ref{fig:eda-objetivo} muestra qué fracción de respuestas queda por debajo de cada fuerza, sin convertir la carga continua en una clase.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/EDA_primera_falla.png}
+\caption{Distribución global de primera falla y comparación por familia. El intervalo sombreado delimita los cuartiles; las cajas y puntos muestran la distribución condicionada por arquitectura. No son predicciones del modelo.}
+\label{fig:eda-objetivo}
+\end{figure}
+
+Las medianas son 67,12, 100,77 y 205,34~N para las familias 4, 5 y 6. Las familias 4 y 5 presentan superposición parcial, mientras que la familia 6 ocupa un nivel de carga claramente separado. El 96,55\% de la variación total se asocia descriptivamente con diferencias entre familias y el 3,45\% con variación dentro de ellas. Esta descomposición no es una precisión predictiva ni atribuye ese porcentaje a un efecto causal de las celdas.
+
+El resultado anticipa un problema de evaluación: un buen ajuste global puede aprovechar la separación de familias y aun cometer errores relevantes entre diseños de la misma familia. Por eso se conservan la comparación global, el análisis condicionado y la evaluación posterior al reservar arquitecturas completas.
+
+\subsection{Análisis bivariado: entradas y primera falla}
+Se recuperan Pearson, para asociación lineal, y Spearman, para asociación de rangos, de las tablas del notebook 02. La Figura~\ref{fig:eda-asociaciones} muestra los coeficientes junto con un diagrama de volumen de pivotes frente a carga. El radio se marca como no calculable porque es constante. En la columna condicionada tampoco son calculables los descriptores que quedan constantes dentro de cada familia.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/EDA_asociaciones.png}
+\caption{Asociaciones con la primera falla. Rangos condicionados: se resta la media de los rangos globales dentro de cada familia y se correlacionan los residuos. El guion indica un coeficiente no identificable por falta de variación; no significa cero. Fuente: tablas de asociaciones globales y condicionadas.}
+\label{fig:eda-asociaciones}
+\end{figure}
+
+Las celdas en Y presentan $r=0{,}936$ y $\rho=0{,}931$ con la carga. Longitud de fibras y cantidad de pivotes comparten $\rho=0{,}931$ porque ordenan las mismas familias. No son tres evidencias independientes del mecanismo de rotura. El ancho de fibra tiene $\rho=-0{,}552$ global, pero cae a $-0{,}034$ tras condicionar; la altura de fibra permanece próxima a cero. Una asociación marginal débil no descarta interacciones ni demuestra que una dimensión sea inútil para un modelo.
+
+El volumen de pivotes cambia de $\rho=0{,}828$ global a $-0{,}477$ condicionado. El volumen CAD pasa de $0{,}799$ a $-0{,}265$. La dirección global está asociada a la composición de familias y no puede interpretarse como el efecto de aumentar volumen manteniendo lo demás fijo. El gráfico conserva puntos de cada familia para mostrar esa diferencia de escala de comparación.
+
+La inferencia condicionada de los volúmenes tiene $q_{\mathrm{BH}}=0{,}0624$, por encima del criterio de 0,05 utilizado en el EDA. Por tanto, se conserva como indicio exploratorio, no como relación confirmada. La razón logarítmica puede proponerse como representación de proporciones, pero su asociación no demuestra que vaya a reducir el error predictivo.
+
+\subsection{Dependencias entre variables y dimensión efectiva}
+La matriz geométrica original centrada tiene rango siete entre sus nueve columnas no constantes. El PCA estandarizado concentra 65,98\% de la varianza en la primera componente, 83,75\% en las dos primeras y 95,59\% en las tres primeras. Esto caracteriza la concentración de variación geométrica; no es varianza explicada del objetivo ni equivale a un $R^2$ predictivo.
+
+Estas dependencias aconsejan no interpretar cada coeficiente como una contribución física aislada. En este sprint se mantiene la referencia A y se examinan solamente adiciones B y C. El diagnóstico multivariado informa esa decisión, pero no sustituye la comparación de errores ni incorpora PCA al pipeline predictivo.
+
+\subsection{Valores atípicos, influencia y coherencia geométrica}
+Las reglas IQR y MAD no marcaron valores atípicos en la geometría variable ni en la primera falla. IQR contrasta extremos con el intervalo entre cuartiles; MAD utiliza desviaciones absolutas respecto de la mediana. Cuando una variable es constante, una puntuación que divide por su dispersión no es calculable. Por ello, una ausencia de bandera no se interpreta automáticamente como certificación de normalidad o calidad experimental.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\linewidth]{figures/EDA_influencia.png}
+\caption{Diagnósticos complementarios. Izquierda: casos exportados con mayor influencia en la tendencia OLS descriptiva; Cook mide sensibilidad del ajuste, no rareza univariada. Derecha: discrepancia del volumen de pivotes respecto a cilindros ideales; el umbral de 5\% es de revisión, no tolerancia metrológica. Las etiquetas identifican casos.}
+\label{fig:eda-influencia}
+\end{figure}
+
+Los casos 1 y 3 presentan distancias de Cook de 0,332 y 0,183 en la tendencia OLS utilizada por el EDA. Un caso puede influir en el ajuste por su posición conjunta en las entradas y por su residuo, aunque ninguna variable aislada sea extrema. Este diagnóstico no es una métrica de Ridge ni acredita un error de medición. Se conservan los casos y se examina posteriormente la sensibilidad de los errores.
+
+La comparación $V_p\approx N_p\pi r_p^2h_p$ señala discrepancias en los casos 23, 25 y 26. Las fórmulas representan cilindros ideales y no autorizan sustituir los volúmenes declarados. Como los volúmenes alimentan una característica derivada, esas incidencias condicionan su interpretación y motivan conciliación geométrica. No se eliminaron observaciones, no se recortaron extremos y no se escogió una versión de datos por mejorar resultados.
+
+\subsection{Síntesis: del EDA a las características}
+El EDA produjo decisiones de preparación y preguntas comprobables sobre la representación. La Tabla~\ref{tab:puente-fe} vincula la evidencia con A y las dos variantes que se evalúan. Las derivadas utilizan únicamente geometría previa al ensayo; su definición determinística no incorpora el objetivo. Sin embargo, su propuesta se apoyó en el EDA completo, de modo que la comparación posterior sigue siendo exploratoria \cite{cawley2010}.
+
+\input{tablas/EDA_puente.tex}
+
+\FloatBarrier

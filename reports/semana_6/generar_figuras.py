@@ -24,15 +24,8 @@ ROOT = HERE.parents[1]
 FAMILY_COLORS = {4: "#28547A", 5: "#A86527", 6: "#367663"}
 BLUE, GREEN, RED = "#385C78", "#367663", "#A25B50"
 SOURCE_PATHS = {
-    "datos": "data/processed/preliminary/model_table.csv",
     "metricas": "reports/feature_engineering/tables/comparacion_experimentos.csv",
     "predicciones": "reports/feature_engineering/tables/predicciones_oof.csv",
-    "pareadas": "reports/feature_engineering/tables/contrastes_pareados.csv",
-    "folds": "reports/feature_engineering/tables/metricas_folds.csv",
-    "correlaciones_globales": "reports/eda/tables/08_asociaciones_globales.csv",
-    "correlaciones_condicionadas": "reports/eda/tables/09_asociaciones_condicionadas.csv",
-    "modelos": "reports/feature_engineering/tables/comparacion_modelos.csv",
-    "predicciones_modelos": "reports/feature_engineering/tables/predicciones_modelos_oof.csv",
 }
 
 
@@ -90,16 +83,16 @@ def plot_mae(data: dict, output: Path) -> dict:
         axes, ["configuracion", "familia"],
         ["a) Configuración excluida", "b) Familia excluida"], [21, 83]
     ):
-        selected = frame[frame.protocolo.eq(protocol)].set_index("experimento").loc[list("ABCD")]
+        selected = frame[frame.protocolo.eq(protocol)].set_index("experimento").loc[list("ABC")]
         vals = selected.MAE_N.to_numpy()
-        ax.bar(list("ABCD"), vals, color=[BLUE, GREEN, BLUE, BLUE], width=0.6)
+        ax.bar(["Base A", "Var. 1 B", "Var. 2 C"], vals, color=[BLUE, GREEN, BLUE], width=0.6)
         for pos, value in enumerate(vals):
             ax.text(pos, value + ymax * .025, decimal_text(value, 2), ha="center", va="bottom")
         ax.set(title=title, xlabel="Conjunto de características", ylabel="MAE [N]", ylim=(0, ymax))
         ax.set_axisbelow(True)
         ax.grid(axis="y", color="#E4E4E4", linewidth=.6)
     return save(fig, output, "01_mae", ["metricas"],
-                "MAE OOF agregado por caso de las representaciones A–D, con Ridge fijo. "
+                "MAE OOF agregado por caso de las representaciones A, B y C, con Ridge fijo. "
                 "Los paneles muestran protocolos distintos y escalas verticales distintas.",
                 "B reduce el MAE de configuración de 13.246554 a 12.834625 N; "
                 "el MAE de familia permanece cercano a 58 N. Sin barras inferenciales.")
@@ -126,139 +119,15 @@ def plot_diagnostic(data: dict, output: Path) -> dict:
     rx.set(title="b) Residuales", xlabel="Carga predicha [N]",
            ylabel="Observada − predicha [N]", xlim=(35, 235), ylim=(-43, 43))
     rx.set_xticks([50, 100, 150, 200]); rx.set_yticks([-40, -20, 0, 20, 40])
-    for _, row in subset[subset.Case_n.isin([1, 17, 22])].iterrows():
-        label = f"{int(row.Case_n)}"
-        offset = (5, -11) if int(row.Case_n) == 17 else (5, 5)
-        ax.annotate(label, (row.observado_N, row.predicho_N), xytext=offset,
-                    textcoords="offset points", fontsize=9)
-        rx.annotate(label, (row.predicho_N, row.residuo_N), xytext=offset,
-                    textcoords="offset points", fontsize=9)
     for panel in axes:
         panel.set_axisbelow(True); panel.grid(color="#E7E7E7", linewidth=.6)
     handles, labels = ax.get_legend_handles_labels()
     fig.legend(handles, labels, loc="outside lower center", ncols=3, frameon=False)
     return save(fig, output, "02_diagnostico", ["predicciones"],
                 "Predicciones OOF de B al excluir configuraciones. Identidad en panel a; "
-                "residuo observado menos predicho y referencia cero en b. Etiquetas: casos 1, 17 y 22.",
+                "residuo observado menos predicho y referencia cero en b.",
                 "Las familias ocupan bandas distintas; no se trata de predicciones de entrenamiento. "
                 "Residuo positivo equivale a subestimación.")
-
-
-def plot_paired(data: dict, output: Path) -> dict:
-    d = data["pareadas"]
-    d = d[d.protocolo.eq("configuracion") & d.experimento.eq("B") & d.referencia.eq("A")].copy()
-    keys = data["folds"]
-    keys = keys[keys.protocolo.eq("configuracion") & keys.experimento.eq("A")][["fold", "grupo"]]
-    d = d.merge(keys, on="fold", validate="one_to_one").sort_values("fold")
-    assert len(d) == 24
-    fig, ax = plt.subplots(figsize=(7.1, 4.55), layout="constrained")
-    positions = np.arange(len(d))
-    ax.barh(positions, d.delta_MAE_N, color=np.where(d.delta_MAE_N < 0, GREEN, RED), height=.72)
-    ax.axvline(0, color="#333333", linewidth=.85)
-    group_labels = d.grupo.str.replace("|", " / ", regex=False).str.replace(".", ",", regex=False)
-    ax.set_yticks(positions, group_labels, fontsize=8.5)
-    ax.invert_yaxis()
-    ax.set(xlabel="ΔMAE del grupo: B − A [N]", ylabel="Configuración: Y / altura fibra / altura pivote",
-           xlim=(-6.7, 7.3), title="Diferencias pareadas por configuración")
-    ax.set_xticks([-6, -4, -2, 0, 2, 4, 6])
-    ax.set_axisbelow(True); ax.grid(axis="x", color="#E7E7E7", linewidth=.6)
-    ax.text(.015, .985, "Menor error con B", color=GREEN, transform=ax.transAxes, va="top", fontsize=9.5)
-    ax.text(.985, .985, "Mayor error con B", color=RED, transform=ax.transAxes, va="top", ha="right", fontsize=9.5)
-    return save(fig, output, "03_pareadas", ["pareadas", "folds"],
-                "Diferencia de MAE por grupo, variante B menos A. Alturas en mm, Y como conteo. "
-                "Cada barra corresponde al mismo grupo reservado para ambas representaciones.",
-                "B mejora en 15 de 24 grupos. Los grupos no son experimentos independientes: "
-                "sus conjuntos de entrenamiento se superponen.")
-
-
-def plot_eda(data: dict, output: Path) -> dict:
-    frame = data["datos"]
-    target = "First_Failure_Load_N"
-    global_corr = data["correlaciones_globales"].set_index("variable")
-    conditional = data["correlaciones_condicionadas"].set_index("variable")
-    rho = [global_corr.loc["Pivot_total_volume", "Spearman"],
-           conditional.loc["Pivot_total_volume", "rho_condicionado"]]
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.65), layout="constrained",
-                             gridspec_kw={"width_ratios": [1.1, 1]})
-    ax, cx = axes
-    for position, family in enumerate([4, 5, 6], start=1):
-        group = frame[frame.n_cells_Y.eq(family)].sort_values("Case_n")
-        values = group[target].to_numpy()
-        color = FAMILY_COLORS[family]
-        bp = ax.boxplot([values], positions=[position], widths=.48, showfliers=False,
-                        patch_artist=True, medianprops={"color": "#222222", "linewidth": 1.3},
-                        boxprops={"linewidth": .8}, whiskerprops={"linewidth": .8},
-                        capprops={"linewidth": .8})
-        bp["boxes"][0].set(facecolor=color, alpha=.2)
-        # Fixed offsets avoid a new random state and preserve the actual measured y-values.
-        ax.scatter(position + np.linspace(-.14, .14, len(values)), values, s=24,
-                   color=color, edgecolors="white", linewidth=.3, zorder=3)
-    ax.set(title="a) Primera falla por familia", xlabel="Celdas en Y (familia)",
-           ylabel="Carga de primera falla [N]", ylim=(35, 230))
-    ax.set_xticks([1, 2, 3], ["4", "5", "6"])
-    ax.set_axisbelow(True); ax.grid(axis="y", color="#E7E7E7", linewidth=.6)
-    cx.bar([0, 1], rho, color=[BLUE, RED], width=.55)
-    cx.axhline(0, color="#777777", linewidth=.8)
-    for i, value in enumerate(rho):
-        cx.text(i, value + (.04 if value > 0 else -.04), decimal_text(value, 3),
-                ha="center", va="bottom" if value > 0 else "top")
-    cx.set_xticks([0, 1], ["Global", "Condicionada\npor familia"])
-    cx.set(title="b) Volumen de pivotes y carga", ylabel="Asociación de rangos", ylim=(-1, 1))
-    cx.set_yticks([-1, -.5, 0, .5, 1]); cx.set_axisbelow(True)
-    cx.grid(axis="y", color="#E7E7E7", linewidth=.6)
-    return save(fig, output, "04_eda", ["datos", "correlaciones_globales", "correlaciones_condicionadas"],
-                "a) Valores individuales, mediana e intervalo intercuartílico de la primera falla por familia. "
-                "b) Spearman global y correlación entre rangos globales residualizados por familia "
-                "del volumen de pivotes con el objetivo.",
-                "El cambio de signo de +0.828017 a −0.477342 muestra dependencia de la arquitectura; "
-                "no es una relación causal ni una prueba de mejora predictiva.")
-
-
-def plot_models(data: dict, output: Path) -> dict:
-    """Compara los cinco regresores sobre A y comprueba las métricas OOF guardadas."""
-    frame = data["modelos"]
-    predictions = data["predicciones_modelos"]
-    order = ["Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess"]
-    labels = ["Ridge", "Elastic Net", "SVR (RBF)", "Bosque aleatorio", "Proceso gaussiano"]
-    target = data["datos"].set_index("Case_n").First_Failure_Load_N
-    assert set(frame.modelo) == set(order)
-    assert frame.representacion.eq("A").all()
-    assert not frame.duplicated(["protocolo", "modelo"]).any()
-    for _, row in frame.iterrows():
-        p = predictions[predictions.protocolo.eq(row.protocolo) & predictions.modelo.eq(row.modelo)]
-        assert p.Case_n.is_unique and set(p.Case_n) == set(target.index)
-        np.testing.assert_allclose(p.observado_N, target.loc[p.Case_n], rtol=1e-10, atol=1e-10)
-        residual = p.observado_N.to_numpy() - p.predicho_N.to_numpy()
-        errors = np.abs(residual)
-        recomputed = {
-            "MAE_N": errors.mean(), "RMSE_N": np.sqrt(np.mean(residual ** 2)),
-            "MedAE_N": np.median(errors),
-            "R2_OOF": 1 - np.sum(residual ** 2) / np.sum((p.observado_N - p.observado_N.mean()) ** 2),
-        }
-        for metric, value in recomputed.items():
-            np.testing.assert_allclose(row[metric], value, rtol=1e-10, atol=1e-10)
-    fig, axes = plt.subplots(1, 2, figsize=(7.1, 3.5), sharey=True, layout="constrained")
-    for ax, protocol, title, xmax in zip(
-        axes, ["configuracion", "familia"],
-        ["a) Configuración excluida", "b) Familia excluida"], [20, 100]
-    ):
-        values = frame[frame.protocolo.eq(protocol)].set_index("modelo").loc[order, "MAE_N"].to_numpy()
-        positions = np.arange(len(order))
-        ax.barh(positions, values, color=BLUE, height=.55)
-        for i, value in enumerate(values):
-            ax.text(value + xmax * .025, i, decimal_text(value, 2), va="center", fontsize=10)
-        ax.set(title=title, xlabel="MAE [N]", xlim=(0, xmax))
-        ax.set_yticks(positions, labels)
-        ax.set_axisbelow(True); ax.grid(axis="x", color="#E7E7E7", linewidth=.6)
-    axes[0].invert_yaxis()
-    axes[0].set_xticks([0, 5, 10, 15, 20]); axes[1].set_xticks([0, 25, 50, 75, 100])
-    return save(fig, output, "05_modelos", ["modelos", "predicciones_modelos", "datos"],
-                "MAE OOF de cinco regresores sobre el conjunto A de geometría original. "
-                "Orden idéntico y las mismas particiones dentro de cada protocolo; los paneles "
-                "emplean escalas horizontales distintas. Métricas recalculadas desde predicciones guardadas.",
-                "Bosque aleatorio y Ridge difieren solo 0.014053 N al excluir configuraciones. "
-                "Al excluir familias, el menor MAE es Elastic Net (57.112995 N); los cinco R² "
-                "OOF son negativos. No se realizó reentrenamiento ni búsqueda de hiperparámetros.")
 
 
 def main() -> None:
@@ -268,7 +137,7 @@ def main() -> None:
     output = args.output.resolve(); output.mkdir(parents=True, exist_ok=True)
     style()
     data = {key: pd.read_csv(ROOT / path) for key, path in SOURCE_PATHS.items()}
-    figures = [function(data, output) for function in [plot_mae, plot_diagnostic, plot_paired, plot_eda, plot_models]]
+    figures = [function(data, output) for function in [plot_mae, plot_diagnostic]]
     manifest = {
         "purpose": "Figuras académicas de síntesis del sprint Semana 6; sin nuevos modelos ni predicciones.",
         "generator": "reports/semana_6/generar_figuras.py", "generator_sha256": digest(Path(__file__)),

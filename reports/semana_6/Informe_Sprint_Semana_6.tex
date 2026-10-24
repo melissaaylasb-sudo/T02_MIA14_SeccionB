@@ -60,7 +60,9 @@
 \vspace{0.8cm}
 {\Large\bfseries INFORME DE SPRINT — SEMANA 6\par}
 \vspace{0.5cm}
-{\large\bfseries Análisis exploratorio, ingeniería de características y evaluación comparativa de modelos de regresión para la predicción de la carga de primera falla en estructuras pantográficas\par}
+{\large\bfseries Análisis exploratorio e ingeniería de características para predecir la carga de primera falla en estructuras pantográficas\par}
+\vspace{0.25cm}
+{Línea base y variantes de representación de los datos\par}
 \vspace{0.85cm}
 {\large Trabajo de Investigación II\par}
 \vspace{0.8cm}
@@ -78,15 +80,9 @@
 \tableofcontents
 \clearpage
 \pagenumbering{arabic}
-\section*{Resumen}
-\phantomsection
-\addcontentsline{toc}{section}{Resumen}
 \label{body:first}
-Este sprint evalúa cómo representar la geometría para predecir la carga de primera falla en estructuras pantográficas. El EDA identifica dependencias de diseño y asociaciones que cambian entre familias. Se contrastan cuatro conjuntos de características con Ridge fijo y cinco regresores con geometría original, mediante predicciones fuera de muestra por grupos. Añadir dos momentos de sección reduce el MAE de 13,247 a 12,835~N (3,11\%); la razón logarítmica posterior no mejora el resultado y retirar tres columnas eleva el error a 17,035~N. Bosque aleatorio y Ridge presentan MAE casi idénticos, 13,233 y 13,247~N. Al reservar familias completas, todos los modelos obtienen $R^2$ negativo. Se mantiene la referencia geométrica y los momentos continúan en evaluación. El informe concentra la evidencia del EDA, las transformaciones, la arquitectura de los regresores y la interpretación de sus errores; las conclusiones son exploratorias y requieren validación independiente.
-
-\noindent\textbf{Palabras clave:} estructuras pantográficas; primera falla; ingeniería de características; regresión Ridge; validación por grupos.
-\input{secciones/contexto_y_features.tex}
-\input{secciones/arquitectura_modelos.tex}
+\input{secciones/datos_eda.tex}
+\input{secciones/features.tex}
 \input{secciones/evaluacion_y_discusion.tex}
 \FloatBarrier
 \label{body:last}
@@ -95,7 +91,4 @@ Este sprint evalúa cómo representar la geometría para predecir la carga de pr
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{IEEEtran}
 {\small\setstretch{1.0}\bibliography{referencias}}
-\clearpage
-\appendix
-\input{secciones/anexos.tex}
 \end{document}

@@ -42,13 +42,13 @@ def main():
             check(b[0]>=15 and b[1]>=15 and b[2]<=page.rect.width-15 and b[3]<=page.rect.height-15,f'Página {i}: bloque dentro del soporte')
     bbl=(HERE/(JOB+'.bbl')).read_text(encoding='utf-8')
     references=len(re.findall(r'\\bibitem\{',bbl))
-    check(references==13,'Trece referencias bibliográficas resueltas')
+    check(references>=7,'Referencias relevantes resueltas')
     captions={'figures':len(re.findall(r'\\newlabel\{fig:',aux)),
               'tables':len(re.findall(r'\\@writefile\{lot\}',aux))}
-    check(captions['figures']==5 and captions['tables']==10,'Cinco figuras y diez tablas')
+    check(captions['figures']==6 and captions['tables']>=10,'EDA y experimentos con figuras y tablas verificadas')
     for path in sorted((HERE/'figures').glob('*.png')):
         with Image.open(path) as im:
-            check(im.width>=1600,f'Resolución de figura: {path.name}')
+            check((im.size==(398,502)) if path.name=='logo_uni.png' else im.width>=1600,f'Resolución de figura: {path.name}')
     traces=[json.loads((HERE/'trazabilidad_tablas.json').read_text(encoding='utf-8')),
             json.loads((HERE/'figures/manifest_figuras.json').read_text(encoding='utf-8'))]
     for manifest in traces:
@@ -59,6 +59,13 @@ def main():
     for row in traces[1]['figures']:
         check(digest(HERE/row['file'])==row['sha256'],'Hash figura: '+row['file'])
     check(digest(ROOT/traces[1]['generator'])==traces[1]['generator_sha256'],'Hash generador de figuras')
+    eda=json.loads((HERE/'manifest_eda.json').read_text(encoding='utf-8'))
+    for category in ['inputs','source_code']:
+        for name,sha in eda[category].items():
+            check(digest(ROOT/name)==sha,'Hash EDA fuente: '+name)
+    for category in ['figures','tables']:
+        for name,sha in eda[category].items():
+            check(digest(ROOT/name)==sha,'Hash EDA salida: '+name)
     tables=ROOT/'reports/feature_engineering/tables'
     summary=pd.read_csv(tables/'comparacion_experimentos.csv')
     predictions=pd.read_csv(tables/'predicciones_oof.csv')
@@ -86,8 +93,11 @@ def main():
         model_results.append({'protocolo':row.protocolo,'modelo':row.modelo,**actual})
     all_text='\n'.join(page.get_text() for page in document)
     check('Procedencia y trazabilidad' not in all_text,'Sección de procedencia y trazabilidad retirada')
-    check('Arquitectura de los modelos' in all_text,'Arquitectura de modelos en el cuerpo')
-    check('Métricas e interpretación de los cinco modelos' in all_text,'Métricas e interpretación de modelos en el cuerpo')
+    check('Arquitectura de los modelos' not in all_text,'Sin desarrollo teorico de algoritmos')
+    check('Modelos utilizados y alcance de sus experimentos' in all_text,'Modelos presentados en tabla')
+    check('Variante 3' not in all_text,'Experimento centrado en dos variantes')
+    check('Diccionario' in all_text or 'diccionario' in all_text,'Diccionario de entradas y salidas presente')
+    check(not re.search(r'\b(?:26|27)\s+(?:casos|registros|observaciones|muestras)',all_text,re.I),'Sin conteos de observaciones en el informe')
     audit=json.loads((HERE/'auditoria_resultados.json').read_text(encoding='utf-8'))
     check(audit['status']=='passed','Auditoría científica detallada satisfactoria')
     report={

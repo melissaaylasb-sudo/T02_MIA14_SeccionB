@@ -1,4 +1,4 @@
-"""Exporta tablas LaTeX desde resultados existentes; no ajusta ningún modelo."""
+"""Exporta el experimento A/B/C y los modelos de referencia; sin entrenar."""
 from pathlib import Path
 import csv
 import hashlib
@@ -6,68 +6,57 @@ import json
 
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[1]
-OUT = HERE / 'tablas'
+OUT = HERE / "tablas"
+SOURCE = ROOT / "reports/feature_engineering/tables"
 OUT.mkdir(exist_ok=True)
-SOURCE = ROOT / 'reports/feature_engineering/tables'
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 def read(name):
-    with (SOURCE / name).open(encoding='utf-8-sig', newline='') as f:
+    with (SOURCE / name).open(encoding="utf-8-sig", newline="") as f:
         return list(csv.DictReader(f))
 
-def num(v, digits=3):
-    return f'{float(v):.{digits}f}'.replace('.', '{,}')
+def num(value, digits=3):
+    return f"{float(value):.{digits}f}".replace(".", "{,}")
 
-summary = read('comparacion_experimentos.csv')
-primary = {r['experimento']: r for r in summary if r['protocolo']=='configuracion'}
-secondary = {r['experimento']: r for r in summary if r['protocolo']=='familia'}
-decisions = {'A':'Conservar', 'B':'Evaluar', 'C':'Descartar', 'D':'Descartar'}
-lines=[]
-for k in 'ABCD':
-    r=primary[k]
-    vals=[k, r['n_features_min'], num(r['MAE_N']), num(r['RMSE_N']), num(r['R2_OOF']),
-          num(r['delta_MAE_vs_A_N']), num(r['MAE_fold_sd_N']),num(r['tiempo_s']),decisions[k]]
-    lines.append(' & '.join(vals)+r' \\')
-(OUT/'principal.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-lines=[]
-for k in 'ABCD':
-    r=secondary[k]
-    lines.append(' & '.join([k,num(r['MAE_N']),num(r['RMSE_N']),num(r['MedAE_N']),num(r['R2_OOF'])])+r' \\')
-(OUT/'familias.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-folds=[r for r in read('metricas_folds.csv') if r['protocolo']=='configuracion' and r['experimento'] in 'ABCD']
-groups=sorted({int(r['fold']) for r in folds})
-lines=[]
-for f in groups:
-    rows={r['experimento']:r for r in folds if int(r['fold'])==f}
-    a,b=rows['A'],rows['B']
-    group=a['grupo'].replace('|',r' / ').replace('.',',')
-    delta=float(b['MAE_N'])-float(a['MAE_N'])
-    vals=[str(f),group,a['n_test']]+[num(rows[k]['MAE_N']) for k in 'ABCD']+[num(delta)]
-    lines.append(' & '.join(vals)+r' \\')
-(OUT/'folds.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-model_rows=read('comparacion_modelos.csv')
-model_order=['Ridge','ElasticNet','SVR_RBF','RandomForest','GaussianProcess']
-model_metrics=['MAE_N','RMSE_N','MedAE_N','R2_OOF','tiempo_s']
-for protocol, filename in [('configuracion','modelos.tex'),('familia','modelos_familias.tex')]:
-    models={r['modelo']:r for r in model_rows if r['protocolo']==protocol}
-    assert set(models)==set(model_order)
-    lines=[]
-    for name in model_order:
-        r=models[name]
-        assert r['representacion']=='A'
-        vals=[r['nombre_modelo']]+[num(r[c]) for c in model_metrics]
-        lines.append(' & '.join(vals)+r' \\')
-    (OUT/filename).write_text('\n'.join(lines)+'\n',encoding='utf-8')
-manifest={
-    'purpose':'Tablas derivadas de CSV de la ejecución histórica; sin reentrenamiento',
-    'reference_commit':'8fdb7961d7eaaaebd9651d0b9a044168893d448a',
-    'generator_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-    'model_tables':{
-      'tablas/modelos.tex':{'protocol':'configuracion','representation':'A','columns':['Modelo','MAE [N]','RMSE [N]','MedAE [N]','R2 OOF','Tiempo [s]']},
-      'tablas/modelos_familias.tex':{'protocol':'familia','representation':'A','columns':['Modelo','MAE [N]','RMSE [N]','MedAE [N]','R2 OOF','Tiempo [s]']}
-    },
-    'source_sha256':{str((SOURCE/n).relative_to(ROOT)).replace('\\','/'):hashlib.sha256((SOURCE/n).read_bytes()).hexdigest()
-      for n in ['comparacion_experimentos.csv','metricas_folds.csv','comparacion_modelos.csv']},
-    'output_sha256':{str(p.relative_to(HERE)).replace('\\','/'):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.tex'))}
+outputs = []
+def write(name, rows):
+    path = OUT / name
+    path.write_text("\n".join(" & ".join(row) + r" \\" for row in rows) + "\n", encoding="utf-8")
+    outputs.append(path)
+
+summary = read("comparacion_experimentos.csv")
+labels = {"A": "Línea base (A)", "B": "Variante 1 (B)", "C": "Variante 2 (C)"}
+for protocol, filename in [("configuracion", "principal.tex"), ("familia", "familias.tex")]:
+    selected = {r["experimento"]: r for r in summary if r["protocolo"] == protocol}
+    metrics = ["MAE_N", "RMSE_N", "MedAE_N", "R2_OOF"]
+    if protocol == "configuracion":
+        metrics.append("tiempo_s")
+    write(filename, [[labels[k]] + [num(selected[k][m]) for m in metrics] for k in "ABC"])
+
+models = {r["modelo"]: r for r in read("comparacion_modelos.csv") if r["protocolo"] == "configuracion"}
+order = ["Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess"]
+assert set(models) == set(order)
+names = ["Ridge", "Elastic Net", "SVR (RBF)", "Bosque aleatorio", "Proceso gaussiano"]
+metrics = ["MAE_N", "RMSE_N", "MedAE_N", "R2_OOF", "tiempo_s"]
+write("modelos.tex", [[name] + [num(models[k][m]) for m in metrics] for name, k in zip(names, order)])
+
+families = {(r["familia"], r["experimento"]): r for r in read("errores_familia.csv") if r["protocolo"] == "configuracion"}
+write("error_familia.tex", [
+    [f"Y = {family}"] + [num(families[(str(family), k)]["MAE_N"]) for k in "ABC"]
+    + [num(families[(str(family), "B")]["sesgo_N"])] for family in [4, 5, 6]
+])
+
+sources = ["comparacion_experimentos.csv", "comparacion_modelos.csv", "errores_familia.csv"]
+manifest = {
+    "purpose": "Tablas del sprint centradas en A, B y C; resultados históricos sin reentrenamiento.",
+    "reference_commit": "8fdb7961d7eaaaebd9651d0b9a044168893d448a",
+    "generator": "reports/semana_6/generar_tablas.py",
+    "generator_sha256": digest(Path(__file__)),
+    "representations": list("ABC"),
+    "source_sha256": {(SOURCE / name).relative_to(ROOT).as_posix(): digest(SOURCE / name) for name in sources},
+    "output_sha256": {path.relative_to(HERE).as_posix(): digest(path) for path in outputs}
 }
-(HERE/'trazabilidad_tablas.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Tablas exportadas y fuentes identificadas por SHA-256.')
+(HERE / "trazabilidad_tablas.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+print("Exportadas cuatro tablas: variantes, familias, errores locales y modelos.")

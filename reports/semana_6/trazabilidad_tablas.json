@@ -1,43 +1,22 @@
 {
-  "purpose": "Tablas derivadas de CSV de la ejecución histórica; sin reentrenamiento",
+  "purpose": "Tablas del sprint centradas en A, B y C; resultados históricos sin reentrenamiento.",
   "reference_commit": "8fdb7961d7eaaaebd9651d0b9a044168893d448a",
-  "generator_sha256": "c7ba650b2892a966d504df3402194490f6ef07db40984a9a200b8b8a61b3fda8",
-  "model_tables": {
-    "tablas/modelos.tex": {
-      "protocol": "configuracion",
-      "representation": "A",
-      "columns": [
-        "Modelo",
-        "MAE [N]",
-        "RMSE [N]",
-        "MedAE [N]",
-        "R2 OOF",
-        "Tiempo [s]"
-      ]
-    },
-    "tablas/modelos_familias.tex": {
-      "protocol": "familia",
-      "representation": "A",
-      "columns": [
-        "Modelo",
-        "MAE [N]",
-        "RMSE [N]",
-        "MedAE [N]",
-        "R2 OOF",
-        "Tiempo [s]"
-      ]
-    }
-  },
+  "generator": "reports/semana_6/generar_tablas.py",
+  "generator_sha256": "17bdd21214ce52945e89437da40f06dc3e68c79210c815ed7c6760d2a4a28afd",
+  "representations": [
+    "A",
+    "B",
+    "C"
+  ],
   "source_sha256": {
     "reports/feature_engineering/tables/comparacion_experimentos.csv": "2c765cae1333c92d8f761075225199a4124f541e5e1745a47a547da930182a75",
-    "reports/feature_engineering/tables/metricas_folds.csv": "b3aa51f98addc40e877c50c605599c74721eaa29037590398c51f688194543b6",
-    "reports/feature_engineering/tables/comparacion_modelos.csv": "f02b2d77781662775f9dbeb83d0dd100d920755014e2dcf233f59624ba491434"
+    "reports/feature_engineering/tables/comparacion_modelos.csv": "f02b2d77781662775f9dbeb83d0dd100d920755014e2dcf233f59624ba491434",
+    "reports/feature_engineering/tables/errores_familia.csv": "dd4c86a43c1778db82e3cfcd482773054c5c48c192cef46d8d6d09aed3dc5d59"
   },
   "output_sha256": {
-    "tablas/familias.tex": "21717f103d9924eb39c887022987ad52f92612b50ffa07cd5cccfe74b2232bdc",
-    "tablas/folds.tex": "f5d8182f1fc9b201f97f30ab2b0a95de6666923d4ed0ae5a563e598bfccc2d06",
-    "tablas/modelos.tex": "1338bdeb3dafcd5928232edc15f6f39757ddb3b1e1934d6c47f418b1fd79a6c8",
-    "tablas/modelos_familias.tex": "0b6a6d5cdf0bed16d97e852e35f37efe82e7056f8f6f3012558eeaff9634cb8a",
-    "tablas/principal.tex": "900c7ecc7b59946fe2428cd04801744acf76c2904f7988128be0ad65c9aed5d6"
+    "tablas/principal.tex": "d4a94a806fdc48fb06953d893be56acdb3e9b2d50eabf6b5d22e246eebd599ba",
+    "tablas/familias.tex": "d5ff5872170c5a40c885843260a945571c61d6fb000c565a011c7391b1d42d5c",
+    "tablas/modelos.tex": "31ea86d3d737f3344b6184498219a8ed2d8f4024d76b1f41f2f7fa35a2724583",
+    "tablas/error_familia.tex": "577a0fc34d146c5bc4d257cfba546489a7d9ee970368eadd77ad520a2019fe49"
   }
 }

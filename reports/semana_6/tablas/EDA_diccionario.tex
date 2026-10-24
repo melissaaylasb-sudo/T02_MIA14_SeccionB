@@ -1,0 +1,31 @@
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Diccionario de variables del análisis. Las salidas posteriores se excluyen de los predictores.}
+\label{tab:diccionario}
+\begin{tabularx}{\linewidth}{@{}p{3.3cm}lYl@{}}
+\toprule
+Variable & Unidad & Significado & Rol \\
+\midrule
+Celdas en Y & conteo & Celdas de la malla en esa dirección; define familia. & Entrada \\
+Altura de fibra & mm & Altura de la sección rectangular, $h$. & Entrada \\
+Ancho de fibra & mm & Base de la sección rectangular, $b$. & Entrada \\
+Longitud de fibras & mm & Longitud total declarada de fibras. & Entrada \\
+Volumen de fibras & mm$^3$ & Volumen declarado del conjunto de fibras, $V_f$. & Entrada \\
+Altura de pivote & mm & Altura del conector entre fibras. & Entrada \\
+Radio de pivote & mm & Radio del conector; constante en los datos. & Entrada \\
+Cantidad de pivotes & conteo & Conectores de la estructura. & Entrada \\
+Volumen de pivotes & mm$^3$ & Volumen declarado de los conectores, $V_p$. & Entrada \\
+Volumen CAD & mm$^3$ & Volumen del espécimen en CAD, distinto de $V_f+V_p$. & Entrada \\
+\midrule
+Carga de primera falla & N & Fuerza asociada a la primera rotura identificada. & Salida objetivo \\
+Carga terminal & N & Fuerza terminal reportada; no necesariamente máxima. & Salida \\
+Desplazamiento máximo & mm & Máximo desplazamiento registrado en el resumen. & Salida \\
+Desplazamientos residuales & mm & Desplazamiento que permanece tras descargar cada ciclo. & Salida \\
+Energía disipada & mJ & Energía tabulada por ciclo de carga--descarga. & Salida \\
+Energía de fractura & mJ & Energía tabulada asociada a un evento de rotura. & Salida \\
+\midrule
+Identificador del caso & --- & Vincula geometría y respuestas; no entra al modelo. & Control \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\small Fuente: diccionario del repositorio y variables de los cuadernos 01--03. Los valores son dimensiones declaradas, no tolerancias de fabricación medidas.
+\end{table}

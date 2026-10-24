@@ -1,0 +1,77 @@
+\section{Ingeniería de características}
+\label{sec:fe}
+
+\subsection{Representación original y criterio de construcción}
+La ingeniería de características transforma las medidas disponibles en entradas que permiten contrastar hipótesis sobre la relación geometría--carga. El punto de partida es el conjunto de diez atributos del diccionario (Tabla~\ref{tab:diccionario}): dimensiones y volúmenes de fibras y pivotes, cantidad de celdas en Y, cantidad de pivotes y volumen del espécimen. Se conserva su significado físico y se excluyen identificadores y respuestas posteriores al ensayo. La \textbf{línea base A} utiliza esas medidas sin añadir columnas derivadas; el tratamiento común retira el radio constante y deja nueve características efectivas.
+
+La matriz EDA--intervención (Tabla~\ref{tab:puente-fe}) distingue dos propuestas: describir la sección de las fibras mediante funciones de ancho y altura, y representar la proporción entre los volúmenes de los componentes. Su criterio de construcción combina interpretación geométrica con evidencia exploratoria; su criterio de aceptación es la reducción del error en observaciones reservadas. Una fórmula interpretable no garantiza mayor precisión. Las características construidas reorganizan información existente y no equivalen a nuevas mediciones experimentales.
+
+\subsection{Variante 1: momentos de área de las fibras}
+La \textbf{variante 1 B} añade a A los segundos momentos de área de una sección rectangular ideal respecto de dos ejes centroidales. Si $b$ es el ancho de la fibra y $h$ su altura, las columnas \emph{momento de fibra $bh^3$} y \emph{momento de fibra $hb^3$} se calculan como
+\begin{equation}
+I_{bh^3}=\frac{bh^3}{12},\qquad
+I_{hb^3}=\frac{hb^3}{12}.
+\label{eq:momentos}
+\end{equation}
+Con dimensiones en milímetros, ambos resultados se expresan en mm$^4$. Estas propiedades describen la distribución del material en la sección según dos orientaciones. La literatura pantográfica considera mecanismos de flexión de fibras, lo que permite formular esta hipótesis geométrica \cite{turco2017,turco2019}. Sin embargo, $I$ no es una fuerza aplicada, una rigidez $EI$ medida ni un criterio de fractura. La información disponible tampoco identifica el eje dominante en la primera rotura de cada estructura.
+
+La transformación introduce productos y potencias de las medidas originales. Su aporte potencial consiste en representar explícitamente combinaciones que las columnas de ancho y altura, consideradas por separado, no expresan como una misma característica. No se seleccionaron por exhibir correlaciones condicionadas elevadas: los coeficientes del EDA fueron $0{,}0163$ y $-0{,}0753$, respectivamente. La propuesta se conserva como hipótesis de representación que debe contrastarse, no como efecto mecánico demostrado.
+
+Por ejemplo, para una geometría registrada con $b=2{,}4$~mm y $h=1$~mm se obtiene
+\begin{equation}
+I_{bh^3}=0{,}2~\mathrm{mm}^4,\qquad
+I_{hb^3}=1{,}152~\mathrm{mm}^4.
+\label{eq:ejemplo-momentos}
+\end{equation}
+El notebook comprueba la igualdad entre el cálculo directo y la salida del transformador. Esta verificación detecta errores de implementación; no prueba una mejora predictiva. Ambos momentos se incorporan conjuntamente y el contraste B--A evalúa su aporte como bloque. Además, elevar una dimensión al cubo amplifica la sensibilidad a errores de esa dimensión, por lo que las discrepancias geométricas pendientes siguen siendo relevantes.
+
+\subsection{Variante 2: proporción logarítmica de volúmenes}
+La \textbf{variante 2 C} conserva las características de B y añade el \emph{logaritmo de la razón de volúmenes pivotes/fibras}:
+\begin{equation}
+L_{p/f}=\ln\!\left(\frac{V_p}{V_f}\right),\qquad V_p>0,\quad V_f>0,
+\label{eq:logratio}
+\end{equation}
+donde $V_p$ es el volumen total de pivotes y $V_f$ el volumen total de fibras. La razón es adimensional porque ambos volúmenes utilizan la misma unidad. La implementación resta los logaritmos de sus valores numéricos expresados en mm$^3$, evitando formar primero un cociente potencialmente extremo.
+
+Para los valores registrados $V_p=88{,}71$~mm$^3$ y $V_f=6435{,}3$~mm$^3$, el cociente es aproximadamente $0{,}013785$ y su logaritmo es $-4{,}284181$. El signo negativo indica una proporción menor que uno, no un volumen físico negativo. La variable describe proporciones declaradas; no mide reparto de fuerzas, rigidez de la conexión ni energía de fractura.
+
+El EDA obtuvo una asociación de rangos global de $0{,}8280$ con la carga, que cambia a $-0{,}4773$ al condicionar por familia. Esa inversión impide interpretar la relación agregada como un efecto independiente del volumen de pivotes. Además, la identidad $V_f+V_p=6524{,}01$~mm$^3$ evidencia que ambos volúmenes no varían libremente en este diseño. El logaritmo propone una representación no lineal de esa información dependiente; no garantiza normalidad ni mejor desempeño. Su utilidad incremental se verifica comparando C con B.
+
+\subsection{Tratamiento común dentro del entrenamiento}
+Los tres conjuntos comparten la secuencia: \emph{validación de entradas, imputación de contingencia, construcción de características, filtro de constantes y estandarización}. El contrato admite exclusivamente geometría, rechaza infinitos y medidas no positivas y exige valores enteros en los conteos. Los valores ausentes admitidos se procesan mediante una mediana aprendida únicamente en entrenamiento; una columna sin observaciones de entrenamiento se rechaza. En la geometría utilizada no fue necesario rellenar valores. La carga objetivo nunca se imputa.
+
+Las fórmulas anteriores son determinísticas por fila y no requieren estimar parámetros a partir de la respuesta. Se ejecutan después de la imputación, de modo que una eventual ausencia no se propague a los productos o logaritmos. El filtro de varianza nula se ajusta en entrenamiento y retira el radio del pivote, constante en 0,5~mm. Esto no demuestra que el radio carezca de efecto físico: únicamente significa que su efecto no puede distinguirse mediante variación dentro de estos datos.
+
+El escalamiento transforma cada característica retenida mediante
+\begin{equation}
+z_{ij}=\frac{x_{ij}-\mu_{j,\mathrm{entrenamiento}}}
+{\sigma_{j,\mathrm{entrenamiento}}},
+\label{eq:escalamiento}
+\end{equation}
+con desviación estándar poblacional del entrenamiento. Así, dimensiones, volúmenes, conteos y momentos se expresan en una escala comparable para el ajuste. Las observaciones reservadas reutilizan exactamente esas medias y desviaciones, sin recalcularlas. La transformación cambia la representación numérica, no las unidades de la fuerza predicha.
+
+No se aplicó codificación one-hot: las entradas son magnitudes o conteos numéricos. Tampoco se transformó el objetivo, se generaron registros sintéticos ni se eliminaron valores extremos. Las reglas IQR/MAD y los diagnósticos de influencia orientaron la revisión, pero no justificaron alterar automáticamente geometrías válidas.
+
+\subsection{Conjuntos de características y evaluación de las intervenciones}
+La Tabla~\ref{tab:featuresets} resume los conjuntos acumulativos. B conserva todas las medidas de A y añade los dos momentos; C conserva B y añade la razón. El radio se filtra de forma común, por lo que no constituye una diferencia entre variantes.
+
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Línea base y dos variantes de características. El número efectivo corresponde a columnas después del filtro de constantes.}
+\label{tab:featuresets}
+\begin{tabularx}{\linewidth}{@{}lXXXc@{}}
+\toprule
+Conjunto & Entradas conservadas & Características añadidas & Contraste evaluado & Efectivas \\
+\midrule
+A: línea base & Geometría original & Ninguna & Referencia inicial & 9 \\
+\addlinespace
+B: variante 1 & Todas las de A & $I_{bh^3}$ e $I_{hb^3}$ & B--A: bloque de momentos & 11 \\
+\addlinespace
+C: variante 2 & Todas las de B & $L_{p/f}$ & C--B: razón logarítmica & 12 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Se mantienen el mismo estimador, sus parámetros y las particiones para evaluar cada intervención. La pregunta B--A es si añadir la descripción de sección reduce el error; C--B pregunta si la proporción aporta una mejora adicional cuando los momentos ya están disponibles. Comparar también C con A informa el cambio acumulado, pero no sustituye el contraste incremental. Este diseño no separa la contribución individual de los dos momentos ni establece causalidad física.
+
+La auditoría verifica separación de grupos y casos, además de las medianas, columnas y escalas aprendidas. Estos controles previenen fuga de información durante el procesamiento \cite{pedregosa2011}. Persiste, sin embargo, el sesgo exploratorio de haber formulado las hipótesis utilizando el EDA del conjunto completo \cite{cawley2010}. La evaluación permite decidir si conservar una representación como candidata; no convierte las asociaciones iniciales en evidencia de generalización externa.

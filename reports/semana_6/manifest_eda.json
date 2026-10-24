@@ -1,0 +1,45 @@
+{
+  "description": "Reutilización descriptiva de EDA; sin nuevos modelos ni selección de observaciones",
+  "inputs": {
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/eda/tables/03_geometrias.csv": "8fc2f292fc24129661416f8ef8702ab8069e5cbe47553df16da829e22ff7e7ea",
+    "reports/eda/tables/02_objetivo.csv": "6e1d06639dbde430ec02b3e7ec06c98f0f76fe7c7385e5554b30290d06b5dae7",
+    "reports/eda/tables/05_familias.csv": "8fbf20ac99a32c15bf1c82710993a904220194533baa0df1cd4482f956aeb84b",
+    "reports/eda/tables/08_asociaciones_globales.csv": "79e3125616d4f7dac693a67c75bcc4dacc68315f8388ec1f223decbf626f9e87",
+    "reports/eda/tables/09_asociaciones_condicionadas.csv": "77b6947aaa4d76c7ba6d8fb9f02c35ea3dc729b1d84e344bedbd61a30fe7c1bc",
+    "reports/eda/tables/20_influencia.csv": "0d3a2ff1ce1d23dc6e7e40d0c4282a6f88b4056682573c805e1668f03673bc55",
+    "reports/eda_calidad/tables/10_consistencia_geometrica.csv": "2b4d5fa536619c179f838d20c68ceaab0c5f28115e614ff2018eea8080843929",
+    "reports/eda/tables/07_atipicos_resumen.csv": "9d629887c8a7a1a10c5ddc2cd2ec989915e21ee36d5b8e79427eb7067b845166",
+    "reports/eda/tables/12_identidades.csv": "11af67b195ace49cdf7ba4c5cdfce429957b56c2fef1cd49581941102e4ad7a4",
+    "reports/eda/tables/05_descomposicion.csv": "0f1de5bb8cce2ad9bcf0c492b40ab47de09e7f5aa031c8be37b7ab79efe6ddee",
+    "reports/eda/tables/17_PCA_varianza.csv": "a08927af3b2c3d512d7a5dd9f79f3fb0a331788581ca16831977e298d3091400",
+    "reports/eda_calidad/tables/09_duplicados_resumen.csv": "dc1afc23d0776ad384ff8d229d12a17db4d980e5ec33e7516b991914c86b1ae5",
+    "reports/eda_calidad/tables/09_configuraciones_repetidas.csv": "a1d4559a97e28e12789dc5869e0bb2c21c5870cc2c6a1ad70c982a2e5253b1b2",
+    "reports/eda_calidad/tables/03_equivalencia.csv": "bc8eca330d00970afaf7788037f2e65cbf91dec7250cb7e8186e345050a627f0",
+    "reports/eda_calidad/tables/14_decisiones.csv": "12cb44d32cc1daa763c73ae379ce18010b72c22188277cfa6bfcf9889e5ec1fe",
+    "reports/eda_calidad/tables/08_dominios.csv": "ab6452b43975f3acb54e83373cd86266a89691b7ac110114e39fd7cbfff2ca68",
+    "reports/eda_transformaciones/tables/T08_asociaciones_caracteristicas.csv": "79c87343c15c4762a0ea72bbd8964d6fd9ba10d7de3b2b8c6ab9b9146263286b",
+    "reports/eda_relaciones/tables/08_objetivo_priorizado.csv": "57430cdabf43d8c8ea1f2a7c596cb1e732d40095efbd6c5282d3cbbc4270811f",
+    "notebooks/01_Ingesta_Curaduria_y_Calidad.ipynb": "7ee3ca86d0f271c986e8664e1c9c4bc60dd8b508b3f7d68f74af5b142ced7eab",
+    "notebooks/02_EDA.ipynb": "583776ca81099db089da2ff1f960bfb32ba0de22c8f0f0e9bf68f656c3c16717",
+    "notebooks/03_Transformaciones_Exploratorias.ipynb": "bfd980d8650b9a36352e638d4cd7efe436d33f4986164c412a0de41d5f7af8aa"
+  },
+  "figures": {
+    "reports/semana_6/figures/EDA_geometria.png": "ec022fb1d285b8bf2d696b2aba33fc08e23f24d5a54bb7232584d447cf67a3fb",
+    "reports/semana_6/figures/EDA_geometria.svg": "2962ff3b6210aa42be9703fbac60aa311332be1ae9f915ec8b19bf031997d50d",
+    "reports/semana_6/figures/EDA_primera_falla.png": "d1264335f1b48387577e9f57673ff2bc401dae0a19f707af5b7bbb0c33fcd454",
+    "reports/semana_6/figures/EDA_primera_falla.svg": "98500ebd7a5b158eb49fc9df85ffbe010cb03eec39c68b11ea74e944ae79f306",
+    "reports/semana_6/figures/EDA_asociaciones.png": "49d26e5fa800eb80fe9a84583dc6297728f9484afe9b59ff9726226a5e9a966d",
+    "reports/semana_6/figures/EDA_asociaciones.svg": "de4ed979f45b900522e0aca396eff2ed3937a48956a3776c65fa777210069f17",
+    "reports/semana_6/figures/EDA_influencia.png": "d01329a783eb97ac4609014da4bd3007b4cee51e81089616feed2b13034ad56e",
+    "reports/semana_6/figures/EDA_influencia.svg": "a42b7e023ed9920f59c31045beaff4754ca41579ed8c3cdb675977bb5d22919a"
+  },
+  "tables": {
+    "reports/semana_6/tablas/EDA_diccionario.tex": "e6471286742d1199ab2adad069edb09131b19467b83f4049b0bc043cbbbad16f",
+    "reports/semana_6/tablas/EDA_calidad.tex": "c63fc1aef419c1a8a70232e7c5c0c688e64c2fefc8297d722856e041f31e3e13",
+    "reports/semana_6/tablas/EDA_puente.tex": "9d8f062179015e505e234e52da062e009770413663b2667608741d645347763e"
+  },
+  "source_code": {
+    "reports/semana_6/preparar_eda_sprint.py": "ed6440be534f41383f362ff95fb2c7535f8fcdec92a0cb2e1ce4137ae1ea505e"
+  }
+}
