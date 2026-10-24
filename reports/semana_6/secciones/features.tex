@@ -53,25 +53,32 @@ con desviación estándar poblacional del entrenamiento. Así, dimensiones, vol�
 No se aplicó codificación one-hot: las entradas son magnitudes o conteos numéricos. Tampoco se transformó el objetivo, se generaron registros sintéticos ni se eliminaron valores extremos. Las reglas IQR/MAD y los diagnósticos de influencia orientaron la revisión, pero no justificaron alterar automáticamente geometrías válidas.
 
 \subsection{Conjuntos de características y evaluación de las intervenciones}
-La Tabla~\ref{tab:featuresets} resume los conjuntos acumulativos. B conserva todas las medidas de A y añade los dos momentos; C conserva B y añade la razón. El radio se filtra de forma común, por lo que no constituye una diferencia entre variantes.
+La Tabla~\ref{tab:featuresets} identifica qué conserva y añade cada variante. El radio se filtra en todos los conjuntos; no constituye una diferencia experimental.
 
 \begin{table}[htbp]
 \centering\small\setstretch{1.0}
-\caption{Línea base y dos variantes de características. El número efectivo corresponde a columnas después del filtro de constantes.}
+\caption{Composición de las entradas: línea base y dos variantes de datos.}
 \label{tab:featuresets}
-\begin{tabularx}{\linewidth}{@{}lXXXc@{}}
+\begin{tabularx}{\linewidth}{@{}Yccc@{}}
 \toprule
-Conjunto & Entradas conservadas & Características añadidas & Contraste evaluado & Efectivas \\
+\rowcolor{TablaCabecera}
+Característica / tratamiento & A: base & B: variante 1 & C: variante 2 \\
 \midrule
-A: línea base & Geometría original & Ninguna & Referencia inicial & 9 \\
-\addlinespace
-B: variante 1 & Todas las de A & $I_{bh^3}$ e $I_{hb^3}$ & B--A: bloque de momentos & 11 \\
-\addlinespace
-C: variante 2 & Todas las de B & $L_{p/f}$ & C--B: razón logarítmica & 12 \\
+\rowcolor{FeatureBase}
+Geometría original no constante & Conservada & Conservada & Conservada \\
+Momento $bh^3/12$ & --- & \cellcolor{FeatureNueva}Añadido & \cellcolor{FeatureNueva}Incluido \\
+Momento $hb^3/12$ & --- & \cellcolor{FeatureNueva}Añadido & \cellcolor{FeatureNueva}Incluido \\
+Razón $\ln(V_p/V_f)$ & --- & --- & \cellcolor{FeatureNueva}Añadida \\
+\rowcolor{FeatureFuera}
+Radio constante & Filtrado & Filtrado & Filtrado \\
+Estandarización & En train & En train & En train \\
+\midrule
+Características efectivas & \textbf{9} & \textbf{11} & \textbf{12} \\
 \bottomrule
 \end{tabularx}
+\par\smallskip\footnotesize Azul: entradas originales; verde: características derivadas; gris: variable filtrada. Los colores describen composición, no calidad predictiva.
 \end{table}
 
-Se mantienen el mismo estimador, sus parámetros y las particiones para evaluar cada intervención. La pregunta B--A es si añadir la descripción de sección reduce el error; C--B pregunta si la proporción aporta una mejora adicional cuando los momentos ya están disponibles. Comparar también C con A informa el cambio acumulado, pero no sustituye el contraste incremental. Este diseño no separa la contribución individual de los dos momentos ni establece causalidad física.
+El contraste B--A evalúa los momentos como bloque; C--B, la razón adicional. Se mantienen estimador, parámetros y particiones. C--A informa el cambio acumulado, sin aislar el aporte de la razón ni establecer causalidad física.
 
 La auditoría verifica separación de grupos y casos, además de las medianas, columnas y escalas aprendidas. Estos controles previenen fuga de información durante el procesamiento \cite{pedregosa2011}. Persiste, sin embargo, el sesgo exploratorio de haber formulado las hipótesis utilizando el EDA del conjunto completo \cite{cawley2010}. La evaluación permite decidir si conservar una representación como candidata; no convierte las asociaciones iniciales en evidencia de generalización externa.

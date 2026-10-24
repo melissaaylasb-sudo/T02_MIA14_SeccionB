@@ -10,6 +10,13 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
 \usepackage{booktabs,tabularx,array,longtable}
+\usepackage[table]{xcolor}
+\definecolor{TablaCabecera}{HTML}{DFE8F0}
+\definecolor{FeatureBase}{HTML}{EAF1F7}
+\definecolor{FeatureNueva}{HTML}{E3F1E8}
+\definecolor{FeatureFuera}{HTML}{F0F0F0}
+\definecolor{EstadoEvaluar}{HTML}{FFF0CC}
+\definecolor{EstadoDescartar}{HTML}{F9E4E1}
 \usepackage{caption}
 \captionsetup{font=small,labelfont=bf,skip=6pt}
 \usepackage{enumitem}
@@ -81,6 +88,8 @@
 \clearpage
 \pagenumbering{arabic}
 \label{body:first}
+\section*{Resumen}
+Se estudian estructuras pantográficas sometidas a tracción para estimar la carga de su primera rotura a partir de la geometría previa al ensayo. El objetivo del sprint es comprobar si las características derivadas reducen el error frente a las medidas originales. Se integran curaduría, EDA y dos variantes de datos con el mismo regresor, evaluadas por configuraciones y por familias.
 \input{secciones/datos_eda.tex}
 \input{secciones/features.tex}
 \input{secciones/evaluacion_y_discusion.tex}

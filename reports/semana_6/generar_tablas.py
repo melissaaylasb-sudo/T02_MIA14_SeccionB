@@ -33,7 +33,8 @@ for protocol, filename in [("configuracion", "principal.tex"), ("familia", "fami
     metrics = ["MAE_N", "RMSE_N", "MedAE_N", "R2_OOF"]
     if protocol == "configuracion":
         metrics.append("tiempo_s")
-    write(filename, [[labels[k]] + [num(selected[k][m]) for m in metrics] for k in "ABC"])
+    colors = {"A": "FeatureBase", "B": "EstadoEvaluar", "C": "EstadoDescartar"}
+    write(filename, [[r"\rowcolor{" + colors[k] + "}" + labels[k]] + [num(selected[k][m]) for m in metrics] for k in "ABC"])
 
 models = {r["modelo"]: r for r in read("comparacion_modelos.csv") if r["protocolo"] == "configuracion"}
 order = ["Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess"]

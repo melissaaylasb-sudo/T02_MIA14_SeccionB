@@ -2,7 +2,7 @@
   "purpose": "Tablas del sprint centradas en A, B y C; resultados históricos sin reentrenamiento.",
   "reference_commit": "8fdb7961d7eaaaebd9651d0b9a044168893d448a",
   "generator": "reports/semana_6/generar_tablas.py",
-  "generator_sha256": "17bdd21214ce52945e89437da40f06dc3e68c79210c815ed7c6760d2a4a28afd",
+  "generator_sha256": "d428bab81086f4172efe5095573b3b5e3015f1ccf6a01cb3944ea5b95392a0b4",
   "representations": [
     "A",
     "B",
@@ -14,8 +14,8 @@
     "reports/feature_engineering/tables/errores_familia.csv": "dd4c86a43c1778db82e3cfcd482773054c5c48c192cef46d8d6d09aed3dc5d59"
   },
   "output_sha256": {
-    "tablas/principal.tex": "d4a94a806fdc48fb06953d893be56acdb3e9b2d50eabf6b5d22e246eebd599ba",
-    "tablas/familias.tex": "d5ff5872170c5a40c885843260a945571c61d6fb000c565a011c7391b1d42d5c",
+    "tablas/principal.tex": "4b775e300be75fe009e0c3f16a43f4a2228735e8a116f5c774c949f5418d90f2",
+    "tablas/familias.tex": "a5af7312fd1196ae52b5fe0a6bb9b82e653d3a4b93f1e390c54d0d366df6e4c6",
     "tablas/modelos.tex": "31ea86d3d737f3344b6184498219a8ed2d8f4024d76b1f41f2f7fa35a2724583",
     "tablas/error_familia.tex": "577a0fc34d146c5bc4d257cfba546489a7d9ee970368eadd77ad520a2019fe49"
   }

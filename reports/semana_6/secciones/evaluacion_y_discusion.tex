@@ -73,11 +73,27 @@ Representación & MAE (N) & RMSE (N) & MedAE (N) & $R^2$ & Tiempo (s) \\
 \par\smallskip\footnotesize Menor error es favorable. Línea base: A; variante 1: B; variante 2: C. Valores exportados de la ejecución existente, sin reentrenamiento.
 \end{table}
 
-\textbf{Línea base A.} MAE de 13,247~N y RMSE de 16,346~N. Es la referencia para comprobar si transformar las mismas medidas mejora la predicción. El $R^2$ de 0,923 describe el comportamiento agregado; las diferencias entre familias observadas en el EDA contribuyen a ese resultado.
+\begin{table}[htbp]
+\centering\small\setstretch{1.0}
+\caption{Balance de las características según su comparación incremental.}
+\label{tab:decision-fe}
+\begin{tabularx}{\linewidth}{@{}lYYY@{}}
+\toprule
+\rowcolor{TablaCabecera}
+Conjunto & Cambio de MAE & Interpretación & Decisión \\
+\midrule
+\rowcolor{FeatureBase}
+A: geometría & Referencia & Error inicial de 13,247~N & Conservar baseline \\
+\rowcolor{EstadoEvaluar}
+B: momentos & $-3,11\%$ frente a A & Mejora modesta; no cumple todos los criterios & Mantener en evaluación \\
+\rowcolor{EstadoDescartar}
+C: razón & $+0,62\%$ frente a B & No aporta mejora incremental & No incorporar la adición \\
+\bottomrule
+\end{tabularx}
+\par\smallskip\footnotesize Azul: referencia; ámbar: evaluación pendiente; rojo: adición no favorable bajo este experimento. La decisión de C se toma frente a B, aunque C mejore 2,51\% frente a A.
+\end{table}
 
-\textbf{Variante 1 (B): momentos de sección.} El MAE desciende a 12,835~N: reducción de 0,412~N, equivalente a 3,11\%. RMSE baja a 16,203~N y MedAE a 11,780~N. Se obtiene una mejora pequeña y consistente en el sentido de estas métricas, pero no suficiente para adoptar automáticamente las nuevas variables. No demuestra que la falla esté gobernada por flexión ni valida un mecanismo físico.
-
-\textbf{Variante 2 (C): razón logarítmica.} Su MAE es 12,914~N. Sigue por debajo de A, pero aumenta 0,079~N respecto de B (+0,62\%); también aumenta RMSE. Por tanto, la razón no aporta una mejora incremental bajo el modelo y la validación utilizados. Este resultado conecta con el EDA: una correlación global elevada puede reflejar diferencias entre familias y no utilidad adicional para predecir.
+Las métricas son \textbf{prometedoras para la comparación interna}: MAE cercano a 13~N y $R^2$ alrededor de 0,92. No basta para calificarlas como aceptables en una aplicación: no se ha fijado una tolerancia de error mecánica y la separación de familias favorece el resultado agregado.
 
 \begin{figure}[htbp]
 \centering
@@ -100,9 +116,7 @@ Representación & MAE (N) & RMSE (N) & MedAE (N) & $R^2_{\mathrm{OOF}}$ \\
 \end{tabular}
 \end{table}
 
-El MAE pasa a aproximadamente 58~N y los $R^2$ son negativos. Añadir los momentos deja el MAE prácticamente igual al de A: 57,654 frente a 57,637~N. C reduce ligeramente MAE respecto de B, pero aumenta RMSE. Ninguna variante ofrece una mejora sólida de transferencia entre familias. El cambio de protocolo tiene un efecto mucho mayor que el cambio de características.
-
-El $R^2$ negativo indica que la suma de errores cuadrados supera la variación alrededor de la media global observada. No debe confundirse con el control que predice la media del entrenamiento en cada partición: son referencias diferentes. La interpretación conjunta con el EDA es que reconocer configuraciones dentro de arquitecturas conocidas resulta más favorable que predecir una arquitectura excluida.
+El MAE sube a aproximadamente 58~N y todos los $R^2$ son negativos: \textbf{no se demuestra buena generalización a una familia excluida}. B apenas cambia frente a A; C reduce ligeramente MAE frente a B, pero aumenta RMSE. El $R^2$ negativo compara el error con la variación alrededor de la media global, no con una media de entrenamiento recalculada por partición.
 
 \subsection{Residuales y diferencias por familia}
 La Figura~\ref{fig:diagnostico} utiliza las predicciones reservadas de B. La distancia respecto de la diagonal muestra el error de cada predicción; el residuo positivo significa subestimación y el negativo, sobreestimación. La proximidad global a la diagonal no elimina errores locales: se observan desviaciones de aproximadamente 34,21~N por exceso y 29,64~N por defecto.
@@ -127,14 +141,14 @@ Familia & MAE A & MAE B & MAE C & Residuo medio B \\
 \end{tabular}
 \end{table}
 
-B mejora frente a A en $Y=5$ y $Y=6$, pero empeora en $Y=4$. El residuo medio de B es negativo en $Y=5$ y positivo en las familias extremas: hay sobreestimación media en la familia intermedia y subestimación en las otras. La ganancia global no es uniforme. Esta revisión por familia evita que un único MAE oculte diferencias asociadas al diseño.
+B mejora en $Y=5$ y $Y=6$, pero empeora en $Y=4$. El residuo medio indica sobreestimación en la familia intermedia y subestimación en las extremas. La ganancia global no es uniforme.
 
 \subsection{Estabilidad y decisión sobre las variantes}
 B reduce el error en 62,5\% de los grupos. Las diferencias pareadas de MAE frente a A oscilan entre $-5,423$ y $+6,059$~N, con mediana de $-0,312$~N. La desviación estándar del MAE entre particiones pasa de 9,677~N en A a 10,167~N en B. Estos resultados explican por qué una mejora agregada pequeña no equivale a una mejora uniforme.
 
 La sensibilidad disponible omite sucesivamente cada grupo del cálculo agregado, conservando las predicciones ya obtenidas. La diferencia B--A permanece negativa, entre $-0,671$ y $-0,211$~N. La dirección favorable no depende de puntuar un único grupo, pero la comprobación no reentrena ni mide toda la influencia de esos casos sobre otros ajustes. Tampoco constituye un intervalo de confianza: los entrenamientos de las particiones se solapan.
 
-Se \textbf{mantiene A como referencia} y \textbf{B en evaluación}: B no alcanza la reducción exigida del 5\% y no mejora el MAE entre familias. Se \textbf{descarta incorporar la razón de C al conjunto propuesto}, porque empeora su referencia inmediata B. Los tiempos de A, B y C son 0,290, 0,683 y 0,571~s; corresponden a una ejecución y no permiten afirmar ventajas de latencia estables.
+La decisión de la Tabla~\ref{tab:decision-fe} considera que B no alcanza la reducción exigida del 5\% ni mejora el MAE entre familias. Los tiempos registrados corresponden a una ejecución; no permiten afirmar ventajas de latencia estables.
 
 \subsection{Métricas complementarias de los modelos utilizados}
 \begin{table}[htbp]
@@ -152,9 +166,7 @@ Modelo & MAE (N) & RMSE (N) & MedAE (N) & $R^2$ & Tiempo (s) \\
 \par\smallskip\footnotesize Comparación complementaria de algoritmos con geometría original. El tiempo de Ridge procede de esta ejecución, distinta del experimento A--B--C.
 \end{table}
 
-Bosque aleatorio y Ridge tienen MAE casi iguales: difieren apenas 0,014~N. El bosque presenta menor MedAE, pero RMSE prácticamente idéntico y mayor tiempo registrado. No hay evidencia suficiente para declarar superioridad estadística ni atribuirle la mejora de B, que se evaluó con Ridge. Al reservar familias, todos los modelos obtienen $R^2$ negativo; cambiar el algoritmo no resuelve la limitación de generalización observada.
+Bosque aleatorio y Ridge difieren solo 0,014~N en MAE; no se demuestra superioridad estadística. El bosque tiene menor MedAE, RMSE similar y mayor tiempo. Todos obtienen $R^2$ negativo al reservar familias; la mejora de B corresponde exclusivamente al experimento con Ridge.
 
 \subsection{Balance del sprint}
-La curaduría conservó extremos válidos y separó entradas previas al ensayo de respuestas posteriores. El EDA identificó escalas distintas, geometría constante, dependencias entre descriptores y asociaciones condicionadas por familia. Esos hallazgos dieron lugar a un procesamiento común y a dos intervenciones geométricas controladas. El experimento muestra una mejora modesta con momentos y ninguna ganancia incremental al añadir la razón.
-
-La siguiente evaluación debe fijar A y B antes de observar nuevas respuestas, conciliar las discrepancias geométricas pendientes y contrastarlos con ensayos independientes. El resultado actual sustenta qué representación continuar estudiando; no establece un límite seguro de carga ni una precisión demostrada fuera del dominio experimental.
+El EDA sustentó el tratamiento común y las variantes geométricas: los momentos aportan una mejora modesta y la razón no añade beneficio. Se continuará con A y B, conciliando geometrías y validando en ensayos independientes. El resultado no establece límites seguros de carga ni precisión fuera del dominio estudiado.

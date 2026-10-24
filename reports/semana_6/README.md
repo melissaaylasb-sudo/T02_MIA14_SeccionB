@@ -6,6 +6,8 @@ UNI · Maestría en Inteligencia Artificial · Trabajo de Investigación II · M
 
 **EDA + Feature Engineering + línea base y dos variantes de datos.** Incluye diccionario con entradas y salidas, curaduría, análisis univariado y bivariado, atípicos e influencia, interpretación y conexión con las transformaciones. Los modelos utilizados se identifican en una tabla; las métricas y la validación cierran el experimento.
 
+La apertura resume contexto y objetivo. Las interpretaciones del EDA se sintetizan en tablas; la matriz de características distingue entradas originales, derivadas y filtradas mediante colores. El balance experimental usa azul para la referencia, ámbar para mantener en evaluación y rojo para una adición no favorable.
+
 | Representación | Intervención | MAE OOF por configuración (N) | Resultado |
 |---|---|---:|---|
 | A: línea base | Geometría original | 13,247 | Conservar como referencia |
