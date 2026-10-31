@@ -220,7 +220,8 @@ def test_matriz_conserva_respuesta_fisica_y_estado_h1(
     required = {"Fila", "Problema", "Objetivo", "Hipotesis", "Variables_independientes",
                 "Variable_dependiente", "Indicadores", "Estado"}
     assert required <= set(matrix)
-    assert {"General", "Especifico_1", "Especifico_2", "Especifico_3"} <= set(matrix.Fila)
+    assert {"General", "Especifico_1", "Especifico_2", "Especifico_3",
+            "Especifico_3b", "Extension_tuning", "Extension_xai"} <= set(matrix.Fila)
     assert matrix[list(required - {"Fila"})].notna().all().all()
     assert matrix.Variable_dependiente.eq("First_Failure_Load_N [N]").all()
     assert not matrix.Variable_dependiente.str.contains("SHAP|MAE|RMSE", case=False).any()
@@ -228,6 +229,15 @@ def test_matriz_conserva_respuesta_fisica_y_estado_h1(
     assert isinstance(summary, pd.DataFrame)
     main = summary[summary.protocolo.eq("configuracion")].set_index("experimento")
     reduction_pct = 100 * (main.loc["E1", "MAE_N"] - main.loc["E2", "MAE_N"]) / main.loc["E1", "MAE_N"]
-    h1 = matrix[matrix.Fila.eq("Especifico_2")].iloc[0]
+    construction = matrix[matrix.Fila.eq("Especifico_2")].iloc[0]
+    assert "No se formuló hipótesis" in construction.Hipotesis
+    h1 = matrix[matrix.Fila.eq("Especifico_3")].iloc[0]
+    assert "H1" in h1.Hipotesis
     if reduction_pct < 5:
         assert "no confirmada" in h1.Estado.lower()
+    h2 = matrix[matrix.Fila.eq("Especifico_3b")].iloc[0]
+    assert "H2" in h2.Hipotesis
+    prior = pd.read_csv(ROOT / "reports/feature_engineering/tables/comparacion_experimentos.csv")
+    prior = prior[prior.protocolo.eq("configuracion")].set_index("experimento")
+    if prior.loc["C", "MAE_N"] >= prior.loc["B", "MAE_N"]:
+        assert "no confirmada" in h2.Estado.lower()
