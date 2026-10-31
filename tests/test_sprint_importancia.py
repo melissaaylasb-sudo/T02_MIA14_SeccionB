@@ -213,22 +213,27 @@ def test_contrastes_aislan_feature_set_y_tuning(artifacts: dict[str, object]) ->
 
 
 def test_matriz_conserva_variables_fisicas_y_hipotesis_de_trabajo() -> None:
-    """La matriz académica mantiene cuatro niveles y separa respuesta de métricas."""
+    """La matriz reproduce los cinco niveles y las hipótesis del plan de tesis."""
     matrix = pd.read_csv(ROOT / "docs/matriz_consistencia.csv")
     assert matrix.columns.tolist() == [
         "Problema de investigación", "Objetivo", "Hipótesis",
         "Variables independientes y variable dependiente", "Indicadores",
     ]
-    assert len(matrix) == 4
+    assert len(matrix) == 5
     assert matrix.notna().all().all()
     assert matrix["Problema de investigación"].str.startswith(
-        ("General.", "Específico 1.", "Específico 2.", "Específico 3.")
+        ("General.", "Específico 1.", "Específico 2.",
+         "Específico 3.", "Específico 4.")
     ).all()
     assert matrix["Variables independientes y variable dependiente"].str.contains(
-        "Dependiente: carga experimental de primera falla \\[N\\]"
+        "carga (?:experimental de |de )?primera falla \\[N\\]", regex=True
     ).all()
+    assert "Hipótesis general:" in matrix["Hipótesis"].iloc[0]
+    assert "modelo base" in matrix["Hipótesis"].iloc[0]
+    assert matrix["Hipótesis"].iloc[1].startswith("No se formuló")
     assert matrix["Hipótesis"].iloc[2].startswith("No se formuló")
-    assert "H1:" in matrix["Hipótesis"].iloc[3]
-    assert "H2:" in matrix["Hipótesis"].iloc[3]
-    assert "5 %" in matrix["Hipótesis"].iloc[3]
-    assert matrix["Indicadores"].str.contains("MAE|Cobertura|Momentos").all()
+    assert "Hipótesis específica 1:" in matrix["Hipótesis"].iloc[4]
+    assert "estabilidad frente al remuestreo" in matrix["Hipótesis"].iloc[4]
+    assert "logarítmica" not in matrix["Problema de investigación"].iloc[0]
+    assert "MAE" in matrix["Indicadores"].iloc[3]
+    assert "SHAP" in matrix["Indicadores"].iloc[4]

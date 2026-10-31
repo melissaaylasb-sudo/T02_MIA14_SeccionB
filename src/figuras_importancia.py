@@ -212,15 +212,26 @@ def run(root: Path = ROOT) -> list[str]:
     stable = stability[stability.protocolo.eq("configuracion") & stability.experimento.eq("E3")]
     if not stable.empty:
         top_features = gp.sort_values("rank_global").feature.head(8).tolist()
-        wide = stable[stable.feature.isin(top_features)].pivot(index="feature", columns="fold", values="rank_fold")
-        fig, ax = plt.subplots(figsize=(10, 4.7))
+        wide = (stable[stable.feature.isin(top_features)]
+                .pivot(index="feature", columns="fold", values="rank_fold")
+                .reindex(top_features))
+        fig, ax = plt.subplots(figsize=(14.8, 6.2))
         im = ax.imshow(wide.to_numpy(), aspect="auto", cmap="viridis_r", vmin=1, vmax=max(8, len(gp)))
         ax.set_yticks(range(len(wide)), [LABELS.get(f, f) for f in wide.index], fontsize=8)
-        ax.set_xticks(range(len(wide.columns)), wide.columns, fontsize=7)
-        ax.set_xlabel("Fold externo por configuración")
-        ax.set_title("Rango de SHAP entre folds · E3 (1 = mayor)", loc="left", weight="bold")
-        fig.colorbar(im, ax=ax, label="Rango")
-        save(fig, "11_estabilidad_shap", "folds de un caso producen rangos locales ruidosos.")
+        ax.set_xticks(range(len(wide.columns)), wide.columns, fontsize=8)
+        ax.set_xlabel("Partición externa por configuración")
+        ax.set_title("Posición de importancia SHAP entre particiones · Ridge E3", loc="left", weight="bold")
+        fig.colorbar(im, ax=ax, label="Posición (1 = mayor importancia)")
+        for row in range(len(wide.index)):
+            for col in range(len(wide.columns)):
+                value = wide.iat[row, col]
+                if pd.isna(value):
+                    continue
+                red, green, blue, _ = im.cmap(im.norm(value))
+                luminance = 0.299 * red + 0.587 * green + 0.114 * blue
+                ax.text(col, row, f"{int(value)}", ha="center", va="center",
+                        fontsize=7.3, color="white" if luminance < 0.52 else "#18212b")
+        save(fig, "11_estabilidad_shap", "cada celda muestra el rango; particiones de un caso generan rangos locales variables.")
 
     pp = perm[perm.protocolo.eq("configuracion") & perm.experimento.eq("E3")]
     if not pp.empty:
@@ -252,15 +263,24 @@ def run(root: Path = ROOT) -> list[str]:
     features[MOMENTS] = geometry_features(features)[MOMENTS]
     features = features.loc[:, features.nunique(dropna=True) > 1]
     corr = features.corr(method="spearman")
-    fig, ax = plt.subplots(figsize=(10.2, 9.2))
+    fig, ax = plt.subplots(figsize=(11.8, 10.2))
     im = ax.imshow(corr, vmin=-1, vmax=1, cmap="coolwarm")
     labels = [LABELS.get(x, x).split(" [")[0] for x in corr.index]
-    ax.set_xticks(range(len(labels)), labels, rotation=50, ha="right", fontsize=7)
-    ax.set_yticks(range(len(labels)), labels, fontsize=7)
-    ax.set_title("Dependencias de rangos entre descriptores geométricos", loc="left", weight="bold")
+    ax.set_xticks(range(len(labels)), labels, rotation=50, ha="right", fontsize=8)
+    ax.set_yticks(range(len(labels)), labels, fontsize=8)
+    ax.set_title("Correlación de Spearman entre descriptores geométricos", loc="left", weight="bold")
     fig.colorbar(im, ax=ax, label="ρ de Spearman")
+    for row in range(len(corr.index)):
+        for col in range(len(corr.columns)):
+            value = corr.iat[row, col]
+            if pd.isna(value):
+                continue
+            red, green, blue, _ = im.cmap(im.norm(value))
+            luminance = 0.299 * red + 0.587 * green + 0.114 * blue
+            ax.text(col, row, f"{value:.2f}", ha="center", va="center",
+                    fontsize=7.5, color="white" if luminance < 0.52 else "#18212b")
     fig.subplots_adjust(bottom=0.24)
-    save(fig, "14_correlaciones", "dependencias algebraicas y n = 26 limitan atribuciones individuales.")
+    save(fig, "14_correlaciones", "cada celda muestra ρ; dependencias y n = 26 limitan atribuciones individuales.")
 
     if not ablation.empty:
         subset = ablation[ablation.protocolo.eq("configuracion")]

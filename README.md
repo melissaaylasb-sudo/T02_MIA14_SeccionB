@@ -12,7 +12,7 @@ El conjunto **B** añade a la geometría original dos momentos de sección de fi
 
 ### 2. Matriz de consistencia de la investigación
 
-La [matriz de consistencia](docs/matriz_consistencia.md) conserva objetivos e hipótesis del informe de Semana 6. El [modelo y protocolo](docs/modelado_y_tuning.md), los [resultados comparativos](docs/resultados_comparativos.md), la [interpretabilidad SHAP](docs/interpretabilidad_shap.md), la [importancia cruzada](docs/importancia_variables.md), la [operacionalización](docs/operacionalizacion_variables.md) y la [trazabilidad](docs/trazabilidad_objetivos_resultados.md) separan evidencia anterior de resultados de esta rama.
+La [matriz de consistencia](docs/matriz_consistencia.md) recupera el problema, los objetivos y las hipótesis del plan de tesis pantográfico de 2026. El [modelo y protocolo](docs/modelado_y_tuning.md), los [resultados comparativos](docs/resultados_comparativos.md), la [interpretabilidad SHAP](docs/interpretabilidad_shap.md), la [importancia cruzada](docs/importancia_variables.md), la [operacionalización](docs/operacionalizacion_variables.md) y la [trazabilidad](docs/trazabilidad_objetivos_resultados.md) documentan los experimentos de esta rama.
 
 Para reproducir el experimento desde la raíz del repositorio:
 
