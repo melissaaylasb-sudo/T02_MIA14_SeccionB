@@ -1,7 +1,6 @@
 """Figuras reproducibles del sprint de importancia, a partir de resultados OOF.
 
-Cada figura indica la fuente y una limitación breve. Los CSV, no las figuras,
-son la fuente de los valores numéricos del informe.
+Los valores numéricos que sustentan las figuras se conservan en las tablas CSV.
 """
 from __future__ import annotations
 
@@ -44,8 +43,6 @@ def _read(tables: Path, name: str) -> pd.DataFrame:
 
 
 def _save(fig: plt.Figure, figures: Path, stem: str, note: str) -> None:
-    fig.text(0.02, 0.015, f"Fuente: dataset preliminar (26 casos) y artefactos OOF; {note}",
-             fontsize=8, color="#40515d")
     fig.savefig(figures / f"{stem}.png", dpi=250, bbox_inches="tight", facecolor="white")
     fig.savefig(figures / f"{stem}.svg", bbox_inches="tight", facecolor="white")
     plt.close(fig)
@@ -280,7 +277,7 @@ def run(root: Path = ROOT) -> list[str]:
             ax.text(col, row, f"{value:.2f}", ha="center", va="center",
                     fontsize=7.5, color="white" if luminance < 0.52 else "#18212b")
     fig.subplots_adjust(bottom=0.24)
-    save(fig, "14_correlaciones", "cada celda muestra ρ; dependencias y n = 26 limitan atribuciones individuales.")
+    save(fig, "14_correlaciones", "cada celda muestra ρ; las dependencias limitan atribuciones individuales.")
 
     if not ablation.empty:
         subset = ablation[ablation.protocolo.eq("configuracion")]
