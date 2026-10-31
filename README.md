@@ -1,10 +1,16 @@
-# Predicción de primera falla · Tuning e interpretabilidad SHAP
+# Actividad: importancia de variables y matriz de consistencia
 
-## Sprint de modelado, tuning y SHAP
+## Predicción de la carga de primera falla en estructuras pantográficas
+
+**Repositorio GitHub — rama de entrega:** [feature-importance-consistencia](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/feature-importance-consistencia).
+
+### 1. Sprint: importancia de variables mediante regresión y SHAP
 
 **Entrega principal para revisión docente:** [notebook 06 completo](notebooks/06_Modelado_Tuning_SHAP.ipynb). En un solo recorrido presenta el problema y los datos, recupera el Feature Engineering anterior, muestra los modelos y la validación, ejecuta E0–E4 y Elastic Net, compara métricas y residuales, interpreta SHAP global y local, contrasta permutación y ablación, e incluye la matriz de consistencia y conclusiones. Las figuras y tablas quedan visibles junto a su interpretación. El notebook vuelve a ejecutar el análisis al correr todas sus celdas desde un kernel limpio.
 
 El conjunto **B** añade a la geometría original dos momentos de sección de fibra. La secuencia E0–E4 separa referencia ingenua, efecto de las características y efecto adicional del tuning con las mismas particiones externas. SHAP, permutación y ablación estudian la contribución predictiva y su estabilidad; ninguna atribución se interpreta como causa física de fractura. El notebook también indica qué contenidos de `Maestria2_IA06.pptx` se aplican a esta regresión.
+
+### 2. Matriz de consistencia de la investigación
 
 La [matriz de consistencia](docs/matriz_consistencia.md) conserva objetivos e hipótesis del informe de Semana 6. El [modelo y protocolo](docs/modelado_y_tuning.md), los [resultados comparativos](docs/resultados_comparativos.md), la [interpretabilidad SHAP](docs/interpretabilidad_shap.md), la [importancia cruzada](docs/importancia_variables.md), la [operacionalización](docs/operacionalizacion_variables.md) y la [trazabilidad](docs/trazabilidad_objetivos_resultados.md) separan evidencia anterior de resultados de esta rama.
 

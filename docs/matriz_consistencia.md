@@ -1,4 +1,4 @@
-# Matriz de consistencia metodológica
+# Matriz de consistencia de la investigación sobre la carga de primera falla pantográfica
 
 ## Procedencia y alcance
 
