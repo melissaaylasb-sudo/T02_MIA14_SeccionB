@@ -6,9 +6,9 @@
 
 ### 1. Sprint: importancia de variables mediante regresión y SHAP
 
-**Entrega principal para revisión docente:** [notebook 06 completo](notebooks/06_Modelado_Tuning_SHAP.ipynb). En un solo recorrido presenta el problema y los datos, recupera el Feature Engineering anterior, muestra los modelos y la validación, ejecuta E0–E4 y Elastic Net, compara métricas y residuales, interpreta SHAP global y local, contrasta permutación y ablación, e incluye la matriz de consistencia y conclusiones. Las figuras y tablas quedan visibles junto a su interpretación. El notebook vuelve a ejecutar el análisis al correr todas sus celdas desde un kernel limpio.
+El [cuaderno de investigación](notebooks/06_Modelado_Tuning_SHAP.ipynb) desarrolla la predicción de la carga de primera falla a partir de variables geométricas originales y derivadas. Presenta las comparaciones de desempeño de Ridge y Elastic Net bajo validación agrupada, examina sus residuales e interpreta las contribuciones de las variables mediante SHAP, permutación y ablación. Las tablas y figuras se acompañan de una discusión de su alcance mecánico y estadístico.
 
-El conjunto **B** añade a la geometría original dos momentos de sección de fibra. La secuencia E0–E4 separa referencia ingenua, efecto de las características y efecto adicional del tuning con las mismas particiones externas. SHAP, permutación y ablación estudian la contribución predictiva y su estabilidad; ninguna atribución se interpreta como causa física de fractura. El notebook también indica qué contenidos de `Maestria2_IA06.pptx` se aplican a esta regresión.
+El conjunto **B** añade a la geometría original dos momentos de sección de fibra. La secuencia E0–E4 separa la referencia ingenua, el efecto de las características y el efecto adicional del ajuste de hiperparámetros con las mismas particiones externas. Las atribuciones SHAP describen el comportamiento de los modelos y no se interpretan como causas físicas de fractura.
 
 ### 2. Matriz de consistencia de la investigación
 
