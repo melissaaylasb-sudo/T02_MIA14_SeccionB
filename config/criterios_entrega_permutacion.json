@@ -1,0 +1,220 @@
+{
+  "version": "entrega_permutacion_v1",
+  "fecha_congelacion": "2026-10-30",
+  "estado": "criterios_fijados_antes_de_interpretar_los_resultados_de_esta_revision",
+  "alcance": "Revisión posterior al EDA y a evaluaciones previas de la misma campaña; no es un prerregistro ni una validación experimental independiente.",
+  "fuente_unica_matriz": "docs/matriz_consistencia.csv",
+  "vistas_derivadas_matriz": [
+    "docs/matriz_consistencia.md",
+    "notebooks/06_Modelado_Tuning_SHAP.ipynb"
+  ],
+  "configuracion_modelos": "config/comparacion_modelos.json",
+  "configuracion_modelos_sha256": "c895631f2ad842c1da7ee60cfc1485bfe36a3c218edf504f02f47c6f8c25da77",
+  "modelos_fijos": [
+    "Ridge",
+    "ElasticNet",
+    "SVR_RBF",
+    "RandomForest",
+    "GaussianProcess"
+  ],
+  "n_modelos": 5,
+  "busqueda_hiperparametros": false,
+  "respuesta": {
+    "columna": "First_Failure_Load_N",
+    "nombre": "Carga experimental de primera falla",
+    "unidad": "N"
+  },
+  "entradas_originales": [
+    {
+      "columna": "n_cells_Y",
+      "nombre": "Número de celdas en Y",
+      "unidad": "conteo"
+    },
+    {
+      "columna": "Fiber_height",
+      "nombre": "Altura de fibra",
+      "unidad": "mm"
+    },
+    {
+      "columna": "Fiber_base",
+      "nombre": "Base de fibra",
+      "unidad": "mm"
+    },
+    {
+      "columna": "Fiber_total_length",
+      "nombre": "Longitud total de fibras",
+      "unidad": "mm"
+    },
+    {
+      "columna": "Fiber_total_volume",
+      "nombre": "Volumen declarado de fibras",
+      "unidad": "mm³"
+    },
+    {
+      "columna": "Pivot_height",
+      "nombre": "Altura de pivote",
+      "unidad": "mm"
+    },
+    {
+      "columna": "Pivot_radius",
+      "nombre": "Radio de pivote",
+      "unidad": "mm"
+    },
+    {
+      "columna": "Pivot_total_number",
+      "nombre": "Número total de pivotes",
+      "unidad": "conteo"
+    },
+    {
+      "columna": "Pivot_total_volume",
+      "nombre": "Volumen declarado de pivotes",
+      "unidad": "mm³"
+    },
+    {
+      "columna": "Sample_total_volume",
+      "nombre": "Volumen declarado del espécimen",
+      "unidad": "mm³"
+    }
+  ],
+  "constante_documentada": {
+    "columna": "Pivot_radius",
+    "tratamiento": "Filtro de varianza aprendido solo en entrenamiento; no interpretar su ausencia de variación como irrelevancia física."
+  },
+  "referencias": {
+    "mediana": {
+      "ajuste": "Mediana de la respuesta del entrenamiento de cada partición."
+    },
+    "media_por_nivel": {
+      "nivel": "n_cells_Y",
+      "ajuste": "Media de la respuesta del mismo nivel dentro del entrenamiento.",
+      "nivel_ausente": "Media global de la respuesta de ese mismo entrenamiento."
+    }
+  },
+  "protocolos": {
+    "principal": "configuracion",
+    "secundario": "familia",
+    "n_particiones_configuracion": 24,
+    "n_particiones_familia": 3,
+    "unidad_configuracion": [
+      "n_cells_Y",
+      "Fiber_height",
+      "Pivot_height"
+    ],
+    "unidad_familia": "n_cells_Y"
+  },
+  "metrica_principal": "MAE_N",
+  "agregacion": "MAE agrupado sobre predicciones externas por caso; mismos casos y particiones para contrastes emparejados. No sustituirlo por una media simple de errores de particiones desiguales.",
+  "umbral_cientifico_N": 0.0,
+  "tolerancia_numerica_N": 1e-10,
+  "uso_tolerancia": "Solo evita decidir por redondeo de coma flotante; no es un margen de utilidad práctica ni un umbral de significancia.",
+  "permutacion_externa": {
+    "repeticiones": 100,
+    "tipo": "Permutación marginal cruzada de entradas originales sobre predicciones externas reunidas.",
+    "modelo": "Mantener fijo el estimador entrenado para cada partición externa.",
+    "recalcular_derivadas": true,
+    "interpretacion_variacion": "Variación Monte Carlo condicionada a datos y modelos ajustados; no incertidumbre poblacional.",
+    "signo": "MAE permutado menos MAE original; conservar valores negativos y cercanos a cero."
+  },
+  "seleccion_interna": {
+    "n_variables": 4,
+    "repeticiones_permutacion": 20,
+    "validacion": "GroupKFold",
+    "n_splits": 5,
+    "agrupacion": [
+      "n_cells_Y",
+      "Fiber_height",
+      "Pivot_height"
+    ],
+    "ambito": "Exclusivamente dentro del entrenamiento externo; modelos y parámetros fijos.",
+    "candidatos": "Entradas originales no constantes en el entrenamiento externo.",
+    "orden": "Importancia media interna descendente; resolver empates con el orden de entradas_originales.",
+    "permitir_importancia_no_positiva": true,
+    "advertencia": "Seleccionar cuatro no demuestra relevancia de las cuatro; registrar las importancias no positivas.",
+    "evaluacion": "Reajustar con las cuatro seleccionadas en el entrenamiento externo y evaluar sobre su reserva externa, sin usar la importancia externa para seleccionar."
+  },
+  "bloque_hipotesis_H3": {
+    "id": "arquitectura_volumenes",
+    "nombre": "Arquitectura y volúmenes",
+    "columnas": [
+      "n_cells_Y",
+      "Fiber_total_length",
+      "Pivot_total_number",
+      "Fiber_total_volume",
+      "Pivot_total_volume",
+      "Sample_total_volume"
+    ],
+    "permutacion": "Permutar conjuntamente las seis columnas con la misma correspondencia de filas.",
+    "ablacion": "Retirar conjuntamente las seis columnas, reajustar sin nueva búsqueda y conservar las mismas particiones y parámetros.",
+    "alcance": "Importancia del bloque; no atribuir su valor a cada componente por separado."
+  },
+  "hipotesis": {
+    "HG": {
+      "conjunto": "completo",
+      "protocolos": [
+        "configuracion"
+      ],
+      "referencias": [
+        "mediana",
+        "media_por_nivel"
+      ],
+      "min_modelos": 1,
+      "operador": "MAE_modelo < MAE_referencia - tolerancia_numerica_N",
+      "cumplimiento": "Un mismo modelo debe superar ambas referencias.",
+      "no_respaldada": "Ningún modelo completo supera ambas referencias bajo configuraciones."
+    },
+    "H1": {
+      "conjunto": "completo",
+      "protocolos": [
+        "configuracion",
+        "familia"
+      ],
+      "referencias": [
+        "mediana",
+        "media_por_nivel"
+      ],
+      "min_modelos": 1,
+      "operador": "MAE_modelo < MAE_referencia - tolerancia_numerica_N",
+      "cumplimiento": "Intersección de las cuatro comparaciones para un mismo modelo; no combinar modelos distintos según protocolo o referencia.",
+      "no_respaldada": "Ningún mismo modelo completo supera ambas referencias en ambos protocolos."
+    },
+    "H2": {
+      "conjuntos": [
+        "seleccion_interna_top4",
+        "completo"
+      ],
+      "protocolos": [
+        "configuracion",
+        "familia"
+      ],
+      "min_modelos": 1,
+      "operador": "MAE_top4 - MAE_completo <= tolerancia_numerica_N",
+      "cumplimiento": "Un mismo modelo cumple en ambos protocolos; informar cada modelo por separado.",
+      "no_respaldada": "Ningún mismo modelo conserva el MAE con cuatro variables en ambos protocolos."
+    },
+    "H3": {
+      "conjunto": "completo",
+      "protocolos": [
+        "configuracion"
+      ],
+      "bloque": "arquitectura_volumenes",
+      "min_modelos": 3,
+      "total_modelos": 5,
+      "operadores": [
+        "media_MAE_permutado - MAE_original > tolerancia_numerica_N",
+        "MAE_sin_bloque - MAE_completo > tolerancia_numerica_N"
+      ],
+      "cumplimiento": "Contar la intersección de modelos que cumplen simultáneamente ambas condiciones.",
+      "no_respaldada": "Menos de tres modelos completos cumplen ambas condiciones bajo configuraciones."
+    }
+  },
+  "interpretacion_reglas": [
+    "El corte cero expresa la dirección del cambio de error; no define una mejora mecánicamente importante.",
+    "Tres de cinco es una mayoría operativa entre procedimientos dependientes que usan los mismos datos; no son cinco réplicas ni una prueba de significancia.",
+    "El menor error observado entre modelos no valida una nueva política elegida retrospectivamente.",
+    "La ausencia de respaldo de una hipótesis no demuestra ausencia de relación física.",
+    "Una variable constante en el conjunto perturbado no permite valorar su importancia en ese ámbito.",
+    "La permutación puede generar combinaciones fuera del soporte; los bloques conservan relaciones internas, no todas las dependencias geométricas.",
+    "Los resultados por tres familias reservadas son diagnósticos del dominio evaluado, no garantía de generalización a nuevas campañas."
+  ],
+  "matriz_csv_sha256": "3067bba777aeb5e74b361ec5329e7297bf39daddafc4d045f51b2edf30bcaab2"
+}

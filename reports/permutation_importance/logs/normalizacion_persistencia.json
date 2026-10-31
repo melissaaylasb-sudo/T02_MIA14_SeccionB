@@ -1,0 +1,3225 @@
+{
+  "status": "PASS",
+  "operation": "Normalize importable class names after CLI run; no refitting or numerical-result changes",
+  "created_utc": "2026-10-31T03:00:04.385637+00:00",
+  "models": 459,
+  "predictions_checked": 884,
+  "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14,
+  "source_snapshot": "logs/codigo_calculo_original.py",
+  "source_snapshot_sha256": "f819dd9866db8d251643e6ac324375b71d07485954f2c8a6169faf25f7cfe4c0",
+  "records": [
+    {
+      "estimator": "estimadores/configuracion_01_Ridge_todas.joblib",
+      "sha256_before": "2abe00fd0c308071ad8e2dcd09a3300c6fad50ec898182043af91844226c9ec7",
+      "sha256_after": "14706da3dd08f714325bf786358bb3d14690e9e18507276d11d1f17f9eca27cb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_Ridge_prioritarias.joblib",
+      "sha256_before": "2bf9afc2f3fceb2b14d5290937aaa41092419805513dbef7aeac3331588c8e33",
+      "sha256_after": "f0d9ec4c8125ea79c05fc1f693e2cd17c40c3331730d315ccd2851ad5ef8f46f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_Ridge_ablacion.joblib",
+      "sha256_before": "8550349b7c84defc41b78a342ca70253b6c5c4744a22b75ff41b5ca7e3637822",
+      "sha256_after": "24a1bc408d95ea4948128005fb39a8e1cb7046109895d1f466c6701480b42f81",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_ElasticNet_todas.joblib",
+      "sha256_before": "27f48e9a938a98687efcce53310cb6d13c4ebc3e820e6eaab48f3d1734e66e5e",
+      "sha256_after": "bc90de9cbe9244baafbbc637c004fd9e6500230fea8b62346b1edc9bb732cf9d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_ElasticNet_prioritarias.joblib",
+      "sha256_before": "e475cfe3dfa68d23d26eb213991b804cf5da688954ba51c693eae097dd238d04",
+      "sha256_after": "bf44d703a3a15f9696a6f23616aa4c1aaab00ecd49160417d366e078c0813096",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_ElasticNet_ablacion.joblib",
+      "sha256_before": "c48393e27e047e42bdc717ff9939976bdcdde56bbe761081e3027a4811bd78a1",
+      "sha256_after": "ddedc1fe0dc60fb974cece797512ea94532218cf583bd4c8b0ff62b0a0d94c97",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_01_SVR_RBF_todas.joblib",
+      "sha256_before": "9aa886cd9c89b23b647ccd2e7d000abcd46d9063db40cc5ee52ab13c000c0188",
+      "sha256_after": "2df85e0db99a001c01dc6ae71ec136afd1d1dbf9d9fa4d9acc2f1c379dc31e8f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "f61aaafe333496a5e87f687becd5cb08c72a439f80e7eed878e4aa95a76d7130",
+      "sha256_after": "dc977b6e0748a4db015d070e601dd5ff77ed5fff7c605f9f7adbc9bf68066684",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_SVR_RBF_ablacion.joblib",
+      "sha256_before": "43fa436b6b24d8163d8f232ec5ae98c832c197cb5eb8ebda8418d8bf84e7a685",
+      "sha256_after": "baf75a229d6f2ecfeb89d7d939170c3b6c7528ceb89eecb6b47a14f0e3431d57",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_RandomForest_todas.joblib",
+      "sha256_before": "6112929088aa6101cc20c16dd3cc564c15c62bc284960bea4e88e265fee5e992",
+      "sha256_after": "aacfcf2bdfb9d298309e062e0b6aba671ccf16ed434eddfc39044f62d43c6138",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_RandomForest_prioritarias.joblib",
+      "sha256_before": "4e69483d0200f9273d046223bad4e28936dda4a6ee2a154d7e5ed7bf245631aa",
+      "sha256_after": "2f7fd7ba933ee89e904ebb49655d3d9e463f24fee41b707d56fa407c9dd85836",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_RandomForest_ablacion.joblib",
+      "sha256_before": "fe25d0ac58b3c3471fd0e134bcb81032bdd15e5e578417019d1cf32852f1e7a5",
+      "sha256_after": "5764c39b3607f5273c2ac8ee7fb578f2b10e0f2c9263544734595bff30966ee6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_GaussianProcess_todas.joblib",
+      "sha256_before": "c2ef5edb6b06312cc9460b789ca8a6909ebcc312756a14815d78daf9653db9be",
+      "sha256_after": "0a73ac67b623a684411ec4a02ece61e506df83a40154d3014a8219550b2c2026",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "aa8b49352485d2ada666fb01310907ab35e83a4730535e0afebd2bb3998a115d",
+      "sha256_after": "62e6e47c9f6f669d4d19b058fede068cfaf380d2c67bd3f589951cedc1f39745",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_GaussianProcess_ablacion.joblib",
+      "sha256_before": "0b4418ff82d883fbe190b08d5e40165cfeac3d5f97cc1e7a69982f1490aaadcd",
+      "sha256_after": "b960808d1afe132b74707ecbf765b79be668854ed8dfc0b667ad0d917e26f214",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_Mediana.joblib",
+      "sha256_before": "9848f4ac0ebb3695afa4c75c83863523d3f339f2de6392678155583f19611cdd",
+      "sha256_after": "8d913858fb0e3377c5f68f25e531c6d2272a66de96ec86b37bfd7da8dd039242",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_01_Media_por_nivel.joblib",
+      "sha256_before": "31aa1172f29d7c9ba9a558d6e49b15799a3717e4f97b9267e6d1d4d153037f27",
+      "sha256_after": "5c924a059f1955e1da62cfe20ae9e1a1b161a51e570622139021d3eebf5bdd45",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_Ridge_todas.joblib",
+      "sha256_before": "fbc55a399bf6a2157df583791829cc6222aad5e04d8223e52643ed6620d85290",
+      "sha256_after": "0dd0de8e99e52d5d7fc01d1fffc82dde949647244915c684aca7d8b210fb7689",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_Ridge_prioritarias.joblib",
+      "sha256_before": "6e551e15a3c27c061e2c62d2a0e5d508b56ced3394e0b8d236865f836abca1a6",
+      "sha256_after": "327a4a4bfd7cd88169cf17a4bae4b02171035bd92bc34fd2932ebb0b47c702fa",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_Ridge_ablacion.joblib",
+      "sha256_before": "30810f8ae66b35ca92fff8281d125932cf207203f84098fce3c384b4348c8c12",
+      "sha256_after": "75f3d64d72e4ea520727f72c8aac1468c26380644c4bb2bae89d1a854918bb9a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_02_ElasticNet_todas.joblib",
+      "sha256_before": "6a7ed196ea19b8b7ea5b5039291c23a03f135538e69a363ab6637c28b16726b0",
+      "sha256_after": "1ecd3927641d91bc7bfd20ec74d6fd4b7f52b2b04e86d850d883f1829b888d29",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_ElasticNet_prioritarias.joblib",
+      "sha256_before": "2f3d688af6fdae24f8b0d5c1f87b5b88a742fae25de61209d38689cd96cb825c",
+      "sha256_after": "cb31908a3eb32a82d8c292060cba76f57b2ca6b73f21f109d3915677b41a8e0b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 7.105427357601002e-15
+    },
+    {
+      "estimator": "estimadores/configuracion_02_ElasticNet_ablacion.joblib",
+      "sha256_before": "aba88395d342f6f333937d4e3e84df20dee508d1f74546b89b62f00668bb307c",
+      "sha256_after": "f652c5892d1b1b476de4bca185cd61788972e617e3aa6a3624cb20968688ae07",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_02_SVR_RBF_todas.joblib",
+      "sha256_before": "2485fc70a96e620a7a1a5081bf787e7e5187a29b2bb88e9041814e23086fccdb",
+      "sha256_after": "d3ce76facb95152f9803f0917a8379b27840427dd502941cb6010c11397cab50",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "9143836bc9fead8c0e15679f6fe69b9c0c7c56e3641100dcb7d3302edf78245c",
+      "sha256_after": "e369a903be335baf1ee780cf4c1067bda6686337834aec0b2a533f49457c5ede",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_SVR_RBF_ablacion.joblib",
+      "sha256_before": "e617f5597b4e3558c0967a4ce3cabbd09de536bcc2013c999950aad78b7a66e0",
+      "sha256_after": "9fadaf00cc57ab8875a4a204dc65b4eeefe34daa7253fa2e323df070c0d4f874",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_RandomForest_todas.joblib",
+      "sha256_before": "51a77c5062ec4e739a843b17152355158758d53173b0d2cfaf270fa67f5db106",
+      "sha256_after": "09ad30b04b4eea309a656091c3c86c45838c17cc17eecae8cdb8c54a04271f6a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_RandomForest_prioritarias.joblib",
+      "sha256_before": "6b64e9d89339ed51ff8f08f5b55536bf690cb8e0db6d9c557ae58189e32e4e32",
+      "sha256_after": "0c62216d3f96d318b4f4b1008dd79da2eb20a2d4ae2429c9a833e38b3697e79b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_RandomForest_ablacion.joblib",
+      "sha256_before": "7e1944056eaf5748726515d809059e3a9565c12abd048f6d4bbab3a5c783c843",
+      "sha256_after": "5968a565c2929145b1607194585a1c4fbf938a980a2a7b11ca390168741121a1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_GaussianProcess_todas.joblib",
+      "sha256_before": "615228fdda9fee1ca97193f818a34615be89dab5ec7284c82467684a77f719b7",
+      "sha256_after": "d95915fe15a4c35f4339326d08a51812ad22217831b638654414a4eceff202aa",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "362936c7d3024fa8df228fbef094a47453af83002f87b13218ec04becc43745f",
+      "sha256_after": "4af19d19df3e1a892acd2db0347a29ed9afa72d8e0cb95c43ec6226a6210ddd9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_GaussianProcess_ablacion.joblib",
+      "sha256_before": "575c5c73db4dc537ebd1b8067bb67c813f1a970b25b08cbfcb098e6da377c6c0",
+      "sha256_after": "891c7fa6e0edee0824359c47a81df61c441d902dbcc1e029663e33867c2118dd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_02_Mediana.joblib",
+      "sha256_before": "c16b662ee24189412f4d2ec2005636736732f5398882903814d751e48e9504ae",
+      "sha256_after": "d3d6f01a79182f22d7faa51e5672b4aa55c862cbab309e1a0087c3a84d39968c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_02_Media_por_nivel.joblib",
+      "sha256_before": "c4f1a2d4872e1aca2d041fda04bf7db1a96fc197e8c2b3f095624b435a42d898",
+      "sha256_after": "3b6599ff5b20c200e2658653c5f601c5b5276c889ede5c85aff787a722fbc4a5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_Ridge_todas.joblib",
+      "sha256_before": "8392b0010ec9e71afc7879efcfd03e1282122ce4bb9086da00c65ba6b8154918",
+      "sha256_after": "49fd1452bb05f34db0a56e9cda3286f11251ea98f29491920743dd5acdaf0f1a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_Ridge_prioritarias.joblib",
+      "sha256_before": "c468bb8fa84f3088f03e0311ea00f30b75e538a77bef5e5483d323beba19c4a0",
+      "sha256_after": "98586384f88dbf7e1dd6f1f6d97d6d20c34eb9b6c1c279e32a6ecb42ba27f88d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_Ridge_ablacion.joblib",
+      "sha256_before": "36cb43a835beef4bd309532778be77e8f703583393250d155e740c70972423a4",
+      "sha256_after": "643fc0b32f5aaa66487c1a8515d524f69e1e058d62269fa25b525e830cdc91d7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_ElasticNet_todas.joblib",
+      "sha256_before": "738c49b4ec6b53adc0203a0d7b4023694b01acfbd51ba2a71515b3cc0fa8f3ea",
+      "sha256_after": "adc90b8c57cb0a3eac625590196a7069cf5c4b8e8428ac98abb11bf011e52343",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_ElasticNet_prioritarias.joblib",
+      "sha256_before": "e2a4dd93924f223501fa98b447220e845ca259495450c29cb447da2954ff7c6a",
+      "sha256_after": "d939cf30024868eb35493b95eb2c19be4f652fe698ee9fb7f1f3da0bec234600",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_ElasticNet_ablacion.joblib",
+      "sha256_before": "acb3c34450544995d08f30f8b40a159674a16f27dbbbf624b78c7e71028599c4",
+      "sha256_after": "788dc2e5e254165f2f14dc8f3aee3c3f941827679c02ac8059f2f35ee915e7ad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_SVR_RBF_todas.joblib",
+      "sha256_before": "01118f46f6128c9316b2a3629a8dca7b6f4de7c85c26c35d96181f8677d7b957",
+      "sha256_after": "f994b6b0fca2a4544250b1813b855f3421c4f900ebbf147e3272e81dbf06ddca",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "b9a349b539b36c2e468be5ca9d186181c6617c857a0aab456b5291315e2cfdb8",
+      "sha256_after": "a055cc74875a1c4bf2e1d6fd6dd84e74111ec648612f16cbb638cbb170b3cd84",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_SVR_RBF_ablacion.joblib",
+      "sha256_before": "18c504ee0a9221bd3d6cd0effaaff56f823520443c0c9954fa576ee310b8af26",
+      "sha256_after": "0538b38d8bd0e1626ff155279bb388d8338e64484b4bcbca1e67b0dc35308aad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_RandomForest_todas.joblib",
+      "sha256_before": "66680cafe173bb4fab1cd79ce429caff04513f2d974411a7c34dbee086d2e43a",
+      "sha256_after": "9cf6783c3a73078516a960db346cdbea0d37084813733a502678dfd5ab83836e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_RandomForest_prioritarias.joblib",
+      "sha256_before": "db8deb25f38cf8317746a7ded09b0b1ae025ee533bf8c8f38ca6150cb705d118",
+      "sha256_after": "e47f8d862c52921697206d64aec05a2273fad16d703a3126e1dd3f5f1ddf1624",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_RandomForest_ablacion.joblib",
+      "sha256_before": "a695bd7435267ad45eb488dca5f8d10a137b9a305b61024b6c029292b6145b2a",
+      "sha256_after": "903c57ea441f6c2697f399bd1293afd0447fbb69c8c6218fdd1c827dce88d47c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_GaussianProcess_todas.joblib",
+      "sha256_before": "b108ecd0f81e51c8c36a4b89d40096d18847fb295881bb7d253f830483e73b24",
+      "sha256_after": "aa014f4a3a80a73e2034d40c6eba4c66b8e6a761b3e6bd82e31467c916a45a75",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "bffebc3d66ac847ea27cbf7723ba92d3c874b095a26a7dfd3ab2a0b870c32b1e",
+      "sha256_after": "c9ab3c132aae2d116a071e314bb3be9b2cb9dc53bab845579f529cbcb9f8275e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_GaussianProcess_ablacion.joblib",
+      "sha256_before": "da368a55c6f415ae151a1ac530ac1cca00c8bb073f9061bffcda22ad90dd2fed",
+      "sha256_after": "c8cc8b8f390960ab495ef6f952f8192f8be8e5172602173f5f590a3d01b9f5df",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_Mediana.joblib",
+      "sha256_before": "c1b33e19710a6e2f2ace294b7d009454b9499ca5d8fe1c0eece6ea1d6156e39f",
+      "sha256_after": "3f7d0f7f8d2646adbd6ac9484117ee24f0f518f26c70b153d7b824b917f7968a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_03_Media_por_nivel.joblib",
+      "sha256_before": "4b9b767c5c3d2a2a88afd706ea7e4fcaf12294e4e7c0cb8d74f2178b9111c652",
+      "sha256_after": "73d267e97b7ec20c262f8228999e5d431af791081fd401827e58b94b13cce701",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_Ridge_todas.joblib",
+      "sha256_before": "a9b1611b8554f2dd148513312bc3769ef8197a9eb2524853e5e55c551e1d0618",
+      "sha256_after": "a4631b323a86343d2be04f4a302c438522af20e94f4bb8c04649e63ab6a1cb32",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_Ridge_prioritarias.joblib",
+      "sha256_before": "4bdc7c5aafc334ba37d74a0d468d3df7c6d8efc4bbd87db5987e8d960bd1569e",
+      "sha256_after": "e41cf8518436e72d5097690c88b4767eea21ccd43ba2e3bcbc4e2cd898c44dc3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_Ridge_ablacion.joblib",
+      "sha256_before": "920e1e2222021fdc1222899d0e7c9b9575d139036720a25a148bcace78e45e1d",
+      "sha256_after": "9e1c7538909848ee873d4bba3c248152f19ec9310c8d3ee846021b3fc754b81f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_ElasticNet_todas.joblib",
+      "sha256_before": "7649f99109d730928c19bacf9231788923eea114ca498f35b673fbf32b406554",
+      "sha256_after": "df8b3d82c1be227ecaf36062b93602932fe16b72008c29cb47e3bc92cf5ef61b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_ElasticNet_prioritarias.joblib",
+      "sha256_before": "13446e239d03b610aafaf42ae22068f45993d90eb5ec82a3951b3c8be4d14c12",
+      "sha256_after": "86eaef363e9ef121cd705d27117ff75f6e07295b9ccdf5a85c41131d0302c0b0",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_ElasticNet_ablacion.joblib",
+      "sha256_before": "5f6585778e2b9f7461d7f1b755eb6e8bc4ad9b15b1858ccda682c9439c4f58ef",
+      "sha256_after": "41be5028cbde17e00aa168deeb17d3308a6edef0c82d094b648ca27c7592642d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_SVR_RBF_todas.joblib",
+      "sha256_before": "68a3bfb36cf17aad8879ed6d2fa0daefe0d3dd3c5c9ca70f33ea3c7430c7ce22",
+      "sha256_after": "e899b0289cb196a71ee91a27009914bef1fcacbb88e3e7a4fdb8da9ac634d47b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "cca1962be8cd574090ecec3c6428a59d64a2079f5516bdbb8d1e732ae2cf885b",
+      "sha256_after": "36d798f7eafb3c4099c1038eabe80f6d61f3cea09b761958690ed462dcf19d1f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_SVR_RBF_ablacion.joblib",
+      "sha256_before": "b3bc072c2a6dd5c7aea5e7bb35f8cdca8a58b2c9a0a8edc5339275ce77a47528",
+      "sha256_after": "7454c9d54430d8e05dfa372d79d8a7cefbabebe99d9fb03bfc0046a7d1d618e3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_04_RandomForest_todas.joblib",
+      "sha256_before": "9b8bca5d5c8b7823e6e91f2d4f5f84701c750a553f070b119d09571855f737cd",
+      "sha256_after": "f99f214859bb6d8ed58751fe3aef690c4a9c04f48e7fe90c755fc263316f5ea9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_RandomForest_prioritarias.joblib",
+      "sha256_before": "5d8c01d6b76ff57335fefb12720660d463be72dee235ac3f14fa1668fbca57ca",
+      "sha256_after": "217ae510dec80615e9aeb957a1545a488c9cd0a898794430ad14c06eb894316d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_RandomForest_ablacion.joblib",
+      "sha256_before": "c8d5be5f810d01b33cf7d64b8e903dc03339c42166f39eef16cd87a2aafc9b3f",
+      "sha256_after": "1e183a968e8d15a1de70b3cf1cb6e74c7a495db118f957075436862e32640e27",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_GaussianProcess_todas.joblib",
+      "sha256_before": "96dd3983e070eac1a5dd6cc8bc90ec06c086ae8b6758f424820ae264dfa181b4",
+      "sha256_after": "89bb7196636a00dd563bfa171590834db454025d36f429cfbb5d6b296f7e3cfc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "132301950a1d0c763feb64f618c3f697e1f29aa37a0341f6d5b48419a9d5e105",
+      "sha256_after": "271b2bf328b49ba3ad7d1df04628b73f1afaf4eb123fdbb998d4694c6a4ea27b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_GaussianProcess_ablacion.joblib",
+      "sha256_before": "d2ced852f1f4d7c77c6c3db526283b4ca73b6280e44fc03f407cdcd448423e9d",
+      "sha256_after": "01ed02f85765ced6c4cdd17ed0abfcd7172afeae2e7333b39893de01e51bc0d4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_Mediana.joblib",
+      "sha256_before": "d414308d9327ce00aec07a2c1c279dc436efd8a736542d1a492612e0244fbabe",
+      "sha256_after": "fb034b02b26885b5d0de27e8bae15fada56ef5ec9b4b85850e361a155a08062c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_04_Media_por_nivel.joblib",
+      "sha256_before": "38919deae612ff470cbffbb26401bf1464d4655d1ab8861775344527acebbb60",
+      "sha256_after": "26fd52288c4c4e964ae5e9350e2c880f7fe4257ac23a884ded693ddd9f9743ff",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_Ridge_todas.joblib",
+      "sha256_before": "b521acde016ab4087bfff4a405c346fb8e967b9ff26fef4b3b7c40a10f2f328f",
+      "sha256_after": "dbebd1e8c48576c1e195394bcc659fb36741fa092d2d6b6f5780d502d08d4e27",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_Ridge_prioritarias.joblib",
+      "sha256_before": "ff9dea8bec3207c9eb972decb9e32480553d4ccc2f814baf95a35765f336d801",
+      "sha256_after": "ef3a2422ee37ed341128836cf4602879b85422228804d61232b38db3f6821dfe",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_Ridge_ablacion.joblib",
+      "sha256_before": "d9a271b3b7cd35210aafb3189c323651b7816aed791b95623ab2c4f5f61db3af",
+      "sha256_after": "2ec10a64bab61fb4f72b22019a332447bf7fa228b457665285de62f32a1cd6fa",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_ElasticNet_todas.joblib",
+      "sha256_before": "6af915358bcf0f7fa81feed9e2de9377c9b47d59163b58bfbda00ef4c5194f86",
+      "sha256_after": "b2bafd14a44a4b1ccd99c6eb47e4a10409bc285fd762810a3b0762abb9b6abd4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_ElasticNet_prioritarias.joblib",
+      "sha256_before": "4ce0d5d63daed1bcee050e713c5ef8044225d85eb5dec0a17f3ab12b046143e4",
+      "sha256_after": "3396fc86042a62b6f3f27ba71f6b4c552e3f491e6f0c0bffafe02637e6be6b10",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_ElasticNet_ablacion.joblib",
+      "sha256_before": "63e473ccdaf5a0d349940be52c3b430a1b24975c4c5189c352e086b8843ca08e",
+      "sha256_after": "4d3b734333929757eccd100e55b16b4fdd5a87565c4a58934e8caace2c5c8d6d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_05_SVR_RBF_todas.joblib",
+      "sha256_before": "b704e7f1009461b9e9397d8bd1325edd9e890fa592b1b3d0a5670d0eb345b66d",
+      "sha256_after": "c32b6445990ba75456d15914d4ba1232bb468336997d8311f9f5ea404c311368",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "f91f66cf3870bb87f4681eeae644c753ff362708453bd5d17c047412ff05e97d",
+      "sha256_after": "65cb8a2a78531a27b37ffe00258c4ef7a399551757a919b4ddae3af3147b6df4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_SVR_RBF_ablacion.joblib",
+      "sha256_before": "8689d3b851999417ebc12c467eb4f99c343636e9c0a6c8eb027149611ae0c724",
+      "sha256_after": "9e9cea070697b0fde1a2cef502250c34994cc0aa8d016d7201936ef44b2bfa54",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_RandomForest_todas.joblib",
+      "sha256_before": "5e393cd0f989155bed18ac28e332ca4435a2af789bd390352ff6ea87c0b3a332",
+      "sha256_after": "21c9c74000f8249d5c25533b20944d019c13d2c860b63dec6057891cd64d320d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_RandomForest_prioritarias.joblib",
+      "sha256_before": "0df921582a09c7b757ef7ea82a01d29c3475662d71eea033656fdb2ecbd96145",
+      "sha256_after": "86b2c21d8b9d5150c7243475eeefccf01e69a57a9ab50957ec25a103bde24733",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_RandomForest_ablacion.joblib",
+      "sha256_before": "9dfafcd588c03cd5ddfc1bf5877093aa8e69ace776eab8949bb4189f15569d68",
+      "sha256_after": "eb843355e09264913bbe260552fcdeb8a3daa00c4148f71756740ccd10a301bc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_GaussianProcess_todas.joblib",
+      "sha256_before": "c6329e3f06e8a1bc86479fa2b1af27e5527e2ea4015365a668464445ae951583",
+      "sha256_after": "e9fca5ece1efb1fad2485c657ec412349ea294c69e5c46378fe689027af082f5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "52abc4347280eeadedd28f51cb7d246454169a67a5031ff4bd6c418ac3e9d71f",
+      "sha256_after": "30e65fa275bcb14aeffbdb325764b5b3138e6b168a0c30d27e45c92e1a312832",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_GaussianProcess_ablacion.joblib",
+      "sha256_before": "b896539197fdfc5db79a6961c95fa4900b9b9939deae9ff9e3789f0393031e79",
+      "sha256_after": "6020ff61aadc4c30cfbdea1532a117f83824d1a1555058aff0f3d6637b1330b9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_Mediana.joblib",
+      "sha256_before": "cc3bbd7e5d057f387a9393b58754b3f3324b5524dd4edcb9fde5a7751a105f64",
+      "sha256_after": "090ed3fdee8f59d2196198c1e01121115fb3a369d250865259e6d38c831bb238",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_05_Media_por_nivel.joblib",
+      "sha256_before": "863a1b6efb34cfadcc283bd2835b74fc3216fc99efee8453b743b5da17c8eea2",
+      "sha256_after": "d749cd84a613930e695c51743baa6a5223e8e6ad60ddf4dc37dbd030a29aec3f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_Ridge_todas.joblib",
+      "sha256_before": "9b95f0761e93de9b57e4868e4fdddeb78f823ca077403f295518505d7ed50ece",
+      "sha256_after": "6ea3a7cb977fddbdac1eba189a85eea5cf185852c3fa14809aee344e87d11706",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_Ridge_prioritarias.joblib",
+      "sha256_before": "dd38ab28aaf2d1647808ca1849ba7c4db5269fa760658ba480204992f962f847",
+      "sha256_after": "1e70645052999462ecae3759028ada2c0cb39d3da5dd42c253e304aacb0310fb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_Ridge_ablacion.joblib",
+      "sha256_before": "df8c28cdee075db2573cd186ee7e93660881f4636cfa51ae3af5770666e500a5",
+      "sha256_after": "f3924e02245b6da3a61d2deb798b629b42f958433198a67930089d92a70dc04a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_ElasticNet_todas.joblib",
+      "sha256_before": "5b9669c9fca38baabce075aede02d4c35cc65db1aa90e2e1c7be35c9d5ccf54d",
+      "sha256_after": "8077c672ca3bc647fe048cca5602de69da2156f7fe2b835490bb1bfead17de50",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_ElasticNet_prioritarias.joblib",
+      "sha256_before": "581653ec98874568d7b18a9b0c16b54d4c0b9f9477016512cc457c7f4d391078",
+      "sha256_after": "8fcffe0954c608e1aebd446e65d3be79f7bc0acefed77aab3a4a5e819a7539a9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_ElasticNet_ablacion.joblib",
+      "sha256_before": "00d83401188f1262671f4e55bf15659a0886942a8d2f8312be47c85cd4729038",
+      "sha256_after": "e10563c2cfffceab92a75fc101a78e2c2e89f575c7c9dd76dc6bea84b521c642",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_SVR_RBF_todas.joblib",
+      "sha256_before": "f29c1e508d3ed062ceb231ee22158cfe9de9adf169153ce23594d788ca69976f",
+      "sha256_after": "7dfcacde39e0f50bd28c61a46656e4c2ddae50f883dbd2be6fa67175674d7f96",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_06_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "7040ebe1eb0fd916872fcf3da54fd7d9167a1c2c492b5032153798ba5fb9b8fd",
+      "sha256_after": "946117109f2371ded1ca4a845557973b05c829f93206c6bab1243039645c1e0a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_SVR_RBF_ablacion.joblib",
+      "sha256_before": "1d50af2326871875209610c9d8bd3991c696cb57c6f86fa53be5bb01d7cd1de7",
+      "sha256_after": "6b3d42e64fa11521fee2bca265a1d22958eddabd344980dc9c828942dc0c439e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_06_RandomForest_todas.joblib",
+      "sha256_before": "07dc72525fb7378931f40370438d5b2e577d2f2a407ab7fcb45c31dda0965cc2",
+      "sha256_after": "699bf86e4c991b8bcb6055a82294e42fe5f855eab4b204e94faf7c42aac46252",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_RandomForest_prioritarias.joblib",
+      "sha256_before": "8d9048b6a74a336974b4a6d928d2805cbe8a4f44985a317e33efe9715eef91e9",
+      "sha256_after": "8151cec1d695d9b6c5afada64923cbef208685671ef48e7efd33897177044fee",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_RandomForest_ablacion.joblib",
+      "sha256_before": "419f521a5fc6e154ae4c0d5067864cb398fc105bdb570f3865b262d9d42c1080",
+      "sha256_after": "379e802c45ecfb5ce8b2a7ad994e2a5d33824d8bd4c7e5236c2c6967bda2e39e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_GaussianProcess_todas.joblib",
+      "sha256_before": "fa929c03ba663d6a4afd22a44dfc1bee46a6102a012e456e4fa968e02e2ade8a",
+      "sha256_after": "3a3f0e741159f6b3287cb406d52d8966f2eaad1bcb560e15c4c5462711b335e6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "5d762bf6b5702635bd3b27f004e971d4a09e6ac72e7529443722d56f3508c1c1",
+      "sha256_after": "ce0ddf50124cb705f70180c4cf7d6d0159e101e671f0760f48ecda7fe95a812c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_GaussianProcess_ablacion.joblib",
+      "sha256_before": "83e48337d5f435bc95f665b8627a8705868ea679b8cb27a5063c1b91f02e5ec0",
+      "sha256_after": "827102fc7e3ac2a711d495eaebae48b4563aeac451f5913586dc301f58bb8502",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_Mediana.joblib",
+      "sha256_before": "fa4036ed839d9791ee3408339a40a75088bd4945207c11bc5d6d1aafdfd03de9",
+      "sha256_after": "9d104b569bef656eccaf0880f8fb070da0dd30f16eb241273faf82ac581c2c16",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_06_Media_por_nivel.joblib",
+      "sha256_before": "88a0123896d00c13b9edac3f59819df491198fb99d8cc4dfe8a0078a46ff422d",
+      "sha256_after": "c9127a7d81ad6ec0ce5d5f1b4ca0b2df3fce6d010ac766942960eb27ce269f46",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_Ridge_todas.joblib",
+      "sha256_before": "a269245b6bafc9a8c8d3f239ebb1a9d49651f6ea283b5b5b2310ba746b15103d",
+      "sha256_after": "8f4eb521026f9374ac0a3ec5d54bd579c2d72de21394303923d6cc704aa0ceb2",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 7.105427357601002e-15
+    },
+    {
+      "estimator": "estimadores/configuracion_07_Ridge_prioritarias.joblib",
+      "sha256_before": "e8e309eaf38fa74be81d80b99dd502a004ee6ff3535da3936021217a481e2dca",
+      "sha256_after": "59d1638e5412ae6a54b07ea2d5883982d7ae55b355165bd8d31b0941a33171e2",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_Ridge_ablacion.joblib",
+      "sha256_before": "510ba6eadb1e167dfe3419dbf24ad819b301d2c363b9b03a61da8af6d902b15a",
+      "sha256_after": "54944018cf2f7ebfaeac5206667bb05e1679552a191303db6395b6538360ba3e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_ElasticNet_todas.joblib",
+      "sha256_before": "e52133b26b5ce932ff6cdb8c6c95c85540c5d99072f0999bea92f3bebe00ab04",
+      "sha256_after": "3c21c0de0aeca6d457252612f3a7c243626bc244d8c0dba16955c6d4368fd016",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_ElasticNet_prioritarias.joblib",
+      "sha256_before": "c0e0ca5b03696956554fcea10550e5dc559d2efb2ce848a6a23480d8f4d45ddb",
+      "sha256_after": "68a79d8c2187ab346db9f1a2d872389435fdc71f2653e333dd2b52ca6b08d628",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_ElasticNet_ablacion.joblib",
+      "sha256_before": "22733d6be6def5a3b1198ceac0f2237048e25a2ebdc885e5a81380c3272c1ed6",
+      "sha256_after": "cbe4d2744f90d424bc5b3656b4ab5dc5202cb52f80e51cf8fda22a89a268269a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_SVR_RBF_todas.joblib",
+      "sha256_before": "5093d8052b4ee90ca944d658d6b3c2222398697c413000c5f011910e63e62459",
+      "sha256_after": "2c2a21b393c78b9d5764cacc9d3b7443300f11c67ba6a17aa62d933cb9efc98b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "74efc278d44940190e760651160fd35ea007965dbe9f55f19e15709ce38901d9",
+      "sha256_after": "8454cc7c6b4ef4bd08587f1339b1dc116c2e8854ca6f439e6d08e19ff045e98a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_SVR_RBF_ablacion.joblib",
+      "sha256_before": "2d415d1717593a420407c881db84bde039b3b5efa9cbd0ac9f40b53dc943b656",
+      "sha256_after": "bb4d74f4f12298760aa2f31f85a30de9bf480dfc16acb6d23eee4d7609bb2765",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_RandomForest_todas.joblib",
+      "sha256_before": "6aa6f4b165ed40f01b1c14ed1342340c568b16281747d25505ae5cf7875409a5",
+      "sha256_after": "b44a2b96de67fbc4d4edad873abef5152f31962be6499516f55cdcf8368a7a3c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_RandomForest_prioritarias.joblib",
+      "sha256_before": "655106e7646b4eb1be3f65746415acfc92cfee60c32dbf8f5e429b62f6e4bd93",
+      "sha256_after": "7656ab240d6946636063ae6ee114a758ca1c221338297b2d1d28a478e2e0d603",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_RandomForest_ablacion.joblib",
+      "sha256_before": "15e9d4381074b17b4b1646795af4eb9c0a71a1680b4144415a1e1b132dc546b0",
+      "sha256_after": "ec71db2e1ef6797cd5acd31044dc1a80a50578cc452f52f53974ef5c158ab664",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_GaussianProcess_todas.joblib",
+      "sha256_before": "81477e0a6ad3da4fa7fdc87c8830fa5eb308d03a9f561504eeda89fba36519ec",
+      "sha256_after": "3b1005f09420d79c733dc886a957d2ab5f9ff8b0d63caddc0157f871316e61b4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "3458ba9e588410ee19e6eda9d45b07f0959685d0476e9a365c58a08bdd563826",
+      "sha256_after": "7da36af63e1fe597533ea4c1e131bb62383a75187131f9de31ccd188397e90b9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_GaussianProcess_ablacion.joblib",
+      "sha256_before": "21bc1ebfcdc2afafc1bf2c364bf21f9d70f8b0676ea46dc6e50dd47b09529301",
+      "sha256_after": "3a1d4d4bafee76e23affe07e4a084f772ee80b23869c22c5d12c9f503788eff2",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_Mediana.joblib",
+      "sha256_before": "314f0aa8035df9cdba00edb327368526e5ba3f24117262d836dc7a74ed308eaf",
+      "sha256_after": "b14b7411a35c9fb18691eb965d8f6399cbc1a50a27c026924db8b5bf3fd977be",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_07_Media_por_nivel.joblib",
+      "sha256_before": "73445fd5e5e2d1ebfa65faae555145a47bfb27afa9e4723fdcd44348e4ca2298",
+      "sha256_after": "58ac32e702ee00a8c60da9837ff5016caead5493d7a7bea1b635c103f7704573",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_Ridge_todas.joblib",
+      "sha256_before": "a5c0455a302210153c561a38d4aff6c32164e399aa40244109ea1f91b296ca34",
+      "sha256_after": "cc328f2d7b4b913378523d72c22ab165d45bf2acced7cceb8facb69a37e68932",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_Ridge_prioritarias.joblib",
+      "sha256_before": "967f874f14b4065144786e5b2ad8811b15a7d8fa5524cfdab8837cef80c7db40",
+      "sha256_after": "7647c0ec593094e9db3c49824a91f1668c0c4af179d2ca0ec512c88432c7990d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_Ridge_ablacion.joblib",
+      "sha256_before": "9da4595bf682fe8f3d132c044f507f13802f6ef388cf46c2022d5ebf5cd1c3b5",
+      "sha256_after": "1188c2af46f09d2941e76bfdfd49fb1cd8e78b5c0c03d2b0deca4017dfd70888",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_ElasticNet_todas.joblib",
+      "sha256_before": "d579d894f80c0780ac0cfbf3c711b332feb4088b043b4556cb2e7f64f0c811d4",
+      "sha256_after": "3e8cd671ab81162cf040124e482500a62422b0cf42bea8639587ebd07823347b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_ElasticNet_prioritarias.joblib",
+      "sha256_before": "77b81ac5b005a1446eb960fdef1cdf10f6000f518aaa96b4a816544fbfa8126b",
+      "sha256_after": "876b35df3783eb8b6f47a96af60457e0f53f0a17d26a261fda178068f2beef2a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_ElasticNet_ablacion.joblib",
+      "sha256_before": "898e7ea89ec0f94da9d76b8202435daa1f40b3b969ca53ff6e093cdbb2b93d8f",
+      "sha256_after": "1f58671fc38c8c3ed9a4cd5c866b6d46ceb663e0a252b94262e7638b692c047f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_SVR_RBF_todas.joblib",
+      "sha256_before": "89eb7cde1b23189363bb53c7ae410f96edcff3feb285741a89ac396e1d45fa08",
+      "sha256_after": "6be39534f3cd643173ca231827e64affb4555a22eba8a54bf994d44507c993d3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_08_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "cc9efdc4803f2d96ff9cbcfde9a44974c67ca6abc7add4954837d18fdc4e3663",
+      "sha256_after": "acd7b5faa80124fa4bc8b707700b8c4e0167e8ba8353ced9de8795d7351c845a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_SVR_RBF_ablacion.joblib",
+      "sha256_before": "fefd8abec473f7430c8dec502147161ab789314d7204033660470970ceee628e",
+      "sha256_after": "5fa13ffbc85f46c405163109d9c479cc2ced732ab59353606fb8fc9590c6fbd5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_RandomForest_todas.joblib",
+      "sha256_before": "6f6827687d4e97cf09ba18735e458726c159d12461a8fccf4723f75a2b60f831",
+      "sha256_after": "351c283a07600a6d782f516134b962c4f37aeec3eea2a158f82fddfe9958eb48",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_RandomForest_prioritarias.joblib",
+      "sha256_before": "785b9d41c65dca4647c54c0ce2409d59a1465c9473ef6527c04829f005d3e0da",
+      "sha256_after": "a56c50a78b1b8cba638937bb954972d48c1b6d8d86a6cc0e8d8cfbfac6279ebd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_RandomForest_ablacion.joblib",
+      "sha256_before": "61249e289227a21844b6a9418160347d6c27f4ec564974692fe40227bd6d3b39",
+      "sha256_after": "34238da099fa2bd6f2c15f2ccf4e9a1aef18191722b3bec4693bd19797cd43bc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_GaussianProcess_todas.joblib",
+      "sha256_before": "d771a8fc363728b166767d1cd2163e523d557d05f1e42d825f4c8e2630c482bc",
+      "sha256_after": "f0d2e4406e99c6982a7cca3adbead2692fb9a56ce6b3cc1ce0720fd5d8e45f54",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "e5131404ca25ad514a4da3f3d0df88c1fb983b45279069fa70f76e50ccda21cd",
+      "sha256_after": "d21ff4cec355507317033056d9c193765d444b464bef55fb227a23da4ee9c5c7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_GaussianProcess_ablacion.joblib",
+      "sha256_before": "c98303a76c530f89d98db10176e74300d302391e1bf9edd2fcf060f1b2e9f9c9",
+      "sha256_after": "9ff20ab5f6174e4609186431a4bfed556b49b069ff55580251148b853e06ee3a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_Mediana.joblib",
+      "sha256_before": "05c7864f9b227eddd4745178f73f01ef6ff83b59984acf49549efda637f72587",
+      "sha256_after": "ace200ce13e74486264b47bf1a1d662df4c582af9f0754c039ae41d8aeb6f6bf",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_08_Media_por_nivel.joblib",
+      "sha256_before": "14f1e83af9b9f08823bee5667743df59c3bd6e6cfb1b85d2d7df86f32c89b390",
+      "sha256_after": "87b7a2506227100ff8081ab6d6c0e1c667a71345681eea45babc679a1f4980ae",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_Ridge_todas.joblib",
+      "sha256_before": "94234897ed4f3691495c56771215eb007aeacf91f838bd5295e23cf2940e7cca",
+      "sha256_after": "a0e5611225db5069f812f5e32a38f3d3c8b0678d16f5b6ce390b0ea51008eb58",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_Ridge_prioritarias.joblib",
+      "sha256_before": "bd1fee61d22680ab98055a03284be7d6ce7dddb26cf69bf6275f46d95ed6d84a",
+      "sha256_after": "9dc8cc5bb8fba9393a216d3b2458300064f96fb16a7e69cacc66623bae35a2ec",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_Ridge_ablacion.joblib",
+      "sha256_before": "27f8f35dbfeee87f4d70f4d3885401eb5a78d7bcd182dd5f62ea1096358e7223",
+      "sha256_after": "012668dde2a22acf5b396b04d2ee8bff76922a9b4b047aedb254bbb31f20b1ad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_09_ElasticNet_todas.joblib",
+      "sha256_before": "3214e96477a6450853d0356f51d24a9ffbc6a3d78e8f0e92a956778dc46b5499",
+      "sha256_after": "eb323c6b70e32d2d6c40f0b0611da372cfecfb03d75240bfb7b56915398693d1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_ElasticNet_prioritarias.joblib",
+      "sha256_before": "62c081e6acd637d77e50cbd5860e14e2273c42f7bb0d9a50a4bdcb83006e2d34",
+      "sha256_after": "735c58d2220a1b64157de0799cc936dcd77bca3b55a15dddb8d254a8c6bc8323",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_09_ElasticNet_ablacion.joblib",
+      "sha256_before": "17c258bc5583bec38e600c82768603dd36dd62b5a0c707fa496fe39ba000f734",
+      "sha256_after": "d0059cfa7c82ae2bb1efc1deeb91da729202e336440dd0acd53aa2eefba61566",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_SVR_RBF_todas.joblib",
+      "sha256_before": "93d8fea89aa23b28309e6911b04d508ee98a0fc4c4a10465537be516613f964c",
+      "sha256_after": "9767de038edfc61bae35f9cf76052938e6e77b987c8b48628345b2aae5354cc6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "b0e8df14b4b518a6d2876cd45a968d1393c2bb033ff3a921ea9a25a68b6b8cad",
+      "sha256_after": "eb732aa6e3b99b7bd93ff1d228b2a1355380394e0b5ab19091a1b1dbe5f002a8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_09_SVR_RBF_ablacion.joblib",
+      "sha256_before": "d84d111c7c84d74d398fc4f44e2fb5d64eb177a6ca66b036c7e882d21c322390",
+      "sha256_after": "f5e5657d42c4caee2d1d669e259db76007d9a429223c357ae9dd342dcb59967b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_RandomForest_todas.joblib",
+      "sha256_before": "ab19a79ffff0eca6c4d398fff366a771f791a6c15d41321cb0011e1ebb9dcd61",
+      "sha256_after": "7202c2332547db1e3ca33c0df3d7217815b726e68defd04dd782b16befb17bcc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_RandomForest_prioritarias.joblib",
+      "sha256_before": "6053ed8c14a53c79b1f4776da778e3ce679dffe24be822f0908a9c557f1a5322",
+      "sha256_after": "73532bee6e9e4cf474f2d92764161cb833c04ce841f59c9bbb63c7dfe529443e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_RandomForest_ablacion.joblib",
+      "sha256_before": "a3b39e64e6fa47ac8662ef0ac6bfc2f1dbe9a7c80a8fef0beeaee8069aa8f5d9",
+      "sha256_after": "42c90d115b31ccdf74f38b3b55c263296dc9b1c612f70c183414692daeea66c6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_GaussianProcess_todas.joblib",
+      "sha256_before": "5b14123add91af371224b352b1763ed4e10f06a306fce04222e69849c278765e",
+      "sha256_after": "4f3a388b5fa4ceb7d8ad85de9b71bc5659959c615ae5ec7b51544c36e33938ca",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_09_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "d935816e071cceca7738741d74920f4fb97cf8b0efb2a7414d1f0ae3abb21ecc",
+      "sha256_after": "b6aad64272ea0aee652466490fd8904485a4b018ab5fdba0a6a47ec0f888fc48",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_09_GaussianProcess_ablacion.joblib",
+      "sha256_before": "8382b37210df29913ce57bd85d887050b765bd900627ad6b7fb5cb60af7c61f3",
+      "sha256_after": "3d2722ab5053ab049fe311dd0941f65260973fecdbd05beddd482fb15fc35067",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_Mediana.joblib",
+      "sha256_before": "8a4508f3512f73a7fac672ff9654d0227407927854bcf373b8e772f5b1294d05",
+      "sha256_after": "a1d0f61aa81708e53f947fc75a5fddca2278b03360db8bdebcd2ca7ce6a93f45",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_09_Media_por_nivel.joblib",
+      "sha256_before": "b6c4cc3b84bc32cbd34677c0d7bf7c7fb4476791935ec3c86d9ab1a8b1949301",
+      "sha256_after": "c29da03c9876df21b776e2e31820b89989fb2dcb21aa59690e42d01434a0ad79",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_Ridge_todas.joblib",
+      "sha256_before": "70cda979ac1966b20abcf4200753ccc9ded1f9874151fdc7ae577197375b2f08",
+      "sha256_after": "c404abc31c09aa9f3068c242893a84f3f1f1cc094fa7cb62615e6d6411091e7d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_Ridge_prioritarias.joblib",
+      "sha256_before": "99ed8d2db5136133763caa29bf03559df81d1cdd0161d9eaa8e76a136c488f3d",
+      "sha256_after": "621f40f897ba69b4748c059e1af0df29af659b5c864aa44b5a932827c7c336df",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_Ridge_ablacion.joblib",
+      "sha256_before": "a1919d8559550a5963308c31503052de27f87fc5f0cbdecc5e94a9522d889dc0",
+      "sha256_after": "bd43a7507d35544ee5b93fe9ffe13204f34973428ab034aa5e309c40e41579c0",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_ElasticNet_todas.joblib",
+      "sha256_before": "1ed8f1961df1ee2ba84e2404aed12527c8dd45f5f91db87d1188fde4a723c819",
+      "sha256_after": "5fad4d8c2626b147fcbcce68c0ab166e8146c7254f5dc6f247fccdf9e628ed80",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_10_ElasticNet_prioritarias.joblib",
+      "sha256_before": "0513c976c8cdb7c0553f181d084e9969465bbec506320f8b3870ed4f61f96c55",
+      "sha256_after": "8223256eeb19a03c78b6ffdafcdfe7ab2f7ad41ed2a552e40c27014e5afe9269",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_10_ElasticNet_ablacion.joblib",
+      "sha256_before": "c74c5a986c72bcba581502d13b8fbf1059f620001efe0e184e9b7af95b12fc4b",
+      "sha256_after": "9bfeba2ede5723038d49bf56ff08da5f760c66023f897857f14eae8fa3e63f98",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_SVR_RBF_todas.joblib",
+      "sha256_before": "78db17933f113e8b3a494ed009a5c0480c40b8e5e5fdf4e74ad82a5dc4436e90",
+      "sha256_after": "6e9d77f5883a892ea8a64902dcf25a0220c6bdc6f1b477633c6d57e00ff8fdff",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "083697ad341af530d7ae856862328071046474246965674df7d519b83f6ea129",
+      "sha256_after": "8ff3fce2c0faf0ee196744658b0c844f54276d3ff014ca6e9d61da36252c510f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_SVR_RBF_ablacion.joblib",
+      "sha256_before": "81e544e87d1d463018adbca4b4805ce80a2ab57c648374a2a289975e1eae766d",
+      "sha256_after": "07ef2167d2734fc3bda28c702221c878a09ffa7b117b2fa1939903a7732f717f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_RandomForest_todas.joblib",
+      "sha256_before": "ab17dd74907eec021c8992b6ae213ebdef977238a443486af037df1b8437c90a",
+      "sha256_after": "a628ba64a23cccb88de1e285850f75e72f42c249e7a5668505056edc25be124c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_10_RandomForest_prioritarias.joblib",
+      "sha256_before": "994686926719d2954a1371f86ef47d8751d4da8bd42de9e45a4c6fb0ab48134e",
+      "sha256_after": "7b80d216682fb6d1656802df4285c618b9e1a1a9e6afca94e8507f5196d28b16",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_RandomForest_ablacion.joblib",
+      "sha256_before": "f7cb814ebce6f98701397e8891150bcc692c36cbddf2b616ba314da327ec5045",
+      "sha256_after": "60c0e26b4f9a1e12abc4658e8908c58affdf9ca1f6963d6decdbdf561c00e483",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_GaussianProcess_todas.joblib",
+      "sha256_before": "b037b6d6d6dad5fc68ea23f355a01d55b998f291454be9bd982040d31b10a97f",
+      "sha256_after": "1074a3697613e283be5e6a75268f3e31145b99673f49657aa251ca23ecf3d23d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "58ffeccb7bc89597dd9a4e7e60a3bdca54b085d5112f84c83d792346a5175d47",
+      "sha256_after": "ce6f284a3f534ac40a3d6d7c38a51e6130ca94baa5555b945d6be401cc923c33",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_10_GaussianProcess_ablacion.joblib",
+      "sha256_before": "ca0b6b39f9dc6aba1ac4f9e31fa8fc8e4c595ed99d1bec736b826d9067435146",
+      "sha256_after": "faadfeb2abd6c2f29233028aecb48028b569a53b3d6083d5faedd6c2049c668c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_Mediana.joblib",
+      "sha256_before": "e2aa54e05663e8738416909f9855a3a35ea30cacd308ffde55308b005643f0cc",
+      "sha256_after": "e88ce496927eb33a802ced2348f02c541b71e8e194416eaa24eb5a59e78874cd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_10_Media_por_nivel.joblib",
+      "sha256_before": "604b407119169b4307432247e675d4b3acab24284ba4e0a4bbe493c7833ae51c",
+      "sha256_after": "206023dd2ba5a9f16891b2e5401ec773c2d0f9d3f75f92a33eebd3c1e48c6d72",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_Ridge_todas.joblib",
+      "sha256_before": "ffb9ca0fa5d1d56edbd761bff9c33c1ecd81f66c03d3ec5c078fde56337b3a2c",
+      "sha256_after": "c5c70e1cff60c342210f37280e7d0451ebab9bcafeb6013c619fa34d1dd1e2d5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_Ridge_prioritarias.joblib",
+      "sha256_before": "b7d35bfe83aaf8e14f5ff51bd164cdb57b12fc6ffa8ed83d813c11ff8d3f5cee",
+      "sha256_after": "67e58fa4e3640477751b3507b3eda6be756ef3e43887a949cab433c71f38559d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_Ridge_ablacion.joblib",
+      "sha256_before": "edfa09284cd6be92cc1b2738fc5daa5bf6f6459570720560dab975c9bcc48035",
+      "sha256_after": "a88844e6f16c6a9f3055acdba43f5f36bcace14abf4e19a832ac3f8ed3b357eb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_ElasticNet_todas.joblib",
+      "sha256_before": "c461d076c3e76f8038bdad77eede659eb9493b2f0f10399f1bcfc0bf0b9eff7c",
+      "sha256_after": "1db0b2ffec935f28b98a00b7ef6ff9ca22c81f096f612c1e44fe619e587f41d1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_11_ElasticNet_prioritarias.joblib",
+      "sha256_before": "ac462d8d80f570ee0d961864ecf368b162755807bdf9f0bcd2a04c089d0fa538",
+      "sha256_after": "114122ae19d0540ab7ae1091d154007bd4a990a6cc1d56be5767e14460d33c8a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_11_ElasticNet_ablacion.joblib",
+      "sha256_before": "5799c375dce970d6210b2e1893dec2d7484470d68b4267444a85dcc089cf4ea8",
+      "sha256_after": "f24dee6cdb6cb93946e90a04fadb01fb01284d6de8d7acd4ad9f1a0256a4bd01",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_SVR_RBF_todas.joblib",
+      "sha256_before": "ee02a39f43f1c6c0a6cfe21abc7c8fedc3e12d58b36f5b14f4b9bf9d8ac88d55",
+      "sha256_after": "d0dc52b18826804671750fea37d7cf0e2e84c17d9ffb7d09c866b85f69143f4f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "9f69b0e42196925dbbf13112c2174b3116100216dbc85f32abde02907b0c7a41",
+      "sha256_after": "f8a92119f7ae27ba86b9b05cd093914f6e7592f603addcd13b1841db28afa0fe",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_SVR_RBF_ablacion.joblib",
+      "sha256_before": "0a0ac7eee9e33c062d1b20ab0550f7ce23a593f44b81003ed98e7eeb5b7151c3",
+      "sha256_after": "49d7053c3737a3dd436e198b1db52502068a83c129f7d4960bf53be7a50eabb8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_RandomForest_todas.joblib",
+      "sha256_before": "da5da28f4da8fd2e47e34923e5ce8fbc5eed9bd300d2e110e6f86f43a911a1b2",
+      "sha256_after": "27f8f1d892f06fa3ff03b093d3ba783db82abd8f91df523340853f049a17fce9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_RandomForest_prioritarias.joblib",
+      "sha256_before": "948920abeefaf8167155fe6a5cbc02ce3eb02f616f019d68916248a5b6dd8a4b",
+      "sha256_after": "5991e16e899d08b087a619f5688be8aa575af1cf855e4c38321a8f16b5b3605e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_RandomForest_ablacion.joblib",
+      "sha256_before": "e424d58a30541c385c74ff029c5b277839d6d70dc335dfbe5e673c09613d5878",
+      "sha256_after": "7b71b2a0d046fd8e1eb80cd21ec1d5dc5e85d3bd3d3b745b0d5c1d4ffefbf6f7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_GaussianProcess_todas.joblib",
+      "sha256_before": "07021f25622b1daa1d3281e98a5d12b7f045fb4c181ac8a6c2de3d01bf2ae815",
+      "sha256_after": "23d9bd2e767c75c6168d63cf449f006fdddb4c0daf573fdad22663bd1e9ea87a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "8297b1a7a4b23879205b8031ad9bf642d25c9680fbc4130bfa1a03b8b86caaad",
+      "sha256_after": "0755f965d77e4196672649dabd2fa8b73f6dee128cbdf83285854bd9e2b10667",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_GaussianProcess_ablacion.joblib",
+      "sha256_before": "0967cd3f1d1ce8963e258206401435774697f10722d278b45299a1d67f2c5a77",
+      "sha256_after": "a1d46f55532fa60ebd6de01f55b8ba058f0700b8ee35f9585f9fadbc0d938bd6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_Mediana.joblib",
+      "sha256_before": "38cd6e6460027e6ed1a9570cdd22c66cb20fde04473ae4311f55c43ef90df2ce",
+      "sha256_after": "e95d9ce6366515c5681808cd179c7a52588f618ef92e53970bb297186731c6be",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_11_Media_por_nivel.joblib",
+      "sha256_before": "9fb897425ba38804e73f309dc49f97b9686892ec2993c20e1bd2dee92448f54a",
+      "sha256_after": "6c0d54f8fb860bdbdcc1d0a9d757e4a1c82ff79bc9e4af0edf08429904f6df28",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_Ridge_todas.joblib",
+      "sha256_before": "8ae826a8b82331eb0425d35e7bbf566e659e15782c20fae50619d47265a3e487",
+      "sha256_after": "e4f0c1903cc40b1df9bf92e180625a6c0cd595b93e67b30b7e5ac7a805aacaeb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_Ridge_prioritarias.joblib",
+      "sha256_before": "f571df21c239859479bf9bef52147a075eb45714d5b9114e6f00ed709df10a45",
+      "sha256_after": "b28fbff917976f518e016d3461ccf9bb0b4f9ab04f67828652dec07320320e91",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_Ridge_ablacion.joblib",
+      "sha256_before": "594e64fedf525d8a126a46ddefce81e978c642a0a18ea41ae07d703bd14dfa6c",
+      "sha256_after": "f6e5fc4132b22cda1fe80b5dd662bc119ffc13efaa3ad5d6bf8d09910d3f56fe",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_ElasticNet_todas.joblib",
+      "sha256_before": "dcaa16f81c179ecf07230361361d823cdd9311b0780ef7ac182781a4353a531e",
+      "sha256_after": "fcbb1607e7be175dff1b1affa75f99481a848bf78e994f7635c0d1e1721fbcb4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_ElasticNet_prioritarias.joblib",
+      "sha256_before": "f7c551c82ef3bea4b99bd9a8a8750d00f14386d6dcceaf9eee1f10ed55c2c633",
+      "sha256_after": "974ca4a96333b851edbacd400413c6f488c79ee58f29d90f5f9b55e7f33c082b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_ElasticNet_ablacion.joblib",
+      "sha256_before": "1fb2104caca01f903803701ef560f628c7fb7e5d456adf2d6fe178f2c3e069d8",
+      "sha256_after": "57fa1fa6f6021d0dfbd9d740c969d2d53ab05b2139f51eedbc68ae734c73257d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_SVR_RBF_todas.joblib",
+      "sha256_before": "ac17037dbc3f0311d2c61f031a3f6edcab3e1eec0bea5b715143074ec59c9a9e",
+      "sha256_after": "67805a5bdcd635ecd7257984a8cd6587e42bc447b31c4d00487655014314fa20",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "3b24d06c0f18beb9bb07930741b7f14288022ab87a73e6c5af88e12eb18368ff",
+      "sha256_after": "e07dc349d2373508da9e4af22d1a617bddefc91563d991442ff686ad606cc76a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_SVR_RBF_ablacion.joblib",
+      "sha256_before": "ca26b8ace5ee4423d74f14d02dad37c36cfd68ea50c4ed8b592aa52a8b113f42",
+      "sha256_after": "a6ba545b428bbfa29f1d7343c2654e0a8568f862e0c34340a4c6bffe47dc89bb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_RandomForest_todas.joblib",
+      "sha256_before": "6cbe0d2159f696811e4e0a7c6537f8d205938282e26c54e7af9e5a599f761288",
+      "sha256_after": "00b0142c67d9f540ff2c3e4d549fb28409d972fb89a9a8a3d368b78715978a03",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_RandomForest_prioritarias.joblib",
+      "sha256_before": "24eb91be8ccbc262a8a16542d7e69916ae3567943857fdbb654cdcc966ff9aa1",
+      "sha256_after": "0854fd79fee249845d53663c6b796539e2568224d992c192bf0a909e8413744e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_12_RandomForest_ablacion.joblib",
+      "sha256_before": "a020a5b5c567c3e254e7f00a6708199ea06c2e9831fe82d9e3b9dff4db74e0eb",
+      "sha256_after": "ff83ef0ba78bb15c5b799422dbe8d0da3fea8bbd9a9472668ff5f58edb26c87d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_GaussianProcess_todas.joblib",
+      "sha256_before": "de9c8c43a0d18203bddad6152376d56105d4010ec62c873f5f803350bbcc3437",
+      "sha256_after": "c34290917d32a7407459f95a12799ce67bb4594f0443e0771e449e956478b265",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "4a0b64644fa747103658062a97a553bb63dc8fc35fa4ecfe140636274f2c2ecb",
+      "sha256_after": "71663fce74c89a5e111a9d28737b282c89b60b4434501db60023931cefe83c13",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_GaussianProcess_ablacion.joblib",
+      "sha256_before": "b3c928db0247d062e99c9a397bad73d7a93a1f68599dee5ccde9d86c773c2a3b",
+      "sha256_after": "0c306a5faf62fd3c1b1eb2edf37a6f6d00fa95a1e44c7396f32b1a15c800547e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_Mediana.joblib",
+      "sha256_before": "1154d61312d74aa8252ab6a4b71628c04fc0cdb6d26a78007ffeb9a25cd11d3e",
+      "sha256_after": "7ea66e9065f5311990a3220f67d104f5d26005a81392172d1e44aabd475eea3f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_12_Media_por_nivel.joblib",
+      "sha256_before": "698bf595f47f74ab95bf9431bdf33b9ce18a2e89bb2ad2b781dcd0b6d1e9016a",
+      "sha256_after": "8fea08f5792e7e452db2ead2fed183c4d8c97ddd45c7ddf9a63f11b006a341ee",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_Ridge_todas.joblib",
+      "sha256_before": "f5320efab3bc91ee8aae2410f474489524f253597bcf7798d01c689d84e6af81",
+      "sha256_after": "30303efd1a459e8dae52e3ab33b7c714584960344cb826d999a8bdaf5ccfc17d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_Ridge_prioritarias.joblib",
+      "sha256_before": "d78b7e9ea605e403cc69ccbf043482340ff3654aa22e2e9ca6ebc4dae3243413",
+      "sha256_after": "eef09db3c94e2f3afeb247e3a7a7375e793a39fcb583ada8254da890792556c9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_13_Ridge_ablacion.joblib",
+      "sha256_before": "48c596a7f19de3f3d645529f429ac9d0ae1fffef772c8393575a4046bd959cef",
+      "sha256_after": "947f607bc87846d4ca05c06bab3ddb51f462663b3457e008ce795af51dc1f11a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_ElasticNet_todas.joblib",
+      "sha256_before": "9299b2b8f0b0db2308c6c4b1ca33585a6584049df4396c33cca528b94f405ee9",
+      "sha256_after": "75f8ff1c8bd9d213db27a59052e48b3d3ab6dc00eedce64097aba68bc84b2853",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_ElasticNet_prioritarias.joblib",
+      "sha256_before": "6b551a4884aab33cfc09bb02707a940782c8c79fdaf15fb7af623c689842f15d",
+      "sha256_after": "1c8494aef09023a03796c868a5a8fa59ed004ef604459697f116caba3960c42e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_13_ElasticNet_ablacion.joblib",
+      "sha256_before": "06fc88b478c3a52a3a5d75fdd74815803f7d72efafb3e64ca35779bcc06cd4c8",
+      "sha256_after": "3c7a15fbb2a112b25bc4c5defd5bd921343300426cfd0d89ac436c4e0a644af2",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_SVR_RBF_todas.joblib",
+      "sha256_before": "6094e20a1c54e8773f96e7b27a94b7872aed1eea375fbb4b5a70d29309004e54",
+      "sha256_after": "17bc47ebd3f5b28c11bfda146d4d1c52735b3df3aa6d786b0248e16f9526219b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_13_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "c7bb58b954f0ab29567b028ffa19f9896907fe76e8bb493f18c5d549da32869b",
+      "sha256_after": "5970eb1aa911c975b1365d8f94c5fd65cf2e2e9ab2d7bf1a501da6e086574355",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_SVR_RBF_ablacion.joblib",
+      "sha256_before": "250e9a248e3214de8351fa4fb23d8edbe37f73ce688ebf6c9b78d6dde6d6c0a7",
+      "sha256_after": "0c17bd9691d4886c8fd41613d481ec3cc55b106f4ef688571a3aba91e2d2c412",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_RandomForest_todas.joblib",
+      "sha256_before": "adcad092f1e30041d4a1e191e0b97ba05a9305142650babb9d30d862a35138f8",
+      "sha256_after": "46c6e05a65f7d716ab938740d615cd51606eb7b73fd41d10466c788141e6a7cc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_RandomForest_prioritarias.joblib",
+      "sha256_before": "a5bcd02a5b0be73fab24b3e2f9e02c9780603c7b93882a8c77dc85a3488b6079",
+      "sha256_after": "b0e58002b1ddf5fc93205344b69b7302abe8cd74d7e417987db6e36475f31170",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_13_RandomForest_ablacion.joblib",
+      "sha256_before": "82168fb9572a8c2b00ea272fffb4dc87475feef522e477c63267b34bd68ad5b0",
+      "sha256_after": "1394a6c202e0f9e865706cb9ebb29652b929f6e3d8e0450fb5b6f318208f1ddd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_GaussianProcess_todas.joblib",
+      "sha256_before": "1e2eb73f44a00157105c0136b85caa3569f52302a3e85f070607546fee0c9a34",
+      "sha256_after": "c3027bcc2757bf83f27452e7e8bdec92c23d0df4ccf88e418bb5761a5b87543b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "408f109845d1e5bce378817af139faa64a60162355caee68951ab4497a147a8a",
+      "sha256_after": "3f9897d907068a9fe14cc4623d80fb4845a70b2c2dce59470218ca17415b7dd3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_GaussianProcess_ablacion.joblib",
+      "sha256_before": "86cb609bd2d9f4788f910a9a7a09fc33ee50ad341d0688526158590753f6583c",
+      "sha256_after": "d2b2c55a0dece167ad2dd4a6b08de15001476f925fc65a19de47def4f68b0110",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_Mediana.joblib",
+      "sha256_before": "11bd37debb79ccec4feefd4a4354edbafe649d64fe32bd535287ad8a314f7d7b",
+      "sha256_after": "b8a6ef40b1ea22048f04aa54ac03a1170f7e4556686fbb0f65d0692a66015a5e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_13_Media_por_nivel.joblib",
+      "sha256_before": "74507fa5b7c25da2093e23a6fd1f3b84280c3b0b37a5c809cdb585c62fd24321",
+      "sha256_after": "71e4ed00cd5692350b60ee6d340738c5f7994909bfbc2572cf020b06b4e53461",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_Ridge_todas.joblib",
+      "sha256_before": "11e26ff47bac585e37692d60664d0474eb6d325ecfe7d9e1130a52f21bd91a0b",
+      "sha256_after": "ee504b26768926602d3eb4a7ff7be6a068fc9c41afa899aa52893cbae4728c6a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_Ridge_prioritarias.joblib",
+      "sha256_before": "64b4091fe52c904f74d4b572834130531836909c1deed798f429c0781fda26fe",
+      "sha256_after": "6e8bb2bdaeff0157bf89daa6ef2b24182796858cea5cd05acca2caf69a2ccf6e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_Ridge_ablacion.joblib",
+      "sha256_before": "eaadea99c6dbac37ac442a917d24ac9932874d7fa239ce38bca24ac4b43022a1",
+      "sha256_after": "013a8db2e0f30a520a3cbcfd49b44b9790121da48b4343d3f2abe3d520414da5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_ElasticNet_todas.joblib",
+      "sha256_before": "1893f6ba84fc914727470eb015a32e2c06d209dcf288611aaf3507369868a59b",
+      "sha256_after": "1f4031c0ecdefad8506334641bb9574329048cd2db29951abc5cc2f18a9adb05",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_ElasticNet_prioritarias.joblib",
+      "sha256_before": "a0ca7657f331526d3f5cdc3976ba5ffab80fbc9a534e4be46db0375953d6a882",
+      "sha256_after": "1a7c064d89d76e9ec5cc59e0d59f9639e0658df4dca5bdce21f5f3a5b7611658",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_ElasticNet_ablacion.joblib",
+      "sha256_before": "f485671306d2db70ac83304e902b0ef222db2daf5c812ebf093d3940fa435bff",
+      "sha256_after": "e6d6c385034838431b7a2ee382be511ea4f839943d9a38318e385d39f26cec32",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_SVR_RBF_todas.joblib",
+      "sha256_before": "0da0f2039149a554874eaf490090f31b7ec19da8f59bc21ca499a29e2d23fe8f",
+      "sha256_after": "ad7d4fc53f9b1373282646d08b1ab632277be1cb0c85af5708c77ab8a76ca745",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "764b2ee9b6e4147b6425eabcecb17d8aee682008b758786afb519b91f7c7df27",
+      "sha256_after": "6448b273fa224ef8f73bd55909e0c6414dcec5d07f28eecfc67363d7bd872fa5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_SVR_RBF_ablacion.joblib",
+      "sha256_before": "789c9160fb119e0447fbb1d522bc9240a43a9079e5b7a0d07b4e891d72d8f436",
+      "sha256_after": "4b5cc56e9b46b7edaad99c6cf605d7ded1684cdefd7468c1dbb870c5637a2a7d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_RandomForest_todas.joblib",
+      "sha256_before": "074343b46190c8b37d061a5be80cb0e6995f424f2aa48766531b2a88803d6555",
+      "sha256_after": "8a4bc6e10311c088a42b70860f9540d0cd9d5f9868446513f6f05d21daf38e86",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_RandomForest_prioritarias.joblib",
+      "sha256_before": "55dc4629b1e0bd6cd205e65b3a02ea30eeb42f012db9e5d3e6ec5f44ba4e9b2a",
+      "sha256_after": "cdf577dca8b8e57325a3440abca90b6d7a5172215672883f8781f4061a3db118",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_14_RandomForest_ablacion.joblib",
+      "sha256_before": "fe23609fdaa3a84bf37d500a085506abbe1228fe22d3c2ae84d4835ba7b422f9",
+      "sha256_after": "39bce1f02d44b20e4f48751e349872e9f448c0c71a91949bef05c31666d52786",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_GaussianProcess_todas.joblib",
+      "sha256_before": "c9ff54f5a3d7b35f1c9cac4bc8ba0ff3606c5102d7e901d08c2cf0d9c3a35f1f",
+      "sha256_after": "af6a4e8f529f93829d43173b9d976111dcd5b3cc0b5d4e1b706f84fe3c6122a0",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "9589073299155a6ea739711489d4ce745eaa9f6a2d4bc902bd317cf0a20f0325",
+      "sha256_after": "160f17bc825dcf88e55ec32fbf2e7f285ae630c87585b27a332a17ae8d709e7b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_GaussianProcess_ablacion.joblib",
+      "sha256_before": "52419ca30e06e3f194c90d33abe2e8cabfeea35db827844d9269aa8504a432c1",
+      "sha256_after": "54153a37e704c2634fbc134c8ccf68b9d50a39998ef2972d6c6952b44afeb4fd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_14_Mediana.joblib",
+      "sha256_before": "62145f07308352ee68b21924cb670e32cd3c1a0531bf49ee7aa3dbe44180d306",
+      "sha256_after": "120dc4e582715dc0bec32d794889bd12ad5e32a633657a72018702e5912c6302",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_14_Media_por_nivel.joblib",
+      "sha256_before": "1d7927c431c90e0f024fc1d3ab164ea68f20681b6e52c19a5b69d1c57497e6ac",
+      "sha256_after": "f09b85519633d0e4ed9be66f457a3e9532796dc015986f10515290f5255062dc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_Ridge_todas.joblib",
+      "sha256_before": "f100e9190274cbcea88c991e000a451082d6635cad2012480692a51a15c8e9dd",
+      "sha256_after": "124dbae4e81de082ae3d18f3886940eb2f971115d7baab933cf6f56d1838c210",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_Ridge_prioritarias.joblib",
+      "sha256_before": "7b6196f0a3fbf1a8c05237f110e10bde4cd96372c3449bdf8d020824d5b67c7c",
+      "sha256_after": "15e6bc6a892e934a28b46d45c911740358d6b7ec01030d77e6d8673e794f6231",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_Ridge_ablacion.joblib",
+      "sha256_before": "3ad8a636ca55a78211fb171b87962ea670cbd18d186b45785b779bced1ba2b33",
+      "sha256_after": "bfe2b0f4a9ca7745a44c6c21c067684a8cf0fc1792a5e8f54c2be7d1bddf6f1e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_ElasticNet_todas.joblib",
+      "sha256_before": "9f51cfd5dafaa4a5c503a7072ab71ea58b8a3190a8c1cc36a5b6c9a2fbfe9025",
+      "sha256_after": "014a62b40771fd033443acd3f2a658652d2196640aa968023952138eb7b167f9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_ElasticNet_prioritarias.joblib",
+      "sha256_before": "27d861e2f3a56bea9b36e010709b5242d0c8af0acf0fcdaf41f8b72089da60b6",
+      "sha256_after": "0eb45270359074b3fb387ac812e859987754870fc69bca20427f9ab6ee7304d7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_ElasticNet_ablacion.joblib",
+      "sha256_before": "4793cf1c1ee01d30ef4cfc9b4aec48e9fed6657b57aa4c2c396427c0af7a184e",
+      "sha256_after": "77a14affbe70783a159181abf479c5eab68dd78de487f689ab82612d6628c546",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_SVR_RBF_todas.joblib",
+      "sha256_before": "1e09a1a7054e4cb946f6886698cbb7ebd6a6a14b24194f907caa91f1b97c5647",
+      "sha256_after": "d943d41aaf4ff339bbc6cac4ca0a3528d939bccfad1ee5af7bcaed4688709671",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "5edd1eda64031e90e42e93df0c07420c259950864de13bc1dec22b3ab2c5ba33",
+      "sha256_after": "7e1993b36580600587c3ccbb8b9599d3d62451a6ba67ae7216d334f7da9367bf",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_SVR_RBF_ablacion.joblib",
+      "sha256_before": "0e7ce56aa93698dec7c81cbc55196629af21a84aa7da7dce67a9c002a6873f45",
+      "sha256_after": "b20c2228e92091e88814e23ce1356c601091991b9901c344b2ac4981d5fc9b18",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_RandomForest_todas.joblib",
+      "sha256_before": "bb4d3fae7eecd31b5cf2d4ba1c34efc37ddf3360b9f1577404385f9929de13cd",
+      "sha256_after": "a4dcceb7f048e7fddf445f3708fddee7f7b6a8488e51cfed64ab174f9828aaa1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_RandomForest_prioritarias.joblib",
+      "sha256_before": "51fb02a86eb4a1b8fac973e282c1cd07fc13533aaa21755a9d6daa0232114845",
+      "sha256_after": "4c22cc417552f50f4df7b777b7fc573972226d5b2aeba4ce0ab4d5f3fb56b9a1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_RandomForest_ablacion.joblib",
+      "sha256_before": "9828aea7a1c5295edf71ec32d229642ed5ebeb453067c465ff02538e186e82b1",
+      "sha256_after": "5fad2cb335f94d9ea7545cb9de6f8b5ba565f3b719d501c36a17752e6748e170",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_GaussianProcess_todas.joblib",
+      "sha256_before": "c7935ae83bef40080825d826b0c2364eacfef1a2564395e2c5e7aea0f415f187",
+      "sha256_after": "692275e9db199970a381c0af70d81552fb99053baba5fb3c6063d9488c15feeb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "c134010b84eb6c071ab71af3ea4cb6f4430f5aad0dc7d86e63be1bacf22570a0",
+      "sha256_after": "ae9becccc8a766518d7520fc990741c66af8838fc0ed7c6c47a5d1f43550ddf5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_15_GaussianProcess_ablacion.joblib",
+      "sha256_before": "cde131887746ce623baf5ff2278c4212f0056957630bb6ce43801f9928b805bc",
+      "sha256_after": "faa6899b0dc13c7df5cf81ba1f5ca30ffe02e8b3767a9106c888d25c53c5742e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_Mediana.joblib",
+      "sha256_before": "31f7c99a4f4dfefdd6857862751094e661b034bbf243e2b5fe8e21742586c564",
+      "sha256_after": "a5d10f2d7ae323bb11b69be7ef840e03b0aff8d3e6053a8940c5a6b603dfcde7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_15_Media_por_nivel.joblib",
+      "sha256_before": "f76b2d88e45224212de970cd62f14617bf6aff601a007fb706a3cb2f02faa0c6",
+      "sha256_after": "c8e5573a6bf91fe936339011f52ae6dc2d7c432babe968201cdf5a092d290a45",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_Ridge_todas.joblib",
+      "sha256_before": "efe51993df29875d05006af2fb8bc9bb887991d2b55d4b04071900e9b6baa9bb",
+      "sha256_after": "2b93edb92c64b25b42bb47e290a2c43a3d925cfb9bbd01a27d438a2c3794414b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_Ridge_prioritarias.joblib",
+      "sha256_before": "656157796e7bc437621a40d184d4ce516c30be4afb8e0ebf85558cbebd7a8992",
+      "sha256_after": "637c5ffb9c847b96e6b760285de67af87acd7e5759b3d9f0a56c9b8ee47042dd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_Ridge_ablacion.joblib",
+      "sha256_before": "f9f53ac2dca6a03c460f2619f553cfabd2a80faff8981e6c597b3b9124415bd9",
+      "sha256_after": "6f92d38212f457096a508ed122ceef9bd29e09a8223ba947819c46db17c2025f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_ElasticNet_todas.joblib",
+      "sha256_before": "9e46bf8d843e51d38557bf36098a499fef4076c9e5247844d083682160649bdf",
+      "sha256_after": "0936ad60376bbdf920d3d3268c19bb73fcb46dfa7f886b8f23de7f9ec7433567",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_ElasticNet_prioritarias.joblib",
+      "sha256_before": "72d0daf2015cf302ba11f2552456c5d44b097275fd00a9d4dbe63f3b4c3d8d6a",
+      "sha256_after": "139e10f7b6cc1c6cbdca16ace840831fd785ede901d5fc5bdd0e1bc65b856e4e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_ElasticNet_ablacion.joblib",
+      "sha256_before": "2a71af8996cdb73079e04f607204187fe8ed4d371045a5776a80f53dad26c524",
+      "sha256_after": "1f9214fb2919b1f588d5591420c56cdc2adc35dd880e92f70dd5b000ed9403ad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_SVR_RBF_todas.joblib",
+      "sha256_before": "5128c501b0361503b0b846fa0c784e275f914beac2f701f0a3fee5b7ecd4b965",
+      "sha256_after": "d335cb13503e6c6aa3aa35f544fd46726b0cc96857967dc513361e0496cf0366",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_16_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "3eef6a1503a2744aa3e94a84991a27cad22506908471fc72a9ab7835f2724bb0",
+      "sha256_after": "6f3f8bb970a1824e0c417ac2148403e065a6ac8a805f44fc75bce6cefa5fc747",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_16_SVR_RBF_ablacion.joblib",
+      "sha256_before": "4c83d137604e6addd0444e2679e09096905c921eb56f137d8d9c870565c0326a",
+      "sha256_after": "405c0699473260b9ef390ce23545c9861f44c28b9b522fbec4cc690dacb28aa8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_RandomForest_todas.joblib",
+      "sha256_before": "ca0f3570b56e99375eabc74779193cf671c4ea06eb639421c1ecae2df3ef3ebe",
+      "sha256_after": "e3027c5d92189fc0496dafe3ee139912b39536765bbd3dd0bfe541a57d429e40",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_RandomForest_prioritarias.joblib",
+      "sha256_before": "a2b918ce80f87e73d36c2e189e3ff9060d11afab12d4bf9f45e9ee8250bbd60c",
+      "sha256_after": "d15cfecffbdddfd248406751687d9be9185ee4ce597a8b5d8de5bb5e9ccc6434",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_RandomForest_ablacion.joblib",
+      "sha256_before": "0ac1215725a6b6adecf0a5c66ea18a77848e3de37d185df778875a48ceec9b7b",
+      "sha256_after": "a9af11c31789cad6747bd225b043d9599ff7efc98485432c217fd123adc93cb6",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_GaussianProcess_todas.joblib",
+      "sha256_before": "9935c539b87a29511d5f2a102b9854b7f6831d94d96362a85828a0bc7072298f",
+      "sha256_after": "490d968776cb30430ca5047d7c4126326cbe7effc8fa70e7e6f2f0381863c0bc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "caf77115878c387801821799af2dc7ecceea88d67ff87c5958028249f268667e",
+      "sha256_after": "6fa7f6b4d1993936adf3397b4d3b1dd783a9c4f6961f71cf595be5e4e803498b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_16_GaussianProcess_ablacion.joblib",
+      "sha256_before": "d1427d7f912389ee74f126957a65cc393af062eab6b7a39030b8a17271f56530",
+      "sha256_after": "4907566cbc012e3842cd2375aa6ea88e2d3469f11d41a4203f5086c8db3cbb39",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_16_Mediana.joblib",
+      "sha256_before": "fc454e8b40c3135bf7ee8d06d5a0bb98bb8fcb28bf7e2799604188e2dfe3ab5d",
+      "sha256_after": "ee21fd7b2b0cd732fbeae29bbd1e91a2b8f86af4a5f003e8d57fe16bf8103648",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_16_Media_por_nivel.joblib",
+      "sha256_before": "cfc7a3a891503cd946bc625464dd823980a9ef19992947c8492d58c72015f296",
+      "sha256_after": "c1de019edede17638e56cb9767615ed7fb2c7555143a42a3f494e25b9b14ea60",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_Ridge_todas.joblib",
+      "sha256_before": "a8df4fbb1f2772792306b401a9e649ff14ca75270af9322e0cef708b8510b282",
+      "sha256_after": "d611c5ca5436e458189f0d4e22479c1e77650fae7e6b9f6112c33b4454dbffc3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_Ridge_prioritarias.joblib",
+      "sha256_before": "ed61f60ac32e4377b80e09e9d2fca1915b3d7f9c371fa87b17f3a8b8f0fc9a5f",
+      "sha256_after": "079b660645c3439b884e885d51929cd44b34153a6c8620d54aa5d6cb588d0a6a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_17_Ridge_ablacion.joblib",
+      "sha256_before": "e9c432cc2fae103fd553f837886940e1f1daf5bc8dbc0cf97b1c60ee929e7c82",
+      "sha256_after": "70cf703972424bc7fe4f5eb3b6b5dffe0c006068a235e090db257ff92356245f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_ElasticNet_todas.joblib",
+      "sha256_before": "8447277c14446077c85c7ec94bfdc0e31e4a93897b51121a2ed01424530a7e50",
+      "sha256_after": "3909842b12680bbaec4df72b22e6af1d8510ff5bff9de2d7a97864a223bb9786",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_ElasticNet_prioritarias.joblib",
+      "sha256_before": "dbbdfe2a657880ed8c429d6e4569321ddbf7b894a6b2bb3dd0b5948e0b071e8b",
+      "sha256_after": "ff80dcb3d900cc09cfd2569ed6f6442091730564859cd48c528dbdddc35c6ae9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_ElasticNet_ablacion.joblib",
+      "sha256_before": "5ed48aa43b4faa11e22c35750f2f965db26d5989b7ff289162bfb55ee1517f03",
+      "sha256_after": "41023235764387244ac1db966244f83d2aaea92a01aca5ee6106041ce02c1b8f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_SVR_RBF_todas.joblib",
+      "sha256_before": "3f7b5f2aec9b404a9c6e9203afd33b7c2053d476be24947a5a3befb863b78faf",
+      "sha256_after": "9e38da1c5cd9db0f724285183e9ff0dc98755aadde0266c2d69c6f93fdacf833",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "9152ba7f6b3ff48bb32ff0ccfbc7eb07ec663d1596e40bb02391131c696d6466",
+      "sha256_after": "ec1cde5462c8554de0ab16df43ccf491cede3d1527aefbe30916654d55c77da2",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_SVR_RBF_ablacion.joblib",
+      "sha256_before": "b5c72ed89b0cf2507cb546ca9dabf1c77bd947d090271b143be66ff9cd21762d",
+      "sha256_after": "49117e8aba41a3efb162528e8a587f4484a7ba660729930bb419e93ad9105771",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_RandomForest_todas.joblib",
+      "sha256_before": "b062fd8eba1b9e6e56ca1459bc61fe336a5255b82985561bc2fa0390409755ea",
+      "sha256_after": "76935d87c092d97d7897a1bacd536c75edf15e3a1204babe4b217c84480d76ca",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_RandomForest_prioritarias.joblib",
+      "sha256_before": "deefd51437804745dc329af5e61440f2977d219beb18bbea1d8db12776482882",
+      "sha256_after": "770c12710a2b3874f9c07fb65c60a68ea255be0d4dbe6d47b2b2bce8258384b7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_RandomForest_ablacion.joblib",
+      "sha256_before": "0fb92e6f3f582c27bc62cb5cad6d61ca9ef0a7be9e1d5e25c1ef7afbf3c5c30a",
+      "sha256_after": "4983580e96a925a656eb11f6ff88983648f88e0a04bc4b8aa98ac6c685104366",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_GaussianProcess_todas.joblib",
+      "sha256_before": "d5c0e2e43dba2f41a02a334cc36570c0e371650049f29039c8709d8b9bb78340",
+      "sha256_after": "c0c202672a7f82916c9269c4414cadbcb03c163a527d40d0d87dc6d9d9c8e6ed",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_17_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "daaa6432b0732051dd4f81db0ca64e858d8e839f301e09cce15a67b0cd546041",
+      "sha256_after": "a017770f989bb68faa072e264efd53a919dee80a1193c43a0ce77aceda25c6b8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_17_GaussianProcess_ablacion.joblib",
+      "sha256_before": "8b94ac0ed2bc9763713e425c1d6cd4cc4209caabbbddf86d470413f2c0abf846",
+      "sha256_after": "036b0970d0c9b1f901593e0a6574a8a3dc21a0c4b06b1b6721b08a657ee272e1",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_Mediana.joblib",
+      "sha256_before": "fa19a1a2f577e6c302f997c0ce72ccbac6e267cfb3845b42399aabd0eceb4c6f",
+      "sha256_after": "b134ef213a90e60b041c5315534ade24260f6bc765ba61b68ce8f33b90b6e7ba",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_17_Media_por_nivel.joblib",
+      "sha256_before": "91ac5c04c84f0049b73df8f17b760e7ac40a2d8b22f602562d6aa69bb8d5fe0b",
+      "sha256_after": "dd1d138b28978f8089bf6e12e7285fb8f1eb5429a587baeec55ffe5782ab85f7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_Ridge_todas.joblib",
+      "sha256_before": "68a7a956f227e8ac417596ef1101c33584a62538325ca7568aa6edcc568aa733",
+      "sha256_after": "51810b14a2403fd3e272af35dee70157f9fe8e790aaed60f160135714138c1a5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_18_Ridge_prioritarias.joblib",
+      "sha256_before": "5d0825b7386cea751bdf4ea0222e069967cdc7a4806193667bbe22b535eeb342",
+      "sha256_after": "44352221c459fb01c883e4aa5b0ccd3d5adf8d5e0d7305896b982b541a46126f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_Ridge_ablacion.joblib",
+      "sha256_before": "4683c7149be60f34338723842f90eb622b55b463151d55f84f98036b5750984d",
+      "sha256_after": "97bafb1cc8585c6697378a3793787987648ad88e14c3947c8a9469cbacf89b90",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_ElasticNet_todas.joblib",
+      "sha256_before": "af4c434d67c310b911a76e26c42d096f02d95ad5b0e19f7fd657af0bf06b6413",
+      "sha256_after": "29e8cdeb0696430b8665caaa6ff67ca203ee9af35adfeee65035e500067b7980",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_ElasticNet_prioritarias.joblib",
+      "sha256_before": "69ed8b136b2a1c2020d9262a51d133d68c8a8334b37d46e68a1e09399eaa85b9",
+      "sha256_after": "9e442490a4e78c045affb6ba5a62676e65fd6b17b68e6fc0da7713a006bf6704",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_ElasticNet_ablacion.joblib",
+      "sha256_before": "3e60774879184680c65e962829fc57a92926ae0c44bcf51e34b150fec88668d3",
+      "sha256_after": "746b3d5e2f022ecea18dfcecfeb1f04ba633bcc367818714938263c606c934be",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_SVR_RBF_todas.joblib",
+      "sha256_before": "c8b2829dd79a31a8e45140787aa50892cd83c54428b303ac778c3dd2252f645c",
+      "sha256_after": "2d3602bf7650844677d2b17a5c1b374c1eb17220a91cc2eaf2479c1603d37784",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_18_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "fad4eb400a581a65df34cc16cc35dd261b60102228737c76f234d6d31c504e72",
+      "sha256_after": "93a34f076d7bde72b869b9c028137eaee188cea388d4f0f7350320f584e41d71",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_SVR_RBF_ablacion.joblib",
+      "sha256_before": "0e150e11aad8e225b21c142312711b5f9fc4606fe085e13022503ebd20f57fdc",
+      "sha256_after": "102fb2cb0136ba54dde26b32e6f7e8ae13de0894b243475c27a26c37d006c718",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_RandomForest_todas.joblib",
+      "sha256_before": "c99fc2296da5bd4f0b83fcd3971d6b86d52611b77ec074e4b4d17742120ec033",
+      "sha256_after": "bb0e28be70773799a6bacf00b7f324c764c67c6c8b0dca123c55dec26d9633ad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_RandomForest_prioritarias.joblib",
+      "sha256_before": "beb8d3c15fb0abc7ce9d8ecbe5471830c9141a61fdf5f7a6ffb6be717afde161",
+      "sha256_after": "18eef81814198331f6ba90dd18fbe694020ee156adcde6486ccd5e05e50b7f7a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_RandomForest_ablacion.joblib",
+      "sha256_before": "c4c2721571667f207a85700e5bce0e59dc5cc9de3031bf6a942de8eee69b85c2",
+      "sha256_after": "e08c7e34c66a41f5f48cb288212366bdf05a88482f866c6c02a73adad58f5fe5",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_GaussianProcess_todas.joblib",
+      "sha256_before": "46a9c70ebf501d9c127f71764bc17c7ae4246659c2356790530e332949c5b420",
+      "sha256_after": "f31c086a99cccb15b7b8d1f607e61251d7aa5a45f561ea3380f48afd92398413",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_18_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "ada113b07a00a91519c25a84627ed054d81c975518fcd45fdafa1a56d134025b",
+      "sha256_after": "b8e18aa05dc87d43f012e603e58415e4b02ccbaf0130a3f082b8e745cd0e600b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_GaussianProcess_ablacion.joblib",
+      "sha256_before": "441fe3bcfd006cd0a0175b2595649efe6e7ce2cbf6794f74a74f2a91c6c31727",
+      "sha256_after": "e33d855ee4d889aee73582f8cc03381a70e69262190a80eb3d6e7c5b5dff33b8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_Mediana.joblib",
+      "sha256_before": "680514e581d3b8a1112888851453ec5bf78bfaa35c18ec319bd55acbd3886288",
+      "sha256_after": "6f409c16558c2491806896786873e01d0949e1f056dea5d8ba568ea034f082ef",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_18_Media_por_nivel.joblib",
+      "sha256_before": "04961a7a56b6cf105aca6ca61db02e9565e624c893606938aa5841d010ea9cab",
+      "sha256_after": "7f501ca10e86fbb885e1c3d7f24ec5e1554d222e708610bbcad38b24206d3ebd",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_Ridge_todas.joblib",
+      "sha256_before": "b94c476f4cb1a447e51dfa2474a06a6a315e4ede7bf9c5009f91680704f5ddf4",
+      "sha256_after": "05c3b9c684d6993e593a81716a639429d47495076f5f9805c4d91ce4fbfc7fa4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_Ridge_prioritarias.joblib",
+      "sha256_before": "bb1f9d6f05cc317390853174c27aef4bfa4238a9008247c3f2e773c0c16089da",
+      "sha256_after": "553bba16ad6e324c8e48acfbac6110848fc8a6a9e6dcec238581e1333cd7ee87",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_Ridge_ablacion.joblib",
+      "sha256_before": "4b533ce3cc517d6df4807882f92a0f34719ac969c5a1d0b06763bd84952a1acd",
+      "sha256_after": "571c36941a72a9177a9392d5f6b1fe8eb4379dfe87f762f4e612d1cc12e34249",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_ElasticNet_todas.joblib",
+      "sha256_before": "be3c993411e1613e408a83d8a2c2a546cc9220a783cf624e16eb03498e5f4cf8",
+      "sha256_after": "b41bd27deba5bf25a1cf9d2fd967dc25ee36542d9dd9d7d5b73a4b5c4f9580e9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_ElasticNet_prioritarias.joblib",
+      "sha256_before": "ce561b771714ac0aa40596af8d19a6da52e266baef2e1b9d0d2feddbec3ddadc",
+      "sha256_after": "73e2a05fb56f069a1f0889fd056af428ac47913ce032261356e5048d81bc116d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_ElasticNet_ablacion.joblib",
+      "sha256_before": "294503ef8d58cb4d688048a718a847a6a84459eb12a3f39840a0c345774def0d",
+      "sha256_after": "58da0f1e6147a50774a5e64a3e5ee4dbe65004689f9d355a8ddd3ed3883fd908",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_SVR_RBF_todas.joblib",
+      "sha256_before": "c9c8c2d64d2e4d906abeb978890f00fae4e7db4f2462ce340bc635d4b8fb1dd2",
+      "sha256_after": "336101b55eb4f10646dd355839e678400900828e77af2aefa2a4c7c67cfc8991",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "2414efe0a08041d2ef29c4fec101fb6e5095abd03b3226c85b1fbfde15e5dfd9",
+      "sha256_after": "7a28500a9c0314f702557df086e5af75bb9fe882aa542fb3f5e5061bb90598ad",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_19_SVR_RBF_ablacion.joblib",
+      "sha256_before": "50c5f1fd188dfb1362da3d8cdc57729d4136f183aa4faf4087f00f2001e2011c",
+      "sha256_after": "7a3900993cdc34187123174f02b976fda814de9fe59804af072d9c1bb7b734af",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_RandomForest_todas.joblib",
+      "sha256_before": "5fecbed3ee7065d8d18c79af499e91801239bd73eaa483317871e35f571ab11e",
+      "sha256_after": "6cd7ba1987435561b8ee0f7ff23426f5c1fdf78b19b5885fd50982f5e412433d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_RandomForest_prioritarias.joblib",
+      "sha256_before": "e2a1b31825cb86461d8c3984eeaacadee9c98922ca6e405717e635b8036c32bd",
+      "sha256_after": "4ebd50eb6757f9af603ae78d9262abab4fa510be7d0001a39f667395ebf3bcab",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_19_RandomForest_ablacion.joblib",
+      "sha256_before": "4f25abeb8973c19ba8acd8893acc379533b241ca08203dd679c4b9234f4f84d4",
+      "sha256_after": "db175a2157974cc6bad0c593aaa23865f2407f2829b1effc406c0db2e568778a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_GaussianProcess_todas.joblib",
+      "sha256_before": "6640a245f71585a3576c48417d1819e244f319cadb6f86d2675740431fdd3544",
+      "sha256_after": "0d6356f042f395fe74982c515f1ec03c13dee314a015e30d4643a19a3e16b573",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "6ee60ea46683fa4056e6dd61e11ad806230d62da7152e0b4f2e40670e883e925",
+      "sha256_after": "608c82a2d6b7c2b4ddc29452061d071593e549fa0167038e2b2422db5e66cad7",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_GaussianProcess_ablacion.joblib",
+      "sha256_before": "0aa2180e4a4fcf7d19039630020cf45f09a68a79e5cbae87dceacb4042c14628",
+      "sha256_after": "3c44c6eb1ed924dff07e8a3d01f77f14222da58cf0361c54e30788f7ca212153",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_Mediana.joblib",
+      "sha256_before": "6b73470f1189fd4ff8c4d7d58916455978c8d39842ae2ab85fd84bdfe866f0ee",
+      "sha256_after": "d43a34bc1c8d138ab8d20a12afe7300ada0d1826d2c9c74eb3bcc4b581e8ea98",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_19_Media_por_nivel.joblib",
+      "sha256_before": "e489f5ad004dc3ce47d7b7c482fde146eff7b9c13a7e1120a5a34dad91369bcc",
+      "sha256_after": "0d658af5773c906c729690452f358ae8e07228f1753b8c81d41d194dcb963824",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_Ridge_todas.joblib",
+      "sha256_before": "2ebbc2931900915eabc89a034bfe8b9ca8bf90eeb6aa11343f10118bfb761a7c",
+      "sha256_after": "518127c6c2c56350f8531bb1a7e6d54d11eb88862dcba6cc5b69a49ce5769eea",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_Ridge_prioritarias.joblib",
+      "sha256_before": "83d87e68c50f2e0df5dabe5caa80f4eae6ff9c0d1bb152573afd9f708fd6285a",
+      "sha256_after": "eaeca7e759b7f0feb557fa10d093ed9e0e8b35a3c98e1bedf3698e9ad80068e0",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_Ridge_ablacion.joblib",
+      "sha256_before": "81ab0f59a0824cde81cb8fef7f3d55ac4e5b162fcef4c04746e3dd5b96533b33",
+      "sha256_after": "b0c84b932f6d92587f9ce084e59a84441b56c477e49872a31dce6eb308f23f4c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_ElasticNet_todas.joblib",
+      "sha256_before": "f8557afd95e1046047cfc5ebcc66dfe3ce0c9a6c5aca9a65d5a51193b3bf99d9",
+      "sha256_after": "3f87b5e3abbb3f0691ec79086b238de99b50d1226c85f69501d84d5d42c664e9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_ElasticNet_prioritarias.joblib",
+      "sha256_before": "bda036bbe1f6b4e2ce9fdc89752576d016b4e595b24f46e6961357710c97ef30",
+      "sha256_after": "d2e64f669ceba363bf7bc510ac05e523d54d77456068500eb9d3c11be1cfd840",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_20_ElasticNet_ablacion.joblib",
+      "sha256_before": "5e75ea75a94bb45f4a3eaad00ec4f74a688d45991fff565d3aff8b0f9d961c54",
+      "sha256_after": "f482c03865c0c9febca6da9e80cf5965f79d384a4c016d869b2c5d504a5fff69",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_20_SVR_RBF_todas.joblib",
+      "sha256_before": "57afdb97455444deb0db441de561c34db85749cf74b2795db323cd368e12eb73",
+      "sha256_after": "fa3791f4d013d4a7432ead991e4a9e4bdd4379b266f5ef5e86962e652afffe7b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "0186a80bca50ad3fe140f9ba346f62c2407c3fa3978ca764b3cb00f303fd8f41",
+      "sha256_after": "f0d931a50926e4295e2ebc58f650896177d42b8887c2e7a5dd47b4e27e3c03a9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_20_SVR_RBF_ablacion.joblib",
+      "sha256_before": "22c9d499cb91586e2dc27e448fe2ff5000f92d32981d89cf4902e12d19d1180b",
+      "sha256_after": "bf08973dab68935ded88a3c946d31622089ecc8098809115f41743ad658d31f0",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_RandomForest_todas.joblib",
+      "sha256_before": "1504ab6d44ae077ba5c0202d0ae62d0198d8f30cb2e93025251cfc789ef7552b",
+      "sha256_after": "5faad50eb8ade2d32ea1e93a3304fe4809f7d4f3481a151bc844bb8da7304f6e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_RandomForest_prioritarias.joblib",
+      "sha256_before": "c332deeb7150f5db7a97beeea71d78e33962a68f3da82639a8000e71827ed760",
+      "sha256_after": "dd5545c8c9c70269adcb6f172e906122bec1b3b4742cf4065987aecc12697a5e",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_20_RandomForest_ablacion.joblib",
+      "sha256_before": "d238201de065c3c77fe0c87b188b3129d5c70d8b266afd35e5f126ac5074c9c8",
+      "sha256_after": "e8dfa5d716a779e0df4775ea36e2ee770c48a2635035d4acdb7267dfcb5d0014",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_GaussianProcess_todas.joblib",
+      "sha256_before": "1974cf53d9798a6954cc7c20c5afc0db35791f15e675c8a1ce3ecdbd1f8b7bbd",
+      "sha256_after": "8f7f149a02d1ae9403bfbe6226505d6647c2efbdf843f8174d5ca72d230d7a69",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_20_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "bf9e19f9c121b5005d6130023cf5b929557c49b95a349bc6cbd6aac2f17edd08",
+      "sha256_after": "5a66dd68252ad3e894c0480189e2cfc41baace86b8bf77f88027b06a3eb956e8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_GaussianProcess_ablacion.joblib",
+      "sha256_before": "30ab1690ad585a6e9cfebd7cd42854ac7e54343b5718ccf339063cad6c6c0edf",
+      "sha256_after": "65bdbde215cb15f6acfe5993d17c8c6634db7b1ffc23a93266b1e6775bd1623a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_Mediana.joblib",
+      "sha256_before": "acdab3a0cbdc937b42f14874aba8413eb0223b3ad16c23108d897721a12c8bfa",
+      "sha256_after": "d58ba756ab3f60f089a50ef3ec627a16187434e46073237b403bb92d631e8a23",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_20_Media_por_nivel.joblib",
+      "sha256_before": "4ee0b31b5a60f9ab6396c220449d24b33d5ed34edbf9637dbbd2f02add782613",
+      "sha256_after": "ae8753476f45bf5cc4f54fd13b2a7c14911ffabffc46ace9cef1569f4a4c0c9a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_Ridge_todas.joblib",
+      "sha256_before": "72d10e03ca361bbc329d98fced22b78aec58226b2e9d6be3e14337730ff12a9f",
+      "sha256_after": "f16ab4097f0612a2d08cd64f6e4bf66d61d1af0f55146102ba3fe1d7538ac960",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_21_Ridge_prioritarias.joblib",
+      "sha256_before": "943540558e8db831cbb3e955390235632a7e914d01aeb5ec4da1f94537a66864",
+      "sha256_after": "51bc5923d4a6140a50893b765992485bbdccccb0fb6af2f3772b6d24dd7f7839",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_Ridge_ablacion.joblib",
+      "sha256_before": "f3cda6cbb879a1e1280d29710dd91f741392e05bc315076a4f35fa4f1d369886",
+      "sha256_after": "fe94af62f48d838fc50f2f0fb576bfc76859afe29396c284fc86a8eab145cf76",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_ElasticNet_todas.joblib",
+      "sha256_before": "17386eee8e51795e019de5d2f696c343786ea89499c88e09ce936c96117e954a",
+      "sha256_after": "c97b85c26b79c58b3df691f5347eaa6fad6eedc908454ff2c8976136e3b9812b",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_ElasticNet_prioritarias.joblib",
+      "sha256_before": "3aa36f714a53ba1054f850ec2e59e54e3e5b71518c4aea961bcd7388f56df955",
+      "sha256_after": "ce4264a742240c7a616a5198cb0bbe2aeec78d0f9f13b6111aab45d752d00bfb",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_21_ElasticNet_ablacion.joblib",
+      "sha256_before": "befd0e8e2ce8419d6590f7b76cd507d636193c5266802aa6c93c5f1abd4ebfef",
+      "sha256_after": "b9726e681320f0210ac51bebca429a081894164e38c9bfa2385ae74687e4edb4",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_21_SVR_RBF_todas.joblib",
+      "sha256_before": "ef15e6b9ab37077d8dcb60f575aabcad0199bb6e00a7f7f2ed61383e7c3184a6",
+      "sha256_after": "b2a0376307bb3ebdf95866eeeb15bed3b3ea3c32c7289807f5a2a4a2aba6230c",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "2d93fb03ee829929e0d426a7c9444c718352d111fcc8c07f2070706090336b8d",
+      "sha256_after": "b6576a6a5d5c0777a8b8ac996af585e4e912cd21aa2179597807a6f14b0c4ed3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_21_SVR_RBF_ablacion.joblib",
+      "sha256_before": "8b0c5a861f3320c70524544ad0160077547199b3af448565a124c2a2b06bf552",
+      "sha256_after": "180ad3d1b5965c216026e6b515ab43be6cf4924539fda77faa8238df681bad53",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_RandomForest_todas.joblib",
+      "sha256_before": "1c7097cbb34a76e0608fedace18181091e9a78adbba9dfce2aaec48fbf118982",
+      "sha256_after": "24d8a93c70daa126e1ca4107a51fbd1c8ccf738aea0a386ab0efe626ea279f23",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_21_RandomForest_prioritarias.joblib",
+      "sha256_before": "04f6b532987b3c2728b1fe950b9eb09bd306e340de2d38f263a8220ae0cc6495",
+      "sha256_after": "b66effb168d48d6eb09c4d047bf9247272398c3a940b969980db63073e704d3f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_RandomForest_ablacion.joblib",
+      "sha256_before": "a7ed2be73c6b53f3d2fe8287bed5e9d8350d006ec4a1a5d8f40946255e7dd7be",
+      "sha256_after": "0d22eaf13683fdf2d63705c8fc9720659b8b0dd4dd0f5898283e643683e8bcfa",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_GaussianProcess_todas.joblib",
+      "sha256_before": "c7d58dfb020aeec027c9cd38a8495774b3f4cfce73778391e5ac75f8e0d0902c",
+      "sha256_after": "d0cacd4b4b27cc89807e925350af1e7e2ee849b78b8c6ab4e641e47f7ec7fa90",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "61ac406beb03ae559cf1cf31480bfc64c6a7156994c920048563ceba5b5fb2fd",
+      "sha256_after": "c992e8414873bcf93cd2c27e99f145da2dcf3065464336a93945d10aa4954e4f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_GaussianProcess_ablacion.joblib",
+      "sha256_before": "8cba8276235caaf241d4d763d5e1e6a35fc50a06dc1492c85a8d11f2d591983c",
+      "sha256_after": "f95fc4d9e4ca60040937315428d4c8ce82dfe6a0e9bba95c288d6539eab6a25d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_Mediana.joblib",
+      "sha256_before": "c84f77fdec163e1b5d916c0daece135a34d85d38330a4a12132bcb17953864a7",
+      "sha256_after": "2a24ee3161a41b11d21195793943f6d73436ea674993d3e92024e09d6d18a133",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_21_Media_por_nivel.joblib",
+      "sha256_before": "dbbd003e77af98e7491eb04501705c6b5fef0e43ce69e02b5bbb049420171a27",
+      "sha256_after": "912332fe1ab0012b247e9e2f97f48e6abd32cc52befae63a3a09f4d37a95c4af",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_Ridge_todas.joblib",
+      "sha256_before": "a5877775a426c10e0520b8b20fa22d71190ebaa1623a8f22d2c26dac0337ef7d",
+      "sha256_after": "6df21a9e6741abac7847c02853daf36e71f1826e8ba9c3e8e5574de0b0269370",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_Ridge_prioritarias.joblib",
+      "sha256_before": "1d07ab44919c0bfca8551aa6034a1f3d19ba745adb9b0b8bee70afd32340931e",
+      "sha256_after": "fdfc5e0b1fb8b4d6aeda1abc5c53b00bdacaf6ec26aee32e0ed0a376bb1d63d9",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_Ridge_ablacion.joblib",
+      "sha256_before": "fdcea5f6ae3b6e799bc1a8c443c56674134b1fead95682952f8851b759c26f78",
+      "sha256_after": "18c44a30c296754cd0e55907b8429300023e0192ac208b61cbd8621270e7f1db",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_ElasticNet_todas.joblib",
+      "sha256_before": "0bc4b918b8b88864b56471b92639240a151cf6b88b09add9aabe933d27cfe733",
+      "sha256_after": "4d0acf6be41d81144763b7ba916d8e3977b18472f0eb975e465d528c95882806",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_ElasticNet_prioritarias.joblib",
+      "sha256_before": "1ce6dc396363885eb394c6919bdddc8ff4c138f7b8ae972fefa87b029546552a",
+      "sha256_after": "02ae86ef5e282472a51e9653d3cfb7258ac41ab1cc88ca30b6deb1bcad71b06f",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_ElasticNet_ablacion.joblib",
+      "sha256_before": "84ccc09c42c173297a58d82448ce2f468688ba332926a00255b339ea4baa130a",
+      "sha256_after": "9b1ea7208af96516973613280f53dfc08285909ae1847cf06e0526a3278dc07c",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_SVR_RBF_todas.joblib",
+      "sha256_before": "3f50685e9bf954ed3d08fe813c2e2de540fc5b8a7aae91464663bab2bdc809e2",
+      "sha256_after": "cac3fa82b01aa82f52e65e74784a56935ee15d5fbd57a3bef228b6407e7abe70",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "88f112c163d9fa861b72ebbd72a9c17ea9c655d8797ca4816c6d4abfa5991dfc",
+      "sha256_after": "1703f64a985bff761dd1a84167ca8b3e84e3e31b40c4d2b2542cf7500d5a1acc",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_SVR_RBF_ablacion.joblib",
+      "sha256_before": "75c463d260c834b7d5f0b401c6a0218783898b720ba47bd31bbbdf65d138013a",
+      "sha256_after": "a6fa29faaa9c0b06719f13a96a2103ed7f824d5f36356fa5ec12b300a9ff4fe9",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_RandomForest_todas.joblib",
+      "sha256_before": "3b929e4245aed61d6e1be441c295f4ac18be9dc69eec334dbc342953583a76a5",
+      "sha256_after": "edfe42c845208d61ecffefa915943c5b081a1529afb5e0f0b5a3feff48296edf",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_RandomForest_prioritarias.joblib",
+      "sha256_before": "aafa90a96da4ce91229927a7acabe551b4f3ddef67a59241a931ae86a1a206cd",
+      "sha256_after": "f9a00b3684b822ff0f8b4f4b4df631a8966c54fb86c7fee4ed7e0311859099cb",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_RandomForest_ablacion.joblib",
+      "sha256_before": "86b6e304995971c468452049bb000e019aaaf67296a2676f14459176ac8166be",
+      "sha256_after": "812d9ca2f01b22384a0c3c754e115e63604ba4b0682c5156adb377e1b9e6c623",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_GaussianProcess_todas.joblib",
+      "sha256_before": "7ce28281fcdf6e311b0ebfb8bea4f9f85b6f15d4af2a0889d8ed0514eccc9f38",
+      "sha256_after": "818734006b0ae218f6ba8df0ecf0bddbda29b159eb8edebc9ca652626da98229",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "cbc9c96c8bc5d36c734b386a013fa324422f44297b816b24d17cdd26f0acf199",
+      "sha256_after": "23a24b88ed8adc83bb871f5ff7f61913875b1a26730fb405d58b8e85b976e281",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_22_GaussianProcess_ablacion.joblib",
+      "sha256_before": "cf3e823b5ef5df89d0b5803c6d374b79bc7629f61d2f584096099cfb55ace22b",
+      "sha256_after": "acb98c2ce07c674ba520551917c8fb8988b8e6d0848dc040b57f3de7b7fb6715",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_Mediana.joblib",
+      "sha256_before": "76005320ed28219040ce8384581cb85e3a94c6a163cfbe6c489da2824265fcda",
+      "sha256_after": "bef6186326f9d9a7620bf4f04b92baa9c784091246a37d231955de0e04f715c4",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_22_Media_por_nivel.joblib",
+      "sha256_before": "0128e778955c1a34dc7312f0ddc5fe0a2262d6a8bdbbecb2c32ee448365a2ba4",
+      "sha256_after": "4e20bdfe015675add0acad100d35bdeaa974ad9402fff7ea4e32e7e5037b3583",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_Ridge_todas.joblib",
+      "sha256_before": "17c008c2354bd435a0f56c2fbc7056ebb6e0d76ded6c4aadbcf351f96c90a03b",
+      "sha256_after": "c12b092c7ee1d53f5f0af470a935639245e4d8b9fcc5e0db80be25930fad5d41",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_Ridge_prioritarias.joblib",
+      "sha256_before": "bedf926428d528027fc08cdf16cc9ee39902295056db045a81835f6fd942ec48",
+      "sha256_after": "f56b7d49146f9a7c102c1bd50b78dd6408e40d2feac77ce8466d44ea0085e57c",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_Ridge_ablacion.joblib",
+      "sha256_before": "47078e1c26f6b91ab436fd4de3decb7c0f97e42954acbbf907035a993fa914bf",
+      "sha256_after": "869c38c3960a9b29db42802de18fadbea071d5320c2e2b9342f98b2ac18e486e",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_ElasticNet_todas.joblib",
+      "sha256_before": "5456d4dc49223f62fdd544a71f89410202e7e42a98d1b9a68555d490b81dd01e",
+      "sha256_after": "801ff1166db86a20944c2f7e855848dd32af8469cbd322aa63350a618cec9da0",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_ElasticNet_prioritarias.joblib",
+      "sha256_before": "21318dba24e61dd1ab5917c26c9e18cc0a6f7f84b09196abd27c27a74e7bc470",
+      "sha256_after": "79089edca878525cefc1afa2792f4878eaaf98f12bae4f7a03410587169e95f5",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_ElasticNet_ablacion.joblib",
+      "sha256_before": "7bea0595c32df2f186ba1d1571aa2ee2ccad11321de5f6cfafc6631e440dcaab",
+      "sha256_after": "6a4f6b7f8f6ccab457a4432643b6aafbfbbb30f3c40bee431e02fabf6778a9d6",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_SVR_RBF_todas.joblib",
+      "sha256_before": "056b45e8b467addd13db2878909c2b9f219dccf2a22b18bc45efae14e6608dff",
+      "sha256_after": "90a4e56b1630105b31449697140db5b064b5c551f4c8f13fc828069244161e23",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "a280e4e1ff7724dcc2de2dbfa0706d86208347167696c175206aa8ff78ac6c3f",
+      "sha256_after": "4e0db0769f4946cf302d32973ef439164d42f42ddc6ffa65729df54cbef6aff8",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_SVR_RBF_ablacion.joblib",
+      "sha256_before": "5cc2d49c99119a4c9885df5621d789073bbf7e1d41b8ca2a48c768a29698dc94",
+      "sha256_after": "36ff20265e7d973a1b27a06fae495a6d14522feb767b6671f564043e88227a43",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_RandomForest_todas.joblib",
+      "sha256_before": "94d01f6b201c73177084acf77f5d71ee42bb3a83288fe4a215fca6a8eac91128",
+      "sha256_after": "84f6245f653d5007f783aac3dfa40b38de0c688eab3378b08cd1c5d71e3c7a28",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_RandomForest_prioritarias.joblib",
+      "sha256_before": "9d1095582b830389a7e7efe265728890ed5f732a17fc3c640d7e3ffb4c19c5bb",
+      "sha256_after": "26fd4cc777cfa5e2bb572aa972bf0f46aada789a5687c5729d294b6d2b809aa3",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_RandomForest_ablacion.joblib",
+      "sha256_before": "ef6eed4c8155c8fa396cc5333cd8c444be95d425e75481a21db62109b21430d9",
+      "sha256_after": "de24cb6f9d2869209c552e276628023697a2a77f9bcbbfec800cb9b31a454c1b",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_GaussianProcess_todas.joblib",
+      "sha256_before": "6a8c51e19c5152ec3052bbbea3d95cc053e2c224b50c0c2d5dd7f918fcdf560b",
+      "sha256_after": "56a4e81f595375ae94a22adb0fa965686374d3deb33bb9bd87f250bd8834a8d9",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_23_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "599606a257f3da5614f78ee4ccdf0426fd1346b5a5534d5a6d2cc35065d7ce10",
+      "sha256_after": "dda38f177fd1d7e5d0e8cae4872fe0d1fdac472483390f7a1744479f5533a3a1",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_GaussianProcess_ablacion.joblib",
+      "sha256_before": "b9c709b2d99ea871d5bb5391175bad4aee302a96bf5d7a2f73ace06d97815724",
+      "sha256_after": "ed804a24fa79858a58fb9cc0c51608971fe80a654147bbf81edd73351dc10d00",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_Mediana.joblib",
+      "sha256_before": "63825ee35168c827362632f36fbd82ef90dc3900b156fb20831e68548e4ceaf2",
+      "sha256_after": "724fb31be7455bb9e7042ca88c35a7a514f3acc1764153461fdbfc45260b4a79",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_23_Media_por_nivel.joblib",
+      "sha256_before": "cbd53ed95835f1a7c563fd2783a5a511a9269204d8440b5c8a4034988f826452",
+      "sha256_after": "9b1250c298cdff2a012edb598cd1e8d354cce44185e2df3a7e20a3a90877e45c",
+      "oof_rows_checked": 2,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_Ridge_todas.joblib",
+      "sha256_before": "d86d368ede21dba025e4cac3519980824a2775683dcf2ea82328334373077c8c",
+      "sha256_after": "82d1a462cda87545307d27d7cc4c2fa22deacbaf38be67a23a418e3a58fc4e29",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_Ridge_prioritarias.joblib",
+      "sha256_before": "f715e2955bf5adb53eb162f472f76a6971e976b94322a1b69287dbf617d40b2a",
+      "sha256_after": "70de242bef101905c8382cfc68f37651ed0eebdce663b983f8ab990b33c20622",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_Ridge_ablacion.joblib",
+      "sha256_before": "d0c11b513ccae983f0da915986f698df960a3c39b120ae1fcbeee2e13b6f7958",
+      "sha256_after": "2e916588d293bca5ba3f59090c2784153752fc57a2ac833cdccd6f7b4ad84ede",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_ElasticNet_todas.joblib",
+      "sha256_before": "7d1492ef36e1f019ddcf1aba1766520faf34d424c57a5f445acebb7b07fcc45c",
+      "sha256_after": "2f269b0a5793fa98d8c147d6f1d090ae60d71f3956da95454375e5326158e4e9",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_ElasticNet_prioritarias.joblib",
+      "sha256_before": "466040888166c418ff5ae251ef1450dd66e3c9956514ee41db66704b6492fac4",
+      "sha256_after": "f808b40a8a24baff346a26dc5803f3fa8df5e149229db82989f5b5034713e077",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_ElasticNet_ablacion.joblib",
+      "sha256_before": "87aae826dfb688f7fa294405639e1e782c90e1a34929599ef65334b9d543561c",
+      "sha256_after": "29e84c9c9c7c62fdaf843ecb36f61bf18718b6bcfb258ef60f5a80e55ca3a920",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_SVR_RBF_todas.joblib",
+      "sha256_before": "f266a029518784dbcf401ec0cd94aabe6a77b2735ac4c13d61875cbcd23e077f",
+      "sha256_after": "55b64d1325bd83aa513906a8f30dcacedea642850917fb900c5cfcd460ec256a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "c2e03358e58971f4e563cff127c035210b9624c938ca0a53d6fa9cf2f294b95f",
+      "sha256_after": "c06da13026d35e5aefc9b83365ad1049939afbced6b0ba7e6118707f3939a25d",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_SVR_RBF_ablacion.joblib",
+      "sha256_before": "5decdec263f4c9ca3862b8981bbcb536fedea2597f32c503ab2a49eeef1f105a",
+      "sha256_after": "5fdd48a3ab25ef74f42b6bc695d6fa3030434278a00e042220c918c3a63f2842",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_RandomForest_todas.joblib",
+      "sha256_before": "c38a4664320593c5b08eccbe34a151243e688de5e2ef8e13ce7ae309d8f40b15",
+      "sha256_after": "d8463023df3f1ec3502e1e3eff3c0ad538309105f8b8fe20b3e07dad19a07ffc",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_RandomForest_prioritarias.joblib",
+      "sha256_before": "64f16d8c9024137d22aa84593a0207fcbc06050a0592d4fd89268abc7f70b75b",
+      "sha256_after": "616385fe0f4d3b0c59862ada2457cbc19ef12faa2f6a36482e4cc50a541cbbb3",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_RandomForest_ablacion.joblib",
+      "sha256_before": "a72570509e1bac2c1679f1769e642e28bd27d4c219840d9afdd66c4e0105ad3e",
+      "sha256_after": "83921c1af02bbe33fc61293881a25e97746705961097493339ea6f37ad27af0f",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_GaussianProcess_todas.joblib",
+      "sha256_before": "67b737550296f7f942999e040f7eed561e30a419a8a3fd4a3caf17dbff3bd5aa",
+      "sha256_after": "ee1cf0dced85c8ab4107f49158009fdc3c7dff0831c70f7b004f18560780c3b8",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "6bd35400604a41eed57327f7952f6845601fd306590b7d73859c623cf4a4f3f3",
+      "sha256_after": "8c067ca7899c4be6500f607f87ef189dc37c62831d24a91699bcac045963a915",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_GaussianProcess_ablacion.joblib",
+      "sha256_before": "debd29ea2ba6c7acdfeb7a6589cbb2aeb582c06e5327e85b814780a58ea9f034",
+      "sha256_after": "9bd979103e022a279a32d45dc76b13dbc3e54e5ad0b45258e7599202aee5bd76",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/configuracion_24_Mediana.joblib",
+      "sha256_before": "44bc3c4d2e0ad8138cd6b19be155ad9d577777d19be7e4326141b85e5bf7a49e",
+      "sha256_after": "0ec6fdf3679b0a7cbf699728961790e1055820649d993b7b628ea6989ba43f3a",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/configuracion_24_Media_por_nivel.joblib",
+      "sha256_before": "ca68889df58e7da1927228867f446c9ba286d960be2e585908c0ee5e90d075ef",
+      "sha256_after": "adf1e8bdf6cce23921ff6eb51cf0aea368e57bd0977942c06182b224d5f95103",
+      "oof_rows_checked": 1,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_Ridge_todas.joblib",
+      "sha256_before": "8ad08a5e10b265121a9ff5ec64152a5e8eab3115c3a5d40d8af61ef93c24894f",
+      "sha256_after": "ddee36e51cc9eb49232354b65d277b9f6b37610dfd35f5c0d6fb4f8e3eb6c525",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_Ridge_prioritarias.joblib",
+      "sha256_before": "8f58dd927650c3ba946302a04e499b664719da7208675a99b3c400030f2d051e",
+      "sha256_after": "5a111a09114146eca4c5f7736c919d5c1f29007aa6994fee0fa9941ddb4ae6a1",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 1.7763568394002505e-15
+    },
+    {
+      "estimator": "estimadores/familia_01_Ridge_ablacion.joblib",
+      "sha256_before": "9da901dac7329bdb43dfb0041b9badae30633394ddb9d56b9085307020394e72",
+      "sha256_after": "2708d44fa57acabb54019019872ac9a94331ce7e59d5ac47beee47b40d2bb9ad",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_ElasticNet_todas.joblib",
+      "sha256_before": "a20429735fe09b187b084f91d7c5c584789faa7c9fdb4590c1af345b826b65cb",
+      "sha256_after": "70de68f1a07e3f77242c44ea119f0a662a8b04bf0ed0eb516610a5a0a9acc008",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 3.552713678800501e-15
+    },
+    {
+      "estimator": "estimadores/familia_01_ElasticNet_prioritarias.joblib",
+      "sha256_before": "9e0fd866f97c6c46b2cf7dde80102f1cf6fc1984c9c772926951080d47edf432",
+      "sha256_after": "7d75e9b98d996fd3f872005ce92659e28d5e3899980599006f6fdf2637b39ad3",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 1.7763568394002505e-15
+    },
+    {
+      "estimator": "estimadores/familia_01_ElasticNet_ablacion.joblib",
+      "sha256_before": "b1cd10dc4265d2de1fa64353525aa16e74d65cf4a126151e6494f067ec67756c",
+      "sha256_after": "f5ccd49b00fcda8e3942aeb5aa25c98ab8b0bb76490fa60dae3d25a91cbe1598",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_SVR_RBF_todas.joblib",
+      "sha256_before": "7d3b3c3bf9c122ecfffc68dd3bf582056a97abdce4875e3be3f89bae900f0929",
+      "sha256_after": "cd4fb6eeac7344a6e56f53c863296b99cb3d9a4dedf4da2f899beecdc5ca5f23",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "f4d7200e8b174b7c8e6c34f4d64c1f10899d4df95380865b628886134a209631",
+      "sha256_after": "ba22e8be3ae07e72419fb3ef9961201663b1f1371bc48ec7e5dcd518e49d60e5",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_SVR_RBF_ablacion.joblib",
+      "sha256_before": "0b2af21ebbbb7a39d005dc7ff2ca8f530506a74f0f099278568e07e4b8da2603",
+      "sha256_after": "8a698eab7d42d1e7d004461cfecaeb86670db20bc573aa3bdfa4bd1ebe25c5d6",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_RandomForest_todas.joblib",
+      "sha256_before": "55c82364ef0522601f9da3ae023e3daf259153b42c6dcebff419505f4b867920",
+      "sha256_after": "a3ac5f3a58c33d9c866ea75bac31db6e885640347f54b71ed04574ee84109c57",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_01_RandomForest_prioritarias.joblib",
+      "sha256_before": "a89936711215b492df782038733da083101355e79f566b140260d57b57c5e0e9",
+      "sha256_after": "e266417d9efcbc516ba7c2b44546c7c640661112f43abf13956d2db710f81e9c",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_RandomForest_ablacion.joblib",
+      "sha256_before": "4707a4e4a14afef579c56a8d31370a83645bd8375d398f0c8aa7e0eacf07a4f3",
+      "sha256_after": "ef247f2f9d250d4b456cd9862165740520345a0f36743aac51920fb6a489a1fc",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_GaussianProcess_todas.joblib",
+      "sha256_before": "8fd3eaa31a4fa3a439a90e71cc59f3f0f3f5d920bf80aac01418bce1046568d8",
+      "sha256_after": "f16192b6a04c670ea7be40f357cfe2a6cabd61b1d05ef0401d1189cede8752ca",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_01_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "349876ec0e4903166912c1d39c713020fb3bc4fdd3b65fe13a18e575a6ffa90c",
+      "sha256_after": "72341f0949c095ecfc1f48b2101bf74a1289ea340b0c348c1075ec8ba3ec59fe",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_01_GaussianProcess_ablacion.joblib",
+      "sha256_before": "3379bccba0ffcdd0ed7d5c0e63d5c0d4784b494b6fabddc4ad8a2d56b4a6d869",
+      "sha256_after": "ad637d0a7f0a66318def70d85fcde43a932926b3c1b65973ee925d3d4eb2ecd8",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_01_Mediana.joblib",
+      "sha256_before": "24b998ed51e3f8165820841d5f9ea64308f108943121663148c5c6bd7a5bb197",
+      "sha256_after": "a3affcbb4551c05a0defbc460f15c34ff5eace307962fed66ea340091b70986f",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_01_Media_por_nivel.joblib",
+      "sha256_before": "aeaefcc63f560f40c449888cfed911760c4c1adbee196f59e11706f8725675ee",
+      "sha256_after": "30a37c8ede299b47570269840e1550c89399b26badc6a8aebd42d0e5fb97713a",
+      "oof_rows_checked": 8,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_Ridge_todas.joblib",
+      "sha256_before": "ba9e4ac89c39fe3701bd3965f66a40cddf661b6bdf08881d1f55ad7914b7d536",
+      "sha256_after": "bb554583bf34d8c56949082ad5292836b747d369bd8da1f27ad483fbc04237bc",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_Ridge_prioritarias.joblib",
+      "sha256_before": "42864783ddb327391c57a0cbf3723fad96cfbc6e1883d889602f706f70e85e12",
+      "sha256_after": "770909e2820757d8b6cba95fce1afb224170b8cf6654b14e22d04f2341fb9815",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_Ridge_ablacion.joblib",
+      "sha256_before": "00a7e37143373a06325830f927cf87fa0662f887909a01bee870ea9eeea10ca6",
+      "sha256_after": "02baa668de5a3b69c48fcd499ff7a83a3f21ef0b2e096894f72448d37d2168ef",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_ElasticNet_todas.joblib",
+      "sha256_before": "867b4fc5e1f223d5417b4770d0b39dc4c1fa3b466c49e9225053f033201f39e0",
+      "sha256_after": "537c0cb96a1131c27dff924adf2bc79811ce350dae5e437fe6f3a4253575971b",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_ElasticNet_prioritarias.joblib",
+      "sha256_before": "1e21325c998b5bef5137dc4e1337563fa28f28a66348ffa6993c7daf7c59970b",
+      "sha256_after": "92924a03009fb0c2f44a6ff8ddae07df2a821ff6d08dae1058b71009b51745c1",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_ElasticNet_ablacion.joblib",
+      "sha256_before": "ecf430bfbbf8e45bf90737d995c1ac0f3092fcade3d314246be243d11cd3cbf0",
+      "sha256_after": "e13b698f3018702088f1e248ae720ce6a68f3a43bac62fbc7f98b19901e57382",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_SVR_RBF_todas.joblib",
+      "sha256_before": "2d79a9fb526ed500bc96301aaea7abea76c91b092ee8fab748eddef95c006610",
+      "sha256_after": "5943a30e9f1045022e144f33146557f81869b9f633cd75029da12bc3524b3bad",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "0074f1c9e18ed8bac8fa08fb03c96d9b98eb2ac9e4d3c37f204e64e3f0054744",
+      "sha256_after": "0916da36c791f35371e7a4397a187e59358c817d5074e8eb9c14e5d9b079c1b4",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_SVR_RBF_ablacion.joblib",
+      "sha256_before": "81a2fa2f6510de5235691517533da8c58ffe496d04c8e9986859720eed36aa52",
+      "sha256_after": "c9518d2caa2a7b9615b3f98204136663c5b572d703906a1c30bd9be7dd2d5948",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_RandomForest_todas.joblib",
+      "sha256_before": "782cb1e7ca0b23a1b5b0fd6979c81c0c084ff2f824b688aa5995b3afab49f63d",
+      "sha256_after": "a3f73fd0cf7e4f1bd0cd06f5277a20e73aef05826a0963b1eeb6c21076312adf",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_RandomForest_prioritarias.joblib",
+      "sha256_before": "d064ec985f8c2d97ade100fd5ecc77e5a0f37825399cfc8e942a808a4b529a9d",
+      "sha256_after": "4f237aa4fea3434e9759c23fbc9cb37c27f1998538368c96d9cd7b5496104bc9",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_RandomForest_ablacion.joblib",
+      "sha256_before": "d8cdc95d7f8f219c884a56445bd0de6e3a555fc31e9f497e1467ea3bf833b2f8",
+      "sha256_after": "8a18976364987fe10c650cbc85a1b7513a32d585191e7bfc518d628bff1581e2",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_GaussianProcess_todas.joblib",
+      "sha256_before": "09e60bfb76c20f1f1214a535f41d59c9829b96989aa87566ff66c2b9463c28bf",
+      "sha256_after": "3e662cd014719e5eabda401452d38ff22e642da24925f8ba7508f87cc8707bf2",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "5d856665a9180cd7c2f21533f7d8d79a9695b1af4b84c21ceb56cd651b5e35cf",
+      "sha256_after": "916634727a1aba4312c754f4320e4d434dfd85c2ac51279b52e2b20b8f68a60a",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_GaussianProcess_ablacion.joblib",
+      "sha256_before": "55092aa529ba47a6e9cfd0bb1480a5ba9821eefe7d83bdda6e92c9bbc8a2f79f",
+      "sha256_after": "264785666ba320c93aa93980afcc141a15ed0cb222d59e87925f22b2759c9e95",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_02_Mediana.joblib",
+      "sha256_before": "49c7f768718364b502c81acca04bd04acfa17fa520b78c644ea299e9926ba92e",
+      "sha256_after": "4d0a3a506114454979654845b8dbfffffbd7e920dc16910062f42353fd592460",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_02_Media_por_nivel.joblib",
+      "sha256_before": "df49f85b7f9b4b8ecf68f2c70bdd5c1d952f443f77e6024bc2f9d3623755efa1",
+      "sha256_after": "7fcae6c6e2419e75fd90a1298c5641be7de5e8387c67bd1fa6ec6c5bd0450646",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_Ridge_todas.joblib",
+      "sha256_before": "46bf5a5bf46661a7161bdc09e84efe9b83e06b8cf13d02b6fdd109f223c96e87",
+      "sha256_after": "26bac3a82a570e7dcd5f8270bdf69a11c71f58705d748ae3fa287a40999aa2f9",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 2.842170943040401e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_Ridge_prioritarias.joblib",
+      "sha256_before": "17c269e0c5e352893b580e1036def1e26c602496e4041cf899da94351c163267",
+      "sha256_after": "e6a99d659966d511143aad9de832214b0ae449993d3490f77f2620a1bb5ed472",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_Ridge_ablacion.joblib",
+      "sha256_before": "d13f71e395a09c050eedb1ea18abb3618d489b557c422a7b86e775cffe0e5a49",
+      "sha256_after": "8694febeb412cebc6ea8fcaf0d02d034753cae5205b28e0237e320c7857cb2a4",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_ElasticNet_todas.joblib",
+      "sha256_before": "1cb4a79c6c073c4b14c58bf1f96af61f222b242a60659d89c9c0cef73ef09bd5",
+      "sha256_after": "c0edb5dc1741828828f71f5f690a008a0436c2bba343babaed5b01d7536721aa",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_ElasticNet_prioritarias.joblib",
+      "sha256_before": "d58e741a39a7ce29ef3cf8a425f756c6b3447a90551b21d1fde48dac090adb40",
+      "sha256_after": "7b039988099cd742a8828296a5e8d34ca3a1c0f90e8a3265af5699f941a8ca08",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_ElasticNet_ablacion.joblib",
+      "sha256_before": "19d7bf7552b5730f13c083b5ca03b478b0b4265780bcd0b3470e3daa7e002b89",
+      "sha256_after": "737ab7d4a82bf4ea3489f406063e8036f6d683035ee490e10db65ebb6ba9c347",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_SVR_RBF_todas.joblib",
+      "sha256_before": "7e98f8327d08dd183ed2a49af627c351aeafb76c9f5c17354f60fa4d8f823152",
+      "sha256_after": "4dff7358aa37bd9043ab3892927d045d9010e4c0f4299253b72bb3f38062f202",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_SVR_RBF_prioritarias.joblib",
+      "sha256_before": "298ea0adafecebf5a26c1815134f85b781703a3c5bfab57a291da04d1b60b209",
+      "sha256_after": "b1e154ea2766a4976826190ec42748c4bafe2537f2ee4513349693c67350cfc2",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_SVR_RBF_ablacion.joblib",
+      "sha256_before": "e56f8030d717c610183e1720bfa3ae34e413cfa3ca1ddc2401d6bf3b8b1f9e6b",
+      "sha256_after": "873edf2c484c3bfe818479b2a62e16729b8ae4494f383846c82ac1bc49c94ad8",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_RandomForest_todas.joblib",
+      "sha256_before": "8e5e87bacefab2d7218e08d0aefc104ef0aa0395078630837766bf2ca7790675",
+      "sha256_after": "de3607cd06bcf7c28b555f49ea4759b0888871c39c5b9820ceabd62670ad9ba0",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_RandomForest_prioritarias.joblib",
+      "sha256_before": "22b44213aa68aae48851b9ceddedd64fb6ffc94b323b4d2b1161b7dea29358d1",
+      "sha256_after": "f2ddcfdf338662ce3f62ea1f0407967335f24826a6479e74832a42eaa114a562",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_RandomForest_ablacion.joblib",
+      "sha256_before": "c34414915a88dc03e54f9dd6fdd3078924be831e382440ad740c82f9e60a83c4",
+      "sha256_after": "b066281d5ac997d7209e51e75f775b549f5bf2437756e914a68cd1f2bb1acb7d",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_GaussianProcess_todas.joblib",
+      "sha256_before": "b9b8e1a03cbc88dfbb7c773bfeefdcda123e79f39d378eb174801b70a0e3c21a",
+      "sha256_after": "e90f4918cb8e8caa93ece0e664e87b46a80c48c4630c2ea5b03ee4d897e09506",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_GaussianProcess_prioritarias.joblib",
+      "sha256_before": "a9c157eabd1981d83ff4b09331ce08801cbaaf49c0a6cb63ad87900b40ed423b",
+      "sha256_after": "4f5a2d38eb2686f352b69604a58a0b8da6da5e5bf7b0ebe1a898c3d1bf54f79f",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_GaussianProcess_ablacion.joblib",
+      "sha256_before": "1747a5cad70e89fef9700ea905fa6401c96637bf7b145d468ae739325da0b12c",
+      "sha256_after": "b958f1266e46edebea1c7072e05634cef711415627048e0496bbb2347f4a882c",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 1.4210854715202004e-14
+    },
+    {
+      "estimator": "estimadores/familia_03_Mediana.joblib",
+      "sha256_before": "8220c0431f3454276d13bf066b2f4a19af2a1408560bf1326eb6efa90e0f3ab9",
+      "sha256_after": "d831f5becac6405f208db314c411694378c22f5ca500180388239f33851c9ff8",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    },
+    {
+      "estimator": "estimadores/familia_03_Media_por_nivel.joblib",
+      "sha256_before": "68e7f86eaa6ce7d263f05c4bdf179d222711a9c70d5ae96e514b52d23f4e341c",
+      "sha256_after": "b6c6a2c4cf31d7c96bf3ad3484651c34db2d39a1e508372da03bdbb0ef371b78",
+      "oof_rows_checked": 9,
+      "max_abs_error_vs_saved_oof_N": 0.0
+    }
+  ]
+}

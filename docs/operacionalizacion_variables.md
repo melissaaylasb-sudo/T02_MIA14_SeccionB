@@ -1,6 +1,6 @@
 # Operacionalización de variables
 
-La [matriz de consistencia](matriz_consistencia.md) conserva los objetivos e hipótesis del informe previo. Este cuadro distingue variables físicas, representaciones derivadas e indicadores analíticos. Todos los predictores proceden de información geométrica anterior al ensayo; el objetivo procede de la medición de primera falla. Los nombres, unidades y restricciones se contrastan con el [diccionario científico](diccionario_datos.md), el [diccionario FE](diccionario_features.md) y la [tabla curada](../data/processed/preliminary/model_table.csv).
+La [matriz de consistencia](matriz_consistencia.md) formula los contrastes de la actividad actual de permutación. Este diccionario conserva variables físicas y representaciones de etapas anteriores: la entrega actual utiliza las diez entradas originales y una selección interna de cuatro; las derivadas B y C son antecedentes. Todos los predictores proceden de información geométrica anterior al ensayo; el objetivo procede de la medición de primera falla. Los nombres, unidades y restricciones se contrastan con el [diccionario científico](diccionario_datos.md), el [diccionario FE](diccionario_features.md) y la [tabla curada](../data/processed/preliminary/model_table.csv).
 
 | Variable | Definición conceptual | Definición operacional | Indicador | Unidad | Fuente | Método |
 |---|---|---|---|---|---|---|

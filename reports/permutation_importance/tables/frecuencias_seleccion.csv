@@ -1,0 +1,101 @@
+﻿protocolo,modelo,variable,etiqueta,n_selecciones,n_folds,frecuencia
+configuracion,Ridge,n_cells_Y,Número de celdas en Y,24,24,1.0
+configuracion,Ridge,Fiber_height,Altura de fibra,0,24,0.0
+configuracion,Ridge,Fiber_base,Ancho de fibra,0,24,0.0
+configuracion,Ridge,Fiber_total_length,Longitud total de fibras,24,24,1.0
+configuracion,Ridge,Fiber_total_volume,Volumen total de fibras,0,24,0.0
+configuracion,Ridge,Pivot_height,Altura de pivote,0,24,0.0
+configuracion,Ridge,Pivot_radius,Radio de pivote,0,24,0.0
+configuracion,Ridge,Pivot_total_number,Número total de pivotes,24,24,1.0
+configuracion,Ridge,Pivot_total_volume,Volumen total de pivotes,0,24,0.0
+configuracion,Ridge,Sample_total_volume,Volumen declarado del espécimen,24,24,1.0
+configuracion,ElasticNet,n_cells_Y,Número de celdas en Y,24,24,1.0
+configuracion,ElasticNet,Fiber_height,Altura de fibra,0,24,0.0
+configuracion,ElasticNet,Fiber_base,Ancho de fibra,0,24,0.0
+configuracion,ElasticNet,Fiber_total_length,Longitud total de fibras,24,24,1.0
+configuracion,ElasticNet,Fiber_total_volume,Volumen total de fibras,0,24,0.0
+configuracion,ElasticNet,Pivot_height,Altura de pivote,0,24,0.0
+configuracion,ElasticNet,Pivot_radius,Radio de pivote,0,24,0.0
+configuracion,ElasticNet,Pivot_total_number,Número total de pivotes,24,24,1.0
+configuracion,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0,24,0.0
+configuracion,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,24,24,1.0
+configuracion,SVR_RBF,n_cells_Y,Número de celdas en Y,24,24,1.0
+configuracion,SVR_RBF,Fiber_height,Altura de fibra,0,24,0.0
+configuracion,SVR_RBF,Fiber_base,Ancho de fibra,0,24,0.0
+configuracion,SVR_RBF,Fiber_total_length,Longitud total de fibras,24,24,1.0
+configuracion,SVR_RBF,Fiber_total_volume,Volumen total de fibras,24,24,1.0
+configuracion,SVR_RBF,Pivot_height,Altura de pivote,0,24,0.0
+configuracion,SVR_RBF,Pivot_radius,Radio de pivote,0,24,0.0
+configuracion,SVR_RBF,Pivot_total_number,Número total de pivotes,24,24,1.0
+configuracion,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,0,24,0.0
+configuracion,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,0,24,0.0
+configuracion,RandomForest,n_cells_Y,Número de celdas en Y,24,24,1.0
+configuracion,RandomForest,Fiber_height,Altura de fibra,0,24,0.0
+configuracion,RandomForest,Fiber_base,Ancho de fibra,0,24,0.0
+configuracion,RandomForest,Fiber_total_length,Longitud total de fibras,18,24,0.75
+configuracion,RandomForest,Fiber_total_volume,Volumen total de fibras,24,24,1.0
+configuracion,RandomForest,Pivot_height,Altura de pivote,0,24,0.0
+configuracion,RandomForest,Pivot_radius,Radio de pivote,0,24,0.0
+configuracion,RandomForest,Pivot_total_number,Número total de pivotes,12,24,0.5
+configuracion,RandomForest,Pivot_total_volume,Volumen total de pivotes,18,24,0.75
+configuracion,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0,24,0.0
+configuracion,GaussianProcess,n_cells_Y,Número de celdas en Y,24,24,1.0
+configuracion,GaussianProcess,Fiber_height,Altura de fibra,0,24,0.0
+configuracion,GaussianProcess,Fiber_base,Ancho de fibra,0,24,0.0
+configuracion,GaussianProcess,Fiber_total_length,Longitud total de fibras,24,24,1.0
+configuracion,GaussianProcess,Fiber_total_volume,Volumen total de fibras,24,24,1.0
+configuracion,GaussianProcess,Pivot_height,Altura de pivote,0,24,0.0
+configuracion,GaussianProcess,Pivot_radius,Radio de pivote,0,24,0.0
+configuracion,GaussianProcess,Pivot_total_number,Número total de pivotes,24,24,1.0
+configuracion,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,0,24,0.0
+configuracion,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,0,24,0.0
+familia,Ridge,n_cells_Y,Número de celdas en Y,3,3,1.0
+familia,Ridge,Fiber_height,Altura de fibra,0,3,0.0
+familia,Ridge,Fiber_base,Ancho de fibra,0,3,0.0
+familia,Ridge,Fiber_total_length,Longitud total de fibras,3,3,1.0
+familia,Ridge,Fiber_total_volume,Volumen total de fibras,0,3,0.0
+familia,Ridge,Pivot_height,Altura de pivote,0,3,0.0
+familia,Ridge,Pivot_radius,Radio de pivote,0,3,0.0
+familia,Ridge,Pivot_total_number,Número total de pivotes,3,3,1.0
+familia,Ridge,Pivot_total_volume,Volumen total de pivotes,0,3,0.0
+familia,Ridge,Sample_total_volume,Volumen declarado del espécimen,3,3,1.0
+familia,ElasticNet,n_cells_Y,Número de celdas en Y,3,3,1.0
+familia,ElasticNet,Fiber_height,Altura de fibra,0,3,0.0
+familia,ElasticNet,Fiber_base,Ancho de fibra,0,3,0.0
+familia,ElasticNet,Fiber_total_length,Longitud total de fibras,3,3,1.0
+familia,ElasticNet,Fiber_total_volume,Volumen total de fibras,0,3,0.0
+familia,ElasticNet,Pivot_height,Altura de pivote,0,3,0.0
+familia,ElasticNet,Pivot_radius,Radio de pivote,0,3,0.0
+familia,ElasticNet,Pivot_total_number,Número total de pivotes,3,3,1.0
+familia,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0,3,0.0
+familia,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,3,3,1.0
+familia,SVR_RBF,n_cells_Y,Número de celdas en Y,3,3,1.0
+familia,SVR_RBF,Fiber_height,Altura de fibra,0,3,0.0
+familia,SVR_RBF,Fiber_base,Ancho de fibra,0,3,0.0
+familia,SVR_RBF,Fiber_total_length,Longitud total de fibras,3,3,1.0
+familia,SVR_RBF,Fiber_total_volume,Volumen total de fibras,1,3,0.3333333333333333
+familia,SVR_RBF,Pivot_height,Altura de pivote,0,3,0.0
+familia,SVR_RBF,Pivot_radius,Radio de pivote,0,3,0.0
+familia,SVR_RBF,Pivot_total_number,Número total de pivotes,3,3,1.0
+familia,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,0,3,0.0
+familia,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2,3,0.6666666666666666
+familia,RandomForest,n_cells_Y,Número de celdas en Y,3,3,1.0
+familia,RandomForest,Fiber_height,Altura de fibra,0,3,0.0
+familia,RandomForest,Fiber_base,Ancho de fibra,0,3,0.0
+familia,RandomForest,Fiber_total_length,Longitud total de fibras,2,3,0.6666666666666666
+familia,RandomForest,Fiber_total_volume,Volumen total de fibras,3,3,1.0
+familia,RandomForest,Pivot_height,Altura de pivote,1,3,0.3333333333333333
+familia,RandomForest,Pivot_radius,Radio de pivote,0,3,0.0
+familia,RandomForest,Pivot_total_number,Número total de pivotes,0,3,0.0
+familia,RandomForest,Pivot_total_volume,Volumen total de pivotes,2,3,0.6666666666666666
+familia,RandomForest,Sample_total_volume,Volumen declarado del espécimen,1,3,0.3333333333333333
+familia,GaussianProcess,n_cells_Y,Número de celdas en Y,3,3,1.0
+familia,GaussianProcess,Fiber_height,Altura de fibra,0,3,0.0
+familia,GaussianProcess,Fiber_base,Ancho de fibra,0,3,0.0
+familia,GaussianProcess,Fiber_total_length,Longitud total de fibras,3,3,1.0
+familia,GaussianProcess,Fiber_total_volume,Volumen total de fibras,1,3,0.3333333333333333
+familia,GaussianProcess,Pivot_height,Altura de pivote,0,3,0.0
+familia,GaussianProcess,Pivot_radius,Radio de pivote,0,3,0.0
+familia,GaussianProcess,Pivot_total_number,Número total de pivotes,3,3,1.0
+familia,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,0,3,0.0
+familia,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2,3,0.6666666666666666

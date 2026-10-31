@@ -213,27 +213,76 @@ def test_contrastes_aislan_feature_set_y_tuning(artifacts: dict[str, object]) ->
 
 
 def test_matriz_conserva_variables_fisicas_y_hipotesis_de_trabajo() -> None:
-    """La matriz reproduce los cinco niveles y las hipótesis del plan de tesis."""
-    matrix = pd.read_csv(ROOT / "docs/matriz_consistencia.csv")
-    assert matrix.columns.tolist() == [
+    """Las cuatro filas, sus vistas y los criterios operativos deben concordar."""
+    import csv
+    import hashlib
+
+    csv_path = ROOT / "docs/matriz_consistencia.csv"
+    with csv_path.open(encoding="utf-8", newline="") as handle:
+        reader = csv.DictReader(handle)
+        columns = reader.fieldnames
+        rows = list(reader)
+    expected_columns = [
         "Problema de investigación", "Objetivo", "Hipótesis",
         "Variables independientes y variable dependiente", "Indicadores",
     ]
-    assert len(matrix) == 5
-    assert matrix.notna().all().all()
-    assert matrix["Problema de investigación"].str.startswith(
-        ("General.", "Específico 1.", "Específico 2.",
-         "Específico 3.", "Específico 4.")
-    ).all()
-    assert matrix["Variables independientes y variable dependiente"].str.contains(
-        "carga (?:experimental de |de )?primera falla \\[N\\]", regex=True
-    ).all()
-    assert "Hipótesis general:" in matrix["Hipótesis"].iloc[0]
-    assert "modelo base" in matrix["Hipótesis"].iloc[0]
-    assert matrix["Hipótesis"].iloc[1].startswith("No se formuló")
-    assert matrix["Hipótesis"].iloc[2].startswith("No se formuló")
-    assert "Hipótesis específica 1:" in matrix["Hipótesis"].iloc[4]
-    assert "estabilidad frente al remuestreo" in matrix["Hipótesis"].iloc[4]
-    assert "logarítmica" not in matrix["Problema de investigación"].iloc[0]
-    assert "MAE" in matrix["Indicadores"].iloc[3]
-    assert "SHAP" in matrix["Indicadores"].iloc[4]
+    assert columns == expected_columns
+    assert len(rows) == 4
+    assert all(all(row[column].strip() for column in columns) for row in rows)
+    assert [row["Problema de investigación"].split(".", 1)[0] for row in rows] == [
+        "General", "Específico 1", "Específico 2", "Específico 3",
+    ]
+    assert [row["Hipótesis"].split(".", 1)[0] for row in rows] == ["HG", "H1", "H2", "H3"]
+    assert all("para " in row["Objetivo"] for row in rows)
+    assert all("<br>" in row["Hipótesis"] for row in rows)
+    for row in rows:
+        variables = row["Variables independientes y variable dependiente"]
+        assert "carga experimental de primera falla [N]" in variables
+        assert all(term in variables for term in [
+            "Número de celdas en Y", "número total de pivotes",
+            "Altura, base y longitud total de fibras", "Altura y radio de pivote",
+            "Volúmenes declarados de fibras, pivotes y espécimen",
+        ])
+        assert "radio es constante" in variables
+    markdown = (ROOT / "docs/matriz_consistencia.md").read_text(encoding="utf-8")
+    table = markdown.split("<!-- MATRIZ_CSV_INICIO -->", 1)[1].split("<!-- MATRIZ_CSV_FIN -->", 1)[0].strip()
+    expected = "\n".join([
+        "| " + " | ".join(columns) + " |",
+        "|---|---|---|---|---|",
+        *["| " + " | ".join(row[column].replace("|", "&#124;") for column in columns) + " |" for row in rows],
+    ])
+    assert table == expected
+    assert "SHAP" not in markdown and "SHAP" not in csv_path.read_text(encoding="utf-8")
+    criteria = json.loads((ROOT / "config/criterios_entrega_permutacion.json").read_text(encoding="utf-8"))
+    assert criteria["fecha_congelacion"] == "2026-10-30"
+    assert criteria["fuente_unica_matriz"] == "docs/matriz_consistencia.csv"
+    assert criteria["matriz_csv_sha256"] == hashlib.sha256(csv_path.read_bytes()).hexdigest()
+    model_path = ROOT / criteria["configuracion_modelos"]
+    assert criteria["configuracion_modelos_sha256"] == hashlib.sha256(model_path.read_bytes()).hexdigest()
+    models = json.loads(model_path.read_text(encoding="utf-8"))["modelos"]
+    assert criteria["modelos_fijos"] == list(models) and criteria["n_modelos"] == 5
+    assert criteria["busqueda_hiperparametros"] is False
+    assert len(criteria["entradas_originales"]) == 10
+    assert len({entry["columna"] for entry in criteria["entradas_originales"]}) == 10
+    assert criteria["constante_documentada"]["columna"] == "Pivot_radius"
+    assert criteria["permutacion_externa"]["repeticiones"] == 100
+    assert criteria["seleccion_interna"]["repeticiones_permutacion"] == 20
+    assert criteria["seleccion_interna"]["n_splits"] == 5
+    assert criteria["seleccion_interna"]["n_variables"] == 4
+    assert criteria["seleccion_interna"]["permitir_importancia_no_positiva"] is True
+    assert criteria["bloque_hipotesis_H3"]["columnas"] == [
+        "n_cells_Y", "Fiber_total_length", "Pivot_total_number",
+        "Fiber_total_volume", "Pivot_total_volume", "Sample_total_volume",
+    ]
+    hypotheses = criteria["hipotesis"]
+    assert hypotheses["HG"]["protocolos"] == ["configuracion"]
+    assert hypotheses["H1"]["protocolos"] == ["configuracion", "familia"]
+    assert hypotheses["H1"]["referencias"] == ["mediana", "media_por_nivel"]
+    assert hypotheses["H1"]["conjunto"] == "completo"
+    assert hypotheses["H2"]["protocolos"] == ["configuracion", "familia"]
+    assert hypotheses["H3"]["protocolos"] == ["configuracion"]
+    assert hypotheses["H3"]["min_modelos"] == 3 and hypotheses["H3"]["total_modelos"] == 5
+    assert len(hypotheses["H3"]["operadores"]) == 2
+    assert "intersección" in hypotheses["H3"]["cumplimiento"]
+    assert criteria["umbral_cientifico_N"] == 0.0
+    assert criteria["tolerancia_numerica_N"] == 1e-10

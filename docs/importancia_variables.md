@@ -1,5 +1,7 @@
 # Importancia de variables: SHAP, permutación y ablación
 
+**Antecedente conservado.** Este documento corresponde al sprint anterior. La entrega actual utiliza [permutación y selección interna](analisis_permutacion.md); sus nuevas métricas e importancias no se obtienen renombrando las tablas de este documento.
+
 ## Pregunta
 
 ¿Qué entradas utiliza el modelo para predecir la carga de primera falla y cuánto se deteriora la predicción al perturbar o retirar información? SHAP, permutación y ablación responden preguntas distintas. La concordancia apoya una lectura predictiva; la discrepancia exige revisar correlación, escala, interacciones y estabilidad.

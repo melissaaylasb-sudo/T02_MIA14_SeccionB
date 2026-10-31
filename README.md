@@ -4,26 +4,31 @@
 
 **Repositorio GitHub — rama de entrega:** [feature-importance-consistencia](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/feature-importance-consistencia).
 
-### 1. Sprint: importancia de variables mediante regresión y SHAP
+### Entrega actual: modelos, permutación y selección interna de variables
 
-El [cuaderno de investigación](notebooks/06_Modelado_Tuning_SHAP.ipynb) desarrolla la predicción de la carga de primera falla a partir de variables geométricas originales y derivadas. Presenta las comparaciones de desempeño de Ridge y Elastic Net bajo validación agrupada, examina sus residuales e interpreta las contribuciones de las variables mediante SHAP, permutación y ablación. Las tablas y figuras se acompañan de una discusión de su alcance mecánico y estadístico.
+El [único notebook de entrega](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara cinco familias con parámetros fijos: Ridge, Elastic Net, SVR RBF, bosque aleatorio y proceso gaussiano. Incluye referencias de mediana y media por nivel, las tablas verde y morada con métricas, selección de cuatro entradas dentro del entrenamiento, permutación repetida y ablación del bloque de arquitectura y volúmenes. Su nombre de archivo se conserva para mantener los enlaces; el contenido vigente corresponde al análisis por permutación.
 
-El conjunto **B** añade a la geometría original dos momentos de sección de fibra. La secuencia E0–E4 separa la referencia ingenua, el efecto de las características y el efecto adicional del ajuste de hiperparámetros con las mismas particiones externas. Las atribuciones SHAP describen el comportamiento de los modelos y no se interpretan como causas físicas de fractura.
+Las dos validaciones reservan configuraciones nominales o familias de celdas de la misma campaña. Las cuatro entradas seleccionadas pueden cambiar entre modelos y particiones. La actividad no ejecuta una nueva búsqueda de hiperparámetros ni presenta a Ridge o Elastic Net como óptimos. Las importancias usan 100 permutaciones marginales cruzadas, mantienen los signos negativos y distinguen variación de Monte Carlo de incertidumbre poblacional.
 
-### 2. Matriz de consistencia de la investigación
+### Matriz y reproducción
 
-La [matriz de consistencia](docs/matriz_consistencia.md) recupera el problema, los objetivos y las hipótesis del plan de tesis pantográfico de 2026. El [modelo y protocolo](docs/modelado_y_tuning.md), los [resultados comparativos](docs/resultados_comparativos.md), la [interpretabilidad SHAP](docs/interpretabilidad_shap.md), la [importancia cruzada](docs/importancia_variables.md), la [operacionalización](docs/operacionalizacion_variables.md) y la [trazabilidad](docs/trazabilidad_objetivos_resultados.md) documentan los experimentos de esta rama.
+La [matriz de consistencia](docs/matriz_consistencia.md), su [CSV canónico](docs/matriz_consistencia.csv) y el notebook comparten las mismas formulaciones. El [análisis de permutación](docs/analisis_permutacion.md) y la [trazabilidad de resultados](docs/trazabilidad_objetivos_resultados.md) corresponden a esta ejecución. Los criterios son posteriores al EDA y no se presentan como prerregistrados.
 
 Para reproducir el experimento desde la raíz del repositorio:
 
 ```powershell
-python -m pip install -r requirements-feature-importance.txt
-python -m src.sprint_importancia
-python -m src.figuras_importancia
-python -m pytest tests/test_sprint_importancia.py -q
+python -m pip install -r requirements-permutation-importance.txt
+python -m src.importancia_permutacion
+python -m src.revision_entrega_permutacion
+python -m src.entrega_permutacion
+python -m pytest tests/test_importancia_permutacion.py tests/test_entrega_permutacion.py tests/test_sprint_importancia.py -q
 ```
 
-El notebook 06 se ejecuta desde un kernel limpio para verificar las celdas y los gráficos. Los artefactos están en [tablas](reports/feature_importance/tables/), [figuras](reports/feature_importance/figures/) y [manifiesto](reports/feature_importance/logs/manifest.json). El menor MAE al excluir configuraciones fue **Ridge con A ajustado: 9.7070 N**; B ajustado obtuvo **10.9814 N** con Ridge y **10.8724 N** con Elastic Net. Al excluir una familia Y, el menor MAE fue **57.0958 N** con Elastic Net B fijo, solo **0.0172 N** por debajo de A fijo, y todos los R² OOF fueron negativos. SHAP y permutación destacan descriptores de arquitectura del modelo, pero sus dependencias y la inestabilidad entre folds impiden atribuir efectos físicos aislados. El experimento previo ya exploró estos 26 casos: cualquier mejora requiere confirmación prospectiva con geometrías conciliadas y nuevos ensayos.
+La ejecución conserva [tablas](reports/permutation_importance/tables/), [figuras](reports/permutation_importance/figures/) y [manifiesto](reports/permutation_importance/manifest.json). El notebook se ejecuta desde un kernel limpio y comprueba los artefactos antes de mostrarlos. Las condiciones de procedencia y las aclaraciones aún pendientes se registran en [procedencia declarada](docs/procedencia_declarada.json).
+
+## Antecedente histórico: etapa de modelos ajustados
+
+Los resultados siguientes pertenecen a la etapa anterior de tuning. Sus protocolos y cifras no se mezclan con las tablas de parámetros fijos de la entrega actual.
 
 **[Abrir notebook 05 — modelos, ajuste y evaluación](notebooks/05_Modelos_Ajustados.ipynb)**
 

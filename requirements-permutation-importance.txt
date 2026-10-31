@@ -1,0 +1,2 @@
+# Entorno numérico ya utilizado en el proyecto. Esta actividad no requiere SHAP.
+-r requirements-modelos-ajustados.txt

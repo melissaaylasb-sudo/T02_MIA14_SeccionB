@@ -1,0 +1,5 @@
+Hipótesis,Criterio,Resultado,Modelos que cumplen,Lectura
+General,Modelo completo con menor MAE que ambas referencias en configuraciones,Ninguno,0,No respaldada bajo el protocolo
+H1,Mismo modelo completo supera ambas referencias en ambos protocolos,Ninguno,0,No respaldada bajo el protocolo
+H2,Mismo modelo reducido no incrementa MAE en ambos protocolos,Proceso gaussiano,1,Respaldada descriptivamente bajo el protocolo
+H3,PFI y ablación positivas simultáneamente en al menos tres modelos completos,"Ridge, Elastic Net, SVR RBF, Bosque aleatorio, Proceso gaussiano",5,Respaldada descriptivamente bajo el protocolo

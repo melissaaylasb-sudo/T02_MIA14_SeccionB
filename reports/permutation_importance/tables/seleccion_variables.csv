@@ -1,0 +1,1351 @@
+﻿protocolo,fold,modelo,variable,etiqueta,PFI_interna_media_N,PFI_interna_DE_N,no_constante_train,orden_original,rango,seleccionada,seleccion_aun_con_PFI_no_positiva
+configuracion,1,Ridge,n_cells_Y,Número de celdas en Y,12.91542282663371,2.603717035829834,True,0,4.0,True,False
+configuracion,1,Ridge,Fiber_height,Altura de fibra,0.064787315824036,0.6577551786719539,True,1,9.0,False,False
+configuracion,1,Ridge,Fiber_base,Ancho de fibra,2.6044500388743352,1.8631775224173797,True,2,5.0,False,False
+configuracion,1,Ridge,Fiber_total_length,Longitud total de fibras,17.172311882700658,3.0631475251073574,True,3,2.0,True,False
+configuracion,1,Ridge,Fiber_total_volume,Volumen total de fibras,0.5203103362790985,0.8032164900753512,True,4,6.0,False,False
+configuracion,1,Ridge,Pivot_height,Altura de pivote,0.14155149675036807,1.5607718097186754,True,5,8.0,False,False
+configuracion,1,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,1,Ridge,Pivot_total_number,Número total de pivotes,20.686433053845942,3.40379966741351,True,7,1.0,True,False
+configuracion,1,Ridge,Pivot_total_volume,Volumen total de pivotes,0.520310336278985,0.8032164900752978,True,8,7.0,False,False
+configuracion,1,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.072179348266573,3.7119901162420845,True,9,3.0,True,False
+configuracion,1,ElasticNet,n_cells_Y,Número de celdas en Y,12.646224340376751,2.573032296929164,True,0,4.0,True,False
+configuracion,1,ElasticNet,Fiber_height,Altura de fibra,0.07514878778490308,0.6357125813422263,True,1,9.0,False,False
+configuracion,1,ElasticNet,Fiber_base,Ancho de fibra,2.4330124086975013,1.8058381849285123,True,2,5.0,False,False
+configuracion,1,ElasticNet,Fiber_total_length,Longitud total de fibras,17.07315712657644,3.0540003213342857,True,3,2.0,True,False
+configuracion,1,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5139172246941108,0.780050807385769,True,4,6.0,False,False
+configuracion,1,ElasticNet,Pivot_height,Altura de pivote,0.13921819238979677,1.5359758431702757,True,5,8.0,False,False
+configuracion,1,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,1,ElasticNet,Pivot_total_number,Número total de pivotes,20.644268573941655,3.4028223006897207,True,7,1.0,True,False
+configuracion,1,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.4886673185108493,0.7667771122811989,True,8,7.0,False,False
+configuracion,1,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.602474353423528,3.6563890206454306,True,9,3.0,True,False
+configuracion,1,SVR_RBF,n_cells_Y,Número de celdas en Y,9.342558242416938,2.02942469697558,True,0,3.0,True,False
+configuracion,1,SVR_RBF,Fiber_height,Altura de fibra,-0.27231051585671606,0.8224170077902776,True,1,9.0,False,False
+configuracion,1,SVR_RBF,Fiber_base,Ancho de fibra,-0.21499148841395438,1.6966771049140599,True,2,8.0,False,False
+configuracion,1,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.920843694488482,2.100462302132368,True,3,2.0,True,False
+configuracion,1,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.466937482805676,1.5559427847537872,True,4,4.0,True,False
+configuracion,1,SVR_RBF,Pivot_height,Altura de pivote,1.0552190041742384,1.3662501089094783,True,5,7.0,False,False
+configuracion,1,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,1,SVR_RBF,Pivot_total_number,Número total de pivotes,10.394702736821312,2.161436724202125,True,7,1.0,True,False
+configuracion,1,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.466937482805671,1.555942784753786,True,8,5.0,False,False
+configuracion,1,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.4871017895026255,1.2186409843915698,True,9,6.0,False,False
+configuracion,1,RandomForest,n_cells_Y,Número de celdas en Y,5.355012138015892,1.4755533063864463,True,0,2.0,True,False
+configuracion,1,RandomForest,Fiber_height,Altura de fibra,-0.10834131595237224,0.12360041190023807,True,1,9.0,False,False
+configuracion,1,RandomForest,Fiber_base,Ancho de fibra,0.2692551183333336,0.40184266607657376,True,2,7.0,False,False
+configuracion,1,RandomForest,Fiber_total_length,Longitud total de fibras,3.6043129540079457,1.3846513407864152,True,3,5.0,False,False
+configuracion,1,RandomForest,Fiber_total_volume,Volumen total de fibras,9.88339053464286,1.9591536037978086,True,4,1.0,True,False
+configuracion,1,RandomForest,Pivot_height,Altura de pivote,0.43053769642857215,0.24994779851764082,True,5,6.0,False,False
+configuracion,1,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,1,RandomForest,Pivot_total_number,Número total de pivotes,3.93218251841271,1.4180600635280771,True,7,4.0,True,False
+configuracion,1,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.247247556825409,1.5045490305992486,True,8,3.0,True,False
+configuracion,1,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.06527272595239095,0.6650753541859935,True,9,8.0,False,False
+configuracion,1,GaussianProcess,n_cells_Y,Número de celdas en Y,8.287670582158936,1.9346448186071807,True,0,3.0,True,False
+configuracion,1,GaussianProcess,Fiber_height,Altura de fibra,-0.4873832887579822,0.6431571645853723,True,1,8.0,False,False
+configuracion,1,GaussianProcess,Fiber_base,Ancho de fibra,-0.5948212399180013,1.443003353776608,True,2,9.0,False,False
+configuracion,1,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.905467910875744,2.012614521992953,True,3,2.0,True,False
+configuracion,1,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.4539503211008884,1.370447614189614,True,4,4.0,True,False
+configuracion,1,GaussianProcess,Pivot_height,Altura de pivote,0.6438909574133097,1.3702733860327676,True,5,7.0,False,False
+configuracion,1,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,1,GaussianProcess,Pivot_total_number,Número total de pivotes,9.388025083734169,2.0768002084439976,True,7,1.0,True,False
+configuracion,1,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.4539503211008715,1.370447614189614,True,8,5.0,False,False
+configuracion,1,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.6803766187001934,1.0466608793852954,True,9,6.0,False,False
+configuracion,2,Ridge,n_cells_Y,Número de celdas en Y,14.22664253282764,2.955839648537171,True,0,4.0,True,False
+configuracion,2,Ridge,Fiber_height,Altura de fibra,0.3718790180592363,0.7236285847484976,True,1,7.0,False,False
+configuracion,2,Ridge,Fiber_base,Ancho de fibra,2.5900624891513804,1.7647416075551283,True,2,5.0,False,False
+configuracion,2,Ridge,Fiber_total_length,Longitud total de fibras,18.43814099148191,3.488132729717879,True,3,2.0,True,False
+configuracion,2,Ridge,Fiber_total_volume,Volumen total de fibras,0.27890109272310204,0.526661685874274,True,4,8.0,False,False
+configuracion,2,Ridge,Pivot_height,Altura de pivote,1.0264919795648972,1.124751170144333,True,5,6.0,False,False
+configuracion,2,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,2,Ridge,Pivot_total_number,Número total de pivotes,21.894230002194533,3.885433126671618,True,7,1.0,True,False
+configuracion,2,Ridge,Pivot_total_volume,Volumen total de pivotes,0.27890109272300345,0.5266616858742382,True,8,9.0,False,False
+configuracion,2,Ridge,Sample_total_volume,Volumen declarado del espécimen,14.967781877475053,3.0227494110059236,True,9,3.0,True,False
+configuracion,2,ElasticNet,n_cells_Y,Número de celdas en Y,13.986022204456614,2.9383756027621315,True,0,4.0,True,False
+configuracion,2,ElasticNet,Fiber_height,Altura de fibra,0.33244050028279126,0.7027438536826756,True,1,7.0,False,False
+configuracion,2,ElasticNet,Fiber_base,Ancho de fibra,2.3836415536232574,1.7331694255897236,True,2,5.0,False,False
+configuracion,2,ElasticNet,Fiber_total_length,Longitud total de fibras,18.367874371445374,3.495258507335622,True,3,2.0,True,False
+configuracion,2,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.3108704870472028,0.5052866718105847,True,4,8.0,False,False
+configuracion,2,ElasticNet,Pivot_height,Altura de pivote,0.9931830652117126,1.0946253290239654,True,5,6.0,False,False
+configuracion,2,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,2,ElasticNet,Pivot_total_number,Número total de pivotes,21.887551169156573,3.900860900559538,True,7,1.0,True,False
+configuracion,2,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.28399651025987627,0.4925089889512397,True,8,9.0,False,False
+configuracion,2,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.512554413584843,2.9816373553087074,True,9,3.0,True,False
+configuracion,2,SVR_RBF,n_cells_Y,Número de celdas en Y,9.544295448013523,2.4530025822375316,True,0,3.0,True,False
+configuracion,2,SVR_RBF,Fiber_height,Altura de fibra,-0.246164224052784,1.1107719284113307,True,1,9.0,False,False
+configuracion,2,SVR_RBF,Fiber_base,Ancho de fibra,0.34390555147201773,1.5858064301086259,True,2,8.0,False,False
+configuracion,2,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.0987396007261,2.5484073200307584,True,3,2.0,True,False
+configuracion,2,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.357975238008892,1.4498620435267007,True,4,4.0,True,False
+configuracion,2,SVR_RBF,Pivot_height,Altura de pivote,1.1461247109032975,1.167792875210612,True,5,7.0,False,False
+configuracion,2,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,2,SVR_RBF,Pivot_total_number,Número total de pivotes,10.538925020116903,2.629171849231803,True,7,1.0,True,False
+configuracion,2,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.357975238008892,1.4498620435267018,True,8,5.0,False,False
+configuracion,2,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.276744849107206,1.4706700299868947,True,9,6.0,False,False
+configuracion,2,RandomForest,n_cells_Y,Número de celdas en Y,6.087475157738119,1.5542646519663317,True,0,2.0,True,False
+configuracion,2,RandomForest,Fiber_height,Altura de fibra,-0.0663241861904739,0.11388574547141551,True,1,9.0,False,False
+configuracion,2,RandomForest,Fiber_base,Ancho de fibra,0.37813391666666296,0.28956161008753173,True,2,7.0,False,False
+configuracion,2,RandomForest,Fiber_total_length,Longitud total de fibras,3.9288466854365227,1.3129752829580692,True,3,4.0,True,False
+configuracion,2,RandomForest,Fiber_total_volume,Volumen total de fibras,9.79503590972223,2.2426473557215947,True,4,1.0,True,False
+configuracion,2,RandomForest,Pivot_height,Altura de pivote,0.3855876463888892,0.17060822982479856,True,5,6.0,False,False
+configuracion,2,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,2,RandomForest,Pivot_total_number,Número total de pivotes,3.5499755829762094,1.1560712480054582,True,7,5.0,False,False
+configuracion,2,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.374267184682545,1.5060749524922499,True,8,3.0,True,False
+configuracion,2,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.3301337139682531,0.3755952256969778,True,9,8.0,False,False
+configuracion,2,GaussianProcess,n_cells_Y,Número de celdas en Y,8.540510182119913,2.3539505296823013,True,0,3.0,True,False
+configuracion,2,GaussianProcess,Fiber_height,Altura de fibra,-0.5153410183027475,0.8953496040320145,True,1,9.0,False,False
+configuracion,2,GaussianProcess,Fiber_base,Ancho de fibra,-0.1842595992889473,1.2512073630829041,True,2,8.0,False,False
+configuracion,2,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.127403528369081,2.4539197435588895,True,3,2.0,True,False
+configuracion,2,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.30437739661823,1.2354172954379992,True,4,4.0,True,False
+configuracion,2,GaussianProcess,Pivot_height,Altura de pivote,1.0486646808032993,1.0553629255375958,True,5,7.0,False,False
+configuracion,2,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,2,GaussianProcess,Pivot_total_number,Número total de pivotes,9.583571122344114,2.5365822295001204,True,7,1.0,True,False
+configuracion,2,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.3043773966182215,1.2354172954379983,True,8,5.0,False,False
+configuracion,2,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.7641203344113072,1.287989945412165,True,9,6.0,False,False
+configuracion,3,Ridge,n_cells_Y,Número de celdas en Y,15.497237563109461,3.948127693703757,True,0,4.0,True,False
+configuracion,3,Ridge,Fiber_height,Altura de fibra,0.06458537960871888,0.47303512943601383,True,1,9.0,False,False
+configuracion,3,Ridge,Fiber_base,Ancho de fibra,3.310555461713739,1.3507773918150108,True,2,5.0,False,False
+configuracion,3,Ridge,Fiber_total_length,Longitud total de fibras,19.97874270182119,4.72999967547074,True,3,2.0,True,False
+configuracion,3,Ridge,Fiber_total_volume,Volumen total de fibras,0.5827629324728753,0.4859469900667605,True,4,6.0,False,False
+configuracion,3,Ridge,Pivot_height,Altura de pivote,0.24358286043161428,0.6933859543938423,True,5,8.0,False,False
+configuracion,3,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,3,Ridge,Pivot_total_number,Número total de pivotes,23.624369880692363,5.300630923522216,True,7,1.0,True,False
+configuracion,3,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5827629324727241,0.48594699006672626,True,8,7.0,False,False
+configuracion,3,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.694979914386101,2.192092170126422,True,9,3.0,True,False
+configuracion,3,ElasticNet,n_cells_Y,Número de celdas en Y,15.224695962101745,3.919294599737429,True,0,3.0,True,False
+configuracion,3,ElasticNet,Fiber_height,Altura de fibra,0.05821883426427421,0.46170012267246696,True,1,9.0,False,False
+configuracion,3,ElasticNet,Fiber_base,Ancho de fibra,3.163303880485708,1.349518790141892,True,2,5.0,False,False
+configuracion,3,ElasticNet,Fiber_total_length,Longitud total de fibras,19.8801265085959,4.727837320080811,True,3,2.0,True,False
+configuracion,3,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5516791687253559,0.47971801576351175,True,4,6.0,False,False
+configuracion,3,ElasticNet,Pivot_height,Altura de pivote,0.24700604267412576,0.653824187070194,True,5,8.0,False,False
+configuracion,3,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,3,ElasticNet,Pivot_total_number,Número total de pivotes,23.586340889240013,5.314678634011255,True,7,1.0,True,False
+configuracion,3,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5253671021131354,0.4712586806525347,True,8,7.0,False,False
+configuracion,3,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.145438952714807,2.1431125007090452,True,9,4.0,True,False
+configuracion,3,SVR_RBF,n_cells_Y,Número de celdas en Y,10.536934379251685,2.478240426583369,True,0,3.0,True,False
+configuracion,3,SVR_RBF,Fiber_height,Altura de fibra,-0.35421487690283826,0.9636879648893889,True,1,9.0,False,False
+configuracion,3,SVR_RBF,Fiber_base,Ancho de fibra,0.7801846658583461,0.8502218405045007,True,2,7.0,False,False
+configuracion,3,SVR_RBF,Fiber_total_length,Longitud total de fibras,11.145595750246875,2.5597315682599806,True,3,2.0,True,False
+configuracion,3,SVR_RBF,Fiber_total_volume,Volumen total de fibras,5.253063758650447,1.3515445756972222,True,4,4.0,True,False
+configuracion,3,SVR_RBF,Pivot_height,Altura de pivote,0.4330418508306762,1.2794936742319472,True,5,8.0,False,False
+configuracion,3,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,3,SVR_RBF,Pivot_total_number,Número total de pivotes,11.620543870949245,2.630470466705063,True,7,1.0,True,False
+configuracion,3,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,5.253063758650439,1.3515445756972244,True,8,5.0,False,False
+configuracion,3,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.7841319460749423,1.607448912874315,True,9,6.0,False,False
+configuracion,3,RandomForest,n_cells_Y,Número de celdas en Y,7.710678622460345,2.048469638250161,True,0,2.0,True,False
+configuracion,3,RandomForest,Fiber_height,Altura de fibra,-0.07199765845237013,0.13632424079586633,True,1,9.0,False,False
+configuracion,3,RandomForest,Fiber_base,Ancho de fibra,0.3777704769047645,0.16615138852408692,True,2,7.0,False,False
+configuracion,3,RandomForest,Fiber_total_length,Longitud total de fibras,4.784983809603196,1.4505521126473024,True,3,4.0,True,False
+configuracion,3,RandomForest,Fiber_total_volume,Volumen total de fibras,11.938620581706363,2.954817614764339,True,4,1.0,True,False
+configuracion,3,RandomForest,Pivot_height,Altura de pivote,0.3080840824603205,0.1854114861140314,True,5,8.0,False,False
+configuracion,3,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,3,RandomForest,Pivot_total_number,Número total de pivotes,4.514473579722246,1.3946671683887333,True,7,5.0,False,False
+configuracion,3,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.785992314682562,1.5836775765965878,True,8,3.0,True,False
+configuracion,3,RandomForest,Sample_total_volume,Volumen declarado del espécimen,1.1059745142857131,0.6451873677349601,True,9,6.0,False,False
+configuracion,3,GaussianProcess,n_cells_Y,Número de celdas en Y,9.447662361527737,2.3039291208163295,True,0,3.0,True,False
+configuracion,3,GaussianProcess,Fiber_height,Altura de fibra,-0.6204404671886385,0.8051916355230887,True,1,9.0,False,False
+configuracion,3,GaussianProcess,Fiber_base,Ancho de fibra,0.25507525225203187,0.7729401591928565,True,2,8.0,False,False
+configuracion,3,GaussianProcess,Fiber_total_length,Longitud total de fibras,10.07414407893927,2.3949740413227527,True,3,2.0,True,False
+configuracion,3,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.187270115494138,1.136526209957281,True,4,4.0,True,False
+configuracion,3,GaussianProcess,Pivot_height,Altura de pivote,0.28311980539086734,1.0586410132947504,True,5,7.0,False,False
+configuracion,3,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,3,GaussianProcess,Pivot_total_number,Número total de pivotes,10.562699451018206,2.4721116730363466,True,7,1.0,True,False
+configuracion,3,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.18727011549412,1.1365262099572817,True,8,5.0,False,False
+configuracion,3,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.1316627207480465,1.3480500239762625,True,9,6.0,False,False
+configuracion,4,Ridge,n_cells_Y,Número de celdas en Y,15.050861466560296,3.9693802763296215,True,0,4.0,True,False
+configuracion,4,Ridge,Fiber_height,Altura de fibra,0.03812249008440709,0.8830535706899267,True,1,9.0,False,False
+configuracion,4,Ridge,Fiber_base,Ancho de fibra,2.246309757491548,1.4071339246964223,True,2,5.0,False,False
+configuracion,4,Ridge,Fiber_total_length,Longitud total de fibras,19.935797110835686,4.950095443186211,True,3,2.0,True,False
+configuracion,4,Ridge,Fiber_total_volume,Volumen total de fibras,0.36893834763642985,0.5595291679113232,True,4,7.0,False,False
+configuracion,4,Ridge,Pivot_height,Altura de pivote,0.836059007572857,1.3863963618912662,True,5,6.0,False,False
+configuracion,4,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,4,Ridge,Pivot_total_number,Número total de pivotes,23.87506761179348,5.643734117767102,True,7,1.0,True,False
+configuracion,4,Ridge,Pivot_total_volume,Volumen total de pivotes,0.3689383476362975,0.5595291679112893,True,8,8.0,False,False
+configuracion,4,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.627643773256395,4.282792064670569,True,9,3.0,True,False
+configuracion,4,ElasticNet,n_cells_Y,Número de celdas en Y,14.790151237516346,3.9243590880941484,True,0,4.0,True,False
+configuracion,4,ElasticNet,Fiber_height,Altura de fibra,0.024843256047337902,0.8635742122490944,True,1,9.0,False,False
+configuracion,4,ElasticNet,Fiber_base,Ancho de fibra,2.060799035715297,1.3926565127030808,True,2,5.0,False,False
+configuracion,4,ElasticNet,Fiber_total_length,Longitud total de fibras,19.85139112281387,4.95072002146357,True,3,2.0,True,False
+configuracion,4,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.38751499331670125,0.5431269141301752,True,4,7.0,False,False
+configuracion,4,ElasticNet,Pivot_height,Altura de pivote,0.7913576203574385,1.3691623059035343,True,5,6.0,False,False
+configuracion,4,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,4,ElasticNet,Pivot_total_number,Número total de pivotes,23.86318669290629,5.656743935946456,True,7,1.0,True,False
+configuracion,4,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.3660220086202875,0.5335578039206992,True,8,8.0,False,False
+configuracion,4,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.161992781108717,4.181551147448307,True,9,3.0,True,False
+configuracion,4,SVR_RBF,n_cells_Y,Número de celdas en Y,10.881128692819651,2.3950135358089297,True,0,3.0,True,False
+configuracion,4,SVR_RBF,Fiber_height,Altura de fibra,-0.6999816029447791,0.971987438822193,True,1,9.0,False,False
+configuracion,4,SVR_RBF,Fiber_base,Ancho de fibra,0.8733236335728776,1.1282670660164438,True,2,8.0,False,False
+configuracion,4,SVR_RBF,Fiber_total_length,Longitud total de fibras,11.555428146279343,2.4482307406398287,True,3,2.0,True,False
+configuracion,4,SVR_RBF,Fiber_total_volume,Volumen total de fibras,5.0581594782684505,1.2808685184294648,True,4,4.0,True,False
+configuracion,4,SVR_RBF,Pivot_height,Altura de pivote,1.565017297132687,1.38155105101007,True,5,7.0,False,False
+configuracion,4,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,4,SVR_RBF,Pivot_total_number,Número total de pivotes,12.081903659137907,2.4917227520063223,True,7,1.0,True,False
+configuracion,4,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,5.058159478268444,1.2808685184294615,True,8,5.0,False,False
+configuracion,4,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.570058357397764,1.3928622810165285,True,9,6.0,False,False
+configuracion,4,RandomForest,n_cells_Y,Número de celdas en Y,7.270483962777801,1.9401438707925,True,0,2.0,True,False
+configuracion,4,RandomForest,Fiber_height,Altura de fibra,-0.20704821535713752,0.135394808645839,True,1,9.0,False,False
+configuracion,4,RandomForest,Fiber_base,Ancho de fibra,0.3290081412698377,0.3811881640451029,True,2,8.0,False,False
+configuracion,4,RandomForest,Fiber_total_length,Longitud total de fibras,5.0904532597222385,1.623352207407574,True,3,4.0,True,False
+configuracion,4,RandomForest,Fiber_total_volume,Volumen total de fibras,11.928567400555563,2.495450225104248,True,4,1.0,True,False
+configuracion,4,RandomForest,Pivot_height,Altura de pivote,0.5374892547222239,0.25064966203357397,True,5,7.0,False,False
+configuracion,4,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,4,RandomForest,Pivot_total_number,Número total de pivotes,4.5270278699206585,1.4977124837769669,True,7,5.0,False,False
+configuracion,4,RandomForest,Pivot_total_volume,Volumen total de pivotes,6.024391473373039,1.7646699875802967,True,8,3.0,True,False
+configuracion,4,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.5907386646031813,0.5778977195915461,True,9,6.0,False,False
+configuracion,4,GaussianProcess,n_cells_Y,Número de celdas en Y,9.563183168928132,2.182551911641911,True,0,3.0,True,False
+configuracion,4,GaussianProcess,Fiber_height,Altura de fibra,-1.0275491840925126,0.8428034162102975,True,1,9.0,False,False
+configuracion,4,GaussianProcess,Fiber_base,Ancho de fibra,0.007457839677544253,0.9977271304867367,True,2,8.0,False,False
+configuracion,4,GaussianProcess,Fiber_total_length,Longitud total de fibras,10.252183953912017,2.2491379550528907,True,3,2.0,True,False
+configuracion,4,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.7500890113974945,1.1085633066523684,True,4,4.0,True,False
+configuracion,4,GaussianProcess,Pivot_height,Altura de pivote,1.1556851065370677,1.3135130078668307,True,5,7.0,False,False
+configuracion,4,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,4,GaussianProcess,Pivot_total_number,Número total de pivotes,10.78923964529238,2.3024202352717773,True,7,1.0,True,False
+configuracion,4,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.7500890113974785,1.1085633066523652,True,8,5.0,False,False
+configuracion,4,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.5591548097840684,1.0857927858359835,True,9,6.0,False,False
+configuracion,5,Ridge,n_cells_Y,Número de celdas en Y,13.574845988572012,2.9173441975876107,True,0,4.0,True,False
+configuracion,5,Ridge,Fiber_height,Altura de fibra,-0.4003515175178508,0.5047084570252856,True,1,9.0,False,False
+configuracion,5,Ridge,Fiber_base,Ancho de fibra,3.608047776184736,1.8033140258769078,True,2,5.0,False,False
+configuracion,5,Ridge,Fiber_total_length,Longitud total de fibras,18.081036993231436,3.4965493970900754,True,3,2.0,True,False
+configuracion,5,Ridge,Fiber_total_volume,Volumen total de fibras,0.1663133089919107,0.5159593160445866,True,4,7.0,False,False
+configuracion,5,Ridge,Pivot_height,Altura de pivote,0.3986378196668361,0.9813980433287893,True,5,6.0,False,False
+configuracion,5,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,5,Ridge,Pivot_total_number,Número total de pivotes,21.777130099258287,3.97654834891666,True,7,1.0,True,False
+configuracion,5,Ridge,Pivot_total_volume,Volumen total de pivotes,0.16631330899182,0.5159593160445314,True,8,8.0,False,False
+configuracion,5,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.201567311493534,2.5314080661928604,True,9,3.0,True,False
+configuracion,5,ElasticNet,n_cells_Y,Número de celdas en Y,13.341339576583568,2.876936528002821,True,0,4.0,True,False
+configuracion,5,ElasticNet,Fiber_height,Altura de fibra,-0.3713059672144404,0.47875197152156873,True,1,9.0,False,False
+configuracion,5,ElasticNet,Fiber_base,Ancho de fibra,3.40608707824407,1.7550345777454224,True,2,5.0,False,False
+configuracion,5,ElasticNet,Fiber_total_length,Longitud total de fibras,18.018759642829956,3.491067222252285,True,3,2.0,True,False
+configuracion,5,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.1939272104992062,0.5090966796225429,True,4,7.0,False,False
+configuracion,5,ElasticNet,Pivot_height,Altura de pivote,0.3926974864417754,0.9585566302190517,True,5,6.0,False,False
+configuracion,5,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,5,ElasticNet,Pivot_total_number,Número total de pivotes,21.78828319072273,3.9809849001199855,True,7,1.0,True,False
+configuracion,5,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.1782634524586852,0.49644616332451347,True,8,8.0,False,False
+configuracion,5,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.713273425153854,2.4923780522378816,True,9,3.0,True,False
+configuracion,5,SVR_RBF,n_cells_Y,Número de celdas en Y,9.302387902295271,2.5957330672688705,True,0,3.0,True,False
+configuracion,5,SVR_RBF,Fiber_height,Altura de fibra,-0.4355171189517451,0.7249510244711744,True,1,9.0,False,False
+configuracion,5,SVR_RBF,Fiber_base,Ancho de fibra,0.2863874216299395,1.3257318179532658,True,2,8.0,False,False
+configuracion,5,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.894297540861185,2.6915871107902984,True,3,2.0,True,False
+configuracion,5,SVR_RBF,Fiber_total_volume,Volumen total de fibras,3.9587958132910948,1.4999790761631802,True,4,4.0,True,False
+configuracion,5,SVR_RBF,Pivot_height,Altura de pivote,0.824103551178235,1.532114744715189,True,5,7.0,False,False
+configuracion,5,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,5,SVR_RBF,Pivot_total_number,Número total de pivotes,10.356259746395995,2.771020162616252,True,7,1.0,True,False
+configuracion,5,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,3.9587958132910805,1.4999790761631766,True,8,5.0,False,False
+configuracion,5,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,1.9030332583937881,1.5360213635857292,True,9,6.0,False,False
+configuracion,5,RandomForest,n_cells_Y,Número de celdas en Y,5.544403866785719,1.8793769358603818,True,0,2.0,True,False
+configuracion,5,RandomForest,Fiber_height,Altura de fibra,-0.05192890821428522,0.16214521017179437,True,1,9.0,False,False
+configuracion,5,RandomForest,Fiber_base,Ancho de fibra,0.42953899420634467,0.493424883424794,True,2,6.0,False,False
+configuracion,5,RandomForest,Fiber_total_length,Longitud total de fibras,4.237873230039679,1.7203973795485794,True,3,3.0,True,False
+configuracion,5,RandomForest,Fiber_total_volume,Volumen total de fibras,10.244143591468237,2.3753689324005918,True,4,1.0,True,False
+configuracion,5,RandomForest,Pivot_height,Altura de pivote,0.37347399400793924,0.15770124685630976,True,5,7.0,False,False
+configuracion,5,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,5,RandomForest,Pivot_total_number,Número total de pivotes,3.957558396865082,1.604159131162722,True,7,4.0,True,False
+configuracion,5,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.8520039742063554,1.671752483156292,True,8,5.0,False,False
+configuracion,5,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.31547386888888057,0.7698484654562748,True,9,8.0,False,False
+configuracion,5,GaussianProcess,n_cells_Y,Número de celdas en Y,8.01326200320312,2.5102487168179146,True,0,3.0,True,False
+configuracion,5,GaussianProcess,Fiber_height,Altura de fibra,-0.6732812853988623,0.7027995979370674,True,1,9.0,False,False
+configuracion,5,GaussianProcess,Fiber_base,Ancho de fibra,-0.4248419370970957,1.1560640263539448,True,2,8.0,False,False
+configuracion,5,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.631201333364192,2.5989517588960065,True,3,2.0,True,False
+configuracion,5,GaussianProcess,Fiber_total_volume,Volumen total de fibras,2.8105405343218086,1.4092384248195797,True,4,4.0,True,False
+configuracion,5,GaussianProcess,Pivot_height,Altura de pivote,0.80040112428119,1.4046019391229856,True,5,7.0,False,False
+configuracion,5,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,5,GaussianProcess,Pivot_total_number,Número total de pivotes,9.112643492179727,2.672139898679202,True,7,1.0,True,False
+configuracion,5,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,2.810540534321788,1.4092384248195777,True,8,5.0,False,False
+configuracion,5,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.5066386028566843,1.318363130362506,True,9,6.0,False,False
+configuracion,6,Ridge,n_cells_Y,Número de celdas en Y,14.43770172405605,3.292367047415487,True,0,4.0,True,False
+configuracion,6,Ridge,Fiber_height,Altura de fibra,0.11362855719108414,0.7924816327430964,True,1,9.0,False,False
+configuracion,6,Ridge,Fiber_base,Ancho de fibra,4.278083261513644,1.3977273745582894,True,2,5.0,False,False
+configuracion,6,Ridge,Fiber_total_length,Longitud total de fibras,19.067808732156774,4.112975242365435,True,3,2.0,True,False
+configuracion,6,Ridge,Fiber_total_volume,Volumen total de fibras,0.5943438734082023,0.7808570902628755,True,4,7.0,False,False
+configuracion,6,Ridge,Pivot_height,Altura de pivote,1.0254311979864092,1.2573988806230878,True,5,6.0,False,False
+configuracion,6,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,6,Ridge,Pivot_total_number,Número total de pivotes,22.796049410573545,4.78054332914588,True,7,1.0,True,False
+configuracion,6,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5943438734080301,0.7808570902628085,True,8,8.0,False,False
+configuracion,6,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.923313891679339,3.8517772656238356,True,9,3.0,True,False
+configuracion,6,ElasticNet,n_cells_Y,Número de celdas en Y,14.151069376481852,3.2475950470162505,True,0,4.0,True,False
+configuracion,6,ElasticNet,Fiber_height,Altura de fibra,0.07320874803880209,0.7721013012561938,True,1,9.0,False,False
+configuracion,6,ElasticNet,Fiber_base,Ancho de fibra,4.026987608223304,1.3854408610500548,True,2,5.0,False,False
+configuracion,6,ElasticNet,Fiber_total_length,Longitud total de fibras,18.979863796757744,4.099046461790395,True,3,2.0,True,False
+configuracion,6,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.6115002728142424,0.7728098125878071,True,4,7.0,False,False
+configuracion,6,ElasticNet,Pivot_height,Altura de pivote,0.9144044951202297,1.2499112452931784,True,5,6.0,False,False
+configuracion,6,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,6,ElasticNet,Pivot_total_number,Número total de pivotes,22.775698615137678,4.778636262441845,True,7,1.0,True,False
+configuracion,6,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.579235351600184,0.757453510798911,True,8,8.0,False,False
+configuracion,6,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.440197454242266,3.746211909470804,True,9,3.0,True,False
+configuracion,6,SVR_RBF,n_cells_Y,Número de celdas en Y,10.593363023645077,2.9477577330664873,True,0,3.0,True,False
+configuracion,6,SVR_RBF,Fiber_height,Altura de fibra,0.9464518813801167,0.8586166473339544,True,1,9.0,False,False
+configuracion,6,SVR_RBF,Fiber_base,Ancho de fibra,1.7404650977037792,1.143676319660847,True,2,8.0,False,False
+configuracion,6,SVR_RBF,Fiber_total_length,Longitud total de fibras,11.184059247255442,3.0418531740824544,True,3,2.0,True,False
+configuracion,6,SVR_RBF,Fiber_total_volume,Volumen total de fibras,5.585402701429807,1.8547569690244803,True,4,4.0,True,False
+configuracion,6,SVR_RBF,Pivot_height,Altura de pivote,2.4654620666797045,1.4772347623643474,True,5,7.0,False,False
+configuracion,6,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,6,SVR_RBF,Pivot_total_number,Número total de pivotes,11.646504780096809,3.117805209701315,True,7,1.0,True,False
+configuracion,6,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,5.585402701429791,1.854756969024478,True,8,5.0,False,False
+configuracion,6,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.2084456932943937,1.684254412795084,True,9,6.0,False,False
+configuracion,6,RandomForest,n_cells_Y,Número de celdas en Y,6.224667798333328,1.9353824029828404,True,0,2.0,True,False
+configuracion,6,RandomForest,Fiber_height,Altura de fibra,-0.0807203611904785,0.08723966974176084,True,1,9.0,False,False
+configuracion,6,RandomForest,Fiber_base,Ancho de fibra,0.4272661917460203,0.4024546833175254,True,2,8.0,False,False
+configuracion,6,RandomForest,Fiber_total_length,Longitud total de fibras,4.424317680515874,1.6076707242450659,True,3,5.0,False,False
+configuracion,6,RandomForest,Fiber_total_volume,Volumen total de fibras,10.237173175793632,2.777336693054359,True,4,1.0,True,False
+configuracion,6,RandomForest,Pivot_height,Altura de pivote,0.831069079999987,0.44342307209687964,True,5,7.0,False,False
+configuracion,6,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,6,RandomForest,Pivot_total_number,Número total de pivotes,4.631913572500006,1.622547398504585,True,7,4.0,True,False
+configuracion,6,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.067739180317465,1.771015652309991,True,8,3.0,True,False
+configuracion,6,RandomForest,Sample_total_volume,Volumen declarado del espécimen,1.5217766090872895,0.809963777313235,True,9,6.0,False,False
+configuracion,6,GaussianProcess,n_cells_Y,Número de celdas en Y,9.550427597879668,2.6842275661619293,True,0,3.0,True,False
+configuracion,6,GaussianProcess,Fiber_height,Altura de fibra,0.11008227451882106,0.8404391451436407,True,1,9.0,False,False
+configuracion,6,GaussianProcess,Fiber_base,Ancho de fibra,0.9976440187770151,0.9608138499810365,True,2,8.0,False,False
+configuracion,6,GaussianProcess,Fiber_total_length,Longitud total de fibras,10.184857199822853,2.789038037506899,True,3,2.0,True,False
+configuracion,6,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.389497560758662,1.4764264471216213,True,4,4.0,True,False
+configuracion,6,GaussianProcess,Pivot_height,Altura de pivote,2.161162663705954,1.5199037265071198,True,5,6.0,False,False
+configuracion,6,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,6,GaussianProcess,Pivot_total_number,Número total de pivotes,10.679529946866358,2.8730816261606584,True,7,1.0,True,False
+configuracion,6,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.3894975607586355,1.4764264471216177,True,8,5.0,False,False
+configuracion,6,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.0927210730921226,1.3230119728804601,True,9,7.0,False,False
+configuracion,7,Ridge,n_cells_Y,Número de celdas en Y,14.93747934866036,2.458176002369762,True,0,3.0,True,False
+configuracion,7,Ridge,Fiber_height,Altura de fibra,-0.005345712678185954,0.5604992121568678,True,1,9.0,False,False
+configuracion,7,Ridge,Fiber_base,Ancho de fibra,1.2970777096061694,1.0485298060477173,True,2,5.0,False,False
+configuracion,7,Ridge,Fiber_total_length,Longitud total de fibras,19.73054805019249,2.9197258548388363,True,3,2.0,True,False
+configuracion,7,Ridge,Fiber_total_volume,Volumen total de fibras,0.662806565607432,0.6021718809137205,True,4,6.0,False,False
+configuracion,7,Ridge,Pivot_height,Altura de pivote,0.5435001748906269,1.063080080536053,True,5,8.0,False,False
+configuracion,7,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,7,Ridge,Pivot_total_number,Número total de pivotes,23.4912899020135,3.3276887207897166,True,7,1.0,True,False
+configuracion,7,Ridge,Pivot_total_volume,Volumen total de pivotes,0.6628065656072705,0.6021718809136382,True,8,7.0,False,False
+configuracion,7,Ridge,Sample_total_volume,Volumen declarado del espécimen,13.658140682989881,3.9144765885011186,True,9,4.0,True,False
+configuracion,7,ElasticNet,n_cells_Y,Número de celdas en Y,14.627302227554969,2.447157005109758,True,0,3.0,True,False
+configuracion,7,ElasticNet,Fiber_height,Altura de fibra,-0.023146196082339098,0.5442899462508345,True,1,9.0,False,False
+configuracion,7,ElasticNet,Fiber_base,Ancho de fibra,1.0852526837717895,1.0220992048483126,True,2,5.0,False,False
+configuracion,7,ElasticNet,Fiber_total_length,Longitud total de fibras,19.606963821783257,2.9188462762942846,True,3,2.0,True,False
+configuracion,7,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.6397800321138234,0.5896465189491602,True,4,6.0,False,False
+configuracion,7,ElasticNet,Pivot_height,Altura de pivote,0.44621338992287285,1.041620126035562,True,5,8.0,False,False
+configuracion,7,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,7,ElasticNet,Pivot_total_number,Número total de pivotes,23.43874316765126,3.333294929169709,True,7,1.0,True,False
+configuracion,7,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.6183618630109723,0.5751546424923824,True,8,7.0,False,False
+configuracion,7,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,13.114788650400405,3.8661219619353555,True,9,4.0,True,False
+configuracion,7,SVR_RBF,n_cells_Y,Número de celdas en Y,11.171980219907976,2.2715700092353197,True,0,3.0,True,False
+configuracion,7,SVR_RBF,Fiber_height,Altura de fibra,0.8766023107931087,0.9136413375831834,True,1,9.0,False,False
+configuracion,7,SVR_RBF,Fiber_base,Ancho de fibra,1.4162136994435257,1.3090868011258838,True,2,8.0,False,False
+configuracion,7,SVR_RBF,Fiber_total_length,Longitud total de fibras,11.81137466151139,2.3562362993609267,True,3,2.0,True,False
+configuracion,7,SVR_RBF,Fiber_total_volume,Volumen total de fibras,5.378032396480433,1.549931574830956,True,4,4.0,True,False
+configuracion,7,SVR_RBF,Pivot_height,Altura de pivote,2.2055979747599186,1.3200866124008248,True,5,7.0,False,False
+configuracion,7,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,7,SVR_RBF,Pivot_total_number,Número total de pivotes,12.327431571571484,2.4240523894393813,True,7,1.0,True,False
+configuracion,7,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,5.378032396480419,1.5499315748309532,True,8,5.0,False,False
+configuracion,7,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.4533482548811625,1.4559588817340472,True,9,6.0,False,False
+configuracion,7,RandomForest,n_cells_Y,Número de celdas en Y,6.720866336944459,1.5619157805274229,True,0,2.0,True,False
+configuracion,7,RandomForest,Fiber_height,Altura de fibra,-0.16087931285713272,0.13790817325976254,True,1,9.0,False,False
+configuracion,7,RandomForest,Fiber_base,Ancho de fibra,0.029803285555560867,0.288565814295001,True,2,8.0,False,False
+configuracion,7,RandomForest,Fiber_total_length,Longitud total de fibras,5.021378004920649,1.3782102752776746,True,3,5.0,False,False
+configuracion,7,RandomForest,Fiber_total_volume,Volumen total de fibras,10.395641812023818,1.9720096534017775,True,4,1.0,True,False
+configuracion,7,RandomForest,Pivot_height,Altura de pivote,0.19111948738096124,0.23437375971710625,True,5,6.0,False,False
+configuracion,7,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,7,RandomForest,Pivot_total_number,Número total de pivotes,5.272517137460342,1.560684622173059,True,7,4.0,True,False
+configuracion,7,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.702677809642882,1.5812435399773415,True,8,3.0,True,False
+configuracion,7,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.1264703198412799,0.7540320616300668,True,9,7.0,False,False
+configuracion,7,GaussianProcess,n_cells_Y,Número de celdas en Y,9.688991706429471,2.0508054772811364,True,0,3.0,True,False
+configuracion,7,GaussianProcess,Fiber_height,Altura de fibra,0.13498676885234576,0.7389077418122674,True,1,9.0,False,False
+configuracion,7,GaussianProcess,Fiber_base,Ancho de fibra,0.5675951699847304,1.232883903300582,True,2,8.0,False,False
+configuracion,7,GaussianProcess,Fiber_total_length,Longitud total de fibras,10.36652346883727,2.1371775834727074,True,3,2.0,True,False
+configuracion,7,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.044192542445918,1.2378210276447652,True,4,4.0,True,False
+configuracion,7,GaussianProcess,Pivot_height,Altura de pivote,1.4324932103856471,1.2550998296365674,True,5,7.0,False,False
+configuracion,7,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,7,GaussianProcess,Pivot_total_number,Número total de pivotes,10.895154090826477,2.2093943518210706,True,7,1.0,True,False
+configuracion,7,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.044192542445892,1.2378210276447636,True,8,5.0,False,False
+configuracion,7,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.2091032495973586,1.0903990010727027,True,9,6.0,False,False
+configuracion,8,Ridge,n_cells_Y,Número de celdas en Y,13.880204749170872,2.1534459212270693,True,0,3.0,True,False
+configuracion,8,Ridge,Fiber_height,Altura de fibra,0.14619644850742378,0.6647681480431356,True,1,9.0,False,False
+configuracion,8,Ridge,Fiber_base,Ancho de fibra,1.146025213467016,1.0756804392208417,True,2,5.0,False,False
+configuracion,8,Ridge,Fiber_total_length,Longitud total de fibras,18.49028953766267,2.5190447819201456,True,3,2.0,True,False
+configuracion,8,Ridge,Fiber_total_volume,Volumen total de fibras,0.5856210093528574,0.6299192349320559,True,4,7.0,False,False
+configuracion,8,Ridge,Pivot_height,Altura de pivote,0.7824423264693501,1.0678012981262046,True,5,6.0,False,False
+configuracion,8,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,8,Ridge,Pivot_total_number,Número total de pivotes,22.114437577994813,2.85440983750142,True,7,1.0,True,False
+configuracion,8,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5856210093527373,0.6299192349320031,True,8,8.0,False,False
+configuracion,8,Ridge,Sample_total_volume,Volumen declarado del espécimen,12.749176906765076,3.567964351384161,True,9,4.0,True,False
+configuracion,8,ElasticNet,n_cells_Y,Número de celdas en Y,13.603239738079328,2.150228632632714,True,0,3.0,True,False
+configuracion,8,ElasticNet,Fiber_height,Altura de fibra,0.14070826279831278,0.6510051122477228,True,1,9.0,False,False
+configuracion,8,ElasticNet,Fiber_base,Ancho de fibra,0.9561215285950191,1.0734231612419445,True,2,5.0,False,False
+configuracion,8,ElasticNet,Fiber_total_length,Longitud total de fibras,18.391525912103617,2.5254810763143145,True,3,2.0,True,False
+configuracion,8,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5721017535027029,0.6187322548495455,True,4,7.0,False,False
+configuracion,8,ElasticNet,Pivot_height,Altura de pivote,0.7091579882577321,1.028904792893613,True,5,6.0,False,False
+configuracion,8,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,8,ElasticNet,Pivot_total_number,Número total de pivotes,22.08647247337047,2.866354904232975,True,7,1.0,True,False
+configuracion,8,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5427691130019355,0.6067803693280541,True,8,8.0,False,False
+configuracion,8,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,12.267556231676156,3.5312377476735,True,9,4.0,True,False
+configuracion,8,SVR_RBF,n_cells_Y,Número de celdas en Y,9.741885925849811,2.3333142605295643,True,0,3.0,True,False
+configuracion,8,SVR_RBF,Fiber_height,Altura de fibra,0.3570095389819632,1.0556087834926542,True,1,9.0,False,False
+configuracion,8,SVR_RBF,Fiber_base,Ancho de fibra,0.8850112554660413,1.5067924749045956,True,2,8.0,False,False
+configuracion,8,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.356836021125858,2.418717033908108,True,3,2.0,True,False
+configuracion,8,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.833780696211727,1.4792928610170712,True,4,4.0,True,False
+configuracion,8,SVR_RBF,Pivot_height,Altura de pivote,1.973202615469949,1.176790023372061,True,5,7.0,False,False
+configuracion,8,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,8,SVR_RBF,Pivot_total_number,Número total de pivotes,10.845748076225565,2.4906240970733315,True,7,1.0,True,False
+configuracion,8,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.833780696211713,1.4792928610170675,True,8,5.0,False,False
+configuracion,8,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.426846959523985,1.1749395829679448,True,9,6.0,False,False
+configuracion,8,RandomForest,n_cells_Y,Número de celdas en Y,5.683302102460342,1.453272591288207,True,0,2.0,True,False
+configuracion,8,RandomForest,Fiber_height,Altura de fibra,-0.1143695717857117,0.13021079593327575,True,1,9.0,False,False
+configuracion,8,RandomForest,Fiber_base,Ancho de fibra,0.1959430734920658,0.37722971451691284,True,2,7.0,False,False
+configuracion,8,RandomForest,Fiber_total_length,Longitud total de fibras,3.888414793214298,1.119604782588011,True,3,4.0,True,False
+configuracion,8,RandomForest,Fiber_total_volume,Volumen total de fibras,9.340503113452382,1.855582426663283,True,4,1.0,True,False
+configuracion,8,RandomForest,Pivot_height,Altura de pivote,0.17582884678571692,0.21005019390779744,True,5,8.0,False,False
+configuracion,8,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,8,RandomForest,Pivot_total_number,Número total de pivotes,3.595843378769856,1.1104338836727983,True,7,5.0,False,False
+configuracion,8,RandomForest,Pivot_total_volume,Volumen total de pivotes,4.589189789682553,1.1917271434782173,True,8,3.0,True,False
+configuracion,8,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.6154370474999936,0.898505788322662,True,9,6.0,False,False
+configuracion,8,GaussianProcess,n_cells_Y,Número de celdas en Y,8.672744251789261,2.194914139368156,True,0,3.0,True,False
+configuracion,8,GaussianProcess,Fiber_height,Altura de fibra,-0.1269878656870687,0.801694190764412,True,1,9.0,False,False
+configuracion,8,GaussianProcess,Fiber_base,Ancho de fibra,0.028852246133651338,1.385358718014401,True,2,8.0,False,False
+configuracion,8,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.318575331874097,2.285000859152205,True,3,2.0,True,False
+configuracion,8,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.7161308737723373,1.3643490568625574,True,4,4.0,True,False
+configuracion,8,GaussianProcess,Pivot_height,Altura de pivote,1.1892873459997826,1.076039908673263,True,5,7.0,False,False
+configuracion,8,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,8,GaussianProcess,Pivot_total_number,Número total de pivotes,9.82335646163239,2.3615351213820017,True,7,1.0,True,False
+configuracion,8,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.7161308737723155,1.3643490568625503,True,8,5.0,False,False
+configuracion,8,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.7304777512312497,1.1808628653198419,True,9,6.0,False,False
+configuracion,9,Ridge,n_cells_Y,Número de celdas en Y,13.940989739395013,3.4390399264081037,True,0,3.0,True,False
+configuracion,9,Ridge,Fiber_height,Altura de fibra,0.13950648731943752,0.5861059101764452,True,1,9.0,False,False
+configuracion,9,Ridge,Fiber_base,Ancho de fibra,2.5492040785501073,1.649085809589646,True,2,5.0,False,False
+configuracion,9,Ridge,Fiber_total_length,Longitud total de fibras,18.453395876573808,4.255436968546688,True,3,2.0,True,False
+configuracion,9,Ridge,Fiber_total_volume,Volumen total de fibras,0.5688398017954227,0.6894918898749334,True,4,6.0,False,False
+configuracion,9,Ridge,Pivot_height,Altura de pivote,0.4026199590788866,0.8999880516427124,True,5,8.0,False,False
+configuracion,9,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,9,Ridge,Pivot_total_number,Número total de pivotes,22.073298604124233,4.912711339196377,True,7,1.0,True,False
+configuracion,9,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5688398017952876,0.6894918898748602,True,8,7.0,False,False
+configuracion,9,Ridge,Sample_total_volume,Volumen declarado del espécimen,13.582698625283161,3.0505772343993636,True,9,4.0,True,False
+configuracion,9,ElasticNet,n_cells_Y,Número de celdas en Y,13.678083945137297,3.383069710282188,True,0,3.0,True,False
+configuracion,9,ElasticNet,Fiber_height,Altura de fibra,0.13715685830366392,0.5606585121620972,True,1,9.0,False,False
+configuracion,9,ElasticNet,Fiber_base,Ancho de fibra,2.293131942909345,1.5983118408650132,True,2,5.0,False,False
+configuracion,9,ElasticNet,Fiber_total_length,Longitud total de fibras,18.34284667464369,4.230328386271746,True,3,2.0,True,False
+configuracion,9,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5825593324144354,0.672005452351697,True,4,6.0,False,False
+configuracion,9,ElasticNet,Pivot_height,Altura de pivote,0.35080834347398787,0.8854276660235826,True,5,8.0,False,False
+configuracion,9,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,9,ElasticNet,Pivot_total_number,Número total de pivotes,22.03591411009807,4.899910633845849,True,7,1.0,True,False
+configuracion,9,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5535201638416882,0.6553332528887784,True,8,7.0,False,False
+configuracion,9,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,13.017974602890723,2.9746231131004377,True,9,4.0,True,False
+configuracion,9,SVR_RBF,n_cells_Y,Número de celdas en Y,9.754563951988555,2.2304899264004754,True,0,3.0,True,False
+configuracion,9,SVR_RBF,Fiber_height,Altura de fibra,-0.030316387975202818,1.2130646855420515,True,1,8.0,False,False
+configuracion,9,SVR_RBF,Fiber_base,Ancho de fibra,-0.26487600851141246,1.3344222779320167,True,2,9.0,False,False
+configuracion,9,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.363908135768575,2.2892982660338426,True,3,2.0,True,False
+configuracion,9,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.373918665585825,1.523285613886363,True,4,4.0,True,False
+configuracion,9,SVR_RBF,Pivot_height,Altura de pivote,1.2046960884242135,1.0618272869651089,True,5,7.0,False,False
+configuracion,9,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,9,SVR_RBF,Pivot_total_number,Número total de pivotes,10.845177137491284,2.338694600872713,True,7,1.0,True,False
+configuracion,9,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.373918665585809,1.523285613886361,True,8,5.0,False,False
+configuracion,9,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.3221065107380747,1.4367965631545048,True,9,6.0,False,False
+configuracion,9,RandomForest,n_cells_Y,Número de celdas en Y,5.397546794722237,1.5529437456788169,True,0,2.0,True,False
+configuracion,9,RandomForest,Fiber_height,Altura de fibra,-0.1854599710714319,0.10136638364282581,True,1,9.0,False,False
+configuracion,9,RandomForest,Fiber_base,Ancho de fibra,0.2838351425396831,0.24553430092750694,True,2,6.0,False,False
+configuracion,9,RandomForest,Fiber_total_length,Longitud total de fibras,4.031483163611119,1.2828159017832774,True,3,4.0,True,False
+configuracion,9,RandomForest,Fiber_total_volume,Volumen total de fibras,10.173028090952364,2.821873834422865,True,4,1.0,True,False
+configuracion,9,RandomForest,Pivot_height,Altura de pivote,0.0798611759126973,0.17844335173604586,True,5,8.0,False,False
+configuracion,9,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,9,RandomForest,Pivot_total_number,Número total de pivotes,4.263811531865089,1.3984786017728799,True,7,3.0,True,False
+configuracion,9,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.4122998591666693,1.318434403058115,True,8,5.0,False,False
+configuracion,9,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.13795046619046766,0.7299620232059615,True,9,7.0,False,False
+configuracion,9,GaussianProcess,n_cells_Y,Número de celdas en Y,8.847993744427013,1.945227969479565,True,0,3.0,True,False
+configuracion,9,GaussianProcess,Fiber_height,Altura de fibra,-0.14086560179570143,0.9535286444732604,True,1,8.0,False,False
+configuracion,9,GaussianProcess,Fiber_base,Ancho de fibra,-0.47507222039290475,1.141549703058058,True,2,9.0,False,False
+configuracion,9,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.48510196633037,2.0211476551636287,True,3,2.0,True,False
+configuracion,9,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.5875196066994306,1.219647142668142,True,4,4.0,True,False
+configuracion,9,GaussianProcess,Pivot_height,Altura de pivote,0.938538093854653,1.064826483204028,True,5,7.0,False,False
+configuracion,9,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,9,GaussianProcess,Pivot_total_number,Número total de pivotes,9.990570813751447,2.0860198285314477,True,7,1.0,True,False
+configuracion,9,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.5875196066994106,1.2196471426681388,True,8,5.0,False,False
+configuracion,9,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.5726030837056593,1.0223246961917936,True,9,6.0,False,False
+configuracion,10,Ridge,n_cells_Y,Número de celdas en Y,14.427564640543775,2.576604277576847,True,0,4.0,True,False
+configuracion,10,Ridge,Fiber_height,Altura de fibra,0.1564019805447172,0.49460490556401654,True,1,9.0,False,False
+configuracion,10,Ridge,Fiber_base,Ancho de fibra,1.4467356686235902,1.159305059801152,True,2,5.0,False,False
+configuracion,10,Ridge,Fiber_total_length,Longitud total de fibras,18.789793650542833,3.021378879135839,True,3,2.0,True,False
+configuracion,10,Ridge,Fiber_total_volume,Volumen total de fibras,0.554187359742096,0.6821557674699097,True,4,6.0,False,False
+configuracion,10,Ridge,Pivot_height,Altura de pivote,0.3576145687505209,1.1032063676298909,True,5,8.0,False,False
+configuracion,10,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,10,Ridge,Pivot_total_number,Número total de pivotes,22.248417227765152,3.4116661465499813,True,7,1.0,True,False
+configuracion,10,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5541873597419834,0.6821557674698698,True,8,7.0,False,False
+configuracion,10,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.95966740080693,4.172029235301055,True,9,3.0,True,False
+configuracion,10,ElasticNet,n_cells_Y,Número de celdas en Y,14.163018207503551,2.570707979843825,True,0,4.0,True,False
+configuracion,10,ElasticNet,Fiber_height,Altura de fibra,0.15019198645172152,0.4773444473157775,True,1,9.0,False,False
+configuracion,10,ElasticNet,Fiber_base,Ancho de fibra,1.259774544975274,1.1707772244322916,True,2,5.0,False,False
+configuracion,10,ElasticNet,Fiber_total_length,Longitud total de fibras,18.685839250506785,3.033079224978695,True,3,2.0,True,False
+configuracion,10,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5657807908365223,0.6598191313337672,True,4,6.0,False,False
+configuracion,10,ElasticNet,Pivot_height,Altura de pivote,0.28271156460882435,1.0691357400077484,True,5,8.0,False,False
+configuracion,10,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,10,ElasticNet,Pivot_total_number,Número total de pivotes,22.21174524051408,3.429274295269192,True,7,1.0,True,False
+configuracion,10,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5384317846493248,0.6473934886282343,True,8,7.0,False,False
+configuracion,10,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.399024033239318,4.06454231556664,True,9,3.0,True,False
+configuracion,10,SVR_RBF,n_cells_Y,Número de celdas en Y,9.512127186527541,1.66434507521465,True,0,3.0,True,False
+configuracion,10,SVR_RBF,Fiber_height,Altura de fibra,-0.12668321284608436,0.8813859746702797,True,1,9.0,False,False
+configuracion,10,SVR_RBF,Fiber_base,Ancho de fibra,0.006297162144205526,1.4541850519098978,True,2,8.0,False,False
+configuracion,10,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.118483122085546,1.7495269299285423,True,3,2.0,True,False
+configuracion,10,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.972964669063437,1.0107288355036617,True,4,4.0,True,False
+configuracion,10,SVR_RBF,Pivot_height,Altura de pivote,1.6285535768957604,1.3727074659794154,True,5,7.0,False,False
+configuracion,10,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,10,SVR_RBF,Pivot_total_number,Número total de pivotes,10.59358843576975,1.8220987791354335,True,7,1.0,True,False
+configuracion,10,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.972964669063423,1.01072883550366,True,8,5.0,False,False
+configuracion,10,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.2589331726330144,1.3773093928311597,True,9,6.0,False,False
+configuracion,10,RandomForest,n_cells_Y,Número de celdas en Y,5.2716933626587394,1.9460827045455134,True,0,2.0,True,False
+configuracion,10,RandomForest,Fiber_height,Altura de fibra,-0.10334554428571163,0.16485561619186984,True,1,8.0,False,False
+configuracion,10,RandomForest,Fiber_base,Ancho de fibra,-0.10744680888888354,0.3743210545948753,True,2,9.0,False,False
+configuracion,10,RandomForest,Fiber_total_length,Longitud total de fibras,3.4025992505555585,1.7685502453459017,True,3,5.0,False,False
+configuracion,10,RandomForest,Fiber_total_volume,Volumen total de fibras,10.394533507380952,2.4738235846254972,True,4,1.0,True,False
+configuracion,10,RandomForest,Pivot_height,Altura de pivote,0.07147447841270163,0.2513106394510942,True,5,7.0,False,False
+configuracion,10,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,10,RandomForest,Pivot_total_number,Número total de pivotes,3.628499422261919,1.832172727390434,True,7,4.0,True,False
+configuracion,10,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.7121591697619083,1.949735021692021,True,8,3.0,True,False
+configuracion,10,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.4220432902380925,0.852842644238537,True,9,6.0,False,False
+configuracion,10,GaussianProcess,n_cells_Y,Número de celdas en Y,8.70183025438808,1.7936329223262717,True,0,3.0,True,False
+configuracion,10,GaussianProcess,Fiber_height,Altura de fibra,-0.1715830123764693,0.7271894062307058,True,1,8.0,False,False
+configuracion,10,GaussianProcess,Fiber_base,Ancho de fibra,-0.46038830885299803,1.2172006929763732,True,2,9.0,False,False
+configuracion,10,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.322420331789647,1.8883517463686696,True,3,2.0,True,False
+configuracion,10,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.205095599562292,0.9964013144451144,True,4,4.0,True,False
+configuracion,10,GaussianProcess,Pivot_height,Altura de pivote,1.5812197307573013,1.3557783573138402,True,5,7.0,False,False
+configuracion,10,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,10,GaussianProcess,Pivot_total_number,Número total de pivotes,9.8085990864083,1.966373721004307,True,7,1.0,True,False
+configuracion,10,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.205095599562268,0.9964013144451122,True,8,5.0,False,False
+configuracion,10,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.479102469005557,1.1994624067338862,True,9,6.0,False,False
+configuracion,11,Ridge,n_cells_Y,Número de celdas en Y,13.962148880092252,2.7639960180990637,True,0,3.0,True,False
+configuracion,11,Ridge,Fiber_height,Altura de fibra,-0.2873738800590774,0.501287297675676,True,1,9.0,False,False
+configuracion,11,Ridge,Fiber_base,Ancho de fibra,1.7354536427933904,1.547587374726419,True,2,5.0,False,False
+configuracion,11,Ridge,Fiber_total_length,Longitud total de fibras,18.45694995620476,3.2678146810362403,True,3,2.0,True,False
+configuracion,11,Ridge,Fiber_total_volume,Volumen total de fibras,0.5910482168363851,0.7516507184591225,True,4,6.0,False,False
+configuracion,11,Ridge,Pivot_height,Altura de pivote,0.2580674051277797,0.6527819673162465,True,5,8.0,False,False
+configuracion,11,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,11,Ridge,Pivot_total_number,Número total de pivotes,22.030527563811034,3.7129310302890723,True,7,1.0,True,False
+configuracion,11,Ridge,Pivot_total_volume,Volumen total de pivotes,0.591048216836278,0.7516507184590616,True,8,7.0,False,False
+configuracion,11,Ridge,Sample_total_volume,Volumen declarado del espécimen,11.625281703214995,3.271724200098761,True,9,4.0,True,False
+configuracion,11,ElasticNet,n_cells_Y,Número de celdas en Y,13.653944526112394,2.7254965957841115,True,0,3.0,True,False
+configuracion,11,ElasticNet,Fiber_height,Altura de fibra,-0.29861756372942594,0.4698997994471555,True,1,9.0,False,False
+configuracion,11,ElasticNet,Fiber_base,Ancho de fibra,1.5709061208979236,1.4925227651403168,True,2,5.0,False,False
+configuracion,11,ElasticNet,Fiber_total_length,Longitud total de fibras,18.295058710741106,3.259823837340387,True,3,2.0,True,False
+configuracion,11,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5846844198429549,0.7328642624301522,True,4,6.0,False,False
+configuracion,11,ElasticNet,Pivot_height,Altura de pivote,0.2200976372852826,0.6160188699799493,True,5,8.0,False,False
+configuracion,11,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,11,ElasticNet,Pivot_total_number,Número total de pivotes,21.93476553419846,3.71255062791578,True,7,1.0,True,False
+configuracion,11,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5633867098587401,0.7198150554439813,True,8,7.0,False,False
+configuracion,11,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,11.026703375116023,3.199834150441687,True,9,4.0,True,False
+configuracion,11,SVR_RBF,n_cells_Y,Número de celdas en Y,10.040487115492532,2.3504283920238347,True,0,3.0,True,False
+configuracion,11,SVR_RBF,Fiber_height,Altura de fibra,0.40076185354931687,0.6307108963402664,True,1,8.0,False,False
+configuracion,11,SVR_RBF,Fiber_base,Ancho de fibra,0.2613708730473679,1.344734950272623,True,2,9.0,False,False
+configuracion,11,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.5871063885924,2.4294965490007305,True,3,2.0,True,False
+configuracion,11,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.921557812524797,1.7156589568230733,True,4,4.0,True,False
+configuracion,11,SVR_RBF,Pivot_height,Altura de pivote,1.0296018343950668,1.2589993493255642,True,5,7.0,False,False
+configuracion,11,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,11,SVR_RBF,Pivot_total_number,Número total de pivotes,11.015269284736846,2.493494159016693,True,7,1.0,True,False
+configuracion,11,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.921557812524767,1.7156589568230671,True,8,5.0,False,False
+configuracion,11,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.8515404750658035,1.2756525225819706,True,9,6.0,False,False
+configuracion,11,RandomForest,n_cells_Y,Número de celdas en Y,5.161934525357166,1.5089603483110956,True,0,2.0,True,False
+configuracion,11,RandomForest,Fiber_height,Altura de fibra,-0.07822055714283956,0.12934013879579176,True,1,8.0,False,False
+configuracion,11,RandomForest,Fiber_base,Ancho de fibra,-0.09653492519840831,0.18623721002465424,True,2,9.0,False,False
+configuracion,11,RandomForest,Fiber_total_length,Longitud total de fibras,4.229508768333348,1.3973902003288652,True,3,5.0,False,False
+configuracion,11,RandomForest,Fiber_total_volume,Volumen total de fibras,12.23435399341271,2.741065809538047,True,4,1.0,True,False
+configuracion,11,RandomForest,Pivot_height,Altura de pivote,0.17666259619048114,0.10608471841816995,True,5,7.0,False,False
+configuracion,11,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,11,RandomForest,Pivot_total_number,Número total de pivotes,4.63704567261907,1.454155223879289,True,7,3.0,True,False
+configuracion,11,RandomForest,Pivot_total_volume,Volumen total de pivotes,4.539710827182562,1.4582295788200634,True,8,4.0,True,False
+configuracion,11,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.4147648072619178,0.7005009631837927,True,9,6.0,False,False
+configuracion,11,GaussianProcess,n_cells_Y,Número de celdas en Y,9.294330409631707,2.0443454261466876,True,0,3.0,True,False
+configuracion,11,GaussianProcess,Fiber_height,Altura de fibra,0.257813896532031,0.5471355946104531,True,1,8.0,False,False
+configuracion,11,GaussianProcess,Fiber_base,Ancho de fibra,-0.10567657772618544,1.0647342958532298,True,2,9.0,False,False
+configuracion,11,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.870693782404192,2.1262614899848193,True,3,2.0,True,False
+configuracion,11,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.132542336796506,1.4371741993940048,True,4,4.0,True,False
+configuracion,11,GaussianProcess,Pivot_height,Altura de pivote,0.9961988970372475,1.1354547565274344,True,5,7.0,False,False
+configuracion,11,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,11,GaussianProcess,Pivot_total_number,Número total de pivotes,10.32722986353151,2.1859544574649488,True,7,1.0,True,False
+configuracion,11,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.1325423367964795,1.4371741993939993,True,8,5.0,False,False
+configuracion,11,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,3.0897744262094164,1.0598283912635544,True,9,6.0,False,False
+configuracion,12,Ridge,n_cells_Y,Número de celdas en Y,13.879155314134863,2.6111689561173725,True,0,4.0,True,False
+configuracion,12,Ridge,Fiber_height,Altura de fibra,0.1664186200624737,0.5870673636485917,True,1,9.0,False,False
+configuracion,12,Ridge,Fiber_base,Ancho de fibra,2.841155072789212,1.5132595935716433,True,2,5.0,False,False
+configuracion,12,Ridge,Fiber_total_length,Longitud total de fibras,18.506868783293232,3.2585527653828557,True,3,2.0,True,False
+configuracion,12,Ridge,Fiber_total_volume,Volumen total de fibras,0.42820776253022086,0.5333429159856733,True,4,7.0,False,False
+configuracion,12,Ridge,Pivot_height,Altura de pivote,0.5119315290502063,1.1712119672496335,True,5,6.0,False,False
+configuracion,12,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,12,Ridge,Pivot_total_number,Número total de pivotes,22.20475635724011,3.793846130867468,True,7,1.0,True,False
+configuracion,12,Ridge,Pivot_total_volume,Volumen total de pivotes,0.42820776253007364,0.5333429159856121,True,8,8.0,False,False
+configuracion,12,Ridge,Sample_total_volume,Volumen declarado del espécimen,14.95713094621361,2.9024927414233668,True,9,3.0,True,False
+configuracion,12,ElasticNet,n_cells_Y,Número de celdas en Y,13.58980718403237,2.5908031395849083,True,0,4.0,True,False
+configuracion,12,ElasticNet,Fiber_height,Altura de fibra,0.14173818838699423,0.5694743284331011,True,1,9.0,False,False
+configuracion,12,ElasticNet,Fiber_base,Ancho de fibra,2.6596216709290315,1.4589706107347429,True,2,5.0,False,False
+configuracion,12,ElasticNet,Fiber_total_length,Longitud total de fibras,18.38587441168885,3.2579896749164345,True,3,2.0,True,False
+configuracion,12,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.42948055597043727,0.5156441679364269,True,4,7.0,False,False
+configuracion,12,ElasticNet,Pivot_height,Altura de pivote,0.4850895344191325,1.1444773962390986,True,5,6.0,False,False
+configuracion,12,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,12,ElasticNet,Pivot_total_number,Número total de pivotes,22.160518812976672,3.8021796655744104,True,7,1.0,True,False
+configuracion,12,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.40133902123201237,0.5028280339218961,True,8,8.0,False,False
+configuracion,12,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.453291842752103,2.8376178827860405,True,9,3.0,True,False
+configuracion,12,SVR_RBF,n_cells_Y,Número de celdas en Y,10.021633045197289,2.3037287819906114,True,0,3.0,True,False
+configuracion,12,SVR_RBF,Fiber_height,Altura de fibra,-0.07963279395589033,0.6751878357631599,True,1,9.0,False,False
+configuracion,12,SVR_RBF,Fiber_base,Ancho de fibra,0.0995386777300478,1.3815183624590708,True,2,8.0,False,False
+configuracion,12,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.642823123577248,2.4196192271546817,True,3,2.0,True,False
+configuracion,12,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.879999322092209,1.8189405850424278,True,4,4.0,True,False
+configuracion,12,SVR_RBF,Pivot_height,Altura de pivote,0.7197508603453459,1.074826586911747,True,5,7.0,False,False
+configuracion,12,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,12,SVR_RBF,Pivot_total_number,Número total de pivotes,11.130052302659454,2.5142965446229995,True,7,1.0,True,False
+configuracion,12,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.8799993220922,1.8189405850424232,True,8,5.0,False,False
+configuracion,12,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.9030426814602066,1.1530595474663479,True,9,6.0,False,False
+configuracion,12,RandomForest,n_cells_Y,Número de celdas en Y,5.110561255515889,1.5006077835065919,True,0,2.0,True,False
+configuracion,12,RandomForest,Fiber_height,Altura de fibra,-0.10701613904762279,0.1266980460726539,True,1,8.0,False,False
+configuracion,12,RandomForest,Fiber_base,Ancho de fibra,-0.14007486095238092,0.37165391353388755,True,2,9.0,False,False
+configuracion,12,RandomForest,Fiber_total_length,Longitud total de fibras,3.2594374419841374,1.4007416198273295,True,3,5.0,False,False
+configuracion,12,RandomForest,Fiber_total_volume,Volumen total de fibras,10.25096623999999,2.2809184010928965,True,4,1.0,True,False
+configuracion,12,RandomForest,Pivot_height,Altura de pivote,-0.04489261619048426,0.11728478534730044,True,5,7.0,False,False
+configuracion,12,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,12,RandomForest,Pivot_total_number,Número total de pivotes,3.751633276865087,1.2658305940806662,True,7,3.0,True,False
+configuracion,12,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.361395644682541,1.4941656933328418,True,8,4.0,True,False
+configuracion,12,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.4894570292063367,0.7759400139470913,True,9,6.0,False,False
+configuracion,12,GaussianProcess,n_cells_Y,Número de celdas en Y,8.980896153361247,2.166892292851876,True,0,3.0,True,False
+configuracion,12,GaussianProcess,Fiber_height,Altura de fibra,-0.4798877423618415,0.5056996027473004,True,1,8.0,False,False
+configuracion,12,GaussianProcess,Fiber_base,Ancho de fibra,-0.506432781251668,1.185633064964571,True,2,9.0,False,False
+configuracion,12,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.625064671777958,2.277572388501357,True,3,2.0,True,False
+configuracion,12,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.9723400266091375,1.6909467942872942,True,4,4.0,True,False
+configuracion,12,GaussianProcess,Pivot_height,Altura de pivote,0.12901521691498052,0.92067335003099,True,5,7.0,False,False
+configuracion,12,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,12,GaussianProcess,Pivot_total_number,Número total de pivotes,10.129022014814904,2.368152705989864,True,7,1.0,True,False
+configuracion,12,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.972340026609122,1.6909467942872896,True,8,5.0,False,False
+configuracion,12,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.224164696175399,0.9167184925152279,True,9,6.0,False,False
+configuracion,13,Ridge,n_cells_Y,Número de celdas en Y,14.706205940201958,4.303428027585177,True,0,3.0,True,False
+configuracion,13,Ridge,Fiber_height,Altura de fibra,0.13914957477434423,0.6001598049834682,True,1,9.0,False,False
+configuracion,13,Ridge,Fiber_base,Ancho de fibra,2.46386716448767,1.295823625275085,True,2,5.0,False,False
+configuracion,13,Ridge,Fiber_total_length,Longitud total de fibras,19.20874572811836,5.079978261690528,True,3,2.0,True,False
+configuracion,13,Ridge,Fiber_total_volume,Volumen total de fibras,0.6220117809155769,0.7269406405954651,True,4,7.0,False,False
+configuracion,13,Ridge,Pivot_height,Altura de pivote,0.9773801984315039,0.7854553196131995,True,5,6.0,False,False
+configuracion,13,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,13,Ridge,Pivot_total_number,Número total de pivotes,22.833128148424255,5.691630886871935,True,7,1.0,True,False
+configuracion,13,Ridge,Pivot_total_volume,Volumen total de pivotes,0.6220117809154655,0.726940640595396,True,8,8.0,False,False
+configuracion,13,Ridge,Sample_total_volume,Volumen declarado del espécimen,13.764304390228592,2.758490467276167,True,9,4.0,True,False
+configuracion,13,ElasticNet,n_cells_Y,Número de celdas en Y,14.419195313041433,4.2537011324764595,True,0,3.0,True,False
+configuracion,13,ElasticNet,Fiber_height,Altura de fibra,0.061943826818276815,0.569058350910356,True,1,9.0,False,False
+configuracion,13,ElasticNet,Fiber_base,Ancho de fibra,2.266535851829608,1.2757380605533604,True,2,5.0,False,False
+configuracion,13,ElasticNet,Fiber_total_length,Longitud total de fibras,19.07013740382265,5.068888568663916,True,3,2.0,True,False
+configuracion,13,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.5788903262212999,0.7191100711139434,True,4,7.0,False,False
+configuracion,13,ElasticNet,Pivot_height,Altura de pivote,0.8789798029232309,0.7539266370090846,True,5,6.0,False,False
+configuracion,13,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,13,ElasticNet,Pivot_total_number,Número total de pivotes,22.766522022584507,5.691975740057091,True,7,1.0,True,False
+configuracion,13,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5494398307473568,0.7012799029655346,True,8,8.0,False,False
+configuracion,13,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,13.213700774645782,2.7139326025386845,True,9,4.0,True,False
+configuracion,13,SVR_RBF,n_cells_Y,Número de celdas en Y,10.099369125497203,2.9813293076112437,True,0,3.0,True,False
+configuracion,13,SVR_RBF,Fiber_height,Altura de fibra,-0.5050369632562259,0.9794738207229454,True,1,9.0,False,False
+configuracion,13,SVR_RBF,Fiber_base,Ancho de fibra,0.69536682445447,1.519589781258408,True,2,8.0,False,False
+configuracion,13,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.692733610577639,3.0512570168534365,True,3,2.0,True,False
+configuracion,13,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.701042466023165,1.9300369974279625,True,4,4.0,True,False
+configuracion,13,SVR_RBF,Pivot_height,Altura de pivote,1.1929064941307823,1.429193208549848,True,5,7.0,False,False
+configuracion,13,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,13,SVR_RBF,Pivot_total_number,Número total de pivotes,11.15849146465003,3.10839116874365,True,7,1.0,True,False
+configuracion,13,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.70104246602316,1.930036997427959,True,8,5.0,False,False
+configuracion,13,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.092038614449411,1.6230696568209573,True,9,6.0,False,False
+configuracion,13,RandomForest,n_cells_Y,Número de celdas en Y,6.035948301031756,1.906872549668325,True,0,2.0,True,False
+configuracion,13,RandomForest,Fiber_height,Altura de fibra,-0.08973116928572056,0.08734478197701097,True,1,9.0,False,False
+configuracion,13,RandomForest,Fiber_base,Ancho de fibra,0.027098573174603312,0.49754324496085095,True,2,8.0,False,False
+configuracion,13,RandomForest,Fiber_total_length,Longitud total de fibras,3.6726700303968314,1.328691015549665,True,3,4.0,True,False
+configuracion,13,RandomForest,Fiber_total_volume,Volumen total de fibras,10.21466130638888,2.9840398333169897,True,4,1.0,True,False
+configuracion,13,RandomForest,Pivot_height,Altura de pivote,0.076811041547617,0.25015364317246985,True,5,7.0,False,False
+configuracion,13,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,13,RandomForest,Pivot_total_number,Número total de pivotes,3.955473950873029,1.398778732127501,True,7,3.0,True,False
+configuracion,13,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.4687944555158743,1.5687252054366576,True,8,5.0,False,False
+configuracion,13,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.3759310328968117,0.5801403688928269,True,9,6.0,False,False
+configuracion,13,GaussianProcess,n_cells_Y,Número de celdas en Y,9.467020717966347,2.686699902357726,True,0,3.0,True,False
+configuracion,13,GaussianProcess,Fiber_height,Altura de fibra,-0.6499855590670964,0.8233165867969244,True,1,9.0,False,False
+configuracion,13,GaussianProcess,Fiber_base,Ancho de fibra,0.20438136587674993,1.1692072887403993,True,2,8.0,False,False
+configuracion,13,GaussianProcess,Fiber_total_length,Longitud total de fibras,10.079266404323292,2.766093805019637,True,3,2.0,True,False
+configuracion,13,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.9668575605514262,1.6449580847341554,True,4,4.0,True,False
+configuracion,13,GaussianProcess,Pivot_height,Altura de pivote,0.9312145056111201,1.4141461708699885,True,5,7.0,False,False
+configuracion,13,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,13,GaussianProcess,Pivot_total_number,Número total de pivotes,10.558188355763132,2.8305910921181,True,7,1.0,True,False
+configuracion,13,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.966857560551419,1.6449580847341494,True,8,5.0,False,False
+configuracion,13,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.5275648458258586,1.370786397673778,True,9,6.0,False,False
+configuracion,14,Ridge,n_cells_Y,Número de celdas en Y,14.72367668740417,3.5958127064243035,True,0,4.0,True,False
+configuracion,14,Ridge,Fiber_height,Altura de fibra,-0.3683946115862738,0.5359406802372927,True,1,9.0,False,False
+configuracion,14,Ridge,Fiber_base,Ancho de fibra,3.356836894837889,1.225274371410513,True,2,5.0,False,False
+configuracion,14,Ridge,Fiber_total_length,Longitud total de fibras,19.545821702950136,4.390448224867821,True,3,2.0,True,False
+configuracion,14,Ridge,Fiber_total_volume,Volumen total de fibras,0.7543257040368905,0.6314089467737778,True,4,7.0,False,False
+configuracion,14,Ridge,Pivot_height,Altura de pivote,1.0331532202279963,0.9442146040400802,True,5,6.0,False,False
+configuracion,14,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,14,Ridge,Pivot_total_number,Número total de pivotes,23.37804263603534,5.0368499697889435,True,7,1.0,True,False
+configuracion,14,Ridge,Pivot_total_volume,Volumen total de pivotes,0.7543257040367511,0.6314089467737273,True,8,8.0,False,False
+configuracion,14,Ridge,Sample_total_volume,Volumen declarado del espécimen,14.98088439571759,4.537533536594928,True,9,3.0,True,False
+configuracion,14,ElasticNet,n_cells_Y,Número de celdas en Y,14.427971987808329,3.5366476848644157,True,0,3.0,True,False
+configuracion,14,ElasticNet,Fiber_height,Altura de fibra,-0.42591036468800836,0.5092083958193914,True,1,9.0,False,False
+configuracion,14,ElasticNet,Fiber_base,Ancho de fibra,3.129368794300956,1.1719821540590243,True,2,5.0,False,False
+configuracion,14,ElasticNet,Fiber_total_length,Longitud total de fibras,19.38978077645944,4.36431382538393,True,3,2.0,True,False
+configuracion,14,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.7458211136199396,0.618768674440391,True,4,7.0,False,False
+configuracion,14,ElasticNet,Pivot_height,Altura de pivote,0.9509547169300461,0.9180170363605086,True,5,6.0,False,False
+configuracion,14,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,14,ElasticNet,Pivot_total_number,Número total de pivotes,23.2958097812428,5.021659372134564,True,7,1.0,True,False
+configuracion,14,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.7164441581609602,0.6064928459687202,True,8,8.0,False,False
+configuracion,14,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.425601368847595,4.415893175030591,True,9,4.0,True,False
+configuracion,14,SVR_RBF,n_cells_Y,Número de celdas en Y,10.071075589373596,2.369114324890727,True,0,3.0,True,False
+configuracion,14,SVR_RBF,Fiber_height,Altura de fibra,-0.3195329024029774,1.1211515242855516,True,1,9.0,False,False
+configuracion,14,SVR_RBF,Fiber_base,Ancho de fibra,0.1432540900125609,1.1646486762146655,True,2,8.0,False,False
+configuracion,14,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.708112245707808,2.423107844366498,True,3,2.0,True,False
+configuracion,14,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.836274736713928,1.354601677777078,True,4,4.0,True,False
+configuracion,14,SVR_RBF,Pivot_height,Altura de pivote,0.875405216737726,0.9605514643803972,True,5,7.0,False,False
+configuracion,14,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,14,SVR_RBF,Pivot_total_number,Número total de pivotes,11.20963803114053,2.4668536485144177,True,7,1.0,True,False
+configuracion,14,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.836274736713918,1.354601677777078,True,8,5.0,False,False
+configuracion,14,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.053886115521015,1.560269130343675,True,9,6.0,False,False
+configuracion,14,RandomForest,n_cells_Y,Número de celdas en Y,5.240836178968264,1.722169640266696,True,0,2.0,True,False
+configuracion,14,RandomForest,Fiber_height,Altura de fibra,-0.0909322094047651,0.07784357003636698,True,1,8.0,False,False
+configuracion,14,RandomForest,Fiber_base,Ancho de fibra,-0.130455291190475,0.35503065972212905,True,2,9.0,False,False
+configuracion,14,RandomForest,Fiber_total_length,Longitud total de fibras,3.5912490478968335,1.3606909759385217,True,3,4.0,True,False
+configuracion,14,RandomForest,Fiber_total_volume,Volumen total de fibras,8.859966647857132,3.050335046364249,True,4,1.0,True,False
+configuracion,14,RandomForest,Pivot_height,Altura de pivote,0.29671290273809897,0.2194161397843251,True,5,7.0,False,False
+configuracion,14,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,14,RandomForest,Pivot_total_number,Número total de pivotes,4.0616063687301756,1.404922196206714,True,7,3.0,True,False
+configuracion,14,RandomForest,Pivot_total_volume,Volumen total de pivotes,2.4538909786111227,1.588913809080861,True,8,5.0,False,False
+configuracion,14,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.5528064776190449,0.7661291661093289,True,9,6.0,False,False
+configuracion,14,GaussianProcess,n_cells_Y,Número de celdas en Y,9.345788891718447,2.138775907795876,True,0,3.0,True,False
+configuracion,14,GaussianProcess,Fiber_height,Altura de fibra,-0.6383448434535501,0.8685657067703422,True,1,9.0,False,False
+configuracion,14,GaussianProcess,Fiber_base,Ancho de fibra,-0.3888180908906465,0.9506026500813195,True,2,8.0,False,False
+configuracion,14,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.99555785689994,2.2027067126309197,True,3,2.0,True,False
+configuracion,14,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.07068430147482,1.1274223151388179,True,4,4.0,True,False
+configuracion,14,GaussianProcess,Pivot_height,Altura de pivote,0.8542283102959871,0.8961217034531027,True,5,7.0,False,False
+configuracion,14,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,14,GaussianProcess,Pivot_total_number,Número total de pivotes,10.510201044083104,2.2546014694405194,True,7,1.0,True,False
+configuracion,14,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.070684301474803,1.1274223151388143,True,8,5.0,False,False
+configuracion,14,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.549845052972936,1.4138651121563603,True,9,6.0,False,False
+configuracion,15,Ridge,n_cells_Y,Número de celdas en Y,14.38511484957122,3.0492960743254285,True,0,4.0,True,False
+configuracion,15,Ridge,Fiber_height,Altura de fibra,-0.18285470092271927,0.5004666318806951,True,1,9.0,False,False
+configuracion,15,Ridge,Fiber_base,Ancho de fibra,2.623008880577801,1.110124623692705,True,2,5.0,False,False
+configuracion,15,Ridge,Fiber_total_length,Longitud total de fibras,19.23722862534441,3.746862895944278,True,3,2.0,True,False
+configuracion,15,Ridge,Fiber_total_volume,Volumen total de fibras,0.7330055911051132,0.5597497003228654,True,4,7.0,False,False
+configuracion,15,Ridge,Pivot_height,Altura de pivote,0.880333739120634,0.9138874324078183,True,5,6.0,False,False
+configuracion,15,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,15,Ridge,Pivot_total_number,Número total de pivotes,23.121047911186587,4.311490845896111,True,7,1.0,True,False
+configuracion,15,Ridge,Pivot_total_volume,Volumen total de pivotes,0.7330055911049551,0.5597497003228172,True,8,8.0,False,False
+configuracion,15,Ridge,Sample_total_volume,Volumen declarado del espécimen,16.253748406718916,3.7019436657290026,True,9,3.0,True,False
+configuracion,15,ElasticNet,n_cells_Y,Número de celdas en Y,14.06908434956291,3.0100332535596785,True,0,4.0,True,False
+configuracion,15,ElasticNet,Fiber_height,Altura de fibra,-0.2710298654912943,0.4900622672540212,True,1,9.0,False,False
+configuracion,15,ElasticNet,Fiber_base,Ancho de fibra,2.441942810367638,1.0883372763973864,True,2,5.0,False,False
+configuracion,15,ElasticNet,Fiber_total_length,Longitud total de fibras,19.075981632406368,3.739326123443428,True,3,2.0,True,False
+configuracion,15,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.7072775724168873,0.5525334903533192,True,4,7.0,False,False
+configuracion,15,ElasticNet,Pivot_height,Altura de pivote,0.8063675434164068,0.8936660703430416,True,5,6.0,False,False
+configuracion,15,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,15,ElasticNet,Pivot_total_number,Número total de pivotes,23.040604027214567,4.313298704584758,True,7,1.0,True,False
+configuracion,15,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.6746112062737717,0.5403749982520414,True,8,8.0,False,False
+configuracion,15,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.694081197299614,3.6073395625234452,True,9,3.0,True,False
+configuracion,15,SVR_RBF,n_cells_Y,Número de celdas en Y,9.918487206505052,2.3365295794763954,True,0,3.0,True,False
+configuracion,15,SVR_RBF,Fiber_height,Altura de fibra,-0.4712984285759096,0.7539792889970439,True,1,9.0,False,False
+configuracion,15,SVR_RBF,Fiber_base,Ancho de fibra,0.44899918946656825,1.6826678847810173,True,2,8.0,False,False
+configuracion,15,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.572012606944636,2.41644332003633,True,3,2.0,True,False
+configuracion,15,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.956111241753115,1.5413719534566575,True,4,4.0,True,False
+configuracion,15,SVR_RBF,Pivot_height,Altura de pivote,0.7465924890783192,1.1291817225545187,True,5,7.0,False,False
+configuracion,15,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,15,SVR_RBF,Pivot_total_number,Número total de pivotes,11.08565964339279,2.487950483710716,True,7,1.0,True,False
+configuracion,15,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.95611124175311,1.5413719534566552,True,8,5.0,False,False
+configuracion,15,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.970392983120598,1.7307262728891657,True,9,6.0,False,False
+configuracion,15,RandomForest,n_cells_Y,Número de celdas en Y,5.718350238253979,1.600951182019185,True,0,2.0,True,False
+configuracion,15,RandomForest,Fiber_height,Altura de fibra,-0.017428311190477254,0.12908183376789906,True,1,9.0,False,False
+configuracion,15,RandomForest,Fiber_base,Ancho de fibra,0.28552138873016003,0.5375441006611572,True,2,7.0,False,False
+configuracion,15,RandomForest,Fiber_total_length,Longitud total de fibras,4.782882864999997,1.4814050704270527,True,3,3.0,True,False
+configuracion,15,RandomForest,Fiber_total_volume,Volumen total de fibras,12.014112555317457,2.4062687791320365,True,4,1.0,True,False
+configuracion,15,RandomForest,Pivot_height,Altura de pivote,0.06116241214285978,0.07519076407849518,True,5,8.0,False,False
+configuracion,15,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,15,RandomForest,Pivot_total_number,Número total de pivotes,3.2463535688888987,1.3368565812076447,True,7,5.0,False,False
+configuracion,15,RandomForest,Pivot_total_volume,Volumen total de pivotes,4.346540434484137,1.4037484482231644,True,8,4.0,True,False
+configuracion,15,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.5272104098015847,0.7967616945757446,True,9,6.0,False,False
+configuracion,15,GaussianProcess,n_cells_Y,Número de celdas en Y,9.17441007124439,2.1233653800920282,True,0,3.0,True,False
+configuracion,15,GaussianProcess,Fiber_height,Altura de fibra,-0.9779834359887918,0.8600302075650571,True,1,9.0,False,False
+configuracion,15,GaussianProcess,Fiber_base,Ancho de fibra,-0.14557745218629678,1.385754045403767,True,2,8.0,False,False
+configuracion,15,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.840572641269105,2.211271067508232,True,3,2.0,True,False
+configuracion,15,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.9328373589278187,1.3634432618252263,True,4,4.0,True,False
+configuracion,15,GaussianProcess,Pivot_height,Altura de pivote,0.47784834371189505,1.0117371806351099,True,5,7.0,False,False
+configuracion,15,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,15,GaussianProcess,Pivot_total_number,Número total de pivotes,10.364562678652927,2.2878204894116596,True,7,1.0,True,False
+configuracion,15,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.932837358927806,1.3634432618252228,True,8,5.0,False,False
+configuracion,15,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.3235353770131795,1.3809942184530704,True,9,6.0,False,False
+configuracion,16,Ridge,n_cells_Y,Número de celdas en Y,15.400006851011188,2.629149981092812,True,0,3.0,True,False
+configuracion,16,Ridge,Fiber_height,Altura de fibra,-0.4796360473384211,0.49542555295231844,True,1,9.0,False,False
+configuracion,16,Ridge,Fiber_base,Ancho de fibra,2.643391980138654,1.44506669544453,True,2,5.0,False,False
+configuracion,16,Ridge,Fiber_total_length,Longitud total de fibras,19.92729889000896,3.1978535839142914,True,3,2.0,True,False
+configuracion,16,Ridge,Fiber_total_volume,Volumen total de fibras,0.7776419995339012,0.7125396199197894,True,4,7.0,False,False
+configuracion,16,Ridge,Pivot_height,Altura de pivote,1.1408419763737114,0.874593483574271,True,5,6.0,False,False
+configuracion,16,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,16,Ridge,Pivot_total_number,Número total de pivotes,23.50249750808348,3.6745040558239257,True,7,1.0,True,False
+configuracion,16,Ridge,Pivot_total_volume,Volumen total de pivotes,0.7776419995337693,0.7125396199197442,True,8,8.0,False,False
+configuracion,16,Ridge,Sample_total_volume,Volumen declarado del espécimen,12.776627412866693,3.7814121799955833,True,9,4.0,True,False
+configuracion,16,ElasticNet,n_cells_Y,Número de celdas en Y,15.073604700819526,2.615648872761385,True,0,3.0,True,False
+configuracion,16,ElasticNet,Fiber_height,Altura de fibra,-0.5090267814601341,0.49517944236162253,True,1,9.0,False,False
+configuracion,16,ElasticNet,Fiber_base,Ancho de fibra,2.409200793795873,1.3936139959091365,True,2,5.0,False,False
+configuracion,16,ElasticNet,Fiber_total_length,Longitud total de fibras,19.77438931496252,3.1976388324068474,True,3,2.0,True,False
+configuracion,16,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.7372386641167907,0.7114931683093942,True,4,7.0,False,False
+configuracion,16,ElasticNet,Pivot_height,Altura de pivote,1.0766900919194833,0.8422316433108858,True,5,6.0,False,False
+configuracion,16,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,16,ElasticNet,Pivot_total_number,Número total de pivotes,23.42483313634192,3.682458210627357,True,7,1.0,True,False
+configuracion,16,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.7000839724153555,0.697477821946048,True,8,8.0,False,False
+configuracion,16,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,12.256188092046305,3.7125631601247693,True,9,4.0,True,False
+configuracion,16,SVR_RBF,n_cells_Y,Número de celdas en Y,9.781732190440682,2.402591747081898,True,0,3.0,True,False
+configuracion,16,SVR_RBF,Fiber_height,Altura de fibra,-0.43856726242269983,1.1034792019873052,True,1,8.0,False,False
+configuracion,16,SVR_RBF,Fiber_base,Ancho de fibra,-0.47250659054716415,1.2669471131851529,True,2,9.0,False,False
+configuracion,16,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.391263596227642,2.4808693783887694,True,3,2.0,True,False
+configuracion,16,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.170277838304502,1.5368222135006597,True,4,4.0,True,False
+configuracion,16,SVR_RBF,Pivot_height,Altura de pivote,0.026288067149399196,0.9346724266943657,True,5,7.0,False,False
+configuracion,16,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,16,SVR_RBF,Pivot_total_number,Número total de pivotes,10.872165946911661,2.5446954971477904,True,7,1.0,True,False
+configuracion,16,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.1702778383044965,1.5368222135006566,True,8,5.0,False,False
+configuracion,16,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.215914937886486,1.6820961569704285,True,9,6.0,False,False
+configuracion,16,RandomForest,n_cells_Y,Número de celdas en Y,6.548305323849215,1.420932003501483,True,0,2.0,True,False
+configuracion,16,RandomForest,Fiber_height,Altura de fibra,-0.14655813345238364,0.12279409396869732,True,1,8.0,False,False
+configuracion,16,RandomForest,Fiber_base,Ancho de fibra,-0.19742542476190109,0.3524522695377747,True,2,9.0,False,False
+configuracion,16,RandomForest,Fiber_total_length,Longitud total de fibras,4.176900123809527,1.2706882336372807,True,3,3.0,True,False
+configuracion,16,RandomForest,Fiber_total_volume,Volumen total de fibras,11.798063737976184,2.4682326769859713,True,4,1.0,True,False
+configuracion,16,RandomForest,Pivot_height,Altura de pivote,0.03449803047619175,0.1330169873981399,True,5,7.0,False,False
+configuracion,16,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,16,RandomForest,Pivot_total_number,Número total de pivotes,3.1269754453571528,1.1499153730562979,True,7,5.0,False,False
+configuracion,16,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.60169232527778,1.2423067262459375,True,8,4.0,True,False
+configuracion,16,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.986135594404756,0.665274803760948,True,9,6.0,False,False
+configuracion,16,GaussianProcess,n_cells_Y,Número de celdas en Y,8.818784083788056,2.1541440404554364,True,0,3.0,True,False
+configuracion,16,GaussianProcess,Fiber_height,Altura de fibra,-1.0630083659461866,0.9080639674667267,True,1,8.0,False,False
+configuracion,16,GaussianProcess,Fiber_base,Ancho de fibra,-1.073309706394404,1.1360297016178436,True,2,9.0,False,False
+configuracion,16,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.472349065946185,2.2358031310251647,True,3,2.0,True,False
+configuracion,16,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.121148104579714,1.3039413541426688,True,4,4.0,True,False
+configuracion,16,GaussianProcess,Pivot_height,Altura de pivote,-0.2558511622406865,0.7831931294482557,True,5,7.0,False,False
+configuracion,16,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,16,GaussianProcess,Pivot_total_number,Número total de pivotes,9.984989534069499,2.30331515026348,True,7,1.0,True,False
+configuracion,16,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.1211481045797074,1.3039413541426685,True,8,5.0,False,False
+configuracion,16,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.4271170091940846,1.3848593846583421,True,9,6.0,False,False
+configuracion,17,Ridge,n_cells_Y,Número de celdas en Y,13.790529597803873,3.703350731451408,True,0,3.0,True,False
+configuracion,17,Ridge,Fiber_height,Altura de fibra,-0.5968927731688823,0.41120550520378896,True,1,9.0,False,False
+configuracion,17,Ridge,Fiber_base,Ancho de fibra,3.151552645972493,1.1243046280243931,True,2,5.0,False,False
+configuracion,17,Ridge,Fiber_total_length,Longitud total de fibras,18.137234671857886,4.481487923791165,True,3,2.0,True,False
+configuracion,17,Ridge,Fiber_total_volume,Volumen total de fibras,0.6477586312828201,0.5369951229588523,True,4,7.0,False,False
+configuracion,17,Ridge,Pivot_height,Altura de pivote,0.7400947777614386,0.8357879200232006,True,5,6.0,False,False
+configuracion,17,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,17,Ridge,Pivot_total_number,Número total de pivotes,21.581505166706094,5.090100146134247,True,7,1.0,True,False
+configuracion,17,Ridge,Pivot_total_volume,Volumen total de pivotes,0.6477586312826679,0.5369951229588186,True,8,8.0,False,False
+configuracion,17,Ridge,Sample_total_volume,Volumen declarado del espécimen,13.48668158609886,3.0830373157713655,True,9,4.0,True,False
+configuracion,17,ElasticNet,n_cells_Y,Número de celdas en Y,13.501763066371192,3.662644684678576,True,0,3.0,True,False
+configuracion,17,ElasticNet,Fiber_height,Altura de fibra,-0.6385998858316351,0.39745949788798834,True,1,9.0,False,False
+configuracion,17,ElasticNet,Fiber_base,Ancho de fibra,2.9386217907825185,1.0950038181309831,True,2,5.0,False,False
+configuracion,17,ElasticNet,Fiber_total_length,Longitud total de fibras,18.00093431013658,4.479002024492277,True,3,2.0,True,False
+configuracion,17,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.6414694644045273,0.5334106553452427,True,4,7.0,False,False
+configuracion,17,ElasticNet,Pivot_height,Altura de pivote,0.6882331495713726,0.8003292854641649,True,5,6.0,False,False
+configuracion,17,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,17,ElasticNet,Pivot_total_number,Número total de pivotes,21.515611721319935,5.100480319551008,True,7,1.0,True,False
+configuracion,17,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.6089929853022633,0.5252895383137949,True,8,8.0,False,False
+configuracion,17,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,12.949955545706732,3.0395184294287048,True,9,4.0,True,False
+configuracion,17,SVR_RBF,n_cells_Y,Número de celdas en Y,8.97806596488406,2.5519500098699264,True,0,3.0,True,False
+configuracion,17,SVR_RBF,Fiber_height,Altura de fibra,-1.3032010808375252,1.0334644969655948,True,1,9.0,False,False
+configuracion,17,SVR_RBF,Fiber_base,Ancho de fibra,-0.18678823881590878,1.0063228314695636,True,2,8.0,False,False
+configuracion,17,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.592409940334917,2.5912435323613945,True,3,2.0,True,False
+configuracion,17,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.050474089722577,1.9063401645265678,True,4,4.0,True,False
+configuracion,17,SVR_RBF,Pivot_height,Altura de pivote,0.2843534345060844,1.5161425107454833,True,5,7.0,False,False
+configuracion,17,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,17,SVR_RBF,Pivot_total_number,Número total de pivotes,10.07586346142055,2.6241685918140503,True,7,1.0,True,False
+configuracion,17,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.050474089722565,1.9063401645265698,True,8,5.0,False,False
+configuracion,17,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.57004556378758,1.7801633453045231,True,9,6.0,False,False
+configuracion,17,RandomForest,n_cells_Y,Número de celdas en Y,6.0655585657142925,1.538445494731362,True,0,2.0,True,False
+configuracion,17,RandomForest,Fiber_height,Altura de fibra,-0.1596894564285755,0.12666826150494492,True,1,8.0,False,False
+configuracion,17,RandomForest,Fiber_base,Ancho de fibra,-0.3502372527777783,0.4762259972132042,True,2,9.0,False,False
+configuracion,17,RandomForest,Fiber_total_length,Longitud total de fibras,4.134174775079361,1.2062025786600177,True,3,3.0,True,False
+configuracion,17,RandomForest,Fiber_total_volume,Volumen total de fibras,11.219929954444442,3.029164300114531,True,4,1.0,True,False
+configuracion,17,RandomForest,Pivot_height,Altura de pivote,0.33305716662698936,0.18378816414644197,True,5,7.0,False,False
+configuracion,17,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,17,RandomForest,Pivot_total_number,Número total de pivotes,3.7774936115476203,1.1487763472963786,True,7,4.0,True,False
+configuracion,17,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.7135382334920615,1.352037536524472,True,8,5.0,False,False
+configuracion,17,RandomForest,Sample_total_volume,Volumen declarado del espécimen,1.0285707972618936,0.8868415020487718,True,9,6.0,False,False
+configuracion,17,GaussianProcess,n_cells_Y,Número de celdas en Y,8.057200292675203,2.478063808039301,True,0,3.0,True,False
+configuracion,17,GaussianProcess,Fiber_height,Altura de fibra,-1.812580600123151,0.9537792374281826,True,1,9.0,False,False
+configuracion,17,GaussianProcess,Fiber_base,Ancho de fibra,-0.8568329033110398,0.7381698149232692,True,2,8.0,False,False
+configuracion,17,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.703317007617198,2.5308219073078124,True,3,2.0,True,False
+configuracion,17,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.2958440746436812,1.6767083614639828,True,4,4.0,True,False
+configuracion,17,GaussianProcess,Pivot_height,Altura de pivote,-0.043141860262471354,1.3757794640823189,True,5,7.0,False,False
+configuracion,17,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,17,GaussianProcess,Pivot_total_number,Número total de pivotes,9.212206045761883,2.5736495653053866,True,7,1.0,True,False
+configuracion,17,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.295844074643662,1.6767083614639813,True,8,5.0,False,False
+configuracion,17,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.9681620049780932,1.524912131179769,True,9,6.0,False,False
+configuracion,18,Ridge,n_cells_Y,Número de celdas en Y,14.650785449004152,4.819695012253905,True,0,4.0,True,False
+configuracion,18,Ridge,Fiber_height,Altura de fibra,0.5027419299332129,0.9753088810707662,True,1,9.0,False,False
+configuracion,18,Ridge,Fiber_base,Ancho de fibra,3.4496625658964177,2.15780412099969,True,2,5.0,False,False
+configuracion,18,Ridge,Fiber_total_length,Longitud total de fibras,18.757913798946852,5.656276947380697,True,3,2.0,True,False
+configuracion,18,Ridge,Fiber_total_volume,Volumen total de fibras,1.5151622791761166,1.405667007347554,True,4,6.0,False,False
+configuracion,18,Ridge,Pivot_height,Altura de pivote,0.6086546690809573,1.0930335506556568,True,5,8.0,False,False
+configuracion,18,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,18,Ridge,Pivot_total_number,Número total de pivotes,22.01305047600277,6.324411154553869,True,7,1.0,True,False
+configuracion,18,Ridge,Pivot_total_volume,Volumen total de pivotes,1.5151622791759727,1.4056670073474888,True,8,7.0,False,False
+configuracion,18,Ridge,Sample_total_volume,Volumen declarado del espécimen,16.04957667571831,3.5473043881039703,True,9,3.0,True,False
+configuracion,18,ElasticNet,n_cells_Y,Número de celdas en Y,14.352726049083648,4.7748250833133365,True,0,4.0,True,False
+configuracion,18,ElasticNet,Fiber_height,Altura de fibra,0.39862081256610027,0.9520843051778486,True,1,9.0,False,False
+configuracion,18,ElasticNet,Fiber_base,Ancho de fibra,3.2281863936442647,2.088880103884298,True,2,5.0,False,False
+configuracion,18,ElasticNet,Fiber_total_length,Longitud total de fibras,18.627906321035404,5.662427715607516,True,3,2.0,True,False
+configuracion,18,ElasticNet,Fiber_total_volume,Volumen total de fibras,1.524073481585824,1.3844116512777855,True,4,6.0,False,False
+configuracion,18,ElasticNet,Pivot_height,Altura de pivote,0.5245005787193743,1.059350995632487,True,5,8.0,False,False
+configuracion,18,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,18,ElasticNet,Pivot_total_number,Número total de pivotes,21.978577031424333,6.346421410476122,True,7,1.0,True,False
+configuracion,18,ElasticNet,Pivot_total_volume,Volumen total de pivotes,1.4846787567850697,1.367672159541604,True,8,7.0,False,False
+configuracion,18,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.5434129429553,3.4643171622929914,True,9,3.0,True,False
+configuracion,18,SVR_RBF,n_cells_Y,Número de celdas en Y,9.56491390984874,4.028022595641608,True,0,3.0,True,False
+configuracion,18,SVR_RBF,Fiber_height,Altura de fibra,-0.19823002161521677,0.8553532764275671,True,1,9.0,False,False
+configuracion,18,SVR_RBF,Fiber_base,Ancho de fibra,0.2127743621967526,1.462803709660727,True,2,8.0,False,False
+configuracion,18,SVR_RBF,Fiber_total_length,Longitud total de fibras,10.200548745731544,4.197841390858717,True,3,2.0,True,False
+configuracion,18,SVR_RBF,Fiber_total_volume,Volumen total de fibras,5.481783423756223,2.5832118237004518,True,4,4.0,True,False
+configuracion,18,SVR_RBF,Pivot_height,Altura de pivote,1.2644216426153512,1.5703798314324326,True,5,7.0,False,False
+configuracion,18,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,18,SVR_RBF,Pivot_total_number,Número total de pivotes,10.699591263423581,4.335636157944093,True,7,1.0,True,False
+configuracion,18,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,5.481783423756217,2.58321182370045,True,8,5.0,False,False
+configuracion,18,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.7943769154698046,1.7225513431280912,True,9,6.0,False,False
+configuracion,18,RandomForest,n_cells_Y,Número de celdas en Y,6.20812561273811,2.42476300115082,True,0,2.0,True,False
+configuracion,18,RandomForest,Fiber_height,Altura de fibra,-0.17973644357142476,0.11170746523983775,True,1,9.0,False,False
+configuracion,18,RandomForest,Fiber_base,Ancho de fibra,0.17257982190477206,0.378451095807286,True,2,7.0,False,False
+configuracion,18,RandomForest,Fiber_total_length,Longitud total de fibras,4.4030693646825485,2.07579506914179,True,3,4.0,True,False
+configuracion,18,RandomForest,Fiber_total_volume,Volumen total de fibras,7.305126398293649,2.7384650544357645,True,4,1.0,True,False
+configuracion,18,RandomForest,Pivot_height,Altura de pivote,0.1366756298809581,0.267784857282791,True,5,8.0,False,False
+configuracion,18,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,18,RandomForest,Pivot_total_number,Número total de pivotes,4.291089462857154,1.9690769647999362,True,7,5.0,False,False
+configuracion,18,RandomForest,Pivot_total_volume,Volumen total de pivotes,4.912202085992074,2.284725794559637,True,8,3.0,True,False
+configuracion,18,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.4479989288888929,0.687651181441274,True,9,6.0,False,False
+configuracion,18,GaussianProcess,n_cells_Y,Número de celdas en Y,8.251562916250702,3.881791018258374,True,0,3.0,True,False
+configuracion,18,GaussianProcess,Fiber_height,Altura de fibra,-1.2471824467739154,0.7027993856390671,True,1,9.0,False,False
+configuracion,18,GaussianProcess,Fiber_base,Ancho de fibra,-0.503031989654306,1.2897007772410711,True,2,8.0,False,False
+configuracion,18,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.884547851545609,4.081720836548452,True,3,2.0,True,False
+configuracion,18,GaussianProcess,Fiber_total_volume,Volumen total de fibras,4.187941988808353,2.3720244631135357,True,4,4.0,True,False
+configuracion,18,GaussianProcess,Pivot_height,Altura de pivote,0.3936481543897938,1.3761589123413949,True,5,7.0,False,False
+configuracion,18,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,18,GaussianProcess,Pivot_total_number,Número total de pivotes,9.380550957888003,4.242061305969104,True,7,1.0,True,False
+configuracion,18,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,4.187941988808342,2.3720244631135303,True,8,5.0,False,False
+configuracion,18,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.138247681995493,1.5315220325017744,True,9,6.0,False,False
+configuracion,19,Ridge,n_cells_Y,Número de celdas en Y,12.884660044250236,2.646773082035302,True,0,4.0,True,False
+configuracion,19,Ridge,Fiber_height,Altura de fibra,0.397890940475809,0.9466952694137813,True,1,7.0,False,False
+configuracion,19,Ridge,Fiber_base,Ancho de fibra,2.8239979805593376,1.9246834475826378,True,2,5.0,False,False
+configuracion,19,Ridge,Fiber_total_length,Longitud total de fibras,17.27225372195642,3.3830892941466186,True,3,2.0,True,False
+configuracion,19,Ridge,Fiber_total_volume,Volumen total de fibras,0.20491780738812979,0.5509070862870133,True,4,8.0,False,False
+configuracion,19,Ridge,Pivot_height,Altura de pivote,0.8091019451175342,0.8879281484607574,True,5,6.0,False,False
+configuracion,19,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,19,Ridge,Pivot_total_number,Número total de pivotes,20.839667040953202,4.004357447141344,True,7,1.0,True,False
+configuracion,19,Ridge,Pivot_total_volume,Volumen total de pivotes,0.20491780738795784,0.5509070862869931,True,8,9.0,False,False
+configuracion,19,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.87319915154352,4.686105329682751,True,9,3.0,True,False
+configuracion,19,ElasticNet,n_cells_Y,Número de celdas en Y,12.607749135347158,2.6064339900914932,True,0,4.0,True,False
+configuracion,19,ElasticNet,Fiber_height,Altura de fibra,0.3386726772235476,0.9170061701392771,True,1,7.0,False,False
+configuracion,19,ElasticNet,Fiber_base,Ancho de fibra,2.591469818100241,1.8799750262801806,True,2,5.0,False,False
+configuracion,19,ElasticNet,Fiber_total_length,Longitud total de fibras,17.16333846310143,3.3545452645855605,True,3,2.0,True,False
+configuracion,19,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.18218579597315943,0.5397476159143432,True,4,8.0,False,False
+configuracion,19,ElasticNet,Pivot_height,Altura de pivote,0.7123363131940161,0.8736173937839865,True,5,6.0,False,False
+configuracion,19,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,19,ElasticNet,Pivot_total_number,Número total de pivotes,20.80861686301312,3.9897913329330357,True,7,1.0,True,False
+configuracion,19,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.15189206881910708,0.5344233609090018,True,8,9.0,False,False
+configuracion,19,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.33740940396899,4.582748281671849,True,9,3.0,True,False
+configuracion,19,SVR_RBF,n_cells_Y,Número de celdas en Y,8.760489859782327,2.442298571309154,True,0,3.0,True,False
+configuracion,19,SVR_RBF,Fiber_height,Altura de fibra,-0.13597443636114387,0.6963472028349013,True,1,8.0,False,False
+configuracion,19,SVR_RBF,Fiber_base,Ancho de fibra,-0.8324874350561527,1.1740846834727228,True,2,9.0,False,False
+configuracion,19,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.304653269752267,2.5319883311442877,True,3,2.0,True,False
+configuracion,19,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.884608645382714,1.6179221090710356,True,4,4.0,True,False
+configuracion,19,SVR_RBF,Pivot_height,Altura de pivote,1.131728712492584,1.405864616643412,True,5,7.0,False,False
+configuracion,19,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,19,SVR_RBF,Pivot_total_number,Número total de pivotes,9.736601508785425,2.603527461546139,True,7,1.0,True,False
+configuracion,19,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.884608645382709,1.6179221090710334,True,8,5.0,False,False
+configuracion,19,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.7730576220031713,1.544579737223076,True,9,6.0,False,False
+configuracion,19,RandomForest,n_cells_Y,Número de celdas en Y,5.008937328928573,1.489882341375347,True,0,2.0,True,False
+configuracion,19,RandomForest,Fiber_height,Altura de fibra,-0.07705160821428177,0.14019373402721572,True,1,9.0,False,False
+configuracion,19,RandomForest,Fiber_base,Ancho de fibra,0.11417727996031957,0.32170823992733527,True,2,8.0,False,False
+configuracion,19,RandomForest,Fiber_total_length,Longitud total de fibras,3.0546980480952377,1.209737083094575,True,3,3.0,True,False
+configuracion,19,RandomForest,Fiber_total_volume,Volumen total de fibras,8.908558794325394,2.1822480694069886,True,4,1.0,True,False
+configuracion,19,RandomForest,Pivot_height,Altura de pivote,0.14508085900793963,0.3017063621349829,True,5,7.0,False,False
+configuracion,19,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,19,RandomForest,Pivot_total_number,Número total de pivotes,2.1870567458333356,1.122087278228897,True,7,5.0,False,False
+configuracion,19,RandomForest,Pivot_total_volume,Volumen total de pivotes,2.8385275328968302,1.4237468783633371,True,8,4.0,True,False
+configuracion,19,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.3668195545238152,0.644804467432572,True,9,6.0,False,False
+configuracion,19,GaussianProcess,n_cells_Y,Número de celdas en Y,7.426549193826863,2.2420168390557125,True,0,3.0,True,False
+configuracion,19,GaussianProcess,Fiber_height,Altura de fibra,-0.5779837902240843,0.5870007795941465,True,1,8.0,False,False
+configuracion,19,GaussianProcess,Fiber_base,Ancho de fibra,-1.197019608353141,1.128072936640909,True,2,9.0,False,False
+configuracion,19,GaussianProcess,Fiber_total_length,Longitud total de fibras,7.999713643291642,2.3338619561171448,True,3,2.0,True,False
+configuracion,19,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.7586187713467374,1.4866992249273427,True,4,4.0,True,False
+configuracion,19,GaussianProcess,Pivot_height,Altura de pivote,0.3907829774645042,1.3846999426503546,True,5,7.0,False,False
+configuracion,19,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,19,GaussianProcess,Pivot_total_number,Número total de pivotes,8.450932918155223,2.4082948340026507,True,7,1.0,True,False
+configuracion,19,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.758618771346719,1.4866992249273385,True,8,5.0,False,False
+configuracion,19,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.9244811421958878,1.1933156964159972,True,9,6.0,False,False
+configuracion,20,Ridge,n_cells_Y,Número de celdas en Y,11.235368603529944,2.5713880411677397,True,0,4.0,True,False
+configuracion,20,Ridge,Fiber_height,Altura de fibra,0.1989229661307279,0.6908396670058717,True,1,9.0,False,False
+configuracion,20,Ridge,Fiber_base,Ancho de fibra,1.9868450529460897,1.6738525004123945,True,2,5.0,False,False
+configuracion,20,Ridge,Fiber_total_length,Longitud total de fibras,15.776958684286075,3.3455057596626547,True,3,2.0,True,False
+configuracion,20,Ridge,Fiber_total_volume,Volumen total de fibras,0.5202796683317963,0.7001305893419592,True,4,7.0,False,False
+configuracion,20,Ridge,Pivot_height,Altura de pivote,1.7589147204191669,1.321909311489336,True,5,6.0,False,False
+configuracion,20,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,20,Ridge,Pivot_total_number,Número total de pivotes,19.415078282174417,3.9830352351458296,True,7,1.0,True,False
+configuracion,20,Ridge,Pivot_total_volume,Volumen total de pivotes,0.5202796683315984,0.700130589341952,True,8,8.0,False,False
+configuracion,20,Ridge,Sample_total_volume,Volumen declarado del espécimen,14.690801177537633,4.355456370244287,True,9,3.0,True,False
+configuracion,20,ElasticNet,n_cells_Y,Número de celdas en Y,10.894846177942153,2.507776430064026,True,0,4.0,True,False
+configuracion,20,ElasticNet,Fiber_height,Altura de fibra,0.10742141018284652,0.6743293038181204,True,1,9.0,False,False
+configuracion,20,ElasticNet,Fiber_base,Ancho de fibra,1.7703621738055062,1.6102531819325576,True,2,5.0,False,False
+configuracion,20,ElasticNet,Fiber_total_length,Longitud total de fibras,15.596290197541824,3.312559529204442,True,3,2.0,True,False
+configuracion,20,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.49199593422709426,0.6983148413502127,True,4,7.0,False,False
+configuracion,20,ElasticNet,Pivot_height,Altura de pivote,1.6613347057779748,1.3058074390390402,True,5,6.0,False,False
+configuracion,20,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,20,ElasticNet,Pivot_total_number,Número total de pivotes,19.313505548930017,3.961541014338249,True,7,1.0,True,False
+configuracion,20,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.4566476687824716,0.6969077884409591,True,8,8.0,False,False
+configuracion,20,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,14.109622907278666,4.239999366888339,True,9,3.0,True,False
+configuracion,20,SVR_RBF,n_cells_Y,Número de celdas en Y,7.161710714419405,1.4026471603843678,True,0,3.0,True,False
+configuracion,20,SVR_RBF,Fiber_height,Altura de fibra,-0.7740299545361334,0.8510838111545939,True,1,8.0,False,False
+configuracion,20,SVR_RBF,Fiber_base,Ancho de fibra,-1.1748230581159285,1.5244134214355118,True,2,9.0,False,False
+configuracion,20,SVR_RBF,Fiber_total_length,Longitud total de fibras,7.670299548668902,1.4524267372699335,True,3,2.0,True,False
+configuracion,20,SVR_RBF,Fiber_total_volume,Volumen total de fibras,3.704507157716531,1.135377788338988,True,4,4.0,True,False
+configuracion,20,SVR_RBF,Pivot_height,Altura de pivote,0.15568102745906529,1.69528463730556,True,5,7.0,False,False
+configuracion,20,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,20,SVR_RBF,Pivot_total_number,Número total de pivotes,8.094097147507295,1.5050480774574786,True,7,1.0,True,False
+configuracion,20,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,3.704507157716523,1.1353777883389866,True,8,5.0,False,False
+configuracion,20,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.3228795130275217,1.0187960734034105,True,9,6.0,False,False
+configuracion,20,RandomForest,n_cells_Y,Número de celdas en Y,5.514442044007948,1.204084797221113,True,0,2.0,True,False
+configuracion,20,RandomForest,Fiber_height,Altura de fibra,-0.13311903587301144,0.09985223020573576,True,1,9.0,False,False
+configuracion,20,RandomForest,Fiber_base,Ancho de fibra,0.28769773444445795,0.3058657779749099,True,2,7.0,False,False
+configuracion,20,RandomForest,Fiber_total_length,Longitud total de fibras,4.292401677380968,1.0722321805035449,True,3,3.0,True,False
+configuracion,20,RandomForest,Fiber_total_volume,Volumen total de fibras,8.953909210714292,1.8637402560532368,True,4,1.0,True,False
+configuracion,20,RandomForest,Pivot_height,Altura de pivote,0.14420324023809342,0.252168941154808,True,5,8.0,False,False
+configuracion,20,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,20,RandomForest,Pivot_total_number,Número total de pivotes,3.5476999238492164,0.9209661034564202,True,7,5.0,False,False
+configuracion,20,RandomForest,Pivot_total_volume,Volumen total de pivotes,3.9939126956746165,0.9848421450080419,True,8,4.0,True,False
+configuracion,20,RandomForest,Sample_total_volume,Volumen declarado del espécimen,1.1136753400397013,0.810607966325113,True,9,6.0,False,False
+configuracion,20,GaussianProcess,n_cells_Y,Número de celdas en Y,6.511089136841458,1.487899713751755,True,0,3.0,True,False
+configuracion,20,GaussianProcess,Fiber_height,Altura de fibra,-1.4238430606140415,0.6663329618272629,True,1,9.0,False,False
+configuracion,20,GaussianProcess,Fiber_base,Ancho de fibra,-1.2588465385258367,1.3390248545518355,True,2,8.0,False,False
+configuracion,20,GaussianProcess,Fiber_total_length,Longitud total de fibras,7.0587984165243665,1.556139718719752,True,3,2.0,True,False
+configuracion,20,GaussianProcess,Fiber_total_volume,Volumen total de fibras,2.9613697051110535,1.106021116912161,True,4,4.0,True,False
+configuracion,20,GaussianProcess,Pivot_height,Altura de pivote,-0.13530250860260562,1.7380040393924634,True,5,7.0,False,False
+configuracion,20,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,20,GaussianProcess,Pivot_total_number,Número total de pivotes,7.490677718937528,1.6157538875773487,True,7,1.0,True,False
+configuracion,20,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,2.9613697051110357,1.1060211169121594,True,8,5.0,False,False
+configuracion,20,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.8654844428821307,0.8928967366730841,True,9,6.0,False,False
+configuracion,21,Ridge,n_cells_Y,Número de celdas en Y,14.324661401027765,3.613441086023275,True,0,4.0,True,False
+configuracion,21,Ridge,Fiber_height,Altura de fibra,-0.02391516726331444,0.6441722384604064,True,1,9.0,False,False
+configuracion,21,Ridge,Fiber_base,Ancho de fibra,1.405068096419305,1.4164994507622983,True,2,5.0,False,False
+configuracion,21,Ridge,Fiber_total_length,Longitud total de fibras,18.96797127208974,4.374230447742479,True,3,2.0,True,False
+configuracion,21,Ridge,Fiber_total_volume,Volumen total de fibras,0.16036734942630232,0.6574508868257799,True,4,7.0,False,False
+configuracion,21,Ridge,Pivot_height,Altura de pivote,0.5490074824775212,1.1770135833297866,True,5,6.0,False,False
+configuracion,21,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,21,Ridge,Pivot_total_number,Número total de pivotes,22.7029823275846,4.988807112678873,True,7,1.0,True,False
+configuracion,21,Ridge,Pivot_total_volume,Volumen total de pivotes,0.16036734942615222,0.6574508868257498,True,8,8.0,False,False
+configuracion,21,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.747193549427204,3.4970885680178,True,9,3.0,True,False
+configuracion,21,ElasticNet,n_cells_Y,Número de celdas en Y,14.027797879840131,3.5634102738116957,True,0,4.0,True,False
+configuracion,21,ElasticNet,Fiber_height,Altura de fibra,-0.06980623929352214,0.6195629589578253,True,1,9.0,False,False
+configuracion,21,ElasticNet,Fiber_base,Ancho de fibra,1.2537350747646532,1.3755919370426852,True,2,5.0,False,False
+configuracion,21,ElasticNet,Fiber_total_length,Longitud total de fibras,18.854003633052447,4.353886224671146,True,3,2.0,True,False
+configuracion,21,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.1416092025402868,0.6460684935249345,True,4,7.0,False,False
+configuracion,21,ElasticNet,Pivot_height,Altura de pivote,0.4697323582584728,1.1561645852340854,True,5,6.0,False,False
+configuracion,21,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,21,ElasticNet,Pivot_total_number,Número total de pivotes,22.653022287685832,4.981460350638444,True,7,1.0,True,False
+configuracion,21,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.11184776685468104,0.6384105243279288,True,8,8.0,False,False
+configuracion,21,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.228969217492525,3.428573172074125,True,9,3.0,True,False
+configuracion,21,SVR_RBF,n_cells_Y,Número de celdas en Y,9.085144483785085,2.673386389849922,True,0,3.0,True,False
+configuracion,21,SVR_RBF,Fiber_height,Altura de fibra,-0.6952965305057568,0.8268097250353286,True,1,8.0,False,False
+configuracion,21,SVR_RBF,Fiber_base,Ancho de fibra,-0.7120131780226611,1.091869334243009,True,2,9.0,False,False
+configuracion,21,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.771609322565856,2.782932895563507,True,3,2.0,True,False
+configuracion,21,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.270269071528341,1.6615272476654717,True,4,4.0,True,False
+configuracion,21,SVR_RBF,Pivot_height,Altura de pivote,0.9182909512543069,1.4279124361166708,True,5,7.0,False,False
+configuracion,21,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,21,SVR_RBF,Pivot_total_number,Número total de pivotes,10.312628636035422,2.870821830860334,True,7,1.0,True,False
+configuracion,21,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.270269071528335,1.6615272476654719,True,8,5.0,False,False
+configuracion,21,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.4324409753693375,1.1419538041448603,True,9,6.0,False,False
+configuracion,21,RandomForest,n_cells_Y,Número de celdas en Y,6.554515948452385,1.709634210197007,True,0,2.0,True,False
+configuracion,21,RandomForest,Fiber_height,Altura de fibra,-0.16264674595238385,0.10057431411017524,True,1,9.0,False,False
+configuracion,21,RandomForest,Fiber_base,Ancho de fibra,0.12284892769841446,0.3028600299179106,True,2,8.0,False,False
+configuracion,21,RandomForest,Fiber_total_length,Longitud total de fibras,5.139719638531735,1.5557295511470413,True,3,4.0,True,False
+configuracion,21,RandomForest,Fiber_total_volume,Volumen total de fibras,9.199832591746015,2.524322205659451,True,4,1.0,True,False
+configuracion,21,RandomForest,Pivot_height,Altura de pivote,0.16318537325396987,0.23498027184103343,True,5,7.0,False,False
+configuracion,21,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,21,RandomForest,Pivot_total_number,Número total de pivotes,4.908512316944433,1.4989977347155203,True,7,5.0,False,False
+configuracion,21,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.231923213571418,1.4308500671654008,True,8,3.0,True,False
+configuracion,21,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.38600266865079574,0.8609135284698382,True,9,6.0,False,False
+configuracion,21,GaussianProcess,n_cells_Y,Número de celdas en Y,7.7897811041812535,2.4722509150022445,True,0,3.0,True,False
+configuracion,21,GaussianProcess,Fiber_height,Altura de fibra,-1.3627849925118507,0.7906203095451031,True,1,9.0,False,False
+configuracion,21,GaussianProcess,Fiber_base,Ancho de fibra,-1.1719271738151724,0.8620592996951385,True,2,8.0,False,False
+configuracion,21,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.477418456929714,2.5900004125905842,True,3,2.0,True,False
+configuracion,21,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.188265389363475,1.4174535704992088,True,4,4.0,True,False
+configuracion,21,GaussianProcess,Pivot_height,Altura de pivote,0.4341079483810475,1.4694614757496285,True,5,7.0,False,False
+configuracion,21,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,21,GaussianProcess,Pivot_total_number,Número total de pivotes,9.02134974667875,2.6832206316772673,True,7,1.0,True,False
+configuracion,21,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.1882653893634605,1.4174535704992068,True,8,5.0,False,False
+configuracion,21,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.5894395439474833,0.8427652936222306,True,9,6.0,False,False
+configuracion,22,Ridge,n_cells_Y,Número de celdas en Y,12.827275048251801,2.084578768365842,True,0,4.0,True,False
+configuracion,22,Ridge,Fiber_height,Altura de fibra,-0.10930595417639592,0.6251791789390082,True,1,9.0,False,False
+configuracion,22,Ridge,Fiber_base,Ancho de fibra,2.285033413508264,1.3749868225695916,True,2,5.0,False,False
+configuracion,22,Ridge,Fiber_total_length,Longitud total de fibras,17.490810000872195,2.622011079885078,True,3,2.0,True,False
+configuracion,22,Ridge,Fiber_total_volume,Volumen total de fibras,0.6331008442252241,0.49222405380781226,True,4,7.0,False,False
+configuracion,22,Ridge,Pivot_height,Altura de pivote,0.7931071410173413,0.8891913089793431,True,5,6.0,False,False
+configuracion,22,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,22,Ridge,Pivot_total_number,Número total de pivotes,21.30395229977802,3.075340636918331,True,7,1.0,True,False
+configuracion,22,Ridge,Pivot_total_volume,Volumen total de pivotes,0.633100844225118,0.49222405380775947,True,8,8.0,False,False
+configuracion,22,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.383082755626244,4.6769828761203005,True,9,3.0,True,False
+configuracion,22,ElasticNet,n_cells_Y,Número de celdas en Y,12.765532998540449,2.0822902827149328,True,0,4.0,True,False
+configuracion,22,ElasticNet,Fiber_height,Altura de fibra,-0.12454744266483804,0.6053797860926132,True,1,9.0,False,False
+configuracion,22,ElasticNet,Fiber_base,Ancho de fibra,2.148495924389805,1.3423925340292713,True,2,5.0,False,False
+configuracion,22,ElasticNet,Fiber_total_length,Longitud total de fibras,17.714129396904703,2.6533813501067693,True,3,2.0,True,False
+configuracion,22,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.582153560249744,0.45840319169057964,True,4,7.0,False,False
+configuracion,22,ElasticNet,Pivot_height,Altura de pivote,0.7042906884185688,0.8650156368107261,True,5,6.0,False,False
+configuracion,22,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,22,ElasticNet,Pivot_total_number,Número total de pivotes,21.67871578525339,3.1284791258261233,True,7,1.0,True,False
+configuracion,22,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.5600146226811129,0.44932847171521767,True,8,8.0,False,False
+configuracion,22,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.383449783704185,4.690216569855622,True,9,3.0,True,False
+configuracion,22,SVR_RBF,n_cells_Y,Número de celdas en Y,8.408943620747134,2.1178437828925896,True,0,3.0,True,False
+configuracion,22,SVR_RBF,Fiber_height,Altura de fibra,-0.034168914483751145,0.8129410380552343,True,1,8.0,False,False
+configuracion,22,SVR_RBF,Fiber_base,Ancho de fibra,-0.4541345451348879,1.3089062781033673,True,2,9.0,False,False
+configuracion,22,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.046711100980133,2.1800071053761108,True,3,2.0,True,False
+configuracion,22,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.306288956661114,1.3955236343795416,True,4,4.0,True,False
+configuracion,22,SVR_RBF,Pivot_height,Altura de pivote,0.28360930264699197,1.4647414369925138,True,5,7.0,False,False
+configuracion,22,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,22,SVR_RBF,Pivot_total_number,Número total de pivotes,9.550061840684437,2.2336639871061736,True,7,1.0,True,False
+configuracion,22,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.306288956661093,1.3955236343795387,True,8,5.0,False,False
+configuracion,22,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.354094018474785,1.3742444851524458,True,9,6.0,False,False
+configuracion,22,RandomForest,n_cells_Y,Número de celdas en Y,5.421547155381941,1.4979069025563403,True,0,3.0,True,False
+configuracion,22,RandomForest,Fiber_height,Altura de fibra,-0.16073674218749873,0.10053123469929043,True,1,9.0,False,False
+configuracion,22,RandomForest,Fiber_base,Ancho de fibra,0.3685380704778375,0.4071131542442277,True,2,7.0,False,False
+configuracion,22,RandomForest,Fiber_total_length,Longitud total de fibras,5.060453986855159,1.5584636082353156,True,3,4.0,True,False
+configuracion,22,RandomForest,Fiber_total_volume,Volumen total de fibras,5.976731677662038,1.5655568366395363,True,4,1.0,True,False
+configuracion,22,RandomForest,Pivot_height,Altura de pivote,0.1305933786789021,0.20663002163864758,True,5,8.0,False,False
+configuracion,22,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,22,RandomForest,Pivot_total_number,Número total de pivotes,4.327542639591599,1.382001409601284,True,7,5.0,False,False
+configuracion,22,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.440191212342921,1.5858635367443454,True,8,2.0,True,False
+configuracion,22,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.4334128190724176,0.7735786597486637,True,9,6.0,False,False
+configuracion,22,GaussianProcess,n_cells_Y,Número de celdas en Y,7.364396826027358,2.017902194756736,True,0,3.0,True,False
+configuracion,22,GaussianProcess,Fiber_height,Altura de fibra,-0.7818848745370531,0.7018519591805287,True,1,8.0,False,False
+configuracion,22,GaussianProcess,Fiber_base,Ancho de fibra,-0.8177933471215478,1.146840929996698,True,2,9.0,False,False
+configuracion,22,GaussianProcess,Fiber_total_length,Longitud total de fibras,8.016052801331831,2.0948991305386873,True,3,2.0,True,False
+configuracion,22,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.195217062799577,1.2829308312385233,True,4,4.0,True,False
+configuracion,22,GaussianProcess,Pivot_height,Altura de pivote,0.22949528170344663,1.4717524150535501,True,5,7.0,False,False
+configuracion,22,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,22,GaussianProcess,Pivot_total_number,Número total de pivotes,8.531587859880954,2.1592525258694986,True,7,1.0,True,False
+configuracion,22,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.1952170627995504,1.2829308312385213,True,8,5.0,False,False
+configuracion,22,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.7118840269405133,1.0777442194749225,True,9,6.0,False,False
+configuracion,23,Ridge,n_cells_Y,Número de celdas en Y,12.323656414679798,2.6959931176700334,True,0,4.0,True,False
+configuracion,23,Ridge,Fiber_height,Altura de fibra,-0.4008622908914852,0.5063439246402328,True,1,9.0,False,False
+configuracion,23,Ridge,Fiber_base,Ancho de fibra,2.0747799523132455,1.8119368902822186,True,2,5.0,False,False
+configuracion,23,Ridge,Fiber_total_length,Longitud total de fibras,16.919562848461933,3.4052792648865475,True,3,2.0,True,False
+configuracion,23,Ridge,Fiber_total_volume,Volumen total de fibras,1.7113540083214693,0.9557000972293507,True,4,6.0,False,False
+configuracion,23,Ridge,Pivot_height,Altura de pivote,1.4832833160617434,1.3697386006550987,True,5,8.0,False,False
+configuracion,23,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,23,Ridge,Pivot_total_number,Número total de pivotes,20.727529288106336,3.990316104191971,True,7,1.0,True,False
+configuracion,23,Ridge,Pivot_total_volume,Volumen total de pivotes,1.7113540083212666,0.955700097229315,True,8,7.0,False,False
+configuracion,23,Ridge,Sample_total_volume,Volumen declarado del espécimen,15.884484523401193,2.5875556762611844,True,9,3.0,True,False
+configuracion,23,ElasticNet,n_cells_Y,Número de celdas en Y,12.250765207147193,2.6874027293172906,True,0,4.0,True,False
+configuracion,23,ElasticNet,Fiber_height,Altura de fibra,-0.40160294998561896,0.49242940521567885,True,1,9.0,False,False
+configuracion,23,ElasticNet,Fiber_base,Ancho de fibra,1.9502191804103735,1.8008908676613222,True,2,5.0,False,False
+configuracion,23,ElasticNet,Fiber_total_length,Longitud total de fibras,17.125426607219445,3.4412578084044507,True,3,2.0,True,False
+configuracion,23,ElasticNet,Fiber_total_volume,Volumen total de fibras,1.6322342647293773,0.9234129676290083,True,4,6.0,False,False
+configuracion,23,ElasticNet,Pivot_height,Altura de pivote,1.3410688387799798,1.3340242476732251,True,5,8.0,False,False
+configuracion,23,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,23,ElasticNet,Pivot_total_number,Número total de pivotes,21.12638213717286,4.0526723308602275,True,7,1.0,True,False
+configuracion,23,ElasticNet,Pivot_total_volume,Volumen total de pivotes,1.5992915538222818,0.9133682272559425,True,8,7.0,False,False
+configuracion,23,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,15.78919960241188,2.5715563711177594,True,9,3.0,True,False
+configuracion,23,SVR_RBF,n_cells_Y,Número de celdas en Y,7.418145975164909,2.0547921538551845,True,0,3.0,True,False
+configuracion,23,SVR_RBF,Fiber_height,Altura de fibra,-1.5386341586124244,0.7681850458696863,True,1,9.0,False,False
+configuracion,23,SVR_RBF,Fiber_base,Ancho de fibra,0.8053871194509649,1.595339261796556,True,2,7.0,False,False
+configuracion,23,SVR_RBF,Fiber_total_length,Longitud total de fibras,8.05305954891915,2.1261047016726953,True,3,2.0,True,False
+configuracion,23,SVR_RBF,Fiber_total_volume,Volumen total de fibras,3.7558287728738584,1.3312038496446128,True,4,4.0,True,False
+configuracion,23,SVR_RBF,Pivot_height,Altura de pivote,0.13499565190811563,1.3792082946842434,True,5,8.0,False,False
+configuracion,23,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,23,SVR_RBF,Pivot_total_number,Número total de pivotes,8.55441743903363,2.1850378437604676,True,7,1.0,True,False
+configuracion,23,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,3.7558287728738535,1.3312038496446086,True,8,5.0,False,False
+configuracion,23,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,1.5904725742437367,1.141687431132384,True,9,6.0,False,False
+configuracion,23,RandomForest,n_cells_Y,Número de celdas en Y,5.756581017815796,1.427075656066251,True,0,2.0,True,False
+configuracion,23,RandomForest,Fiber_height,Altura de fibra,-0.18549041455853404,0.18044064865073786,True,1,9.0,False,False
+configuracion,23,RandomForest,Fiber_base,Ancho de fibra,0.2667312482638951,0.4860948260154192,True,2,7.0,False,False
+configuracion,23,RandomForest,Fiber_total_length,Longitud total de fibras,4.798132596312824,1.3436471749878731,True,3,3.0,True,False
+configuracion,23,RandomForest,Fiber_total_volume,Volumen total de fibras,7.289311089533717,1.6938608477811605,True,4,1.0,True,False
+configuracion,23,RandomForest,Pivot_height,Altura de pivote,0.14953975438161393,0.12425078306685138,True,5,8.0,False,False
+configuracion,23,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,23,RandomForest,Pivot_total_number,Número total de pivotes,3.0562175676669905,1.1454539924014873,True,7,5.0,False,False
+configuracion,23,RandomForest,Pivot_total_volume,Volumen total de pivotes,4.144253271866724,1.2479349741506107,True,8,4.0,True,False
+configuracion,23,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.35555283887235295,0.716810583806595,True,9,6.0,False,False
+configuracion,23,GaussianProcess,n_cells_Y,Número de celdas en Y,6.458168907387133,1.7921571119004645,True,0,3.0,True,False
+configuracion,23,GaussianProcess,Fiber_height,Altura de fibra,-1.8527975233286262,0.6347948636046884,True,1,9.0,False,False
+configuracion,23,GaussianProcess,Fiber_base,Ancho de fibra,0.3959273062341421,1.3006830789224173,True,2,7.0,False,False
+configuracion,23,GaussianProcess,Fiber_total_length,Longitud total de fibras,7.082214589024335,1.8649998124881737,True,3,2.0,True,False
+configuracion,23,GaussianProcess,Fiber_total_volume,Volumen total de fibras,2.9503245852958195,1.130725071372201,True,4,4.0,True,False
+configuracion,23,GaussianProcess,Pivot_height,Altura de pivote,-0.17151986556129667,1.1251535837742277,True,5,8.0,False,False
+configuracion,23,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,23,GaussianProcess,Pivot_total_number,Número total de pivotes,7.575949886510782,1.9241450724841873,True,7,1.0,True,False
+configuracion,23,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,2.9503245852958075,1.1307250713722,True,8,5.0,False,False
+configuracion,23,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.108311146576849,0.8516426650273801,True,9,6.0,False,False
+configuracion,24,Ridge,n_cells_Y,Número de celdas en Y,11.74902306377288,3.3975746592723577,True,0,3.0,True,False
+configuracion,24,Ridge,Fiber_height,Altura de fibra,2.1018602048896016,1.0944249394077248,True,1,6.0,False,False
+configuracion,24,Ridge,Fiber_base,Ancho de fibra,5.62715609279862,2.2683757893489136,True,2,5.0,False,False
+configuracion,24,Ridge,Fiber_total_length,Longitud total de fibras,15.585642103366649,4.297446998183718,True,3,2.0,True,False
+configuracion,24,Ridge,Fiber_total_volume,Volumen total de fibras,0.43696339985844823,0.9431468099099274,True,4,8.0,False,False
+configuracion,24,Ridge,Pivot_height,Altura de pivote,0.9494112189163006,1.127528448322618,True,5,7.0,False,False
+configuracion,24,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,24,Ridge,Pivot_total_number,Número total de pivotes,18.64501976371654,5.0487386842328545,True,7,1.0,True,False
+configuracion,24,Ridge,Pivot_total_volume,Volumen total de pivotes,0.4369633998582653,0.9431468099098577,True,8,9.0,False,False
+configuracion,24,Ridge,Sample_total_volume,Volumen declarado del espécimen,11.31222419597236,3.308258396437271,True,9,4.0,True,False
+configuracion,24,ElasticNet,n_cells_Y,Número de celdas en Y,11.508214119147434,3.345853302888079,True,0,3.0,True,False
+configuracion,24,ElasticNet,Fiber_height,Altura de fibra,1.965716533949056,1.0681396661629143,True,1,6.0,False,False
+configuracion,24,ElasticNet,Fiber_base,Ancho de fibra,5.293595480553558,2.2189928490058026,True,2,5.0,False,False
+configuracion,24,ElasticNet,Fiber_total_length,Longitud total de fibras,15.490410919582663,4.2813398892833785,True,3,2.0,True,False
+configuracion,24,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.43106592593007437,0.9154975282303472,True,4,8.0,False,False
+configuracion,24,ElasticNet,Pivot_height,Altura de pivote,0.8534431478849506,1.1137885237931096,True,5,7.0,False,False
+configuracion,24,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,24,ElasticNet,Pivot_total_number,Número total de pivotes,18.62735492776228,5.048651857620317,True,7,1.0,True,False
+configuracion,24,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.39685473599711507,0.9009383675876675,True,8,9.0,False,False
+configuracion,24,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,10.884796407676843,3.241021287282152,True,9,4.0,True,False
+configuracion,24,SVR_RBF,n_cells_Y,Número de celdas en Y,7.511813337114954,2.386506702084459,True,0,3.0,True,False
+configuracion,24,SVR_RBF,Fiber_height,Altura de fibra,-1.1261625017677426,0.7043371105334987,True,1,9.0,False,False
+configuracion,24,SVR_RBF,Fiber_base,Ancho de fibra,-0.32057731529860334,1.1627921652079414,True,2,7.0,False,False
+configuracion,24,SVR_RBF,Fiber_total_length,Longitud total de fibras,8.023735454204886,2.5001334750417725,True,3,2.0,True,False
+configuracion,24,SVR_RBF,Fiber_total_volume,Volumen total de fibras,3.3581196833987845,1.3294111943886733,True,4,4.0,True,False
+configuracion,24,SVR_RBF,Pivot_height,Altura de pivote,-0.33749420603522823,0.9354373299780937,True,5,8.0,False,False
+configuracion,24,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,24,SVR_RBF,Pivot_total_number,Número total de pivotes,8.427553713651958,2.589981723426406,True,7,1.0,True,False
+configuracion,24,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,3.358119683398776,1.3294111943886702,True,8,5.0,False,False
+configuracion,24,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,2.003653336481078,1.1110578953153591,True,9,6.0,False,False
+configuracion,24,RandomForest,n_cells_Y,Número de celdas en Y,4.979203365992069,1.820982037097547,True,0,2.0,True,False
+configuracion,24,RandomForest,Fiber_height,Altura de fibra,-0.14008469654762026,0.06786032026266396,True,1,9.0,False,False
+configuracion,24,RandomForest,Fiber_base,Ancho de fibra,0.018547479087303385,0.2879889149208974,True,2,8.0,False,False
+configuracion,24,RandomForest,Fiber_total_length,Longitud total de fibras,3.6729010367460253,1.584106633847475,True,3,3.0,True,False
+configuracion,24,RandomForest,Fiber_total_volume,Volumen total de fibras,7.23886902988094,2.4815256491757522,True,4,1.0,True,False
+configuracion,24,RandomForest,Pivot_height,Altura de pivote,0.05740871599205919,0.1770814835366779,True,5,7.0,False,False
+configuracion,24,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,24,RandomForest,Pivot_total_number,Número total de pivotes,3.34446005515873,1.4326792978910967,True,7,4.0,True,False
+configuracion,24,RandomForest,Pivot_total_volume,Volumen total de pivotes,2.988548301388879,1.3788383284798875,True,8,5.0,False,False
+configuracion,24,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.611138399126995,1.0350695774190233,True,9,6.0,False,False
+configuracion,24,GaussianProcess,n_cells_Y,Número de celdas en Y,6.51321201875197,2.2180977042799928,True,0,3.0,True,False
+configuracion,24,GaussianProcess,Fiber_height,Altura de fibra,-1.4182723813892615,0.6061173405101513,True,1,9.0,False,False
+configuracion,24,GaussianProcess,Fiber_base,Ancho de fibra,-0.6414652889215863,0.8966437239755658,True,2,7.0,False,False
+configuracion,24,GaussianProcess,Fiber_total_length,Longitud total de fibras,7.020841812331429,2.340968172224223,True,3,2.0,True,False
+configuracion,24,GaussianProcess,Fiber_total_volume,Volumen total de fibras,2.6595392494953893,1.2916644766745706,True,4,4.0,True,False
+configuracion,24,GaussianProcess,Pivot_height,Altura de pivote,-0.6430083288954025,0.9437571214813029,True,5,8.0,False,False
+configuracion,24,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+configuracion,24,GaussianProcess,Pivot_total_number,Número total de pivotes,7.426787469693285,2.4388370684649416,True,7,1.0,True,False
+configuracion,24,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,2.659539249495377,1.2916644766745682,True,8,5.0,False,False
+configuracion,24,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,1.384117385637796,0.9165147714450714,True,9,6.0,False,False
+familia,1,Ridge,n_cells_Y,Número de celdas en Y,16.13890836930299,4.302140439915733,True,0,3.0,True,False
+familia,1,Ridge,Fiber_height,Altura de fibra,-0.21023053032092118,0.3790939658345229,True,1,8.0,False,False
+familia,1,Ridge,Fiber_base,Ancho de fibra,-0.3821071748236361,0.35899360759675797,True,2,9.0,False,False
+familia,1,Ridge,Fiber_total_length,Longitud total de fibras,16.138908369302992,4.302140439915735,True,3,2.0,True,False
+familia,1,Ridge,Fiber_total_volume,Volumen total de fibras,0.3513761194062764,0.4112409268661102,True,4,6.0,False,False
+familia,1,Ridge,Pivot_height,Altura de pivote,-0.0012400383514477031,0.5384727882976343,True,5,7.0,False,False
+familia,1,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,1,Ridge,Pivot_total_number,Número total de pivotes,16.138908369302996,4.302140439915737,True,7,1.0,True,False
+familia,1,Ridge,Pivot_total_volume,Volumen total de pivotes,0.35137611940631447,0.4112409268661207,True,8,5.0,False,False
+familia,1,Ridge,Sample_total_volume,Volumen declarado del espécimen,0.7737772748041936,0.36790749478865226,True,9,4.0,True,False
+familia,1,ElasticNet,n_cells_Y,Número de celdas en Y,16.725615465997333,4.401435149176076,True,0,1.0,True,False
+familia,1,ElasticNet,Fiber_height,Altura de fibra,-0.3285174072229207,0.36248396427206425,True,1,8.0,False,False
+familia,1,ElasticNet,Fiber_base,Ancho de fibra,-0.5817010160977067,0.28869408392036944,True,2,9.0,False,False
+familia,1,ElasticNet,Fiber_total_length,Longitud total de fibras,16.721516220280968,4.4005456286664515,True,3,2.0,True,False
+familia,1,ElasticNet,Fiber_total_volume,Volumen total de fibras,0.4894904065833202,0.46958489960015015,True,4,5.0,False,False
+familia,1,ElasticNet,Pivot_height,Altura de pivote,-0.2238999935967126,0.479414792125645,True,5,7.0,False,False
+familia,1,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,1,ElasticNet,Pivot_total_number,Número total de pivotes,16.654853281344224,4.38626932657667,True,7,3.0,True,False
+familia,1,ElasticNet,Pivot_total_volume,Volumen total de pivotes,0.48766367935793403,0.4697889091772214,True,8,6.0,False,False
+familia,1,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,1.2003136772176048,0.4979178129301215,True,9,4.0,True,False
+familia,1,SVR_RBF,n_cells_Y,Número de celdas en Y,12.05868475637067,2.789584313136444,True,0,3.0,True,False
+familia,1,SVR_RBF,Fiber_height,Altura de fibra,0.7225630704616439,0.6855325819407939,True,1,7.0,False,False
+familia,1,SVR_RBF,Fiber_base,Ancho de fibra,0.08200436174511294,1.0653788422272472,True,2,9.0,False,False
+familia,1,SVR_RBF,Fiber_total_length,Longitud total de fibras,12.058684756370672,2.7895843131364444,True,3,2.0,True,False
+familia,1,SVR_RBF,Fiber_total_volume,Volumen total de fibras,4.711366992028203,1.34546129743681,True,4,4.0,True,False
+familia,1,SVR_RBF,Pivot_height,Altura de pivote,0.43776951897117505,0.6561709808351817,True,5,8.0,False,False
+familia,1,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,1,SVR_RBF,Pivot_total_number,Número total de pivotes,12.058684756370674,2.789584313136445,True,7,1.0,True,False
+familia,1,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,4.711366992028187,1.3454612974368083,True,8,5.0,False,False
+familia,1,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,3.5859251051623273,1.2184346489260658,True,9,6.0,False,False
+familia,1,RandomForest,n_cells_Y,Número de celdas en Y,7.965875580908305,2.1497246853222753,True,0,1.0,True,False
+familia,1,RandomForest,Fiber_height,Altura de fibra,-0.018348622685181403,0.2059889104804155,True,1,8.0,False,False
+familia,1,RandomForest,Fiber_base,Ancho de fibra,-0.1622126937830652,0.17424187511539668,True,2,9.0,False,False
+familia,1,RandomForest,Fiber_total_length,Longitud total de fibras,6.136927471781311,1.8101992927570711,True,3,3.0,True,False
+familia,1,RandomForest,Fiber_total_volume,Volumen total de fibras,7.592629679177714,2.576055568311244,True,4,2.0,True,False
+familia,1,RandomForest,Pivot_height,Altura de pivote,0.20650470403439627,0.15944572701388424,True,5,6.0,False,False
+familia,1,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,1,RandomForest,Pivot_total_number,Número total de pivotes,4.126869784501784,1.5037308551757067,True,7,5.0,False,False
+familia,1,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.062856259093934,1.7595852667607366,True,8,4.0,True,False
+familia,1,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.012814999503978264,0.43698181438743405,True,9,7.0,False,False
+familia,1,GaussianProcess,n_cells_Y,Número de celdas en Y,11.990129424093283,2.8598551987398824,True,0,2.0,True,False
+familia,1,GaussianProcess,Fiber_height,Altura de fibra,0.738135231468797,0.7052200967771876,True,1,8.0,False,False
+familia,1,GaussianProcess,Fiber_base,Ancho de fibra,0.19239255800590174,1.105227175509823,True,2,9.0,False,False
+familia,1,GaussianProcess,Fiber_total_length,Longitud total de fibras,11.990129424093283,2.8598551987398837,True,3,3.0,True,False
+familia,1,GaussianProcess,Fiber_total_volume,Volumen total de fibras,3.7670379795015556,1.2587438812158902,True,4,4.0,True,False
+familia,1,GaussianProcess,Pivot_height,Altura de pivote,0.973606739420641,0.7573292293933077,True,5,7.0,False,False
+familia,1,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,1,GaussianProcess,Pivot_total_number,Número total de pivotes,11.990129424093285,2.859855198739884,True,7,1.0,True,False
+familia,1,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,3.7670379795015334,1.2587438812158895,True,8,5.0,False,False
+familia,1,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,2.8936291960786136,1.159581281049683,True,9,6.0,False,False
+familia,2,Ridge,n_cells_Y,Número de celdas en Y,12.455613717873842,3.1472386117057547,True,0,2.0,True,False
+familia,2,Ridge,Fiber_height,Altura de fibra,0.1592356142003153,0.9285005159273417,True,1,6.0,False,False
+familia,2,Ridge,Fiber_base,Ancho de fibra,1.3336120394315458,1.145620169704668,True,2,5.0,False,False
+familia,2,Ridge,Fiber_total_length,Longitud total de fibras,12.455613717873836,3.147238611705754,True,3,3.0,True,False
+familia,2,Ridge,Fiber_total_volume,Volumen total de fibras,-0.6028453734896502,0.3763234936140509,True,4,9.0,False,False
+familia,2,Ridge,Pivot_height,Altura de pivote,-0.2685836633767722,0.5246657970304134,True,5,7.0,False,False
+familia,2,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,2,Ridge,Pivot_total_number,Número total de pivotes,12.455613717873844,3.147238611705756,True,7,1.0,True,False
+familia,2,Ridge,Pivot_total_volume,Volumen total de pivotes,-0.6028453734896337,0.3763234936140378,True,8,8.0,False,False
+familia,2,Ridge,Sample_total_volume,Volumen declarado del espécimen,5.798944548574076,2.542283644517452,True,9,4.0,True,False
+familia,2,ElasticNet,n_cells_Y,Número de celdas en Y,13.798932537353982,3.3479958297409453,True,0,3.0,True,False
+familia,2,ElasticNet,Fiber_height,Altura de fibra,0.020407702715224206,0.9451664114101455,True,1,6.0,False,False
+familia,2,ElasticNet,Fiber_base,Ancho de fibra,1.085596893509406,1.1146807873441562,True,2,5.0,False,False
+familia,2,ElasticNet,Fiber_total_length,Longitud total de fibras,13.821903255464786,3.3521989483884154,True,3,2.0,True,False
+familia,2,ElasticNet,Fiber_total_volume,Volumen total de fibras,-0.560288600357784,0.5092787358419324,True,4,9.0,False,False
+familia,2,ElasticNet,Pivot_height,Altura de pivote,-0.09839638185701335,0.6021471736178918,True,5,7.0,False,False
+familia,2,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,2,ElasticNet,Pivot_total_number,Número total de pivotes,13.850278579066089,3.3586168906150733,True,7,1.0,True,False
+familia,2,ElasticNet,Pivot_total_volume,Volumen total de pivotes,-0.5592954045738898,0.5147263475507695,True,8,8.0,False,False
+familia,2,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,4.766893244752735,2.405639723019954,True,9,4.0,True,False
+familia,2,SVR_RBF,n_cells_Y,Número de celdas en Y,9.574445046162372,2.5315882915523638,True,0,2.0,True,False
+familia,2,SVR_RBF,Fiber_height,Altura de fibra,0.28777099198613076,1.0128455347516496,True,1,8.0,False,False
+familia,2,SVR_RBF,Fiber_base,Ancho de fibra,1.2087808826387152,1.3912584755857071,True,2,7.0,False,False
+familia,2,SVR_RBF,Fiber_total_length,Longitud total de fibras,9.574445046162372,2.531588291552364,True,3,3.0,True,False
+familia,2,SVR_RBF,Fiber_total_volume,Volumen total de fibras,6.057385944200113,1.9192319724874354,True,4,6.0,False,False
+familia,2,SVR_RBF,Pivot_height,Altura de pivote,-0.6990575626591766,1.5675583318513338,True,5,9.0,False,False
+familia,2,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,2,SVR_RBF,Pivot_total_number,Número total de pivotes,9.574445046162376,2.5315882915523638,True,7,1.0,True,False
+familia,2,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,6.0573859442001226,1.919231972487441,True,8,5.0,False,False
+familia,2,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,9.211258774148252,2.77808325307739,True,9,4.0,True,False
+familia,2,RandomForest,n_cells_Y,Número de celdas en Y,5.978390464285726,1.9704560582814636,True,0,2.0,True,False
+familia,2,RandomForest,Fiber_height,Altura de fibra,-0.16797809908962985,0.12311067178444711,True,1,9.0,False,False
+familia,2,RandomForest,Fiber_base,Ancho de fibra,1.5907720566059975,1.711533565193492,True,2,7.0,False,False
+familia,2,RandomForest,Fiber_total_length,Longitud total de fibras,4.929028034313745,1.7165396813373965,True,3,4.0,True,False
+familia,2,RandomForest,Fiber_total_volume,Volumen total de fibras,8.6865950063609,2.3411084272947753,True,4,1.0,True,False
+familia,2,RandomForest,Pivot_height,Altura de pivote,-0.04875597268907628,0.03958682380509233,True,5,8.0,False,False
+familia,2,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,2,RandomForest,Pivot_total_number,Número total de pivotes,3.936928517156885,1.4340202768560648,True,7,6.0,False,False
+familia,2,RandomForest,Pivot_total_volume,Volumen total de pivotes,5.1217655700280345,1.861601694973682,True,8,3.0,True,False
+familia,2,RandomForest,Sample_total_volume,Volumen declarado del espécimen,4.61628051540618,1.8528222877053349,True,9,5.0,False,False
+familia,2,GaussianProcess,n_cells_Y,Número de celdas en Y,9.307030366078667,2.416112421206739,True,0,1.0,True,False
+familia,2,GaussianProcess,Fiber_height,Altura de fibra,0.30612357793243683,0.8441501526825276,True,1,8.0,False,False
+familia,2,GaussianProcess,Fiber_base,Ancho de fibra,0.6512305951988528,1.2391117114190384,True,2,7.0,False,False
+familia,2,GaussianProcess,Fiber_total_length,Longitud total de fibras,9.307030366078667,2.416112421206739,True,3,2.0,True,False
+familia,2,GaussianProcess,Fiber_total_volume,Volumen total de fibras,5.180818428679642,1.6995708278785013,True,4,6.0,False,False
+familia,2,GaussianProcess,Pivot_height,Altura de pivote,-0.29883124851466,1.2751125570619697,True,5,9.0,False,False
+familia,2,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,2,GaussianProcess,Pivot_total_number,Número total de pivotes,9.307030366078667,2.4161124212067397,True,7,3.0,True,False
+familia,2,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,5.180818428679654,1.6995708278785022,True,8,5.0,False,False
+familia,2,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,8.55236236587076,2.651960605134155,True,9,4.0,True,False
+familia,3,Ridge,n_cells_Y,Número de celdas en Y,1.3284146650734319,1.101362776782011,True,0,2.0,True,False
+familia,3,Ridge,Fiber_height,Altura de fibra,-0.7611136798747153,0.35219257552790895,True,1,9.0,False,False
+familia,3,Ridge,Fiber_base,Ancho de fibra,-0.37377035064448433,0.4074985128068773,True,2,8.0,False,False
+familia,3,Ridge,Fiber_total_length,Longitud total de fibras,1.3284146650734312,1.1013627767820109,True,3,3.0,True,False
+familia,3,Ridge,Fiber_total_volume,Volumen total de fibras,-0.3346927971556924,0.476122388892353,True,4,6.0,False,False
+familia,3,Ridge,Pivot_height,Altura de pivote,-0.30915172827785514,0.758399697587114,True,5,5.0,False,False
+familia,3,Ridge,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,3,Ridge,Pivot_total_number,Número total de pivotes,1.3284146650734345,1.1013627767820127,True,7,1.0,True,False
+familia,3,Ridge,Pivot_total_volume,Volumen total de pivotes,-0.3346927971557038,0.4761223888923798,True,8,7.0,False,False
+familia,3,Ridge,Sample_total_volume,Volumen declarado del espécimen,-0.07672324744930323,0.28362276058900854,True,9,4.0,True,True
+familia,3,ElasticNet,n_cells_Y,Número de celdas en Y,1.5556332708697558,1.2004541473832626,True,0,2.0,True,False
+familia,3,ElasticNet,Fiber_height,Altura de fibra,-0.7774720008487926,0.3628691303256227,True,1,9.0,False,False
+familia,3,ElasticNet,Fiber_base,Ancho de fibra,-0.4120180816801713,0.3629204218108282,True,2,8.0,False,False
+familia,3,ElasticNet,Fiber_total_length,Longitud total de fibras,1.5580975010299765,1.2017004996935825,True,3,1.0,True,False
+familia,3,ElasticNet,Fiber_total_volume,Volumen total de fibras,-0.3433552904248038,0.5362662017066119,True,4,7.0,False,False
+familia,3,ElasticNet,Pivot_height,Altura de pivote,-0.22170031536329776,0.8332907666701564,True,5,5.0,False,False
+familia,3,ElasticNet,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,3,ElasticNet,Pivot_total_number,Número total de pivotes,1.5520392317731426,1.1986390936637699,True,7,3.0,True,False
+familia,3,ElasticNet,Pivot_total_volume,Volumen total de pivotes,-0.34185673750168116,0.5373661274345979,True,8,6.0,False,False
+familia,3,ElasticNet,Sample_total_volume,Volumen declarado del espécimen,-0.1360418305691967,0.1557299516828993,True,9,4.0,True,True
+familia,3,SVR_RBF,n_cells_Y,Número de celdas en Y,-0.4108213502071722,0.7857043281661673,True,0,4.0,True,True
+familia,3,SVR_RBF,Fiber_height,Altura de fibra,-2.1280768063663924,0.673128090149606,True,1,9.0,False,False
+familia,3,SVR_RBF,Fiber_base,Ancho de fibra,-1.7562597788688685,0.6652796235423106,True,2,7.0,False,False
+familia,3,SVR_RBF,Fiber_total_length,Longitud total de fibras,-0.4108213502071715,0.7857043281661675,True,3,2.0,True,True
+familia,3,SVR_RBF,Fiber_total_volume,Volumen total de fibras,-1.6179273227629536,0.8447932013105932,True,4,6.0,False,False
+familia,3,SVR_RBF,Pivot_height,Altura de pivote,-2.0757725954899504,1.2728247819147362,True,5,8.0,False,False
+familia,3,SVR_RBF,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,3,SVR_RBF,Pivot_total_number,Número total de pivotes,-0.4108213502071717,0.7857043281661678,True,7,3.0,True,True
+familia,3,SVR_RBF,Pivot_total_volume,Volumen total de pivotes,-1.6179273227629494,0.8447932013105913,True,8,5.0,False,False
+familia,3,SVR_RBF,Sample_total_volume,Volumen declarado del espécimen,-0.13461044921546214,0.6609656894976543,True,9,1.0,True,True
+familia,3,RandomForest,n_cells_Y,Número de celdas en Y,0.5327756316526613,0.4312813108884716,True,0,3.0,True,False
+familia,3,RandomForest,Fiber_height,Altura de fibra,-0.35534928921568454,0.08577481166856095,True,1,9.0,False,False
+familia,3,RandomForest,Fiber_base,Ancho de fibra,0.03762859856443148,0.40571362282420453,True,2,8.0,False,False
+familia,3,RandomForest,Fiber_total_length,Longitud total de fibras,0.48560692016807216,0.43833241742974194,True,3,5.0,False,False
+familia,3,RandomForest,Fiber_total_volume,Volumen total de fibras,0.8725610249766611,0.6552272746226778,True,4,2.0,True,False
+familia,3,RandomForest,Pivot_height,Altura de pivote,0.4875152314425759,0.4388803857632501,True,5,4.0,True,False
+familia,3,RandomForest,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,3,RandomForest,Pivot_total_number,Número total de pivotes,0.2727792550770306,0.28480327201970507,True,7,6.0,False,False
+familia,3,RandomForest,Pivot_total_volume,Volumen total de pivotes,0.2555828375350152,0.346519999080035,True,8,7.0,False,False
+familia,3,RandomForest,Sample_total_volume,Volumen declarado del espécimen,0.9526382475490216,0.8156541188993399,True,9,1.0,True,False
+familia,3,GaussianProcess,n_cells_Y,Número de celdas en Y,-0.6011378861560741,0.7737715090851455,True,0,2.0,True,True
+familia,3,GaussianProcess,Fiber_height,Altura de fibra,-2.104583656849659,0.7026619290178417,True,1,9.0,False,False
+familia,3,GaussianProcess,Fiber_base,Ancho de fibra,-1.752743834412616,0.591873150181816,True,2,5.0,False,False
+familia,3,GaussianProcess,Fiber_total_length,Longitud total de fibras,-0.6011378861560742,0.7737715090851455,True,3,3.0,True,True
+familia,3,GaussianProcess,Fiber_total_volume,Volumen total de fibras,-1.780404439165472,0.7893541349284023,True,4,7.0,False,False
+familia,3,GaussianProcess,Pivot_height,Altura de pivote,-1.924628436310234,1.2120442888351395,True,5,8.0,False,False
+familia,3,GaussianProcess,Pivot_radius,Radio de pivote,0.0,0.0,False,6,,False,False
+familia,3,GaussianProcess,Pivot_total_number,Número total de pivotes,-0.601137886156075,0.7737715090851454,True,7,4.0,True,True
+familia,3,GaussianProcess,Pivot_total_volume,Volumen total de pivotes,-1.7804044391654634,0.7893541349283995,True,8,6.0,False,False
+familia,3,GaussianProcess,Sample_total_volume,Volumen declarado del espécimen,-0.3619258066696558,0.6450537160093096,True,9,1.0,True,True

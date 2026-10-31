@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "checks": {
+    "hashes": 484,
+    "metricas": 24,
+    "selecciones": 135,
+    "donantes": 740,
+    "repeticiones_PFI": 36000,
+    "predicciones_permutadas": 936000
+  },
+  "counts": {
+    "oof_rows": 624,
+    "outer_folds": 27,
+    "fitted_models": 1134,
+    "permutation_summaries": 360,
+    "permutation_repeats": 36000
+  },
+  "raw_predictions_checked": true,
+  "no_training_during_verification": true,
+  "estimators_present": 459,
+  "estimators_missing": 0,
+  "missing_estimator_files": [],
+  "require_estimators": true,
+  "estimators_reloaded_during_verification": false
+}

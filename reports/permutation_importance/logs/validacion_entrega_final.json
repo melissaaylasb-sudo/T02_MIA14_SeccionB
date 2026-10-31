@@ -1,0 +1,23 @@
+{
+  "fecha_cliente": "2026-10-30",
+  "pruebas": {
+    "comando": "python -B -X utf8 -m pytest tests/test_importancia_permutacion.py tests/test_entrega_permutacion.py tests/test_sprint_importancia.py -q -p no:cacheprovider",
+    "resultado_observado": "16 passed in 10.13s",
+    "exit_code": 0
+  },
+  "notebook": {
+    "kernel_limpio": true,
+    "celdas_codigo_ejecutadas": 9,
+    "errores": 0
+  },
+  "figuras": {
+    "png_inspeccionados": 7,
+    "hashes_png_coinciden_con_revision_visual": true
+  },
+  "sha256": {
+    "notebooks/06_Modelado_Tuning_SHAP.ipynb": "564484e21ce2ece4e78303da6661e587ec5f679934f075aa790c9288d19b04d3",
+    "docs/matriz_consistencia.csv": "3067bba777aeb5e74b361ec5329e7297bf39daddafc4d045f51b2edf30bcaab2",
+    "reports/permutation_importance/manifest.json": "e3ae73e3ea246c7ccc2d654fbeea61d331c6b3d174fdff755ebfa4e7178b49d6",
+    "reports/permutation_importance/figures/revision_visual.json": "63a5a508b41658111372ce259ef4d7c55f9609dc6ac1ec58b648c3b8ba7678bb"
+  }
+}

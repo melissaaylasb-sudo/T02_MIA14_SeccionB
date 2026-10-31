@@ -27,3 +27,17 @@ src/informe_fe.py -text whitespace=cr-at-eol
 config/ajuste_modelos.json -text whitespace=cr-at-eol
 reports/modelos_ajustados/** -text whitespace=cr-at-eol
 reports/modelos_ajustados/figures/*.svg whitespace=-blank-at-eol,cr-at-eol
+
+# Preserve byte-level manifests of the permutation activity in fresh checkouts.
+reports/permutation_importance/** -text whitespace=cr-at-eol
+reports/permutation_importance/figures/*.svg whitespace=-blank-at-eol,cr-at-eol
+config/comparacion_modelos.json -text whitespace=cr-at-eol
+config/criterios_entrega_permutacion.json -text whitespace=cr-at-eol
+docs/matriz_consistencia.csv -text whitespace=cr-at-eol
+notebooks/06_Modelado_Tuning_SHAP.ipynb -text whitespace=cr-at-eol
+src/ajuste_modelos.py -text whitespace=cr-at-eol
+src/transformaciones_eda.py -text whitespace=cr-at-eol
+src/importancia_permutacion.py -text whitespace=cr-at-eol
+src/figuras_permutacion.py -text whitespace=cr-at-eol
+src/entrega_permutacion.py -text whitespace=cr-at-eol
+src/revision_entrega_permutacion.py -text whitespace=cr-at-eol
