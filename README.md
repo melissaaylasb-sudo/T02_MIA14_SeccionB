@@ -1,4 +1,21 @@
-# Predicción de primera falla · Modelos ajustados
+# Predicción de primera falla · Tuning e interpretabilidad SHAP
+
+## Sprint de modelado, tuning y SHAP
+
+El [notebook 06](notebooks/06_Modelado_Tuning_SHAP.ipynb) continúa los contrastes previos con el conjunto **B**: geometría original más los dos momentos de sección de fibra. La secuencia E0–E4 separa referencia ingenua, efecto de las características y efecto adicional del tuning con las mismas particiones externas. SHAP, permutación y ablación estudian la contribución predictiva y su estabilidad; ninguna atribución se interpreta como causa física de fractura.
+
+La [matriz de consistencia](docs/matriz_consistencia.md) conserva objetivos e hipótesis del informe de Semana 6. El [modelo y protocolo](docs/modelado_y_tuning.md), los [resultados comparativos](docs/resultados_comparativos.md), la [interpretabilidad SHAP](docs/interpretabilidad_shap.md), la [importancia cruzada](docs/importancia_variables.md), la [operacionalización](docs/operacionalizacion_variables.md) y la [trazabilidad](docs/trazabilidad_objetivos_resultados.md) separan evidencia anterior de resultados de esta rama.
+
+Para reproducir el experimento desde la raíz del repositorio:
+
+```powershell
+python -m pip install -r requirements-feature-importance.txt
+python -m src.sprint_importancia
+python -m src.figuras_importancia
+python -m pytest tests/test_sprint_importancia.py -q
+```
+
+El notebook 06 se ejecuta desde un kernel limpio para verificar las celdas y los gráficos. Los artefactos están en [tablas](reports/feature_importance/tables/), [figuras](reports/feature_importance/figures/) y [manifiesto](reports/feature_importance/logs/manifest.json). El menor MAE al excluir configuraciones fue **Ridge con A ajustado: 9.7070 N**; B ajustado obtuvo **10.9814 N** con Ridge y **10.8724 N** con Elastic Net. Al excluir una familia Y, el menor MAE fue **57.0958 N** con Elastic Net B fijo, solo **0.0172 N** por debajo de A fijo, y todos los R² OOF fueron negativos. SHAP y permutación destacan descriptores de arquitectura del modelo, pero sus dependencias y la inestabilidad entre folds impiden atribuir efectos físicos aislados. El experimento previo ya exploró estos 26 casos: cualquier mejora requiere confirmación prospectiva con geometrías conciliadas y nuevos ensayos.
 
 **[Abrir notebook 05 — modelos, ajuste y evaluación](notebooks/05_Modelos_Ajustados.ipynb)**
 
