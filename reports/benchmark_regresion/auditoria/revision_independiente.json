@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "utc": "2026-11-06T23:45:18.905358+00:00",
+  "auditor": "src/auditoria_benchmark.py",
+  "sha256_auditor": "b89d4d45fcccde16f28825116d00f286017308e61abeedd36d2b44703f7d0c68",
+  "sha256_manifiesto": "e428aa6f8cd9f501d9a00b54d82af8b2f7f78d49ac98ff0aef0253ce8def971f",
+  "sha256_MATLAB": "3d82f876bb8ec652184707235aa4df1dfb4b1a6615551f78fe0e0662a6723f0c",
+  "sha256_historico_permutacion": "dcb844f0e7f175f3d92cbbcf383908c2aabde074f78f4da088c0cdb2a9033125",
+  "tolerancia_general_abs": 1e-09,
+  "tolerancia_reconstruccion_OLS_N": 1e-07,
+  "numero_comprobaciones": 18705,
+  "comprobaciones_por_tipo": {
+    "manifiesto": 1,
+    "huellas_inputs": 6,
+    "huellas_sources": 6,
+    "huellas_outputs": 18,
+    "congelacion": 1,
+    "contrato": 1,
+    "candidatos": 46,
+    "verdad_MATLAB": 3,
+    "filas_manifestadas": 14,
+    "particiones_externas": 28,
+    "particiones_historicas": 27,
+    "cobertura": 2,
+    "particiones_internas": 160,
+    "cobertura_interna": 28,
+    "cobertura_OOF": 25,
+    "cobertura_metricas": 1,
+    "verdad_observada": 24,
+    "errores_signed": 48,
+    "metricas_pooled": 120,
+    "procedimiento_por_reserva": 324,
+    "train_aparte": 648,
+    "error_train_verificado": 324,
+    "error_test_verificado": 324,
+    "dispersion_entre_grupos": 48,
+    "invariancia_historica": 8,
+    "referencias_desde_MATLAB": 104,
+    "fallback_historico": 52,
+    "fallback": 1,
+    "contextos_busqueda": 4,
+    "presupuesto": 84,
+    "OOF_internas": 3021,
+    "verdad_interna": 532,
+    "reutilizacion_cribado": 28,
+    "metricas_cribado": 140,
+    "rango_cribado": 140,
+    "solo_2_familias": 28,
+    "parametrizacion": 448,
+    "busqueda_desde_OOF": 896,
+    "ganadora_interna": 168,
+    "selector_interno": 28,
+    "dos_rangos_y_selector": 156,
+    "comparador_misma_familia": 156,
+    "prediccion_selector": 52,
+    "reajuste_separado": 1,
+    "etapa_ajuste": 299,
+    "identificadores_de_ajuste": 2788,
+    "parametros_ajustados": 2788,
+    "medianas_solo_entrenamiento": 2734,
+    "escala_solo_entrenamiento": 1580,
+    "ajustes_ganadores": 56,
+    "base_OLS": 54,
+    "prediccion_OLS_fisica": 27,
+    "vecinos_entrenamiento": 52,
+    "KNN_desde_vecinos_MATLAB": 52,
+    "manifiesto_sin_cambios": 1
+  },
+  "invariancia_historica": {
+    "Dummy_mediana": {
+      "casos_protocolo": 52,
+      "diferencia_maxima_N": 0.0
+    },
+    "Media_por_nivel": {
+      "casos_protocolo": 52,
+      "diferencia_maxima_N": 0.0
+    },
+    "Ridge_historico": {
+      "casos_protocolo": 52,
+      "diferencia_maxima_N": 0.0
+    },
+    "SVR_RBF": {
+      "casos_protocolo": 52,
+      "diferencia_maxima_N": 0.0
+    }
+  },
+  "fallback_media_nivel": {
+    "configuracion": 0,
+    "familia": 26
+  },
+  "alcance": "Comprobación independiente desde MATLAB, geometría, bitácoras internas y predicciones guardadas; sin importar ni ejecutar el motor.",
+  "limites": [
+    "La auditoría verifica coherencia y separación de identificadores registrados; no prueba independencia física entre especímenes ni descarta decisiones retrospectivas.",
+    "No es una réplica desde cero de todos los ajustes ni valida generalización a otra campaña.",
+    "Los rangos y el selector describen procedimientos adaptativos; la receta con toda la campaña carece de evaluación externa propia."
+  ]
+}

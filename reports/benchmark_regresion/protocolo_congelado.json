@@ -1,0 +1,626 @@
+{
+  "candidatos": {
+    "Arbol_decision": [
+      {
+        "criterion": "squared_error",
+        "max_depth": 2,
+        "min_samples_leaf": 2,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 3,
+        "min_samples_leaf": 4,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 1,
+        "min_samples_leaf": 4,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 1,
+        "min_samples_leaf": 2,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 2,
+        "min_samples_leaf": 4,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 3,
+        "min_samples_leaf": 3,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 1,
+        "min_samples_leaf": 3,
+        "random_state": 42
+      },
+      {
+        "criterion": "squared_error",
+        "max_depth": 3,
+        "min_samples_leaf": 2,
+        "random_state": 42
+      }
+    ],
+    "CatBoost": [
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 2,
+        "iterations": 60,
+        "l2_leaf_reg": 5,
+        "learning_rate": 0.075,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 1,
+        "iterations": 60,
+        "l2_leaf_reg": 2,
+        "learning_rate": 0.15,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 1,
+        "iterations": 60,
+        "l2_leaf_reg": 12,
+        "learning_rate": 0.15,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 1,
+        "iterations": 40,
+        "l2_leaf_reg": 2,
+        "learning_rate": 0.15,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 2,
+        "iterations": 40,
+        "l2_leaf_reg": 12,
+        "learning_rate": 0.03,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 1,
+        "iterations": 40,
+        "l2_leaf_reg": 12,
+        "learning_rate": 0.03,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 1,
+        "iterations": 80,
+        "l2_leaf_reg": 5,
+        "learning_rate": 0.15,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 3,
+        "iterations": 40,
+        "l2_leaf_reg": 5,
+        "learning_rate": 0.15,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      }
+    ],
+    "KNN": [
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 3,
+        "p": 2,
+        "weights": "uniform"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 5,
+        "p": 2,
+        "weights": "uniform"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 4,
+        "p": 2,
+        "weights": "distance"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 4,
+        "p": 2,
+        "weights": "uniform"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 2,
+        "p": 2,
+        "weights": "distance"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 5,
+        "p": 1,
+        "weights": "uniform"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 2,
+        "p": 2,
+        "weights": "uniform"
+      },
+      {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 2,
+        "p": 1,
+        "weights": "distance"
+      }
+    ],
+    "SVR_RBF": [
+      {
+        "C": 100.0,
+        "epsilon": 5.0,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      {
+        "C": 25,
+        "epsilon": 10,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      {
+        "C": 25,
+        "epsilon": 10,
+        "gamma": 0.03,
+        "kernel": "rbf"
+      },
+      {
+        "C": 25,
+        "epsilon": 2,
+        "gamma": 0.03,
+        "kernel": "rbf"
+      },
+      {
+        "C": 25,
+        "epsilon": 5,
+        "gamma": 0.03,
+        "kernel": "rbf"
+      },
+      {
+        "C": 100,
+        "epsilon": 10,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      {
+        "C": 250,
+        "epsilon": 5,
+        "gamma": 0.3,
+        "kernel": "rbf"
+      },
+      {
+        "C": 100,
+        "epsilon": 2,
+        "gamma": "scale",
+        "kernel": "rbf"
+      }
+    ],
+    "XGBoost": [
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.075,
+        "max_depth": 2,
+        "min_child_weight": 2,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 3,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.15,
+        "max_depth": 1,
+        "min_child_weight": 2,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 1,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.15,
+        "max_depth": 3,
+        "min_child_weight": 4,
+        "n_estimators": 40,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 3,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.075,
+        "max_depth": 2,
+        "min_child_weight": 4,
+        "n_estimators": 40,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 10,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.03,
+        "max_depth": 1,
+        "min_child_weight": 4,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 10,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.075,
+        "max_depth": 1,
+        "min_child_weight": 1,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 10,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 2,
+        "n_estimators": 40,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 1,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      },
+      {
+        "colsample_bytree": 1,
+        "learning_rate": 0.15,
+        "max_depth": 1,
+        "min_child_weight": 2,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 10,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      }
+    ]
+  },
+  "config": {
+    "banda_cribado_N": 1.0,
+    "costo": "Un hilo por estimador/BLAS; tiempos de pared descriptivos de fit y predicción test separados. Cribado y búsqueda registrados aparte, recursos compartidos no se suman entre procedimientos.",
+    "espacios": {
+      "Arbol_decision": {
+        "max_depth": [
+          1,
+          2,
+          3
+        ],
+        "min_samples_leaf": [
+          2,
+          3,
+          4
+        ]
+      },
+      "CatBoost": {
+        "depth": [
+          1,
+          2,
+          3
+        ],
+        "iterations": [
+          40,
+          60,
+          80
+        ],
+        "l2_leaf_reg": [
+          2,
+          5,
+          12
+        ],
+        "learning_rate": [
+          0.03,
+          0.075,
+          0.15
+        ]
+      },
+      "KNN": {
+        "n_neighbors": [
+          2,
+          3,
+          4,
+          5,
+          7
+        ],
+        "p": [
+          1,
+          2
+        ],
+        "weights": [
+          "uniform",
+          "distance"
+        ]
+      },
+      "SVR_RBF": {
+        "C": [
+          25,
+          100,
+          250
+        ],
+        "epsilon": [
+          2,
+          5,
+          10
+        ],
+        "gamma": [
+          "scale",
+          0.03,
+          0.3
+        ]
+      },
+      "XGBoost": {
+        "learning_rate": [
+          0.03,
+          0.075,
+          0.15
+        ],
+        "max_depth": [
+          1,
+          2,
+          3
+        ],
+        "min_child_weight": [
+          1,
+          2,
+          4
+        ],
+        "n_estimators": [
+          40,
+          60,
+          80
+        ],
+        "reg_lambda": [
+          1,
+          3,
+          10
+        ]
+      }
+    },
+    "familias": [
+      "SVR_RBF",
+      "XGBoost",
+      "CatBoost",
+      "Lineal_multiple",
+      "KNN",
+      "Arbol_decision"
+    ],
+    "feature_set": "A",
+    "limites": [
+      "La representación A y el protocolo fueron estudiados anteriormente en la misma campaña; no existe cohorte externa nueva.",
+      "Una configuración nominal compartida no acredita réplicas físicas independientes.",
+      "La recomendación y el reajuste final sobre la campaña completa no son una prueba independiente.",
+      "R2 solo agregado OOF; sesgo = media(predicho-observado), residuo = observado-predicho."
+    ],
+    "numero_familias_tuning": 2,
+    "ols": {
+      "orden": "original del contrato",
+      "regla": "Solo train: centrar y escalar; conservar la primera columna que incrementa el rango numérico y continuar en orden. Reconvertir intercepto/pendientes a las unidades originales. La base preserva el espacio de columnas del entrenamiento, no predicciones idénticas en extrapolación.",
+      "tolerancia_svd_relativa": 1e-10
+    },
+    "orden_complejidad": [
+      "Arbol_decision",
+      "KNN",
+      "SVR_RBF",
+      "XGBoost",
+      "CatBoost"
+    ],
+    "parametros_iniciales": {
+      "Arbol_decision": {
+        "criterion": "squared_error",
+        "max_depth": 2,
+        "min_samples_leaf": 2,
+        "random_state": 42
+      },
+      "CatBoost": {
+        "allow_writing_files": false,
+        "bootstrap_type": "No",
+        "depth": 2,
+        "iterations": 60,
+        "l2_leaf_reg": 5,
+        "learning_rate": 0.075,
+        "loss_function": "RMSE",
+        "random_seed": 42,
+        "random_strength": 0,
+        "thread_count": 1,
+        "verbose": false
+      },
+      "Dummy_mediana": {
+        "strategy": "median"
+      },
+      "KNN": {
+        "algorithm": "brute",
+        "metric": "minkowski",
+        "n_jobs": 1,
+        "n_neighbors": 3,
+        "p": 2,
+        "weights": "uniform"
+      },
+      "Lineal_multiple": {
+        "fit_intercept": true
+      },
+      "Media_por_nivel": {},
+      "Ridge_historico": {
+        "alpha": 1.0,
+        "solver": "svd"
+      },
+      "SVR_RBF": {
+        "C": 100.0,
+        "epsilon": 5.0,
+        "gamma": "scale",
+        "kernel": "rbf"
+      },
+      "XGBoost": {
+        "colsample_bytree": 1,
+        "learning_rate": 0.075,
+        "max_depth": 2,
+        "min_child_weight": 2,
+        "n_estimators": 60,
+        "n_jobs": 1,
+        "objective": "reg:squarederror",
+        "random_state": 42,
+        "reg_alpha": 0,
+        "reg_lambda": 3,
+        "subsample": 1,
+        "tree_method": "hist",
+        "verbosity": 0
+      }
+    },
+    "presupuesto_por_candidata": 8,
+    "protocolos": [
+      "configuracion",
+      "familia"
+    ],
+    "referencias": [
+      "Dummy_mediana",
+      "Media_por_nivel",
+      "Ridge_historico"
+    ],
+    "regla_busqueda": "8 configuraciones por familia: inicial más 7 muestras uniformes sin reemplazo del producto del espacio discreto, con semilla por familia y dibujos congelados antes de ajustar. Elegir menor MAE OOF interna pooled; empates absolutos 1e-10 N por menor MAD de grupos y orden congelado. Selector entre las dos ganadoras: MAE interno, empates por MAD y rango inicial.",
+    "regla_cribado": "Dentro de cada entrenamiento externo, evaluar las cinco familias ajustables con parámetros iniciales. Para cada puesto, tomar las que están a no más de 1 N de la menor MAE OOF interna entre las restantes; elegir menor MAD de MAE entre grupos internos del protocolo; después menor MAE, orden de complejidad y nombre. Repetir hasta dos. La banda es una regla operativa y no una tolerancia física.",
+    "semilla": 20261106,
+    "target": "First_Failure_Load_N",
+    "target_transform": "ninguna; ajustes, epsilon y errores en N",
+    "unidad": "N",
+    "validacion_interna": {
+      "configuracion": "GroupKFold(5) nominal, sin shuffle",
+      "familia": "LeaveOneGroupOut sobre los 2 niveles Y del train"
+    },
+    "variabilidad": "DE muestral e IQR de las MAE de reservas externas; MAE y métricas globales ponderadas por espécimen; MAD interno = mediana de |MAE_grupo-mediana(MAE_grupo)|, sin constante de escala, un grupo nominal o nivel Y según protocolo. Descriptivo, no IC.",
+    "version": "benchmark_6_regresores_v1"
+  },
+  "entradas_sha256": {
+    "config/ajuste_modelos.json": "3d544ec47d020e155cb6dea53a94e1964fc59a6386e5073f021ade26c4742684",
+    "config/benchmark_regresion.json": "3edcf1f56b803e4cb437bca1991d7f45371a129cb79e8c0e8c488883b361c004",
+    "config/comparacion_modelos.json": "c895631f2ad842c1da7ee60cfc1485bfe36a3c218edf504f02f47c6f8c25da77",
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/feature_engineering/particiones.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59",
+    "reports/feature_engineering/tables/predicciones_modelos_oof.csv": "f5c4d8926b4b2edd11edad58e1719e51c343bc3396d9c80b5bae1841f5aede8e"
+  },
+  "fuentes_sha256": {
+    "src/ajuste_modelos.py": "8aed6a18feef3ef39a5c432fab8e6b653fc53b70d2948dbdf3271988e1e56490",
+    "src/benchmark_regresion.py": "847f805e703e228a3302cca5b3db72ceb582b67cf23229185010dd65f976eb51",
+    "src/benchmark_regresion_modelos.py": "056730657939476701c72d5726210cc378662ea708d1891af1b0dc0044297445",
+    "src/comparacion_modelos.py": "de2c4a2d57b905057d83015b3b32d52af00556b375c4782d7c3c416850865931",
+    "src/feature_engineering.py": "02d700c7371307ad1778d3abb12fb2163bc093e090cd377b1947c89b75dbea29",
+    "src/transformaciones_eda.py": "766b90a2b5ad8d167c98fef97235fbf75d726591f730c2524e6005b4c925f68c"
+  }
+}

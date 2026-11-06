@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "ajustes_con_train_verificado": 2788,
+    "configuraciones_buscadas": 448,
+    "hashes": 30,
+    "invariancia_historica": 104,
+    "metricas_globales": 24,
+    "predicciones_internas": 12844,
+    "predicciones_oof": 624,
+    "reservas_externas": 27,
+    "reservas_internas_incluida_campana": 131
+  },
+  "sin_reentrenamiento": true,
+  "status": "PASS"
+}
