@@ -1,10 +1,40 @@
-# Actividad: importancia de variables y matriz de consistencia
+# Evaluación comparativa de seis regresores para primera falla pantográfica
+
+**[Abrir el notebook ejecutado](notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)** · [Resultados y recomendación](docs/resultados_comparativos_modelos.md) · [Rama del benchmark](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/benchmark-regresion-6-modelos)
+
+Universidad Nacional de Ingeniería · Maestría en Inteligencia Artificial · Trabajo de Investigación II. **Investigadora:** Melissa Dessire Aylas Barranca. **Docente:** Glen Dario Rodríguez Rafael.
+
+Se estima la carga de primera rotura de fibra o pivote en newtons con geometría conocida antes del ensayo. En una misma campaña se comparan SVR-RBF, XGBoost, CatBoost, regresión lineal múltiple, KNN y árbol de decisión con tres controles: mediana, media por nivel celular y Ridge histórico. Se distinguen las configuraciones de niveles ya observados y la transferencia a un nivel Y ausente. El cribado y la búsqueda acotada se repiten dentro de cada entrenamiento. La tabla final separa el mejor MAE descriptivo de la recomendación para uso posterior.
+
+| Qué revisar | Evidencia |
+|---|---|
+| Elección de algoritmos y literatura de materiales | [Matriz de justificación](docs/justificacion_seleccion_modelos.md) |
+| Elección de entradas, exclusiones y particiones | [Metodología](docs/metodologia_comparativa_modelos.md), [diez variables](docs/benchmark/features.csv), [80 resultados históricos](docs/benchmark/antecedentes_metricas.csv) |
+| Configuraciones iniciales, selección y tuning | [Diseño de validación](docs/hiperparametros_y_validacion.md), [configuración](config/benchmark_regresion.json) |
+| Métricas, tiempos y predicciones por caso | [Tablas numéricas](reports/benchmark_regresion/tables/), [figuras](reports/benchmark_regresion/figures/), [recomendación legible por máquina](reports/benchmark_regresion/interpretacion/recomendacion.json) |
+
+**Resultado de esta ejecución:** la regresión lineal múltiple obtuvo el menor MAE de las seis recetas en configuraciones reservadas (9,664 N). Su ventaja sobre la media por nivel fue 0,462 N y ganó en 12 de 24 grupos; el RMSE fue prácticamente idéntico. La regla de decisión conserva por ello la media por nivel como referencia operativa para niveles conocidos. Al retirar un nivel completo, el MAE lineal fue 40,915 N. El tuning del selector aumentó 0,633 N el MAE nominal frente a sus propias familias iniciales. [Tabla integrada con configuraciones y tiempos](reports/benchmark_regresion/interpretacion/tabla_final_integrada.csv).
+
+Desde la raíz de esta rama, instalar `python -m pip install -r requirements-benchmark-regresion.txt` en un entorno Python compatible (ejecución de referencia: 3.13.5). Abrir el notebook de arriba y ejecutar sus celdas en orden. El notebook verifica la ejecución conservada antes de mostrarla. La receta completa y las comprobaciones se describen en la sección de reproducibilidad del cuaderno.
+
+```powershell
+python -m src.benchmark_regresion --verify
+python -m src.auditoria_benchmark
+python -m src.lectura_benchmark_regresion
+python -m pytest -q tests/test_benchmark_regresion.py tests/test_lectura_benchmark.py tests/test_entrega_benchmark.py
+```
+
+Para repetir **los entrenamientos** con el protocolo congelado en un directorio nuevo, usar `python -m src.benchmark_regresion --output reports/repeticion_benchmark`. La lectura ordinaria reutiliza las tablas verificadas. La [auditoría independiente](reports/benchmark_regresion/auditoria/revision_independiente.json) registra qué se contrastó con la fuente experimental, los controles históricos y los registros de cada ajuste.
+
+---
+
+## Antecedente: importancia de variables y matriz de consistencia
 
 ## Predicción de la carga de primera falla en estructuras pantográficas
 
-**Repositorio GitHub — rama de entrega:** [feature-importance-consistencia](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/feature-importance-consistencia).
+**Rama de la entrega anterior:** [feature-importance-consistencia](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/feature-importance-consistencia).
 
-### Entrega actual: modelos, permutación y selección interna de variables
+### Entrega de la etapa de permutación y selección interna de variables
 
 El [único notebook de entrega](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara cinco familias con parámetros fijos: Ridge, Elastic Net, SVR RBF, bosque aleatorio y proceso gaussiano. Incluye referencias de mediana y media por nivel, las tablas verde y morada con métricas, selección de cuatro entradas dentro del entrenamiento, permutación repetida y ablación del bloque de arquitectura y volúmenes. Su nombre de archivo se conserva para mantener los enlaces; el contenido vigente corresponde al análisis por permutación.
 
