@@ -41,3 +41,11 @@ src/importancia_permutacion.py -text whitespace=cr-at-eol
 src/figuras_permutacion.py -text whitespace=cr-at-eol
 src/entrega_permutacion.py -text whitespace=cr-at-eol
 src/revision_entrega_permutacion.py -text whitespace=cr-at-eol
+
+# Preserve the numerical run, notebook and checksums in Windows/Linux clones.
+reports/benchmark_regresion/** -text whitespace=cr-at-eol
+reports/benchmark_regresion/figures/*.svg whitespace=-blank-at-eol,cr-at-eol
+config/*benchmark* -text whitespace=cr-at-eol
+src/*benchmark*.py -text whitespace=cr-at-eol
+docs/benchmark/*.csv -text whitespace=cr-at-eol
+notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb -text whitespace=cr-at-eol

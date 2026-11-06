@@ -1,0 +1,12 @@
+{
+  "dominio_principal": "configuracion",
+  "modelos_iniciales": ["Lineal_multiple","KNN","Arbol_decision","SVR_RBF","XGBoost","CatBoost"],
+  "banda_descriptiva_N": 1.0,
+  "prioridad_parsimonia_en_banda": ["Arbol_decision","Lineal_multiple","KNN","SVR_RBF","XGBoost","CatBoost"],
+  "criterio_inicial": "Entre las seis recetas fijas con MAE a no más de 1 N del menor, priorizar la receta más fácil de auditar en este diseño (árbol somero, OLS de rango completo, vecinos, SVR, boosting). El orden está declarado antes de generar resultados. El árbol inicial tiene profundidad 2; las pendientes OLS dependen de la base geométrica elegida.",
+  "adopcion_selector": "Recomendar el procedimiento adaptativo Selector_tuning en vez de la opción fija solo si mejora su MAE al menos 1 N, no aumenta RMSE, reduce el MAE en más de la mitad de las configuraciones y conserva diferencia de MAE negativa al excluir del agregado cualquiera de los grupos. Los dos rangos ilustran el procedimiento; no se elige el rango con menor error externo.",
+  "competitividad_con_media_nivel": "Aplicar la misma regla descriptiva frente a la media por nivel. Si no se cumple, mantener la media como referencia operativa preferente para niveles conocidos y distinguir la recomendación académica entre regresores.",
+  "estabilidad": "Menor DE muestral del MAE de los grupos externos, solo dentro del mismo protocolo. La estabilidad no sustituye exactitud.",
+  "respaldos": "Mencionar hasta dos familias fijas diferentes de la recomendada en orden ascendente de MAE nominal, dando su dispersión y sus límites; informar por separado el mejor MAE al retirar una familia.",
+  "alcance": "Decisión exploratoria sobre una campaña conocida, formulada antes de esta ejecución, no prerregistro del estudio ni umbral físico de utilidad. Los pliegues se solapan. No confundir ganador descriptivo con eficacia externa confirmada."
+}
