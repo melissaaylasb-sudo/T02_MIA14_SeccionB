@@ -1,12 +1,7 @@
 """Tablas, lecturas numéricas y listas de resultados del estudio pantográfico."""
 
 import json
-from base64 import b64encode
-from io import BytesIO
-from pathlib import Path
-
-from matplotlib import get_data_path
-from PIL import Image as PILImage, ImageDraw, ImageFont
+from textwrap import wrap
 
 import numpy as np
 import pandas as pd
@@ -78,60 +73,32 @@ def panel():
     return display(Markdown(""), display_id=True)
 
 
-def _bloque_verde(parrafos, destino=None, numerado=False):
-    """Publica un solo bloque PNG, con una alternativa de texto en el mismo resultado."""
-    ancho, margen, interlinea = 1500, 36, 36
-    directorio = Path(get_data_path()) / "fonts" / "ttf"
-    cuerpo = ImageFont.truetype(str(directorio / "DejaVuSans.ttf"), 25)
-    negrita = ImageFont.truetype(str(directorio / "DejaVuSans-Bold.ttf"), 25)
-    fondo, tinta = "#E1F2E5", "#183B2A"
-    renglones, alternativo = [], []
-    y = margen
-    for etiqueta, original in parrafos:
-        texto = original.replace("**", "")
-        alternativo.append(f"{etiqueta} {texto}" if numerado else f"{etiqueta}\n{texto}")
-        renglones.append((margen, y, etiqueta, negrita))
-        x = margen + 52 if numerado else margen
-        if not numerado:
-            y += interlinea
-        linea = ""
-        for palabra in texto.split():
-            candidata = f"{linea} {palabra}" if linea else palabra
-            if linea and cuerpo.getlength(candidata) > ancho - margen - x:
-                renglones.append((x, y, linea, cuerpo))
-                y += interlinea
-                linea = palabra
-            else:
-                linea = candidata
-        renglones.append((x, y, linea, cuerpo))
-        y += interlinea + 16
-
-    alto = y - 16 + margen
-    bloque = PILImage.new("RGB", (ancho, alto), fondo)
-    dibujo = ImageDraw.Draw(bloque)
-    for x, y, texto, fuente in renglones:
-        dibujo.text((x, y), texto, font=fuente, fill=tinta, anchor="lt")
-    with BytesIO() as buffer:
-        bloque.save(buffer, "PNG")
-        contenido = b64encode(buffer.getvalue()).decode("ascii")
-    texto = "\n\n".join(alternativo)
-    datos = {"image/png": contenido, "text/plain": texto}
-    metadatos = {"image/png": {"width": 1000, "alt": texto}}
+def _texto_verde(parrafos, destino=None):
+    """Muestra texto nativo de Jupyter con fondo verde y sangría en las listas."""
+    ancho = 82
+    lineas = []
+    for prefijo, texto in parrafos:
+        if lineas:
+            lineas.append("")
+        lineas.extend(wrap(
+            texto.replace("**", ""), width=ancho, initial_indent=prefijo,
+            subsequent_indent=" " * len(prefijo), break_long_words=False, break_on_hyphens=False,
+        ))
+    contenido = "\n".join(f"  {linea:<{ancho}}  " for linea in lineas)
+    estilo = "\x1b[42;38;2;5;28;16m"
+    salida = {"text/plain": f"{estilo}{contenido}\x1b[0m"}
     if destino is None:
-        display(datos, raw=True, metadata=metadatos)
+        display(salida, raw=True)
     else:
-        destino.update(datos, raw=True, metadata=metadatos)
+        destino.update(salida, raw=True)
 
 
-def interpretar(lectura, resultado, destino=None):
-    """Separa la lectura de las marcas gráficas de lo que se obtuvo en la campaña."""
-    _bloque_verde([("Lectura", lectura), ("Interpretación", resultado)], destino=destino)
+def interpretar(resultado, destino=None):
+    _texto_verde([("", "Interpretación. " + resultado)], destino)
 
 
 def enumerar_resultados(textos, inicio=1):
-    """Numera las conclusiones en el orden en que se presentan."""
-    items = [(f"{n}.", texto) for n, texto in enumerate(textos, start=inicio)]
-    _bloque_verde(items, numerado=True)
+    _texto_verde([(f"{i}. ", texto) for i, texto in enumerate(textos, start=inicio)])
 
 
 def mostrar_geometria(features, decisiones_fe):
@@ -202,7 +169,6 @@ def mostrar_dispersion_inicial(metricas):
 def leer_mae(panel, principal, transferencia, referencia_nivel):
     ganador_mae = principal.MAE_N.idxmin()
     interpretar(
-        'Cada barra promedia las diferencias absolutas entre la carga predicha y la medida, en newtons. La línea discontinua marca el MAE de la media por nivel. En el panel derecho, el nivel Y está ausente y la referencia usa la media global del entrenamiento. Una barra más corta que esa referencia indica menor error.',
         f"En configuraciones reservadas, **{nombre(ganador_mae)}** registra el menor MAE "
         f"({fmt(principal.at[ganador_mae, 'MAE_N'], 3)} N), frente a {fmt(referencia_nivel, 3)} N de la media por nivel. "
         f"Para el mismo regresor, el error sube a {fmt(transferencia.at[ganador_mae, 'MAE_N'], 3)} N al retirar un nivel completo.",
@@ -214,7 +180,6 @@ def leer_observado(panel, curvas_carga):
     lineal = curvas_carga[curvas_carga.procedimiento.eq("Lineal_multiple")]
     alta = lineal[lineal.tramo == lineal.tramo.max()].set_index("protocolo")
     interpretar(
-        'Cada marca representa las medias de carga observada y predicha en un cuartil de carga observada. Una curva por debajo de la diagonal indica subestimación en ese tramo. La diferencia vertical con signo (predicción menos medición) es el sesgo medio del tramo.',
         f"En el cuartil de mayor carga, la media observada es **{fmt(alta.at['configuracion', 'observado_N'])} N**. "
         f"La regresión lineal predice {fmt(alta.at['configuracion', 'predicho_N'])} N con niveles conocidos "
         f"y {fmt(alta.at['familia', 'predicho_N'])} N al retirar un nivel. "
@@ -233,7 +198,6 @@ def leer_rmse(principal, rmse_base):
     mejor_rmse = principal.RMSE_N.idxmin()
     rmse_modelo = principal.at[mejor_rmse, "RMSE_N"]
     interpretar(
-        'Cada barra muestra la raíz del promedio de los errores al cuadrado. Un error grande pesa más en el RMSE que en el MAE. La línea discontinua indica el RMSE de la media por nivel.',
         f"En configuraciones reservadas, **{nombre(mejor_rmse)}** alcanza un RMSE de {fmt(rmse_modelo, 4)} N "
          f"y la media por nivel, {fmt(rmse_base, 4)} N. Al dar más peso a los errores grandes, "
          f"ambos procedimientos quedan separados por {fmt(abs(rmse_modelo-rmse_base), 5)} N.")
@@ -245,7 +209,6 @@ def leer_brecha(ajuste_y_reserva):
     mayor_brecha = brechas.idxmax()
     ejemplo = nominal_ajuste.loc[mayor_brecha]
     interpretar(
-        'El círculo muestra el MAE sobre las geometrías usadas para ajustar el modelo y el rombo, el MAE sobre las reservadas. Cada pliegue aporta el mismo peso. La longitud del segmento mide cuánto cambia el error al pasar de ajuste a validación.',
         f"En configuraciones reservadas, **{nombre(mayor_brecha)}** pasa de {fmt(ejemplo.MAE_train_N)} N en entrenamiento "
          f"a {fmt(ejemplo.MAE_validacion_N)} N en validación. Presenta la mayor brecha ({fmt(brechas.at[mayor_brecha])} N) "
          "entre las familias iniciales. El ajuste reproduce las geometrías de entrenamiento con mayor precisión que las reservadas.")
@@ -256,7 +219,6 @@ def leer_distribucion(percentiles_error, ganador_mae):
     mejor_mediana = nominal_cuantiles[.50].idxmin()
     cuantiles = nominal_cuantiles.loc[mejor_mediana]
     interpretar(
-        'Cada línea resume los errores absolutos individuales de un modelo. La marca central indica la mediana, el trazo grueso abarca los percentiles 25 a 75 y el fino los percentiles 10 a 90.',
         f"En configuraciones reservadas, **{nombre(mejor_mediana)}** tiene la menor mediana del error absoluto "
          f"({fmt(cuantiles[.50])} N), pero su percentil 90 alcanza {fmt(cuantiles[.90])} N. "
          f"Cuando se promedian todos los errores absolutos, el menor MAE corresponde a **{nombre(ganador_mae)}**.")
@@ -267,7 +229,6 @@ def leer_residuos(tramos_residuales):
     extremos = (tramos_residuales.loc[tramos_residuales.modelo.eq(modelo_residual)]
                 .groupby("protocolo").last())
     interpretar(
-        'El residuo se calcula como carga observada menos carga predicha. Un valor positivo indica subestimación y uno negativo, sobreestimación. El signo es el inverso del sesgo global de la tabla. Las marcas son las medianas y las barras abarcan los cuartiles centrales de los residuos en cada tramo de carga predicha.',
         f"En el tramo de predicciones más altas de {nombre(modelo_residual)}, el residuo mediano "
          f"fue {fmt(extremos.at['configuracion', 'y'])} N al reservar configuraciones y "
          f"{fmt(extremos.at['familia', 'y'])} N al retirar un nivel Y. "
@@ -281,7 +242,6 @@ def leer_busqueda(progreso_interno):
         final = ganancias_finales.loc[p]
         mayores_ganancias.append(f"{nombre(final.idxmax())} ({fmt(final.max())} N)")
     interpretar(
-        'Cada punto muestra cuánto bajó el mejor MAE interno respecto de la primera configuración de hiperparámetros evaluada. La línea resume la mediana entre reservas y la banda, los cuartiles centrales.',
         f"La mayor reducción mediana del MAE interno al cierre fue la de {mayores_ganancias[0]} "
          f"al reservar configuraciones y la de {mayores_ganancias[1]} al retirar niveles Y. "
          "Estas mejoras corresponden al entrenamiento. La comparación del MAE antes y después del ajuste evalúa su efecto sobre las reservas externas.")
@@ -291,7 +251,6 @@ def leer_ridge(principal, transferencia):
     ventaja_ridge = principal.delta_MAE_vs_Ridge_N
     modelo_ridge = ventaja_ridge.idxmin()
     interpretar(
-        'Para cada probeta se resta el error absoluto de Ridge al del modelo. El rombo marca la media de las diferencias y el segmento, los cuartiles centrales. La regresión lineal mejora a Ridge en ambos protocolos de esta campaña.',
         f"{nombre(modelo_ridge)} presentó la mayor reducción de MAE frente a Ridge al reservar "
          f"configuraciones ({fmt(-ventaja_ridge[modelo_ridge])} N). En el protocolo de nivel Y, "
          f"su diferencia modelo menos Ridge fue {fmt(transferencia.loc[modelo_ridge, 'delta_MAE_vs_Ridge_N'])} N. "
@@ -305,7 +264,6 @@ def leer_efecto_ajuste(mae_ajuste):
         verbo = "aumentó" if diferencia > 0 else "disminuyó" if diferencia < 0 else "cambió en"
         return f"{verbo} {fmt(abs(diferencia), 3)} N ({fmt(fila.inicial, 3)} → {fmt(fila.ajustado, 3)} N)"
     interpretar(
-        'Cada barra muestra el MAE ajustado menos el MAE inicial de la misma familia, en las mismas probetas reservadas. Un valor negativo indica que la búsqueda redujo el error externo.',
         f"Al reservar configuraciones, el MAE externo del selector {cambio_mae(cambios_selector.loc['configuracion'])}. "
          f"Al retirar un nivel Y, {cambio_mae(cambios_selector.loc['familia'])}. "
          "El efecto del ajuste depende del grupo que se reserva.")
@@ -317,7 +275,6 @@ def leer_estabilidad(principal, percentiles_pliegue):
     p90_cfg = percentiles_pliegue.at[("configuracion", modelo_p50), .90]
     p90_y = percentiles_pliegue.at[("familia", modelo_p50), .90]
     interpretar(
-        'Cada celda es un percentil del MAE calculado por grupo reservado. P50 es la mediana y P90 describe el extremo de mayor error. Los dos paneles comparten la escala en newtons.',
         f"Para {nombre(modelo_p50)}, la mediana del MAE por configuración es {fmt(p50_cfg)} N "
          f"y el percentil 90 alcanza {fmt(p90_cfg)} N. Al reservar niveles Y, el percentil 90 es "
          f"{fmt(p90_y)} N. El extremo de mayor error es más alto cuando el nivel Y completo queda fuera del entrenamiento.")
