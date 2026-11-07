@@ -36,7 +36,7 @@ def _estilo(ax: plt.Axes, axis: str = "x") -> None:
     ax.tick_params(axis="both", length=0, pad=5)
 
 
-def _encabezado(fig: plt.Figure, numero: int, nota: str) -> None:
+def _encabezado(fig: plt.Figure, numero: int) -> None:
     fig.suptitle(
         TITULOS[numero - 1],
         x=0.025,
@@ -47,7 +47,6 @@ def _encabezado(fig: plt.Figure, numero: int, nota: str) -> None:
         weight="bold",
         color="#203D40",
     )
-    fig.text(0.025, 0.015, nota, ha="left", va="bottom", fontsize=8.7, color="#47575E")
 
 
 def mostrar(dibujar, *argumentos, destino=None):
@@ -91,7 +90,7 @@ def error_por_modelo(metricas: pd.DataFrame, metrica: str) -> plt.Figure:
                xlim=(0, limite), yticks=y, yticklabels=[nombre(m) for m in MODELOS],
                ylim=(len(MODELOS)-0.4, -0.6))
         _estilo(ax)
-    _encabezado(fig, numero, "Línea discontinua: referencia calculada por nivel celular en entrenamiento. Menor error indica mayor precisión.")
+    _encabezado(fig, numero)
     fig.subplots_adjust(left=0.17, right=0.98, top=0.82, bottom=0.17, wspace=0.12)
     return fig
 
@@ -122,7 +121,7 @@ def ajuste_y_validacion(errores: pd.DataFrame) -> plt.Figure:
         _estilo(ax)
     fig.legend(*axes[0].get_legend_handles_labels(), loc="lower center", bbox_to_anchor=(0.56, 0.08),
                ncol=2, frameon=False)
-    _encabezado(fig, 4, "Etiquetas en N. La longitud del segmento mide la diferencia entre el error de ajuste y el de validación.")
+    _encabezado(fig, 4)
     fig.subplots_adjust(left=0.17, right=0.975, top=0.83, bottom=0.23, wspace=0.12)
     return fig
 
@@ -162,7 +161,7 @@ def carga_observada_predicha(curvas: pd.DataFrame) -> plt.Figure:
     fig.supylabel("Carga predicha media [N]", x=0.025, fontsize=10)
     fig.legend(*axes.flat[0].get_legend_handles_labels(), loc="lower center",
                ncol=2, bbox_to_anchor=(0.53, 0.036), frameon=False)
-    _encabezado(fig, 2, "Se rotula la predicción media [N] en el cuartil superior. La diagonal indica igualdad entre medición y predicción.")
+    _encabezado(fig, 2)
     fig.subplots_adjust(left=0.08, right=0.98, top=0.89, bottom=0.20, hspace=0.32, wspace=0.15)
     return fig
 
@@ -189,7 +188,7 @@ def distribucion_errores(cuantiles: pd.DataFrame) -> plt.Figure:
                yticks=np.arange(len(MODELOS)), yticklabels=[nombre(m) for m in MODELOS],
                ylim=(len(MODELOS)-0.45, -0.76))
         _estilo(ax)
-    _encabezado(fig, 5, "La cifra es la mediana [N]. La línea fina abarca P10–P90 y la gruesa, el rango intercuartílico.")
+    _encabezado(fig, 5)
     fig.subplots_adjust(left=0.17, right=0.975, top=0.82, bottom=0.17, wspace=0.12)
     return fig
 
@@ -238,7 +237,7 @@ def residuos(tramos):
         ax.set(title=NOMBRES[modelo], xlabel="Predicción inicial [N]")
         _estilo(ax, "both")
     axes.flat[0].set_ylabel("Observación − predicción [N]")
-    _encabezado(fig, 6, "Marcas: mediana por tramo. Barras: rango intercuartílico. Etiquetas: residuo mediano en el tramo de predicción más alto de cada curva.")
+    _encabezado(fig, 6)
     fig.subplots_adjust(left=.09, right=.98, top=.82, bottom=.32, wspace=.14)
     return fig
 
@@ -273,7 +272,7 @@ def evolucion_busqueda(progreso):
         _estilo(ax, "both")
     axes[0].set_ylabel("Reducción del MAE interno [N]")
     fig.subplots_adjust(left=.085, right=.98, top=.83, bottom=.34, wspace=.13)
-    _encabezado(fig, 7, "La línea muestra la mediana de la mejora acumulada sobre la receta inicial. La banda cubre el rango intercuartílico.")
+    _encabezado(fig, 7)
     return fig
 
 
@@ -311,11 +310,7 @@ def contraste_ridge(predicciones: pd.DataFrame) -> plt.Figure:
             ylim=(len(MODELOS) - 0.4, -0.6),
         )
         _estilo(ax)
-    _encabezado(
-        fig,
-        8,
-        "Cada etiqueta indica el ΔMAE frente a Ridge [N]. El rombo es la media pareada y la línea es el rango intercuartílico de las diferencias individuales.",
-    )
+    _encabezado(fig, 8)
     fig.subplots_adjust(left=0.17, right=0.975, top=0.82, bottom=0.17, wspace=0.12)
     return fig
 
@@ -365,11 +360,7 @@ def efecto_tuning(pares):
         _estilo(ax)
     bound = max(limit * 1.4, 0.1)
     axes[0].set_xlim(-bound, bound)
-    _encabezado(
-        fig,
-        9,
-        "La etiqueta inferior muestra MAE inicial → ajustado de la misma familia y los mismos casos. Una diferencia negativa indica menor error externo.",
-    )
+    _encabezado(fig, 9)
     fig.subplots_adjust(left=0.19, right=0.975, top=0.80, bottom=0.18, wspace=0.15)
     return fig
 
@@ -400,5 +391,5 @@ def estabilidad(percentiles):
     fig.subplots_adjust(left=0.17, right=0.88, top=0.8, bottom=0.22, wspace=0.12)
     cax = fig.add_axes([0.91, 0.22, 0.016, 0.58])
     fig.colorbar(heat, cax=cax, label="MAE por pliegue [N]")
-    _encabezado(fig, 10, "Los percentiles resumen la dispersión entre reservas. Se usa la misma escala en ambos paneles.")
+    _encabezado(fig, 10)
     return fig
