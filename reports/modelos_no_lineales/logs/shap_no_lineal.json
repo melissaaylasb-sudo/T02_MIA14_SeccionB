@@ -1,0 +1,11 @@
+{
+  "modelo_explicado": "XGBoost",
+  "criterio_descriptivo": "menor MAE entre ensambles de árboles completos al reservar configuraciones",
+  "explainer": "TreeExplainer",
+  "feature_perturbation": "interventional",
+  "background": "solo entrenamiento externo correspondiente",
+  "n_explicaciones": 26,
+  "max_error_reconstruccion_N": 7.502061509967461e-05,
+  "caso_error_alto": 1,
+  "advertencia": "Selección descriptiva sobre la misma evaluación; SHAP no identifica causalidad."
+}

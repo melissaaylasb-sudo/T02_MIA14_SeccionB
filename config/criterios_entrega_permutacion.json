@@ -1,24 +1,26 @@
 {
-  "version": "entrega_permutacion_v1",
-  "fecha_congelacion": "2026-10-30",
-  "estado": "criterios_fijados_antes_de_interpretar_los_resultados_de_esta_revision",
+  "version": "modelos_no_lineales_v2",
+  "fecha_congelacion": "2026-11-06",
+  "estado": "criterios_revisados_para_comparar_seis_modelos_no_lineales",
   "alcance": "Revisión posterior al EDA y a evaluaciones previas de la misma campaña; no es un prerregistro ni una validación experimental independiente.",
   "fuente_unica_matriz": "docs/matriz_consistencia.csv",
   "vistas_derivadas_matriz": [
     "docs/matriz_consistencia.md",
     "notebooks/06_Modelado_Tuning_SHAP.ipynb"
   ],
-  "configuracion_modelos": "config/comparacion_modelos.json",
-  "configuracion_modelos_sha256": "c895631f2ad842c1da7ee60cfc1485bfe36a3c218edf504f02f47c6f8c25da77",
-  "modelos_fijos": [
-    "Ridge",
-    "ElasticNet",
+  "configuracion_modelos": "config/modelos_no_lineales.json",
+  "configuracion_modelos_sha256": "b6ff1e4ed8fff656de04d5c9e379c9fa3499ac522d138e018d1f06223c909c4e",
+  "modelos_evaluados": [
     "SVR_RBF",
     "RandomForest",
-    "GaussianProcess"
+    "ExtraTrees",
+    "GaussianProcess",
+    "GradientBoosting",
+    "XGBoost"
   ],
-  "n_modelos": 5,
-  "busqueda_hiperparametros": false,
+  "n_modelos": 6,
+  "busqueda_hiperparametros": true,
+  "busqueda_hiperparametros_ambito": "GridSearchCV con cuatro candidatos por familia sobre la geometría completa, exclusivamente dentro del entrenamiento de cada partición externa y con validación interna agrupada; registrar candidatos y selección por partición. Reutilizar los parámetros elegidos para el subconjunto de cuatro variables y la ablación sin volver a buscar.",
   "respuesta": {
     "columna": "First_Failure_Load_N",
     "nombre": "Carga experimental de primera falla",
@@ -125,7 +127,7 @@
       "Fiber_height",
       "Pivot_height"
     ],
-    "ambito": "Exclusivamente dentro del entrenamiento externo; modelos y parámetros fijos.",
+    "ambito": "Exclusivamente dentro del entrenamiento externo; reutilizar parámetros elegidos por GridSearchCV sobre la geometría completa de ese entrenamiento, sin una búsqueda adicional para el subconjunto.",
     "candidatos": "Entradas originales no constantes en el entrenamiento externo.",
     "orden": "Importancia media interna descendente; resolver empates con el orden de entradas_originales.",
     "permitir_importancia_no_positiva": true,
@@ -144,7 +146,7 @@
       "Sample_total_volume"
     ],
     "permutacion": "Permutar conjuntamente las seis columnas con la misma correspondencia de filas.",
-    "ablacion": "Retirar conjuntamente las seis columnas, reajustar sin nueva búsqueda y conservar las mismas particiones y parámetros.",
+    "ablacion": "Retirar conjuntamente las seis columnas, reajustar con los parámetros seleccionados dentro del entrenamiento externo y conservar las mismas particiones.",
     "alcance": "Importancia del bloque; no atribuir su valor a cada componente por separado."
   },
   "hipotesis": {
@@ -197,24 +199,24 @@
         "configuracion"
       ],
       "bloque": "arquitectura_volumenes",
-      "min_modelos": 3,
-      "total_modelos": 5,
+      "min_modelos": 4,
+      "total_modelos": 6,
       "operadores": [
         "media_MAE_permutado - MAE_original > tolerancia_numerica_N",
         "MAE_sin_bloque - MAE_completo > tolerancia_numerica_N"
       ],
       "cumplimiento": "Contar la intersección de modelos que cumplen simultáneamente ambas condiciones.",
-      "no_respaldada": "Menos de tres modelos completos cumplen ambas condiciones bajo configuraciones."
+      "no_respaldada": "Menos de cuatro modelos completos cumplen ambas condiciones bajo configuraciones."
     }
   },
   "interpretacion_reglas": [
     "El corte cero expresa la dirección del cambio de error; no define una mejora mecánicamente importante.",
-    "Tres de cinco es una mayoría operativa entre procedimientos dependientes que usan los mismos datos; no son cinco réplicas ni una prueba de significancia.",
+    "Cuatro de seis es una mayoría operativa entre procedimientos dependientes que usan los mismos datos; no son seis réplicas ni una prueba de significancia.",
     "El menor error observado entre modelos no valida una nueva política elegida retrospectivamente.",
     "La ausencia de respaldo de una hipótesis no demuestra ausencia de relación física.",
     "Una variable constante en el conjunto perturbado no permite valorar su importancia en ese ámbito.",
     "La permutación puede generar combinaciones fuera del soporte; los bloques conservan relaciones internas, no todas las dependencias geométricas.",
     "Los resultados por tres familias reservadas son diagnósticos del dominio evaluado, no garantía de generalización a nuevas campañas."
   ],
-  "matriz_csv_sha256": "3067bba777aeb5e74b361ec5329e7297bf39daddafc4d045f51b2edf30bcaab2"
+  "matriz_csv_sha256": "edac7d168b391ae3d8309acf5423462ce6defe02adaa4486c128adab60a37797"
 }

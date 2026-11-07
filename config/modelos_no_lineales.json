@@ -1,0 +1,29 @@
+{
+  "version": "modelos_no_lineales_v1",
+  "modelos": {
+    "SVR_RBF": {
+      "parametros": {"kernel": "rbf"},
+      "grid": {"modelo__C": [10.0, 100.0], "modelo__gamma": ["scale", 0.1], "modelo__epsilon": [1.0]}
+    },
+    "RandomForest": {
+      "parametros": {"n_estimators": 80, "random_state": 42, "n_jobs": 1},
+      "grid": {"modelo__max_depth": [null, 3], "modelo__min_samples_leaf": [1, 2]}
+    },
+    "ExtraTrees": {
+      "parametros": {"n_estimators": 80, "random_state": 42, "n_jobs": 1},
+      "grid": {"modelo__max_depth": [null, 3], "modelo__min_samples_leaf": [1, 2]}
+    },
+    "GaussianProcess": {
+      "parametros": {"normalize_y": true, "optimizer": null, "random_state": 42, "kernel": "Matern", "nu": 1.5},
+      "grid": {"modelo__alpha": [0.05, 1.0], "modelo__kernel__length_scale": [0.3, 3.0]}
+    },
+    "GradientBoosting": {
+      "parametros": {"n_estimators": 80, "random_state": 42, "loss": "huber"},
+      "grid": {"modelo__max_depth": [1, 2], "modelo__learning_rate": [0.03, 0.1]}
+    },
+    "XGBoost": {
+      "parametros": {"n_estimators": 80, "learning_rate": 0.05, "objective": "reg:squarederror", "tree_method": "hist", "random_state": 42, "n_jobs": 1, "verbosity": 0},
+      "grid": {"modelo__max_depth": [1, 2], "modelo__min_child_weight": [1, 3]}
+    }
+  }
+}

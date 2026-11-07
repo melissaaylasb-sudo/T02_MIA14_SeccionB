@@ -1,0 +1,223 @@
+{
+  "version": "modelos_no_lineales_v1",
+  "target": "First_Failure_Load_N",
+  "unidad": "N",
+  "modelos": {
+    "SVR_RBF": {
+      "parametros": {
+        "kernel": "rbf"
+      },
+      "grid": {
+        "modelo__C": [
+          10.0,
+          100.0
+        ],
+        "modelo__gamma": [
+          "scale",
+          0.1
+        ],
+        "modelo__epsilon": [
+          1.0
+        ]
+      }
+    },
+    "RandomForest": {
+      "parametros": {
+        "n_estimators": 80,
+        "random_state": 42,
+        "n_jobs": 1
+      },
+      "grid": {
+        "modelo__max_depth": [
+          null,
+          3
+        ],
+        "modelo__min_samples_leaf": [
+          1,
+          2
+        ]
+      }
+    },
+    "ExtraTrees": {
+      "parametros": {
+        "n_estimators": 80,
+        "random_state": 42,
+        "n_jobs": 1
+      },
+      "grid": {
+        "modelo__max_depth": [
+          null,
+          3
+        ],
+        "modelo__min_samples_leaf": [
+          1,
+          2
+        ]
+      }
+    },
+    "GaussianProcess": {
+      "parametros": {
+        "normalize_y": true,
+        "optimizer": null,
+        "random_state": 42,
+        "kernel": "Matern",
+        "nu": 1.5
+      },
+      "grid": {
+        "modelo__alpha": [
+          0.05,
+          1.0
+        ],
+        "modelo__kernel__length_scale": [
+          0.3,
+          3.0
+        ]
+      }
+    },
+    "GradientBoosting": {
+      "parametros": {
+        "n_estimators": 80,
+        "random_state": 42,
+        "loss": "huber"
+      },
+      "grid": {
+        "modelo__max_depth": [
+          1,
+          2
+        ],
+        "modelo__learning_rate": [
+          0.03,
+          0.1
+        ]
+      }
+    },
+    "XGBoost": {
+      "parametros": {
+        "n_estimators": 80,
+        "learning_rate": 0.05,
+        "objective": "reg:squarederror",
+        "tree_method": "hist",
+        "random_state": 42,
+        "n_jobs": 1,
+        "verbosity": 0
+      },
+      "grid": {
+        "modelo__max_depth": [
+          1,
+          2
+        ],
+        "modelo__min_child_weight": [
+          1,
+          3
+        ]
+      }
+    }
+  },
+  "familias": [
+    "SVR_RBF",
+    "RandomForest",
+    "ExtraTrees",
+    "GaussianProcess",
+    "GradientBoosting",
+    "XGBoost"
+  ],
+  "referencias": [
+    "Mediana",
+    "Media_por_nivel"
+  ],
+  "seed": 20261030,
+  "entradas_originales": [
+    "n_cells_Y",
+    "Fiber_height",
+    "Fiber_base",
+    "Fiber_total_length",
+    "Fiber_total_volume",
+    "Pivot_height",
+    "Pivot_radius",
+    "Pivot_total_number",
+    "Pivot_total_volume",
+    "Sample_total_volume"
+  ],
+  "protocolos_externos": [
+    "configuracion",
+    "familia"
+  ],
+  "busqueda": {
+    "metodo": "GridSearchCV",
+    "scoring": "neg_mean_absolute_error",
+    "configuracion": "GroupKFold(5) sobre train externo",
+    "familia": "LeaveOneGroupOut sobre train externo",
+    "mismos_parametros_en_todas_prioritarias_ablacion": true
+  },
+  "seleccion": {
+    "top_k": 4,
+    "repeticiones": 20,
+    "inner": "GroupKFold5 nominal en ambos escenarios",
+    "metrica": "MAE pooled por receptor",
+    "donantes": "solo X de train externo; permutaciones globales internas",
+    "empate": "orden original de columnas",
+    "conservar_top4_si_no_positivas": true,
+    "distinta_por_modelo_y_fold": true,
+    "no_optimiza_transferencia_leaveY": true
+  },
+  "permutacion_externa": {
+    "repeticiones": 100,
+    "donantes": "permutación global de X OOF; receptores usan modelo externo propio",
+    "misma_permutacion_modelos_columnas_grupos": true,
+    "y_no_permutado": true,
+    "autoasignaciones_permitidas": true,
+    "no_es_PFI_intrafold": true
+  },
+  "grupos": {
+    "arquitectura": [
+      "n_cells_Y",
+      "Fiber_total_length",
+      "Pivot_total_number"
+    ],
+    "seccion": [
+      "Fiber_height",
+      "Fiber_base"
+    ],
+    "volumenes": [
+      "Fiber_total_volume",
+      "Pivot_total_volume",
+      "Sample_total_volume"
+    ],
+    "pivote": [
+      "Pivot_height",
+      "Pivot_radius"
+    ],
+    "arquitectura_volumenes": [
+      "n_cells_Y",
+      "Fiber_total_length",
+      "Pivot_total_number",
+      "Fiber_total_volume",
+      "Pivot_total_volume",
+      "Sample_total_volume"
+    ]
+  },
+  "ablacion_refit": [
+    "n_cells_Y",
+    "Fiber_total_length",
+    "Pivot_total_number",
+    "Fiber_total_volume",
+    "Pivot_total_volume",
+    "Sample_total_volume"
+  ],
+  "sin_SHAP": true,
+  "sin_escalamiento_y_adicional": true,
+  "limites": [
+    "Donantes marginales pueden romper dependencias geométricas y salir del soporte.",
+    "El donante puede estar en entrenamiento del modelo del receptor; no se usa su y en la perturbación.",
+    "PFI cruzada global es un estimando de perturbación explícito, no PFI clásica intrafold.",
+    "Percentiles de repeticiones reflejan Monte Carlo, no IC poblacionales.",
+    "Configuraciones nominales no son réplicas físicas confirmadas.",
+    "Selección supervisada interna distinta para cada modelo: no hay cuatro variables universales."
+  ],
+  "input_hashes": {
+    "config/modelos_no_lineales.json": "b6ff1e4ed8fff656de04d5c9e379c9fa3499ac522d138e018d1f06223c909c4e",
+    "config/ajuste_modelos.json": "3d544ec47d020e155cb6dea53a94e1964fc59a6386e5073f021ade26c4742684",
+    "data/processed/preliminary/model_table.csv": "2d0a17f54bdc6a6361aaa6e25a57cf67775c7d47a5e2adefb408f114defa21f8",
+    "reports/feature_engineering/particiones.json": "763f20193cd8c58beeb471bc2024015588068a48a1cc0540c0b10ee25ff61e59"
+  }
+}

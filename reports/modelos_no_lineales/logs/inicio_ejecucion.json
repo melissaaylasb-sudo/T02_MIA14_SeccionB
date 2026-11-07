@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-07T03:01:42.238121+00:00",
+  "source_hashes": {
+    "src/importancia_permutacion.py": "789939e758011e7ca4834243dfeb3f9256277a08aac0f3bcd503b0690ab7e2ac",
+    "src/feature_engineering.py": "02d700c7371307ad1778d3abb12fb2163bc093e090cd377b1947c89b75dbea29",
+    "src/ajuste_modelos.py": "8aed6a18feef3ef39a5c432fab8e6b653fc53b70d2948dbdf3271988e1e56490",
+    "src/transformaciones_eda.py": "766b90a2b5ad8d167c98fef97235fbf75d726591f730c2524e6005b4c925f68c"
+  },
+  "protocolo_sha256": "3ea79eff85a0afb309f0bce79781e5982d8b86e660b8a298cf15b518aca48bac"
+}

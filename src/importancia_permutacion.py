@@ -1,6 +1,6 @@
-"""Comparación fija y selección interna por importancia de permutación cruzada.
+"""Comparación anidada de seis regresores no lineales e importancia de permutación.
 
-No importa sprint_importancia, no calcula SHAP y no busca hiperparámetros.
+Cada búsqueda de hiperparámetros utiliza solo el entrenamiento externo.
 Los donantes de X son globales al conjunto OOF correspondiente; cada receptor
 se predice con su modelo reservado. No es permutación intrafold ni causal.
 """
@@ -21,24 +21,24 @@ import joblib
 import numpy as np
 import pandas as pd
 from sklearn.base import BaseEstimator, RegressorMixin, TransformerMixin
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import ExtraTreesRegressor, GradientBoostingRegressor, RandomForestRegressor
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import Matern
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import ElasticNet, Ridge
-from sklearn.metrics import r2_score
-from sklearn.model_selection import GroupKFold
+from sklearn.metrics import mean_absolute_error, r2_score
+from sklearn.model_selection import GridSearchCV, GroupKFold, LeaveOneGroupOut, ParameterGrid
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVR
 from threadpoolctl import threadpool_limits
+from xgboost import XGBRegressor
 
 from .ajuste_modelos import ROOT, GROUP_COLUMNS, load_frozen_data, load_outer_splits
 from .feature_engineering import GEOMETRY, GeometryContract, nominal_groups
 
 
-FAMILIES = ("Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess")
+FAMILIES = ("SVR_RBF", "RandomForest", "ExtraTrees", "GaussianProcess", "GradientBoosting", "XGBoost")
 BASELINES = ("Mediana", "Media_por_nivel")
 TARGET = "First_Failure_Load_N"
 SEED = 20261030
@@ -66,7 +66,7 @@ TABLES = ("metricas_resumen", "comparacion_todas_prioritarias", "predicciones_oo
           "metricas_folds", "importancia_resumen", "importancia_repeticiones",
           "seleccion_variables", "frecuencias_seleccion", "ablacion_bloque",
           "predicciones_ablacion", "particiones_externas", "particiones_internas",
-          "importancia_interna_repeticiones", "ajustes_auditoria")
+          "importancia_interna_repeticiones", "ajustes_auditoria", "busquedas_hiperparametros")
 
 
 def _hash(path):
@@ -85,7 +85,7 @@ def _ids(values):
 
 
 def _output(root, output):
-    return Path(output).resolve() if output is not None else Path(root).resolve()/"reports/permutation_importance"
+    return Path(output).resolve() if output is not None else Path(root).resolve()/"reports/modelos_no_lineales"
 
 
 class SelectOriginal(TransformerMixin, BaseEstimator):
@@ -126,27 +126,35 @@ class ReferenceRegressor(RegressorMixin, BaseEstimator):
 
 
 def fixed_specs(root=ROOT):
-    """Read the existing five-family fixed catalog, not the historical HPO grid."""
-    cfg=json.loads((Path(root)/"config/comparacion_modelos.json").read_text(encoding="utf-8"))
-    if tuple(cfg["modelos"])!=FAMILIES or not cfg["sin_busqueda_hiperparametros"]:
-        raise ValueError("El catálogo debe contener exactamente las cinco familias fijas")
+    """Read the frozen nonlinear catalog and bounded inner-search grids."""
+    cfg=json.loads((Path(root)/"config/modelos_no_lineales.json").read_text(encoding="utf-8"))
+    if tuple(cfg["modelos"])!=FAMILIES or cfg["version"]!="modelos_no_lineales_v1":
+        raise ValueError("El catálogo debe contener exactamente las seis familias no lineales")
+    for family, spec in cfg["modelos"].items():
+        if not 1 <= len(ParameterGrid(spec["grid"])) <= 8:
+            raise ValueError(f"Rejilla fuera de límite: {family}")
     return cfg["modelos"]
 
 
-def fixed_pipeline(family, columns, specs):
-    params=dict(specs[family]["parametros"])
+def fixed_pipeline(family, columns, specs, params=None):
+    base_params=dict(specs[family]["parametros"])
     if family=="GaussianProcess":
-        if params.pop("kernel")!="Matern": raise ValueError("Núcleo histórico inesperado")
-        kernel=Matern(length_scale=params.pop("length_scale"),length_scale_bounds="fixed",nu=params.pop("nu"))
-        estimator=GaussianProcessRegressor(kernel=kernel,**params)
+        if base_params.pop("kernel")!="Matern": raise ValueError("Núcleo Matérn requerido")
+        kernel=Matern(length_scale=1.0,length_scale_bounds="fixed",nu=base_params.pop("nu"))
+        estimator=GaussianProcessRegressor(kernel=kernel,**base_params)
     else:
-        cls={"Ridge":Ridge,"ElasticNet":ElasticNet,"SVR_RBF":SVR,"RandomForest":RandomForestRegressor}[family]
-        estimator=cls(**params)
-    return Pipeline([
+        cls={"SVR_RBF":SVR,"RandomForest":RandomForestRegressor,
+             "ExtraTrees":ExtraTreesRegressor,"GradientBoosting":GradientBoostingRegressor,
+             "XGBoost":XGBRegressor}[family]
+        estimator=cls(**base_params)
+    pipeline=Pipeline([
         ("contrato",GeometryContract()),
         ("imputacion",SimpleImputer(strategy="median",keep_empty_features=True).set_output(transform="pandas")),
         ("seleccion",SelectOriginal(tuple(columns))),
         ("varianza",VarianceThreshold(0.0)),("escala",StandardScaler()),("modelo",estimator)])
+    if params is not None:
+        pipeline.set_params(**params)
+    return pipeline
 
 
 def permutation_donors(n, repetitions, seed):
@@ -207,7 +215,7 @@ def _fit(model,X,y,context,audit):
     audit.append(row);return model
 
 
-def select_top_variables(X,y,groups,family,specs,*,seed,context=None,audit=None):
+def select_top_variables(X,y,groups,family,specs,*,seed,context=None,audit=None,params=None):
     """Supervised selection sees only the supplied external-training sample.
 
     Five nominal GroupKFold splits in BOTH outer scenarios. The inner donor
@@ -220,7 +228,7 @@ def select_top_variables(X,y,groups,family,specs,*,seed,context=None,audit=None)
     fitted=[];partition_rows=[]
     for k,(train,valid) in enumerate(parts,1):
         if set(np.asarray(groups)[train])&set(np.asarray(groups)[valid]): raise ValueError("Grupos internos solapados")
-        model=_fit(fixed_pipeline(family,GEOMETRY,specs),X.iloc[train],np.asarray(y)[train],
+        model=_fit(fixed_pipeline(family,GEOMETRY,specs,params),X.iloc[train],np.asarray(y)[train],
                    {**context,"modelo":family,"etapa":"seleccion_interna","fold_interno":k},audit)
         fitted.append((valid,model,tuple(GEOMETRY)))
         partition_rows.append({**context,"fold_interno":k,"casos_train":_ids(X.index[train]),"casos_validacion":_ids(X.index[valid])})
@@ -249,6 +257,48 @@ def select_top_variables(X,y,groups,family,specs,*,seed,context=None,audit=None)
     return chosen,summary,repetition_rows,partition_rows,donors
 
 
+def tune_within_outer_train(X, y, groups, family, specs, protocol):
+    """Select hyperparameters without exposing any external test observation.
+
+    Configuration validation holds out nominal geometries. Family validation
+    holds out one of the two training families at a time. The resulting
+    parameters remain fixed for the full, reduced and ablated feature sets,
+    isolating feature effects from changes in tuning.
+    """
+    groups=np.asarray(groups)
+    if len(X)!=len(y) or len(groups)!=len(X):
+        raise ValueError("Entrenamiento y grupos desalineados")
+    if protocol=="configuracion":
+        splitter=GroupKFold(n_splits=5)
+    elif protocol=="familia":
+        splitter=LeaveOneGroupOut()
+    else:
+        raise ValueError(f"Protocolo desconocido: {protocol}")
+    parts=list(splitter.split(X, y, groups))
+    for tr,va in parts:
+        if set(groups[tr]) & set(groups[va]):
+            raise ValueError("Fuga entre grupos internos")
+    started=perf_counter()
+    search=GridSearchCV(
+        estimator=fixed_pipeline(family,GEOMETRY,specs),
+        param_grid=specs[family]["grid"],
+        scoring="neg_mean_absolute_error", cv=parts, refit=False,
+        n_jobs=1, error_score="raise", return_train_score=False,
+    )
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=UserWarning)
+        search.fit(X, np.asarray(y,dtype=float))
+    params=dict(search.best_params_)
+    if not np.isfinite(search.best_score_):
+        raise ValueError("La búsqueda interna no obtuvo MAE finito")
+    return params, {"best_params_json":json.dumps(params,ensure_ascii=False,sort_keys=True),
+                    "inner_MAE_N":float(-search.best_score_),
+                    "n_candidates":int(len(search.cv_results_["params"])),
+                    "n_inner_splits":len(parts),"segundos_busqueda":perf_counter()-started,
+                    "casos_entrenamiento":_ids(X.index),
+                    "criterio":"MAE interno medio entre grupos; minimizar"}
+
+
 def scores(y,p):
     y=np.asarray(y);p=np.asarray(p);errors=y-p
     return {"n":len(y),"MAE_N":float(np.mean(np.abs(errors))),"MSE_N2":float(np.mean(errors**2)),
@@ -268,9 +318,13 @@ def _load_tables(output):
 
 
 def _protocol(root,specs):
-    return {"version":"permutacion_fija_v1","target":TARGET,"unidad":"N","modelos":specs,
+    return {"version":"modelos_no_lineales_v1","target":TARGET,"unidad":"N","modelos":specs,
             "familias":list(FAMILIES),"referencias":list(BASELINES),"seed":SEED,
             "entradas_originales":GEOMETRY,"protocolos_externos":["configuracion","familia"],
+            "busqueda":{"metodo":"GridSearchCV","scoring":"neg_mean_absolute_error",
+                        "configuracion":"GroupKFold(5) sobre train externo",
+                        "familia":"LeaveOneGroupOut sobre train externo",
+                        "mismos_parametros_en_todas_prioritarias_ablacion":True},
             "seleccion":{"top_k":TOP_K,"repeticiones":INNER_REPEATS,"inner":"GroupKFold5 nominal en ambos escenarios",
                          "metrica":"MAE pooled por receptor","donantes":"solo X de train externo; permutaciones globales internas",
                          "empate":"orden original de columnas","conservar_top4_si_no_positivas":True,
@@ -279,19 +333,19 @@ def _protocol(root,specs):
                                     "misma_permutacion_modelos_columnas_grupos":True,"y_no_permutado":True,
                                     "autoasignaciones_permitidas":True,"no_es_PFI_intrafold":True},
             "grupos":GROUPS,"ablacion_refit":GROUPS["arquitectura_volumenes"],
-            "sin_HPO":True,"sin_SHAP":True,"sin_escalamiento_y_adicional":True,
+            "sin_SHAP":True,"sin_escalamiento_y_adicional":True,
             "limites":["Donantes marginales pueden romper dependencias geométricas y salir del soporte.",
                        "El donante puede estar en entrenamiento del modelo del receptor; no se usa su y en la perturbación.",
                        "PFI cruzada global es un estimando de perturbación explícito, no PFI clásica intrafold.",
                        "Percentiles de repeticiones reflejan Monte Carlo, no IC poblacionales.",
                        "Configuraciones nominales no son réplicas físicas confirmadas.",
                        "Selección supervisada interna distinta para cada modelo: no hay cuatro variables universales."],
-            "input_hashes":{rel:_hash(root/rel) for rel in ["config/comparacion_modelos.json","config/ajuste_modelos.json",
+            "input_hashes":{rel:_hash(root/rel) for rel in ["config/modelos_no_lineales.json","config/ajuste_modelos.json",
                 "data/processed/preliminary/model_table.csv","reports/feature_engineering/particiones.json"]}}
 
 
 def run(root=ROOT,output=None):
-    """Freeze protocol, fit fixed candidates, evaluate PFI and save auditable tables."""
+    """Tune six nonlinear candidates inside external train; then evaluate OOF."""
     root=Path(root).resolve();out=_output(root,output)
     if (out/"manifest.json").exists():return ensure_outputs(root,out)
     start=perf_counter();specs=fixed_specs(root);frame=load_frozen_data(root)
@@ -319,15 +373,24 @@ def run(root=ROOT,output=None):
                 rows['particiones_externas'].append({**context,'casos_train':_ids(xt.index),'casos_test':_ids(X.index[test]),
                                                     'n_train':len(train),'n_test':len(test)})
                 for family in FAMILIES:
+                    tuning_groups=(nominal_groups(frame.iloc[train],GROUP_COLUMNS).to_numpy()
+                                   if protocol_name=='configuracion' else
+                                   frame.iloc[train].n_cells_Y.astype(int).astype(str).to_numpy())
+                    best_params,search_row=tune_within_outer_train(
+                        xt,yt,tuning_groups,family,specs,protocol_name)
+                    rows['busquedas_hiperparametros'].append(
+                        {**context,'modelo':family,'conjunto':'todas',**search_row})
                     chosen,selection,inner_reps,inner_parts,donors=select_top_variables(
                         xt,yt,nominal_groups(frame.iloc[train],GROUP_COLUMNS).to_numpy(),family,specs,
-                        seed=inner_seed,context=context,audit=rows['ajustes_auditoria'])
+                        seed=inner_seed,context=context,audit=rows['ajustes_auditoria'],params=best_params)
                     rows['seleccion_variables'].extend(selection);rows['importancia_interna_repeticiones'].extend(inner_reps)
                     if family==FAMILIES[0]:
                         rows['particiones_internas'].extend(inner_parts)
                         inner_donor_tables.append(_donor_rows(xt,donors,context,inner_seed))
                     for subset,columns in [('todas',tuple(GEOMETRY)),('prioritarias',chosen)]:
-                        model=_fit(fixed_pipeline(family,columns,specs),xt,yt,{**context,'modelo':family,'etapa':subset},rows['ajustes_auditoria'])
+                        model=_fit(fixed_pipeline(family,columns,specs,best_params),xt,yt,
+                                   {**context,'modelo':family,'etapa':subset,
+                                    'best_params_json':search_row['best_params_json']},rows['ajustes_auditoria'])
                         fitted[(family,subset)].append((test,model,columns));pred=_prediction(model,X.iloc[test])
                         path=out/'estimadores'/f'{protocol_name}_{fold:02d}_{family}_{subset}.joblib';joblib.dump(model,path,compress=3);stored[str(path.relative_to(out))]=_hash(path)
                         for pos,value in zip(test,pred):
@@ -336,7 +399,9 @@ def run(root=ROOT,output=None):
                                 'variables_usadas':';'.join(columns),'estimador':str(path.relative_to(out)).replace('\\','/')})
                         rows['metricas_folds'].append({**context,'modelo':family,'conjunto':subset,**scores(y[test],pred)})
                     kept=tuple(c for c in GEOMETRY if c not in GROUPS['arquitectura_volumenes'])
-                    ablated=_fit(fixed_pipeline(family,kept,specs),xt,yt,{**context,'modelo':family,'etapa':'ablacion_bloque'},rows['ajustes_auditoria'])
+                    ablated=_fit(fixed_pipeline(family,kept,specs,best_params),xt,yt,
+                                 {**context,'modelo':family,'etapa':'ablacion_bloque',
+                                  'best_params_json':search_row['best_params_json']},rows['ajustes_auditoria'])
                     pred=_prediction(ablated,X.iloc[test]);path=out/'estimadores'/f'{protocol_name}_{fold:02d}_{family}_ablacion.joblib'
                     joblib.dump(ablated,path,compress=3);stored[str(path.relative_to(out))]=_hash(path)
                     for pos,value in zip(test,pred):
@@ -400,8 +465,8 @@ def run(root=ROOT,output=None):
     pd.concat(outer_donor_tables,ignore_index=True).to_csv(out/'tables/donantes_externos.csv.gz',index=False,compression='gzip')
     pd.concat(inner_donor_tables,ignore_index=True).to_csv(out/'tables/donantes_internos.csv.gz',index=False,compression='gzip')
     outputs={str(p.relative_to(out)).replace('\\','/'):_hash(p) for p in sorted((out/'tables').glob('*')) if p.is_file()}
-    manifest={'version':'permutacion_fija_v1','status':'complete','created_utc':datetime.now(timezone.utc).isoformat(),'seconds':perf_counter()-start,
-              'python':platform.python_version(),'packages':{p:importlib.metadata.version(p) for p in ['numpy','pandas','scikit-learn','scipy','joblib','threadpoolctl']},
+    manifest={'version':'modelos_no_lineales_v1','status':'complete','created_utc':datetime.now(timezone.utc).isoformat(),'seconds':perf_counter()-start,
+              'python':platform.python_version(),'packages':{p:importlib.metadata.version(p) for p in ['numpy','pandas','scikit-learn','scipy','joblib','threadpoolctl','xgboost']},
               'protocol_sha256':_hash(frozen),'input_hashes':protocol['input_hashes'],'source_hashes':source_hashes,
               'output_hashes':outputs,'estimator_hashes':stored,'counts':{'oof_rows':len(frames['predicciones_oof']),
               'outer_folds':len(frames['particiones_externas']),'fitted_models':len(rows['ajustes_auditoria']),
@@ -435,7 +500,8 @@ def verify_outputs(root=ROOT,output=None,*,check_raw=False,require_estimators=Fa
     if require_estimators and missing_estimators:
         raise FileNotFoundError(f'Faltan {len(missing_estimators)} estimadores locales; primer archivo: {missing_estimators[0]}')
     frames=_load_tables(out);oof=frames['predicciones_oof'];metrics=frames['metricas_resumen'];selection=frames['seleccion_variables']
-    if len(oof)!=624 or oof.duplicated(['protocolo','modelo','conjunto','Case_n']).any():raise AssertionError('OOF incompleto/duplicado')
+    expected_oof=len(FAMILIES)*2*2*len(set(oof.Case_n))+len(BASELINES)*2*len(set(oof.Case_n))
+    if len(oof)!=expected_oof or oof.duplicated(['protocolo','modelo','conjunto','Case_n']).any():raise AssertionError('OOF incompleto/duplicado')
     if 2 in set(oof.Case_n):raise AssertionError('Caso2 no observado en evaluación')
     for row in metrics.itertuples():
         g=oof[(oof.protocolo==row.protocolo)&(oof.modelo==row.modelo)&(oof.conjunto==row.conjunto)]
@@ -445,6 +511,16 @@ def verify_outputs(root=ROOT,output=None,*,check_raw=False,require_estimators=Fa
             if not np.isclose(expected[key],getattr(row,key),atol=1e-9,rtol=1e-10):raise AssertionError('Métrica no reproducible')
         counts['metricas']+=1
     outer={(r.protocolo,r.fold):(set(map(int,r.casos_train.split(';'))),set(map(int,r.casos_test.split(';')))) for r in frames['particiones_externas'].itertuples()}
+    searches=frames['busquedas_hiperparametros']
+    if len(searches)!=len(outer)*len(FAMILIES) or searches.duplicated(['protocolo','fold','modelo']).any():
+        raise AssertionError('Búsquedas internas incompletas o duplicadas')
+    for row in searches.itertuples():
+        train,test=outer[(row.protocolo,row.fold)]
+        if set(map(int,row.casos_entrenamiento.split(';')))!=train or set(map(int,row.casos_entrenamiento.split(';')))&test:
+            raise AssertionError('El tuning accedió al fold externo')
+        params=json.loads(row.best_params_json)
+        if set(params)!=set(fixed_specs(root)[row.modelo]['grid']) or row.n_candidates<1 or row.n_inner_splits<2:
+            raise AssertionError('Hiperparámetros o particiones internas inválidos')
     for (p,model,fold),g in selection.groupby(['protocolo','modelo','fold']):
         eligible=g[g.no_constante_train].sort_values(['PFI_interna_media_N','orden_original'],ascending=[False,True])
         expected=set(eligible.head(TOP_K).variable);actual=set(g.loc[g.seleccionada,'variable'])

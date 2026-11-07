@@ -1,0 +1,10 @@
+﻿variable,nombre,presencia_top3,rango_mediano,SHAP_abs_DE_entre_folds_N
+Fiber_base,Ancho de fibra,0.875,3.0,1.9714172280980518
+Fiber_height,Altura de fibra,0.16666666666666666,6.0,0.25867650109152485
+Fiber_total_length,Longitud total de fibras,0.16666666666666666,6.0,0.0
+Fiber_total_volume,Volumen total de fibras,0.25,5.0,0.8165217829559236
+Pivot_height,Altura de pivote,0.25,4.0,1.415526114069277
+Pivot_total_number,Número total de pivotes,0.16666666666666666,6.0,0.0
+Pivot_total_volume,Volumen total de pivotes,0.16666666666666666,6.0,0.0
+Sample_total_volume,Volumen declarado del espécimen,0.9583333333333334,2.5,1.8246938516836433
+n_cells_Y,Número de celdas en Y,1.0,1.0,19.286737304937507

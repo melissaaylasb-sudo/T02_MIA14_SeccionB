@@ -1,0 +1,421 @@
+﻿protocolo,modelo,conjunto,tipo,variable_grupo,etiqueta,delta_MAE_media_N,delta_MAE_DE_N,p05_N,p95_N,fraccion_delta_positiva,n_repeticiones,interpretacion_intervalo
+configuracion,SVR_RBF,todas,variable,n_cells_Y,Número de celdas en Y,10.516104925390277,2.3962864653801823,6.541043951532781,14.697157174416526,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Fiber_height,Altura de fibra,-0.3748379510603593,1.1116505809271395,-1.8563102697433482,1.4326629709324177,0.37,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Fiber_base,Ancho de fibra,-0.866812701590327,1.3337536718575227,-3.0128536940641824,1.1758709741472546,0.28,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Fiber_total_length,Longitud total de fibras,11.261238747951875,2.493898640363564,7.4471712858553625,15.641830677536248,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Fiber_total_volume,Volumen total de fibras,3.556146263908302,1.4563583326447223,0.9827375068191975,5.72389377579829,0.99,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Pivot_height,Altura de pivote,0.6372121323010926,1.3505925221884447,-1.4284375633329853,2.6735386277708013,0.7,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Pivot_total_number,Número total de pivotes,11.849119948919007,2.5766138418210423,7.7809800397545485,16.573734167463044,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Pivot_total_volume,Volumen total de pivotes,3.5561462639082744,1.4563583326447176,0.982737506819169,5.72389377579827,0.99,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,variable,Sample_total_volume,Volumen declarado del espécimen,1.3270183094664585,0.948259277340788,-0.22551785803480903,2.8141131588078916,0.9,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,grupo,arquitectura,Arquitectura,34.37360940983157,5.750336224799751,24.3289680592941,43.12881146547681,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,grupo,seccion,Sección de fibra,-1.059451122103217,1.3870404264766865,-3.0517209036508297,1.03693880629614,0.27,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,grupo,volumenes,Volúmenes,8.358417679099269,2.2703798508902424,4.75598189148184,11.724944637892598,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,grupo,pivote,Geometría del pivote,0.6372121323010926,1.3505925221884447,-1.4284375633329853,2.6735386277708013,0.7,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),46.08032791283432,7.70123798973988,33.37081380836339,58.43251541312825,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,n_cells_Y,Número de celdas en Y,14.809295313246599,2.8570138281957105,9.74205443130014,19.009997616867174,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Fiber_total_length,Longitud total de fibras,15.950392560507872,3.0287313385529333,10.951603886801179,20.30255057578145,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-0.6822264898013296,0.9643195782437878,-2.0940342891205135,0.8720439426638331,0.28,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Pivot_total_number,Número total de pivotes,16.848483928884082,3.170468244568617,11.592218839225612,21.485887190745082,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,grupo,arquitectura,Arquitectura,52.747317177727325,8.221317202449963,37.69325840524582,67.10291082543804,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,grupo,volumenes,Volúmenes,-0.6822264898013296,0.9643195782437878,-2.0940342891205135,0.8720439426638331,0.28,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,SVR_RBF,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),52.97214559691111,8.411294792253024,37.202852471301505,66.95965304525627,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,n_cells_Y,Número de celdas en Y,5.449535460908865,1.7711140404672352,2.71688674164377,8.461203736645267,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Fiber_height,Altura de fibra,-0.12820632127594495,0.10601753698994457,-0.3188114107333556,0.04232161706348971,0.1,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Fiber_base,Ancho de fibra,0.135705545043499,0.26543987492365095,-0.31228930154913864,0.5786869521710899,0.72,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Fiber_total_length,Longitud total de fibras,4.27036247813643,1.6039635469830908,1.6003121828258278,6.873724635321263,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Fiber_total_volume,Volumen total de fibras,12.223888476572023,2.7675634608521595,7.6510466800213655,16.778838158005176,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Pivot_height,Altura de pivote,-0.01818450726877469,0.22862909097597867,-0.39393496022207597,0.36214768429487193,0.45,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Pivot_total_number,Número total de pivotes,4.139436307253488,1.6140073478976134,1.6197781105005806,6.5849793274953825,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Pivot_total_volume,Volumen total de pivotes,4.317623585355606,1.6456535915223185,1.838454250688537,6.962281209146738,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,variable,Sample_total_volume,Volumen declarado del espécimen,0.1418134445970676,0.6612694832772128,-0.964324499198718,1.1323005869390992,0.58,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,grupo,arquitectura,Arquitectura,22.11996909111721,4.151121973892372,15.23857105921856,29.48175093473365,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,grupo,seccion,Sección de fibra,0.05908979668421709,0.3026025244474242,-0.42945184962606814,0.5501809075473141,0.59,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,grupo,volumenes,Volúmenes,22.420949019690354,4.298761120134167,14.426787743801334,29.394346101719446,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,grupo,pivote,Geometría del pivote,-0.01818450726877469,0.22862909097597867,-0.39393496022207597,0.36214768429487193,0.45,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),50.37988681524898,8.50255596391333,33.985211019327906,64.67122049331743,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,n_cells_Y,Número de celdas en Y,7.221770415709276,1.8931413491013611,4.577145813674167,10.530540365051596,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Fiber_total_length,Longitud total de fibras,8.515114081137607,1.967226642882866,5.692774153216568,12.254094755036627,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,16.849951503303977,3.183731890525783,10.804574498669721,22.297185795792746,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Pivot_total_number,Número total de pivotes,1.1481198407963555,0.6355897199428107,0.023633364552111402,2.150934436041388,0.96,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,5.854032096505912,1.7728800054336762,3.1040180115804383,9.037428493251534,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,grupo,arquitectura,Arquitectura,20.782184779630093,3.8047847644543724,14.785586352423636,28.24894125594025,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,grupo,volumenes,Volúmenes,26.722859024924727,4.739801102611001,18.394737915929557,34.498516199468945,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,RandomForest,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),52.3063040678228,8.456814142175926,36.58023283501222,67.05170152699733,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,n_cells_Y,Número de celdas en Y,11.670523679029294,2.641736050385775,7.339496794204078,15.89190432902167,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Fiber_height,Altura de fibra,-0.2937096474358974,0.14561257559197988,-0.5217313902243592,-0.059604679487177036,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Fiber_base,Ancho de fibra,-0.417525881410257,0.13998192245497448,-0.6830737540064102,-0.20398603365384488,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Fiber_total_length,Longitud total de fibras,12.914350040350257,2.854818648116708,7.84984980483057,17.593220931490375,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Fiber_total_volume,Volumen total de fibras,-0.7146643482715155,0.48749003915452366,-1.497607990785261,0.046675506810881714,0.06,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Pivot_height,Altura de pivote,-0.464716922275639,0.2176962056677327,-0.83855798878205,-0.10679985576923157,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Pivot_total_number,Número total de pivotes,16.444483332036008,3.3953114937704907,10.972197559142236,22.319439720219005,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Pivot_total_volume,Volumen total de pivotes,-0.7409958307196244,0.32985667539973973,-1.2495415807196286,-0.22334849511599497,0.01,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-0.42810861113020393,0.314626920608746,-0.9578700999694887,0.0634569715354004,0.08,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,grupo,arquitectura,Arquitectura,52.52246466496873,8.496137628105997,37.171342599301745,67.14325786601422,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,grupo,seccion,Sección de fibra,-0.7018113221153851,0.2371597385495374,-1.0911431129807654,-0.28511972756409476,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,grupo,volumenes,Volúmenes,-1.0908481791628588,0.7558887778063764,-2.3566705465888402,0.08412391674296964,0.07,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,grupo,pivote,Geometría del pivote,-0.464716922275639,0.2176962056677327,-0.83855798878205,-0.10679985576923157,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),52.946586496279764,8.578959257982167,36.88807913986189,67.62841892313418,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,n_cells_Y,Número de celdas en Y,11.974678197783113,2.544911697339827,7.582280986626207,16.091369810077058,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Fiber_total_length,Longitud total de fibras,12.944615331864316,2.791427087912653,8.176459798820959,17.641555390911176,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-0.2556021153846174,0.21686566332031268,-0.6190512820512932,0.11032612179487385,0.12,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Pivot_height,Altura de pivote,-0.16796296794872048,0.504016004185602,-0.9474485416666778,0.6615727884615307,0.39,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Pivot_total_number,Número total de pivotes,17.102082209344477,3.2604506770119004,11.570860220352543,22.786984692651103,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,-0.13144655469702493,0.38255196845567396,-0.6907301950740015,0.5482468191964254,0.37,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,grupo,arquitectura,Arquitectura,54.540298924698575,8.670721256494927,38.97990101457572,69.2613050846116,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,grupo,volumenes,Volúmenes,-0.3870486700816446,0.42978960351171275,-0.978494280181626,0.2987325831807267,0.19,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,grupo,pivote,Geometría del pivote,-0.16796296794872048,0.504016004185602,-0.9474485416666778,0.6615727884615307,0.39,100,variabilidad_MC_no_IC_poblacional
+configuracion,ExtraTrees,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),53.72986532440476,8.652879957277499,38.653723221153854,68.46388608182613,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,n_cells_Y,Número de celdas en Y,9.566660893149777,2.274275128598726,5.735395357207064,13.34632736476489,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Fiber_height,Altura de fibra,-0.8796216654302568,0.8462127716926668,-1.9778094835737388,0.5951221374596358,0.19,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Fiber_base,Ancho de fibra,-0.7549476887987362,1.1196153844742194,-2.632671154312088,0.9635710476426729,0.25,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Fiber_total_length,Longitud total de fibras,10.297995729937043,2.3681758147672247,6.297825102497853,14.167637111404403,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Fiber_total_volume,Volumen total de fibras,3.7163406683448543,1.3994901989849193,1.3639068223449666,5.71968468819054,0.99,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Pivot_height,Altura de pivote,0.5167280718948064,1.1749472181895395,-1.4906612885473967,2.180325484928225,0.72,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Pivot_radius,Radio de pivote,-7.105427357601002e-15,0.0,-7.105427357601002e-15,-7.105427357601002e-15,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Pivot_total_number,Número total de pivotes,10.871639440937313,2.4478349940386637,6.772413106084259,14.802152662054901,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Pivot_total_volume,Volumen total de pivotes,3.7163406683448397,1.399490198984918,1.3639068223449562,5.719684688190522,0.99,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,variable,Sample_total_volume,Volumen declarado del espécimen,1.7283200733155106,1.0165230817358943,0.08384672217534242,3.4700738553788817,0.96,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,grupo,arquitectura,Arquitectura,33.36973369596722,5.538413742391606,23.846052540200184,41.95543088797491,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,grupo,seccion,Sección de fibra,-1.0477736385172138,1.1364440056321792,-2.8303009446424507,0.5004023839456301,0.21,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,grupo,volumenes,Volúmenes,9.787004771721564,2.519646998248957,5.3583175158218115,13.754079050573434,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,grupo,pivote,Geometría del pivote,0.5167280718948064,1.1749472181895395,-1.4906612885473967,2.180325484928225,0.72,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),46.723390293176124,7.666227772914052,33.780322485084454,59.35654596403442,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,n_cells_Y,Número de celdas en Y,16.23132046753674,2.9362517000763138,11.475400317360393,20.721544770592462,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Fiber_total_length,Longitud total de fibras,17.181507649437055,3.080440709202009,12.027573409596785,21.778189725261438,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,2.7815335620286827,1.1174885919836917,1.0042285685110592,4.618738492559762,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Pivot_total_number,Número total de pivotes,17.926865406649505,3.2013624138885297,12.47329646142274,22.79553244499562,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,grupo,arquitectura,Arquitectura,52.58099682591154,7.921081046990585,37.880818969743444,65.85019980067139,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,grupo,volumenes,Volúmenes,2.7815335620286827,1.1174885919836917,1.0042285685110592,4.618738492559762,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GaussianProcess,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),55.33853537536071,8.602712554526624,39.429199363903535,70.01258027330515,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,n_cells_Y,Número de celdas en Y,6.86274456054843,1.9718016618007144,3.8022436669180246,10.119485615766832,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Fiber_height,Altura de fibra,0.08567296161298574,0.11116130710096869,-0.08376831979842744,0.2519137387152966,0.76,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Fiber_base,Ancho de fibra,0.049537621642475924,0.6842030145155551,-1.0319502702556038,1.3545349503770667,0.49,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Fiber_total_length,Longitud total de fibras,4.280486034992554,1.2684943529789605,2.0093159576132726,6.077907615841509,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Fiber_total_volume,Volumen total de fibras,12.587114422904289,2.6951651541064643,8.58745384290065,17.39116854319226,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Pivot_height,Altura de pivote,-0.27811607225747215,0.5014293774951136,-0.9929346498660966,0.5378632564160053,0.34,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Pivot_total_number,Número total de pivotes,3.8783885000830645,1.4004598626763112,1.3346487896556893,5.8929421525953245,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Pivot_total_volume,Volumen total de pivotes,4.339554134859759,1.564823467674377,2.13378910065726,6.730357057425768,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,variable,Sample_total_volume,Volumen declarado del espécimen,0.43843430098486286,0.9112837600448767,-0.9899480441362704,1.7603903203846074,0.67,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,grupo,arquitectura,Arquitectura,20.12271085105923,4.262439953625711,11.929239684655268,27.183322783410873,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,grupo,seccion,Sección de fibra,0.1476563642941235,0.7104615814081494,-0.8736717428604533,1.4803189160172794,0.53,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,grupo,volumenes,Volúmenes,24.22035176289419,4.274621086465343,16.88167662484513,30.79873759631178,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,grupo,pivote,Geometría del pivote,-0.27811607225747215,0.5014293774951136,-0.9929346498660966,0.5378632564160053,0.34,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),49.77531928285419,8.261531173104483,33.93193070054853,63.74239948908726,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,n_cells_Y,Número de celdas en Y,6.948917847785435,1.5555754957148331,3.9687347294940687,9.262013630931051,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Fiber_total_length,Longitud total de fibras,2.957699352406278,1.266499972252541,0.8280804005575172,4.927756907574363,0.99,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,16.668430504158938,3.5564813344723385,10.782867034411106,22.361208726659427,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Pivot_total_number,Número total de pivotes,8.631870623097816,2.1651323581676643,4.865145343599749,11.823266036050338,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,6.529592505767834,1.7107934134401916,3.9389165356133797,9.443283031213062,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,grupo,arquitectura,Arquitectura,22.53948500184574,4.208386768954874,15.518843830160277,28.37013979284748,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,grupo,volumenes,Volúmenes,26.569546487876508,4.755388556740572,19.28444555874862,34.64884074772343,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,GradientBoosting,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),53.600578423622075,8.453450120205904,37.43482565833369,68.7237180927023,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,n_cells_Y,Número de celdas en Y,49.69917510059064,8.257217190101285,34.72052316108116,63.638032639723555,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Fiber_height,Altura de fibra,-0.013454607450045427,0.10035725256417266,-0.18712146465595048,0.1871214646559487,0.33,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Fiber_base,Ancho de fibra,1.0572526641258824,0.6448369236185073,0.023683501316951374,2.0811896579448996,0.95,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Fiber_total_volume,Volumen total de fibras,0.09537338209885798,0.18967004891237998,-0.17946331317608255,0.3914158160869885,0.72,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Pivot_height,Altura de pivote,-0.19044796811617332,0.2904704506994891,-0.6250459671020503,0.2772965211134684,0.25,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,variable,Sample_total_volume,Volumen declarado del espécimen,0.15319326254037605,0.7247253103777754,-0.9832097173837513,1.2899240523118232,0.57,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,grupo,arquitectura,Arquitectura,49.69917510059064,8.257217190101285,34.72052316108116,63.638032639723555,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,grupo,seccion,Sección de fibra,1.0401743290240946,0.6358924719468023,-0.002971942608171917,2.0555940014765803,0.95,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,grupo,volumenes,Volúmenes,0.1631666897113499,0.7466045473987455,-1.0558173998319185,1.4134499740600563,0.54,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,grupo,pivote,Geometría del pivote,-0.19044796811617332,0.2904704506994891,-0.6250459671020503,0.2772965211134684,0.25,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),51.31945614166259,8.435058429021277,35.44774095623309,65.62977266869179,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,n_cells_Y,Número de celdas en Y,50.071181531583335,8.332711138607324,35.0337144264808,64.36450440861628,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Fiber_base,Ancho de fibra,0.8611846944955684,0.6436840175259952,-0.1952088884206911,1.9175917933537403,0.88,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-0.025044837834285242,0.2205385133621233,-0.36711472731370165,0.3763460012582627,0.67,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Pivot_height,Altura de pivote,-0.3718158065795894,0.27147862522100236,-0.7348938281719495,0.108880908672627,0.13,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,0.21927630826509925,0.7419547139992388,-0.9505133543748109,1.417021583557129,0.6,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,grupo,arquitectura,Arquitectura,50.071181531583335,8.332711138607324,35.0337144264808,64.36450440861628,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,grupo,seccion,Sección de fibra,0.8611846944955684,0.6436840175259952,-0.1952088884206911,1.9175917933537403,0.88,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,grupo,volumenes,Volúmenes,0.19423147043081415,0.7921681759370357,-1.0791987380981451,1.4672995664156392,0.62,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,grupo,pivote,Geometría del pivote,-0.3718158065795894,0.27147862522100236,-0.7348938281719495,0.108880908672627,0.13,100,variabilidad_MC_no_IC_poblacional
+configuracion,XGBoost,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),51.23614263693002,8.412210781633306,35.465435864962075,65.28177225435697,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,n_cells_Y,Número de celdas en Y,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,grupo,arquitectura,Arquitectura,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,grupo,volumenes,Volúmenes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Mediana,referencia,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,n_cells_Y,Número de celdas en Y,55.241617704517694,8.712942489698962,39.145299297924296,70.06059676434674,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,grupo,arquitectura,Arquitectura,55.241617704517694,8.712942489698962,39.145299297924296,70.06059676434674,1.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,grupo,volumenes,Volúmenes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+configuracion,Media_por_nivel,referencia,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),55.241617704517694,8.712942489698962,39.145299297924296,70.06059676434674,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,n_cells_Y,Número de celdas en Y,-0.16045736216173595,1.3514117642401566,-2.5613888153342237,2.082325035236934,0.45,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Fiber_height,Altura de fibra,0.6684255541378298,0.7715521319893206,-0.556571523741632,2.0498875439834783,0.79,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Fiber_base,Ancho de fibra,-0.22713637621444918,0.898685284779247,-1.6492713541976136,1.1381355326899252,0.44,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Fiber_total_length,Longitud total de fibras,0.044264420516068693,1.345197045150329,-2.3231683872183724,2.286101874588392,0.52,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Fiber_total_volume,Volumen total de fibras,-0.1252138188743953,0.7868318963343168,-1.5408442139765903,1.0748396283995727,0.47,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Pivot_height,Altura de pivote,-0.28287039609485404,0.40068548197632636,-0.8502012056369616,0.4662257544635302,0.25,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Pivot_total_number,Número total de pivotes,0.19934952196910402,1.3423001337609568,-2.143841020095993,2.4401955717697543,0.54,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Pivot_total_volume,Volumen total de pivotes,-0.12521381887440086,0.7868318963343166,-1.540844213976591,1.0748396283995456,0.47,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-4.809834197250204,1.8288934028072639,-7.893350714376719,-1.9923522856728912,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,grupo,arquitectura,Arquitectura,0.8610179439742125,3.2532781185345105,-4.610320597397216,6.335238164175046,0.59,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,grupo,seccion,Sección de fibra,-0.8717595673898917,0.8414026805732713,-2.333838342885266,0.4951327884632232,0.14,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,grupo,volumenes,Volúmenes,-5.4937072907582865,2.8205074867048534,-10.44844489210442,-1.5394167702606438,0.03,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,grupo,pivote,Geometría del pivote,-0.28287039609485404,0.40068548197632636,-0.8502012056369616,0.4662257544635302,0.25,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),2.2170113439943617,4.498245604827412,-5.458705286008621,9.279751473046186,0.69,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,n_cells_Y,Número de celdas en Y,-0.5475319918170725,1.7309413848515782,-3.482441859372068,2.1875803928858524,0.37,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Fiber_total_length,Longitud total de fibras,-0.06495230418337343,1.69605220222801,-2.9174261390347382,2.684840625868767,0.5,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-2.339574563536833,0.5643816147543906,-3.2861312244258527,-1.4231236725154848,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Pivot_total_number,Número total de pivotes,0.2711744275967872,1.6786639056391484,-2.545686021541954,3.0382080220907497,0.56,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,-2.5442117455728677,1.7082713834152545,-5.4835750229602045,0.17209648450500722,0.06,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,grupo,arquitectura,Arquitectura,6.8346578217349325,4.058065711943845,0.5553452006304477,13.439867452646148,0.95,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,grupo,volumenes,Volúmenes,-4.883786309109695,2.054946441365759,-8.448090059387344,-2.0122624310678363,0.01,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,SVR_RBF,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),8.078398633375496,4.353069644604625,0.6448652736514812,15.165103442019072,0.95,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,n_cells_Y,Número de celdas en Y,4.041916749885523,1.1401673461620137,2.242503958333319,5.9127399845466915,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Fiber_height,Altura de fibra,0.04361981593405801,0.10045984797305013,-0.1063736933379225,0.20185865012590687,0.64,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Fiber_base,Ancho de fibra,0.2994241319253564,0.5693118256490716,-0.6533393998969867,1.2557457723786551,0.71,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Fiber_total_length,Longitud total de fibras,3.7683598701350713,1.0635138147479488,2.029566728193669,5.618389707532063,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Fiber_total_volume,Volumen total de fibras,-0.020098819539841342,1.7806532894644629,-2.9489221093749984,3.079094731570506,0.44,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Pivot_height,Altura de pivote,0.12929054922160532,0.21828423992098753,-0.1768028949175953,0.497180798420323,0.72,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Pivot_total_number,Número total de pivotes,2.5359842975045694,0.7863275553922562,1.224328149038456,3.913830508814088,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Pivot_total_volume,Volumen total de pivotes,-0.3381147455166461,1.1253595988425196,-2.1163440860615204,1.6204733591842106,0.35,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-0.20415151671246087,0.9796440394999951,-1.7971059083104408,1.4130394516941316,0.41,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,grupo,arquitectura,Arquitectura,11.961978653331041,2.55550312275578,7.618169150641014,15.640043460966115,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,grupo,seccion,Sección de fibra,0.33854843824403846,0.5651984627896453,-0.6010601991758385,1.2848646683264568,0.71,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,grupo,volumenes,Volúmenes,4.851751110500606,2.6825735912709456,1.0394465660294518,10.48396652711005,0.98,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,grupo,pivote,Geometría del pivote,0.12929054922160532,0.21828423992098753,-0.1768028949175953,0.497180798420323,0.72,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),18.334723598767546,4.82232281023146,10.744287908653831,26.933403140167133,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,n_cells_Y,Número de celdas en Y,4.617906739010991,1.8158336822603987,1.2937562099359057,8.093553595943984,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Fiber_total_length,Longitud total de fibras,3.2015729165903672,1.3805518463484125,1.0428934001068513,5.632741018582119,0.99,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-3.067807955986714,2.468550262101742,-6.729359098557679,1.301993592414532,0.14,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Pivot_height,Altura de pivote,0.07494746188187491,0.3352152231520954,-0.42126931490384223,0.6169803571428645,0.51,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,-3.9792169444062826,1.8366458035843147,-6.7517617755074735,-0.6428944749694753,0.02,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,1.0041682604739155,0.60414186150567,0.05583386189331989,1.9850434234775753,0.96,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,grupo,arquitectura,Arquitectura,8.963583570856235,2.7009497576267436,4.657828424908431,13.828793108497416,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,grupo,volumenes,Volúmenes,3.714508234050682,2.7797021413447176,-0.10421260368969239,9.3848540997024,0.94,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,grupo,pivote,Geometría del pivote,0.07494746188187491,0.3352152231520954,-0.42126931490384223,0.6169803571428645,0.51,100,variabilidad_MC_no_IC_poblacional
+familia,RandomForest,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),16.23977308661479,4.747017545079007,8.791959607562593,24.46785972584708,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,n_cells_Y,Número de celdas en Y,5.954115200320527,2.052437963455187,2.785586057692317,9.342186418269256,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Fiber_height,Altura de fibra,0.03917830929487082,0.11976626434229244,-0.14496005608975865,0.2064008814102557,0.62,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Fiber_base,Ancho de fibra,0.29796803685897316,0.20635302432051347,-0.056921434294866916,0.5981984775641024,0.93,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Fiber_total_length,Longitud total de fibras,5.369836466346154,1.9382256582643418,2.498810616987177,8.350396915064097,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Fiber_total_volume,Volumen total de fibras,-2.6386296554486988,0.59922189306209,-3.564781810897404,-1.722262339743576,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Pivot_height,Altura de pivote,0.19902951923077125,0.27064664812952133,-0.1731185496794893,0.6548139423076774,0.74,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Pivot_total_number,Número total de pivotes,4.617981482371804,1.3468529973044627,2.5768760817307785,6.760007652243603,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Pivot_total_volume,Volumen total de pivotes,-2.0690702483974244,0.8342595431047404,-3.3903642227564017,-0.75521398237178,0.01,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-2.133878237179481,0.869419947221295,-3.5705916266025626,-0.6077997996795084,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,grupo,arquitectura,Arquitectura,17.722575953525673,4.967819123739954,9.496107331730785,25.304836097756464,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,grupo,seccion,Sección de fibra,0.3441918429487153,0.25007770678424257,-0.026428565705133165,0.7587656650641051,0.92,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,grupo,volumenes,Volúmenes,-6.470763854166631,1.933420160526749,-9.698263060897384,-3.2761646634615094,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,grupo,pivote,Geometría del pivote,0.19902951923077125,0.27064664812952133,-0.1731185496794893,0.6548139423076774,0.74,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),17.729236073717967,4.634583215291801,10.636621193910258,25.09454230769233,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,n_cells_Y,Número de celdas en Y,6.194537897493148,2.2942934897608627,2.8323724998092294,9.939790451388896,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Fiber_total_length,Longitud total de fibras,4.905030137877766,2.0595645857265077,1.9166472006639421,8.098578004807694,0.98,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Pivot_total_number,Número total de pivotes,4.49540533894232,2.0053444037038886,1.6509460857371907,7.728800428685912,0.97,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,-0.7621878205128075,0.6438795476878847,-1.9638196314102483,0.19456282051283466,0.11,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,-1.4806178163919517,0.38777426943921023,-2.1425448906822457,-0.8525939560439625,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,grupo,arquitectura,Arquitectura,20.06812443200551,5.255016571890398,11.963851692231394,28.448926098138003,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,grupo,volumenes,Volúmenes,-2.242805636904766,0.8451462671176927,-3.573345317651108,-0.9047365024038427,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,ExtraTrees,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),19.71353930586082,4.973515747187943,12.083507157547324,28.28792066506412,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,n_cells_Y,Número de celdas en Y,0.00041004076400781743,0.0006435735969802079,-0.00043285646331412406,0.00145835420462177,0.65,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Fiber_height,Altura de fibra,-0.0001546066848054295,0.00012821602887224767,-0.00033294656263294087,9.177506985764691e-05,0.13,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Fiber_base,Ancho de fibra,-0.00023794935048911724,0.0001407806399758631,-0.0004933911028473404,-5.048047373747977e-05,0.03,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Fiber_total_length,Longitud total de fibras,0.0005656443487244189,0.0007587927789930508,-0.00036398447465586515,0.001807178787947805,0.69,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Fiber_total_volume,Volumen total de fibras,-9.917044324325274e-05,0.00021996868546893462,-0.00044991791079880273,0.00022216104554217964,0.35,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Pivot_height,Altura de pivote,6.549800471304934e-05,0.00030439114633718336,-0.00033716855400740543,0.0005588722691634015,0.53,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Pivot_total_number,Número total de pivotes,0.0007128341788218506,0.0008729050043511448,-0.0003163039761361119,0.0021446073809457287,0.71,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Pivot_total_volume,Volumen total de pivotes,-9.917044324325274e-05,0.00021996868546893462,-0.00044991791079880273,0.00022216104554217964,0.35,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-0.0004516021014835303,0.0002720635261197141,-0.0009685470753311165,-3.428046171833904e-05,0.03,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,grupo,arquitectura,Arquitectura,0.05520147666844679,0.059481786077701305,0.001044677956265616,0.144924404811659,0.97,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,grupo,seccion,Sección de fibra,-0.00033655452239145234,0.00021486353711179604,-0.0006482362387401963,-4.499237257960041e-06,0.05,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,grupo,volumenes,Volúmenes,-0.000664972061211131,0.0009758376868498584,-0.0022783978956212535,0.0007309959341966982,0.27,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,grupo,pivote,Geometría del pivote,6.549800471304934e-05,0.00030439114633718336,-0.00033716855400740543,0.0005588722691634015,0.53,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),0.6932251605677849,1.003165863314663,-0.21550466912273264,2.5435781577858103,0.74,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,n_cells_Y,Número de celdas en Y,0.0031466318775281365,0.007891632464594693,-0.008879739197133318,0.015582050811596557,0.62,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Fiber_total_length,Longitud total de fibras,0.0071320374283263275,0.0082646403015222,-0.005613086788569177,0.020212154154877027,0.78,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Pivot_total_number,Número total de pivotes,0.010623790106939595,0.008934376201873954,-0.002647642498297387,0.026314558011297607,0.88,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,-0.007124232130840653,0.005082284728218713,-0.01582976430966454,0.0011912012035629968,0.06,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,grupo,arquitectura,Arquitectura,3.828820066845068,2.217742953643378,0.2715029215330226,7.282971037690374,0.98,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,grupo,volumenes,Volúmenes,-0.007124232130840653,0.005082284728218713,-0.01582976430966454,0.0011912012035629968,0.06,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GaussianProcess,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),6.817505445183052,3.8012955249582667,0.03299124229117115,12.425109626090387,0.95,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,n_cells_Y,Número de celdas en Y,3.9710797256451182,1.0693025307643684,2.3244875835897405,5.600570473210675,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Fiber_height,Altura de fibra,0.003976789605234003,0.010878531913976934,-0.011362256014948002,0.022724512029896005,0.54,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Fiber_base,Ancho de fibra,0.36519561655204735,0.44644671107620965,-0.5322052160138615,1.0609091640908679,0.79,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Fiber_total_length,Longitud total de fibras,3.4582041010998537,0.898557291274155,1.9065983390081762,5.029510699443876,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Fiber_total_volume,Volumen total de fibras,0.5574015838920715,2.0826682876123517,-2.681009607743273,3.72558000707017,0.6,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Pivot_height,Altura de pivote,0.03812155256741491,0.18944080302205632,-0.2415676974890289,0.35557636422413946,0.56,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Pivot_total_number,Número total de pivotes,3.868564391506642,1.1874732531399244,1.9408985288861722,6.031053825377306,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Pivot_total_volume,Volumen total de pivotes,0.009294333000303254,1.0405220319641224,-1.4808356419008306,1.8634221358319059,0.52,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,variable,Sample_total_volume,Volumen declarado del espécimen,-0.25785220364633604,1.7049291360473136,-3.1819853459090015,2.4059757652343747,0.46,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,grupo,arquitectura,Arquitectura,11.989962665412058,2.482742667205582,7.836979703636323,15.753552877906454,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,grupo,seccion,Sección de fibra,0.3606507141460693,0.44791047661872496,-0.5549163281888969,1.0717033073050686,0.79,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,grupo,volumenes,Volúmenes,5.258980146768562,2.9088439647707753,0.5164906351563251,10.200255787847652,0.97,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,grupo,pivote,Geometría del pivote,0.03812155256741491,0.18944080302205632,-0.2415676974890289,0.35557636422413946,0.56,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),17.580425188878696,4.961487503248665,10.613365486950627,26.186076211184986,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,n_cells_Y,Número de celdas en Y,0.6172007849525648,0.588165794985764,-0.5415548537462118,1.5122081050507665,0.9,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Fiber_total_length,Longitud total de fibras,2.321094640710564,0.9976411685134466,0.737694642858547,4.016429918394111,0.99,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,1.4327974041334708,2.1506499200578704,-1.6855857516154535,5.406308349862419,0.72,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Pivot_total_number,Número total de pivotes,2.8233751539843803,1.6029857330872925,-0.08376572657666514,5.276282439350745,0.94,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,3.4326090640616655,1.2932694815686745,1.191878147243635,5.959390736218175,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,2.520077555852991,0.9901839106448671,1.1051967102736717,4.282493924898683,0.99,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,grupo,arquitectura,Arquitectura,7.346109222607549,2.509734999486863,3.5882003925345956,11.520061489692178,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,grupo,volumenes,Volúmenes,7.991622397567902,3.8339833458793677,2.4133455415698686,14.324367588037568,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,GradientBoosting,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),18.27459017651005,4.889521881028532,10.844600926306212,26.040077203767584,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,n_cells_Y,Número de celdas en Y,22.615209906123223,4.55342529842708,15.361364849384007,29.02843376863918,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Fiber_height,Altura de fibra,-0.007126189011793826,0.0747460563134535,-0.129567072941704,0.129567072941704,0.29,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Fiber_base,Ancho de fibra,0.5134543374868537,0.4071803144404022,-0.13163446279672789,1.3560022207406845,0.93,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Pivot_height,Altura de pivote,0.10832793896014876,0.2536602828548335,-0.19522842994102907,0.5705308180588915,0.55,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,variable,Sample_total_volume,Volumen declarado del espécimen,0.2634641089806174,0.06179135623760356,0.1652263788076546,0.3577192893395039,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,grupo,arquitectura,Arquitectura,22.615209906123223,4.55342529842708,15.361364849384007,29.02843376863918,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,grupo,seccion,Sección de fibra,0.5063281484750598,0.4051872624035382,-0.1371416238638055,1.3280977102426377,0.93,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,grupo,volumenes,Volúmenes,0.2634641089806174,0.06179135623760356,0.1652263788076546,0.3577192893395039,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,grupo,pivote,Geometría del pivote,0.10832793896014876,0.2536602828548335,-0.19522842994102907,0.5705308180588915,0.55,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,todas,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),22.39233920558048,4.511011173114212,15.24461314861592,28.595448565556445,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,n_cells_Y,Número de celdas en Y,22.73436730111928,4.577918369212758,15.491209338848394,29.151799068157477,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Fiber_base,Ancho de fibra,0.4219355627206629,0.38947370814970206,-0.22237249521108993,1.2484612098106922,0.81,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Fiber_total_volume,Volumen total de fibras,-0.4692041250375604,0.12301771010565873,-0.6120053804837724,-0.3009026454045251,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Pivot_height,Altura de pivote,0.06197221315824052,0.22586000833424946,-0.22438215109018347,0.42739457350510435,0.42,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,variable,Sample_total_volume,Volumen declarado del espécimen,-0.03255494044377407,0.03420666362291176,-0.07838498629056545,0.025591043325569274,0.1,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,grupo,arquitectura,Arquitectura,22.73436730111928,4.577918369212758,15.491209338848394,29.151799068157477,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,grupo,seccion,Sección de fibra,0.4219355627206629,0.38947370814970206,-0.22237249521108993,1.2484612098106922,0.81,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,grupo,volumenes,Volúmenes,-0.5017590654813339,0.13589538770615153,-0.69225123478816,-0.2785507789024984,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,grupo,pivote,Geometría del pivote,0.06197221315824052,0.22586000833424946,-0.22438215109018347,0.42739457350510435,0.42,100,variabilidad_MC_no_IC_poblacional
+familia,XGBoost,prioritarias,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),21.664598433626608,4.44261281665843,14.6518949508667,27.76903772676907,1.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,n_cells_Y,Número de celdas en Y,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,grupo,arquitectura,Arquitectura,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,grupo,volumenes,Volúmenes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Mediana,referencia,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,n_cells_Y,Número de celdas en Y,6.940757290095527,4.461819045896803,-0.743996622046257,13.911690673705376,0.92,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Fiber_height,Altura de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Fiber_base,Ancho de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Fiber_total_length,Longitud total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Fiber_total_volume,Volumen total de fibras,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Pivot_height,Altura de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Pivot_radius,Radio de pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Pivot_total_number,Número total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,variable,Sample_total_volume,Volumen declarado del espécimen,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,grupo,arquitectura,Arquitectura,6.940757290095527,4.461819045896803,-0.743996622046257,13.911690673705376,0.92,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,grupo,seccion,Sección de fibra,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,grupo,volumenes,Volúmenes,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,grupo,pivote,Geometría del pivote,0.0,0.0,0.0,0.0,0.0,100,variabilidad_MC_no_IC_poblacional
+familia,Media_por_nivel,referencia,grupo,arquitectura_volumenes,Arquitectura y volúmenes (conjunto),6.940757290095527,4.461819045896803,-0.743996622046257,13.911690673705376,0.92,100,variabilidad_MC_no_IC_poblacional

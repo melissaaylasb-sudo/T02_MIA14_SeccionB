@@ -64,13 +64,13 @@ def test_inner_selection_fits_only_external_training_and_keeps_groups_separate()
     full=geometry(18);y=pd.Series(3*full.Fiber_total_length+2*full.n_cells_Y,index=full.index)
     external_train=full.index[:15];external_test=set(full.index[15:])
     groups=np.repeat(np.arange(9),2)
-    specs={'Ridge':{'parametros':{'alpha':1.,'solver':'svd'}}}
+    specs={'RandomForest':{'parametros':{'n_estimators':8,'min_samples_leaf':1,'random_state':42,'n_jobs':1}}}
     audit=[]
     first=pfi.select_top_variables(full.loc[external_train],y.loc[external_train],groups[:15],
-                                   'Ridge',specs,seed=123,audit=audit)
+                                   'RandomForest',specs,seed=123,audit=audit)
     y.loc[list(external_test)]=1e12
     second=pfi.select_top_variables(full.loc[external_train],y.loc[external_train],groups[:15],
-                                    'Ridge',specs,seed=123)
+                                    'RandomForest',specs,seed=123)
     assert first[0]==second[0] and len(first[0])==4 and 'Pivot_radius' not in first[0]
     for record in audit:
         used=set(map(int,record['casos_entrenamiento'].split(';')))
@@ -92,7 +92,7 @@ def test_top_four_is_prespecified_even_when_all_scores_are_negative(monkeypatch)
         def predict(self,X):return np.zeros(len(X))
     monkeypatch.setattr(pfi,'fixed_pipeline',lambda *args:Zero())
     monkeypatch.setattr(pfi,'crossfit_permuted_predictions',lambda X,fitted,donors,columns,original=None:np.ones((len(donors),len(X))))
-    chosen,rows,*_=pfi.select_top_variables(x,y,groups,'Ridge',{},seed=123)
+    chosen,rows,*_=pfi.select_top_variables(x,y,groups,'RandomForest',{},seed=123)
     assert chosen==tuple(pfi.GEOMETRY[:4])
     selected=[r for r in rows if r['seleccionada']]
     assert all(r['PFI_interna_media_N']==-1 for r in selected)

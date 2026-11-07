@@ -254,14 +254,14 @@ def test_matriz_conserva_variables_fisicas_y_hipotesis_de_trabajo() -> None:
     assert table == expected
     assert "SHAP" not in markdown and "SHAP" not in csv_path.read_text(encoding="utf-8")
     criteria = json.loads((ROOT / "config/criterios_entrega_permutacion.json").read_text(encoding="utf-8"))
-    assert criteria["fecha_congelacion"] == "2026-10-30"
+    assert criteria["fecha_congelacion"] == "2026-11-06"
     assert criteria["fuente_unica_matriz"] == "docs/matriz_consistencia.csv"
     assert criteria["matriz_csv_sha256"] == hashlib.sha256(csv_path.read_bytes()).hexdigest()
     model_path = ROOT / criteria["configuracion_modelos"]
     assert criteria["configuracion_modelos_sha256"] == hashlib.sha256(model_path.read_bytes()).hexdigest()
     models = json.loads(model_path.read_text(encoding="utf-8"))["modelos"]
-    assert criteria["modelos_fijos"] == list(models) and criteria["n_modelos"] == 5
-    assert criteria["busqueda_hiperparametros"] is False
+    assert criteria["modelos_evaluados"] == list(models) and criteria["n_modelos"] == 6
+    assert criteria["busqueda_hiperparametros"] is True
     assert len(criteria["entradas_originales"]) == 10
     assert len({entry["columna"] for entry in criteria["entradas_originales"]}) == 10
     assert criteria["constante_documentada"]["columna"] == "Pivot_radius"
@@ -281,7 +281,7 @@ def test_matriz_conserva_variables_fisicas_y_hipotesis_de_trabajo() -> None:
     assert hypotheses["H1"]["conjunto"] == "completo"
     assert hypotheses["H2"]["protocolos"] == ["configuracion", "familia"]
     assert hypotheses["H3"]["protocolos"] == ["configuracion"]
-    assert hypotheses["H3"]["min_modelos"] == 3 and hypotheses["H3"]["total_modelos"] == 5
+    assert hypotheses["H3"]["min_modelos"] == 4 and hypotheses["H3"]["total_modelos"] == 6
     assert len(hypotheses["H3"]["operadores"]) == 2
     assert "intersección" in hypotheses["H3"]["cumplimiento"]
     assert criteria["umbral_cientifico_N"] == 0.0

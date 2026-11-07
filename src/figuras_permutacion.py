@@ -1,7 +1,7 @@
-"""Presentación reproducible de resultados de permutación y modelos fijos.
+"""Presentación reproducible de modelos no lineales e importancia por permutación.
 
-Lee únicamente los CSV de reports/permutation_importance/tables. No ajusta
-modelos, no selecciona hiperparámetros ni altera las tablas de cálculo.
+Lee únicamente los CSV de reports/modelos_no_lineales/tables. No ajusta
+modelos ni altera las tablas de cálculo.
 """
 from __future__ import annotations
 
@@ -21,12 +21,14 @@ import numpy as np
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-MODELOS = ("Ridge", "ElasticNet", "SVR_RBF", "RandomForest", "GaussianProcess")
+MODELOS = ("SVR_RBF", "RandomForest", "ExtraTrees", "GaussianProcess",
+           "GradientBoosting", "XGBoost")
 REFERENCIAS = ("Mediana", "Media_por_nivel")
 PROTOCOLOS = ("configuracion", "familia")
 NOMBRES_MODELO = {
-    "Ridge": "Ridge", "ElasticNet": "Elastic Net", "SVR_RBF": "SVR · RBF",
-    "RandomForest": "Bosque aleatorio", "GaussianProcess": "Proceso gaussiano",
+    "SVR_RBF": "SVR · RBF", "RandomForest": "Bosque aleatorio",
+    "ExtraTrees": "Árboles extra aleatorios", "GaussianProcess": "Proceso gaussiano",
+    "GradientBoosting": "Boosting de gradiente", "XGBoost": "XGBoost",
     "Mediana": "Mediana · referencia", "Media_por_nivel": "Media por nivel Y",
 }
 NOMBRES_PROTOCOLO = {"configuracion": "Configuraciones", "familia": "Familias Y"}
@@ -52,8 +54,9 @@ ETIQUETAS = {
     "arquitectura_volumenes": "Arquitectura y volúmenes",
 }
 ORDEN_GRUPOS = ("arquitectura", "seccion", "volumenes", "pivote", "arquitectura_volumenes")
-COLORES_MODELO = {"Ridge": "#2B6A99", "ElasticNet": "#198477", "SVR_RBF": "#B17B22",
-                  "RandomForest": "#8060A5", "GaussianProcess": "#B96064"}
+COLORES_MODELO = {"SVR_RBF": "#B17B22", "RandomForest": "#8060A5",
+                  "ExtraTrees": "#2B6A99", "GaussianProcess": "#B96064",
+                  "GradientBoosting": "#198477", "XGBoost": "#C96845"}
 BLOQUE_ABLACION = "arquitectura_volumenes"
 
 
@@ -160,12 +163,12 @@ def _tabla_metricas(metricas: pd.DataFrame, prioritarias: bool) -> tuple[plt.Fig
     tint = "#F0EBF7" if prioritarias else "#EAF4ED"
     pale = "#F8F5FC" if prioritarias else "#F5FAF6"
     n = len(rows)
-    fig, ax = plt.subplots(figsize=(14.8, 2.4 + n * 0.40))
+    fig, ax = plt.subplots(figsize=(15.8, 2.4 + n * 0.38))
     ax.set_axis_off()
     title = "Modelos con variables prioritarias" if prioritarias else "Modelos con todas las variables"
     fig.text(0.025, 0.955, title, ha="left", va="top", fontsize=18, weight="bold", color=header)
-    subtitle = ("Cuatro entradas seleccionadas dentro de cada entrenamiento; parámetros predictivos fijos."
-                if prioritarias else "Geometría original y dos referencias; parámetros predictivos fijos.")
+    subtitle = ("Cuatro entradas seleccionadas dentro de cada entrenamiento; parámetros del modelo completo."
+                if prioritarias else "Geometría original, seis modelos no lineales y dos referencias.")
     fig.text(0.025, 0.900, subtitle, ha="left", va="top", fontsize=11.5, color="#4F5963")
     labels = ["Validación", "Modelo", "MAE [N]", "MSE [N²]", "RMSE [N]", "R²", "ΔMAE [N]"]
     widths = [0.165, 0.235, 0.112, 0.144, 0.117, 0.105, 0.122]
@@ -225,7 +228,7 @@ def _panel_importancia(ax: plt.Axes, selected: pd.DataFrame, order: list[str], m
 
 def _importancia_individual(data: pd.DataFrame, protocol: str) -> plt.Figure:
     frame = data[data.protocolo.eq(protocol) & data.conjunto.eq("todas") & data.tipo.eq("variable")]
-    fig, axes = plt.subplots(1, 5, figsize=(18.0, 7.7))
+    fig, axes = plt.subplots(1, len(MODELOS), figsize=(21.0, 7.7))
     for ax, model in zip(axes, MODELOS):
         _panel_importancia(ax, frame[frame.modelo.eq(model)], list(GEOMETRIA), model, ax is axes[0])
     fig.text(0.025, 0.965, f"Importancia individual por permutación · {NOMBRES_PROTOCOLO[protocol]}", fontsize=18, weight="bold", color="#243A4B", va="top")
@@ -242,7 +245,7 @@ def _importancia_grupos(data: pd.DataFrame) -> plt.Figure:
     order = [name for name in ORDEN_GRUPOS if name in present]
     if not order or set(order) != present:
         raise ValueError("Los grupos deben estar declarados antes de presentar resultados")
-    fig, axes = plt.subplots(2, 5, figsize=(18.0, 10.7))
+    fig, axes = plt.subplots(2, len(MODELOS), figsize=(21.0, 10.7))
     for row, protocol in enumerate(PROTOCOLOS):
         block = frame[frame.protocolo.eq(protocol)]
         for col, model in enumerate(MODELOS):
@@ -260,7 +263,7 @@ def _importancia_grupos(data: pd.DataFrame) -> plt.Figure:
 def _frecuencias(data: pd.DataFrame) -> plt.Figure:
     if data.duplicated(["protocolo", "modelo", "variable"]).any():
         raise ValueError("Frecuencias de selección repetidas")
-    fig, axes = plt.subplots(1, 2, figsize=(14.6, 8.3))
+    fig, axes = plt.subplots(1, 2, figsize=(16.6, 8.3))
     cmap = colors.LinearSegmentedColormap.from_list("seleccion_suave", ["#F7F8FA", "#C4D9E9", "#39749A"])
     for ax, protocol in zip(axes, PROTOCOLOS):
         block = data[data.protocolo.eq(protocol)]
@@ -318,7 +321,7 @@ def _ablacion(data: pd.DataFrame) -> plt.Figure:
     ax.legend(frameon=False, loc="best", fontsize=10.5)
     fig.text(0.025, 0.960, "Ablación del bloque de arquitectura y volúmenes", fontsize=17, weight="bold", color="#243A4B", va="top")
     fig.text(0.025, 0.895, "Comparación emparejada con todas las entradas del mismo modelo y protocolo.", fontsize=11.3, color="#4F5963", va="top")
-    fig.text(0.025, 0.075, "Reajuste con parámetros fijos tras retirar el bloque predeclarado; un cambio negativo indica menor error.", fontsize=10.6, color="#4F5963")
+    fig.text(0.025, 0.075, "Reajuste con parámetros elegidos para todas las entradas; un cambio negativo indica menor error.", fontsize=10.6, color="#4F5963")
     fig.text(0.025, 0.035, "Diferencias descriptivas de validación: no se representan como incertidumbre de permutación ni como intervalos de confianza.", fontsize=10.2, color="#4F5963")
     fig.subplots_adjust(left=0.22, right=0.97, top=0.78, bottom=0.22)
     return fig
@@ -331,8 +334,8 @@ def generar_figuras(root: Path | str = ROOT, output: Path | str | None = None) -
     realmente renderizados y celdas numéricas de las dos tablas visuales.
     """
     root = Path(root).resolve()
-    tables = root / "reports/permutation_importance/tables"
-    figures = Path(output).resolve() if output is not None else root / "reports/permutation_importance/figures"
+    tables = root / "reports/modelos_no_lineales/tables"
+    figures = Path(output).resolve() if output is not None else root / "reports/modelos_no_lineales/figures"
     paths = {
         "metricas": tables / "metricas_resumen.csv",
         "importancia": tables / "importancia_resumen.csv",

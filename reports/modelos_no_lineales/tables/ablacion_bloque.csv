@@ -1,0 +1,13 @@
+﻿protocolo,modelo,bloque,MAE_todas_N,MAE_ablacion_N,delta_MAE_ablacion_N,MSE_ablacion_N2,RMSE_ablacion_N,R2_ablacion,variables_retenidas
+configuracion,SVR_RBF,arquitectura_volumenes,16.365059874944926,46.2367342794143,29.871674404469374,3577.627124318393,59.8132687981387,-0.03658044588917697,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+configuracion,RandomForest,arquitectura_volumenes,13.808288829746656,47.21402950608419,33.40574067633753,3357.5886870622926,57.94470370156614,0.027173414834120613,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+configuracion,ExtraTrees,arquitectura_volumenes,12.951072275641042,54.916877402952316,41.96580512731127,4028.258459516981,63.4685627654903,-0.16714621312540956,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+configuracion,GaussianProcess,arquitectura_volumenes,16.057726244109453,59.920837482671416,43.86311123856196,5138.266928109917,71.6817056724372,-0.4887596829847207,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+configuracion,GradientBoosting,arquitectura_volumenes,13.787691300427579,45.345165726663794,31.557474426236215,3681.9044528628756,60.67869850996209,-0.06679372300350606,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+configuracion,XGBoost,arquitectura_volumenes,11.758090644249553,45.43221143282377,33.674120788574214,3048.4144523951286,55.21244834632068,0.11675345067695375,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,SVR_RBF,arquitectura_volumenes,83.88431013367625,72.68801921562356,-11.196290918052696,6831.307674987835,82.65172517853354,-0.9793007235470781,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,RandomForest,arquitectura_volumenes,61.47158788347071,87.9454656917735,26.473877808302795,9059.923655146868,95.1836312353488,-1.6250191470032735,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,ExtraTrees,arquitectura_volumenes,65.00542307692307,85.72602684294878,20.720603766025718,8568.429660431171,92.56581258991449,-1.4826138469284893,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,GaussianProcess,arquitectura_volumenes,80.59319010630239,90.03383842789277,9.440648321590388,9073.121394395317,95.25293378366526,-1.6288430554094617,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,GradientBoosting,arquitectura_volumenes,63.7188762091879,86.21510607210357,22.49622986291567,8274.801771367567,90.96593742367287,-1.397538203885047,Fiber_height;Fiber_base;Pivot_height;Pivot_radius
+familia,XGBoost,arquitectura_volumenes,56.18919973520133,88.17139829195463,31.982198556753303,8480.884450039273,92.0917175974,-1.4572485279418759,Fiber_height;Fiber_base;Pivot_height;Pivot_radius

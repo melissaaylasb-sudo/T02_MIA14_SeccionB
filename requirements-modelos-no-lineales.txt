@@ -1,0 +1,4 @@
+# Reproducción del sprint de seis modelos no lineales, tuning y SHAP.
+-r requirements-modelos-ajustados.txt
+xgboost==3.0.2
+shap==0.48.0

@@ -1,0 +1,10 @@
+﻿modelo,variable,nombre,SHAP_abs_medio_N,SHAP_firmado_medio_N,n_casos
+XGBoost,n_cells_Y,Número de celdas en Y,51.27138552248,0.8585857934170431,26
+XGBoost,Sample_total_volume,Volumen declarado del espécimen,2.8146516080554096,-0.495138854566866,26
+XGBoost,Fiber_base,Ancho de fibra,2.212448879875816,0.25322130685624405,26
+XGBoost,Pivot_height,Altura de pivote,0.9897649826873571,0.10795163210003803,26
+XGBoost,Fiber_total_volume,Volumen total de fibras,0.793070216254355,0.055635587142255055,26
+XGBoost,Fiber_height,Altura de fibra,0.13508233623817945,-0.03855536730052568,26
+XGBoost,Fiber_total_length,Longitud total de fibras,0.0,0.0,26
+XGBoost,Pivot_total_volume,Volumen total de pivotes,0.0,0.0,26
+XGBoost,Pivot_total_number,Número total de pivotes,0.0,0.0,26

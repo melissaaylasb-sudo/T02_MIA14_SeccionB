@@ -4,11 +4,11 @@
 
 **Repositorio GitHub — rama de entrega:** [feature-importance-consistencia](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/feature-importance-consistencia).
 
-### Entrega actual: modelos, permutación y selección interna de variables
+### Entrega actual: seis modelos no lineales, importancia de variables y matriz
 
-El [único notebook de entrega](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara cinco familias con parámetros fijos: Ridge, Elastic Net, SVR RBF, bosque aleatorio y proceso gaussiano. Incluye referencias de mediana y media por nivel, las tablas verde y morada con métricas, selección de cuatro entradas dentro del entrenamiento, permutación repetida y ablación del bloque de arquitectura y volúmenes. Su nombre de archivo se conserva para mantener los enlaces; el contenido vigente corresponde al análisis por permutación.
+El [notebook de entrega](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara seis modelos no lineales: SVR con núcleo RBF, bosque aleatorio, Extra Trees, proceso gaussiano, Gradient Boosting y XGBoost. Incluye dos referencias simples, búsqueda interna acotada de hiperparámetros, métricas fuera de muestra, selección de cuatro entradas dentro del entrenamiento, permutación, ablación y SHAP de un ensamble de árboles evaluado.
 
-Las dos validaciones reservan configuraciones nominales o familias de celdas de la misma campaña. Las cuatro entradas seleccionadas pueden cambiar entre modelos y particiones. La actividad no ejecuta una nueva búsqueda de hiperparámetros ni presenta a Ridge o Elastic Net como óptimos. Las importancias usan 100 permutaciones marginales cruzadas, mantienen los signos negativos y distinguen variación de Monte Carlo de incertidumbre poblacional.
+Las dos validaciones reservan configuraciones nominales o familias de celdas de la misma campaña. Cada búsqueda usa solo el entrenamiento de la partición externa. Los parámetros elegidos con todas las entradas se conservan al evaluar las cuatro entradas seleccionadas y la ablación; así se aísla el cambio de información disponible. Las importancias usan 100 permutaciones marginales cruzadas y conservan su signo. SHAP explica predicciones del modelo, no efectos causales sobre la fractura.
 
 ### Matriz y reproducción
 
@@ -17,14 +17,14 @@ La [matriz de consistencia](docs/matriz_consistencia.md), su [CSV canónico](doc
 Para reproducir el experimento desde la raíz del repositorio:
 
 ```powershell
-python -m pip install -r requirements-permutation-importance.txt
+python -m pip install -r requirements-modelos-no-lineales.txt
 python -m src.importancia_permutacion
 python -m src.revision_entrega_permutacion
 python -m src.entrega_permutacion
 python -m pytest tests/test_importancia_permutacion.py tests/test_entrega_permutacion.py tests/test_sprint_importancia.py -q
 ```
 
-La ejecución conserva [tablas](reports/permutation_importance/tables/), [figuras](reports/permutation_importance/figures/) y [manifiesto](reports/permutation_importance/manifest.json). El notebook se ejecuta desde un kernel limpio y comprueba los artefactos antes de mostrarlos. Las condiciones de procedencia y las aclaraciones aún pendientes se registran en [procedencia declarada](docs/procedencia_declarada.json).
+La ejecución conserva [tablas](reports/modelos_no_lineales/tables/), [figuras](reports/modelos_no_lineales/figures/) y [manifiesto](reports/modelos_no_lineales/manifest.json). El notebook se ejecuta desde un kernel limpio y comprueba los artefactos antes de mostrarlos. Las condiciones de procedencia y las aclaraciones aún pendientes se registran en [procedencia declarada](docs/procedencia_declarada.json).
 
 ## Antecedente histórico: etapa de modelos ajustados
 
