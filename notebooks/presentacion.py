@@ -67,11 +67,6 @@ def detalle(titulo, datos):
     display(Markdown(f"**{titulo}**\n\n" + tabla_markdown(datos)))
 
 
-def panel():
-    """Reserva una salida que se actualiza cuando termina el cálculo de sus métricas."""
-    return display(Markdown(""), display_id=True)
-
-
 def mostrar_geometria(ficha_variables, decisiones_fe):
     # La representación A conserva las medidas geométricas y las unidades de la fuente.
     tabla(ficha_variables[["variable", "Unidad", "Justificación física"]].rename(columns={
@@ -96,11 +91,9 @@ def mostrar_antecedentes(previo, historia):
     detalle("Modelos evaluados por etapa previa", inventario)
 
 
-def mostrar_referencias(resumen_base):
-    mae_por_escenario = resumen_base.MAE_N.unstack("protocolo").rename(index=nombre)
-    tabla(mae_por_escenario.rename(columns={"configuracion": "Configuración · MAE [N]",
-          "familia": "Nivel Y · MAE [N]"}).rename_axis("Referencia").reset_index())
-    nivel = resumen_base.xs("Media_por_nivel", level="referencia").MAE_N
+def mostrar_referencias(metricas):
+    mostrar_metricas(metricas, metricas.procedimiento.unique(), "Referencia")
+    nivel = metricas.loc[metricas.procedimiento.eq("Media_por_nivel")].set_index("protocolo").MAE_N
     nota(f"Con el nivel Y presente en entrenamiento, la media por nivel tiene un error de {fmt(nivel['configuracion'])} N. "
          f"Al reservar el nivel completo, la media de entrenamiento da {fmt(nivel['familia'])} N.")
 
@@ -164,23 +157,20 @@ def mostrar_reajuste(receta, configuracion):
     nota(f"Reajuste con la campaña completa, {nombre(final['familia_real'])}, {ajustables}.")
 
 
-def tabla_inicial(metricas_nominales, mae_externo, procedimientos, titulo):
-    datos = metricas_nominales.loc[list(procedimientos), ["MAE_N", "RMSE_N", "R2_validacion"]].copy()
-    datos.columns = ["MAE [N]", "RMSE [N]", "R²"]
-    datos["MAE nivel Y [N]"] = mae_externo["familia"]
-    return datos.sort_values("MAE [N]").rename(index=NOMBRES).rename_axis(titulo).reset_index()
+def mostrar_metricas(metricas, procedimientos, titulo):
+    seleccion = metricas.loc[metricas.procedimiento.isin(procedimientos)]
+    datos = seleccion.loc[seleccion.protocolo.eq("configuracion")].set_index("procedimiento")
+    tabla_resultados = datos[["MAE_N", "RMSE_N", "R2_validacion"]].copy()
+    tabla_resultados.columns = ["MAE [N]", "RMSE [N]", "R²"]
+    nivel = seleccion.loc[seleccion.protocolo.eq("familia")].set_index("procedimiento")
+    tabla_resultados["MAE nivel Y [N]"] = nivel.MAE_N
+    tabla(tabla_resultados.sort_values("MAE [N]").rename(index=NOMBRES).rename_axis(titulo).reset_index())
 
 
-def actualizar_portada(panel_referencias, portada_resultados, panel_comparaciones, metricas_nominales, mae_externo, mae_pareado, referencias, adaptativos):
-    modelos_portada = tabla_inicial(metricas_nominales, mae_externo, MODELOS, "Modelo")
-    bases_portada = tabla_inicial(metricas_nominales, mae_externo, referencias, "Referencia")
-    tabla_ajuste = pd.concat([mae_pareado.xs(p, level="protocolo") for p in PROTOCOLOS], axis=1)
-    tabla_ajuste.columns = ["Config. inicial [N]", "Config. ajustada [N]", "Nivel Y inicial [N]", "Nivel Y ajustada [N]"]
-    tabla_ajuste = tabla_ajuste.loc[list(adaptativos)].rename(index=NOMBRES).rename_axis("Procedimiento").reset_index()
-
-    panel_referencias.update(Markdown(tabla_markdown(bases_portada)))
-    portada_resultados.update(Markdown(tabla_markdown(modelos_portada)))
-    panel_comparaciones.update(Markdown(tabla_markdown(tabla_ajuste)))
+def mostrar_ajuste_emparejado(mae_pareado, adaptativos):
+    datos = pd.concat([mae_pareado.xs(p, level="protocolo") for p in PROTOCOLOS], axis=1)
+    datos.columns = ["Config. inicial [N]", "Config. ajustada [N]", "Nivel Y inicial [N]", "Nivel Y ajustada [N]"]
+    tabla(datos.loc[list(adaptativos)].rename(index=NOMBRES).rename_axis("Procedimiento").reset_index())
 
 
 def mostrar_integrada(metricas, procedimientos):
