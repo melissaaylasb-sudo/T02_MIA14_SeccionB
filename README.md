@@ -2,7 +2,9 @@
 
 **Entrega: [un único notebook ejecutado y autocontenido](notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)** · [Descargar solo el .ipynb](https://raw.githubusercontent.com/melissaaylasb-sudo/T02_MIA14_SeccionB/benchmark-regresion-6-modelos/notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)
 
-Descarga el archivo, ábrelo en Jupyter y selecciona **Ejecutar todo**. Incluye las entradas geométricas y sus unidades, las particiones, la bibliografía, el código de los modelos y del tuning, las tablas, las diez figuras y las conclusiones. Calcula los resultados en memoria; no requiere descargar CSV ni importar módulos del repositorio. Las versiones de las bibliotecas científicas se indican en el propio cuaderno. La [comprobación del archivo aislado](reports/benchmark_regresion/auditoria/cuaderno_unico.json) coteja sus predicciones con la ejecución publicada anteriormente.
+La portada muestra el MAE al reservar una configuración y al retirar un nivel celular completo. El análisis calcula primero las tres referencias (§4), entrena los seis modelos con parámetros iniciales (§9), muestra sus errores (§10–11) y selecciona candidatas dentro de cada entrenamiento (§12). Después define el presupuesto (§13), ajusta hiperparámetros (§14) y compara las predicciones sobre los mismos especímenes (§15).
+
+Para reproducirlo, descarga el archivo, ábrelo en Jupyter y selecciona **Reiniciar el kernel y ejecutar todo**. El archivo conserva una copia verificada de las entradas en sus metadatos y los diez gráficos en sus salidas. Con las bibliotecas indicadas en §19 instaladas, puede ejecutarse por sí solo en una carpeta sin conexión. La [comprobación de reproducción](reports/benchmark_regresion/auditoria/cuaderno_unico.json) contrasta las predicciones y métricas con la ejecución anterior.
 
 Universidad Nacional de Ingeniería · Maestría en Inteligencia Artificial · Trabajo de Investigación II. **Investigadora:** Melissa Dessire Aylas Barranca. **Docente:** Glen Dario Rodríguez Rafael.
 
