@@ -530,21 +530,25 @@ def brecha_ganador(reservas):
     return figura
 
 
-def mejora_por_grupo(grupos):
+def mejora_por_grupo(grupos, referencia="baseline", titulo="Mejora o deterioro del ganador en cada grupo reservado"):
     """Diferencia de MAE emparejada dentro de cada configuración o nivel Y."""
     figura, ejes = plt.subplots(2, 1, figsize=(11.5, 8), gridspec_kw={"height_ratios": [1.8, 1]})
     for eje, protocolo in zip(ejes, PROTOCOLOS):
-        datos = grupos.loc[grupos.protocolo.eq(protocolo)].sort_values("delta_MAE_N")
+        datos = grupos.loc[grupos.protocolo.eq(protocolo)].copy()
+        datos.loc[datos.delta_MAE_N.abs().lt(1e-10), "delta_MAE_N"] = 0.0
+        datos = datos.sort_values("delta_MAE_N")
         colores = [VERDE if valor < 0 else "#B0573A" for valor in datos.delta_MAE_N]
         barras = eje.bar(range(len(datos)), datos.delta_MAE_N, color=colores, width=.65)
         eje.bar_label(barras, labels=[fmt(v, 2) for v in datos.delta_MAE_N], padding=3, fontsize=8, rotation=90 if len(datos)>8 else 0)
         eje.axhline(0, color=GRIS, lw=1)
-        eje.set(title=PROTO[protocolo], ylabel="Δ MAE frente al baseline [N]",
+        eje.set(title=PROTO[protocolo], ylabel=f"Δ MAE frente al {referencia} [N]",
                 xticks=range(len(datos)), xticklabels=datos.grupo)
         eje.tick_params(axis="x", rotation=65 if len(datos)>8 else 0, labelsize=8)
         eje.margins(y=.35)
+        if datos.delta_MAE_N.eq(0).all():
+            eje.set_ylim(-1, 1)
         _estilo(eje, "y")
-    figura.suptitle("Mejora o deterioro del ganador en cada grupo reservado", fontsize=15, weight="bold", color="#203D40")
+    figura.suptitle(titulo, fontsize=15, weight="bold", color="#203D40")
     figura.tight_layout(rect=(0, 0, 1, .94), h_pad=2.5)
     return figura
 
@@ -580,4 +584,61 @@ def coeficientes_ganador(coeficientes):
         eje.set_visible(False)
     figura.suptitle("Variación de los coeficientes entre entrenamientos", fontsize=16, weight="bold", color="#203D40")
     figura.tight_layout(rect=(0, 0, 1, .95), h_pad=1.8)
+    return figura
+
+
+
+def busqueda_optuna(ensayos):
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 4.6), sharey=False)
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = ensayos.loc[ensayos.protocolo.eq(protocolo)]
+        curva = datos.groupby("ensayo").mejor_acumulado_N.median()
+        inicial = datos.loc[datos.fit_intercept & ~datos.positive, "MAE_interno_N"].median()
+        eje.plot(curva.index, curva, "-o", color=VERDE)
+        eje.axhline(inicial, color=GRIS, linestyle="--", label=f"Inicial {fmt(inicial,2)} N")
+        for numero, valor in curva.items():
+            eje.annotate(fmt(valor, 2), (numero, valor), xytext=(0, 8),
+                         textcoords="offset points", ha="center", fontsize=9)
+        eje.set(title=PROTO[protocolo], xlabel="Orden del ensayo de Optuna",
+                xticks=curva.index, xlim=(.75, 4.25))
+        eje.legend(frameon=False)
+        eje.margins(y=.22)
+        _estilo(eje, "both")
+    ejes[0].set_ylabel("Mediana del mejor MAE interno acumulado [N]")
+    figura.suptitle("Progreso de la búsqueda de hiperparámetros", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .91))
+    return figura
+
+
+def comparacion_optuna(metricas):
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 4.2), sharey=True)
+    orden = ["Media_por_nivel", "Lineal_multiple", "Lineal_optimizada"]
+    etiquetas = ["Media por nivel Y", "Lineal inicial", "Lineal ajustada"]
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = metricas.loc[metricas.protocolo.eq(protocolo)].set_index("procedimiento").loc[orden]
+        barras = eje.barh(range(3), datos.MAE_N, color=[GRIS, AZUL, VERDE], height=.5)
+        eje.bar_label(barras, labels=[fmt(v, 3) for v in datos.MAE_N], padding=5)
+        eje.set(title=PROTO[protocolo], yticks=range(3), yticklabels=etiquetas,
+                xlabel="MAE externo [N]", xlim=(0, datos.MAE_N.max()*1.3))
+        _estilo(eje)
+    figura.suptitle("Baseline, modelo inicial y modelo ajustado", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .91))
+    return figura
+
+
+def errores_pareados_optuna(pareadas):
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 5), sharex=True, sharey=True)
+    superior = pareadas[["error_absoluto_N", "error_absoluto_N_inicial"]].max().max() * 1.18
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = pareadas.loc[pareadas.protocolo.eq(protocolo)]
+        eje.plot([0, superior], [0, superior], "--", color=GRIS, linewidth=1)
+        eje.scatter(datos.error_absoluto_N_inicial, datos.error_absoluto_N, color=VERDE, alpha=.8)
+        eje.text(.04, .94, f"Δ MAE {fmt(datos.delta_error_N.mean(),3)} N",
+                 transform=eje.transAxes, va="top")
+        eje.set(title=PROTO[protocolo], xlabel="Error absoluto inicial [N]",
+                xlim=(0, superior), ylim=(0, superior), aspect="equal")
+        _estilo(eje, "both")
+    ejes[0].set_ylabel("Error absoluto después del ajuste [N]")
+    figura.suptitle("Efecto del ajuste sobre las mismas probetas", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .91))
     return figura

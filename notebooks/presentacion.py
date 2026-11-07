@@ -16,6 +16,7 @@ NOMBRES = {
     "XGBoost": "XGBoost",
     "CatBoost": "CatBoost",
     "Lineal_multiple": "Lineal múltiple",
+    "Lineal_optimizada": "Lineal múltiple ajustada",
     "KNN": "K vecinos",
     "Arbol_decision": "Árbol de decisión",
     "Dummy_mediana": "Mediana de entrenamiento",
@@ -327,7 +328,7 @@ def mostrar_configuracion_ganador(analisis):
         {"Elemento": "Estimación", "Valor": "Mínimos cuadrados ordinarios"},
         {"Elemento": "Intercepto", "Valor": str(analisis.configuracion["parametros_iniciales"][analisis.mejor]["fit_intercept"])},
         {"Elemento": "Tolerancia relativa de la base", "Valor": str(analisis.configuracion["ols"]["tolerancia_svd_relativa"])},
-        {"Elemento": "Optimización de hiperparámetros", "Valor": "No aplicada a esta especificación de mínimos cuadrados"},
+        {"Elemento": "Optimización posterior", "Valor": "Optuna sobre fit_intercept y positive, sección 5"},
         {"Elemento": "Aleatoriedad del ajuste lineal", "Valor": "Solución determinista"},
         {"Elemento": "Semilla configurada para estimadores aleatorios", "Valor": str(analisis.configuracion["parametros_iniciales"]["XGBoost"]["random_state"])},
         {"Elemento": "Semilla de la comparación previa", "Valor": "42"},
@@ -417,3 +418,65 @@ def mostrar_coeficientes_ganador(coeficientes):
             "variable": "Variable", "unidad": "Unidad del coeficiente", "minimo": "Mínimo",
             "mediana": "Mediana", "maximo": "Máximo", "retencion_pct": "Retenida en reservas [%]",
         }))
+
+
+
+def mostrar_ensayos_optuna(ensayos):
+    """Resumen descriptivo de cada combinación en los entrenamientos externos."""
+    externos = ensayos.loc[ensayos.protocolo.isin(PROTOCOLOS)]
+    for protocolo in PROTOCOLOS:
+        resumen = externos.loc[externos.protocolo.eq(protocolo)].groupby(
+            ["fit_intercept", "positive"], sort=False
+        ).agg(
+            MAE_interno_medio_N=("MAE_interno_N", "mean"),
+            MAE_interno_minimo_N=("MAE_interno_N", "min"),
+            MAE_interno_maximo_N=("MAE_interno_N", "max"),
+            fraccion_elegida=("elegida", "mean"),
+        ).reset_index()
+        resumen["Elegida en reservas [%]"] = resumen.pop("fraccion_elegida") * 100
+        detalle(PROTO[protocolo], resumen.rename(columns={
+            "MAE_interno_medio_N": "MAE interno medio [N]", "MAE_interno_minimo_N": "Mínimo [N]",
+            "MAE_interno_maximo_N": "Máximo [N]",
+        }))
+
+
+def mostrar_selecciones_optuna(ensayos, grupos):
+    seleccionadas = ensayos.loc[ensayos.elegida & ensayos.protocolo.isin(PROTOCOLOS)]
+    seleccionadas = seleccionadas.merge(grupos[["protocolo", "pliegue", "grupo"]], validate="one_to_one")
+    for protocolo in PROTOCOLOS:
+        tabla_seleccion = seleccionadas.loc[seleccionadas.protocolo.eq(protocolo),
+            ["grupo", "fit_intercept", "positive", "MAE_interno_N", "semilla_busqueda"]]
+        detalle(PROTO[protocolo], tabla_seleccion.rename(columns={
+            "grupo": "Grupo reservado", "MAE_interno_N": "MAE interno elegido [N]",
+            "semilla_busqueda": "Semilla de búsqueda",
+        }))
+
+
+def mostrar_comparacion_optuna(metricas):
+    orden = ["Media_por_nivel", "Lineal_multiple", "Lineal_optimizada"]
+    for protocolo in PROTOCOLOS:
+        datos = metricas.loc[metricas.protocolo.eq(protocolo)].set_index("procedimiento").loc[orden].copy()
+        datos["Δ MAE frente al inicial [N]"] = datos.MAE_N - datos.loc["Lineal_multiple", "MAE_N"]
+        datos["Δ MAE frente al baseline [N]"] = datos.MAE_N - datos.loc["Media_por_nivel", "MAE_N"]
+        detalle(PROTO[protocolo], datos[[
+            "MAE_N", "RMSE_N", "R2_validacion", "sesgo_N",
+            "Δ MAE frente al inicial [N]", "Δ MAE frente al baseline [N]",
+        ]].rename(index=NOMBRES).rename_axis("Procedimiento").reset_index().rename(columns={
+            "MAE_N": "MAE [N]", "RMSE_N": "RMSE [N]", "R2_validacion": "R²", "sesgo_N": "Sesgo [N]",
+        }))
+
+
+def mostrar_grupos_optuna(grupos):
+    for protocolo in PROTOCOLOS:
+        detalle(PROTO[protocolo], grupos.loc[grupos.protocolo.eq(protocolo),
+            ["grupo", "MAE_inicial_N", "MAE_ajustado_N", "delta_MAE_N"]].rename(columns={
+                "grupo": "Grupo reservado", "MAE_inicial_N": "MAE inicial [N]",
+                "MAE_ajustado_N": "MAE ajustado [N]", "delta_MAE_N": "Δ MAE [N]",
+            }))
+
+
+def mostrar_receta_optuna(ensayo, semilla):
+    tabla(pd.DataFrame([{
+        **ensayo.params, "MAE interno de selección [N]": ensayo.value,
+        "Semilla GridSampler": semilla,
+    }]))

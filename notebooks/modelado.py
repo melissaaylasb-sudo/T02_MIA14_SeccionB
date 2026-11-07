@@ -1023,3 +1023,112 @@ class Analisis:
             "peores": peores, "sensibilidad": pd.DataFrame(sensibilidad),
             "coeficientes": resumen_coeficientes,
         }
+
+
+
+def evaluar_configuracion_optuna(ensayo, modelo, geometrias, cargas, grupos, particiones, espacio):
+    """MAE interno agrupado de una configuración, con transformaciones ajustadas por reserva."""
+    from sklearn.base import clone
+    parametros = {
+        "regresor__fit_intercept": ensayo.suggest_categorical("fit_intercept", espacio["fit_intercept"]),
+        "regresor__positive": ensayo.suggest_categorical("positive", espacio["positive"]),
+    }
+    if not geometrias.index.equals(cargas.index):
+        raise ValueError("Geometrías y cargas deben compartir el orden de las probetas.")
+    validaciones, auditoria = [], []
+    with threadpool_limits(limits=1):
+        for numero, (entrenamiento, validacion) in enumerate(particiones, start=1):
+            if set(entrenamiento) & set(validacion) or set(grupos[entrenamiento]) & set(grupos[validacion]):
+                raise ValueError("Solapamiento entre entrenamiento y validación interna.")
+            if set(entrenamiento) | set(validacion) != set(range(len(geometrias))):
+                raise ValueError("La partición interna debe cubrir el entrenamiento externo.")
+            candidato = clone(modelo).set_params(**parametros)
+            candidato.fit(geometrias.iloc[entrenamiento], cargas.iloc[entrenamiento])
+            predicha = candidato.predict(geometrias.iloc[validacion])
+            validaciones.append(pd.DataFrame({
+                "pliegue_interno": numero,
+                "id_probeta": geometrias.index[validacion],
+                "observado_N": cargas.iloc[validacion].to_numpy(),
+                "predicho_N": predicha,
+            }))
+            auditoria.append({
+                "pliegue_interno": numero,
+                "entrenamiento": geometrias.index[entrenamiento].tolist(),
+                "validacion": geometrias.index[validacion].tolist(),
+            })
+    predicciones = pd.concat(validaciones, ignore_index=True)
+    if predicciones.id_probeta.duplicated().any() or set(predicciones.id_probeta) != set(geometrias.index):
+        raise ValueError("La evaluación interna debe predecir cada probeta de su entrenamiento externo.")
+    metricas = calcular_metricas(predicciones.observado_N, predicciones.predicho_N)
+    ensayo.set_user_attr("RMSE_interno_N", metricas["RMSE_N"])
+    ensayo.set_user_attr("reservas_internas", auditoria)
+    ensayo.set_user_attr("predicciones_internas", predicciones.to_dict(orient="records"))
+    return metricas["MAE_N"]
+
+
+def seleccionar_ensayo_optuna(estudio, espacio):
+    """Menor MAE interno, con preferencia por la configuración inicial en empate numérico."""
+    esperadas = set(product(espacio["fit_intercept"], espacio["positive"]))
+    completos = [e for e in estudio.trials if e.state.name == "COMPLETE"]
+    observadas = {(e.params["fit_intercept"], e.params["positive"]) for e in completos}
+    if observadas != esperadas or len(completos) != len(esperadas):
+        raise ValueError("La búsqueda debe completar una vez cada combinación declarada.")
+    minimo = min(e.value for e in completos)
+    empatados = [e for e in completos if e.value <= minimo + 1e-10]
+    return min(empatados, key=lambda e: (
+        not e.params["fit_intercept"], e.params["positive"], e.number,
+    ))
+
+
+def registrar_estudio_optuna(estudio, elegido, protocolo, pliegue, semilla):
+    """Resultados de cada ensayo para las tablas y curvas de búsqueda."""
+    filas, mejor = [], float("inf")
+    for ensayo in sorted(estudio.trials, key=lambda e: e.number):
+        mejor = min(mejor, ensayo.value)
+        filas.append({
+            "protocolo": protocolo, "pliegue": pliegue, "ensayo": ensayo.number + 1,
+            **ensayo.params, "MAE_interno_N": ensayo.value,
+            "RMSE_interno_N": ensayo.user_attrs["RMSE_interno_N"],
+            "mejor_acumulado_N": mejor, "elegida": ensayo.number == elegido.number,
+            "semilla_busqueda": semilla,
+        })
+    return filas
+
+
+def comparar_resultados_optuna(predicciones_iniciales, predicciones_ajustadas, grupos, margen):
+    """Comparación externa emparejada del ajuste, el modelo inicial y el baseline."""
+    claves = ["protocolo", "pliegue", "id_probeta"]
+    iniciales = predicciones_iniciales.loc[
+        predicciones_iniciales.procedimiento.isin(["Lineal_multiple", "Media_por_nivel"])
+    ].copy()
+    ajustadas = predicciones_ajustadas.copy()
+    ajustadas["procedimiento"] = "Lineal_optimizada"
+    ajustadas["residuo_N"] = ajustadas.observado_N - ajustadas.predicho_N
+    ajustadas["error_absoluto_N"] = ajustadas.residuo_N.abs()
+    inicial = iniciales.loc[iniciales.procedimiento.eq("Lineal_multiple"),
+                           claves + ["observado_N", "error_absoluto_N"]]
+    pareadas = ajustadas.merge(inicial, on=claves, suffixes=("", "_inicial"), validate="one_to_one")
+    if len(pareadas) != len(ajustadas) or len(pareadas) != len(inicial):
+        raise ValueError("La comparación requiere las mismas probetas y reservas.")
+    np.testing.assert_allclose(pareadas.observado_N, pareadas.observado_N_inicial, rtol=0, atol=1e-12)
+    pareadas["delta_error_N"] = pareadas.error_absoluto_N - pareadas.error_absoluto_N_inicial
+    comparables = pd.concat([iniciales, ajustadas], ignore_index=True)
+    filas = []
+    for (protocolo, procedimiento), grupo in comparables.groupby(["protocolo", "procedimiento"], sort=False):
+        filas.append({"protocolo": protocolo, "procedimiento": procedimiento,
+                      **calcular_metricas(grupo.observado_N, grupo.predicho_N)})
+    metricas = pd.DataFrame(filas)
+    por_grupo = pareadas.groupby(["protocolo", "pliegue"], sort=False).agg(
+        MAE_inicial_N=("error_absoluto_N_inicial", "mean"),
+        MAE_ajustado_N=("error_absoluto_N", "mean"),
+        delta_MAE_N=("delta_error_N", "mean"),
+    ).reset_index().merge(grupos[["protocolo", "pliegue", "grupo"]], validate="one_to_one")
+    nominal = comparables.loc[comparables.protocolo.eq("configuracion")]
+    frente_inicial = contraste(nominal, "Lineal_optimizada", "Lineal_multiple")
+    frente_baseline = contraste(nominal, "Lineal_optimizada", "Media_por_nivel")
+    return {
+        "metricas": metricas, "pareadas": pareadas, "grupos": por_grupo,
+        "contraste_inicial": frente_inicial, "contraste_baseline": frente_baseline,
+        "adoptar_ajuste": adopta(frente_inicial, margen),
+        "supera_baseline": adopta(frente_baseline, margen),
+    }
