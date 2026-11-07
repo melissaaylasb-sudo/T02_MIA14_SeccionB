@@ -943,3 +943,83 @@ class Analisis:
             previas[["observado_N", "predicho_N"]], rtol=1e-10, atol=1e-8,
         )
         self.predicciones_ganador = predicciones.copy()
+
+
+    def resumir_evaluacion(self, metricas_reservas, coeficientes):
+        """Diagnósticos del ganador a partir de las mismas reservas verificadas."""
+        claves = ["protocolo", "pliegue", "id_probeta"]
+        base = self.predicciones_externas.loc[
+            self.predicciones_externas.procedimiento.eq("Media_por_nivel"),
+            claves + ["error_absoluto_N", "predicho_N"],
+        ].rename(columns={"error_absoluto_N": "error_baseline_N", "predicho_N": "predicho_baseline_N"})
+        pareadas = self.predicciones_ganador.merge(base, on=claves, validate="one_to_one")
+        pareadas = pareadas.merge(
+            self.geometrias[self.grupo_cols].reset_index(), on="id_probeta", validate="many_to_one"
+        )
+        pareadas["diferencia_error_N"] = pareadas.error_absoluto_N - pareadas.error_baseline_N
+        filas = []
+        for (protocolo, pliegue), grupo in pareadas.groupby(["protocolo", "pliegue"], sort=False):
+            primera = grupo.iloc[0]
+            etiqueta = f"Y={primera.numero_celdas_y:g}"
+            if protocolo == "configuracion":
+                etiqueta += f" · hf={primera.altura_fibra:g} · hp={primera.altura_pivote:g}"
+            filas.append({
+                "protocolo": protocolo, "pliegue": pliegue, "grupo": etiqueta,
+                "MAE_modelo_N": grupo.error_absoluto_N.mean(),
+                "MAE_baseline_N": grupo.error_baseline_N.mean(),
+                "delta_MAE_N": grupo.diferencia_error_N.mean(),
+                "RMSE_modelo_N": np.sqrt(np.mean(grupo.residuo_N ** 2)),
+                "sesgo_N": -grupo.residuo_N.mean(),
+            })
+        grupos = pd.DataFrame(filas)
+        contraste_reservas = grupos.merge(metricas_reservas, on=["protocolo", "pliegue"], validate="one_to_one")
+        np.testing.assert_allclose(contraste_reservas.MAE_modelo_N, contraste_reservas.MAE_validacion_N)
+        brecha = metricas_reservas.groupby("protocolo", sort=False).agg(
+            entrenamiento_N=("MAE_entrenamiento_N", "mean"),
+            validacion_N=("MAE_validacion_N", "mean"),
+            desviacion_validacion_N=("MAE_validacion_N", "std"),
+            mediana_validacion_N=("MAE_validacion_N", "median"),
+        ).reset_index()
+        brecha["brecha_N"] = brecha.validacion_N - brecha.entrenamiento_N
+        peores = pareadas.sort_values(["protocolo", "error_absoluto_N"], ascending=[True, False])
+        peores = peores.groupby("protocolo", sort=False).head(3).copy()
+        sensibilidad = []
+        for protocolo, grupo in pareadas.groupby("protocolo", sort=False):
+            mayor = grupo.error_absoluto_N.idxmax()
+            omitida = grupo.drop(index=mayor)
+            comparacion = contraste(
+                self.predicciones_externas.loc[self.predicciones_externas.protocolo.eq(protocolo)],
+                self.mejor, "Media_por_nivel",
+            )
+            sensibilidad.append({
+                "protocolo": protocolo,
+                "MAE_completo_N": grupo.error_absoluto_N.mean(),
+                "MAE_omitiendo_mayor_N": omitida.error_absoluto_N.mean(),
+                "delta_sin_mayor_N": omitida.diferencia_error_N.mean(),
+                "delta_completo_N": grupo.diferencia_error_N.mean(),
+                "grupos_con_mejora_pct": comparacion["fraccion_grupos_mejora"] * 100,
+                "delta_omitiendo_grupo_min_N": comparacion["delta_al_omitir_grupo_min_N"],
+                "delta_omitiendo_grupo_max_N": comparacion["delta_al_omitir_grupo_max_N"],
+            })
+        resumen_coeficientes = coeficientes.groupby(["protocolo", "variable"], sort=False).agg(
+            minimo=("coeficiente_N_por_unidad", "min"),
+            mediana=("coeficiente_N_por_unidad", "median"),
+            maximo=("coeficiente_N_por_unidad", "max"),
+            reservas_retenida=("pliegue", "nunique"),
+        ).reset_index()
+        indice_completo = pd.MultiIndex.from_product(
+            [PROTOCOLOS, self.predictores], names=["protocolo", "variable"]
+        )
+        resumen_coeficientes = resumen_coeficientes.set_index(["protocolo", "variable"]).reindex(indice_completo).reset_index()
+        resumen_coeficientes["reservas_retenida"] = resumen_coeficientes.reservas_retenida.fillna(0)
+        denominadores = metricas_reservas.groupby("protocolo").pliegue.nunique()
+        resumen_coeficientes["retencion_pct"] = (
+            100 * resumen_coeficientes.reservas_retenida / resumen_coeficientes.protocolo.map(denominadores)
+        )
+        resumen_coeficientes["unidad"] = resumen_coeficientes.variable.map(self.unidades)
+        resumen_coeficientes = resumen_coeficientes.drop(columns="reservas_retenida")
+        return {
+            "pareadas": pareadas, "grupos": grupos, "brecha": brecha,
+            "peores": peores, "sensibilidad": pd.DataFrame(sensibilidad),
+            "coeficientes": resumen_coeficientes,
+        }

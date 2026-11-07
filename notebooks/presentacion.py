@@ -329,6 +329,8 @@ def mostrar_configuracion_ganador(analisis):
         {"Elemento": "Tolerancia relativa de la base", "Valor": str(analisis.configuracion["ols"]["tolerancia_svd_relativa"])},
         {"Elemento": "Optimización de hiperparámetros", "Valor": "No aplicada a esta especificación de mínimos cuadrados"},
         {"Elemento": "Aleatoriedad del ajuste lineal", "Valor": "Solución determinista"},
+        {"Elemento": "Semilla configurada para estimadores aleatorios", "Valor": str(analisis.configuracion["parametros_iniciales"]["XGBoost"]["random_state"])},
+        {"Elemento": "Semilla de la comparación previa", "Valor": "42"},
     ]))
 
 
@@ -339,3 +341,79 @@ def mostrar_resumen_errores(predicciones):
         filas.append({"Protocolo": PROTO[protocolo], "Mediana [N]": errores.median(),
                       "Percentil 90 [N]": errores.quantile(.9), "Máximo [N]": errores.max()})
     tabla(pd.DataFrame(filas))
+
+
+
+def mostrar_referencias_completas(metricas):
+    for protocolo in PROTOCOLOS:
+        seleccion = metricas.loc[metricas.protocolo.eq(protocolo)].copy()
+        seleccion["Referencia"] = seleccion.procedimiento.map(nombre)
+        detalle(PROTO[protocolo], seleccion[
+            ["Referencia", "MAE_N", "RMSE_N", "MedAE_N", "R2_validacion", "sesgo_N"]
+        ].rename(columns={
+            "MAE_N": "MAE [N]", "RMSE_N": "RMSE [N]", "MedAE_N": "Mediana del error [N]",
+            "R2_validacion": "R²", "sesgo_N": "Sesgo [N]",
+        }))
+
+
+def mostrar_brecha_ganador(brecha):
+    tabla(brecha.replace({"protocolo": PROTO}).rename(columns={
+        "protocolo": "Protocolo", "entrenamiento_N": "MAE medio entrenamiento [N]",
+        "validacion_N": "MAE medio prueba [N]", "brecha_N": "Brecha [N]",
+        "desviacion_validacion_N": "DE entre reservas [N]",
+        "mediana_validacion_N": "Mediana entre reservas [N]",
+    }))
+
+
+def mostrar_grupos_ganador(grupos):
+    for protocolo in PROTOCOLOS:
+        datos = grupos.loc[grupos.protocolo.eq(protocolo)].drop(columns=["protocolo", "pliegue"])
+        detalle(PROTO[protocolo], datos.rename(columns={
+            "grupo": "Grupo reservado", "MAE_modelo_N": "MAE lineal [N]",
+            "MAE_baseline_N": "MAE baseline [N]", "delta_MAE_N": "Δ MAE [N]",
+            "RMSE_modelo_N": "RMSE lineal [N]", "sesgo_N": "Sesgo lineal [N]",
+        }))
+
+
+def mostrar_casos_mayor_error(casos):
+    seleccion = casos[[
+        "protocolo", "id_probeta", "numero_celdas_y", "observado_N", "predicho_N",
+        "residuo_N", "error_absoluto_N", "error_baseline_N",
+    ]].replace({"protocolo": PROTO})
+    tabla(seleccion.rename(columns={
+        "protocolo": "Protocolo", "id_probeta": "Probeta", "numero_celdas_y": "Nivel Y",
+        "observado_N": "Carga observada [N]", "predicho_N": "Predicción [N]",
+        "residuo_N": "Residuo [N]", "error_absoluto_N": "Error lineal [N]",
+        "error_baseline_N": "Error baseline [N]",
+    }))
+
+
+def mostrar_sensibilidad_ganador(datos):
+    tabla(datos.replace({"protocolo": PROTO})[[
+        "protocolo", "MAE_completo_N", "MAE_omitiendo_mayor_N", "delta_sin_mayor_N",
+    ]].rename(columns={
+        "protocolo": "Protocolo", "MAE_completo_N": "MAE completo [N]",
+        "MAE_omitiendo_mayor_N": "MAE omitiendo el mayor error [N]",
+        "delta_sin_mayor_N": "Δ frente al baseline al omitir la misma probeta [N]",
+    }))
+    tabla(datos.replace({"protocolo": PROTO})[[
+        "protocolo", "delta_completo_N", "grupos_con_mejora_pct",
+        "delta_omitiendo_grupo_min_N", "delta_omitiendo_grupo_max_N",
+    ]].rename(columns={
+        "protocolo": "Protocolo", "delta_completo_N": "Δ MAE completo [N]",
+        "grupos_con_mejora_pct": "Grupos con mejora [%]",
+        "delta_omitiendo_grupo_min_N": "Δ mínimo al omitir un grupo [N]",
+        "delta_omitiendo_grupo_max_N": "Δ máximo al omitir un grupo [N]",
+    }))
+
+
+def mostrar_coeficientes_ganador(coeficientes):
+    for protocolo in PROTOCOLOS:
+        datos = coeficientes.loc[coeficientes.protocolo.eq(protocolo)].copy()
+        datos["unidad"] = "N/" + datos.unidad
+        detalle(PROTO[protocolo], datos[[
+            "variable", "unidad", "minimo", "mediana", "maximo", "retencion_pct",
+        ]].rename(columns={
+            "variable": "Variable", "unidad": "Unidad del coeficiente", "minimo": "Mínimo",
+            "mediana": "Mediana", "maximo": "Máximo", "retencion_pct": "Retenida en reservas [%]",
+        }))

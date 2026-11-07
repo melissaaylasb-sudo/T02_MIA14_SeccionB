@@ -396,18 +396,18 @@ def estabilidad(percentiles):
 
 
 
-def errores_ganador(metricas, ganador):
+def errores_ganador(metricas, ganador, metrica="MAE_N"):
     """Compara exclusivamente el modelo elegido y el baseline principal."""
     figura, ejes = plt.subplots(1, 2, figsize=(11, 3.5), sharey=True)
     procedimientos = ["Media_por_nivel", ganador]
     for eje, protocolo in zip(ejes, PROTOCOLOS):
-        valores = metricas.loc[metricas.protocolo.eq(protocolo)].set_index("procedimiento").loc[procedimientos, "MAE_N"]
+        valores = metricas.loc[metricas.protocolo.eq(protocolo)].set_index("procedimiento").loc[procedimientos, metrica]
         barras = eje.barh([0, 1], valores, color=[GRIS, VERDE], height=.5)
-        eje.bar_label(barras, labels=[fmt(v, 3) for v in valores], padding=5)
-        eje.set(title=PROTO[protocolo], xlabel="MAE [N]", xlim=(0, valores.max()*1.3),
+        eje.bar_label(barras, labels=[fmt(v, 4) for v in valores], padding=5)
+        eje.set(title=PROTO[protocolo], xlabel=metrica.removesuffix("_N") + " [N]", xlim=(0, valores.max()*1.3),
                 yticks=[0, 1], yticklabels=[nombre(m) for m in procedimientos])
         _estilo(eje)
-    figura.suptitle("Error del modelo seleccionado frente al baseline", fontsize=16, color="#203D40", weight="bold")
+    figura.suptitle(metrica.removesuffix("_N") + " del modelo seleccionado frente al baseline", fontsize=16, color="#203D40", weight="bold")
     figura.tight_layout(rect=(0, 0, 1, .9))
     return figura
 
@@ -474,4 +474,107 @@ def distribucion_ganador(predicciones):
     eje.set(xlabel="Error absoluto [N]", title="Distribución del error de la regresión lineal", ylim=(.4, 2.6))
     _estilo(eje)
     figura.tight_layout()
+    return figura
+
+
+
+def observaciones_ganador(pareadas):
+    """Predicciones individuales por nivel celular sobre la misma escala."""
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 5), sharex=True, sharey=True)
+    valores = pareadas[["observado_N", "predicho_N"]].to_numpy()
+    limites = (min(0, valores.min()-10), valores.max()+15)
+    colores = plt.get_cmap("viridis")
+    niveles = sorted(pareadas.numero_celdas_y.unique())
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = pareadas.loc[pareadas.protocolo.eq(protocolo)]
+        eje.plot(limites, limites, "--", color=GRIS, linewidth=1)
+        for indice, nivel in enumerate(niveles):
+            grupo = datos.loc[datos.numero_celdas_y.eq(nivel)]
+            eje.scatter(grupo.observado_N, grupo.predicho_N,
+                        color=colores((indice+.5)/len(niveles)), label=f"Y={nivel:g}", s=30, alpha=.85)
+        mayor = datos.loc[datos.error_absoluto_N.idxmax()]
+        eje.annotate(f"Error {fmt(mayor.error_absoluto_N,2)} N",
+                     (mayor.observado_N, mayor.predicho_N), xytext=(7, -14),
+                     textcoords="offset points", fontsize=8)
+        eje.set(title=PROTO[protocolo], xlabel="Carga observada [N]", xlim=limites, ylim=limites, aspect="equal")
+        eje.legend(frameon=False, fontsize=9, loc="upper left")
+        _estilo(eje, "both")
+    ejes[0].set_ylabel("Carga predicha [N]")
+    figura.suptitle("Carga observada y predicha por probeta", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .92))
+    return figura
+
+
+def brecha_ganador(reservas):
+    """Distribuciones del MAE de entrenamiento y de prueba entre reservas."""
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 4.8), sharey=True)
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = reservas.loc[reservas.protocolo.eq(protocolo)]
+        valores = [datos.MAE_entrenamiento_N, datos.MAE_validacion_N]
+        eje.boxplot(valores, tick_labels=["Entrenamiento", "Prueba"], widths=.4,
+                    patch_artist=True, boxprops={"facecolor": "#e9f5ec"})
+        for posicion, serie in enumerate(valores, start=1):
+            eje.scatter(posicion, serie.mean(), marker="D", color=AZUL, zorder=4)
+            eje.annotate(f"Media {fmt(serie.mean(), 2)} N", (posicion, serie.mean()),
+                         xytext=(10, 5), textcoords="offset points", fontsize=9,
+                         bbox={"facecolor": "white", "edgecolor": "none", "pad": .3})
+        eje.set(title=PROTO[protocolo], xlim=(.5, 2.8))
+        eje.margins(y=.18)
+        _estilo(eje, "y")
+    ejes[0].set_ylabel("MAE de cada reserva [N]")
+    figura.suptitle("Error de entrenamiento y de prueba del ganador", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .92))
+    return figura
+
+
+def mejora_por_grupo(grupos):
+    """Diferencia de MAE emparejada dentro de cada configuración o nivel Y."""
+    figura, ejes = plt.subplots(2, 1, figsize=(11.5, 8), gridspec_kw={"height_ratios": [1.8, 1]})
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        datos = grupos.loc[grupos.protocolo.eq(protocolo)].sort_values("delta_MAE_N")
+        colores = [VERDE if valor < 0 else "#B0573A" for valor in datos.delta_MAE_N]
+        barras = eje.bar(range(len(datos)), datos.delta_MAE_N, color=colores, width=.65)
+        eje.bar_label(barras, labels=[fmt(v, 2) for v in datos.delta_MAE_N], padding=3, fontsize=8, rotation=90 if len(datos)>8 else 0)
+        eje.axhline(0, color=GRIS, lw=1)
+        eje.set(title=PROTO[protocolo], ylabel="Δ MAE frente al baseline [N]",
+                xticks=range(len(datos)), xticklabels=datos.grupo)
+        eje.tick_params(axis="x", rotation=65 if len(datos)>8 else 0, labelsize=8)
+        eje.margins(y=.35)
+        _estilo(eje, "y")
+    figura.suptitle("Mejora o deterioro del ganador en cada grupo reservado", fontsize=15, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .94), h_pad=2.5)
+    return figura
+
+
+def coeficientes_ganador(coeficientes):
+    """Rangos descriptivos separados para cada variable y unidad."""
+    from textwrap import fill
+    variables = list(dict.fromkeys(coeficientes.loc[coeficientes.retencion_pct.gt(0), "variable"]))
+    filas = (len(variables)+1)//2
+    figura, ejes = plt.subplots(filas, 2, figsize=(11, 2.45*filas), squeeze=False)
+    for eje, variable in zip(ejes.flat, variables):
+        datos = coeficientes.loc[coeficientes.variable.eq(variable)].set_index("protocolo")
+        for posicion, protocolo in enumerate(PROTOCOLOS):
+            if protocolo not in datos.index:
+                continue
+            fila = datos.loc[protocolo]
+            if fila.retencion_pct == 0:
+                eje.text(.03, posicion, "Fuera de la base", transform=eje.get_yaxis_transform(), fontsize=9, va="center", color=GRIS)
+                continue
+            color = AZUL if protocolo == "configuracion" else VERDE
+            eje.hlines(posicion, fila.minimo, fila.maximo, color=color, lw=2)
+            eje.scatter(fila.mediana, posicion, color=color, s=30)
+            etiqueta = format(fila.mediana, ".3g").replace(".", ",")
+            eje.annotate(etiqueta, (fila.mediana, posicion), xytext=(0, 7),
+                         textcoords="offset points", fontsize=9, ha="center", color=color)
+        eje.axvline(0, color=GRIS, lw=.8, ls="--")
+        eje.set(title=fill(variable.replace("_", " "), 32), yticks=[0, 1],
+                yticklabels=["Configuración", "Nivel Y"], ylim=(-.5, 1.6),
+                xlabel="Coeficiente [N/" + datos.unidad.iloc[0] + "]")
+        eje.margins(x=.2)
+        _estilo(eje)
+    for eje in list(ejes.flat)[len(variables):]:
+        eje.set_visible(False)
+    figura.suptitle("Variación de los coeficientes entre entrenamientos", fontsize=16, weight="bold", color="#203D40")
+    figura.tight_layout(rect=(0, 0, 1, .95), h_pad=1.8)
     return figura
