@@ -1,0 +1,396 @@
+{
+  "estado": "PASS",
+  "commit_referencia": "ed6cd3385bf3e282535804c61d341e008627ab16",
+  "notebook": "Comparativa_6_Modelos_Regresion_Pantograficas.ipynb",
+  "sha256_notebook": "d4848f9dc07ba91a71ac04392ae80dc1a2b5e9c55d908fbf3b78e51ed1e5cc39",
+  "sha256_exportacion_kernel": "1770162726b61d0a910c257cc96f90b45d418049f190139d155b9bfe4de4be32",
+  "entrega_fisica_de_un_archivo_verificada": true,
+  "estructura": {
+    "apartados": [
+      "Portada académica",
+      "Introducción y objetivo",
+      "Definición del problema predictivo",
+      "Antecedentes y baseline histórico",
+      "Justificación bibliográfica de los seis modelos",
+      "Variables y representación geométrica",
+      "Unidad experimental y estrategia de validación",
+      "Configuraciones iniciales y preprocesamiento",
+      "Ejecución comparativa",
+      "Resultados iniciales y métricas",
+      "Diagnóstico de errores",
+      "Selección de candidatos a tuning",
+      "Espacios de búsqueda y presupuesto",
+      "Optimización dentro de los entrenamientos",
+      "Comparación final",
+      "Interpretación estadística y mecánica",
+      "Limitaciones",
+      "Conclusiones y decisión para la siguiente fase",
+      "Reproducibilidad"
+    ],
+    "celdas_ejecutadas": 60,
+    "conteos_ejecucion": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "cajas_completas": 25,
+    "cajas_por_apartado": {
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "6": 1,
+      "7": 1,
+      "8": 1,
+      "9": 1,
+      "10": 2,
+      "11": 4,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 3,
+      "16": 2,
+      "17": 1,
+      "18": 2,
+      "19": 1
+    },
+    "figuras": [
+      {
+        "celda": 45,
+        "apartado": 10,
+        "dimensiones_px": [
+          1815,
+          767
+        ],
+        "sha256": "ecc20408b88e35939b275005f1a65cdaeb0d83230696b6fa2359e9ed9f2c010e"
+      },
+      {
+        "celda": 46,
+        "apartado": 10,
+        "dimensiones_px": [
+          1815,
+          767
+        ],
+        "sha256": "3e67f7394774882f6ff650372f4a158f3dcc0eb23e53fc20170fb4c9473e3455"
+      },
+      {
+        "celda": 49,
+        "apartado": 11,
+        "dimensiones_px": [
+          1815,
+          825
+        ],
+        "sha256": "4adfb829ffd92052f0890be1e10f33136d2ac5a45590a3c23b8c15b411c4807c"
+      },
+      {
+        "celda": 51,
+        "apartado": 11,
+        "dimensiones_px": [
+          1699,
+          1171
+        ],
+        "sha256": "957abd0911739a139a0659f345558a30d0c09b61cfa22e1a2d46faaa02b9cd6f"
+      },
+      {
+        "celda": 53,
+        "apartado": 11,
+        "dimensiones_px": [
+          1815,
+          808
+        ],
+        "sha256": "423a3e5fefc08d3b2be0520616358d54c2e94e6ffbca1482f5ff9fa7abc5f7c1"
+      },
+      {
+        "celda": 55,
+        "apartado": 11,
+        "dimensiones_px": [
+          2112,
+          758
+        ],
+        "sha256": "68741189ec5c24c42d0df1446f3c179a0a279074ca39fceb391d6af233037da0"
+      },
+      {
+        "celda": 62,
+        "apartado": 14,
+        "dimensiones_px": [
+          1815,
+          825
+        ],
+        "sha256": "f892c375f621d513d220545d4cfafb01220e9e9caa3a64697d2b0d721844a2b6"
+      },
+      {
+        "celda": 65,
+        "apartado": 15,
+        "dimensiones_px": [
+          1815,
+          825
+        ],
+        "sha256": "2a193c9fcb9a1912490465277e299e0cffe0918323759f04f6db4afe80c8d28b"
+      },
+      {
+        "celda": 67,
+        "apartado": 15,
+        "dimensiones_px": [
+          1815,
+          767
+        ],
+        "sha256": "a3c09dcd8b56cf59157c4b8a655227ea48c39b41d1fed3e3a22bda0eb6670d11"
+      },
+      {
+        "celda": 69,
+        "apartado": 15,
+        "dimensiones_px": [
+          1980,
+          783
+        ],
+        "sha256": "76d047b5424966a828c54e5be591df8598c9c7980e63bae63e44de470e2c0201"
+      }
+    ],
+    "imports": [
+      "IPython.display",
+      "__future__",
+      "catboost",
+      "collections",
+      "hashlib",
+      "html",
+      "importlib.metadata",
+      "io",
+      "itertools",
+      "json",
+      "matplotlib",
+      "matplotlib.lines",
+      "matplotlib.pyplot",
+      "matplotlib.ticker",
+      "numpy",
+      "pandas",
+      "platform",
+      "sklearn.base",
+      "sklearn.dummy",
+      "sklearn.feature_selection",
+      "sklearn.impute",
+      "sklearn.linear_model",
+      "sklearn.metrics",
+      "sklearn.model_selection",
+      "sklearn.neighbors",
+      "sklearn.pipeline",
+      "sklearn.preprocessing",
+      "sklearn.svm",
+      "sklearn.tree",
+      "sklearn.utils.validation",
+      "threadpoolctl",
+      "time",
+      "typing",
+      "warnings",
+      "xgboost"
+    ]
+  },
+  "comparacion_publicada_sin_tiempos": {
+    "predicciones_oof": {
+      "filas": 624,
+      "identidad": [
+        "protocolo",
+        "fold",
+        "procedimiento",
+        "Case_n"
+      ],
+      "campos_comparados": [
+        "etapa",
+        "familia_real",
+        "n_cells_Y",
+        "grupo_nominal",
+        "observado_N",
+        "predicho_N",
+        "residuo_N",
+        "error_absoluto_N",
+        "predicho_inicial_misma_familia_N"
+      ],
+      "comparaciones": 5616,
+      "diferencias_absolutas_maximas": {
+        "n_cells_Y": 0.0,
+        "observado_N": 0.0,
+        "predicho_N": 0.0,
+        "residuo_N": 8.881784197001252e-16,
+        "error_absoluto_N": 8.881784197001252e-16,
+        "predicho_inicial_misma_familia_N": 0.0
+      }
+    },
+    "metricas_resumen": {
+      "filas": 24,
+      "identidad": [
+        "protocolo",
+        "procedimiento"
+      ],
+      "campos_comparados": [
+        "MAE_N",
+        "RMSE_N",
+        "MedAE_N",
+        "R2_OOF",
+        "sesgo_N",
+        "etapa",
+        "grupo",
+        "feature_set",
+        "n",
+        "n_folds",
+        "DE_error_absoluto_N",
+        "DE_MAE_fold_N",
+        "IQR_MAE_fold_N",
+        "MAE_train_medio_N",
+        "delta_MAE_vs_dummy_N",
+        "delta_MAE_vs_media_nivel_N",
+        "delta_MAE_vs_Ridge_N",
+        "delta_MAE_vs_inicial_misma_familia_N"
+      ],
+      "comparaciones": 432,
+      "diferencias_absolutas_maximas": {
+        "MAE_N": 0.0,
+        "RMSE_N": 0.0,
+        "MedAE_N": 0.0,
+        "R2_OOF": 5.551115123125783e-16,
+        "sesgo_N": 4.440892098500626e-16,
+        "n": 0.0,
+        "n_folds": 0.0,
+        "DE_error_absoluto_N": 8.881784197001252e-16,
+        "DE_MAE_fold_N": 0.0,
+        "IQR_MAE_fold_N": 8.881784197001252e-16,
+        "MAE_train_medio_N": 8.881784197001252e-16,
+        "delta_MAE_vs_dummy_N": 0.0,
+        "delta_MAE_vs_media_nivel_N": 8.881784197001252e-16,
+        "delta_MAE_vs_Ridge_N": 4.440892098500626e-16,
+        "delta_MAE_vs_inicial_misma_familia_N": 3.3306690738754696e-16
+      }
+    },
+    "seleccion_tuning": {
+      "filas": 56,
+      "identidad": [
+        "protocolo",
+        "fold",
+        "rango_cribado"
+      ],
+      "campos_comparados": [
+        "familia_real",
+        "config_id",
+        "MAE_interno_N",
+        "MAD_grupos_N",
+        "parametros_json",
+        "elegida_selector"
+      ],
+      "comparaciones": 336,
+      "diferencias_absolutas_maximas": {
+        "MAE_interno_N": 0.0,
+        "MAD_grupos_N": 8.881784197001252e-16
+      }
+    },
+    "cribado_interno": {
+      "filas": 140,
+      "identidad": [
+        "protocolo",
+        "fold",
+        "familia_real"
+      ],
+      "campos_comparados": [
+        "MAE_interno_N",
+        "MAD_grupos_N",
+        "rango_cribado",
+        "elegible_tuning",
+        "seleccionada_tuning"
+      ],
+      "comparaciones": 700,
+      "diferencias_absolutas_maximas": {
+        "MAE_interno_N": 0.0,
+        "MAD_grupos_N": 8.881784197001252e-16,
+        "rango_cribado": 0.0
+      }
+    },
+    "busqueda_interna": {
+      "filas": 448,
+      "identidad": [
+        "protocolo",
+        "fold",
+        "familia_real",
+        "config_id"
+      ],
+      "campos_comparados": [
+        "orden",
+        "parametros_json",
+        "MAE_interno_N",
+        "MAD_grupos_N",
+        "mejor_acumulado_N",
+        "seleccionada",
+        "reuso_cribado"
+      ],
+      "comparaciones": 3136,
+      "diferencias_absolutas_maximas": {
+        "orden": 0.0,
+        "MAE_interno_N": 0.0,
+        "MAD_grupos_N": 8.881784197001252e-16,
+        "mejor_acumulado_N": 0.0
+      }
+    }
+  },
+  "contrastes_independientes": {
+    "OOF": 624,
+    "series": 24,
+    "selectores_verificados_por_caso": 52,
+    "metricas_recalculadas_desde_MATLAB_y_OOF": 120
+  },
+  "limite": "Inspección AST de accesos directos y comparación de resultados del kernel; no es una traza de llamadas al sistema ni una prueba de bloqueo de red. La legibilidad de figuras y el aislamiento efectivo de la ejecución se revisan por separado.",
+  "png_identicos_a_los_diez_originales_revisados": 10,
+  "salidas_recalculadas_en_kernel_nuevo": true,
+  "estado_archivos_despues_de_ejecutar": "Solo el ipynb en la carpeta de trabajo."
+}

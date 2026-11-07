@@ -1,6 +1,8 @@
 # Evaluación comparativa de seis regresores para primera falla pantográfica
 
-**[Abrir el notebook ejecutado](notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)** · [Resultados y recomendación](docs/resultados_comparativos_modelos.md) · [Rama del benchmark](https://github.com/melissaaylasb-sudo/T02_MIA14_SeccionB/tree/benchmark-regresion-6-modelos)
+**Entrega: [un único notebook ejecutado y autocontenido](notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)** · [Descargar solo el .ipynb](https://raw.githubusercontent.com/melissaaylasb-sudo/T02_MIA14_SeccionB/benchmark-regresion-6-modelos/notebooks/Comparativa_6_Modelos_Regresion_Pantograficas.ipynb)
+
+Descarga el archivo, ábrelo en Jupyter y selecciona **Ejecutar todo**. Incluye las entradas geométricas y sus unidades, las particiones, la bibliografía, el código de los modelos y del tuning, las tablas, las diez figuras y las conclusiones. Calcula los resultados en memoria; no requiere descargar CSV ni importar módulos del repositorio. Las versiones de las bibliotecas científicas se indican en el propio cuaderno. La [comprobación del archivo aislado](reports/benchmark_regresion/auditoria/cuaderno_unico.json) coteja sus predicciones con la ejecución publicada anteriormente.
 
 Universidad Nacional de Ingeniería · Maestría en Inteligencia Artificial · Trabajo de Investigación II. **Investigadora:** Melissa Dessire Aylas Barranca. **Docente:** Glen Dario Rodríguez Rafael.
 
@@ -15,7 +17,7 @@ Se estima la carga de primera rotura de fibra o pivote en newtons con geometría
 
 **Resultado de esta ejecución:** la regresión lineal múltiple obtuvo el menor MAE de las seis recetas en configuraciones reservadas (9,664 N). Su ventaja sobre la media por nivel fue 0,462 N y ganó en 12 de 24 grupos; el RMSE fue prácticamente idéntico. La regla de decisión conserva por ello la media por nivel como referencia operativa para niveles conocidos. Al retirar un nivel completo, el MAE lineal fue 40,915 N. El tuning del selector aumentó 0,633 N el MAE nominal frente a sus propias familias iniciales. [Tabla integrada con configuraciones y tiempos](reports/benchmark_regresion/interpretacion/tabla_final_integrada.csv).
 
-Desde la raíz de esta rama, instalar `python -m pip install -r requirements-benchmark-regresion.txt` en un entorno Python compatible (ejecución de referencia: 3.13.5). Abrir el notebook de arriba y ejecutar sus celdas en orden. El notebook verifica la ejecución conservada antes de mostrarla. La receta completa y las comprobaciones se describen en la sección de reproducibilidad del cuaderno.
+**Auditoría opcional desde el repositorio.** Para quienes quieran contrastar el cuaderno con los archivos de la implementación modular, instalar `python -m pip install -r requirements-benchmark-regresion.txt` (Python de referencia: 3.13.5) y ejecutar desde la raíz:
 
 ```powershell
 python -m src.benchmark_regresion --verify
@@ -24,7 +26,7 @@ python -m src.lectura_benchmark_regresion
 python -m pytest -q tests/test_benchmark_regresion.py tests/test_lectura_benchmark.py tests/test_entrega_benchmark.py
 ```
 
-Para repetir **los entrenamientos** con el protocolo congelado en un directorio nuevo, usar `python -m src.benchmark_regresion --output reports/repeticion_benchmark`. La lectura ordinaria reutiliza las tablas verificadas. La [auditoría independiente](reports/benchmark_regresion/auditoria/revision_independiente.json) registra qué se contrastó con la fuente experimental, los controles históricos y los registros de cada ajuste.
+La implementación modular también permite repetir los entrenamientos en un directorio nuevo: `python -m src.benchmark_regresion --output reports/repeticion_benchmark`. La [auditoría independiente](reports/benchmark_regresion/auditoria/revision_independiente.json) registra el contraste con la fuente y los controles históricos. Los cuadernos de etapas anteriores se conservan como antecedentes; ninguno se utiliza para ejecutar esta entrega.
 
 ---
 
@@ -36,7 +38,7 @@ Para repetir **los entrenamientos** con el protocolo congelado en un directorio 
 
 ### Entrega de la etapa de permutación y selección interna de variables
 
-El [único notebook de entrega](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara cinco familias con parámetros fijos: Ridge, Elastic Net, SVR RBF, bosque aleatorio y proceso gaussiano. Incluye referencias de mediana y media por nivel, las tablas verde y morada con métricas, selección de cuatro entradas dentro del entrenamiento, permutación repetida y ablación del bloque de arquitectura y volúmenes. Su nombre de archivo se conserva para mantener los enlaces; el contenido vigente corresponde al análisis por permutación.
+El [notebook histórico de la etapa de permutación](notebooks/06_Modelado_Tuning_SHAP.ipynb) compara cinco familias con parámetros fijos: Ridge, Elastic Net, SVR RBF, bosque aleatorio y proceso gaussiano. Incluye referencias de mediana y media por nivel, las tablas verde y morada con métricas, selección de cuatro entradas dentro del entrenamiento, permutación repetida y ablación del bloque de arquitectura y volúmenes.
 
 Las dos validaciones reservan configuraciones nominales o familias de celdas de la misma campaña. Las cuatro entradas seleccionadas pueden cambiar entre modelos y particiones. La actividad no ejecuta una nueva búsqueda de hiperparámetros ni presenta a Ridge o Elastic Net como óptimos. Las importancias usan 100 permutaciones marginales cruzadas, mantienen los signos negativos y distinguen variación de Monte Carlo de incertidumbre poblacional.
 
