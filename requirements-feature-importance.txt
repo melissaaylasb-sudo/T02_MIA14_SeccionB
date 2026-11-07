@@ -1,3 +1,0 @@
-# Reproduce el entorno del sprint de ajuste y añade la API SHAP usada aquí.
--r requirements-modelos-ajustados.txt
-shap==0.48.0

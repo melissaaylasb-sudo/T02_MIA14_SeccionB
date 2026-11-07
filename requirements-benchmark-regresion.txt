@@ -1,4 +1,0 @@
-# Entorno de la evaluación de seis regresores; Python 3.13.5, CPU.
--r requirements-modelos-ajustados.txt
-xgboost==3.0.2
-catboost==1.2.8

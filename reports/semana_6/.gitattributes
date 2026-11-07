@@ -1,4 +1,0 @@
-# Conservar bytes exactos de fuentes y manifiestos en Windows/Linux.
-* -text whitespace=cr-at-eol
-# Matplotlib conserva espacios finales válidos en las coordenadas SVG generadas.
-figures/*.svg -whitespace

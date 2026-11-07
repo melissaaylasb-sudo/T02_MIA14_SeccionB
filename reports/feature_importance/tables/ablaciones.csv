@@ -1,9 +1,0 @@
-protocolo,referencia,intervencion,n_casos,delta_MAE_N,mediana_delta_error_absoluto_N,fraccion_casos_mejora,sd_delta_error_absoluto_N,ablacion
-configuracion,E2,E1,26,0.4119287358313862,0.29324084941350037,0.4230769230769231,2.147668046435343,Retirar la familia de momentos de sección de B: evaluar A
-configuracion,E3,E4,26,-1.2743785289697054,-0.11809315167989354,0.5384615384615384,4.871486990224249,Retirar la familia de momentos de sección de B: evaluar A
-configuracion,S2,S1,26,0.5375333753667447,0.32930366645138065,0.4230769230769231,2.1887007701144796,Retirar la familia de momentos de sección de B: evaluar A
-configuracion,S3,S4,26,-0.6920025967799586,0.20016946616326692,0.46153846153846156,4.48449078281353,Retirar la familia de momentos de sección de B: evaluar A
-familia,E2,E1,26,-0.016370689557312253,-0.777639054799991,0.6538461538461539,2.0581492684205718,Retirar la familia de momentos de sección de B: evaluar A
-familia,E3,E4,26,6.419406478296792,0.056921801507073155,0.46153846153846156,18.009201107412842,Retirar la familia de momentos de sección de B: evaluar A
-familia,S2,S1,26,0.01720140500973927,-0.0018243335111236547,0.6153846153846154,1.488473250860171,Retirar la familia de momentos de sección de B: evaluar A
-familia,S3,S4,26,-2.5916180035745744,-2.376308513461211,0.9615384615384616,1.4659888100575567,Retirar la familia de momentos de sección de B: evaluar A
