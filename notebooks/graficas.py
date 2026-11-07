@@ -493,9 +493,12 @@ def observaciones_ganador(pareadas):
             eje.scatter(grupo.observado_N, grupo.predicho_N,
                         color=colores((indice+.5)/len(niveles)), label=f"Y={nivel:g}", s=30, alpha=.85)
         mayor = datos.loc[datos.error_absoluto_N.idxmax()]
+        posicion = (.05, .58) if protocolo == "configuracion" else (.58, .31)
         eje.annotate(f"Error {fmt(mayor.error_absoluto_N,2)} N",
-                     (mayor.observado_N, mayor.predicho_N), xytext=(7, -14),
-                     textcoords="offset points", fontsize=8)
+                     (mayor.observado_N, mayor.predicho_N), xytext=posicion,
+                     textcoords="axes fraction", fontsize=8,
+                     arrowprops={"arrowstyle": "-", "color": GRIS, "linewidth": .8},
+                     bbox={"facecolor": "white", "edgecolor": "none", "pad": 1.5})
         eje.set(title=PROTO[protocolo], xlabel="Carga observada [N]", xlim=limites, ylim=limites, aspect="equal")
         eje.legend(frameon=False, fontsize=9, loc="upper left")
         _estilo(eje, "both")
