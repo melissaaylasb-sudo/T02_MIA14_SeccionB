@@ -368,14 +368,8 @@ class Analisis:
             valores = valores.split(";")
         return np.array([self.indices[int(identificador)] for identificador in valores], dtype=int)
 
-    def construir_modelo(self, familia: str, parametros: Parametros, configuracion: Parametros) -> Pipeline:
-        if familia in self.referencias:
-            return self.referencia_inicial(familia)
-        constructores = {
-            "SVR_RBF": SVR, "XGBoost": XGBRegressor, "CatBoost": CatBoostRegressor,
-            "Lineal_multiple": LinearRegression, "KNN": KNeighborsRegressor,
-            "Arbol_decision": DecisionTreeRegressor,
-        }
+    def preparar_preprocesamiento(self, familia, configuracion):
+        """Reutilizar las transformaciones geométricas del modelo especificado."""
         pasos = [
             ("geometria", ValidacionGeometrica(self.predictores)),
             ("imputacion", SimpleImputer(strategy="median", keep_empty_features=True).set_output(transform="pandas")),
@@ -385,6 +379,17 @@ class Analisis:
             pasos.append(("escala", StandardScaler()))
         if familia == "Lineal_multiple":
             pasos.append(("base", BaseIndependiente(configuracion["ols"]["tolerancia_svd_relativa"])))
+        return pasos
+
+    def construir_modelo(self, familia: str, parametros: Parametros, configuracion: Parametros) -> Pipeline:
+        if familia in self.referencias:
+            return self.referencia_inicial(familia)
+        constructores = {
+            "SVR_RBF": SVR, "XGBoost": XGBRegressor, "CatBoost": CatBoostRegressor,
+            "Lineal_multiple": LinearRegression, "KNN": KNeighborsRegressor,
+            "Arbol_decision": DecisionTreeRegressor,
+        }
+        pasos = self.preparar_preprocesamiento(familia, configuracion)
         return Pipeline([*pasos, ("regresor", constructores[familia](**parametros))])
 
     def nombres_sin_constantes(self, modelo):
@@ -888,3 +893,53 @@ class Analisis:
         ].item()
         np.testing.assert_allclose(prediccion_local, prediccion_registrada, atol=1e-9, rtol=0)
         return distancias[0], cargas_vecinas, prediccion_local, self.cargas.loc[caso]
+
+
+    def recuperar_comparacion(self, tablas):
+        """Reutilizar las predicciones iniciales y escoger el menor MAE nominal."""
+        predicciones = tablas["predicciones_validacion"].copy()
+        metricas = tablas["metricas_resumen"].copy()
+        procedimientos = (*self.modelos_iniciales, *self.referencias)
+        assert set(predicciones.procedimiento) == set(procedimientos)
+        assert set(metricas.protocolo) == set(PROTOCOLOS)
+        assert not predicciones.duplicated(["protocolo", "procedimiento", "id_probeta"]).any()
+        assert not metricas.duplicated(["protocolo", "procedimiento"]).any()
+        for (protocolo, procedimiento), grupo in predicciones.groupby(["protocolo", "procedimiento"]):
+            assert set(grupo.id_probeta) == set(self.cargas.index)
+            np.testing.assert_allclose(grupo.observado_N, self.cargas.loc[grupo.id_probeta], atol=1e-12)
+            for pliegue, reserva in grupo.groupby("pliegue"):
+                prueba = self.particiones_por_grupo[protocolo][int(pliegue) - 1][1]
+                assert set(reserva.id_probeta) == set(self.geometrias.iloc[prueba].index)
+            calculadas = calcular_metricas(grupo.observado_N, grupo.predicho_N)
+            registrada = metricas.loc[metricas.protocolo.eq(protocolo) & metricas.procedimiento.eq(procedimiento)].iloc[0]
+            for campo, valor in calculadas.items():
+                np.testing.assert_allclose(valor, registrada[campo], rtol=1e-12, atol=1e-12)
+        self.metricas_preliminares = metricas
+        ranking = metricas.loc[metricas.protocolo.eq("configuracion") & metricas.procedimiento.isin(self.modelos_iniciales)]
+        self.familia_ganadora = ranking.sort_values(["MAE_N", "procedimiento"]).procedimiento.iloc[0]
+        self.mejor = self.familia_ganadora
+        self.metricas = metricas.loc[metricas.procedimiento.isin([self.mejor, *self.referencias])].copy()
+        self.predicciones_externas = predicciones.loc[predicciones.procedimiento.isin([self.mejor, *self.referencias])].copy()
+        self.predicciones_ganador = self.predicciones_externas.loc[self.predicciones_externas.procedimiento.eq(self.mejor)].copy()
+        self.metricas_referencia = self.metricas.loc[self.metricas.procedimiento.isin(self.referencias)]
+        self.comparacion_baseline = contraste(
+            self.predicciones_externas.loc[self.predicciones_externas.protocolo.eq("configuracion")],
+            self.mejor, "Media_por_nivel",
+        )
+        self.adopcion = adopta(self.comparacion_baseline, self.politica["banda_descriptiva_N"])
+        self._etapas_completadas.add("recuperar_comparacion")
+
+
+    def verificar_predicciones_seleccionadas(self, predicciones):
+        """Verificar reservas y equivalencia con la evaluación inicial del ganador."""
+        claves = ["protocolo", "pliegue", "id_probeta"]
+        if predicciones.duplicated(claves).any():
+            raise ValueError("Hay predicciones duplicadas dentro de una reserva.")
+        previas = self.predicciones_ganador.set_index(claves).sort_index()
+        actuales = predicciones.set_index(claves).sort_index()
+        pd.testing.assert_index_equal(previas.index, actuales.index)
+        np.testing.assert_allclose(
+            actuales[["observado_N", "predicho_N"]],
+            previas[["observado_N", "predicho_N"]], rtol=1e-10, atol=1e-8,
+        )
+        self.predicciones_ganador = predicciones.copy()

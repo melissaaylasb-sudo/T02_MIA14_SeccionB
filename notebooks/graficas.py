@@ -393,3 +393,85 @@ def estabilidad(percentiles):
     figura.colorbar(mapa_color, cax=eje_color, label="MAE por pliegue [N]")
     _encabezado(figura, 10)
     return figura
+
+
+
+def errores_ganador(metricas, ganador):
+    """Compara exclusivamente el modelo elegido y el baseline principal."""
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 3.5), sharey=True)
+    procedimientos = ["Media_por_nivel", ganador]
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        valores = metricas.loc[metricas.protocolo.eq(protocolo)].set_index("procedimiento").loc[procedimientos, "MAE_N"]
+        barras = eje.barh([0, 1], valores, color=[GRIS, VERDE], height=.5)
+        eje.bar_label(barras, labels=[fmt(v, 3) for v in valores], padding=5)
+        eje.set(title=PROTO[protocolo], xlabel="MAE [N]", xlim=(0, valores.max()*1.3),
+                yticks=[0, 1], yticklabels=[nombre(m) for m in procedimientos])
+        _estilo(eje)
+    figura.suptitle("Error del modelo seleccionado frente al baseline", fontsize=16, color="#203D40", weight="bold")
+    figura.tight_layout(rect=(0, 0, 1, .9))
+    return figura
+
+
+def cargas_ganador(predicciones):
+    """Carga media observada y predicha por cuartil, con valores etiquetados."""
+    curvas = resumir_cargas(predicciones)
+    figura, eje = plt.subplots(figsize=(8, 5.5))
+    valores = curvas[["observado_N", "predicho_N"]].to_numpy()
+    limites = (valores.min()-15, valores.max()+35)
+    eje.plot(limites, limites, "--", color=GRIS, lw=1)
+    for protocolo, color, marca in zip(PROTOCOLOS, (AZUL, VERDE), ("o", "s")):
+        serie = curvas.loc[curvas.protocolo.eq(protocolo)].sort_values("observado_N")
+        eje.plot(serie.observado_N, serie.predicho_N, marker=marca, color=color, label=PROTO[protocolo])
+        for fila in serie.itertuples():
+            eje.annotate(fmt(fila.predicho_N, 2), (fila.observado_N, fila.predicho_N),
+                         xytext=(-8, 12) if protocolo == "configuracion" else (7, -14),
+                         ha="right" if protocolo == "configuracion" else "left",
+                         textcoords="offset points", color=color, fontsize=9)
+    eje.set(xlabel="Carga observada media [N]", ylabel="Carga predicha media [N]",
+            title="Carga observada y predicha por la regresión lineal", xlim=limites, ylim=limites)
+    eje.legend(frameon=False)
+    _estilo(eje, "both")
+    figura.tight_layout()
+    return figura
+
+
+def residuos_ganador(predicciones):
+    """Residuos individuales y residuo medio por protocolo."""
+    figura, ejes = plt.subplots(1, 2, figsize=(11, 4.3), sharey=True)
+    for eje, protocolo in zip(ejes, PROTOCOLOS):
+        grupo = predicciones.loc[predicciones.protocolo.eq(protocolo)]
+        residuo = grupo.observado_N - grupo.predicho_N
+        eje.scatter(grupo.predicho_N, residuo, color=AZUL, alpha=.8)
+        eje.axhline(0, color=GRIS, ls="--")
+        eje.axhline(residuo.mean(), color=VERDE, label=f"Residuo medio {fmt(residuo.mean(), 2)} N")
+        mayor = residuo.abs().idxmax()
+        eje.annotate(f"{fmt(residuo.loc[mayor], 2)} N",
+                     (grupo.loc[mayor, "predicho_N"], residuo.loc[mayor]),
+                     xytext=(0, 8), textcoords="offset points", ha="center", fontsize=9)
+        eje.set(title=PROTO[protocolo], xlabel="Carga predicha [N]")
+        eje.legend(frameon=False, fontsize=9, loc="lower center")
+        eje.margins(y=.2)
+        _estilo(eje, "both")
+    ejes[0].set_ylabel("Carga observada − predicha [N]")
+    figura.suptitle("Residuos de la regresión lineal", fontsize=16, color="#203D40", weight="bold")
+    figura.tight_layout(rect=(0, 0, 1, .9))
+    return figura
+
+
+def distribucion_ganador(predicciones):
+    """Mediana y percentil 90 del error del modelo ganador."""
+    figura, eje = plt.subplots(figsize=(9, 3.6))
+    valores = [predicciones.loc[predicciones.protocolo.eq(p), "error_absoluto_N"] for p in PROTOCOLOS]
+    eje.boxplot(valores, orientation="horizontal", tick_labels=[PROTO[p] for p in PROTOCOLOS],
+                widths=.4, patch_artist=True, boxprops={"facecolor": "#e9f5ec"})
+    for posicion, errores in enumerate(valores, 1):
+        mediana, p90 = errores.quantile([.5, .9])
+        eje.scatter(p90, posicion, marker="D", color=AZUL, zorder=3)
+        eje.annotate(f"Mediana {fmt(mediana, 2)} N", (mediana, posicion),
+                     xytext=(0, 23), textcoords="offset points", ha="center", va="bottom", fontsize=9)
+        eje.annotate(f"P90 {fmt(p90, 2)} N", (p90, posicion),
+                     xytext=(0, -20), textcoords="offset points", ha="center", fontsize=9, color=AZUL)
+    eje.set(xlabel="Error absoluto [N]", title="Distribución del error de la regresión lineal", ylim=(.4, 2.6))
+    _estilo(eje)
+    figura.tight_layout()
+    return figura

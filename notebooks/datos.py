@@ -189,3 +189,22 @@ def cargar_datos(carpeta_notebook: str | Path | None = None) -> DatosCampana:
     )
     _validar_datos(datos)
     return datos
+
+
+HUELLA_RESULTADOS_PREVIOS = "a3cccbc39420f019d49243d1184f9f2f7af47ca5b373c1ea5ebc8e498bd08558"
+
+
+def cargar_resultados_previos(carpeta_notebook=None):
+    """Recupera las predicciones y métricas verificadas de la comparación inicial."""
+    ubicacion = Path(carpeta_notebook or Path(__file__).resolve().parent)
+    cuaderno = ubicacion if ubicacion.is_file() else ubicacion / NOMBRE_CUADERNO
+    if not cuaderno.is_file() and ubicacion.is_dir():
+        candidatos = list(ubicacion.glob("*.ipynb"))
+        if len(candidatos) == 1:
+            cuaderno = candidatos[0]
+    metadata = json.loads(cuaderno.read_text(encoding="utf-8-sig"))["metadata"]
+    copia = metadata["resultados_preliminares"]
+    huella = hashlib.sha256(copia["contenido"].encode()).hexdigest()
+    if huella != HUELLA_RESULTADOS_PREVIOS or copia["sha256"] != huella:
+        raise ValueError("Las predicciones previas difieren de la versión verificada.")
+    return {clave: pd.DataFrame(filas) for clave, filas in json.loads(copia["contenido"]).items()}

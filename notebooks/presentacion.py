@@ -307,3 +307,35 @@ def mostrar_semillas_busqueda(configuracion):
         if familia in configuracion["espacios"]
     ]
     display(Markdown(tabla_markdown(pd.DataFrame(filas))))
+
+
+
+def mostrar_resultados_ganador(analisis):
+    """Métricas del modelo seleccionado y mejora frente al baseline por protocolo."""
+    elegida = analisis.metricas.loc[analisis.metricas.procedimiento.eq(analisis.mejor)].set_index("protocolo")
+    base = analisis.metricas.loc[analisis.metricas.procedimiento.eq("Media_por_nivel")].set_index("protocolo")
+    salida = elegida[["MAE_N", "RMSE_N", "R2_validacion", "sesgo_N"]].copy()
+    salida["Mejora MAE frente al baseline [N]"] = base.MAE_N - elegida.MAE_N
+    salida["Mejora MAE [%]"] = 100 * (base.MAE_N - elegida.MAE_N) / base.MAE_N
+    tabla(salida.rename(columns={"MAE_N": "MAE [N]", "RMSE_N": "RMSE [N]", "R2_validacion": "R²", "sesgo_N": "Sesgo [N]"})
+          .rename(index=PROTO).rename_axis("Protocolo").reset_index())
+
+
+def mostrar_configuracion_ganador(analisis):
+    tabla(pd.DataFrame([
+        {"Elemento": "Estimador", "Valor": nombre(analisis.mejor)},
+        {"Elemento": "Estimación", "Valor": "Mínimos cuadrados ordinarios"},
+        {"Elemento": "Intercepto", "Valor": str(analisis.configuracion["parametros_iniciales"][analisis.mejor]["fit_intercept"])},
+        {"Elemento": "Tolerancia relativa de la base", "Valor": str(analisis.configuracion["ols"]["tolerancia_svd_relativa"])},
+        {"Elemento": "Optimización de hiperparámetros", "Valor": "No aplicada a esta especificación de mínimos cuadrados"},
+        {"Elemento": "Aleatoriedad del ajuste lineal", "Valor": "Solución determinista"},
+    ]))
+
+
+def mostrar_resumen_errores(predicciones):
+    filas = []
+    for protocolo, grupo in predicciones.groupby("protocolo", sort=False):
+        errores = grupo.error_absoluto_N
+        filas.append({"Protocolo": PROTO[protocolo], "Mediana [N]": errores.median(),
+                      "Percentil 90 [N]": errores.quantile(.9), "Máximo [N]": errores.max()})
+    tabla(pd.DataFrame(filas))
