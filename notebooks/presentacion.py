@@ -281,3 +281,29 @@ def mostrar_ejemplo_vecinos(distancias, cargas, prediccion, observada):
         "Carga medida [N]": observada,
         "Error absoluto [N]": abs(prediccion - observada),
     }]))
+
+
+def mostrar_semillas_modelos(configuracion):
+    """Muestra las semillas que se pasan a los constructores de los regresores."""
+    parametros_semilla = {
+        "XGBoost": "random_state",
+        "CatBoost": "random_seed",
+        "Arbol_decision": "random_state",
+    }
+    filas = [
+        {"Modelo": nombre(familia), "Parámetro": parametro,
+         "Semilla": configuracion["parametros_iniciales"][familia][parametro]}
+        for familia, parametro in parametros_semilla.items()
+    ]
+    display(Markdown(tabla_markdown(pd.DataFrame(filas))))
+
+
+def mostrar_semillas_busqueda(configuracion):
+    """Expone la semilla base y el desplazamiento empleado por cada familia."""
+    filas = [
+        {"Modelo": nombre(familia), "Posición": posicion,
+         "Semilla de muestreo": configuracion["semilla"] + posicion}
+        for posicion, familia in enumerate(configuracion["familias"])
+        if familia in configuracion["espacios"]
+    ]
+    display(Markdown(tabla_markdown(pd.DataFrame(filas))))
